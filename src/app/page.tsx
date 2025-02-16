@@ -3,14 +3,17 @@
 import React, { useState } from "react"
 import ProductCard from "./components/ProductCard"
 import ProgressBar from "./components/ProgressBar"
+import FactsModal from "./components/FactsModal"
 import Image from "next/image"
 import { initialProducts, Product } from "./data/product"
+import Link from "next/link"
 
 interface Purchases {
   [key: number]: number
 }
 
 export default function Home() {
+  const [isModalOpen, setModalOpen] = useState(false)
   const [budget, setBudget] = useState(237500000000) // NPR equivalent of $1.78 billion
   const [spent, setSpent] = useState(0)
   const [purchases, setPurchases] = useState<Purchases>({})
@@ -53,7 +56,7 @@ export default function Home() {
   const totalSpent = Object.keys(purchases).reduce((sum, key) => sum + purchases[parseInt(key)] * initialProducts.find(p => p.id === parseInt(key))!.price, 0)
 
   return (
-    <div style={{ display: "flex", flexDirection: "row", padding: "20px" }}>
+    <div style={{ display: "flex", flexDirection: "row", alignItems: "justif-between", padding: "20px" }}>
       <div style={{ flex: 3, marginRight: "20px" }}>
         <div
           style={{
@@ -64,21 +67,30 @@ export default function Home() {
             boxShadow: "0 1px 3px rgba(145, 145, 145, 0.1)",
             marginBottom: "20px",
             display: "flex",
-            alignItems: "center"
+            justifyContent: "space-between"
           }}
         >
-          <Image src="/binod-header.jpg" alt="Binod Chaudhary" width={200} height={100} objectFit="cover" className="rounded-lg mr-4" />
+          <div className="flex">
+            <Image src="/binod-header.jpg" alt="Binod Chaudhary" width={200} height={100} objectFit="cover" className="rounded-lg mr-4" />
+            <div>
+              <h1 style={{ fontSize: "28px", fontWeight: "bold", color: "#2c3e50", marginBottom: "5px" }}>Spend Binod Chaudhary's Money</h1>
+              <p style={{ fontSize: "16px", margin: 0 }}>
+                <strong style={{ fontSize: "20px", color: "#0055a4" }}>
+                  NPR {budget.toLocaleString()}
+                </strong>
+                <span className="block" style={{ fontSize: "14px", color: "#888" }}>
+                  (USD ${(budget / 120).toFixed(2).toLocaleString()})
+                </span>
+              </p>
+              <ProgressBar total={budget} spent={spent} />
+            </div>
+          </div>
           <div>
-            <h1 style={{ fontSize: "28px", fontWeight: "bold", color: "#2c3e50", marginBottom: "5px" }}>Spend Binod Chaudhary's Money</h1>
-            <p style={{ fontSize: "16px", margin: 0 }}>
-              <strong style={{ fontSize: "20px", color: "#0055a4" }}>
-                NPR {budget.toLocaleString()}
-              </strong>
-              <span className="block" style={{ fontSize: "14px", color: "#888" }}>
-                (USD ${(budget / 120).toFixed(2).toLocaleString()})
-              </span>
-            </p>
-            <ProgressBar total={budget} spent={spent} />
+            <button onClick={() => setModalOpen(true)} className=" text-sm underline border-2 text-blue-600 border border-gray-500  bg-transparent px-4 py-2 rounded-md hover:bg-gray-100">
+              Check Some Facts
+            </button>
+            {/* Facts Modal */}
+            <FactsModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
           </div>
         </div>
 
@@ -91,7 +103,7 @@ export default function Home() {
       <div className="flex-1 p-6 border border-gray-200 rounded-lg w-[300px] sticky top-5 h-screen">
         <h2 className="text-lg font-semibold">YOUR PURCHASES</h2>
         <div className="flex flex-col h-full">
-        <div className="py-6 px-4 mb-4 border-t rounded-md" style={{ backgroundColor: "#0055a4", color: "#fff" }}>
+          <div className="py-6 px-4 mb-4 border-t rounded-md" style={{ backgroundColor: "#0055a4", color: "#fff" }}>
             <p className=" text-2xl font-bold text-right">
               <span className="block">Total Spent:</span> NPR {totalSpent.toLocaleString()}
             </p>
