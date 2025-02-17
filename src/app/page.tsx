@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import ProductCard from "./components/ProductCard"
 import Header from "./components/Header"
+import SocialShare from "./components/SocialShare"
 import { initialProducts, Product } from "./data/product"
 
 interface Purchases {
@@ -14,6 +15,9 @@ export default function Home() {
   const [budget] = useState(237500000000)
   const [spent, setSpent] = useState(0)
   const [purchases, setPurchases] = useState<Purchases>({})
+
+  // Ref for the purchases summary area
+  const purchasesRef = useRef<HTMLDivElement>(null)
 
   const handleBuy = (product: Product) => {
     if (spent + product.price <= budget) {
@@ -59,8 +63,7 @@ export default function Home() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr] h-screen gap-4">
-      {/* Left Side: Header & Product Grid */}
-      <div className="flex flex-col">
+      <div className="flex flex-col h-screen">
         <div className="sticky top-0 z-50 bg-white">
           <Header budget={budget} spent={spent} setModalOpen={setModalOpen} isModalOpen={isModalOpen} />
         </div>
@@ -75,38 +78,39 @@ export default function Home() {
           )}
         </div>
       </div>
-
-      {/* Right Side: Purchase Summary (visible on md and larger) */}
-      <aside className="bg-white p-6 border rounded-lg shadow sticky top-5 h-screen overflow-y-auto hidden md:block">
-        <h2 className="text-lg font-semibold">YOUR PURCHASES</h2>
+      <div className="bg-white p-6 border rounded-lg shadow sticky top-5 h-screen overflow-y-auto hidden md:block">
         <div className="flex flex-col h-full">
-          <div className="py-6 px-4 mb-4 border-t rounded-md bg-[#0055a4] text-white">
-            <p className="text-xl font-bold text-right">
-              <span className="block">Total Spent:</span> NPR {totalSpent.toLocaleString()}
-            </p>
-          </div>
-          <div className="overflow-y-auto flex-grow">
-            {Object.keys(purchases).length === 0
-              ? <p className="text-gray-500">No purchases yet!</p>
-              : initialProducts.filter(product => purchases[product.id]).map(product =>
-                  <div key={product.id} className="mb-4">
-                    <div className="flex justify-between items-center">
-                      <div className="font-medium">
-                        {product.name}
+          <SocialShare summaryRef={purchasesRef} totalSpent={totalSpent} />
+          <h2 className="text-lg font-semibold">YOUR PURCHASES</h2>
+          <div className="flex flex-col h-full">
+            <div className="py-6 px-4 mb-4 border-t rounded-md bg-[#0055a4] text-white">
+              <p className="text-xl font-bold text-right">
+                <span className="block">Total Spent:</span> NPR {totalSpent.toLocaleString()}
+              </p>
+            </div>
+            <div className="overflow-y-auto flex-grow">
+              {Object.keys(purchases).length === 0
+                ? <p className="text-gray-500">No purchases yet!</p>
+                : initialProducts.filter(product => purchases[product.id]).map(product =>
+                    <div key={product.id} className="mb-4">
+                      <div className="flex justify-between items-center">
+                        <div className="font-medium">
+                          {product.name}
+                        </div>
+                        <div className="text-gray-500">
+                          x{purchases[product.id]}
+                        </div>
                       </div>
-                      <div className="text-gray-500">
-                        x{purchases[product.id]}
+                      <div className="text-right mt-1">
+                        NPR {(purchases[product.id] * product.price).toLocaleString()}
                       </div>
+                      <hr className="my-2 border-gray-300" />
                     </div>
-                    <div className="text-right mt-1">
-                      NPR {(purchases[product.id] * product.price).toLocaleString()}
-                    </div>
-                    <hr className="my-2 border-gray-300" />
-                  </div>
-                )}
+                  )}
+            </div>
           </div>
         </div>
-      </aside>
+      </div>
     </div>
   )
 }
