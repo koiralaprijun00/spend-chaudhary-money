@@ -53,7 +53,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, quantity, onBuy, onS
           type="number"
           value={quantity}
           onChange={handleQuantityChange}
-          className="w-full text-center text-sm border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-200"
+          className="w-full text-gray-800 text-center text-sm border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-200"
           min={0}
         />
         <button

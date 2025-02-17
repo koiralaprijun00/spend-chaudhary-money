@@ -4,7 +4,7 @@ const ProgressBar = ({ total, spent }: { total: number; spent: number }) => {
   const percentage = (spent / total * 100).toFixed(2)
 
   return (
-    <div style={{ margin: "20px 0" }}>
+    <div className="mt-4">
       <div style={{ background: "#ddd", height: "20px", borderRadius: "2px" }}>
         <div
           style={{
@@ -15,7 +15,7 @@ const ProgressBar = ({ total, spent }: { total: number; spent: number }) => {
           }}
         />
       </div>
-      <p>{`Spent: NPR ${spent.toLocaleString()} / Total: NPR ${total.toLocaleString()} (${percentage}%)`}</p>
+        <p className="text-gray-800">{`Spent: NPR ${spent.toLocaleString()} / Total: NPR ${total.toLocaleString()} (${percentage}%)`}</p>
     </div>
   )
 }
