@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({ budget, spent, setModalOpen, isModalOpe
       <div className="hidden md:block md:w-1/4 text-right">
         <button
           onClick={() => setModalOpen(true)}
-          className="text-sm underline border-2 text-blue-600 border border-gray-500  bg-transparent px-4 py-2 rounded-md hover:bg-gray-100"
+          className="text-sm underline text-blue-600 bg-transparent px-4 py-2 rounded-md hover:bg-gray-100"
         >
           Check Some Facts
         </button>
