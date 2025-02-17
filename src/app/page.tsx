@@ -2,11 +2,8 @@
 
 import React, { useState } from "react"
 import ProductCard from "./components/ProductCard"
-import ProgressBar from "./components/ProgressBar"
-import FactsModal from "./components/FactsModal"
-import Image from "next/image"
+import Header from "./components/Header"
 import { initialProducts, Product } from "./data/product"
-import Link from "next/link"
 
 interface Purchases {
   [key: number]: number
@@ -14,16 +11,16 @@ interface Purchases {
 
 export default function Home() {
   const [isModalOpen, setModalOpen] = useState(false)
-  const [budget, setBudget] = useState(237500000000) // NPR equivalent of $1.78 billion
+  const [budget] = useState(237500000000)
   const [spent, setSpent] = useState(0)
   const [purchases, setPurchases] = useState<Purchases>({})
 
   const handleBuy = (product: Product) => {
     if (spent + product.price <= budget) {
-      setSpent(spent + product.price)
-      setPurchases(prev => ({
-        ...prev,
-        [product.id]: (prev[product.id] || 0) + 1
+      setSpent(prevSpent => prevSpent + product.price)
+      setPurchases(prevPurchases => ({
+        ...prevPurchases,
+        [product.id]: (prevPurchases[product.id] || 0) + 1
       }))
     } else {
       alert("Not enough budget!")
@@ -32,20 +29,22 @@ export default function Home() {
 
   const handleSell = (product: Product) => {
     if (purchases[product.id] > 0) {
-      setSpent(spent - product.price)
-      setPurchases(prev => ({
-        ...prev,
-        [product.id]: prev[product.id] - 1
+      setSpent(prevSpent => prevSpent - product.price)
+      setPurchases(prevPurchases => ({
+        ...prevPurchases,
+        [product.id]: prevPurchases[product.id] - 1
       }))
     }
   }
 
   const handleSetQuantity = (product: Product, newQuantity: number) => {
-    const difference = newQuantity - (purchases[product.id] || 0)
+    const currentQuantity = purchases[product.id] || 0
+    const difference = newQuantity - currentQuantity
+
     if (spent + difference * product.price <= budget) {
-      setSpent(spent + difference * product.price)
-      setPurchases(prev => ({
-        ...prev,
+      setSpent(prevSpent => prevSpent + difference * product.price)
+      setPurchases(prevPurchases => ({
+        ...prevPurchases,
         [product.id]: newQuantity
       }))
     } else {
@@ -53,58 +52,36 @@ export default function Home() {
     }
   }
 
-  const totalSpent = Object.keys(purchases).reduce((sum, key) => sum + purchases[parseInt(key)] * initialProducts.find(p => p.id === parseInt(key))!.price, 0)
+  const totalSpent = Object.entries(purchases).reduce((sum, [key, quantity]) => {
+    const product = initialProducts.find(p => p.id === parseInt(key))
+    return product ? sum + quantity * product.price : sum
+  }, 0)
 
   return (
-    <div style={{ display: "flex", flexDirection: "row", alignItems: "justif-between", padding: "20px" }}>
-      <div style={{ flex: 3, marginRight: "20px" }}>
+    <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr] h-screen gap-4">
+      {/* Left Side: Header & Product Grid */}
+      <div className="flex flex-col">
+        <div className="sticky top-0 z-50 bg-white">
+          <Header budget={budget} spent={spent} setModalOpen={setModalOpen} isModalOpen={isModalOpen} />
+        </div>
         <div
+          className="grid gap-4 p-4 overflow-y-auto flex-grow"
           style={{
-            padding: "20px",
-            borderBottom: "2px solid #ddd",
-            border: "1px solid rgba(46, 46, 46, 0.1)",
-            borderRadius: "8px",
-            boxShadow: "0 1px 3px rgba(145, 145, 145, 0.1)",
-            marginBottom: "20px",
-            display: "flex",
-            justifyContent: "space-between"
+            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))"
           }}
         >
-          <div className="flex">
-            <Image src="/binod-header.jpg" alt="Binod Chaudhary" width={200} height={100} objectFit="cover" className="rounded-lg mr-4" />
-            <div>
-              <h1 style={{ fontSize: "28px", fontWeight: "bold", color: "#2c3e50", marginBottom: "5px" }}>Spend Binod Chaudhary's Money</h1>
-              <p style={{ fontSize: "16px", margin: 0 }}>
-                <strong style={{ fontSize: "20px", color: "#0055a4" }}>
-                  NPR {budget.toLocaleString()}
-                </strong>
-                <span className="block" style={{ fontSize: "14px", color: "#888" }}>
-                  (USD ${(budget / 120).toFixed(2).toLocaleString()})
-                </span>
-              </p>
-              <ProgressBar total={budget} spent={spent} />
-            </div>
-          </div>
-          <div>
-            <button onClick={() => setModalOpen(true)} className=" text-sm underline border-2 text-blue-600 border border-gray-500  bg-transparent px-4 py-2 rounded-md hover:bg-gray-100">
-              Check Some Facts
-            </button>
-            {/* Facts Modal */}
-            <FactsModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
-          </div>
-        </div>
-
-        <div className="flex justify-between flex-wrap">
           {initialProducts.map(product =>
             <ProductCard key={product.id} product={product} onBuy={handleBuy} onSell={handleSell} onSetQuantity={handleSetQuantity} quantity={purchases[product.id] || 0} />
           )}
         </div>
       </div>
-      <div className="flex-1 p-6 border border-gray-200 rounded-lg w-[300px] sticky top-5 h-screen">
+
+      {/* Right Side: Purchase Summary (visible on md and larger) */}
+      <aside className="bg-white p-6 border rounded-lg shadow sticky top-5 h-screen overflow-y-auto hidden md:block">
         <h2 className="text-lg font-semibold">YOUR PURCHASES</h2>
         <div className="flex flex-col h-full">
-          <div className="py-6 px-4 mb-4 border-t rounded-md" style={{ backgroundColor: "#0055a4", color: "#fff" }}>
-            <p className=" text-2xl font-bold text-right">
+          <div className="py-6 px-4 mb-4 border-t rounded-md bg-[#0055a4] text-white">
+            <p className="text-xl font-bold text-right">
               <span className="block">Total Spent:</span> NPR {totalSpent.toLocaleString()}
             </p>
           </div>
@@ -129,7 +106,7 @@ export default function Home() {
                 )}
           </div>
         </div>
-      </div>
+      </aside>
     </div>
   )
 }

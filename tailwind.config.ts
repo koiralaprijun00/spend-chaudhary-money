@@ -11,8 +11,24 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        lightBlue: "#C6E7FF",
+        lightGreen: "#D1FFD7",
+        lightRed: "#FFD1D1",
+        nepalBlue: "#0056A2",
+        nepalRed: "#D32F2F",
+        nepalGreen: "#388E3C",
       },
     },
+  },
+  screens: { // Add or modify the screens section
+    'sm': '640px',
+    'md': '768px',
+    'lg': '1024px',
+    'xl': '1280px',
+    'custom-xl': '1450px', // Your custom breakpoint
+    '2xl': '1536px',
+    '3xl': '1920px',
+    '4xl': '2560px',
   },
   plugins: [],
 } satisfies Config;

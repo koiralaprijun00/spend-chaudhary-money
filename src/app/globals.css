@@ -21,7 +21,8 @@
 
 body {
   max-width: 1600px;
-  margin: 0 auto;
+  margin: 20px auto;
+  padding: 0 40px;
   color: var(--foreground);
   background: var(--background);
   font-family: 'Libre Franklin', Arial, sans-serif;
@@ -45,3 +46,5 @@ button {
 button:hover {
   background: #0056b3;
 }
+
+
