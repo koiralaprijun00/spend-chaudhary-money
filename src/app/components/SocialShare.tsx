@@ -34,6 +34,7 @@ const SocialShare: React.FC<SocialShareProps> = ({ summaryRef, totalSpent }) => 
 
   return (
     <div className="flex space-x-2 mb-2 justify-end">
+    <div>Share:</div>
       {/* Twitter button */}
       <button
         onClick={shareOnTwitter}
