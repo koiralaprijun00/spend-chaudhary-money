@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Oi&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Oi&display=swap');  
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Oi&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Sigmar&family=Yesteryear&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Phudu:wght@300..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sigmar&family=Yesteryear&display=swap');
 
@@ -10,34 +10,26 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  /* font-family: 'Libre Franklin', Arial, sans-serif; */
   font-family: 'Phudu', Arial, sans-serif;
-
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ffffff;
-    /* font-family: 'Libre Franklin', Arial, sans-serif; */
     font-family: 'Phudu', Arial, sans-serif;
-
   }
 }
+
 
 body {
   max-width: 1600px;
   margin: 20px auto;
   padding: 0 40px;
+  height: 100%; 
+  overflow: hidden;
   color: var(--foreground);
-  background: var(--background);
+  background-color: var(--background);
   /* font-family: 'Libre Franklin', Arial, sans-serif; */
   font-family: 'Phudu', Arial, sans-serif;
-
 }
-
-h1,
-h2 {
-  color: #444;
-}
-

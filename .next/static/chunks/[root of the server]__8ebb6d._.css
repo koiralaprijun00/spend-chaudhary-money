@@ -1006,13 +1006,11 @@ body {
   max-width: 1600px;
   margin: 20px auto;
   padding: 0 40px;
+  height: 100%;
+  overflow: hidden;
   color: var(--foreground);
-  background: var(--background);
+  background-color: var(--background);
   font-family: Phudu, Arial, sans-serif;
-}
-
-h1, h2 {
-  color: #444;
 }
 
 .hover\:scale-105:hover {
@@ -1111,11 +1109,6 @@ h1, h2 {
 .dark\:text-white:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.dark\:text-gray-300:is(.dark *) {
-  --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity, 1));
 }
 
 @media (width >= 640px) {
