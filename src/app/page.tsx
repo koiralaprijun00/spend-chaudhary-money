@@ -24,7 +24,7 @@ export default function HomePage() {
               </div>
             </div>
             {/* Hide Binod image on mobile (screens below the "sm" breakpoint) */}
-            <Image src="/binod-transparent.png" alt="Binod" width={100} height={100} className="hidden sm:block absolute bottom-0 right-0 opacity-75" />
+            <Image src="/binod-transparent.png" alt="Binod" width={100} height={100} className="hidden sm:block absolute bottom-0 right-0" />
           </div>
         </Link>
       </div>
