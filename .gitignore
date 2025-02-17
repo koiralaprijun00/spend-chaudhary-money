@@ -46,9 +46,6 @@ jspm_packages
 # Ignore the .env file (for environment variables)
 .env
 
-# Ignore the node_modules folder
-node_modules/
-
 # Ignore build artifacts
 build/
 dist/
