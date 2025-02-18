@@ -68,7 +68,7 @@ export default function Home() {
           <Header budget={budget} spent={spent} setModalOpen={setModalOpen} isModalOpen={isModalOpen} />
         </div>
         <div
-          className="grid gap-4 mt-4 overflow-y-auto flex-grow"
+          className="grid gap-4 mt-4 pb-12 p overflow-y-auto flex-grow"
           style={{
             gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))"
           }}
