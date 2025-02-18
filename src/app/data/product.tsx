@@ -26,8 +26,8 @@ export const initialProducts: Product[] = [
   },
   {
     id: 7,
-    name: "Sel Roti piece",
-    price: 50,
+    name: "Sel Roti",
+    price: 30,
     description: "Traditional Nepali sweet bread.",
     category: "Food & Beverages",
     image: "/images/selroti.jpg"
@@ -58,8 +58,8 @@ export const initialProducts: Product[] = [
   },
   {
     id: 9,
-    name: "Gundruk and Dhido meal",
-    price: 300,
+    name: "Gundruk and Dhido Thakali set",
+    price: 450,
     description: "Authentic Nepali cuisine.",
     category: "Food & Beverages",
     image: "/images/gundruk.png"
@@ -67,7 +67,7 @@ export const initialProducts: Product[] = [
   {
     id: 43,
     name: "Sekuwa (Grilled Meat)",
-    price: 300,
+    price: 150,
     description: "Spicy grilled meat.",
     category: "Food & Beverages",
     image: "/images/sekuwa.jpg"
@@ -75,7 +75,7 @@ export const initialProducts: Product[] = [
   {
     id: 11,
     name: "A bottle of Tuborg beer",
-    price: 500,
+    price: 330,
     description: "Local Nepali alcohol.",
     category: "Food & Beverages",
     image: "/images/tuborg-beer.png"
@@ -83,7 +83,7 @@ export const initialProducts: Product[] = [
   {
     id: 12,
     name: "One kg of Yomari",
-    price: 500,
+    price: 100,
     description: "Sweet Newari delicacy.",
     category: "Food & Beverages",
     image: "/images/yomari.jpg"
@@ -91,7 +91,7 @@ export const initialProducts: Product[] = [
   {
     id: 14,
     name: "Dhaka topi",
-    price: 500,
+    price: 250,
     description: "Nepali national cap.",
     category: "Daily Essentials",
     image: "/images/topi.png"
@@ -99,7 +99,7 @@ export const initialProducts: Product[] = [
   {
     id: 46,
     name: "Tongba (Millet Alcohol)",
-    price: 500,
+    price: 250,
     description: "Local alcoholic beverage.",
     category: "Food & Beverages",
     image: "/images/tongba.jpg"
@@ -107,7 +107,7 @@ export const initialProducts: Product[] = [
   {
     id: 45,
     name: "Samay Baji (Traditional Newari Set)",
-    price: 600,
+    price: 250,
     description: "Traditional Newari feast.",
     category: "Food & Beverages",
     image: "/images/samaybaji.jpg"
@@ -115,7 +115,7 @@ export const initialProducts: Product[] = [
   {
     id: 17,
     name: "Handmade bamboo basket (Doko)",
-    price: 700,
+    price: 500,
     description: "Useful for carrying goods.",
     category: "Daily Essentials",
     image: "/images/doko.jpg"
@@ -131,7 +131,7 @@ export const initialProducts: Product[] = [
   {
     id: 13,
     name: "Hattichap Chappal",
-    price: 800,
+    price: 140,
     description: "Traditional footwear.",
     category: "Daily Essentials",
     image: "/images/nepal-sandel.jpg"
@@ -139,7 +139,7 @@ export const initialProducts: Product[] = [
   {
     id: 42,
     name: "One Kg of Chhurpi (Dried Cheese)",
-    price: 1000,
+    price: 1500,
     description: "Dried cheese snack.",
     category: "Food & Beverages",
     image: "/images/chhurpi.jpg"
@@ -155,7 +155,7 @@ export const initialProducts: Product[] = [
   {
     id: 15,
     name: "Pashmina shawl",
-    price: 3000,
+    price: 4500,
     description: "Luxurious and warm.",
     category: "Daily Essentials",
     image: "/images/pasmina-shawl.jpg"
@@ -195,7 +195,7 @@ export const initialProducts: Product[] = [
   {
     id: 58,
     name: "Mountain Flight to See Everest",
-    price: 12000,
+    price: 15000,
     description: "Breathtaking views of the Himalayas.",
     category: "Travel & Experiences",
     image: "/images/mountainflight.jpg"
@@ -227,7 +227,7 @@ export const initialProducts: Product[] = [
   {
     id: 35,
     name: "Hydro project share",
-    price: 100000,
+    price: 150000,
     description: "Invest in renewable energy.",
     category: "Business & Investments",
     image: "/images/hydro.jpg"
@@ -243,7 +243,7 @@ export const initialProducts: Product[] = [
   {
     id: 19,
     name: "Iphone 15 Pro",
-    price: 200000,
+    price: 270000,
     description: "Latest smartphone.",
     category: "Electronics & Gadgets",
     image: "/images/iphone.jpg"
