@@ -78,13 +78,14 @@ export default function Home() {
           )}
         </div>
       </div>
-      <div className="bg-white p-6 border rounded-lg shadow sticky top-5 h-screen overflow-y-auto hidden md:block">
+      <div className="bg-white p-6  bg-gray-600 bg-opacity-10 rounded-lg shadow sticky top-5 h-screen overflow-y-auto hidden md:block">
         <div className="flex flex-col h-full">
           <SocialShare summaryRef={purchasesRef} totalSpent={totalSpent} />
-          <h2 className="text-lg font-semibold">YOUR PURCHASES</h2>
           <div className="flex flex-col h-full">
-            <div className="py-6 px-4 mb-4 border-t rounded-md bg-[#0055a4] text-white">
-              <p className="text-xl font-bold text-right">
+            {/* <div className="py-6 px-4 mb-4 border-t rounded-md bg-[#0055a4] text-white"> */}
+            <div className="py-6 mb-4 border-b-2 border-gray-600 border-dashed">
+            <h2 className="text-2xl mb-8 font-semibold">RECEIPT</h2>
+              <p className="flex justify-between text-xl font-bold text-right">
                 <span className="block">Total Spent:</span> NPR {totalSpent.toLocaleString()}
               </p>
             </div>

@@ -4,7 +4,7 @@ import { FaTwitter } from "react-icons/fa" // Import the Twitter icon
 
 const Navbar = () => {
   return (
-    <nav className="p-4">
+    <nav className="py-4 px-0">
       <div className="container mx-auto flex items-center justify-between">
         {" "}{/* Added justify-between back */}
         <Link href="/" className="flex items-center">

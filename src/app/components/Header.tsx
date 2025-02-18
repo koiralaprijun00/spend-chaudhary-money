@@ -3,7 +3,8 @@
 import React from "react"
 import Image from "next/image"
 import ProgressBar from "./ProgressBar"
-import FactsModal from "./FactsModal"
+// import FactsModal from "./FactsModal"
+import Link from "next/link"
 
 interface HeaderProps {
   budget: number
@@ -48,10 +49,13 @@ const Header: React.FC<HeaderProps> = ({ budget, spent, setModalOpen, isModalOpe
         </div>
       </div>
       <div className="hidden md:block md:w-1/4 text-right">
-        <button onClick={() => setModalOpen(true)} className="text-sm underline text-blue-600 bg-transparent px-4 py-2 rounded-md hover:bg-gray-100">
+        {/* <button onClick={() => setModalOpen(true)} className="text-sm underline text-blue-600 bg-transparent px-4 py-2 rounded-md hover:bg-gray-100">
           Check Some Facts
         </button>
-        <FactsModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+        <FactsModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} /> */}
+        <Link href="/about-binod" className="text-sm font-bold underline text-blue-600 bg-transparent px-4 py-2 rounded-md hover:bg-gray-100">
+        About Binod Chaudhary
+        </Link>
       </div>
     </div>
   )

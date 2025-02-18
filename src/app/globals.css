@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Phudu:wght@300..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sigmar&family=Yesteryear&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Phudu:wght@300..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sigmar&family=Yesteryear&display=swap');
 
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
@@ -25,6 +26,13 @@ body {
   /* color: var(--foreground); */
   /* background-color: var(--background); */
   font-family: 'Phudu', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Phudu', Arial, sans-serif;
+}
+p{
+  font-family: 'Rubik', Arial, sans-serif;
 }
 
 @media (max-width: 768px) {

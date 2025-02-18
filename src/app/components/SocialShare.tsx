@@ -10,7 +10,14 @@ interface SocialShareProps {
 const SocialShare: React.FC<SocialShareProps> = ({ summaryRef, totalSpent }) => {
   // Replace this with your actual URL (or a URL that generates a shareable image/summary)
   const appUrl = "https://piromomo.com/spend"
-  const shareText = `I could only spent NPR ${totalSpent.toLocaleString()} of Binod Chaudary's Money. How much did you spend?` // Include totalSpent
+  const shareText = `I tried to spend Binod Chaudhary's billions, but I could only burn through NPR ${totalSpent.toLocaleString()}! 💸💰
+
+Can you do better? 😏 Play now and see how fast you can drain his fortune! 🔥👇
+
+🔗 https://piromomo.com/spend
+
+#SpendBinodMoney #Nepal #ChallengeAccepted`
+
   const encodedText = encodeURIComponent(shareText)
   const encodedUrl = encodeURIComponent(appUrl)
 
@@ -20,21 +27,22 @@ const SocialShare: React.FC<SocialShareProps> = ({ summaryRef, totalSpent }) => 
     window.open(twitterShareUrl, "_blank")
   }
 
-  // Share on Facebook
   const shareOnFacebook = () => {
     const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
-    window.open(facebookShareUrl, "_blank")
+    window.open(facebookShareUrl, "_blank") // Only shares the URL, no pre-filled text
   }
 
-  // Share on LinkedIn
   const shareOnInstagram = () => {
-    const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
-    window.open(linkedInShareUrl, "_blank")
+    // Instagram sharing is limited.  This just opens Instagram.
+    const instagramUrl = `https://www.instagram.com/?url=${encodedUrl}`
+    window.open(instagramUrl, "_blank")
+    // Consider adding a helpful alert or message to the user:
+    alert("Share your score on Instagram!  You'll need to create the post manually.")
   }
 
   return (
     <div className="flex space-x-2 mb-2 justify-end">
-    <div>Share:</div>
+      <div>Share:</div>
       {/* Twitter button */}
       <button
         onClick={shareOnTwitter}
