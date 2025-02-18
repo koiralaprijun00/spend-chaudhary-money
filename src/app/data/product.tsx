@@ -38,7 +38,7 @@ export const initialProducts: Product[] = [
     price: 100,
     description: "Stir-fried noodles.",
     category: "Food & Beverages",
-    image: "/images/chowmein.webp"
+    image: "/images/chowmein.jpg"
   },
   {
     id: 1,
@@ -86,7 +86,7 @@ export const initialProducts: Product[] = [
     price: 500,
     description: "Sweet Newari delicacy.",
     category: "Food & Beverages",
-    image: "/images/yomari.webp"
+    image: "/images/yomari.jpg"
   },
   {
     id: 14,
@@ -102,7 +102,7 @@ export const initialProducts: Product[] = [
     price: 500,
     description: "Local alcoholic beverage.",
     category: "Food & Beverages",
-    image: "/images/tongba.webp"
+    image: "/images/tongba.jpg"
   },
   {
     id: 45,
@@ -110,7 +110,7 @@ export const initialProducts: Product[] = [
     price: 600,
     description: "Traditional Newari feast.",
     category: "Food & Beverages",
-    image: "/images/samaybaji.webp"
+    image: "/images/samaybaji.jpg"
   },
   {
     id: 17,
@@ -134,7 +134,7 @@ export const initialProducts: Product[] = [
     price: 800,
     description: "Traditional footwear.",
     category: "Daily Essentials",
-    image: "/images/nepal-sandel.webp"
+    image: "/images/nepal-sandel.jpg"
   },
   {
     id: 42,
@@ -166,7 +166,7 @@ export const initialProducts: Product[] = [
     price: 5000,
     description: "Thrilling river adventure.",
     category: "Travel & Experiences",
-    image: "/images/rafting.webp"
+    image: "/images/rafting.jpg"
   },
   {
     id: 5,
@@ -222,7 +222,7 @@ export const initialProducts: Product[] = [
     price: 50000,
     description: "Tibetan Buddhist painting.",
     category: "Luxury & Lifestyle",
-    image: "/images/thangka_painting.webp"
+    image: "/images/thangka_painting.jpg"
   },
   {
     id: 35,
