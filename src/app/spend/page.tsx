@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr] h-screen gap-4">
       <div className="flex flex-col h-screen">
-        <div className="sticky top-0 bg-white">
+        <div className="sticky top-0 z-50 bg-white">
           <Header budget={budget} spent={spent} setModalOpen={setModalOpen} isModalOpen={isModalOpen} />
         </div>
         <div
