@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, quantity, onBuy, onS
   }
 
   return (
-    <div className="border rounded p-4 m-2 transition-transform duration-300 hover:scale-105 grid grid-rows-[auto,1fr,auto] gap-4">
+    <div className="border rounded p-4 transition-transform duration-300 hover:scale-105 grid grid-rows-[auto,1fr,auto] gap-4">
       {/* Image Section */}
       <div className="relative h-48 rounded-xl overflow-hidden">
         {product.image

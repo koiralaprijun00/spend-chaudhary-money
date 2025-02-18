@@ -64,11 +64,11 @@ export default function Home() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr] h-screen gap-4">
       <div className="flex flex-col h-screen">
-        <div className="sticky top-0 z-50 bg-white">
+        <div className="sticky top-0 bg-white">
           <Header budget={budget} spent={spent} setModalOpen={setModalOpen} isModalOpen={isModalOpen} />
         </div>
         <div
-          className="grid gap-4 p-4 overflow-y-auto flex-grow"
+          className="grid gap-4 mt-4 overflow-y-auto flex-grow"
           style={{
             gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))"
           }}
