@@ -27,14 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="google-adsense-account" content="ca-pub-4708248697764153" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
-          crossOrigin="anonymous"
-        ></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
-     crossOrigin="anonymous"></script>
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
      crossOrigin="anonymous"></script>
       </head>
       <body
