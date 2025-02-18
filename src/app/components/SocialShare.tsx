@@ -9,7 +9,7 @@ interface SocialShareProps {
 
 const SocialShare: React.FC<SocialShareProps> = ({ summaryRef, totalSpent }) => {
   // Replace this with your actual URL (or a URL that generates a shareable image/summary)
-  const appUrl = "https://your-app-url.com"
+  const appUrl = "https://piromomo.com/spend"
   const shareText = `I could only spent NPR ${totalSpent.toLocaleString()} of Binod Chaudary's Money. How much did you spend?` // Include totalSpent
   const encodedText = encodeURIComponent(shareText)
   const encodedUrl = encodeURIComponent(appUrl)
