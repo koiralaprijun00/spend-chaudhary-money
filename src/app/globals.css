@@ -22,7 +22,6 @@ body {
   max-width: 1600px;
   margin: 20px auto;
   padding: 0 40px;
-  overflow: hidden;
   /* color: var(--foreground); */
   /* background-color: var(--background); */
   font-family: 'Phudu', Arial, sans-serif;
