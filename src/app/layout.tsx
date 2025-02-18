@@ -34,6 +34,8 @@ export default function RootLayout({
         ></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
      crossOrigin="anonymous"></script>
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
+     crossOrigin="anonymous"></script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
