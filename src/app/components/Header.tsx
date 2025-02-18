@@ -15,9 +15,9 @@
 
   const Header: React.FC<HeaderProps> = ({ budget, spent, setModalOpen, isModalOpen }) => {
     return (
-      <div className="p-5 border-b-2  border-gray-300 border border-gray-200 rounded-lg shadow mb-5 flex justify-between">
+      <div className=" p-5 border-b-2  border-gray-300 border border-gray-200 rounded-lg shadow mb-5 flex flex-row md:justify-between justify-center">
         <div className="sticky top-0 z-50  md:static md:top-auto md:z-auto">
-          <div className="flex flex-col md:flex-row items-center md:items-start">
+          <div className="flex flex-col md:flex-col items-center md:items-start">
             <div className="flex items-center">
               <Image
                 src="/binod-header.jpg"
@@ -28,7 +28,8 @@
                 className="rounded-lg mr-2 md:mr-4 md:w-[125px] md:h-[125px]" // Larger on medium screens and up
               />
             </div>
-            <div className="md:ml-4 text-center md:text-left">
+            <div className="text-center md:text-left">
+              <div>
               <h1 className="text-xl font-bold text-gray-800 mb-2 md:text-2xl">Spend Binod Chaudhary's Money</h1>
               <p className="text-base md:text-lg">
                 <strong className="text-lg md:text-xl text-blue-600">
@@ -38,6 +39,7 @@
                   (USD ${(budget / 120).toFixed(2).toLocaleString()})
                 </span>
               </p>
+              </div>
               <ProgressBar total={budget} spent={spent} />
             </div>
           </div>

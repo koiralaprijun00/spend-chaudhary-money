@@ -19,6 +19,7 @@ coverage
 build/
 dist/
 .next
+.next/
 
 # Dependency directories
 node_modules
