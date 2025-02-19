@@ -14,9 +14,7 @@ const SocialShare: React.FC<SocialShareProps> = ({ totalSpent }) => {
 
 Can you do better? 😏 Play now and see how fast you can drain his fortune! 🔥👇
 
-🔗 https://piromomo.com/spend
-
-#SpendBinodMoney #Nepal #ChallengeAccepted`
+`
 
   const encodedText = encodeURIComponent(shareText)
   const encodedUrl = encodeURIComponent(appUrl)
