@@ -13,6 +13,31 @@ const geistMono = Geist_Mono({
   subsets: ["latin"]
 })
 
+export const metadata = {
+  title: "Spend Binod’s Money - Fun Simulator",
+  description: "Try spending Binod Chaudhary’s billionaire fortune! A fun spending simulator to test how fast you can use NPR 240 billion.",
+  openGraph: {
+    title: "Spend Binod’s Money - Fun Game",
+    description: "How fast can you spend USD 1.8 Billion? Test yourself now!",
+    url: "https://piromomo.com",
+    siteName: "Spend Binod’s Money",
+    images: [
+      {
+        url: "/images/binod-chaudhary-profile.jpg",
+        width: 800,
+        height: 600
+      }
+    ],
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Spend Binod’s Money - Fun Simulator",
+    description: "A billionaire spending game featuring Nepal’s first billionaire, Binod Chaudhary!",
+    images: ["/images/binod-chaudhary-profile.jpg"]
+  }
+}
+
 export default function RootLayout({
   children
 }: Readonly<{
@@ -23,8 +48,6 @@ export default function RootLayout({
       <Head>
         {/* Google Adsense */}
         <meta name="google-adsense-account" content="ca-pub-4708248697764153" />
-        <title>How Rich is Binod Chaudhary? Nepal’s First Billionaire</title>
-        <meta name="description" content="Learn about Binod Chaudhary, Nepal’s only billionaire, his net worth, business success, and philanthropic contributions." />
 
         {/* Open Graph (Facebook, LinkedIn) */}
         <meta property="og:title" content="How Rich is Binod Chaudhary? Nepal’s First Billionaire" />
