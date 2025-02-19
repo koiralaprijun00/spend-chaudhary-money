@@ -7,8 +7,8 @@ export default function HomePage() {
       {/* Header Section */}
       <div className="p-4 flex flex-col items-center">
         <Image src="/images/momo-header.png" alt="Piromomo Logo" width={140} height={140} className="mb-4" />
-        <h1 className="text-2xl sm:text-3xl font-bold text-center">Welcome to Piromomo!</h1>
-        <p className="mt-2 text-center text-base sm:text-lg">Fun stuffs are coming!</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-center">Piromomo!</h1>
+        <p className="mt-2 text-center text-base sm:text-lg">Spicy Momo Fixes Everything</p>
       </div>
 
       {/* Card Section */}
