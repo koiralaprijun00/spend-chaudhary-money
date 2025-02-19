@@ -2,6 +2,7 @@ import Head from "next/head"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import NavBar from "./components/NavBar"
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,7 +49,6 @@ export default function RootLayout({
       <Head>
         {/* Google Adsense */}
         <meta name="google-adsense-account" content="ca-pub-4708248697764153" />
-
         {/* Open Graph (Facebook, LinkedIn) */}
         <meta property="og:title" content="How Rich is Binod Chaudhary? Nepal’s First Billionaire" />
         <meta property="og:description" content="Learn about Binod Chaudhary, Nepal’s only billionaire, his net worth, business success, and philanthropy." />
@@ -67,6 +67,7 @@ export default function RootLayout({
         {/* Adsense Script */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153" crossOrigin="anonymous" />
       </Head>
+      <GoogleTagManager gtmId="G-X744G6P5C9" />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NavBar />
         {children}
