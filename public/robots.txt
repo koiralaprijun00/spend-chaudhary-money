@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://piromomo.com/api/sitemap.xml
+Sitemap: https://piromomo.com/sitemap.xml
