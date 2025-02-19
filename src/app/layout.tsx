@@ -13,11 +13,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Spend Binod's Budget",
-  description: "Spend as much as you can from Binod's budget!",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,15 +21,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Adsense */}
         <meta name="google-adsense-account" content="ca-pub-4708248697764153" />
-        <meta property="og:title" content="your_link_title" />
-        <meta property="og:image" content="your_image_url" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
-     crossOrigin="anonymous"></script>
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Spend Binod's Money" />
+        <meta property="og:description" content="Spend all of Binod's budget! Play now and see how fast you can use up his money!" />
+        <meta property="og:url" content="https://piromomo.com/spend" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://piromomo.com/path/to/binod-transparent.png" />
+        {/* Adsense Script */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
+          crossOrigin="anonymous"
+        ></script>
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NavBar />
         {children}
       </body>

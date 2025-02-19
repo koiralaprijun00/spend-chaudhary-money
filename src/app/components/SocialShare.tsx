@@ -5,6 +5,7 @@ import { faTwitter, faFacebookF, faInstagram } from "@fortawesome/free-brands-sv
 interface SocialShareProps {
   summaryRef: React.RefObject<HTMLDivElement | null>
   totalSpent: number
+  currentUrl: string; // Add dynamic URL prop
 }
 
 const SocialShare: React.FC<SocialShareProps> = ({ summaryRef, totalSpent }) => {
@@ -29,7 +30,7 @@ Can you do better? ðŸ˜ Play now and see how fast you can drain his fortune! ðŸ”
 
   const shareOnFacebook = () => {
     const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
-    window.open(facebookShareUrl, "_blank") // Only shares the URL, no pre-filled text
+    window.open(facebookShareUrl, "_blank") 
   }
 
   const shareOnInstagram = () => {
