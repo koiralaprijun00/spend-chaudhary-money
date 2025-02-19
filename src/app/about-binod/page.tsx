@@ -2,29 +2,33 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { TbArrowBigLeftLinesFilled } from "react-icons/tb";
+import FAQSection from '../components/FAQSection';
 
 export default function BlogPage() {
   return (
     <>
-    {/* Go Back Button */}
-    <div className="flex justify-start mt-8">
-    <Link
-          href="/spend"
-          className="group flex items-center text-gray-400 font-bold  hover:text-gray-800"
-        >
-          <TbArrowBigLeftLinesFilled className="mr-2 transition-colors duration-50 group-hover:text-gray-800" size={28} />
-          Go Back
-        </Link>
-      </div>
-      <Head>
-        <title>How Rich is Binod Chaudhary? Nepal’s First Billionaire</title>
-        <meta
-          name="description"
-          content="Learn about Binod Chaudhary, Nepal’s only billionaire, his net worth, business success, and philanthropic contributions."
-        />
+    <Head>
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">How Rich is Binod Chaudhary? Nepal’s First Billionaire</h1>
+        <p className="description text-sm md:text-base text-gray-700 leading-relaxed">
+          Learn about Binod Chaudhary, Nepal’s only billionaire, his net worth, business success, and philanthropic contributions."
+       </p>
       </Head>
-      <div className="min-h-screen">
-        <div className="max-w-3xl py-12">
+
+
+    <div className="flex justify-start mt-8">
+  <Link
+    href="/spend"
+    aria-label="Go back to spending page"
+    className="group flex items-center text-gray-400 font-bold hover:text-gray-800 transition duration-200 hover:scale-105"
+  >
+    <TbArrowBigLeftLinesFilled className="mr-2 transition-colors duration-200 group-hover:text-gray-800" size={28} />
+    Go Back 
+  </Link>
+</div>
+
+      
+<div className="min-h-screen flex justify-center px-4">
+      <div className="max-w-3xl w-full py-12">
           <article className="bg-white rounded-3xl py-8">
             <header className="mb-12 border-b pb-6">
               <h1 className="text-4xl font-bold text-left text-gray-800 mb-4">
@@ -32,10 +36,10 @@ export default function BlogPage() {
               </h1>
             </header>
 
-            <section className="mb-8">
-              <h2 className="text-3xl font-semibold text-gray-700 mb-6 border-b pb-2">
-                Binod Chaudhary’s Net Worth in 2024
-              </h2>
+            <section className="mb-8 px-4 md:px-8">
+  <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 mb-6 pb-3 border-b-2">
+    Binod Chaudhary’s Net Worth in 2024
+  </h2>
               <div>
                 <p className="text-gray-700">
                   According to Forbes' Billionaire List 2024, Binod Chaudhary has an estimated net worth of{' '}
@@ -53,6 +57,13 @@ export default function BlogPage() {
                   <span className="italic">(CG Corp Global)</span>.
                 </p>
               </div>
+            </section>
+
+            <section className="text-gray-800 font-medium mt-6 bg-gray-200 px-12 py-4 my-8 rounded-md">
+              Want to spend Binod Chaudhary’s money? Try the{" "}
+            <Link href="/spend" className="text-blue-600 underline hover:text-blue-800 transition duration-200">
+             Spend Binod's Money Game
+            </Link>
             </section>
 
             <section className="mb-8">
@@ -129,7 +140,7 @@ export default function BlogPage() {
             </section>
 
             {/* New Section: How Long Would It Take to Spend Binod Chaudhary’s Money? */}
-            <section className="mb-8 px-12 py-8 rounded-xl shadow-md bg-gradient-to-r from-blue-50 to-purple-50">
+            <section className="mb-8 px-6 md:px-12 py-8 rounded-xl shadow-md bg-gradient-to-r from-blue-100 to-purple-100">
               <h2 className="text-3xl font-semibold text-gray-700 border-b pb-2">
                 How Long Would It Take to Spend Binod Chaudhary’s Money?
               </h2>
@@ -167,56 +178,7 @@ export default function BlogPage() {
                 entrepreneurship on the global stage.
               </p>
             </section>
-
-            <section className="mb-8">
-              <h2 className="text-3xl font-semibold text-gray-700 mb-6 border-b pb-2">
-                Frequently Asked Questions (FAQs)
-              </h2>
-              <div className="space-y-6 text-gray-600">
-                <div>
-                  <p className="font-bold">
-                    Q1: What is Binod Chaudhary’s current net worth?
-                  </p>
-                  <p>A: As of 2024, his estimated net worth is $1.8 billion.</p>
-                </div>
-                <div>
-                  <p className="font-bold">
-                    Q2: How did Binod Chaudhary become rich?
-                  </p>
-                  <p>
-                    A: His wealth primarily comes from Wai Wai noodles and his investments in
-                    hospitality, banking, real estate, and energy.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-bold">
-                    Q3: Is Binod Chaudhary Nepal’s richest person?
-                  </p>
-                  <p>
-                    A: Yes, he is Nepal’s only billionaire and the richest person in the
-                    country.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-bold">
-                    Q4: What businesses does CG Corp Global own?
-                  </p>
-                  <p>
-                    A: CG Corp operates in food & beverages, hospitality, banking, real estate,
-                    and energy across 30 countries.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-bold">
-                    Q5: Is Binod Chaudhary involved in philanthropy?
-                  </p>
-                  <p>
-                    A: Yes, he has donated millions for education, healthcare, and disaster
-                    relief in Nepal.
-                  </p>
-                </div>
-              </div>
-            </section>
+           <FAQSection />
           </article>
         </div>
       </div>

@@ -23,12 +23,24 @@ export default function RootLayout({
       <Head>
         {/* Google Adsense */}
         <meta name="google-adsense-account" content="ca-pub-4708248697764153" />
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Spend Binod's Money" />
-        <meta property="og:description" content="Spend all of Binod's budget! Play now and see how fast you can use up his money!" />
+        <title>How Rich is Binod Chaudhary? Nepal’s First Billionaire</title>
+        <meta name="description" content="Learn about Binod Chaudhary, Nepal’s only billionaire, his net worth, business success, and philanthropic contributions." />
+
+        {/* Open Graph (Facebook, LinkedIn) */}
+        <meta property="og:title" content="How Rich is Binod Chaudhary? Nepal’s First Billionaire" />
+        <meta property="og:description" content="Learn about Binod Chaudhary, Nepal’s only billionaire, his net worth, business success, and philanthropy." />
+        <meta property="og:image" content="/images/binod-chaudhary-profile.jpg" />
         <meta property="og:url" content="https://piromomo.com/spend" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://piromomo.com/path/to/binod-transparent.png" />
+        <meta property="og:type" content="article" />
+
+        {/* Twitter Card (for Twitter SEO) */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="How Rich is Binod Chaudhary? Nepal’s First Billionaire" />
+        <meta name="twitter:description" content="Learn about Nepal’s only billionaire and his journey to success." />
+        <meta name="twitter:image" content="/images/binod-chaudhary-profile.jpg" />
+
+        {/* Canonical URL (Prevents Duplicate Content Issues) */}
+        <link rel="canonical" href="https://piromomo.com/spend" />
         {/* Adsense Script */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153" crossOrigin="anonymous" />
       </Head>

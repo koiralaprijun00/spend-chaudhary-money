@@ -260,7 +260,7 @@ export const initialProducts: Product[] = [
     id: 29,
     name: "KTM Duke 390",
     price: 800000,
-    description: "Farming equipment.",
+    description: "High-performance motorbike.",
     category: "Real Estate & Vehicles",
     image: "/images/ktm-duke.jpg"
   },

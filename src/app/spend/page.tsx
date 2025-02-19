@@ -27,7 +27,7 @@ export default function Home() {
         [product.id]: (prevPurchases[product.id] || 0) + 1
       }))
     } else {
-      alert("Not enough budget!")
+      alert("Binod doesnt have enough Money! He is not Elon Musk.")
     }
   }
 
@@ -36,7 +36,7 @@ export default function Home() {
       setSpent(prevSpent => prevSpent - product.price)
       setPurchases(prevPurchases => ({
         ...prevPurchases,
-        [product.id]: prevPurchases[product.id] - 1
+        [product.id]: Math.max(prevPurchases[product.id] - 1, 0)
       }))
     }
   }
@@ -44,22 +44,20 @@ export default function Home() {
   const handleSetQuantity = (product: Product, newQuantity: number) => {
     const currentQuantity = purchases[product.id] || 0
     const difference = newQuantity - currentQuantity
+    const newSpent = spent + difference * product.price
 
-    if (spent + difference * product.price <= budget) {
-      setSpent(prevSpent => prevSpent + difference * product.price)
+    if (newSpent <= budget && newQuantity >= 0) {
+      setSpent(newSpent)
       setPurchases(prevPurchases => ({
         ...prevPurchases,
         [product.id]: newQuantity
       }))
     } else {
-      alert("Not enough budget!")
+      alert("Binod doesnt have enough Money! He is not Elon Musk.")
     }
   }
 
-  const totalSpent = Object.entries(purchases).reduce((sum, [key, quantity]) => {
-    const product = initialProducts.find(p => p.id === parseInt(key))
-    return product ? sum + quantity * product.price : sum
-  }, 0)
+  const totalSpent = spent
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr] h-screen gap-4">
@@ -67,6 +65,11 @@ export default function Home() {
         <div className="sticky top-0 z-50 bg-white">
           <Header budget={budget} spent={spent} setModalOpen={setModalOpen} isModalOpen={isModalOpen} />
         </div>
+        {/* Accessibility: Live Message for Budget Exceeded */}
+        <div aria-live="polite" className="sr-only">
+          {spent > budget ? "Binod doesn’t have enough money! He is not Elon Musk." : ""}
+        </div>
+
         <div
           className="grid gap-4 mt-4 pb-12 p overflow-y-auto flex-grow"
           style={{
@@ -84,12 +87,12 @@ export default function Home() {
           <div className="flex flex-col h-full">
             {/* <div className="py-6 px-4 mb-4 border-t rounded-md bg-[#0055a4] text-white"> */}
             <div className="py-6 mb-4 border-b-2 border-gray-600 border-dashed">
-            <h2 className="text-2xl mb-8 font-semibold">RECEIPT</h2>
+              <h2 className="text-2xl mb-8 font-semibold">RECEIPT</h2>
               <p className="flex justify-between text-xl font-bold text-right">
                 <span className="block">Total Spent:</span> NPR {totalSpent.toLocaleString()}
               </p>
             </div>
-            <div className="overflow-y-auto flex-grow">
+            <div className="overflow-y-auto flex-grow max-h-screen">
               {Object.keys(purchases).length === 0
                 ? <p className="text-gray-500">No purchases yet!</p>
                 : initialProducts.filter(product => purchases[product.id]).map(product =>

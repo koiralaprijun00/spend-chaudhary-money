@@ -23,10 +23,11 @@ const Header: React.FC<HeaderProps> = ({ budget, spent, setModalOpen, isModalOpe
             <div className="flex items-center">
               <Image
                 src="/binod-header.jpg"
-                alt="Binod Chaudhary"
+                priority={true}
+                alt="Binod Chaudhary, Nepal's billionaire"
                 width={100} // Smaller on mobile
                 height={100} // Smaller on mobile
-                objectFit="contain"
+                style={{ objectFit: "contain" }}
                 className="rounded-lg md:w-[125px] md:h-[125px]" // Larger on medium screens and up
               />
             </div>
@@ -45,7 +46,7 @@ const Header: React.FC<HeaderProps> = ({ budget, spent, setModalOpen, isModalOpe
           </div>
           {/* ------- */}
 
-          <ProgressBar total={budget} spent={spent} />
+          <ProgressBar total={budget} spent={spent} aria-label="Spending progress bar" />
         </div>
       </div>
       <div className="hidden md:block md:w-1/4 text-right">
@@ -53,8 +54,12 @@ const Header: React.FC<HeaderProps> = ({ budget, spent, setModalOpen, isModalOpe
           Check Some Facts
         </button>
         <FactsModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} /> */}
-        <Link href="/about-binod" className="text-sm font-bold underline text-blue-600 bg-transparent px-4 py-2 rounded-md hover:bg-gray-100">
-        About Binod Chaudhary
+        <Link
+          href="/about-binod"
+          aria-label="Learn more about Binod Chaudhary"
+          className="text-sm font-bold underline text-blue-600 bg-transparent rounded-md hover:bg-gray-200 transition duration-200"
+        >
+          About Binod Chaudhary
         </Link>
       </div>
     </div>
