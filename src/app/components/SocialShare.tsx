@@ -5,7 +5,7 @@ import { faTwitter, faFacebookF, faInstagram } from "@fortawesome/free-brands-sv
 interface SocialShareProps {
   summaryRef: React.RefObject<HTMLDivElement | null>
   totalSpent: number
-  currentUrl: string; // Add dynamic URL prop
+
 }
 
 const SocialShare: React.FC<SocialShareProps> = ({ summaryRef, totalSpent }) => {

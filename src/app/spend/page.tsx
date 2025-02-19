@@ -80,7 +80,7 @@ export default function Home() {
       </div>
       <div className="bg-white p-6  bg-gray-600 bg-opacity-10 rounded-lg shadow sticky top-5 h-screen overflow-y-auto hidden md:block">
         <div className="flex flex-col h-full">
-          <SocialShare summaryRef={purchasesRef} totalSpent={totalSpent} currentUrl={window.location.href} />
+          <SocialShare summaryRef={purchasesRef} totalSpent={totalSpent} />
           <div className="flex flex-col h-full">
             {/* <div className="py-6 px-4 mb-4 border-t rounded-md bg-[#0055a4] text-white"> */}
             <div className="py-6 mb-4 border-b-2 border-gray-600 border-dashed">
