@@ -2,7 +2,7 @@ import Head from "next/head"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import NavBar from "./components/NavBar"
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,7 +67,7 @@ export default function RootLayout({
         {/* Adsense Script */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153" crossOrigin="anonymous" />
       </Head>
-      <GoogleTagManager gtmId="G-X744G6P5C9" />
+      <GoogleAnalytics gaId="G-X744G6P5C9" />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NavBar />
         {children}
