@@ -27,7 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, quantity, onBuy, onS
       {/* Image Section */}
       <div className="relative h-48 rounded-xl overflow-hidden">
         {product.image
-          ? <Image src={product.image} alt={product.name} fill={true} objectFit="cover" placeholder="blur" blurDataURL="/default-placeholder.png" className="rounded-xl" />
+          ? <Image src={product.image} alt={product.name} fill={true} objectFit="cover" placeholder="blur" blurDataURL="/images/momo.png" className="rounded-xl" />
           : <div className="absolute inset-0 flex items-center justify-center text-gray-400">No Image Available</div>}
       </div>
 
