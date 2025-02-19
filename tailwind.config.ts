@@ -17,6 +17,7 @@ export default {
         nepalBlue: "#0056A2",
         nepalRed: "#D32F2F",
         nepalGreen: "#388E3C",
+        lightGray: "#F6F6F6"
       },
     },
   },
