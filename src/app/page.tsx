@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import Script from "next/script";
 
 export default function HomePage() {
   return (
@@ -12,7 +13,7 @@ export default function HomePage() {
       </div>
 
       {/* Card Section */}
-      <div className="w-full px-4 sm:w-3/4 md:w-[45%] self-start">
+      <div className="w-full mb-12 px-4 sm:w-3/4 md:w-[45%] self-start">
         <Link href="/spend" className="block">
           <div className="relative px-6 py-16 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
             <div className="flex items-center">
@@ -28,6 +29,32 @@ export default function HomePage() {
           </div>
         </Link>
       </div>
+
+       {/* Adsense Script */}
+     <Script
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
+        strategy="afterInteractive"
+        crossOrigin="anonymous"
+      />
+
+      {/* Piro Momo Below Header */}
+      <div className="w-full">
+  <ins
+    className="adsbygoogle"
+    style={{ display: "block" }}
+    data-ad-client="ca-pub-4708248697764153"
+    data-ad-slot="1820052970"
+    data-ad-format="auto"
+    data-full-width-responsive="true"
+  ></ins>
+</div>
+
+      <Script id="adsense-init" strategy="afterInteractive">
+        {`
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        `}
+      </Script>
+
     </main>
   )
 }
