@@ -17,8 +17,8 @@ export default function HomePage() {
         <Link href="/spend" className="block">
           <div className="relative px-6 py-16 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
             <div className="flex items-center">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 mr-4">
-                <span className="text-white text-2xl">$</span>
+            <div className="flex items-center justify-center w-16 aspect-square rounded-full bg-gradient-to-r from-purple-500 to-pink-500 mr-4">
+                <span className="text-white text-xl md:text-xl lg:text-2xl">$</span>
               </div>
               <div>
                 <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">Spend Binod Chaudhary's Money</h2>
