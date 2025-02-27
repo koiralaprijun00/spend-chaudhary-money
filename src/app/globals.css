@@ -38,4 +38,18 @@ p{
   }
 }
 
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-float-delay { animation: float 4s ease-in-out 1s infinite; }
+.animate-float-slow { animation: float 6s ease-in-out infinite; }
+.animate-float-slower { animation: float 8s ease-in-out 2s infinite; }
+.animate-bounce-light { animation: bounce 2s infinite; transform-origin: center bottom; animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1); }
+.animate-bounce-fast { animation: bounce 1s infinite; }
+.animate-spin-slow { animation: spin 10s linear infinite; }
+
 
