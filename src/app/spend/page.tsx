@@ -81,7 +81,7 @@ export default function Home() {
           )}
         </div>
       </div>
-      <div className="bg-white p-6 bg-lightGray rounded-lg shadow sticky top-5 h-screen overflow-y-auto hidden md:block">
+      <div className="p-6 bg-lightGray rounded-lg shadow sticky top-5 h-screen overflow-y-auto hidden md:block">
         <div className="flex flex-col h-full">
           <SocialShare summaryRef={purchasesRef} totalSpent={totalSpent} />
           <div className="flex flex-col h-full">

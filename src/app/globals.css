@@ -1,20 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Phudu:wght@300..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sigmar&family=Yesteryear&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Phudu:wght@300..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sigmar&family=Yesteryear&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
 :root {
-  /* --background: #ffffff; */
-  /* --foreground: #171717; */
   font-family: 'Phudu', Arial, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* --background: #0a0a0a; */
-    /* --foreground: #ffffff; */
+
     font-family: 'Phudu', Arial, sans-serif;
   }
 }
@@ -23,8 +21,6 @@ body {
   max-width: 1600px;
   margin: 20px auto;
   padding: 0 40px;
-  /* color: var(--foreground); */
-  /* background-color: var(--background); */
   font-family: 'Phudu', Arial, sans-serif;
 }
 

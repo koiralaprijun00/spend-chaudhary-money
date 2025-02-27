@@ -15,7 +15,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ budget, spent, setModalOpen, isModalOpen }) => {
   return (
-    <div className=" p-5 border-b-2  border-gray-300 border border-gray-200 rounded-lg  flex flex-row md:justify-between justify-center">
+    <div className=" p-5 border-b-2 border border-gray-200 rounded-lg  flex flex-row md:justify-between justify-center">
       <div className="sticky top-0 z-50  md:static md:top-auto md:z-auto">
         <div className="flex flex-col md:flex-col items-center md:items-start">
           {/* ------- */}
