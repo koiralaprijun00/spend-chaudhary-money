@@ -18,12 +18,12 @@ export default function GuessFestivalHeader({
   return (
     <header className="mb-6 text-left">
       <div className="flex justify-between items-center mb-4">
-      <h1 className="text-4xl md:text-5xl font-extrabold text-gray-600">
+      <h1 className=" text-2xl md:text-5xl font-extrabold text-gray-600">
         {isNepali ? 'चाडपर्व अनुमान गर्नुहोस्' : 'Guess the Festival'}
       </h1>
       <button
           onClick={toggleLanguage}
-          className="px-3 py-1 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition"
+          className="px-3 py-1 bg-gray-800 text-white text-md md:text-2xl rounded-full hover:bg-gray-900 transition"
         >
           {isNepali ? 'in English' : 'नेपालीमा'}
         </button>

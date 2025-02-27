@@ -365,8 +365,8 @@ export default function Home() {
   };
 
   return (
-    <div className="flex py-12 justify-center items-center ">
-    <div className="flex flex-col py-16 px-8 bg-gradient-to-b from-[#FFFFFF] via-[#F5F9F1] to-[#F0F7F4] rounded-xl shadow-2xl">
+    <div className="flex md:py-12 justify-center items-center ">
+    <div className="flex flex-col py-8 md:py-16 px-4 md:px-8 bg-gradient-to-b from-[#FFFFFF] via-[#F5F9F1] to-[#F0F7F4] rounded-xl shadow-2xl">
     <GuessFestivalHeader
   isNepali={isNepali}
   toggleLanguage={toggleLanguage}

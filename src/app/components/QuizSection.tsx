@@ -54,7 +54,7 @@ export default function QuizSection({
             key={index}
             onClick={() => handleOptionClick(option)}
             disabled={isAnswered}
-            className={`px-4 py-2 text-lg font-semibold rounded-lg transition duration-300 ${
+            className={`px-4 py-2 text-sm md:text-lg font-semibold rounded-lg transition duration-300 ${
               isAnswered
                 ? option === selectedOption
                   ? 'bg-sky-800 text-white'
@@ -71,7 +71,7 @@ export default function QuizSection({
         ))}
       </div>
       <div className="flex justify-end items-center space-x-3">
-        <p className="text-lg font-semibold text-gray-700">
+        <p className="text-sm md:text-lg font-semibold text-gray-700">
           <span className="text-orange-600">Hint:</span> {currentFestival.clues[clueIndex]}
         </p>
         <RefreshIcon onClick={handleNextClueLocal} className={`text-4xl p-2 rounded-lg cursor-pointer transition duration-300 ${

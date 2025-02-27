@@ -54,14 +54,14 @@ export default function AnswerReveal({
           <p className="text-gray-800 mt-2 text-md font-semibold">Total Score: {score}</p>
         </>
       )}
-      <div className="flex justify-between items-center gap-3 border-t border-gray-200 pt-4 mt-4">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-3 border-t border-gray-200 pt-4 mt-4">
         <button
           onClick={restartGame}
-          className="text-gray-600 border-b border-gray-600 hover:text-gray-800 transition-colors"
+          className="text-gray-600 border-b border-gray-600 hover:text-gray-800 transition-colors order-2 mt-8 md:mt-0"
         >
           {isNepali ? translations['Restart Game'] : 'Restart Game'}
         </button>
-        <div className="flex gap-3">
+        <div className="flex gap-3 order-1">
         <button
   onClick={handleShareScore}
   className={`px-4 py-2 bg-orange-500 text-white rounded-full flex items-center transition duration-300 ${
