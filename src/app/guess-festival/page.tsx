@@ -365,45 +365,61 @@ export default function Home() {
   };
 
   return (
-    <div className="flex md:py-12 justify-center items-center ">
-    <div className="flex flex-col py-8 md:py-16 px-4 md:px-8 bg-gradient-to-b from-[#FFFFFF] via-[#F5F9F1] to-[#F0F7F4] rounded-xl shadow-2xl">
-    <GuessFestivalHeader
-  isNepali={isNepali}
-  toggleLanguage={toggleLanguage}
-  gameMode={gameMode}
-  switchGameMode={switchGameMode}
-  translations={translations}
-/>
-      <ScoreBoard
-        score={score}
-        gameMode={gameMode}
-        timeLeft={timeLeft}
-        isNepali={isNepali}
-        translations={translations}
-      />
-      <div className="border-gray-800 border-2 rounded-md p-8 max-w-2xl w-full">
-        <QuizSection
-          currentFestival={currentFestival}
-          isAnswered={isAnswered}
-          options={options}
-          handleGuess={handleGuess}
-          isNepali={isNepali}
-          translations={translations}
-        />
-        <AnswerReveal
-  isAnswered={isAnswered}
-  isCorrect={isCorrect}
-  feedback={feedback}
-  currentFestival={currentFestival}
-  isNepali={isNepali}
-  translations={translations}
-  handleNextFestival={handleNextFestival}
-  restartGame={restartGame}
-  handleShareScore={handleShareScore} // Add this
-  score={score} // Add this
-/>
+    <div className="min-h-screen flex justify-center scale-90">
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-20 left-10 w-40 h-40 bg-orange-200 dark:bg-orange-700 opacity-20 rounded-full animate-float"></div>
+        <div className="absolute bottom-40 right-20 w-32 h-32 bg-yellow-200 dark:bg-yellow-700 opacity-20 rounded-full animate-float-delay"></div>
+        <div className="absolute top-1/2 left-1/4 w-36 h-36 bg-red-200 dark:bg-red-700 opacity-20 rounded-full animate-float-slow"></div>
       </div>
-    </div>
+      
+      <div className="relative z-10 w-full max-w-3xl">
+        <div className="flex flex-col pt-4 md:py-12 px-6 md:px-10 bg-gradient-to-b from-white via-yellow-50 to-orange-50 dark:from-gray-800 dark:via-gray-800 dark:to-gray-800 rounded-3xl shadow-2xl">
+          
+          <GuessFestivalHeader
+            isNepali={isNepali}
+            toggleLanguage={toggleLanguage}
+            gameMode={gameMode}
+            switchGameMode={switchGameMode}
+            translations={translations}
+          />
+          
+          <ScoreBoard
+            score={score}
+            gameMode={gameMode}
+            timeLeft={timeLeft}
+            isNepali={isNepali}
+            translations={translations}
+          />
+          
+          {/* Main Content Box with Gradient Border */}
+          <div className="relative p-1 rounded-xl bg-gradient-to-br from-orange-400 to-purple-500 mb-6 shadow-lg">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 md:p-8">
+              <QuizSection
+                currentFestival={currentFestival}
+                isAnswered={isAnswered}
+                options={options}
+                handleGuess={handleGuess}
+                isNepali={isNepali}
+                translations={translations}
+              />
+              
+              <AnswerReveal
+                isAnswered={isAnswered}
+                isCorrect={isCorrect}
+                feedback={feedback}
+                currentFestival={currentFestival}
+                isNepali={isNepali}
+                translations={translations}
+                handleNextFestival={handleNextFestival}
+                restartGame={restartGame}
+                handleShareScore={handleShareScore}
+                score={score}
+              />
+            </div>
+          </div>          
+        </div>
+      </div>
     </div>
   );
 }

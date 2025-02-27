@@ -22,11 +22,11 @@ export default function GuessFestivalHeader({
         {isNepali ? 'चाडपर्व अनुमान गर्नुहोस्' : 'Guess the Festival'}
       </h1>
       <button
-          onClick={toggleLanguage}
-          className="px-3 py-1 bg-gray-800 text-white text-md md:text-2xl rounded-full hover:bg-gray-900 transition"
-        >
-          {isNepali ? 'in English' : 'नेपालीमा'}
-        </button>
+  onClick={toggleLanguage}
+  className="px-4 py-2 bg-orange-100 dark:bg-orange-800 text-orange-700 dark:text-orange-200 text-sm md:text-md font-medium rounded-full shadow-sm hover:bg-orange-200 dark:hover:bg-orange-700 hover:shadow-md transition-all duration-300"
+>
+  {isNepali ? 'in English' : 'नेपालीमा'}
+</button>
         </div>
       <div className="mt-2 flex flex-wrap gap-2 justify-start">
         
