@@ -373,8 +373,8 @@ export default function Home() {
         <div className="absolute top-1/2 left-1/4 w-36 h-36 bg-red-200 dark:bg-red-700 opacity-20 rounded-full animate-float-slow"></div>
       </div>
       
-      <div className="relative z-10 w-full max-w-3xl">
-        <div className="flex flex-col pt-4 md:py-12 px-6 md:px-10 bg-gradient-to-b from-white via-yellow-50 to-orange-50 dark:from-gray-800 dark:via-gray-800 dark:to-gray-800 rounded-3xl shadow-2xl">
+      <div className="relative z-10 w-full md:max-w-3xl">
+        <div className="flex flex-col pt-4 md:py-12 md:px-10 bg-gradient-to-b from-white via-yellow-50 to-orange-50 dark:from-gray-800 dark:via-gray-800 dark:to-gray-800 rounded-3xl shadow-none md:shadow-2xl">
           
           <GuessFestivalHeader
             isNepali={isNepali}
