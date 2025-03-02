@@ -193,7 +193,7 @@ export default function NepalFlagTutorial() {
         </div>
 
         {/* Right side - Fixed image display with improved styling */}
-        <div className="w-1/2 h-full bg-gray-50 flex items-center justify-center relative hidden md:flex">
+        <div className="w-1/2 h-full bg-gray-50 flex items-center justify-center relative md:flex">
           <div className="relative w-4/5 h-4/5">
             {steps.map((step) => (
               <div 

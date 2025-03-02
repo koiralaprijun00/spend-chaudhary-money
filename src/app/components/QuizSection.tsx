@@ -50,19 +50,44 @@ export default function QuizSection({
     }
   };
 
+  // Safe access to translations with fallback
+  const getQuestionTranslation = () => {
+    try {
+      // Check if the translation exists for current festival
+      if (translations.questions && translations.questions[currentFestival.name]) {
+        return isNepali 
+          ? translations.questions[currentFestival.name].ne 
+          : translations.questions[currentFestival.name].en;
+      } else {
+        // Fallback to the question from the festival object
+        return currentFestival.question;
+      }
+    } catch (error) {
+      // Additional fallback in case of any errors
+      return currentFestival.question || `What festival is this?`;
+    }
+  };
+
+  const getOptionTranslation = (option: string) => {
+    try {
+      return isNepali && translations[option] ? translations[option] : option;
+    } catch (error) {
+      return option;
+    }
+  };
+
   const RefreshIcon = IoRefreshCircle as React.FC<React.SVGProps<SVGSVGElement>>;
   const HelpIcon = IoMdHelpCircle as React.FC<React.SVGProps<SVGSVGElement>>;
+  
+  const hintText = isNepali && translations.ui?.hint ? translations.ui.hint : "Hint";
 
   return (
     <div className={`text-left ${className}`}>
       {/* Question with festive decoration */}
       <div className="relative mb-8">
-      <h2 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2 pl-2">
-  {isNepali 
-    ? translations.questions[currentFestival.name].ne 
-    : translations.questions[currentFestival.name].en
-  }
-</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2 pl-2">
+          {getQuestionTranslation()}
+        </h2>
       </div>
 
       {/* Options Grid */}
@@ -82,10 +107,7 @@ export default function QuizSection({
                   : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:border-purple-300 dark:hover:border-purple-500'
             }`}
           >
-            
-            {isNepali && translations[option as keyof typeof translations]
-              ? translations[option as keyof typeof translations]
-              : option}
+            {getOptionTranslation(option)}
             
             {/* Selection indicator dots */}
             {!isAnswered && option === selectedOption && (
@@ -104,7 +126,7 @@ export default function QuizSection({
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <p className="text-sm font-bold text-gray-700 dark:text-gray-300">
-              {isNepali ? translations.hint : "Hint"}:
+              {hintText}:
             </p>
           </div>
           
@@ -127,7 +149,6 @@ export default function QuizSection({
             {currentFestival.clues[clueIndex]}
           </p>
         </div>
-        
       </div>
     </div>
   );

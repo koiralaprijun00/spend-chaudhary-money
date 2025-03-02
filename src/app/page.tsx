@@ -24,6 +24,7 @@ export default function HomePage() {
               src="/images/momo-header.png" 
               alt="Piromomo Logo" 
               width={160} 
+              priority={true}
               height={160} 
               className="relative z-10 drop-shadow-xl hover:scale-105 transition-transform duration-300" 
             />

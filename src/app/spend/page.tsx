@@ -60,7 +60,7 @@ export default function Home() {
   const totalSpent = spent
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr] h-screen gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr] h-screen px-16 gap-4 py-0">
       <div className="flex flex-col h-screen">
         <div className="sticky top-0 z-50 bg-white">
           <Header budget={budget} spent={spent} setModalOpen={setModalOpen} isModalOpen={isModalOpen} />
