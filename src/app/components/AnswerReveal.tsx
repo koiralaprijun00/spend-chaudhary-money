@@ -28,6 +28,30 @@ export default function AnswerReveal({
   score,
 }: AnswerRevealProps) {
   return (
+    <>
+    <div className="flex gap-3 mt-4 order-1 justify-end">
+    <button
+onClick={handleShareScore}
+className={`px-4 py-2 bg-orange-500 text-white rounded-full flex items-center transition duration-300 ${
+isAnswered ? 'hover:bg-orange-600' : 'bg-orange-300 cursor-not-allowed'
+}`}
+disabled={!isAnswered}
+>
+{(MdShare as any)({ className: 'mr-2' })}
+Share Score
+</button>
+      <button
+        onClick={handleNextFestival}
+        className={`px-6 py-2 rounded-full transition duration-300 ${
+          isAnswered
+            ? 'bg-sky-800 text-white hover:bg-sky-950'
+            : 'bg-gray-400 text-gray-600 cursor-not-allowed'
+        }`}
+        disabled={!isAnswered}
+      >
+        {isNepali ? translations['Next Festival'] : 'Next Festival'}
+      </button>
+    </div>
     <div className="border-t border-gray-200 pt-6 mt-6">
       {isAnswered && (
         <>
@@ -61,30 +85,8 @@ export default function AnswerReveal({
         >
           {isNepali ? translations['Restart Game'] : 'Restart Game'}
         </button>
-        <div className="flex gap-3 order-1">
-        <button
-  onClick={handleShareScore}
-  className={`px-4 py-2 bg-orange-500 text-white rounded-full flex items-center transition duration-300 ${
-    isAnswered ? 'hover:bg-orange-600' : 'bg-orange-300 cursor-not-allowed'
-  }`}
-  disabled={!isAnswered}
->
-  {(MdShare as any)({ className: 'mr-2' })}
-  Share Score
-</button>
-          <button
-            onClick={handleNextFestival}
-            className={`px-6 py-2 rounded-full transition duration-300 ${
-              isAnswered
-                ? 'bg-sky-800 text-white hover:bg-sky-950'
-                : 'bg-gray-400 text-gray-600 cursor-not-allowed'
-            }`}
-            disabled={!isAnswered}
-          >
-            {isNepali ? translations['Next Festival'] : 'Next Festival'}
-          </button>
-        </div>
       </div>
     </div>
+    </>
   );
 }
