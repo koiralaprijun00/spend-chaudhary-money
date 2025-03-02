@@ -9,7 +9,10 @@ interface QuizSectionProps {
   options: string[];
   handleGuess: (option: string) => void;
   isNepali: boolean;
-  translations: Record<string, string>;
+  translations: {
+    questions: Record<string, { ne: string; en: string }>;
+    [key: string]: any;
+  };
   className?: string;
 }
 
@@ -54,9 +57,12 @@ export default function QuizSection({
     <div className={`text-left ${className}`}>
       {/* Question with festive decoration */}
       <div className="relative mb-8">
-        <h2 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2 pl-2">
-          {currentFestival.question}
-        </h2>
+      <h2 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2 pl-2">
+  {isNepali 
+    ? translations.questions[currentFestival.name].ne 
+    : translations.questions[currentFestival.name].en
+  }
+</h2>
       </div>
 
       {/* Options Grid */}
