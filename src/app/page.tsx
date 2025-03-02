@@ -136,39 +136,6 @@ export default function HomePage() {
               }}></div>
             </div>
           </Link>
-          
-          {/* New Nepal Flag Card */}
-          <Link href="/nepali-flag" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-red-300 rounded-3xl md:col-span-2">
-            <div className="relative px-6 py-8 h-full bg-gradient-to-br from-red-600 to-blue-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-              {/* Decorative Elements */}
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-red-400 opacity-20 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
-              <div className="absolute -bottom-12 right-1/4 w-32 h-32 bg-blue-400 opacity-20 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
-              
-              {/* Badge */}
-              <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-red-600 dark:text-red-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform rotate-2 hover:rotate-0 transition-transform">
-                <span className="text-red-500 animate-pulse">🇳🇵</span>
-                <span>GEOMETRIC</span>
-              </div>
-              
-              <div className="flex items-start md:items-center flex-col md:flex-row relative z-10">
-                <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mb-4 md:mb-0 md:mr-4 group-hover:shadow-lg transition-all duration-300">
-                <ReactCountryFlag
-                className="emojiFlag"
-                countryCode="NP"
-                style={{
-                    fontSize: '4em',
-                    lineHeight: '2em',
-                }}
-                aria-label="Nepal"
-            />
-                </div>
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">Nepal's Flag Construction</h2>
-                  <p className="mt-1 text-white text-opacity-90">Explore the unique geometric algorithm behind the world's only non-rectangular national flag</p>
-                </div>
-              </div>
-            </div>
-          </Link>
         </div>
 
         {/* Content Separator with visual element */}
