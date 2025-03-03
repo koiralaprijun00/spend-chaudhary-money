@@ -2,6 +2,8 @@ import "./globals.css"
 import NavBar from "./components/NavBar"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import Script from "next/script"
+import 'mapbox-gl/dist/mapbox-gl.css';
+import Head from "next/head"
 
 export const metadata = {
   title: "Piromomo - Spend Binod's Money & Guess the Festival",
@@ -43,6 +45,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+      <link href='https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css' rel='stylesheet' />
+      </Head>
       <body className="antialiased">
         <NavBar />
         {children}
