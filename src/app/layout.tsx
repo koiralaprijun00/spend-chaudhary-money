@@ -16,7 +16,7 @@ export const metadata = {
     siteName: "Piromomo",
     images: [
       {
-        url: "/images/binod-chaudhary-profile.jpg",
+        url: "/momo.png",
         width: 800,
         height: 600,
         alt: "Binod Chaudhary Profile"
@@ -28,7 +28,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Piromomo - Nepali Interactive Games",
     description: "Spend a billionaire's fortune or test your festival knowledge!",
-    images: ["/images/binod-chaudhary-profile.jpg"]
+    images: ["/momo.png"]
   },
   verification: {
     google: "ca-pub-4708248697764153"
