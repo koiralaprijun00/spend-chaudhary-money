@@ -91,6 +91,31 @@ export default function HomePage() {
               </div>
             </div>
           </Link>
+
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
+     crossOrigin="anonymous"></script>
+<ins className="adsbygoogle"
+     style={{ display: "block" }}
+     data-ad-client="ca-pub-4708248697764153"
+     data-ad-slot="1820052970"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
+     crossOrigin="anonymous"></script>
+<ins className="adsbygoogle"
+     style={{ display: "block" }}
+     data-ad-client="ca-pub-4708248697764153"
+     data-ad-slot="1820052970"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
         </div>
 
         {/* Content Separator with visual element */}
