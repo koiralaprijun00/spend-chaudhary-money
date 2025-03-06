@@ -1,10 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
-import GuessFestivalHeader from '../components/GuessFestivalHeader';
-import ScoreBoard from '../components/ScoreBoard';
-import QuizSection from '../components/QuizSection';
-import AnswerReveal from '../components/AnswerReveal';
-import { festivals, translations, enhancedTranslations } from '../data/festival-data';
+import { Festival } from '../../../../types';
+import GuessFestivalHeader from '../guess-festival-components/GuessFestivalHeader';
+import ScoreBoard from '../guess-festival-components/ScoreBoard';
+import QuizSection from '../guess-festival-components/QuizSection';
+import AnswerReveal from '../guess-festival-components/AnswerReveal';
+import { festivals, translations, enhancedTranslations } from '../../data/guess-festival/festival-data';
 
 export default function Home() {
   // Use enhanced translations to ensure all festivals have proper translations

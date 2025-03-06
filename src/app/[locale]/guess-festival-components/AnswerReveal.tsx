@@ -1,5 +1,5 @@
 import React from 'react';
-import { Festival } from '../../../types';
+import { Festival } from '../../../../types';
 import { MdShare } from 'react-icons/md';
 
 interface AnswerRevealProps {

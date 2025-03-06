@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Festival } from '../../../types';
+import { Festival } from '../../../../types';
 import { IoRefreshCircle } from 'react-icons/io5';
 import { IoMdHelpCircle } from 'react-icons/io';
 
