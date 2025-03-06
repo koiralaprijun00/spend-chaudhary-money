@@ -14,7 +14,7 @@ export default function HomePage() {
         <div className="absolute -bottom-10 -right-10 w-44 h-44 bg-orange-200 dark:bg-orange-700 opacity-20 rounded-full animate-float-slower"></div>
       </div>
       
-      <div className="relative z-10 container mx-auto px-4 py-8 flex flex-col items-center">
+      <div className="relative z-10 container mx-auto  flex flex-col items-center">
         {/* Header Section - Enhanced with animation */}
         <div className="py-1 flex flex-col items-center">
           <div className="relative">
@@ -32,7 +32,7 @@ export default function HomePage() {
             Piromomo!
           </h1>
           <p className="mt-3 text-center text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-300">
-            <span className="inline-block animate-bounce-light delay-100">🌶️</span> Spicy Momo Fixes Everything <span className="inline-block animate-bounce-light">🌶️</span>
+            <span className="inline-block animate-bounce-light delay-100">Fun Side of Nepal You Didn’t Know You Needed</span>
           </p>
         </div>
 
