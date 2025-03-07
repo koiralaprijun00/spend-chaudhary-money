@@ -1,4 +1,4 @@
-import { Festival } from '../../../types';
+import { Festival } from '../../../../types';
 
 // Translations object combining questions and UI strings
 export const translations = {

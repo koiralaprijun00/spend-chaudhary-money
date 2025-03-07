@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Link } from '../../../i18n/navigation';
+import LocaleSwitcher from '../../components/LocaleSwitcher';
 
 interface GuessFestivalHeaderProps {
   gameMode: 'standard' | 'timed';
@@ -13,13 +13,8 @@ export default function GuessFestivalHeader({
   switchGameMode,
 }: GuessFestivalHeaderProps) {
   // Get current locale and translations
-  const locale = useLocale();
   const t = useTranslations('games.guessFestival');
   const commonT = useTranslations('common');
-  
-  // The opposite locale for the language toggle
-  const oppositeLocale = locale === 'en' ? 'ne' : 'en';
-  const oppositeLocaleLabel = locale === 'en' ? 'नेपालीमा' : 'in English';
 
   return (
     <header className="mb-6 text-left">
@@ -27,13 +22,7 @@ export default function GuessFestivalHeader({
         <h1 className="text-2xl md:text-5xl font-extrabold text-gray-600">
           {t('title')}
         </h1>
-        <Link 
-          href="/" 
-          locale={oppositeLocale}
-          className="px-4 py-2 bg-orange-100 dark:bg-orange-800 text-orange-700 dark:text-orange-200 text-sm md:text-md font-medium rounded-full shadow-sm hover:bg-orange-200 dark:hover:bg-orange-700 hover:shadow-md transition-all duration-300"
-        >
-          {oppositeLocaleLabel}
-        </Link>
+        <LocaleSwitcher />
       </div>
       
       <div className="mt-2 flex flex-wrap gap-2 justify-start">
