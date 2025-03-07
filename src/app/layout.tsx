@@ -3,14 +3,15 @@ import NavBar from "./components/NavBar";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { useLocale } from 'next-intl';
 
 export const metadata = {
-  title: "Piromomo: The Fun Side of Nepal You Didn’t Know You Needed!",
-  description: "Discover quirky Nepali games—spend Binod Chaudhary’s billions or test your festival knowledge at Piromomo.com!",
+  title: "Piromomo: The Fun Side of Nepal You Didn't Know You Needed!",
+  description: "Discover quirky Nepali games—spend Binod Chaudhary's billions or test your festival knowledge at Piromomo.com!",
   metadataBase: new URL("https://piromomo.com"),
   openGraph: {
-    title: "Piromomo: The Fun Side of Nepal You Didn’t Know You Needed!",
-    description: "Discover quirky Nepali games—spend Binod Chaudhary’s billions or test your festival knowledge at Piromomo.com!",
+    title: "Piromomo: The Fun Side of Nepal You Didn't Know You Needed!",
+    description: "Discover quirky Nepali games—spend Binod Chaudhary's billions or test your festival knowledge at Piromomo.com!",
     url: "https://piromomo.com",
     siteName: "Piromomo",
     images: [
@@ -25,8 +26,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Piromomo: The Fun Side of Nepal You Didn’t Know You Needed!",
-    description: "Spend a billionaire’s fortune or guess Nepali festivals—play now at Piromomo.com!",
+    title: "Piromomo: The Fun Side of Nepal You Didn't Know You Needed!",
+    description: "Spend a billionaire's fortune or guess Nepali festivals—play now at Piromomo.com!",
     images: ["https://piromomo.com/momo.png"], // Full URL for consistency
   },
   verification: {
@@ -42,8 +43,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = useLocale();
+  
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         {/* Mapbox CSS moved to <head> properly (no need for Head component from next/head here) */}
         <link

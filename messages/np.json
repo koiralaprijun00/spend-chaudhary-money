@@ -1,5 +1,16 @@
 {
+  "homepage":{
+    "piromomo": "पिरोमोमो",
+    "tagline": "पिरो मोमो, पिरो मजा - नेपालको मीठो चटपट!",
+    "billionaireBadge": "अर्बपति",
+    "quizBadge": "प्रश्नोत्तरी",
+    "spendBinodTitle": "बिनोद चौधरीको पैसा खर्च गर्नुहोस्",
+    "spendBinodDescription": "तपाईं अर्बौं कसरी खर्च गर्नुहुन्छ?"
+  },
   "common": {
+    "HomePage": "Homepage",
+    "homepage": "Homepage",
+    "about": "About",
     "nextClue": "अर्को संकेत",
     "submitGuess": "अनुमान पेश गर्नुहोस्",
     "nextFestival": "अर्को चाड",

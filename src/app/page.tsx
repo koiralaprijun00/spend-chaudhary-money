@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
-import ReactCountryFlag from "react-country-flag"
 
 export default function HomePage() {
   return (

@@ -1,5 +1,16 @@
 {
+  "homepage":{
+    "piromomo": "Piromomo",
+    "tagline": "Fun Side of Nepal You Didn't Know You Needed",
+    "billionaireBadge": "BILLIONAIRE",
+    "quizBadge": "QUIZ",
+    "spendBinodTitle": "Spend Binod Chaudhary's Money",
+    "spendBinodDescription": "How would you spend billions?"
+  },
   "common": {
+    "HomePage": "Homepage",
+    "homepage": "Homepage",
+    "about": "About",
     "nextClue": "Next Clue",
     "submitGuess": "Submit Guess",
     "nextFestival": "Next Festival",
