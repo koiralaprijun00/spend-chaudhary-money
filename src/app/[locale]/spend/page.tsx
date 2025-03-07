@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState, useRef } from "react"
-import ProductCard from "../components/ProductCard"
-import Header from "../components/Header"
-import SocialShare from "../components/SocialShare"
-import { initialProducts, Product } from "../data/product"
+import ProductCard from "../../components/ProductCard"
+import Header from "../../components/Header"
+import SocialShare from "../../components/SocialShare"
+import { initialProducts, Product } from "../../data/product"
 
 interface Purchases {
   [key: number]: number

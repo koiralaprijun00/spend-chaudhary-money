@@ -16,7 +16,7 @@ export default function Home() {
   // Get all festival IDs
   const festivalIds = Object.keys(festivalAssets);
   
-  const [currentFestivalId, setCurrentFestivalId] = useState(festivalIds[0]);
+  const [currentFestivalId, setCurrentFestivalId] = useState<keyof FestivalAssets>(festivalIds[0] as keyof FestivalAssets);
   const [clueIndex, setClueIndex] = useState<number>(0);
   const [guess, setGuess] = useState<string>('');
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
@@ -33,16 +33,16 @@ export default function Home() {
   const getCurrentFestival = () => {
     return {
       id: currentFestivalId,
-      name: t(`${currentFestivalId}.name`),
-      question: t(`${currentFestivalId}.question`),
+      name: t(`${String(currentFestivalId)}.name`),
+      question: t(`${String(currentFestivalId)}.question`),
       clues: [
-        t(`${currentFestivalId}.clues.0`),
-        t(`${currentFestivalId}.clues.1`),
-        t(`${currentFestivalId}.clues.2`)
+        t(`${String(currentFestivalId)}.clues.0`),
+        t(`${String(currentFestivalId)}.clues.1`),
+        t(`${String(currentFestivalId)}.clues.2`)
       ],
-      fact: t(`${currentFestivalId}.fact`),
-      sound: festivalAssets[currentFestivalId]?.sound || '/sounds/default.mp3',
-      image: festivalAssets[currentFestivalId]?.image || '/images/default.jpg',
+      fact: t(`${String(currentFestivalId)}.fact`),
+      sound: festivalAssets[currentFestivalId as keyof typeof festivalAssets]?.sound || '/sounds/default.mp3',
+      image: festivalAssets[currentFestivalId as keyof typeof festivalAssets]?.image || '/images/default.jpg',
     };
   };
 
@@ -150,7 +150,7 @@ export default function Home() {
     
     setGuess(selectedOption);
     setIsAnswered(true);
-    setFestivalHistory(prev => [...prev, currentFestivalId]);
+    setFestivalHistory(prev => [...prev, String(currentFestivalId)]);
     if (gameMode === 'timed') setTimerActive(false);
   };
 
@@ -247,6 +247,8 @@ export default function Home() {
                 restartGame={restartGame}
                 handleShareScore={handleShareScore}
                 score={score}
+                isNepali={locale === 'ne'}
+                translations={t}
               />
             </div>
           </div>          
