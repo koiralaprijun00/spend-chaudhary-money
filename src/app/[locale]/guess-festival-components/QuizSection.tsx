@@ -1,44 +1,49 @@
+'use client';
 import React, { useState, useEffect } from 'react';
-import { Festival } from '../../../../types';
+import { useTranslations } from 'next-intl';
 import { IoRefreshCircle } from 'react-icons/io5';
-import { IoMdHelpCircle } from 'react-icons/io';
 
 interface QuizSectionProps {
-  currentFestival: Festival;
+  currentFestival: {
+    id: string;
+    name: string;
+    question: string;
+    clues: string[];
+    fact: string;
+    sound: string;
+    image: string;
+  };
+  clueIndex: number;
+  handleNextClue: () => void;
   isAnswered: boolean;
   options: string[];
-  handleGuess: (option: string) => void;
-  isNepali: boolean;
-  translations: {
-    questions: Record<string, { ne: string; en: string }>;
-    [key: string]: any;
-  };
-  className?: string;
+  handleGuess: (selectedOption: string) => void;
+  className?: string; // Add this line
 }
 
 export default function QuizSection({
   currentFestival,
+  clueIndex,
+  handleNextClue,
   isAnswered,
   options,
   handleGuess,
-  isNepali,
-  translations,
   className = "",
 }: QuizSectionProps) {
-  const [clueIndex, setClueIndex] = useState<number>(0);
+  const t = useTranslations('common');
+  
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [hintAnimation, setHintAnimation] = useState<boolean>(false);
 
-  // Reset selectedOption and clueIndex when currentFestival changes
+  // Reset selectedOption when currentFestival changes
   useEffect(() => {
     setSelectedOption(null);
-    setClueIndex(0);
   }, [currentFestival]);
 
   const handleNextClueLocal = () => {
     if (!isAnswered) {
       setHintAnimation(true);
-      setClueIndex((prev) => (prev + 1) % currentFestival.clues.length);
+      handleNextClue();
       setTimeout(() => setHintAnimation(false), 500);
     }
   };
@@ -50,43 +55,12 @@ export default function QuizSection({
     }
   };
 
-  // Safe access to translations with fallback
-  const getQuestionTranslation = () => {
-    try {
-      // Check if the translation exists for current festival
-      if (translations.questions && translations.questions[currentFestival.name]) {
-        return isNepali 
-          ? translations.questions[currentFestival.name].ne 
-          : translations.questions[currentFestival.name].en;
-      } else {
-        // Fallback to the question from the festival object
-        return currentFestival.question;
-      }
-    } catch (error) {
-      // Additional fallback in case of any errors
-      return currentFestival.question || `What festival is this?`;
-    }
-  };
-
-  const getOptionTranslation = (option: string) => {
-    try {
-      return isNepali && translations[option] ? translations[option] : option;
-    } catch (error) {
-      return option;
-    }
-  };
-
-  const RefreshIcon = IoRefreshCircle as React.FC<React.SVGProps<SVGSVGElement>>;
-  const HelpIcon = IoMdHelpCircle as React.FC<React.SVGProps<SVGSVGElement>>;
-  
-  const hintText = isNepali && translations.ui?.hint ? translations.ui.hint : "Hint";
-
   return (
     <div className={`text-left ${className}`}>
       {/* Question with festive decoration */}
       <div className="relative mb-8">
         <h2 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2 pl-2">
-          {getQuestionTranslation()}
+          {currentFestival.question}
         </h2>
       </div>
 
@@ -107,7 +81,7 @@ export default function QuizSection({
                   : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:border-purple-300 dark:hover:border-purple-500'
             }`}
           >
-            {getOptionTranslation(option)}
+            {option}
             
             {/* Selection indicator dots */}
             {!isAnswered && option === selectedOption && (
@@ -126,7 +100,7 @@ export default function QuizSection({
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <p className="text-sm font-bold text-gray-700 dark:text-gray-300">
-              {hintText}:
+              {t('hint')}:
             </p>
           </div>
           
@@ -139,7 +113,7 @@ export default function QuizSection({
                 : 'bg-orange-100 dark:bg-orange-900/30 text-orange-500 dark:text-orange-400 hover:bg-orange-500 hover:text-white'
             }`}
           >
-            <RefreshIcon className={`text-lg ${hintAnimation ? 'animate-spin' : ''}`} />
+            <IoRefreshCircle className={`text-lg ${hintAnimation ? 'animate-spin' : ''}`} />
           </button>
         </div>
         

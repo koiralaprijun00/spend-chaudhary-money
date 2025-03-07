@@ -7,6 +7,19 @@ import QuizSection from '../guess-festival-components/QuizSection';
 import AnswerReveal from '../guess-festival-components/AnswerReveal';
 import { festivalAssets } from '../../data/guess-festival/festival-assets';
 
+// Define TypeScript interface for the festival assets
+type FestivalId = keyof typeof festivalAssets;
+
+interface Festival {
+  id: string;
+  name: string;
+  question: string;
+  clues: string[];
+  fact: string;
+  sound: string;
+  image: string;
+}
+
 export default function Home() {
   const locale = useLocale();
   const t = useTranslations('festivals');
@@ -14,9 +27,9 @@ export default function Home() {
   const gamesT = useTranslations('games.guessFestival');
   
   // Get all festival IDs
-  const festivalIds = Object.keys(festivalAssets);
+  const festivalIds = Object.keys(festivalAssets) as FestivalId[];
   
-  const [currentFestivalId, setCurrentFestivalId] = useState<keyof FestivalAssets>(festivalIds[0] as keyof FestivalAssets);
+  const [currentFestivalId, setCurrentFestivalId] = useState<FestivalId>(festivalIds[0]);
   const [clueIndex, setClueIndex] = useState<number>(0);
   const [guess, setGuess] = useState<string>('');
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
@@ -26,23 +39,23 @@ export default function Home() {
   const [gameMode, setGameMode] = useState<'standard' | 'timed'>('standard');
   const [timeLeft, setTimeLeft] = useState<number>(30);
   const [timerActive, setTimerActive] = useState<boolean>(false);
-  const [festivalHistory, setFestivalHistory] = useState<string[]>([]);
+  const [festivalHistory, setFestivalHistory] = useState<FestivalId[]>([]);
   const [options, setOptions] = useState<string[]>([]);
 
   // Get current festival data
-  const getCurrentFestival = () => {
+  const getCurrentFestival = (): Festival => {
     return {
       id: currentFestivalId,
-      name: t(`${String(currentFestivalId)}.name`),
-      question: t(`${String(currentFestivalId)}.question`),
+      name: t(`${currentFestivalId}.name`),
+      question: t(`${currentFestivalId}.question`),
       clues: [
-        t(`${String(currentFestivalId)}.clues.0`),
-        t(`${String(currentFestivalId)}.clues.1`),
-        t(`${String(currentFestivalId)}.clues.2`)
+        t(`${currentFestivalId}.clues.0`),
+        t(`${currentFestivalId}.clues.1`),
+        t(`${currentFestivalId}.clues.2`)
       ],
-      fact: t(`${String(currentFestivalId)}.fact`),
-      sound: festivalAssets[currentFestivalId as keyof typeof festivalAssets]?.sound || '/sounds/default.mp3',
-      image: festivalAssets[currentFestivalId as keyof typeof festivalAssets]?.image || '/images/default.jpg',
+      fact: t(`${currentFestivalId}.fact`),
+      sound: festivalAssets[currentFestivalId].sound,
+      image: festivalAssets[currentFestivalId].image,
     };
   };
 
@@ -68,7 +81,7 @@ export default function Home() {
     }
   };
 
-  const generateOptions = (correctFestivalId: string) => {
+  const generateOptions = (correctFestivalId: FestivalId) => {
     // Get 3 random festival IDs different from the correct one
     const otherFestivalIds = festivalIds.filter(id => id !== correctFestivalId);
     const randomIds = otherFestivalIds
@@ -141,7 +154,7 @@ export default function Home() {
       const cluePoints = 3 - clueIndex;
       const newPoints = Math.max(1, cluePoints) * (gameMode === 'timed' ? 2 : 1);
       setScore(prevScore => prevScore + newPoints);
-      setFeedback(`+${newPoints} points!`);
+      setFeedback(`+${newPoints} ${commonT('points')}`);
       setIsCorrect(true);
     } else {
       setFeedback(commonT('tryAgain'));
@@ -150,7 +163,7 @@ export default function Home() {
     
     setGuess(selectedOption);
     setIsAnswered(true);
-    setFestivalHistory(prev => [...prev, String(currentFestivalId)]);
+    setFestivalHistory(prev => [...prev, currentFestivalId]);
     if (gameMode === 'timed') setTimerActive(false);
   };
 
@@ -247,8 +260,6 @@ export default function Home() {
                 restartGame={restartGame}
                 handleShareScore={handleShareScore}
                 score={score}
-                isNepali={locale === 'ne'}
-                translations={t}
               />
             </div>
           </div>          
