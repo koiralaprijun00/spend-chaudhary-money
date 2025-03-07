@@ -2,12 +2,12 @@
 
 import { useState, useEffect, useMemo } from 'react';
 
-import Map from '../components/Map';
-import AirQualityPanel from '../components/AirQualityPanel';
-import AirQualityDetails from '../components/AirQualityDetails';
-import HealthRecommendations from '../components/HealthRecommendations';
-import HistoricalData from '../components/HistoricalData';
-import AirQualityFilter from '../components/AirQualityFilter';
+import Map from '../../components/Map';
+import AirQualityPanel from '../../components/AirQualityPanel';
+import AirQualityDetails from '../../components/AirQualityDetails';
+import HealthRecommendations from '../../components/HealthRecommendations';
+import HistoricalData from '../../components/HistoricalData';
+import AirQualityFilter from '../../components/AirQualityFilter';
 
 // Define TypeScript interfaces
 interface City {
