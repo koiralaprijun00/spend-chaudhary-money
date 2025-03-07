@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
-import ReactCountryFlag from "react-country-flag"
+import AdSense from "./components/AdSense";
 
 export default function HomePage() {
   return (
@@ -92,29 +91,12 @@ export default function HomePage() {
             </div>
           </Link>
 
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
-     crossOrigin="anonymous"></script>
-<ins className="adsbygoogle"
-     style={{ display: "block" }}
-     data-ad-client="ca-pub-4708248697764153"
-     data-ad-slot="1820052970"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
-     crossOrigin="anonymous"></script>
-<ins className="adsbygoogle"
-     style={{ display: "block" }}
-     data-ad-client="ca-pub-4708248697764153"
-     data-ad-slot="1820052970"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+          <div>
+            <AdSense />
+          </div>
+          <div>
+            <AdSense />
+          </div>
 
         </div>
 
