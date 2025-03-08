@@ -30,7 +30,7 @@ export default function AnswerReveal({
   score,
 }: AnswerRevealProps) {
   // Get translations
-  const t = useTranslations('common');
+  const t = useTranslations('Translations');
   
   return (
     <>

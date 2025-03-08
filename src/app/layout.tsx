@@ -1,22 +1,23 @@
 import "./globals.css";
-import NavBar from "./components/NavBar";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
-import "mapbox-gl/dist/mapbox-gl.css";
-import { useLocale } from 'next-intl';
+import "mapbox-gl/dist/mapbox-gl.css"; // Keep this for build-time CSS inclusion
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Piromomo: The Fun Side of Nepal You Didn't Know You Needed!",
-  description: "Discover quirky Nepali games—spend Binod Chaudhary's billions or test your festival knowledge at Piromomo.com!",
+  description:
+    "Discover quirky Nepali games—spend Binod Chaudhary's billions or test your festival knowledge at Piromomo.com!",
   metadataBase: new URL("https://piromomo.com"),
   openGraph: {
     title: "Piromomo: The Fun Side of Nepal You Didn't Know You Needed!",
-    description: "Discover quirky Nepali games—spend Binod Chaudhary's billions or test your festival knowledge at Piromomo.com!",
+    description:
+      "Discover quirky Nepali games—spend Binod Chaudhary's billions or test your festival knowledge at Piromomo.com!",
     url: "https://piromomo.com",
     siteName: "Piromomo",
     images: [
       {
-        url: "https://piromomo.com/momo.png", // Full URL for consistency
+        url: "https://piromomo.com/momo.png",
         width: 800,
         height: 600,
         alt: "Piromomo - Fun Nepali Games Preview",
@@ -27,8 +28,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Piromomo: The Fun Side of Nepal You Didn't Know You Needed!",
-    description: "Spend a billionaire's fortune or guess Nepali festivals—play now at Piromomo.com!",
-    images: ["https://piromomo.com/momo.png"], // Full URL for consistency
+    description:
+      "Spend a billionaire's fortune or guess Nepali festivals—play now at Piromomo.com!",
+    images: ["https://piromomo.com/momo.png"],
   },
   verification: {
     google: "ca-pub-4708248697764153",
@@ -38,33 +40,31 @@ export const metadata = {
   },
 };
 
+// In root layout, we don't need params
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  const locale = useLocale();
-  
+}) {
   return (
-    <html lang={locale}>
+    <html lang="en">
       <head>
-        {/* Mapbox CSS moved to <head> properly (no need for Head component from next/head here) */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Mapbox CSS is already imported at build time, but if you need it dynamically: */}
         <link
           href="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css"
           rel="stylesheet"
         />
-      </head>
-      <body className="antialiased">
-        <NavBar />
-        {children}
-
-        {/* Google Adsense Script */}
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+      </head>
+      <body className="antialiased">
+        {children}
         <GoogleAnalytics gaId="G-X744G6P5C9" />
       </body>
     </html>

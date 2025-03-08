@@ -4,9 +4,8 @@ import Image from "next/image";
 import { useTranslations } from 'next-intl';
 
 export default function HomePage() {
-  const t = useTranslations('homepage');
-  const gamesT = useTranslations('games');
-  
+  const t = useTranslations("Translations"); 
+
   return (
     <main className="min-h-screen">
       {/* Animated Background Elements */}
@@ -32,7 +31,7 @@ export default function HomePage() {
             />
           </div>
           <h1 className="mt-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-red-600 dark:from-orange-400 dark:to-red-400">
-          {t('piromomo')}
+            {t('piromomo')} {/* Fixed: No need for 'homepage.piromomo' */}
           </h1>
           <p className="mt-3 text-center text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-300">
             <span className="inline-block animate-bounce-light delay-100">{t('tagline')}</span>
@@ -88,12 +87,12 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">{gamesT('guessFestival.title')}</h2>
-                  <p className="mt-1 text-white text-opacity-90">{gamesT('guessFestival.description')}</p>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">{t('games.guessFestival.title')}</h2> {/* Fixed: Access nested key */}
+                  <p className="mt-1 text-white text-opacity-90">{t('games.guessFestival.description')}</p> {/* Fixed: Access nested key */}
                 </div>
               </div>
             </div>
-            </Link>
+          </Link>
         </div>
 
         {/* Content Separator with visual element */}

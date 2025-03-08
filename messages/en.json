@@ -1,13 +1,11 @@
 {
-  "homepage":{
+  "Translations":{
     "piromomo": "Piromomo",
     "tagline": "Fun Side of Nepal You Didn't Know You Needed",
     "billionaireBadge": "BILLIONAIRE",
     "quizBadge": "QUIZ",
     "spendBinodTitle": "Spend Binod Chaudhary's Money",
-    "spendBinodDescription": "How would you spend billions?"
-  },
-  "common": {
+    "spendBinodDescription": "How would you spend billions?",
     "HomePage": "Homepage",
     "homepage": "Homepage",
     "about": "About",
@@ -23,18 +21,12 @@
     "timeLeft": "Time Left",
     "restartGame": "Restart Game",
     "hint": "Hint",
-    "shareScore": "Share Score"
-  },
-  "games": {
+    "shareScore": "Share Score",
+    "games": {
     "guessFestival": {
       "title": "Guess the Festival",
       "description": "Test your knowledge of Nepali festivals!",
       "instructions": "Read the clues and guess which Nepali festival is being described."
-    },
-    "guessJatra": {
-      "title": "Guess the Jatra",
-      "description": "How well do you know Nepali Jatras?",
-      "instructions": "Read the clues and guess which Jatra is being described."
     }
   },
   "festivals": {
@@ -267,6 +259,7 @@
         "Special traditional foods prepared."
       ],
       "fact": "Chhat Parva is a unique solar worship festival!"
+    }
     }
   }
 }

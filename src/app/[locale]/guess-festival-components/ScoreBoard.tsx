@@ -13,7 +13,7 @@ export default function ScoreBoard({
   gameMode,
   timeLeft,
 }: ScoreBoardProps) {
-  const t = useTranslations('common');
+  const t = useTranslations('Translations');
   
   return (
     <div className="flex justify-between w-full max-w-2xl mb-4">

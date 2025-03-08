@@ -22,9 +22,7 @@ interface Festival {
 
 export default function Home() {
   const locale = useLocale();
-  const t = useTranslations('festivals');
-  const commonT = useTranslations('common');
-  const gamesT = useTranslations('games.guessFestival');
+  const t = useTranslations('Translations');
   
   // Get all festival IDs
   const festivalIds = Object.keys(festivalAssets) as FestivalId[];
@@ -154,10 +152,10 @@ export default function Home() {
       const cluePoints = 3 - clueIndex;
       const newPoints = Math.max(1, cluePoints) * (gameMode === 'timed' ? 2 : 1);
       setScore(prevScore => prevScore + newPoints);
-      setFeedback(`+${newPoints} ${commonT('points')}`);
+      setFeedback(`+${newPoints} ${t('points')}`);
       setIsCorrect(true);
     } else {
-      setFeedback(commonT('tryAgain'));
+      setFeedback(t('tryAgain'));
       setIsCorrect(false);
     }
     
@@ -197,7 +195,7 @@ export default function Home() {
   const handleTimeUp = () => {
     setIsAnswered(true);
     setIsCorrect(false);
-    setFeedback(commonT('timeUp') || "Time's up!");
+    setFeedback(t('timeUp') || "Time's up!");
     setTimerActive(false);
   };
 

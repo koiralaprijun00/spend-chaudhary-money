@@ -13,8 +13,7 @@ export default function GuessFestivalHeader({
   switchGameMode,
 }: GuessFestivalHeaderProps) {
   // Get current locale and translations
-  const t = useTranslations('games.guessFestival');
-  const commonT = useTranslations('common');
+  const t = useTranslations('Translations');
 
   return (
     <header className="mb-6 text-left">
@@ -32,7 +31,7 @@ export default function GuessFestivalHeader({
             gameMode === 'standard' ? 'bg-sky-800 text-white' : 'bg-gray-300 text-gray-800 hover:bg-gray-400'
           }`}
         >
-          {commonT('standardMode')}
+          {t('standardMode')}
         </button>
         <button
           onClick={() => switchGameMode('timed')}
@@ -40,7 +39,7 @@ export default function GuessFestivalHeader({
             gameMode === 'timed' ? 'bg-sky-800 text-white' : 'bg-gray-300 text-gray-800 hover:bg-gray-400'
           }`}
         >
-          {commonT('timedMode')}
+          {t('timedMode')}
         </button>
       </div>
     </header>

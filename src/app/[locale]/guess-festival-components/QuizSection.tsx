@@ -30,7 +30,7 @@ export default function QuizSection({
   handleGuess,
   className = "",
 }: QuizSectionProps) {
-  const t = useTranslations('common');
+  const t = useTranslations('Translations');
   
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [hintAnimation, setHintAnimation] = useState<boolean>(false);
