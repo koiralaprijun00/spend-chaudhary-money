@@ -1,6 +1,5 @@
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import Script from "next/script";
 import "mapbox-gl/dist/mapbox-gl.css"; // Keep this for build-time CSS inclusion
 import { Metadata } from "next";
 
@@ -55,12 +54,6 @@ export default function RootLayout({
         <link
           href="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css"
           rel="stylesheet"
-        />
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
       </head>
       <body className="antialiased">
