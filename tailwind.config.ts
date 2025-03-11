@@ -32,5 +32,7 @@ export default {
     '4xl': '2560px',
   },
   darkMode: 'class', // Use 'class' for manual control
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
 } satisfies Config;

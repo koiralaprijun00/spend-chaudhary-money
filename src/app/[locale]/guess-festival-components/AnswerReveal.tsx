@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 import { MdShare } from 'react-icons/md';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import Link from 'next/link';
 
 interface AnswerRevealProps {
   isAnswered: boolean;
@@ -31,6 +32,7 @@ export default function AnswerReveal({
 }: AnswerRevealProps) {
   // Get translations
   const t = useTranslations('Translations');
+const locale = useLocale();
   
   return (
     <>
@@ -70,14 +72,13 @@ export default function AnswerReveal({
               </span>
               !
             </p>
-            <div className="mt-4 mb-4 overflow-hidden rounded-lg max-h-60 flex justify-center">
-              <img
-                src={currentFestival.image || '/api/placeholder/400/300'}
-                alt={currentFestival.name}
-                className="object-cover h-full w-full"
-              />
-            </div>
             <p className="text-gray-600 mt-3 text-lg">{currentFestival.fact}</p>
+<Link 
+  href={`/${locale}/blog/festivals/${currentFestival.id.toLowerCase()}`}
+  className="inline-block mt-2 text-sky-600 hover:text-sky-800 hover:underline"
+>
+  {t('learnMoreAbout', {defaultValue: 'Learn more about'})} {currentFestival.name} →
+</Link>
             <p className="text-gray-800 mt-2 text-md font-semibold">{t('totalScore')}: {score}</p>
           </>
         )}

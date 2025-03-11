@@ -1,7 +1,10 @@
-'use client';
+
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from 'next-intl';
+// import { getFestivalSlugs } from '../[locale]/lib/festival-content.js';
+
+
 
 export default function HomePage() {
   const t = useTranslations("Translations"); 

@@ -22,6 +22,10 @@
     "restartGame": "खेल पुन: सुरु गर्नुहोस्",
     "hint": "संकेत",
     "shareScore": "स्कोर शेयर गर्नुहोस्",
+    "itsTheAnswer":"उत्तर हो,",
+    "points": "अंक",
+    "totalScore": "कुल अंक",
+    "learnMoreAbout": "थप जान्नुहोस्",
     "games": {
     "guessFestival": {
       "title": "चाडपर्व अनुमान गर्नुहोस्",

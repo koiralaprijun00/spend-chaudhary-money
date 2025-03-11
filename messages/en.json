@@ -22,6 +22,10 @@
     "restartGame": "Restart Game",
     "hint": "Hint",
     "shareScore": "Share Score",
+    "itsTheAnswer":"The answer is",
+    "points": "Points",
+    "totalScore": "Total Score",
+    "learnMoreAbout": "Learn more about",
     "games": {
     "guessFestival": {
       "title": "Guess the Festival",
