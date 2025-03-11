@@ -21,7 +21,6 @@ export default function GuessFestivalHeader({
         <h1 className="text-2xl md:text-5xl font-extrabold text-gray-600">
           {t('games.guessFestival.title')}
         </h1>
-        <LocaleSwitcher />
       </div>
       
       <div className="mt-2 flex flex-wrap gap-2 justify-start">
