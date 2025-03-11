@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import AdSense from "../../components/AdSense";
+import AdSense from "./components/AdSense";
 
 export default function HomePage() {
   return (
@@ -90,6 +90,14 @@ export default function HomePage() {
               </div>
             </div>
           </Link>
+
+          <div>
+            <AdSense />
+          </div>
+          <div>
+            <AdSense />
+          </div>
+
         </div>
 
         <div>
