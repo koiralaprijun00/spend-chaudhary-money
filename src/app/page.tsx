@@ -90,11 +90,6 @@ export default function HomePage() {
             </div>
           </Link>
         </div>
-<<<<<<< Updated upstream
-
-=======
-        
->>>>>>> Stashed changes
         {/* Content Separator with visual element */}
         <div className="w-full flex justify-center my-8">
           <div className="relative w-3/4 max-w-md h-1 bg-gradient-to-r from-transparent via-orange-300 dark:via-orange-500 to-transparent">
