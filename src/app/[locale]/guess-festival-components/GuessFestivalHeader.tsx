@@ -19,7 +19,7 @@ export default function GuessFestivalHeader({
     <header className="mb-6 text-left">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl md:text-5xl font-extrabold text-gray-600">
-          {t('title')}
+          {t('games.guessFestival.title')}
         </h1>
         <LocaleSwitcher />
       </div>
