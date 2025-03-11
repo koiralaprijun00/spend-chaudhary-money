@@ -90,14 +90,6 @@ export default function HomePage() {
               </div>
             </div>
           </Link>
-
-          <div>
-            <AdSense />
-          </div>
-          <div>
-            <AdSense />
-          </div>
-
         </div>
 
         <div>

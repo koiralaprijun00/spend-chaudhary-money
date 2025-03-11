@@ -40,18 +40,17 @@ export default function Home() {
   const [festivalHistory, setFestivalHistory] = useState<FestivalId[]>([]);
   const [options, setOptions] = useState<string[]>([]);
 
-  // Get current festival data
   const getCurrentFestival = (): Festival => {
     return {
       id: currentFestivalId,
-      name: t(`${currentFestivalId}.name`),
-      question: t(`${currentFestivalId}.question`),
+      name: t(`festivals.${currentFestivalId}.name`),
+      question: t(`festivals.${currentFestivalId}.question`),
       clues: [
-        t(`${currentFestivalId}.clues.0`),
-        t(`${currentFestivalId}.clues.1`),
-        t(`${currentFestivalId}.clues.2`)
+        t(`festivals.${currentFestivalId}.clues.0`),
+        t(`festivals.${currentFestivalId}.clues.1`),
+        t(`festivals.${currentFestivalId}.clues.2`)
       ],
-      fact: t(`${currentFestivalId}.fact`),
+      fact: t(`festivals.${currentFestivalId}.fact`),
       sound: festivalAssets[currentFestivalId].sound,
       image: festivalAssets[currentFestivalId].image,
     };
@@ -79,19 +78,20 @@ export default function Home() {
     }
   };
 
-  const generateOptions = (correctFestivalId: FestivalId) => {
-    // Get 3 random festival IDs different from the correct one
-    const otherFestivalIds = festivalIds.filter(id => id !== correctFestivalId);
-    const randomIds = otherFestivalIds
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 3);
-    
-    // Add correct festival ID and shuffle
-    const optionIds = [correctFestivalId, ...randomIds].sort(() => 0.5 - Math.random());
-    
-    // Get the names from the translations
-    setOptions(optionIds.map(id => t(`${id}.name`)));
-  };
+  // Corrected generateOptions function
+const generateOptions = (correctFestivalId: FestivalId) => {
+  // Get 3 random festival IDs different from the correct one
+  const otherFestivalIds = festivalIds.filter(id => id !== correctFestivalId);
+  const randomIds = otherFestivalIds
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 3);
+  
+  // Add correct festival ID and shuffle
+  const optionIds = [correctFestivalId, ...randomIds].sort(() => 0.5 - Math.random());
+  
+  // Get the names from the translations - add "festivals." prefix to match JSON structure
+  setOptions(optionIds.map(id => t(`festivals.${id}.name`)));
+};
 
   useEffect(() => {
     shuffleFestivals();
