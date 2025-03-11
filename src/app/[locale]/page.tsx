@@ -1,8 +1,11 @@
+'use client';
 import Link from "next/link";
 import Image from "next/image";
-import AdSense from "./components/AdSense";
+import { useTranslations } from 'next-intl';
 
 export default function HomePage() {
+  const t = useTranslations("Translations"); 
+
   return (
     <main className="min-h-screen">
       {/* Animated Background Elements */}
@@ -13,7 +16,7 @@ export default function HomePage() {
         <div className="absolute -bottom-10 -right-10 w-44 h-44 bg-orange-200 dark:bg-orange-700 opacity-20 rounded-full animate-float-slower"></div>
       </div>
       
-      <div className="relative z-10 container mx-auto  flex flex-col items-center">
+      <div className="relative z-10 container mx-auto flex flex-col items-center">
         {/* Header Section - Enhanced with animation */}
         <div className="py-1 flex flex-col items-center">
           <div className="relative">
@@ -28,10 +31,10 @@ export default function HomePage() {
             />
           </div>
           <h1 className="mt-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-red-600 dark:from-orange-400 dark:to-red-400">
-            Piromomo!
+            {t('piromomo')} {/* Fixed: No need for 'homepage.piromomo' */}
           </h1>
           <p className="mt-3 text-center text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-300">
-            <span className="inline-block animate-bounce-light delay-100">Fun Side of Nepal You Didn’t Know You Needed</span>
+            <span className="inline-block animate-bounce-light delay-100">{t('tagline')}</span>
           </p>
         </div>
 
@@ -43,7 +46,7 @@ export default function HomePage() {
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform -rotate-2 hover:rotate-0 transition-transform">
                 <span className="text-yellow-500 animate-pulse">💰</span>
-                <span>BILLIONAIRE</span>
+                <span>{t('billionaireBadge')}</span>
               </div>
               
               {/* Main content */}
@@ -54,8 +57,8 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">Spend Binod Chaudhary's Money</h2>
-                  <p className="mt-1 text-white text-opacity-90">How would you spend billions?</p>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">{t('spendBinodTitle')}</h2>
+                  <p className="mt-1 text-white text-opacity-90">{t('spendBinodDescription')}</p>
                 </div>
               </div>
             </div>
@@ -67,7 +70,7 @@ export default function HomePage() {
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white dark:bg-yellow-100 text-orange-600 font-bold text-xs py-1 px-3 rounded-full shadow-md transform -rotate-2 hover:rotate-0 transition-transform flex items-center gap-1">
                 <span className="text-sm animate-pulse">✨</span>
-                <span>QUIZ</span>
+                <span>{t('quizBadge')}</span>
               </div>
               
               {/* Main content */}
@@ -84,28 +87,13 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">Guess the Festival</h2>
-                  <p className="mt-1 text-white text-opacity-90">Test your Nepali festival knowledge!</p>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">{t('games.guessFestival.title')}</h2> {/* Fixed: Access nested key */}
+                  <p className="mt-1 text-white text-opacity-90">{t('games.guessFestival.description')}</p> {/* Fixed: Access nested key */}
                 </div>
               </div>
             </div>
           </Link>
-
-          <div>
-            <AdSense />
-          </div>
-          <div>
-            <AdSense />
-          </div>
-
         </div>
-
-        <div>
-            <AdSense />
-          </div>
-          <div>
-            <AdSense />
-          </div>
 
         {/* Content Separator with visual element */}
         <div className="w-full flex justify-center my-8">

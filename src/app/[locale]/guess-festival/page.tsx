@@ -1,28 +1,61 @@
 'use client';
 import { useState, useEffect } from 'react';
-import GuessFestivalHeader from '../components/GuessFestivalHeader';
-import ScoreBoard from '../components/ScoreBoard';
-import QuizSection from '../components/QuizSection';
-import AnswerReveal from '../components/AnswerReveal';
-import { festivals, translations, enhancedTranslations } from '../data/festival-data';
+import { useTranslations, useLocale } from 'next-intl';
+import GuessFestivalHeader from '../guess-festival-components/GuessFestivalHeader';
+import ScoreBoard from '../guess-festival-components/ScoreBoard';
+import QuizSection from '../guess-festival-components/QuizSection';
+import AnswerReveal from '../guess-festival-components/AnswerReveal';
+import { festivalAssets } from '../../data/guess-festival/festival-assets';
+
+// Define TypeScript interface for the festival assets
+type FestivalId = keyof typeof festivalAssets;
+
+interface Festival {
+  id: string;
+  name: string;
+  question: string;
+  clues: string[];
+  fact: string;
+  sound: string;
+  image: string;
+}
 
 export default function Home() {
-  // Use enhanced translations to ensure all festivals have proper translations
-  const enhancedTranslationsData = enhancedTranslations(translations);
+  const locale = useLocale();
+  const t = useTranslations('Translations');
   
-  const [currentFestival, setCurrentFestival] = useState(festivals[0]);
+  // Get all festival IDs
+  const festivalIds = Object.keys(festivalAssets) as FestivalId[];
+  
+  const [currentFestivalId, setCurrentFestivalId] = useState<FestivalId>(festivalIds[0]);
   const [clueIndex, setClueIndex] = useState<number>(0);
   const [guess, setGuess] = useState<string>('');
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
-  const [isNepali, setIsNepali] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [feedback, setFeedback] = useState<string>('');
   const [gameMode, setGameMode] = useState<'standard' | 'timed'>('standard');
   const [timeLeft, setTimeLeft] = useState<number>(30);
   const [timerActive, setTimerActive] = useState<boolean>(false);
-  const [festivalHistory, setFestivalHistory] = useState<string[]>([]);
+  const [festivalHistory, setFestivalHistory] = useState<FestivalId[]>([]);
   const [options, setOptions] = useState<string[]>([]);
+
+  // Get current festival data
+  const getCurrentFestival = (): Festival => {
+    return {
+      id: currentFestivalId,
+      name: t(`${currentFestivalId}.name`),
+      question: t(`${currentFestivalId}.question`),
+      clues: [
+        t(`${currentFestivalId}.clues.0`),
+        t(`${currentFestivalId}.clues.1`),
+        t(`${currentFestivalId}.clues.2`)
+      ],
+      fact: t(`${currentFestivalId}.fact`),
+      sound: festivalAssets[currentFestivalId].sound,
+      image: festivalAssets[currentFestivalId].image,
+    };
+  };
 
   const handleShareScore = async () => {
     const shareMessage = `I scored ${score} points in the Nepali Festival Quiz! Can you beat me? Try it at: piromomo.com/guess-festival #NepaliFestivals`;
@@ -46,11 +79,18 @@ export default function Home() {
     }
   };
 
-  const generateOptions = (correctFestival: string) => {
-    const allFestivals = festivals.map(f => f.name);
-    const distractors = allFestivals.filter(name => name !== correctFestival);
-    const shuffledDistractors = distractors.sort(() => 0.5 - Math.random()).slice(0, 3);
-    setOptions([correctFestival, ...shuffledDistractors].sort(() => 0.5 - Math.random()));
+  const generateOptions = (correctFestivalId: FestivalId) => {
+    // Get 3 random festival IDs different from the correct one
+    const otherFestivalIds = festivalIds.filter(id => id !== correctFestivalId);
+    const randomIds = otherFestivalIds
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 3);
+    
+    // Add correct festival ID and shuffle
+    const optionIds = [correctFestivalId, ...randomIds].sort(() => 0.5 - Math.random());
+    
+    // Get the names from the translations
+    setOptions(optionIds.map(id => t(`${id}.name`)));
   };
 
   useEffect(() => {
@@ -68,8 +108,9 @@ export default function Home() {
   }, [timeLeft, timerActive, gameMode, isAnswered]);
 
   useEffect(() => {
-    if (isAnswered && currentFestival) {
+    if (isAnswered) {
       try {
+        const currentFestival = getCurrentFestival();
         const audio = new Audio(isCorrect ? currentFestival.sound : '/sounds/wrong_answer.mp3');
         audio.volume = 0.5;
         audio.play().catch(() => console.log('Audio play failed'));
@@ -77,13 +118,13 @@ export default function Home() {
         console.log('Audio play error:', error);
       }
     }
-  }, [isAnswered, isCorrect, currentFestival]);
+  }, [isAnswered, isCorrect]);
 
   const shuffleFestivals = () => {
-    const randomIndex = Math.floor(Math.random() * festivals.length);
-    const newFestival = festivals[randomIndex];
-    setCurrentFestival(newFestival);
-    generateOptions(newFestival.name);
+    const randomIndex = Math.floor(Math.random() * festivalIds.length);
+    const newFestivalId = festivalIds[randomIndex];
+    setCurrentFestivalId(newFestivalId);
+    generateOptions(newFestivalId);
     setClueIndex(0);
     setGuess('');
     setIsAnswered(false);
@@ -96,48 +137,55 @@ export default function Home() {
   };
 
   const handleNextClue = () => {
-    if (currentFestival && clueIndex < currentFestival.clues.length - 1) {
+    if (clueIndex < 2) { // 3 clues per festival (0-indexed)
       setClueIndex(clueIndex + 1);
     }
   };
 
   const handleGuess = (selectedOption: string) => {
-    if (isAnswered || !currentFestival) return;
-    const isGuessCorrect = selectedOption.toLowerCase() === currentFestival.name.toLowerCase();
+    if (isAnswered) return;
+    
+    const currentFestival = getCurrentFestival();
+    const isGuessCorrect = selectedOption === currentFestival.name;
+    
     if (isGuessCorrect) {
       const cluePoints = 3 - clueIndex;
       const newPoints = Math.max(1, cluePoints) * (gameMode === 'timed' ? 2 : 1);
       setScore(prevScore => prevScore + newPoints);
-      setFeedback(`+${newPoints} points!`);
+      setFeedback(`+${newPoints} ${t('points')}`);
       setIsCorrect(true);
     } else {
-      setFeedback(isNepali ? enhancedTranslationsData.ui['Try again!'] : 'Try again!');
+      setFeedback(t('tryAgain'));
       setIsCorrect(false);
     }
+    
     setGuess(selectedOption);
     setIsAnswered(true);
-    setFestivalHistory(prev => [...prev, currentFestival.name]);
+    setFestivalHistory(prev => [...prev, currentFestivalId]);
     if (gameMode === 'timed') setTimerActive(false);
   };
 
   const handleNextFestival = () => {
-    if (!currentFestival) return;
-    let availableFestivals = festivals.filter(
-      f => !festivalHistory.slice(-Math.min(3, festivals.length - 1)).includes(f.name)
+    let availableFestivalIds = festivalIds.filter(
+      id => !festivalHistory.slice(-Math.min(3, festivalIds.length - 1)).includes(id)
     );
-    if (availableFestivals.length === 0) {
-      setFestivalHistory([currentFestival.name]);
-      availableFestivals = festivals.filter(f => f.name !== currentFestival.name);
+    
+    if (availableFestivalIds.length === 0) {
+      setFestivalHistory([currentFestivalId]);
+      availableFestivalIds = festivalIds.filter(id => id !== currentFestivalId);
     }
-    const nextIndex = Math.floor(Math.random() * availableFestivals.length);
-    const newFestival = availableFestivals[nextIndex];
-    setCurrentFestival(newFestival);
-    generateOptions(newFestival.name);
+    
+    const nextIndex = Math.floor(Math.random() * availableFestivalIds.length);
+    const newFestivalId = availableFestivalIds[nextIndex];
+    
+    setCurrentFestivalId(newFestivalId);
+    generateOptions(newFestivalId);
     setClueIndex(0);
     setGuess('');
     setIsAnswered(false);
     setIsCorrect(false);
     setFeedback('');
+    
     if (gameMode === 'timed') {
       setTimeLeft(30);
       setTimerActive(true);
@@ -147,13 +195,8 @@ export default function Home() {
   const handleTimeUp = () => {
     setIsAnswered(true);
     setIsCorrect(false);
-    setFeedback('Time\'s up!');
+    setFeedback(t('timeUp') || "Time's up!");
     setTimerActive(false);
-  };
-
-  const toggleLanguage = () => {
-    if (!currentFestival) return;
-    setIsNepali(prev => !prev);
   };
 
   const switchGameMode = (mode: 'standard' | 'timed') => {
@@ -171,9 +214,7 @@ export default function Home() {
     }
   };
 
-  if (!currentFestival) {
-    return <div>Loading...</div>; // Temporary loading state
-  }
+  const currentFestival = getCurrentFestival();
 
   return (
     <div className="min-h-screen flex justify-center scale-90">
@@ -187,30 +228,25 @@ export default function Home() {
         <div className="flex flex-col pt-4 md:py-12 md:px-10 bg-gradient-to-b from-white via-yellow-50 to-orange-50 dark:from-gray-800 dark:via-gray-800 dark:to-gray-800 rounded-3xl shadow-none md:shadow-2xl">
           
           <GuessFestivalHeader
-            isNepali={isNepali}
-            toggleLanguage={toggleLanguage}
             gameMode={gameMode}
             switchGameMode={switchGameMode}
-            translations={enhancedTranslationsData.ui}
           />
           
           <ScoreBoard
             score={score}
             gameMode={gameMode}
             timeLeft={timeLeft}
-            isNepali={isNepali}
-            translations={enhancedTranslationsData.ui}
           />
           
           <div className="relative p-1 rounded-xl bg-gradient-to-br from-orange-400 to-purple-500 mb-6 shadow-lg">
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 md:p-8">
               <QuizSection
                 currentFestival={currentFestival}
+                clueIndex={clueIndex}
+                handleNextClue={handleNextClue}
                 isAnswered={isAnswered}
                 options={options}
                 handleGuess={handleGuess}
-                isNepali={isNepali}
-                translations={enhancedTranslationsData}
               />
               
               <AnswerReveal
@@ -218,8 +254,6 @@ export default function Home() {
                 isCorrect={isCorrect}
                 feedback={feedback}
                 currentFestival={currentFestival}
-                isNepali={isNepali}
-                translations={enhancedTranslationsData.ui}
                 handleNextFestival={handleNextFestival}
                 restartGame={restartGame}
                 handleShareScore={handleShareScore}
