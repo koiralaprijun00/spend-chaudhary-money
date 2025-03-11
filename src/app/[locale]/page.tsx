@@ -9,14 +9,14 @@ export default function HomePage() {
   return (
     <main className="min-h-screen">
       {/* Animated Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 ">
         <div className="absolute -top-20 -left-20 w-40 h-40 bg-pink-200 dark:bg-pink-700 opacity-20 rounded-full animate-float"></div>
         <div className="absolute top-1/3 right-10 w-32 h-32 bg-yellow-200 dark:bg-yellow-700 opacity-20 rounded-full animate-float-delay"></div>
         <div className="absolute bottom-20 left-20 w-36 h-36 bg-purple-200 dark:bg-purple-700 opacity-20 rounded-full animate-float-slow"></div>
         <div className="absolute -bottom-10 -right-10 w-44 h-44 bg-orange-200 dark:bg-orange-700 opacity-20 rounded-full animate-float-slower"></div>
       </div>
       
-      <div className="relative z-10 container mx-auto flex flex-col items-center">
+      <div className="relative z-10 container mx-auto flex flex-col items-center px-4">
         {/* Header Section - Enhanced with animation */}
         <div className="py-1 flex flex-col items-center">
           <div className="relative">
