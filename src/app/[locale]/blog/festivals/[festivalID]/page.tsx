@@ -13,12 +13,20 @@ interface FestivalContent {
   isFallback: boolean;
 }
 
-export default async function FestivalPage({ params }: { params: { festivalId: string; locale: string } }) {
-  if (!params || !params.festivalId || !params.locale) {
+// Define correct type for params - Next.js 15 now passes params as a Promise
+interface PageProps {
+  params: Promise<{ festivalId: string; locale: string }>;
+}
+
+export default async function FestivalPage({ params }: PageProps) {
+  // Await the params to get the actual values
+  const resolvedParams = await params;
+  
+  if (!resolvedParams || !resolvedParams.festivalId || !resolvedParams.locale) {
     return notFound();
   }
 
-  const { festivalId, locale } = params;
+  const { festivalId, locale } = resolvedParams;
   
   // Get festival content for the current locale
   try {
