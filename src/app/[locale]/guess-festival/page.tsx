@@ -41,8 +41,11 @@ export default function Home() {
   const [options, setOptions] = useState<string[]>([]);
 
   const getCurrentFestival = (): Festival => {
+    // Generate an ID that matches the filename pattern
+    const id = currentFestivalId.toLowerCase().replace(/ /g, '-');
+    
     return {
-      id: currentFestivalId,
+      id: id, // This ID will be used in the URL path
       name: t(`festivals.${currentFestivalId}.name`),
       question: t(`festivals.${currentFestivalId}.question`),
       clues: [

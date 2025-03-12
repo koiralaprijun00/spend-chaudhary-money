@@ -1,3 +1,4 @@
+// src/app/[locale]/guess-festival-components/AnswerReveal.tsx
 'use client';
 import React from 'react';
 import { MdShare } from 'react-icons/md';
@@ -32,7 +33,7 @@ export default function AnswerReveal({
 }: AnswerRevealProps) {
   // Get translations
   const t = useTranslations('Translations');
-const locale = useLocale();
+  const locale = useLocale();
   
   return (
     <>
@@ -73,12 +74,15 @@ const locale = useLocale();
               !
             </p>
             <p className="text-gray-600 mt-3 text-lg">{currentFestival.fact}</p>
-<Link 
-  href={`/${locale}/blog/festivals/${currentFestival.id.toLowerCase()}`}
-  className="inline-block mt-2 text-sky-600 hover:text-sky-800 hover:underline"
->
-  {t('learnMoreAbout', {defaultValue: 'Learn more about'})} {currentFestival.name} →
-</Link>
+            
+            {/* Updated link to ensure it points to the correct path */}
+            <Link 
+              href={`/${locale}/blog/festivals/${currentFestival.id.toLowerCase()}`}
+              className="inline-block mt-2 font-bold text-sky-400 hover:text-sky-600 hover:underline"
+            >
+              {t('learnMoreAbout', {defaultValue: 'Learn more about'})} {currentFestival.name} →
+            </Link>
+            
             <p className="text-gray-800 mt-2 text-md font-semibold">{t('totalScore')}: {score}</p>
           </>
         )}
