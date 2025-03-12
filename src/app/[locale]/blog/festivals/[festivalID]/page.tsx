@@ -18,6 +18,37 @@ interface PageProps {
   params: Promise<{ festivalId: string; locale: string }>;
 }
 
+// Generate static params for all festival pages
+export async function generateStaticParams() {
+  const fs = (await import("fs/promises")).default;
+  const path = (await import("path")).default;
+  
+  const contentDirectory = path.join(process.cwd(), "content", "festivals");
+  const locales = ["en", "np"]; // Your supported locales
+  
+  const allParams = [];
+  
+  for (const locale of locales) {
+    try {
+      const localePath = path.join(contentDirectory, locale);
+      const files = await fs.readdir(localePath);
+      const festivalIds = files
+        .filter((file) => file.endsWith(".md"))
+        .map((file) => file.replace(".md", ""));
+      
+      const params = festivalIds.map((festivalId) => ({
+        locale,
+        festivalId,
+      }));
+      allParams.push(...params);
+    } catch (error) {
+      console.error(`Error reading festivals for locale ${locale}:`, error);
+    }
+  }
+  
+  return allParams;
+}
+
 export default async function FestivalPage({ params }: PageProps) {
   // Await the params to get the actual values
   const resolvedParams = await params;
