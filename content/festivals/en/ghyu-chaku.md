@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Ghyu Chaku (घ्यु चाकु): The Sweet Embrace of Winter Comfort
 
 ## Culinary Memories of Mountain Survival

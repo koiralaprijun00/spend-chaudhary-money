@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Teej (तीज): A Celebration of Women's Power, Love, and Resilience
 
 In the rhythmic dance of red and green, in the melodious songs that echo through hills and valleys, Teej emerges as a powerful celebration of womanhood in Nepal. More than just a festival, Teej is a profound expression of female strength, marital love, and cultural identity that transforms the entire landscape into a vibrant canvas of feminine energy.

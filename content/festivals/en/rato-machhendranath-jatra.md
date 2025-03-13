@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Rato Machhendranath Jatra (रातो मच्छेन्द्रनाथ जात्रा): A Living Tapestry of Tradition and Devotion
 
 ## The Mythical Origins of a Sacred Celebration

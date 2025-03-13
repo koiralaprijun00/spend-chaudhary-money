@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Buddha Jayanti (बुद्ध जयन्ती): A Profound Celebration of Enlightenment and Peace
 
 Buddha Jayanti, known as बुद्ध जयन्ती in Nepali, is a deeply spiritual and culturally significant festival that commemorates the birth, enlightenment, and death of Siddhartha Gautama – the Buddha. As the birthplace of Buddha, Nepal holds this celebration with extraordinary reverence and joy, transforming the country into a beacon of peace, reflection, and cultural pride.

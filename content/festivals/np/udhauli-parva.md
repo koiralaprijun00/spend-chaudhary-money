@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Udhauli Parva (उधौली पर्व): A Celebration of Ancestral Journeys and Natural Rhythms
 
 ## Footprints of Survival: The Migratory Pulse

@@ -1,3 +1,10 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
+
 # Tamang Lhosar (तामाङ ल्होसार): Echoes of Mountain Wisdom and Cultural Resilience
 
 ## The Mountain Storytellers: Roots of a Vibrant Tradition

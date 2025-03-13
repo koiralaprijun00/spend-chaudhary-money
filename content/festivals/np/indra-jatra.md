@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Indra Jatra (इन्द्रजात्रा): Where Mythology Comes Alive in the Heart of Kathmandu
 
 In the ancient streets of Kathmandu, where history whispers through every stone and alleyway, Indra Jatra emerges as a breathtaking spectacle that transforms the city into a living canvas of mythology, culture, and collective memory. This eight-day festival is more than a celebration – it's a vibrant journey through time, connecting the present with centuries of rich cultural heritage.

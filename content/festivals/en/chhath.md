@@ -1,3 +1,10 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
+
 # Chhath (छठ): A Sacred Celebration of Sun Worship and Spiritual Devotion
 
 Chhath, known as छठ in Nepali, is a remarkable festival that stands out for its deep spiritual significance and unique worship of the Sun God. Predominantly celebrated in the Terai region of Nepal, this festival is a testament to the profound connection between nature, spirituality, and human devotion.

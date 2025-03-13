@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Janai Purnima: The Sacred Thread That Binds Generations
 
 Imagine a tradition so powerful that it has connected Nepali families for thousands of years – a ritual that transforms a simple cotton thread into a symbol of spiritual commitment, cultural identity, and family honor. This is the story of Janai Purnima, a festival that goes far beyond a religious ceremony, telling the deep, complex tale of Nepal's spiritual heritage.

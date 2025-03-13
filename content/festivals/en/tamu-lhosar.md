@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Tamu Lhosar (तमु ल्होसार): A Vibrant Celebration of Gurung Cultural Identity
 
 ## The Roots of a Remarkable New Year

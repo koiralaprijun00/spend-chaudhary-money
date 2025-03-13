@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Tihar (तिहार) - Nepal’s Festival of Lights: A Deep Dive into Five Days of Joy
 
 ## Introduction to Tihar

@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Maghe Sankranti (माघे संक्रान्ति): A Delicious Celebration of Winter's Turning Point
 
 Maghe Sankranti is a cherished Nepali festival that marks the winter solstice, bringing warmth, hope, and delightful culinary traditions to the coldest month of the year. Celebrated in the month of Magh according to the Nepali calendar, this festival is a beautiful blend of astronomical significance, cultural richness, and gastronomic joy.

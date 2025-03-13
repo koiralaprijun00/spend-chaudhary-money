@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Dashain (दशैं): Nepal's Most Celebrated Festival of Unity and Joy
 
 Dashain, known as दशैं in Nepali, is more than just a festival – it's the soul of Nepali culture, a vibrant celebration that brings together families, communities, and generations in a spectacular display of love, tradition, and spiritual significance. As the longest and most anticipated festival in Nepal, Dashain transforms the entire country into a canvas of joy, color, and deep-rooted cultural connections.

@@ -1,3 +1,10 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
+
 # Gai Jatra (गाईजात्रा): A Profound Celebration of Loss, Laughter, and Life
 
 ## The Healing Power of Humor and Remembrance

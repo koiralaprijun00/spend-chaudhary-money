@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Holi (होली): The Ultimate Celebration of Color, Love, and Unity
 
 Holi, known as होली in Nepali, is a riotous explosion of color, joy, and unbridled celebration that transforms Nepal into a living canvas of vibrant hues and unrestrained happiness. More than just a festival, Holi is a powerful social equalizer that breaks down barriers and brings people together in a spectacular display of unity and fun.

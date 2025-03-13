@@ -1,3 +1,9 @@
+---
+title: "Chhath Puja"
+description: "A Hindu festival celebrated in India and Nepal."
+image: "/images/chhath.jpg"
+---
+
 # Swasthani Brata (स्वस्थानी व्रत): The Sacred Journey of Spiritual Transformation
 
 ## Whispers of Ancient Narrative Wisdom
