@@ -1,5 +1,5 @@
 ---
-title: "Chhath Puja"
+title: "Janai Purnima"
 description: "A Hindu festival celebrated in India and Nepal."
 image: "/images/chhath.jpg"
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Chhath Puja"
+title: "Tamu Lhosar"
 description: "A Hindu festival celebrated in India and Nepal."
 image: "/images/chhath.jpg"
 ---
