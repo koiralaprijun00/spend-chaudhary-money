@@ -68,19 +68,6 @@ export default async function FestivalPage({ params }: PageProps) {
               {festivalContent.description}
             </p>
 
-            {/* Image if available */}
-            {festivalContent.image && (
-              <div className="mb-8 rounded-lg overflow-hidden">
-                <Image
-                  src={festivalContent.image}
-                  alt={festivalContent.title}
-                  width={600} // Adjust these values
-                  height={400} // Adjust these values
-                  className="w-full h-auto"
-                />
-              </div>
-            )}
-
             {/* Content - Using ReactMarkdown to render markdown */}
             <div className="prose max-w-none mb-8">
               <ReactMarkdown>{festivalContent.content}</ReactMarkdown>

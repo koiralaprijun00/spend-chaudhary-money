@@ -8,7 +8,6 @@ interface FestivalContent {
   content: string;
   title: string;
   description: string;
-  image?: string;
   isFallback?: boolean;
 }
 
@@ -35,7 +34,6 @@ export async function getFestivalContent(slug: string, locale = "en"): Promise<F
         content,
         title: data.title,
         description: data.description,
-        image: data.image, // Optional
         isFallback: false,
       };
     } catch (error) {
@@ -56,7 +54,6 @@ export async function getFestivalContent(slug: string, locale = "en"): Promise<F
           content,
           title: data.title,
           description: data.description,
-          image: data.image, // Optional
           isFallback: true,
         };
       } catch (fallbackError) {
