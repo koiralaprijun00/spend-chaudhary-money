@@ -161,7 +161,6 @@ export const festivals: Festival[] = [
       'Grandma insists on tika at 7 a.m. sharp!',
     ],
     fact: "Dashain's 15 days make it Nepal's longest festival!",
-    sound: '/sounds/kite_wind.mp3',
     image: '/images/dashain.jpg',
   },
   {
@@ -173,7 +172,6 @@ export const festivals: Festival[] = [
       'Bhailo songs echo at night.',
     ],
     fact: 'Tihar honors animals like crows, dogs, and cows!',
-    sound: '/sounds/bhailo_song.mp3',
     image: '/images/tihar.jpg',
   },
   {
@@ -185,7 +183,6 @@ export const festivals: Festival[] = [
       'Worship of the Sun God for blessings.',
     ],
     fact: 'Chhath Puja is mainly celebrated in the Terai region of Nepal.',
-    sound: '/sounds/chhath_chant.mp3',
     image: '/images/chhath.jpg',
   },
   {
@@ -197,7 +194,6 @@ export const festivals: Festival[] = [
       'Celebrated with family gatherings and feasting.',
     ],
     fact: 'Maghe Sankranti is a New Year festival for the Tharu community.',
-    sound: '/sounds/maghe_feast.mp3',
     image: '/images/maghe_sankranti.jpg',
   },
   {
@@ -209,7 +205,6 @@ export const festivals: Festival[] = [
       'Loud music and dance in the streets.',
     ],
     fact: 'Holi is known as the festival of colors and joy.',
-    sound: '/sounds/holi_cheers.mp3',
     image: '/images/holi.jpg',
   },
   {
@@ -221,7 +216,6 @@ export const festivals: Festival[] = [
       'Butter lamps glow in the evening.',
     ],
     fact: 'Buddha Jayanti celebrates the birth, enlightenment, and passing of Gautam Buddha.',
-    sound: '/sounds/buddhist_chant.mp3',
     image: '/images/buddha_jayanti.jpg',
   },
   {
@@ -233,7 +227,6 @@ export const festivals: Festival[] = [
       'Samay Baji and chhyang are popular treats.',
     ],
     fact: 'Indra Jatra marks the end of the monsoon and honors Indra, the rain god.',
-    sound: '/sounds/indra_jatra_drums.mp3',
     image: '/images/indra_jatra.jpg',
   },
   {
@@ -245,7 +238,6 @@ export const festivals: Festival[] = [
       'Newar communities celebrate with jokes and satire.',
     ],
     fact: 'Gai Jatra was started by a Malla king to help his queen overcome grief.',
-    sound: '/sounds/gai_jatra_parade.mp3',
     image: '/images/gai_jatra.jpg',
   },
   {
@@ -257,7 +249,6 @@ export const festivals: Festival[] = [
       'Dancing and celebrating in temples.',
     ],
     fact: 'Teej is a major festival for Hindu women, dedicated to Lord Shiva and Goddess Parvati.',
-    sound: '/sounds/teej_dance.mp3',
     image: '/images/teej.jpg',
   },
   {
@@ -269,7 +260,6 @@ export const festivals: Festival[] = [
       'People visit Gosainkunda for a holy dip.',
     ],
     fact: 'Janai Purnima is celebrated by Hindus and Buddhists across Nepal.',
-    sound: '/sounds/janai_purnima_chant.mp3',
     image: '/images/janai_purnima.jpg',
   },
   {
@@ -281,7 +271,6 @@ export const festivals: Festival[] = [
       'A time to pray for prosperity and share treats with neighbors.',
     ],
     fact: 'Yomari Purnima is a Newar tradition marking the end of the rice harvest with sweet-filled dumplings!',
-    sound: '/sounds/yomari_feast.mp3',
     image: '/images/yomari_purnima.jpg',
   },
   {
@@ -293,7 +282,6 @@ export const festivals: Festival[] = [
       'Takes weeks to build and lasts for days.',
     ],
     fact: 'Rato Machhendranath Jatra is one of Nepals longest chariot festivals, honoring the god of rain!',
-    sound: '/sounds/chariot_rattle.mp3',
     image: '/images/rato_machhendranath.jpg',
   },
   {
@@ -305,7 +293,6 @@ export const festivals: Festival[] = [
       'Marks the start of Bisket Jatra festivities.',
     ],
     fact: 'Sindoor Jatra is a colorful celebration tied to the Nepali New Year in Bhaktapur!',
-    sound: '/sounds/sindoor_cheers.mp3',
     image: '/images/sindoor_jatra.jpg',
   },
   {
@@ -317,7 +304,6 @@ export const festivals: Festival[] = [
       'Involves family gatherings and cultural performances.',
     ],
     fact: 'Tamu Lhosar is the Gurung communitys vibrant New Year celebration in the Himalayas!',
-    sound: '/sounds/tamu_dance.mp3',
     image: '/images/tamu_lhosar.jpg',
   },
   {
@@ -329,7 +315,6 @@ export const festivals: Festival[] = [
       'Celebrated during the monsoon in Shravan.',
     ],
     fact: 'Naga Panchami worships snakes as protectors during Nepals rainy season!',
-    sound: '/sounds/naga_chant.mp3',
     image: '/images/naga_panchami.jpg',
   },
   {
@@ -341,7 +326,6 @@ export const festivals: Festival[] = [
       'Families gather for special feast and celebrations.',
     ],
     fact: 'Tamang Lhosar marks the beginning of the Tamang New Year!',
-    sound: '/sounds/tamang_drums.mp3',
     image: '/images/tamang_lhosar.jpg',
   },
   {
@@ -353,7 +337,6 @@ export const festivals: Festival[] = [
       'People fast and visit Pashupatinath Temple.',
     ],
     fact: 'Maha Shivaratri celebrates the marriage of Lord Shiva and Goddess Parvati!',
-    sound: '/sounds/shiva_chant.mp3',
     image: '/images/maha_shivaratri.jpg',
   },
   {
@@ -365,7 +348,6 @@ export const festivals: Festival[] = [
       'Gathering of family members to cook traditional dishes.',
     ],
     fact: 'Ghyu Chaku is a traditional winter celebration of warmth and togetherness!',
-    sound: '/sounds/winter_feast.mp3',
     image: '/images/ghyu_chaku.jpg',
   },
   {
@@ -377,7 +359,6 @@ export const festivals: Festival[] = [
       'Celebrated during the cold winter month.',
     ],
     fact: 'Swasthani Brata is an important Hindu women spiritual practice!',
-    sound: '/sounds/prayer_chant.mp3',
     image: '/images/swasthani_brata.jpg',
   },
   {
@@ -389,7 +370,6 @@ export const festivals: Festival[] = [
       'Marks the start of a new year in the Nepali calendar.',
     ],
     fact: 'Bisket Jatra is one of the most vibrant New Year celebrations in Nepal!',
-    sound: '/sounds/chariot_pull.mp3',
     image: '/images/bisket_jatra.jpg',
   },
   {
@@ -401,7 +381,6 @@ export const festivals: Festival[] = [
       'Special prayers in schools and temples.',
     ],
     fact: 'Saraswati Puja celebrates wisdom and artistic expression!',
-    sound: '/sounds/prayer_music.mp3',
     image: '/images/saraswati_puja.jpg',
   },
   {
@@ -413,7 +392,6 @@ export const festivals: Festival[] = [
       'Unique cultural rituals of indigenous communities.',
     ],
     fact: 'Udhauli Parva reflects the agricultural traditions of Kirat people!',
-    sound: '/sounds/folk_dance.mp3',
     image: '/images/udhauli_parva.jpg',
   },
   {
@@ -425,7 +403,6 @@ export const festivals: Festival[] = [
       'Special traditional foods prepared.',
     ],
     fact: 'Chhat Parva is a unique solar worship festival!',
-    sound: '/sounds/water_ritual.mp3',
     image: '/images/chhat_parva.jpg',
   }
 ];

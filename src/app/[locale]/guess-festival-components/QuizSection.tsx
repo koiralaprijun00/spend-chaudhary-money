@@ -10,7 +10,6 @@ interface QuizSectionProps {
     question: string;
     clues: string[];
     fact: string;
-    sound: string;
     image: string;
   };
   clueIndex: number;

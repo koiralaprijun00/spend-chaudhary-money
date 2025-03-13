@@ -16,7 +16,6 @@ interface Festival {
   question: string;
   clues: string[];
   fact: string;
-  sound: string;
   image: string;
 }
 
@@ -54,7 +53,6 @@ export default function Home() {
         t(`festivals.${currentFestivalId}.clues.2`)
       ],
       fact: t(`festivals.${currentFestivalId}.fact`),
-      sound: festivalAssets[currentFestivalId].sound,
       image: festivalAssets[currentFestivalId].image,
     };
   };
@@ -109,19 +107,6 @@ const generateOptions = (correctFestivalId: FestivalId) => {
     }
     return () => { if (timer) clearInterval(timer); };
   }, [timeLeft, timerActive, gameMode, isAnswered]);
-
-  useEffect(() => {
-    if (isAnswered) {
-      try {
-        const currentFestival = getCurrentFestival();
-        const audio = new Audio(isCorrect ? currentFestival.sound : '/sounds/wrong_answer.mp3');
-        audio.volume = 0.5;
-        audio.play().catch(() => console.log('Audio play failed'));
-      } catch (error) {
-        console.log('Audio play error:', error);
-      }
-    }
-  }, [isAnswered, isCorrect]);
 
   const shuffleFestivals = () => {
     const randomIndex = Math.floor(Math.random() * festivalIds.length);
