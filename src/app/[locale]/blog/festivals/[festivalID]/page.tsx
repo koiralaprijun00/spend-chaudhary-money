@@ -16,7 +16,7 @@ interface FestivalContent {
 // Define correct type for params - Next.js 15 now passes params as a Promise
 interface PageProps {
   params: Promise<{ festivalId: string; locale: string }>;
-}
+} 
 
 export default async function FestivalPage({ params }: PageProps) {
   // Await the params to get the actual values
