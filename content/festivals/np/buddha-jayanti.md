@@ -1,7 +1,6 @@
 ---
 title: "Buddha Jayanti"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Buddha Jayanti (बुद्ध जयन्ती): A Profound Celebration of Enlightenment and Peace

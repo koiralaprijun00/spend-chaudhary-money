@@ -1,7 +1,6 @@
 ---
 title: "Sindoor Jatra"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Sindoor Jatra (सिन्दूर जात्रा): A Crimson Celebration of Cultural Vitality

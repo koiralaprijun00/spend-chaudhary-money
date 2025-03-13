@@ -1,7 +1,6 @@
 ---
 title: "Indra Jatra"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Indra Jatra (इन्द्रजात्रा): Where Mythology Comes Alive in the Heart of Kathmandu

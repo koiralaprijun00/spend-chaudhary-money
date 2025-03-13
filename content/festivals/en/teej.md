@@ -1,7 +1,6 @@
 ---
 title: "Teej"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Teej (तीज): A Celebration of Women's Power, Love, and Resilience

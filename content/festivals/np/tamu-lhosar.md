@@ -1,7 +1,6 @@
 ---
 title: "Tamu Lhosar"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Tamu Lhosar (तमु ल्होसार): A Vibrant Celebration of Gurung Cultural Identity

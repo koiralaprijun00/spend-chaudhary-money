@@ -1,7 +1,6 @@
 ---
 title: "Dashain"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Dashain (दशैं): Nepal's Most Celebrated Festival of Unity and Joy

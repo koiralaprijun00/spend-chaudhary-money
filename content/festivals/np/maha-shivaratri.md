@@ -1,7 +1,6 @@
 ---
 title: "Maha Shivaratri"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Maha Shivaratri (महाशिवरात्रि): A Mystical Night of Spiritual Awakening

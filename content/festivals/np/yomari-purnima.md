@@ -1,7 +1,6 @@
 ---
 title: "Yomari Purnima"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Yomari Purnima (योमरी पूर्णिमा): A Sweet Symphony of Newari Culture

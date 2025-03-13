@@ -1,7 +1,6 @@
 ---
 title: "Maghe Sankranti"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Maghe Sankranti (माघे संक्रान्ति): A Delicious Celebration of Winter's Turning Point

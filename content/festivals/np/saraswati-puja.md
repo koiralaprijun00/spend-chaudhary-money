@@ -1,7 +1,6 @@
 ---
 title: "Saraswati Puja"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Saraswati Puja (सरस्वती पूजा): The Sacred Symphony of Wisdom and Creativity

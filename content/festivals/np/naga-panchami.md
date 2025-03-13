@@ -1,7 +1,6 @@
 ---
 title: "Naga Panchami"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Naga Panchami (नाग पञ्चमी): A Mystical Celebration of Serpent Reverence

@@ -1,7 +1,6 @@
 ---
 title: "Bisket Jatra"
 description: "A Hindu festival celebrated in India and Nepal. "
-image: "/images/chhath.jpg"
 ---
 
 # Bisket Jatra (बिस्केट जात्रा): A Vibrant Explosion of Nepali New Year Traditions

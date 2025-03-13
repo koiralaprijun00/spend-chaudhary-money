@@ -1,7 +1,6 @@
 ---
 title: "Gai Jatra"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 

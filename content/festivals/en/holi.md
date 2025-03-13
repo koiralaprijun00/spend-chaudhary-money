@@ -1,7 +1,6 @@
 ---
 title: "Holi"
 description: "A Hindu festival celebrated in India and Nepal."
-image: "/images/chhath.jpg"
 ---
 
 # Holi (होली): The Ultimate Celebration of Color, Love, and Unity
