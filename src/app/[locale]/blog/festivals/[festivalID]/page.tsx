@@ -1,7 +1,7 @@
+// src/app/[locale]/blog/festivals/[festivalId]/page.tsx
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
-import Image from 'next/image';
 import { getFestivalContent } from '../../../lib/festival-content';
 
 interface FestivalContent {
@@ -10,41 +10,35 @@ interface FestivalContent {
   title: string;
   description: string;
   image?: string;
-  isFallback?: boolean;
+  isFallback: boolean;
 }
 
+// Match the expected type for Next.js 15+ page props
 interface PageProps {
-  params: Promise<{ festivalId: string; locale: string }>;
+  params: Promise<{
+    festivalId: string;
+    locale: string;
+  }>;
 }
 
-export async function generateStaticParams() {
-  const locales = ['en', 'np'];
-  const festivalIds = ['chhath'];
-
-  const paths = locales.flatMap((locale) =>
-    festivalIds.map((festivalId) => ({
-      locale,
-      festivalId,
-    }))
-  );
-
-  return paths;
-}
-
-export const dynamicParams = true; // Allow dynamic params
+// Mark this function as using server-side rendering
+export const dynamic = 'force-static';
+export const revalidate = 3600; // revalidate content every hour
 
 export default async function FestivalPage({ params }: PageProps) {
+  // Await the params to get the actual values
   const resolvedParams = await params;
-
+  
   if (!resolvedParams || !resolvedParams.festivalId || !resolvedParams.locale) {
     return notFound();
   }
 
   const { festivalId, locale } = resolvedParams;
-
+  
+  // Get festival content for the current locale
   try {
-    const festivalContent = await getFestivalContent(festivalId, locale);
-
+    const festivalContent = await getFestivalContent(festivalId, locale) as FestivalContent | null;
+    
     if (!festivalContent) {
       console.log(`No content found for festival: ${festivalId}`);
       return notFound();
@@ -55,22 +49,38 @@ export default async function FestivalPage({ params }: PageProps) {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-8">
             {/* Back button */}
-            <Link href={`/${locale}/guess-festival`} className="inline-block underline text-gray-800">
+            <Link 
+              href={`/${locale}/guess-festival`}
+              className="inline-block underline text-gray-800 "
+            >
               Back to the Quiz
             </Link>
             {/* Header */}
             <h1 className="text-4xl font-bold text-gray-800 mb-6">
               {festivalContent.title}
             </h1>
-
+            
             {/* Description */}
             <p className="text-xl text-gray-600 mb-8">
               {festivalContent.description}
             </p>
-
+            
+            {/* Image if available */}
+            {festivalContent.image && (
+              <div className="mb-8 rounded-lg overflow-hidden">
+                <img 
+                  src={festivalContent.image} 
+                  alt={festivalContent.title}
+                  className="w-full h-auto"
+                />
+              </div>
+            )}
+            
             {/* Content - Using ReactMarkdown to render markdown */}
             <div className="prose max-w-none mb-8">
-              <ReactMarkdown>{festivalContent.content}</ReactMarkdown>
+              <ReactMarkdown>
+                {festivalContent.content}
+              </ReactMarkdown>
             </div>
           </div>
         </div>
