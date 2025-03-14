@@ -76,12 +76,12 @@ export default function AnswerReveal({
             <p className="text-gray-600 mt-3 text-lg">{currentFestival.fact}</p>
             
             {/* Updated link to ensure it points to the correct path */}
-            <Link 
+            {/* <Link 
               href={`/${locale}/blog/festivals/${currentFestival.id.toLowerCase()}`}
               className="inline-block mt-2 font-bold text-sky-400 hover:text-sky-600 hover:underline"
             >
               {t('learnMoreAbout', {defaultValue: 'Learn more about'})} {currentFestival.name} →
-            </Link>
+            </Link> */}
             
             <p className="text-gray-800 mt-2 text-md font-semibold">{t('totalScore')}: {score}</p>
           </>
