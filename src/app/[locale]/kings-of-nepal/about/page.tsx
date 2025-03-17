@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { TbArrowBigLeftLinesFilled } from "react-icons/tb";
 import { useTranslations } from 'next-intl';
-import { getKingsInChronologicalOrder, King } from '../../../data/kings-data'; // Updated import
+import { getKingsInChronologicalOrder, King } from '../../../data/kings-data';
 
 export default function KingsOfNepalParallax({ params: paramsPromise }: { params: Promise<{ locale: string }> }) {
   const params = React.use(paramsPromise);
@@ -13,7 +13,7 @@ export default function KingsOfNepalParallax({ params: paramsPromise }: { params
   
   const kings = getKingsInChronologicalOrder();
   const [activeIndex, setActiveIndex] = useState(0);
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   
   const getLocalizedContent = (king: King, field: string) => {
     if (locale === 'ne' && king[`${field}_ne` as keyof King]) {
@@ -22,80 +22,57 @@ export default function KingsOfNepalParallax({ params: paramsPromise }: { params
     return king[field as keyof King];
   };
   
-  useEffect(() => {
-    sectionRefs.current = sectionRefs.current.slice(0, kings.length);
-  }, [kings.length]);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
-      
-      let newActiveIndex = 0;
-      sectionRefs.current.forEach((section, index) => {
-        if (!section) return;
-        
-        const offsetTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        
-        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + sectionHeight) {
-          newActiveIndex = index;
-        }
-      });
-      
-      setActiveIndex(newActiveIndex);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  
-  const scrollToKing = (index: number) => {
-    sectionRefs.current[index]?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+  const navigateToKing = (index: number) => {
+    if (index >= 0 && index < kings.length && !isTransitioning) {
+      setIsTransitioning(true);
+      setActiveIndex(index);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 500); // Match this with your transition duration
+    }
   };
 
-  const getGlobalEra = (reignStart: number) => {
-    if (reignStart < 1800) return t('enlightenment');
-    if (reignStart < 1850) return t('industrial');
-    if (reignStart < 1900) return t('imperialism');
-    if (reignStart < 1950) return t('worldWars');
-    return t('modern');
-  };
+  const king = kings[activeIndex];
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <div className="fixed top-0 left-0 right-0 bg-white bg-opacity-90 shadow-md z-50 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link
-            href={`/${locale}`}
-            aria-label={t('backToHome')}
-            className="group flex items-center text-gray-500 font-medium hover:text-gray-800 transition duration-200"
-          >
-            <TbArrowBigLeftLinesFilled className="mr-2 transition-colors duration-200 group-hover:text-gray-800" size={20} />
-            {t('backToHome')}
-          </Link>
-          
-          <h1 className="text-xl font-bold text-gray-800">{t('pageTitle')}</h1>
-          
-          <Link
-            href={`/${locale}/kings-of-nepal`}
-            className="text-blue-600 hover:text-blue-800 font-medium text-sm"
-          >
-            {t('takeQuiz')}
-          </Link>
-        </div>
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100">
+    {/* Header with subtle gradient */}
+    <div className="p-4 bg-white shadow-md z-10">
+      <div className="max-w-6xl mx-auto flex justify-between items-center">
+        <Link
+          href={`/${locale}`}
+          aria-label={t('backToHome')}
+          className="group flex items-center text-gray-600 font-medium hover:text-blue-600 transition duration-200"
+        > 
+          <TbArrowBigLeftLinesFilled className="mr-2 transition-colors duration-200 group-hover:text-blue-600" size={22} />
+          {t('backToHome')}
+        </Link>
+        
+        <Link
+          href={`/${locale}/kings-of-nepal`}
+          className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-5 rounded-lg shadow-md transition-colors duration-300"
+        >
+          {t('takeQuiz')}
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </Link>
       </div>
-      
-      <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40">
-        <div className="flex flex-col space-y-3">
+    </div>
+    
+    {/* Main content */}
+    <div className="flex-grow flex flex-col">
+      {/* Navigation dots - made more prominent */}
+      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-40">
+        <div className="flex flex-col space-y-4 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-lg">
           {kings.map((king, index) => (
             <button
               key={king.id}
-              onClick={() => scrollToKing(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                activeIndex === index ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
+              onClick={() => navigateToKing(index)}
+              className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                activeIndex === index 
+                  ? 'bg-blue-600 scale-125 shadow-md' 
+                  : 'bg-gray-300 hover:bg-gray-400'
               }`}
               title={String(getLocalizedContent(king, 'name'))}
               aria-label={t('scrollToKing', { name: String(getLocalizedContent(king, 'name')) })}
@@ -104,176 +81,135 @@ export default function KingsOfNepalParallax({ params: paramsPromise }: { params
         </div>
       </div>
       
-      <div className="pt-20">
-        {kings.map((king, index) => (
-          <section
-            key={king.id}
-            ref={el => { sectionRefs.current[index] = el as HTMLDivElement; }}
-            className={`min-h-screen relative transition-opacity duration-500 ${
-              Math.abs(activeIndex - index) <= 1 ? 'opacity-100' : 'opacity-40'
-            }`}
-            style={{
-              backgroundAttachment: 'fixed'
-            }}
-          >
-            <div 
-              className="absolute inset-0 bg-gradient-to-b from-transparent to-white z-10"
-              style={{
-                backgroundImage: `radial-gradient(circle at 50% 30%, ${
-                  String(getLocalizedContent(king, 'dynasty')) === 'Shah' ? 'rgba(30, 64, 175, 0.05)' : 'rgba(125, 30, 175, 0.05)'
-                }, ${
-                  String(getLocalizedContent(king, 'dynasty')) === 'Shah' ? 'rgba(30, 64, 175, 0.3)' : 'rgba(125, 30, 175, 0.3)'
-                })`
-              }}
-            ></div>
+      {/* King content */}
+      <div className="flex-grow relative overflow-hidden">
+        <div className={`absolute inset-0 transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+          <div className="max-w-6xl mx-auto px-4 py-8 h-full flex flex-col">
+            <div className="mb-6 flex items-center">
+              <div 
+                className={`h-1 w-20 mr-4 ${
+                  String(getLocalizedContent(king, 'dynasty')) === 'Shah' ? 'bg-blue-600' : 'bg-purple-600'
+                }`}
+              ></div>
+              <span className={`text-sm font-semibold uppercase tracking-wider ${
+                String(getLocalizedContent(king, 'dynasty')) === 'Shah' ? 'text-blue-600' : 'text-purple-600'
+              }`}>
+                {getLocalizedContent(king, 'dynasty')} {t('dynasty')}
+              </span>
+            </div>
             
-            <div className="relative z-20 max-w-6xl mx-auto px-4 py-16 flex flex-col justify-center min-h-screen">
-              <div className="mb-6 flex items-center">
-                <div 
-                  className={`h-0.5 w-16 mr-4 ${
-                    String(getLocalizedContent(king, 'dynasty')) === 'Shah' ? 'bg-blue-600' : 'bg-purple-600'
-                  }`}
-                ></div>
-                <span className={`text-sm font-semibold uppercase tracking-wider ${
-                  String(getLocalizedContent(king, 'dynasty')) === 'Shah' ? 'text-blue-600' : 'text-purple-600'
-                }`}>
-                  {getLocalizedContent(king, 'dynasty')} {t('dynasty')}
-                </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-2">{getLocalizedContent(king, 'name')}</h2>
+            <h3 className="text-lg md:text-xl text-gray-600 mb-6">
+              <span className="font-medium">{king.reignStart} — {king.reignEnd}</span> • <span className="italic">{king.reignEnd - king.reignStart} {t('years')}</span>
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6 flex-grow overflow-auto max-h-[calc(100vh-300px)]">
+              <div className="md:col-span-3 bg-white rounded-xl shadow-md p-6 transition-all duration-300 hover:shadow-lg">
+                <h4 className="text-xl font-bold text-gray-800 mb-4">{t('historicalFacts')}</h4>
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                  {locale === 'ne' && king.paragraph_ne ? king.paragraph_ne : king.paragraph}
+                </p>
               </div>
               
-              <h2 className="text-4xl md:text-6xl font-bold text-gray-800 mb-3">{getLocalizedContent(king, 'name')}</h2>
-              <h3 className="text-xl md:text-2xl text-gray-600 mb-8">
-                {king.reignStart} — {king.reignEnd} • {king.reignEnd - king.reignStart} {t('years')}
-              </h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-                <div className="md:col-span-3 bg-white rounded-xl shadow-lg p-6 md:p-8">
-                  <h4 className="text-xl font-bold text-gray-800 mb-4">{t('notableAchievements')}</h4>
-                  <p className="text-gray-700 mb-6">{getLocalizedContent(king, 'notable')}</p>
+              <div className="md:col-span-2">
+                {/* Enhanced King's Portrait */}
+                <div className="bg-white rounded-xl shadow-md p-6 mb-4 transform transition-all duration-300 hover:shadow-xl relative overflow-hidden">
+                  {/* Decorative background element */}
+                  <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full opacity-10 bg-blue-600"></div>
                   
-                  <h4 className="text-xl font-bold text-gray-800 mb-4">{t('historicalFacts')}</h4>
-                  <ul className="space-y-3">
-                    {(locale === 'ne' && king.facts_ne 
-                      ? king.facts_ne 
-                      : king.facts).map((fact, factIndex) => (
-                      <li key={factIndex} className="flex">
-                        <span className="text-blue-600 mr-2">•</span>
-                        <span className="text-gray-700">{fact}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className="md:col-span-2">
-                  {/* King's Picture */}
-                  <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-                    <h4 className="text-lg font-bold text-gray-800 mb-4">{t('portrait')}</h4>
-                    <div className="relative w-full h-64 md:h-80 overflow-hidden rounded-lg">
-                      {king.imgSrc ? (  // Changed from imageUrl to imgSrc
+                  <h4 className="text-xl font-bold text-gray-800 mb-4 relative z-10">{t('portrait')}</h4>
+                  
+                  <div className="relative w-full overflow-hidden rounded-lg shadow-inner">
+                    {/* Portrait with enhanced border and hover effect */}
+                    {king.imgSrc ? (
+                      <div className="relative border-4 border-gray-100 rounded-lg transition-transform duration-500 hover:scale-[1.03] shadow-lg group">
                         <img 
-                          src={king.imgSrc}  // Changed from imageUrl to imgSrc
+                          src={king.imgSrc}
                           alt={`${getLocalizedContent(king, 'name')} portrait`}
-                          className="w-full h-full object-cover"
+                          className="w-full h-64 md:h-80 object-cover object-center"
                         />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-gray-100">
-                          <span className="text-gray-500">{t('noImageAvailable')}</span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                          <p className="text-sm font-medium">{getLocalizedContent(king, 'name')}</p>
+                          <p className="text-xs opacity-80">{king.reignStart} — {king.reignEnd}</p>
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    ) : (
+                      <div className="w-full h-64 md:h-80 flex items-center justify-center bg-gray-100 border-4 border-gray-100 rounded-lg">
+                        <span className="text-gray-500">{t('noImageAvailable')}</span>
+                      </div>
+                    )}
                   </div>
                   
-                  <div className="bg-white rounded-xl shadow-lg p-6">
-                    <h4 className="text-lg font-bold text-gray-800 mb-4">{t('historicalContext')}</h4>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold text-gray-700">{t('precededBy')}</h5>
-                        <p className="text-gray-600">
-                          {index > 0 
-                            ? getLocalizedContent(kings[index - 1], 'name')
-                            : t('founderOfDynasty')}
-                        </p>
-                      </div>
-                      
-                      <div>
-                        <h5 className="font-semibold text-gray-700">{t('succeededBy')}</h5>
-                        <p className="text-gray-600">
-                          {index < kings.length - 1 
-                            ? getLocalizedContent(kings[index + 1], 'name')
-                            : t('lastKing')}
-                        </p>
-                      </div>
-                      
-                      <div>
-                        <h5 className="font-semibold text-gray-700">{t('globalEra')}</h5>
-                        <p className="text-gray-600">
-                          {getGlobalEra(king.reignStart)}
-                        </p>
-                      </div>
-                    </div>
+                  {/* Notable achievement callout */}
+                  <div className="mt-4 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                    <p className="text-sm text-blue-800 font-medium">
+                      {getLocalizedContent(king, 'notable')}
+                    </p>
                   </div>
                 </div>
-              </div>
-              
-              <div className="flex justify-between mt-12">
-                <button
-                  onClick={() => scrollToKing(Math.max(0, index - 1))}
-                  disabled={index === 0}
-                  className={`flex items-center ${
-                    index === 0 
-                      ? 'text-gray-300 cursor-not-allowed'
-                      : 'text-gray-600 hover:text-gray-800'
-                  }`}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                  {index > 0 && (
-                    <span className="font-medium">{t('previous')}: {getLocalizedContent(kings[index - 1], 'name')}</span>
-                  )}
-                </button>
                 
-                <button
-                  onClick={() => scrollToKing(Math.min(kings.length - 1, index + 1))}
-                  disabled={index === kings.length - 1}
-                  className={`flex items-center ${
-                    index === kings.length - 1
-                      ? 'text-gray-300 cursor-not-allowed'
-                      : 'text-gray-600 hover:text-gray-800'
-                  }`}
-                >
-                  {index < kings.length - 1 && (
-                    <span className="font-medium">{t('next')}: {getLocalizedContent(kings[index + 1], 'name')}</span>
-                  )}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
+                {/* Facts section - new addition */}
+                {king.facts && king.facts.length > 0 && (
+                  <div className="bg-white rounded-xl shadow-md p-6 transition-all duration-300 hover:shadow-lg">
+                    <h4 className="text-xl font-bold text-gray-800 mb-4">{t('quickFacts')}</h4>
+                    <ul className="space-y-2">
+                      {(locale === 'ne' && king.facts_ne ? king.facts_ne : king.facts).map((fact, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 mt-0.5 bg-blue-100 text-blue-600 rounded-full">
+                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                            </svg>
+                          </span>
+                          <span className="text-gray-700 text-sm">{fact}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
             
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
-          </section>
-        ))}
-      </div>
-      
-      <div className="bg-blue-50 py-16 text-center">
-        <div className="max-w-2xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{t('testYourKnowledge')}</h2>
-          <p className="text-gray-700 mb-6">
-            {t('quizInvitation')}
-          </p>
-          <Link
-            href={`/${locale}/kings-of-nepal`}
-            className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-colors"
-          >
-            {t('takeQuiz')}
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+            {/* Navigation Buttons - enhanced */}
+            <div className="flex justify-between mt-6 py-2">
+              <button
+                onClick={() => navigateToKing(Math.max(0, activeIndex - 1))}
+                disabled={activeIndex === 0 || isTransitioning}
+                className={`flex items-center px-5 py-3 rounded-lg transition-all duration-300 ${
+                  activeIndex === 0 || isTransitioning
+                    ? 'text-gray-300 cursor-not-allowed'
+                    : 'text-gray-600 hover:text-gray-800 hover:bg-white hover:shadow-md'
+                }`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                {activeIndex > 0 && (
+                  <span className="font-medium">{getLocalizedContent(kings[activeIndex - 1], 'name')}</span>
+                )}
+              </button>
+              
+              <button
+                onClick={() => navigateToKing(Math.min(kings.length - 1, activeIndex + 1))}
+                disabled={activeIndex === kings.length - 1 || isTransitioning}
+                className={`flex items-center px-5 py-3 rounded-lg transition-all duration-300 ${
+                  activeIndex === kings.length - 1 || isTransitioning
+                    ? 'text-gray-300 cursor-not-allowed'
+                    : 'text-gray-600 hover:text-gray-800 hover:bg-white hover:shadow-md'
+                }`}
+              >
+                {activeIndex < kings.length - 1 && (
+                  <span className="font-medium">{getLocalizedContent(kings[activeIndex + 1], 'name')}</span>
+                )}
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
   );
 }
