@@ -6,47 +6,7 @@ import ScoreBoard from '../guess-festival-components/ScoreBoard';
 import QuizSection from '../guess-festival-components/QuizSection';
 import AnswerReveal from '../guess-festival-components/AnswerReveal';
 import { festivalAssets } from '../../data/guess-festival/festival-assets';
-import { Metadata } from 'next';
-
-// Define the generateMetadata function
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-
-  const titles = {
-    en: 'Guess Nepali Festivals Quiz | Piromomo',
-    np: 'नेपाली चाडपर्व अनुमान खेल | पिरोमोमो'
-  };
-
-  const descriptions = {
-    en: 'Test your knowledge of Nepali festivals with our interactive quiz. Learn about Dashain, Tihar, and other cultural celebrations in Nepal.',
-    np: 'यो इन्टर्याक्टिभ क्विजको साथ नेपाली चाडपर्वहरूको बारेमा आफ्नो ज्ञान परीक्षण गर्नुहोस्। दशैं, तिहार, र अन्य सांस्कृतिक समारोहहरूको बारेमा जान्नुहोस्।'
-  };
-
-  return {
-     title: titles[params.locale as keyof typeof titles] || titles.en,
-     description: descriptions[params.locale as keyof typeof titles] || descriptions.en,
-    openGraph: {
-      title: 'Guess Nepali Festivals Quiz | Piromomo',
-      description: 'Challenge yourself with this fun quiz on Nepali festivals and cultural celebrations!',
-      url: 'https://piromomo.com/guess-festival',
-      images: [
-        {
-          url: 'https://piromomo.com/images/festival-header.jpg',
-          width: 1200,
-          height: 630,
-          alt: 'Nepali Festivals Quiz',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'Guess Nepali Festivals Quiz | Piromomo',
-      description: 'Test your knowledge of Nepali festivals with our interactive quiz!',
-      images: ['https://piromomo.com/images/festival-header.jpg'],
-    },
-  };
-}
-
-
+  
 // Define TypeScript interface for the festival assets
 type FestivalId = keyof typeof festivalAssets;
 

@@ -4,49 +4,6 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import {getKingsInChronologicalOrder, isAnswerCorrect, King } from '../../data/kings-data';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { Metadata } from 'next';
-
-// Async function to generate metadata
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
-  return {
-    // Basic metadata
-    title: 'Kings of Nepal | Historical Timeline of Nepali Monarchy',
-    description:
-      'Explore the history of Nepal\'s monarchy from Prithvi Narayan Shah to Gyanendra Bir Bikram Shah. Test your knowledge with our interactive quiz.',
-
-    // OpenGraph metadata for social sharing
-    openGraph: {
-      title: 'Kings of Nepal | Historical Timeline',
-      description: 'Learn about the royal history of Nepal from unification to republic.',
-      url: `https://piromomo.com/${params.locale}/kings-of-nepal`,
-      type: 'website',
-      images: [
-        {
-          url: 'https://piromomo.com/kings-of-nepal.jpg',
-          width: 1200,
-          height: 630,
-          alt: 'Kings of Nepal Timeline',
-        },
-      ],
-    },
-
-    // Twitter metadata
-    twitter: {
-      card: 'summary_large_image',
-      title: 'Kings of Nepal | Historical Timeline',
-      description: 'Learn about the royal history of Nepal from unification to republic.',
-      images: ['https://piromomo.com/kings-of-nepal.jpg'],
-    },
-
-    // Additional metadata
-    keywords: ['Kings of Nepal', 'Nepali Monarchy', 'Prithvi Narayan Shah', 'Gyanendra Shah', 'History'],
-    robots: 'index, follow',
-  };
-}
 
 export default function KingsOfNepalQuiz() {
   // Quiz state
