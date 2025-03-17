@@ -37,7 +37,7 @@ export default function KingsOfNepalParallax({ params: paramsPromise }: { params
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100">
     {/* Header with subtle gradient */}
-    <div className="p-4 bg-white shadow-md z-10">
+    <div className="p-4 bg-white  z-10">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <Link
           href={`/${locale}`}
@@ -64,7 +64,7 @@ export default function KingsOfNepalParallax({ params: paramsPromise }: { params
     <div className="flex-grow flex flex-col">
       {/* Navigation dots - made more prominent */}
       <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-40">
-        <div className="flex flex-col space-y-4 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-lg">
+        <div className="flex flex-col space-y-4 p-2 rounded-full backdrop-blur-sm shadow-lg">
           {kings.map((king, index) => (
             <button
               key={king.id}

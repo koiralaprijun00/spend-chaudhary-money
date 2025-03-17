@@ -65,7 +65,7 @@ const NepalDistrictQuiz: React.FC = () => {
   const isNepali = locale === 'ne';
   
   // Game state
-  const [gameStarted, setGameStarted] = useState<boolean>(false);
+  const [gameStarted, setGameStarted] = useState<boolean>(true);
   const [difficulty, setDifficulty] = useState<DifficultyLevel>('medium');
   const [timeLeft, setTimeLeft] = useState<number>(difficultySettings.medium.timeLimit);
   const [randomizedDistricts, setRandomizedDistricts] = useState<District[]>([]);
@@ -141,6 +141,56 @@ const NepalDistrictQuiz: React.FC = () => {
     // Update visible pagination range when current district changes
     updateVisiblePaginationRange(currentDistrictIndex);
   }, [currentDistrictIndex, randomizedDistricts, isNepali]);
+
+  // Auto-start the game when component mounts
+  useEffect(() => {
+    const autoStartGame = () => {
+      const shuffled = shuffleArray(districtData);
+      setRandomizedDistricts(shuffled);
+      setCurrentDistrictIndex(0);
+      setVisiblePageStart(0);
+      
+      setGameOver(false);
+      setShowResults(false);
+      setTimeLeft(difficultySettings[difficulty].timeLimit);
+      setCorrectGuesses([]);
+      setCurrentGuess('');
+      setFeedback('');
+      setStreak(0);
+      setBestStreak(0);
+      setConsecutiveSkips(0);
+      
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+      
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+      timerRef.current = setInterval(() => {
+        setTimeLeft(prev => {
+          if (prev <= 1) {
+            if (timerRef.current) {
+              clearInterval(timerRef.current);
+            }
+            setGameOver(true);
+            setShowResults(true);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    };
+    
+    autoStartGame();
+    
+    // Cleanup timer on unmount
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, []); // Empty dependency array ensures this runs once on mount
 
   // Update visible pagination range
   const updateVisiblePaginationRange = (currentIndex: number) => {

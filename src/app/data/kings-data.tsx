@@ -205,14 +205,33 @@ export function getKingsInChronologicalOrder(): King[] {
 }
 
 export function isAnswerCorrect(input: string, king: King): boolean {
+  // Don't match empty inputs
   if (!input.trim()) return false;
   
-  const normalizedInput = input.toLowerCase().trim();
-  const acceptableAnswers = king.acceptableAnswers.map(answer => answer.toLowerCase().trim());
+  // Don't match very short inputs (less than 3 characters)
+  if (input.trim().length < 3) return false;
   
-  return acceptableAnswers.some(answer => 
-    normalizedInput === answer || 
-    normalizedInput.includes(answer) || 
-    answer.includes(normalizedInput)
-  );
+  // Normalize user input
+  const normalizedInput = input.toLowerCase().trim();
+  
+  // Check against all acceptable answers
+  return king.acceptableAnswers.some(answer => {
+    const normalizedAnswer = answer.toLowerCase().trim();
+    
+    // Exact match
+    if (normalizedInput === normalizedAnswer) return true;
+    
+    // Check if input contains a full acceptable answer
+    if (normalizedInput.includes(normalizedAnswer)) return true;
+    
+    // Check if an acceptable answer contains the input, but ONLY if:
+    // 1. Input is at least 5 characters OR
+    // 2. Input is at least 60% of the full answer's length
+    if (normalizedAnswer.includes(normalizedInput)) {
+      const minRequiredLength = Math.max(5, Math.floor(normalizedAnswer.length * 0.6));
+      if (normalizedInput.length >= minRequiredLength) return true;
+    }
+    
+    return false;
+  });
 }
