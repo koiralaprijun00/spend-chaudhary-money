@@ -536,18 +536,6 @@ const NepalDistrictQuiz: React.FC = () => {
                 </button>
               </div>
               
-              {feedback && (
-                <div className={`mb-3 p-2 rounded text-center text-sm ${
-                  feedback.includes(t('correct', { district: '' }).split('district')[0])
-                    ? 'bg-green-100 text-green-800 border border-green-300'
-                    : feedback.includes(t('skipPenalty'))
-                      ? 'bg-orange-100 text-orange-800 border border-orange-300'
-                      : 'bg-red-100 text-red-800 border border-red-300'
-                }`}>
-                  {feedback}
-                </div>
-              )}
-              
               <div className="mb-3">
                 <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
                   <div className="district-display bg-gray-100 p-4 flex justify-center items-center">
