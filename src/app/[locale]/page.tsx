@@ -2,9 +2,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from 'next-intl';
-// import { getFestivalSlugs } from '../[locale]/lib/festival-content.js';
+import { Metadata } from 'next';
 
-
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  return {
+    title: 'Spend Binod Chaudhary\'s Billions | Interactive Nepal Billionaire Game',
+    description: 'Experience what it\'s like to spend the fortune of Nepal\'s first billionaire, Binod Chaudhary. Interactive game showing wealth visualization and spending simulation.',
+    keywords: 'Binod Chaudhary, Nepal billionaire, spend billions, Nepalese tycoon, wealth simulator, Wai Wai noodles owner, richest Nepali, virtual spending game',
+  };
+}
 
 export default function HomePage() {
   const t = useTranslations("Translations"); 
