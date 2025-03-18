@@ -354,3 +354,8 @@ a {
     margin-bottom: 1.5rem;
   }
 }
+
+
+.checklist-item h3 {
+  font-family: 'Rubik', Arial, sans-serif;
+}
