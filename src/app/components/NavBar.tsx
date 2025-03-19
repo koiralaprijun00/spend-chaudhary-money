@@ -38,6 +38,9 @@ const Navbar = () => {
                     <Link href="/name-districts" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                         {t('nameDistrictTitle')}
                     </Link>
+                    <Link href="/life-checklist" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        {t('nepalChecklist.navbarTitle')}
+                    </Link>
                 </div>
 
                 {/* Right side: Language switcher, Twitter Icon, and hamburger */}
@@ -94,6 +97,13 @@ const Navbar = () => {
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 {t('nameDistrictTitle')}
+                            </Link>
+                            <Link 
+                                href="/life-checklist" 
+                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                {t('nepalChecklist.navbarTitle')}
                             </Link>
                         </div>
                     </div>

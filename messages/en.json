@@ -1,9 +1,12 @@
-{
+  {
   "Translations":{
     "nepalChecklist": {
+      "navbarTitle": "Nepal Life Checklist",
       "title": "Are you a real Nepali? Himalayan tales and tea addiction",
-      "subtitle": "Prove your Nepali-ness with momos and chaos!"
+      "subtitle": "Prove your Nepali-ness with momos and chaos!",
+      "description": " Try if you are a real Nepali."
     },
+    "bucket":"CheckList",
     "piromomo": "Piromomo",
     "tagline": "Fun Side of Nepal You Didn't Know You Needed",
     "billionaireBadge": "BILLIONAIRE",
