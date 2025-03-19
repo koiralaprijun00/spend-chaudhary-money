@@ -17,9 +17,6 @@ export default function NepalGKQuiz() {
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [feedback, setFeedback] = useState<string>('');
   const [score, setScore] = useState<number>(0);
-  const [gameMode, setGameMode] = useState<'standard' | 'timed'>('standard');
-  const [timeLeft, setTimeLeft] = useState<number>(60);
-  const [timerActive, setTimerActive] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState<boolean>(false);
   
   // Add category filter state
@@ -56,42 +53,7 @@ export default function NepalGKQuiz() {
     setIsCorrect(false);
     setFeedback('');
     setScore(0);
-    
-    if (gameMode === 'timed') {
-      setTimeLeft(60);
-      setTimerActive(true);
-    }
-  }, [selectedCategory, gameMode]);
-  
-  // Initialize timer for timed mode
-  useEffect(() => {
-    if (gameMode === 'timed') {
-      setTimerActive(true);
-      setTimeLeft(60);
-    }
-  }, [gameMode]);
-  
-  // Start timer if in timed mode
-  useEffect(() => {
-    let timer: NodeJS.Timeout | null = null;
-    
-    if (gameMode === 'timed' && timerActive && timeLeft > 0) {
-      timer = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            if (timer) clearInterval(timer);
-            handleTimeUp();
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-    
-    return () => {
-      if (timer) clearInterval(timer);
-    };
-  }, [timeLeft, timerActive, gameMode, isAnswered]);
+  }, [selectedCategory]);
   
   // Current question
   const currentQuestion = shuffledQuestions[currentQuestionIndex];
@@ -112,15 +74,6 @@ export default function NepalGKQuiz() {
     }
     
     setIsAnswered(true);
-    if (gameMode === 'timed') setTimerActive(false);
-  };
-  
-  // Handle time up in timed mode
-  const handleTimeUp = () => {
-    setIsAnswered(true);
-    setIsCorrect(false);
-    setFeedback(t('timeUp') || "Time's up!");
-    setTimerActive(false);
   };
   
   // Move to next question
@@ -130,18 +83,7 @@ export default function NepalGKQuiz() {
       setIsAnswered(false);
       setIsCorrect(false);
       setFeedback('');
-      
-      if (gameMode === 'timed') {
-        setTimeLeft(60);
-        setTimerActive(true);
-      }
     }
-  };
-  
-  // Switch game mode
-  const switchGameMode = (mode: 'standard' | 'timed') => {
-    setGameMode(mode);
-    restartGame();
   };
   
   // Restart the game
@@ -152,11 +94,6 @@ export default function NepalGKQuiz() {
     setIsCorrect(false);
     setFeedback('');
     setScore(0);
-    
-    if (gameMode === 'timed') {
-      setTimeLeft(60);
-      setTimerActive(true);
-    }
   };
   
   // Handle category change
@@ -178,20 +115,11 @@ export default function NepalGKQuiz() {
         });
       } else {
         await navigator.clipboard.writeText(shareMessage);
-        alert('Score copied to clipboard! Paste it to share.');
       }
     } catch (error) {
       console.error('Sharing failed:', error);
       await navigator.clipboard.writeText(shareMessage);
-      alert('Score copied to clipboard! Paste it to share.');
     }
-  };
-  
-  // Format time (mm:ss)
-  const formatTime = (seconds: number): string => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
   
   // Calculate available question count by category
@@ -210,66 +138,68 @@ export default function NepalGKQuiz() {
       </div>
       
       <div className="relative z-10 w-full md:max-w-3xl">
-        <div className="flex flex-col pt-4 md:py-12 md:px-10 bg-gradient-to-b from-white via-blue-50 to-indigo-50 dark:from-gray-800 dark:via-gray-800 dark:to-gray-800 rounded-3xl shadow-none md:shadow-2xl">
+        <div className="flex flex-col pt-4 mt-1 md:mt-4 md:py-8 px-2 py-2 md:px-10 bg-gradient-to-b from-white via-blue-50 to-indigo-50 dark:from-gray-800 dark:via-gray-800 dark:to-gray-800 rounded-3xl shadow-none md:shadow-2xl">
           
-          {/* Header with title and category dropdown side by side */}
-          <header className="mb-6 text-left">
-            <div className="flex justify-between items-center mb-4">
-              <h1 className="text-2xl md:text-4xl font-extrabold text-gray-600 dark:text-gray-200">
-                {t('nepalGk.title') || 'Nepal General Knowledge Quiz'}
-              </h1>
-              
-              {/* Category Dropdown - positioned right */}
-              <div className="relative">
-                <select
-                  id="category-select"
-                  value={selectedCategory}
-                  onChange={handleCategoryChange}
-                  className="block w-48 pl-3 pr-10 py-2 text-sm border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 rounded-md bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  {categories.map((category) => (
-                    <option key={category} value={category}>
-                      {category === 'all' 
-                        ? t('allCategories') || 'All Categories' 
-                        : `${category} (${getQuestionCount(category)})`}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            
-            {/* Game Mode Buttons - kept in original position */}
-            <div className="mt-2 flex flex-wrap gap-2 justify-start">
-              <button
-                onClick={() => switchGameMode('standard')}
-                className={`px-3 py-1 rounded-full transition ${
-                  gameMode === 'standard' ? 'bg-blue-700 text-white' : 'bg-gray-300 text-gray-800 hover:bg-gray-400'
-                }`}
-              >
-                {t('standardMode') || 'Standard Mode'}
-              </button>
-              <button
-                onClick={() => switchGameMode('timed')}
-                className={`px-3 py-1 rounded-full transition ${
-                  gameMode === 'timed' ? 'bg-blue-700 text-white' : 'bg-gray-300 text-gray-800 hover:bg-gray-400'
-                }`}
-              >
-                {t('timedMode') || 'Timed Mode'}
-              </button>
-            </div>
-          </header>
-          
-          {/* Score and timer - kept in original position */}
-          <div className="flex justify-between w-full max-w-2xl mb-4">
-            <div className="bg-white dark:bg-gray-700 px-4 py-2 rounded-lg shadow-md">
-              <p className="font-bold dark:text-white">{t('score') || 'Score'}: {score}</p>
-            </div>
-            {gameMode === 'timed' && (
-              <div className={`bg-white dark:bg-gray-700 px-4 py-2 rounded-lg shadow-md ${timeLeft < 10 ? 'text-red-600 dark:text-red-400' : 'dark:text-white'}`}>
-                <p className="font-bold">{t('timeLeft') || 'Time Left'}: {formatTime(timeLeft)}</p>
-              </div>
-            )}
-          </div>
+{/* Header with appropriately sized categories */}
+<header className="mb-8">
+  {/* Bigger heading in one row */}
+  <h1 className="text-3xl md:text-4xl font-bold text-gray-600 dark:text-gray-200 mb-4">
+    {t('nepalGk.title') || 'Nepal General Knowledge Quiz'}
+  </h1>
+  
+  {/* Categories section with natural width select */}
+  <div className="flex items-center space-x-3 w-full mb-4">
+    <label 
+      htmlFor="category-select" 
+      className="text-sm font-semibold text-gray-800 dark:text-gray-200 whitespace-nowrap"
+    >
+      Categories:
+    </label>
+    <select
+      id="category-select"
+      value={selectedCategory}
+      onChange={handleCategoryChange}
+      className="w-auto appearance-none py-1.5 pl-3 pr-8 text-sm font-medium border-2 border-blue-700 dark:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 shadow-sm hover:border-blue-600 dark:hover:border-blue-400 transition-colors"
+    >
+      {categories.map((category) => (
+        <option key={category} value={category}>
+          {category === 'all' 
+            ? t('allCategories') || 'All Categories' 
+            : `${category} (${getQuestionCount(category)})`}
+        </option>
+      ))}
+    </select>
+  </div>
+  
+  {/* Score and share button below */}
+  <div className="flex justify-end items-center">
+    <div className="bg-orange-300 dark:bg-gray-700 px-4 py-1.5 rounded-lg shadow-md mr-3">
+      <p className="font-bold dark:text-white">{t('score') || 'Score'}: {score}</p>
+    </div>
+    
+    <button 
+      onClick={handleShareScore}
+      className="bg-white dark:bg-gray-700 p-1.5 rounded-lg shadow-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+      aria-label={t('shareScore') || 'Share Score'}
+      title={t('shareScore') || 'Share Score'}
+    >
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        className="w-5 h-5 text-gray-700 dark:text-gray-200"
+      >
+        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+        <polyline points="16 6 12 2 8 6"></polyline>
+        <line x1="12" y1="2" x2="12" y2="15"></line>
+      </svg>
+    </button>
+  </div>
+</header>
           
           {/* Main quiz container */}
           <div className="relative p-1 rounded-xl bg-gradient-to-br from-blue-400 to-indigo-500 mb-6 shadow-lg">

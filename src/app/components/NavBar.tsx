@@ -41,6 +41,9 @@ const Navbar = () => {
                     <Link href="/life-checklist" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                         {t('nepalChecklist.navbarTitle')}
                     </Link>
+                    <Link href="/general-knowledge" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        {t('nepalGk.titleshort') || 'Nepal GK Quiz'}
+                    </Link>
                 </div>
 
                 {/* Right side: Language switcher, Twitter Icon, and hamburger */}
@@ -104,6 +107,13 @@ const Navbar = () => {
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 {t('nepalChecklist.navbarTitle')}
+                            </Link>
+                            <Link 
+                                href="/nepal-gk" 
+                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                {t('nepalGk.title') || 'Nepal GK Quiz'}
                             </Link>
                         </div>
                     </div>

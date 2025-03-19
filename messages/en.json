@@ -1,5 +1,6 @@
   {
   "Translations":{
+    "more": "More",
     "allCategories": "All Categories",
     "finalScoreMessage": "You scored {score} points!",
     "quizComplete": "Quiz Complete!",
@@ -18,7 +19,9 @@
     "international": "International Relations",
     "entertainment": "Entertainment",
    "nepalGk": {
-      "title": "Nepal General Knowledge Quiz",
+      "title": "General Knowledge - Nepal Edition",
+      "titleshort":"General Knowledge",
+      "shortdescription": "Test your General Knowledge about Nepal",
       "description": "Test your knowledge about Nepal with this quiz covering history, geography, culture, and more!",
       "badge": "KNOWLEDGE"
     },
