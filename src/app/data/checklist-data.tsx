@@ -50,12 +50,6 @@ export const checklistData: ChecklistData = {
       description: "Witness these magnificent creatures in their natural habitat",
       image: "/images/checklist/rhino.jpg"
     },
-    butter_tea: {
-      id: "butter_tea",
-      title: "Drink Butter Tea with a Sherpa",
-      description: "Acquire a taste for this high-altitude energy drink",
-      image: "/images/checklist/buttertea.jpg"
-    },
     temple_run: {
       id: "temple_run",
       title: "Visit All Seven UNESCO World Heritage Sites in Kathmandu Valley",
@@ -68,12 +62,7 @@ export const checklistData: ChecklistData = {
       description: "Get at least 50% off the initial asking price",
       image: "/images/checklist/thamel.jpg"
     },
-    mountain_flight: {
-      id: "mountain_flight",
-      title: "Take a Mountain Flight",
-      description: "See Everest from a plane window without the trek",
-      image: "/images/checklist/flight.jpg"
-    },
+    
     tihar_lights: {
       id: "tihar_lights",
       title: "Experience Tihar Festival of Lights",
@@ -98,41 +87,18 @@ export const checklistData: ChecklistData = {
       description: "Soar with eagles above Phewa Lake",
       image: "/images/checklist/paraglide.jpg"
     },
-    language_basics: {
-      id: "language_basics",
-      title: "Learn Basic Nepali Phrases",
-      description: "Move beyond 'Namaste' to at least 10 useful expressions",
-      image: "/images/checklist/nepali.jpg"
-    },
+   
     phewa_boat: {
       id: "phewa_boat",
       title: "Row a Boat on Phewa Lake",
       description: "Navigate to Tal Barahi Temple in the middle of the lake",
       image: "/images/checklist/phewa.jpg"
     },
-    marigold_garland: {
-      id: "marigold_garland",
-      title: "Wear a Marigold Garland",
-      description: "Be adorned with Nepal's ceremonial flower",
-      image: "/images/checklist/marigold.jpg"
-    },
-    meditation_monastery: {
-      id: "meditation_monastery",
-      title: "Meditate in a Buddhist Monastery",
-      description: "Find inner peace with monks as your guides",
-      image: "/images/checklist/meditation.jpg"
-    },
     langtang_trek: {
       id: "langtang_trek",
       title: "Trek the Langtang Valley",
       description: "Experience the 'valley of glaciers' on a less crowded trail",
       image: "/images/checklist/langtang.jpg"
-    },
-    tharu_dance: {
-      id: "tharu_dance",
-      title: "Join a Traditional Tharu Dance",
-      description: "Participate in the stick dance of the Terai region",
-      image: "/images/checklist/tharu.jpg"
     },
     yak_cheese: {
       id: "yak_cheese",
@@ -152,12 +118,7 @@ export const checklistData: ChecklistData = {
       description: "Become a walking rainbow during the festival of colors",
       image: "/images/checklist/holi.jpg"
     },
-    yeti_search: {
-      id: "yeti_search",
-      title: "Go on a Yeti Hunt",
-      description: "Search for the elusive abominable snowman (results not guaranteed)",
-      image: "/images/checklist/yeti.jpg"
-    },
+   
     himalayan_sunrise: {
       id: "himalayan_sunrise",
       title: "Watch Sunrise from Sarangkot",
@@ -188,12 +149,7 @@ export const checklistData: ChecklistData = {
       description: "Experience authentic rural Nepali life",
       image: "/images/checklist/homestay.jpg"
     },
-    tea_house_lodging: {
-      id: "tea_house_lodging",
-      title: "Sleep in a Mountain Tea House",
-      description: "Experience the trekking accommodation staple",
-      image: "/images/checklist/teahouse.jpg"
-    },
+    
     boudha_prayer: {
       id: "boudha_prayer",
       title: "Spin Prayer Wheels at Boudhanath",
@@ -206,30 +162,15 @@ export const checklistData: ChecklistData = {
       description: "Experience the evening fire ritual at Nepal's holiest Hindu site",
       image: "/images/checklist/pashupatinath.jpg"
     },
-    trekking_permit: {
-      id: "trekking_permit",
-      title: "Collect Your First Trekking Permit",
-      description: "The official beginning of your Himalayan adventure",
-      image: "/images/checklist/permit.jpg"
-    },
+    
     rickshaw_ride: {
       id: "rickshaw_ride",
       title: "Take a Rickshaw Ride Through Old Kathmandu",
       description: "Navigate narrow streets the traditional way",
       image: "/images/checklist/rickshaw.jpg"
     },
-    altitude_sickness: {
-      id: "altitude_sickness",
-      title: "Experience Mild Altitude Sickness",
-      description: "A Himalayan badge of honor (but take it seriously!)",
-      image: "/images/checklist/altitude.jpg"
-    },
-    porter_gratitude: {
-      id: "porter_gratitude",
-      title: "Thank Your Porter Properly",
-      description: "Show genuine appreciation for these mountain heroes",
-      image: "/images/checklist/porter.jpg"
-    },
+   
+    
     newar_feast: {
       id: "newar_feast",
       title: "Enjoy a Traditional Newari Feast",
@@ -254,47 +195,11 @@ export const checklistData: ChecklistData = {
       description: "A rite of passage for rainy season trekkers",
       image: "/images/checklist/leech.jpg"
     },
-    singing_bowl: {
-      id: "singing_bowl",
-      title: "Meditate with a Singing Bowl",
-      description: "Feel the vibrations of this traditional instrument",
-      image: "/images/checklist/singingbowl.jpg"
-    },
-    gorkha_palace: {
-      id: "gorkha_palace",
-      title: "Climb to Gorkha Palace",
-      description: "Visit the birthplace of unified Nepal",
-      image: "/images/checklist/gorkha.jpg"
-    },
-    himalayan_bath: {
-      id: "himalayan_bath",
-      title: "Take an Ice-Cold Himalayan Shower",
-      description: "The most refreshing (and quickest) bath of your life",
-      image: "/images/checklist/coldbath.jpg"
-    },
-    sherpa_blessing: {
-      id: "sherpa_blessing",
-      title: "Receive a Blessing from a Sherpa Elder",
-      description: "A spiritual protection for your mountain journey",
-      image: "/images/checklist/blessing.jpg"
-    },
-    tiger_tops: {
-      id: "tiger_tops",
-      title: "Stay at Tiger Tops in Chitwan",
-      description: "Experience luxury jungle living",
-      image: "/images/checklist/tigertops.jpg"
-    },
     everest_beer: {
       id: "everest_beer",
       title: "Drink an Everest Beer at 5000m",
       description: "Possibly the highest beer you'll ever enjoy",
       image: "/images/checklist/everestbeer.jpg"
-    },
-    durbar_sunset: {
-      id: "durbar_sunset",
-      title: "Watch Sunset from Patan Durbar Square",
-      description: "See golden hour illuminate ancient architecture",
-      image: "/images/checklist/durbar.jpg"
     },
     jungle_safari: {
       id: "jungle_safari",
@@ -326,60 +231,21 @@ export const checklistData: ChecklistData = {
       description: "Own the traditional blade of the Gurkhas",
       image: "/images/checklist/khukuri.jpg"
     },
-    tij_festival: {
-      id: "tij_festival",
-      title: "Witness Women Celebrating Teej Festival",
-      description: "See the vibrant red celebrations of female power",
-      image: "/images/checklist/teej.jpg"
-    },
-    learn_tabla: {
-      id: "learn_tabla",
-      title: "Take a Tabla Drum Lesson",
-      description: "Learn the basics of this classical instrument",
-      image: "/images/checklist/tabla.jpg"
-    },
     cook_nepali: {
       id: "cook_nepali",
       title: "Take a Nepali Cooking Class",
       description: "Master the art of momos and more",
       image: "/images/checklist/cooking.jpg"
     },
-    tangka_painting: {
-      id: "tangka_painting",
-      title: "Watch Thangka Painting in Process",
-      description: "Observe the creation of intricate Buddhist art",
-      image: "/images/checklist/thangka.jpg"
-    },
-    lakeside_yoga: {
-      id: "lakeside_yoga",
-      title: "Do Yoga by Phewa Lake at Dawn",
-      description: "Salute the sun as it rises over the Himalayas",
-      image: "/images/checklist/yoga.jpg"
-    },
-    mountain_biking: {
-      id: "mountain_biking",
-      title: "Mountain Bike the Kathmandu Valley Rim",
-      description: "Cycle through villages with panoramic views",
-      image: "/images/checklist/biking.jpg"
-    },
-    thankas_shopping: {
-      id: "thankas_shopping",
-      title: "Buy a Handmade Thangka",
-      description: "Support traditional Buddhist artists",
-      image: "/images/checklist/thangka_buy.jpg"
-    },
+    
+
     bungee_jump: {
       id: "bungee_jump",
       title: "Bungee Jump from the Last Resort",
       description: "Leap into the Bhote Kosi gorge from 160m high",
       image: "/images/checklist/bungee.jpg"
     },
-    kushma_swing: {
-      id: "kushma_swing",
-      title: "Swing on Nepal's Tallest Cliff Swing in Kushma",
-      description: "Experience the ultimate adrenaline rush on a 228m swing",
-      image: "/images/checklist/swing.jpg"
-    },
+   
     juju_dhau: {
       id: "juju_dhau",
       title: "Eat Juju Dhau in Bhaktapur",
@@ -404,12 +270,7 @@ export const checklistData: ChecklistData = {
       description: "Experience the ancient sacrificial traditions",
       image: "/images/checklist/goatfestival.jpg"
     },
-    tibetan_bread: {
-      id: "tibetan_bread",
-      title: "Breakfast on Tibetan Bread with Honey",
-      description: "The classic trekker's morning meal",
-      image: "/images/checklist/tibetanbread.jpg"
-    },
+
     trekker_tan: {
       id: "trekker_tan",
       title: "Get the Himalayan Trekker's Tan",
@@ -422,12 +283,7 @@ export const checklistData: ChecklistData = {
       description: "Glimpse Nepal's living deity at her window",
       image: "/images/checklist/kumari.jpg"
     },
-    sacred_cow: {
-      id: "sacred_cow",
-      title: "Navigate Around a Sacred Cow",
-      description: "Respect Nepal's national animal blocking traffic",
-      image: "/images/checklist/cow.jpg"
-    },
+   
     monsoon_downpour: {
       id: "monsoon_downpour",
       title: "Get Caught in a Monsoon Downpour",
@@ -464,24 +320,9 @@ export const checklistData: ChecklistData = {
       description: "Test your spice tolerance with this tangy snack",
       image: "/images/checklist/chatpatay.jpg"
     },
-    himalayan_dogs: {
-      id: "himalayan_dogs",
-      title: "Befriend a Himalayan Trail Dog",
-      description: "Make a furry friend who might join you for days",
-      image: "/images/checklist/dog.jpg"
-    },
-    tengboche_monastery: {
-      id: "tengboche_monastery",
-      title: "Attend Prayers at Tengboche Monastery",
-      description: "Experience Buddhist ceremonies with Everest as backdrop",
-      image: "/images/checklist/tengboche.jpg"
-    },
-    cricket_match: {
-      id: "cricket_match",
-      title: "Join an Impromptu Cricket Match",
-      description: "Play Nepal's favorite sport with locals",
-      image: "/images/checklist/cricket.jpg"
-    },
+
+
+
     sunset_nagarkot: {
       id: "sunset_nagarkot",
       title: "Sunset from Nagarkot",
@@ -500,36 +341,16 @@ export const checklistData: ChecklistData = {
       description: "Experience the winding highway journey",
       image: "/images/checklist/roadtrip.jpg"
     },
-    prayer_flags: {
-      id: "prayer_flags",
-      title: "Hang Prayer Flags at a Mountain Pass",
-      description: "Add your blessings to those blowing in the wind",
-      image: "/images/checklist/prayerflags.jpg"
-    },
+   
     sukuti_snack: {
       id: "sukuti_snack",
       title: "Snack on Sukuti with Raksi",
       description: "Pair dried meat with local spirits",
       image: "/images/checklist/sukuti.jpg"
     },
-    mountain_toilet: {
-      id: "mountain_toilet",
-      title: "Use a Himalayan Mountain Toilet",
-      description: "Experience the world's most scenic bathroom",
-      image: "/images/checklist/toilet.jpg"
-    },
-    mountain_flight_from_lukla: {
-      id: "mountain_flight_from_lukla",
-      title: "Take Off from Lukla's Mountain Runway",
-      description: "Fly from the world's most thrilling airport",
-      image: "/images/checklist/lukla.jpg"
-    },
-    yak_encounter: {
-      id: "yak_encounter",
-      title: "Share a Trail with a Yak Train",
-      description: "Step aside for these hairy mountain freight carriers",
-      image: "/images/checklist/yaktrail.jpg"
-    },
+
+
+    
     janai_purnima: {
       id: "janai_purnima",
       title: "Get a Raksha Bandhan Thread for Janai Purnima",
@@ -554,30 +375,15 @@ export const checklistData: ChecklistData = {
       description: "Unwind at Dhulikhel, Bandipur, or another mountain retreat",
       image: "/images/checklist/hillstation.jpg"
     },
-    hot_springs: {
-      id: "hot_springs",
-      title: "Soak in Natural Hot Springs",
-      description: "Rest your trekking muscles in nature's hot tub",
-      image: "/images/checklist/hotsprings.jpg"
-    },
-    himalayan_vulture: {
-      id: "himalayan_vulture",
-      title: "Spot a Himalayan Griffon Vulture",
-      description: "Watch these massive birds soar on mountain thermals",
-      image: "/images/checklist/vulture.jpg"
-    },
+  
+   
     wedding_crasher: {
       id: "wedding_crasher",
       title: "Get Invited to a Nepali Wedding",
       description: "Experience the color and joy of a multi-day celebration",
       image: "/images/checklist/wedding.jpg"
     },
-    mt_fish_tail: {
-      id: "mt_fish_tail",
-      title: "Photograph Machapuchare (Fish Tail Mountain)",
-      description: "Capture Nepal's most perfectly formed peak",
-      image: "/images/checklist/fishtail.jpg"
-    },
+   
     lumbini_pilgrimage: {
       id: "lumbini_pilgrimage",
       title: "Visit Buddha's Birthplace in Lumbini",
@@ -608,12 +414,7 @@ export const checklistData: ChecklistData = {
       description: "Ascend Kathmandu's iconic landmark that was rebuilt after the 2015 earthquake",
       image: "/images/checklist/dharahara.jpg"
     },
-    sherpa_museum: {
-      id: "sherpa_museum",
-      title: "Visit the Sherpa Museum in Namche Bazaar",
-      description: "Learn about the culture and mountaineering history of Nepal's famous climbing ethnic group",
-      image: "/images/checklist/sherpamuseum.jpg"
-    },
+    
     mardi_himal: {
       id: "mardi_himal",
       title: "Trek the Less-Crowded Mardi Himal Route",
@@ -656,12 +457,7 @@ export const checklistData: ChecklistData = {
       description: "Take a break at a traditional resting place built around a Pipal tree",
       image: "/images/checklist/chautari.jpg"
     },
-    syanga_zipline: {
-      id: "syanga_zipline",
-      title: "Ride Asia's Longest Zipline in Syangja",
-      description: "Fly through the air at 120km/hour over stunning valleys near Pokhara",
-      image: "/images/checklist/zipline.jpg"
-    },
+  
     losar_celebration: {
       id: "losar_celebration",
       title: "Celebrate Losar (Tibetan New Year)",
@@ -692,30 +488,15 @@ export const checklistData: ChecklistData = {
       description: "Get a tika from one of Nepal's living goddesses during special ceremonies",
       image: "/images/checklist/kumaripuja.jpg"
     },
-    pangolin_conservation: {
-      id: "pangolin_conservation",
-      title: "Support Pangolin Conservation",
-      description: "Learn about efforts to save Nepal's endangered scaly mammal",
-      image: "/images/checklist/pangolin.jpg"
-    },
+    
     tansen_dhaka: {
       id: "tansen_dhaka",
       title: "Buy Authentic Dhaka Fabric in Tansen",
       description: "Purchase the colorful traditional textile from its original production center",
       image: "/images/checklist/dhaka.jpg"
     },
-    baglung_footbridge: {
-      id: "baglung_footbridge",
-      title: "Cross Baglung's 567m Suspension Bridge",
-      description: "Walk across one of the longest and highest suspension bridges in Nepal",
-      image: "/images/checklist/baglungbridge.jpg"
-    },
-    koshi_birding: {
-      id: "koshi_birding",
-      title: "Go Birdwatching in Koshi Tappu",
-      description: "Spot some of Nepal's 900+ bird species in this eastern wetland reserve",
-      image: "/images/checklist/koshi.jpg"
-    },
+    
+   
     last_royal_palace: {
       id: "last_royal_palace",
       title: "Tour the Narayanhiti Palace Museum",
