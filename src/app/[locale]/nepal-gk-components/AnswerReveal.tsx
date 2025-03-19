@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { MdShare } from 'react-icons/md';
 import { useTranslations, useLocale } from 'next-intl';
 
@@ -34,13 +34,19 @@ export default function AnswerReveal({
   totalQuestions,
   currentIndex
 }: AnswerRevealProps) {
-  // Get translations
   const t = useTranslations('Translations');
   const locale = useLocale();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
-  // Calculate progress percentage
   const progressPercentage = ((currentIndex + 1) / totalQuestions) * 100;
   
+  // Check if quiz is complete and open modal
+  React.useEffect(() => {
+    if (isAnswered && currentIndex === totalQuestions - 1) {
+      setIsModalOpen(true);
+    }
+  }, [isAnswered, currentIndex, totalQuestions]);
+
   return (
     <div className="flex flex-col">
       {/* Top section with progress and buttons */}
@@ -58,16 +64,6 @@ export default function AnswerReveal({
         </div>
         
         <div className="flex gap-2">
-          <button
-            onClick={handleShareScore}
-            className={`px-4 py-2 bg-blue-500 text-white rounded-full flex items-center transition duration-300 ${
-              isAnswered ? 'hover:bg-blue-600' : 'bg-blue-300 cursor-not-allowed'
-            }`}
-            disabled={!isAnswered}
-          >
-            <MdShare className="mr-2" />
-            {t('shareScore') || 'Share'}
-          </button>
           <button
             onClick={handleNextQuestion}
             className={`px-6 py-2 rounded-full transition duration-300 ${
@@ -91,14 +87,12 @@ export default function AnswerReveal({
           
           {/* Two-column layout */}
           <div className="flex flex-col md:flex-row gap-6">
-            {/* Left column: Correct Answer */}
             <div className="md:w-1/3">
               <p className="text-2xl md:text-xl font-bold text-gray-800 mb-2">
                 {t('correctAnswer')}: <span className="block text-blue-600">{currentQuestion.correctAnswer}</span>
               </p>
             </div>
         
-            {/* Right column: Fact */}
             <div className="md:w-2/3">
               <div className="bg-blue-50 p-4 rounded-lg">
                 <h3 className="font-bold text-blue-800 mb-1">{t('didYouKnow') || 'Did you know?'}</h3>
@@ -106,23 +100,38 @@ export default function AnswerReveal({
               </div>
             </div>
           </div>
-          
-          {/* Quiz completion message */}
-          {currentIndex === totalQuestions - 1 && (
-            <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+        </div>
+      )}
+
+      {/* Quiz completion modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4">
+            <div className="mt-2 p-4 bg-green-50 rounded-lg border border-green-200">
               <h3 className="font-bold text-green-800 mb-2">{t('quizComplete') || 'Quiz Complete!'}</h3>
               <p className="text-gray-700">
                 {t('finalScoreMessage', { score: score, total: totalQuestions * 10 }) || 
                   `You've completed the quiz! Your final score is ${score} out of ${totalQuestions * 10}.`}
               </p>
-              <button
-                onClick={restartGame}
-                className="mt-3 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-              >
-                {t('playAgain') || 'Play Again'}
-              </button>
+              <div className="mt-4 flex justify-end gap-3">
+                <button
+                  onClick={handleShareScore}
+                  className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                >
+                  {t('shareScore') || 'Share'}
+                </button>
+                <button
+                  onClick={() => {
+                    setIsModalOpen(false);
+                    restartGame();
+                  }}
+                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  {t('playAgain') || 'Play Again'}
+                </button>
+              </div>
             </div>
-          )}
+          </div>
         </div>
       )}
     </div>

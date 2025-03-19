@@ -10,7 +10,6 @@ interface QuizSectionProps {
     options: string[];
     correctAnswer: string;
     fact: string;
-    image: string;
   };
   isAnswered: boolean;
   handleGuess: (selectedOption: string) => void;
