@@ -1,5 +1,27 @@
   {
   "Translations":{
+    "allCategories": "All Categories",
+    "finalScoreMessage": "You scored {score} points!",
+    "quizComplete": "Quiz Complete!",
+    "didYouKnow": "Did you know?",
+    "correctAnswer": "Correct Answer",
+    "nextQuestion": "Next Question",
+    "economy": "Economy",
+    "International Relations": "International Relations",
+    "history": "History",
+    "politics": "Politics",
+    "culture": "Culture",
+    "sports": "Sports",
+    "science": "Science & Technology",
+    "science & technology": "Science & Technology",
+    "literature": "Literature",
+    "international": "International Relations",
+    "entertainment": "Entertainment",
+   "nepalGk": {
+      "title": "Nepal General Knowledge Quiz",
+      "description": "Test your knowledge about Nepal with this quiz covering history, geography, culture, and more!",
+      "badge": "KNOWLEDGE"
+    },
     "nepalChecklist": {
       "navbarTitle": "Nepal Life Checklist",
       "title": "Are you a real Nepali? Himalayan tales and tea addiction",

@@ -48,6 +48,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
+    crossOrigin="anonymous"
+  />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Mapbox CSS is already imported at build time, but if you need it dynamically: */}

@@ -1,5 +1,27 @@
 {
   "Translations": {
+    "allCategories" : "सबै श्रेणीहरू",
+    "finalScoreMessage": "तपाईंको अन्तिम  {score} अंक छन्!",
+    "quizComplete": "क्विज पूरा भयो!",
+    "didYouKnow": "तपाईंले थाहा पाउनुभएको छ?",
+    "correctAnswer": "सही उत्तर",
+    "nextQuestion": "अर्को प्रश्न",
+    "economy": "अर्थतन्त्र",
+    "history": "इतिहास",
+    "politics": "राजनीति",
+    "International Relations": "अन्तर्राष्ट्रिय सम्बन्ध",
+    "culture": "संस्कृति",
+    "sports": "खेलकुद",
+    "science": "विज्ञान र प्रविधि",
+    "science & technology": "विज्ञान र प्रविधि",
+    "literature": "साहित्य",
+    "international": "अन्तर्राष्ट्रिय सम्बन्ध",
+    "entertainment": "मनोरञ्जन",
+    "nepalGk": {
+      "title": "नेपाल सामान्य ज्ञान क्विज",
+      "description": "इतिहास, भूगोल, संस्कृति, र थप कुराहरू समेट्ने यो क्विजको साथ नेपालको बारेमा आफ्नो ज्ञान परीक्षण गर्नुहोस्!",
+      "badge": "ज्ञान"
+    },
     "nepalChecklist": {
       "navbarTitle": "नेपाल चेकलिस्ट",
       "title": "के तिमी सक्कली नेपाली हौ? हिमालको कथा र चियाको नशा",
