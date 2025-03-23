@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { haversineDistance } from '../../components/distance';
+import { haversineDistance } from '../../components/';
 import { Location, NEPAL_LOCATIONS, NEPAL_BOUNDS } from '../../data/geo-nepal/geo-data';
 import Link from 'next/link';
 import Image from 'next/image';
