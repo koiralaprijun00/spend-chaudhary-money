@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 
-import Map from '../../components/Map';
+import Map from '../../components/GeoMap';
 import AirQualityPanel from '../../components/AirQualityPanel';
 import AirQualityDetails from '../../components/AirQualityDetails';
 import HealthRecommendations from '../../components/HealthRecommendations';

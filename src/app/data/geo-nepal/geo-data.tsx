@@ -10,6 +10,15 @@ export type Location = {
     funFact: string;
     submittedBy?: string; // Optional field to track user submissions
   };
+
+  export type NepalLocation = {
+    id: string | number;
+    name: string;
+    lat: number;
+    lng: number;
+    imageUrl: string;
+    funFact: string;
+  };
   
   // Define the Nepal bounds
   export const NEPAL_BOUNDS = {
