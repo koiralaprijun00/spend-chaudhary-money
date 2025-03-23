@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
 
 // Define a consistent Location interface
-export interface Location {
+interface Location {
   id: string;
   name: string;
   lat?: number;
@@ -16,7 +16,7 @@ export interface Location {
 
 // In a real application, this would be fetched from a database
 // For this example, we'll use an array in memory
-export let locations: Location[] = [
+let locations: Location[] = [
   {
     id: '1',
     name: 'Annapurna Base Camp',
@@ -135,8 +135,6 @@ export async function POST(request: NextRequest) {
     locations.push(newLocation);
     console.log('Current locations array after submission:', locations);
     
-    console.log('Current locations array after submission:', locations);
-
     return NextResponse.json({ 
       success: true, 
       message: 'Location submitted successfully and pending review',
