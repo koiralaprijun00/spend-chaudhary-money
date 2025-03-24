@@ -34,36 +34,44 @@ export default function GeoAdminPage() {
   const router = useRouter();
   const { data: session, status: authStatus } = useSession();
 
-  // Debugging session role
   useEffect(() => {
-  }, [session]);
+    console.log("Session data:", session);
+    console.log("Auth status:", authStatus);
+  }, [session, authStatus]);
 
   // Fetch locations based on active tab
-  const fetchLocations = async () => {
-    if (authStatus !== 'authenticated' || !session?.accessToken) return;
+const fetchLocations = async () => {
+  if (authStatus !== 'authenticated' || !session?.accessToken) return;
 
-    setLoading(true);
-    setError(null);
+  setLoading(true);
+  setError(null);
 
-    try {
-      const response = await fetch(`/api/geo-admin/locations?status=${activeTab}`, {
-        headers: {
-          'Authorization': `Bearer ${session.accessToken}`,  // Ensure accessToken is included here
-        },
-      });
+  try {
+    // Make sure to include the Authorization header with the token
+    const response = await fetch(`/api/geo-admin/locations?status=${activeTab}`, {
+      headers: {
+        'Authorization': `Bearer ${session.accessToken}`,
+      },
+    });
 
-      if (!response.ok) {
-        throw new Error(`Failed to fetch locations: ${response.status}`);
-      }
-
-      const data = await response.json();
-      setLocations(data.locations || []);
-    } catch (err) {
-      setError('Failed to fetch locations');
-    } finally {
-      setLoading(false);
+    console.log('Response status:', response.status);
+    
+    if (!response.ok) {
+      // Add better error handling
+      const errorText = await response.text();
+      console.error('API response error:', response.status, errorText);
+      throw new Error(`Failed to fetch locations: ${response.status} ${errorText}`);
     }
-  };
+
+    const data = await response.json();
+    setLocations(data.locations || []);
+  } catch (err) {
+    console.error('Fetch error:', err);
+    setError('Failed to fetch locations');
+  } finally {
+    setLoading(false);
+  }
+};
 
   // Handle session check and fetch locations if authenticated as admin
   useEffect(() => {
@@ -84,31 +92,37 @@ export default function GeoAdminPage() {
   }, [activeTab, authStatus]); // Re-fetch when tab changes or auth status changes
 
   // Update location status
-  const updateLocationStatus = async (id: string, newStatus: 'approved' | 'rejected') => {
-    try {
-      setLoading(true);
-      const response = await fetch('/api/geo-admin/locations', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id, status: newStatus }),
-      });
-      
-      if (!response.ok) {
-        throw new Error(`Failed to update location: ${response.status}`);
-      }
-      
-      // Remove the location from the current view
-      setLocations(prev => prev.filter(loc => loc.id !== id));
-      setLoading(false);
-      
-    } catch (err) {
-      console.error('Error updating location:', err);
-      setError('Failed to update location status');
-      setLoading(false);
+const updateLocationStatus = async (id: string, newStatus: 'approved' | 'rejected') => {
+  try {
+    setLoading(true);
+    
+    // Make sure to include the Authorization header with the token
+    const response = await fetch('/api/geo-admin/locations', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${session?.accessToken}` // Add this line
+      },
+      body: JSON.stringify({ id, status: newStatus }),
+    });
+    
+    // Add more detailed error handling
+    if (!response.ok) {
+      const errorData = await response.text();
+      console.error(`Failed to update location (${response.status}):`, errorData);
+      throw new Error(`Failed to update location: ${response.status} ${errorData}`);
     }
-  };
+    
+    // Remove the location from the current view
+    setLocations(prev => prev.filter(loc => loc.id !== id));
+    setLoading(false);
+    
+  } catch (err) {
+    console.error('Error updating location:', err);
+    setError('Failed to update location status');
+    setLoading(false);
+  }
+};
 
   // Delete a location
   const deleteLocation = async (id: string) => {
@@ -160,6 +174,7 @@ export default function GeoAdminPage() {
 
   // Ensure user role is admin before displaying the page
   if (!session?.role || session?.role !== 'admin') {
+    console.log("Access denied. User role:", session?.role);
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <div className="bg-white rounded-lg shadow-md p-8 max-w-md">
@@ -167,6 +182,9 @@ export default function GeoAdminPage() {
           <p className="text-gray-700 mb-4">
             You do not have permission to access this page. This area is restricted to administrators only.
           </p>
+          <pre className="bg-gray-100 p-2 mb-4 text-xs overflow-auto">
+            {JSON.stringify({session, authStatus}, null, 2)}
+          </pre>
           <button
             onClick={() => router.push('/')}
             className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"

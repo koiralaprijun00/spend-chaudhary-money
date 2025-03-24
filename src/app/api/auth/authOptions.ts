@@ -41,7 +41,6 @@ export const authOptions: NextAuthOptions = {
       },
 
 // Inside the authorize function
-// Inside the authorize function
 async authorize(credentials) {
   if (!credentials?.email || !credentials?.password) {
     return null;
@@ -53,7 +52,9 @@ async authorize(credentials) {
 
     // Find user by email
     const user = await usersCollection.findOne({ email: credentials.email });
-
+    
+    console.log("Found user:", user); // Add this log for debugging
+    
     if (user && user.password === credentials.password) {
       // Generate a JWT as the access token
       const accessToken = jwt.sign(
@@ -61,17 +62,17 @@ async authorize(credentials) {
           id: user._id.toString(),
           email: user.email,
           role: user.role,
-        }, // Payload
-        process.env.JWT_SECRET || "K9mP!vWqL2rY5jF8hN3dQ6tJ2zC4xB7nM0pR5sT8uV1wX4yZ6aE2cG9iH3kL6", // Use the secret key from the environment or a default value
-        { expiresIn: "30d" } // Token expiration
+        },
+        process.env.JWT_SECRET || "default_secret_key",
+        { expiresIn: "30d" }
       );
 
       return {
         id: user._id.toString(),
         email: user.email,
-        name: user.name,
+        name: user.name || user.email.split('@')[0],
         role: user.role,
-        accessToken: accessToken, // Use the generated JWT
+        accessToken: accessToken,
       };
     }
 
@@ -87,13 +88,15 @@ async authorize(credentials) {
     async jwt({ token, user }) {
       if (user) {
         token.accessToken = user.accessToken;
-        token.role = user.role; // Ensure the role is added here
+        token.role = user.role;
+        console.log('Setting JWT token data:', { accessToken: token.accessToken ? '[present]' : '[missing]', role: token.role });
       }
       return token;
     },
     async session({ session, token }) {
       session.accessToken = token.accessToken as string;
-      session.role = token.role as string;  // Pass the role from the token to the session
+      session.role = token.role as string;
+      console.log('Setting session data:', { accessToken: session.accessToken ? '[present]' : '[missing]', role: session.role });
       return session;
     },
   },

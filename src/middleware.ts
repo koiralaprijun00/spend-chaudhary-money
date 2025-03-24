@@ -1,4 +1,4 @@
-// middleware.js
+// src/middleware.ts
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -18,11 +18,9 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/${locale}/login`, request.url));
   }
   
-  // Check if this is an admin route that needs protection
-  if (pathname.startsWith('/api/geo-admin')) {
-    // For API routes, we should NOT apply the intl middleware
-    // Just return undefined to continue to the API route handler
-    return undefined;
+  // Skip middleware for all API routes
+  if (pathname.startsWith('/api/')) {
+    return NextResponse.next();
   }
 
   // Apply internationalization for all non-API routes
@@ -35,8 +33,6 @@ export const config = {
     // Match all paths that need locale
     '/((?!api|_next|.*\\..*).*)',
     // Match login path specifically
-    '/login',
-    // Admin API routes that need protection
-    '/api/geo-admin/:path*'
+    '/login'
   ]
 };

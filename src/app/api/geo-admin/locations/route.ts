@@ -1,35 +1,48 @@
-// app/api/geo-admin/locations/route.ts
+// In src/app/api/geo-admin/locations/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '../../../lib/mongodb';
 import { MongoLocation, formatLocation } from '../../../lib/locationSchema';
 import { ObjectId } from 'mongodb';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../../auth/authOptions';
+import jwt from 'jsonwebtoken';
 
 // Helper function to verify admin authentication
-async function verifyAdminAuth() {
+async function verifyAdminAuth(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session || !session.accessToken) {
-      return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
-    }
+    // Extract the token from Authorization header
+    const authHeader = request.headers.get('Authorization');
     
-    // If there's no session, return false
-    if (!session) {
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      console.log('No valid Authorization header found');
       return false;
     }
     
-    // Check if the user object exists and has a role property
-    if (!session.user || !session.user.role) {
+    const token = authHeader.split(' ')[1];
+    
+    if (!token) {
+      console.log('No token found');
       return false;
     }
     
-    // Check if the role is 'admin'
-    if (session.user.role !== 'admin') {
+    // Verify the token
+    try {
+      const secret = process.env.JWT_SECRET || 'default_secret_key';
+      const decoded = jwt.verify(token, secret) as any;
+      
+      console.log('Token decoded:', decoded);
+      
+      // Check if the user has admin role
+      if (!decoded || decoded.role !== 'admin') {
+        console.log('User does not have admin role');
+        return false;
+      }
+      
+      return true;
+    } catch (error) {
+      console.error('Token verification error:', error);
       return false;
     }
-    return true;
   } catch (error) {
+    console.error('Auth verification error:', error);
     return false;
   }
 }
@@ -38,14 +51,18 @@ async function verifyAdminAuth() {
 export async function GET(request: NextRequest) {
   try {
     // Verify admin authentication
-    const isAuthenticated = await verifyAdminAuth();
+    const isAuthenticated = await verifyAdminAuth(request);
+    
     if (!isAuthenticated) {
+      console.log('Authentication failed');
       return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
     }
 
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
     const id = searchParams.get('id');
+    
+    console.log('Fetching locations with status:', status);
     
     const client = await clientPromise;
     const db = client.db('geo-nepal');
@@ -73,6 +90,8 @@ export async function GET(request: NextRequest) {
     const query = status ? { status: { $eq: status as "pending" | "approved" | "rejected" } } : {};
     const locations = await locationsCollection.find(query).toArray();
     
+    console.log(`Found ${locations.length} locations with status: ${status || 'any'}`);
+    
     return NextResponse.json({ 
       locations: locations.map(location => formatLocation(location)) 
     });
@@ -82,62 +101,21 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST: Create a new location
-export async function POST(request: NextRequest) {
-  try {
-    // Verify admin authentication
-    const isAuthenticated = await verifyAdminAuth();
-    if (!isAuthenticated) {
-      return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
-    }
-    
-    const data = await request.json();
-    
-    // Validate required fields
-    if (!data.name) {
-      return NextResponse.json({ error: 'Name is required' }, { status: 400 });
-    }
-    
-    // Connect to MongoDB
-    const client = await clientPromise;
-    const db = client.db('geo-nepal');
-    const locationsCollection = db.collection<MongoLocation>('locations');
-    
-    // Create the new location object
-    const newLocation: MongoLocation = {
-      name: data.name,
-      lat: data.lat,
-      lng: data.lng,
-      imageUrl: data.imageUrl,
-      funFact: data.funFact,
-      status: 'pending',
-      submittedAt: new Date(),
-      submittedBy: data.submittedBy
-    };
-    
-    // Add to database
-    const result = await locationsCollection.insertOne(newLocation);
-    
-    // Return the new location with its ID
-    return NextResponse.json({ 
-      location: formatLocation({...newLocation, _id: result.insertedId})
-    });
-  } catch (error) {
-    console.error('Error in POST location:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
-  }
-}
 
+// In src/app/api/geo-admin/locations/route.ts
 // PUT: Update a location (primarily for status changes)
 export async function PUT(request: NextRequest) {
   try {
     // Verify admin authentication
-    const isAuthenticated = await verifyAdminAuth();
+    const isAuthenticated = await verifyAdminAuth(request);
+    
     if (!isAuthenticated) {
+      console.log('Authentication failed for PUT request');
       return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
     }
     
     const data = await request.json();
+    console.log('Received update data:', data);
     
     // Validate required fields
     if (!data.id) {
@@ -154,6 +132,7 @@ export async function PUT(request: NextRequest) {
     try {
       objectId = new ObjectId(data.id);
     } catch (error) {
+      console.error('Invalid ObjectId format:', data.id, error);
       return NextResponse.json({ error: 'Invalid location ID format' }, { status: 400 });
     }
     
@@ -165,63 +144,28 @@ export async function PUT(request: NextRequest) {
       updateData.reviewedAt = new Date();
     }
     
+    console.log('Updating location with ID:', objectId, 'Update data:', updateData);
+    
     // Update the location
-    const result = await locationsCollection.findOneAndUpdate(
-      { _id: objectId },
-      { $set: updateData },
-      { returnDocument: 'after' }
-    );
-    
-    if (!result) {
-      return NextResponse.json({ error: 'Location not found' }, { status: 404 });
-    }
-    
-    return NextResponse.json({ location: formatLocation(result) });
-  } catch (error) {
-    console.error('Error in PUT location:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
-  }
+const result = await locationsCollection.findOneAndUpdate(
+  { _id: objectId },
+  { $set: updateData },
+  { returnDocument: 'after' }
+);
+
+// Handle null result differently
+if (!result) {
+  console.log('No document found for update with ID:', objectId);
+  return NextResponse.json({ error: 'Location not found' }, { status: 404 });
 }
 
-// DELETE: Remove a location
-export async function DELETE(request: NextRequest) {
-  try {
-    // Verify admin authentication
-    const isAuthenticated = await verifyAdminAuth();
-    if (!isAuthenticated) {
-      return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
-    }
-    
-    const { searchParams } = new URL(request.url);
-    const id = searchParams.get('id');
-    
-    if (!id) {
-      return NextResponse.json({ error: 'Location ID is required' }, { status: 400 });
-    }
-    
-    // Connect to MongoDB
-    const client = await clientPromise;
-    const db = client.db('geo-nepal');
-    const locationsCollection = db.collection<MongoLocation>('locations');
-    
-    // Convert string ID to ObjectId
-    let objectId;
-    try {
-      objectId = new ObjectId(id);
-    } catch (error) {
-      return NextResponse.json({ error: 'Invalid location ID format' }, { status: 400 });
-    }
-    
-    // Delete the location
-    const result = await locationsCollection.deleteOne({ _id: objectId });
-    
-    if (result.deletedCount === 0) {
-      return NextResponse.json({ error: 'Location not found' }, { status: 404 });
-    }
-    
-    return NextResponse.json({ success: true });
+// Return the updated document
+return NextResponse.json({ 
+  location: formatLocation(result),
+  success: true 
+});
   } catch (error) {
-    console.error('Error in DELETE location:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    console.error('Error in PUT location:', error);
+    return NextResponse.json({ error: 'Internal server error', details: error instanceof Error ? error.message : String(error) }, { status: 500 });
   }
 }
