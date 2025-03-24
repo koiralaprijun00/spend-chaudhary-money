@@ -3,10 +3,29 @@ import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '../../../lib/mongodb';
 import { MongoLocation, formatLocation } from '../../../lib/locationSchema';
 import { ObjectId } from 'mongodb';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../../auth/[...nextauth]/route';
+
+// Helper function to verify admin authentication
+async function verifyAdminAuth() {
+  const session = await getServerSession(authOptions);
+  
+  if (!session || session.user?.role !== 'admin') {
+    return false;
+  }
+  
+  return true;
+}
 
 // GET: Fetch locations with optional status filter
 export async function GET(request: NextRequest) {
   try {
+    // Verify admin authentication
+    const isAuthenticated = await verifyAdminAuth();
+    if (!isAuthenticated) {
+      return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
     const id = searchParams.get('id');
@@ -49,6 +68,12 @@ export async function GET(request: NextRequest) {
 // POST: Create a new location
 export async function POST(request: NextRequest) {
   try {
+    // Verify admin authentication
+    const isAuthenticated = await verifyAdminAuth();
+    if (!isAuthenticated) {
+      return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
+    }
+    
     const data = await request.json();
     
     // Validate required fields
@@ -89,6 +114,12 @@ export async function POST(request: NextRequest) {
 // PUT: Update a location (primarily for status changes)
 export async function PUT(request: NextRequest) {
   try {
+    // Verify admin authentication
+    const isAuthenticated = await verifyAdminAuth();
+    if (!isAuthenticated) {
+      return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
+    }
+    
     const data = await request.json();
     
     // Validate required fields
@@ -138,6 +169,12 @@ export async function PUT(request: NextRequest) {
 // DELETE: Remove a location
 export async function DELETE(request: NextRequest) {
   try {
+    // Verify admin authentication
+    const isAuthenticated = await verifyAdminAuth();
+    if (!isAuthenticated) {
+      return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
+    }
+    
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
     
