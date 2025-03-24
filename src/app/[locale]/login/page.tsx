@@ -1,8 +1,7 @@
 // src/app/[locale]/login/page.tsx
 'use client';
 
-import React, { useState } from 'react';
-import { signIn } from 'next-auth/react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
@@ -11,6 +10,14 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
+  // Check if already logged in on component mount
+  useEffect(() => {
+    const token = localStorage.getItem('admin_token');
+    if (token) {
+      router.push('/geo-admin');
+    }
+  }, [router]);
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,51 +25,29 @@ export default function LoginPage() {
     setIsLoading(true);
   
     try {
-      // First try using NextAuth
-      const result = await signIn('credentials', {
-        redirect: false,
-        email,
-        password,
-      });
-      
-      // If successful, redirect to admin page
-      if (!result?.error) {
+      // Hard-coded check for admin credentials
+      // In a real application, these would be securely verified on the server
+      if (email === "kprijun@gmail.com" && password === "nepal123") {
+        // Generate a simple token (insecure but works for demo)
+        const token = btoa(`${email}:${new Date().getTime()}`);
+        
+        // Store auth information in localStorage
+        localStorage.setItem('admin_token', token);
+        localStorage.setItem('admin_user', JSON.stringify({
+          id: 'admin-user',
+          email,
+          name: 'Admin',
+          role: 'admin'
+        }));
+        
+        // Redirect to admin page
         router.push('/geo-admin');
-        router.refresh();
         return;
       }
       
-      // If NextAuth fails, try fallback authentication
-      try {
-        const fallbackResponse = await fetch('/api/admin/fallback-auth', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
-        
-        const fallbackData = await fallbackResponse.json();
-        
-        if (fallbackResponse.ok && fallbackData.success) {
-          // Store the token in localStorage
-          localStorage.setItem('admin_token', fallbackData.accessToken);
-          localStorage.setItem('admin_user', JSON.stringify(fallbackData.user));
-          
-          // Redirect to admin page
-          router.push('/geo-admin');
-          router.refresh();
-          return;
-        }
-        
-        // If fallback also fails, show error
-        setError('Invalid email or password');
-        setIsLoading(false);
-      } catch (fallbackError) {
-        console.error('Fallback auth error:', fallbackError);
-        setError('Authentication failed. Please try again.');
-        setIsLoading(false);
-      }
+      // If credentials don't match
+      setError('Invalid email or password');
+      setIsLoading(false);
     } catch (error) {
       console.error('Login error:', error);
       setError('An error occurred during login. Please try again.');

@@ -3,14 +3,6 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
-
-declare module 'next-auth' {
-  interface Session {
-    accessToken?: string;
-    role?: string;
-  }
-}
 
 interface Location {
   id: string;
@@ -24,181 +16,88 @@ interface Location {
   reviewedAt?: string;
 }
 
-export default function GeoAdminPage() {
+export default function PublicGeoAdminPage() {
   const [locations, setLocations] = useState<Location[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'pending' | 'approved' | 'rejected'>('pending');
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [usingFallbackAuth, setUsingFallbackAuth] = useState(false);
+  const [isUsingFallbackData, setIsUsingFallbackData] = useState(false);
   
   const router = useRouter();
-  const { data: session, status: authStatus } = useSession();
 
-  // Check if we're authenticated with fallback method
+  // Load locations on component mount
   useEffect(() => {
-    const token = localStorage.getItem('admin_token');
-    const user = localStorage.getItem('admin_user');
-    
-    if (token && user) {
-      try {
-        const parsedUser = JSON.parse(user);
-        if (parsedUser.role === 'admin') {
-          setUsingFallbackAuth(true);
-        }
-      } catch (e) {
-        console.error('Error parsing user from localStorage:', e);
-      }
-    }
+    fetchLocations();
   }, []);
-
-  // Combined authentication check
-  const isAuthenticated = (authStatus === 'authenticated' && session?.role === 'admin') || usingFallbackAuth;
 
   // Fetch locations based on active tab
   const fetchLocations = async () => {
-    if (!isAuthenticated) return;
-
     setLoading(true);
     setError(null);
+    setIsUsingFallbackData(false);
 
     try {
-      // Prepare headers based on authentication method
-      const headers: Record<string, string> = {
-        'Content-Type': 'application/json'
-      };
-      
-      if (session?.accessToken) {
-        headers['Authorization'] = `Bearer ${session.accessToken}`;
-      } else if (usingFallbackAuth) {
-        const token = localStorage.getItem('admin_token');
-        if (token) {
-          headers['Authorization'] = `Bearer ${token}`;
-        }
-      }
-      
-      // Mock data for fallback when in development or using fallback auth
-      if (process.env.NODE_ENV === 'development' || usingFallbackAuth) {
-        // Return mock data after a short delay to simulate API call
-        setTimeout(() => {
-          const mockLocations: Location[] = [
-            {
-              id: '1',
-              name: 'Pokhara Lakeside',
-              lat: 28.2090,
-              lng: 83.9550,
-              imageUrl: '/images/geo-nepal/pokhara.jpg',
-              funFact: 'Phewa Lake is beautiful.',
-              status: activeTab as 'pending' | 'approved' | 'rejected',
-              submittedAt: new Date().toISOString()
-            },
-            {
-              id: '2',
-              name: 'Kathmandu Durbar Square',
-              lat: 27.7042,
-              lng: 85.3076,
-              imageUrl: '/images/geo-nepal/kathmandu.jpg',
-              funFact: 'Historic site with temples.',
-              status: activeTab as 'pending' | 'approved' | 'rejected',
-              submittedAt: new Date().toISOString()
-            }
-          ];
-          
-          setLocations(mockLocations);
-          setLoading(false);
-        }, 700);
-        
-        return;
-      }
-
-      // Real API call if not using fallback
+      // Real API call to get locations
       const response = await fetch(`/api/geo-admin/locations?status=${activeTab}`, {
-        headers
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
       
-      if (!response.ok) {
-        throw new Error(`Failed to fetch locations: ${response.status}`);
-      }
-
       const data = await response.json();
-      setLocations(data.locations || []);
+      
+      if (data.error && data.locations) {
+        // Using fallback data
+        setIsUsingFallbackData(true);
+        setLocations(data.locations);
+      } else if (response.ok) {
+        // Using real data
+        setLocations(data.locations || []);
+      } else {
+        throw new Error(data.error || 'Failed to fetch locations');
+      }
     } catch (err) {
       console.error('Fetch error:', err);
-      setError('Failed to fetch locations');
+      setError('Failed to fetch locations. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
-  // Handle session check and fetch locations if authenticated
-  useEffect(() => {
-    if (!isAuthenticated && authStatus === 'unauthenticated' && !usingFallbackAuth) {
-      router.push('/login');
-      return;
-    }
-    
-    if (isAuthenticated) {
-      fetchLocations();
-    }
-  }, [isAuthenticated, authStatus, usingFallbackAuth, router]);
-
   // Re-fetch locations when tab changes
   useEffect(() => {
-    if (isAuthenticated) {
-      fetchLocations();
-    }
-  }, [activeTab, isAuthenticated]);
+    fetchLocations();
+  }, [activeTab]);
 
   // Update location status
   const updateLocationStatus = async (id: string, newStatus: 'approved' | 'rejected') => {
     try {
       setLoading(true);
       
-      // Prepare headers based on authentication method
-      const headers: Record<string, string> = {
-        'Content-Type': 'application/json'
-      };
-      
-      if (session?.accessToken) {
-        headers['Authorization'] = `Bearer ${session.accessToken}`;
-      } else if (usingFallbackAuth) {
-        const token = localStorage.getItem('admin_token');
-        if (token) {
-          headers['Authorization'] = `Bearer ${token}`;
-        }
-      }
-      
-      // If using fallback in development, just simulate API call
-      if (process.env.NODE_ENV === 'development' || usingFallbackAuth) {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // Remove the location from the current view
-        setLocations(prev => prev.filter(loc => loc.id !== id));
-        setLoading(false);
-        return;
-      }
-      
-      // Real API call
+      // Real API call to update location
       const response = await fetch('/api/geo-admin/locations', {
         method: 'PUT',
-        headers,
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({ id, status: newStatus }),
       });
       
-      if (!response.ok) {
-        const errorData = await response.text();
-        throw new Error(`Failed to update location: ${response.status} ${errorData}`);
+      const data = await response.json();
+      
+      if (response.ok || data.success) {
+        // Remove the location from the current view
+        setLocations(prev => prev.filter(loc => loc.id !== id));
+      } else {
+        throw new Error(data.error || 'Failed to update location');
       }
-      
-      // Remove the location from the current view
-      setLocations(prev => prev.filter(loc => loc.id !== id));
-      setLoading(false);
-      
     } catch (err) {
       console.error('Error updating location:', err);
-      setError('Failed to update location status');
+      setError('Failed to update location status. Please try again.');
+    } finally {
       setLoading(false);
     }
   };
@@ -212,36 +111,26 @@ export default function GeoAdminPage() {
     try {
       setLoading(true);
       
-      // If using fallback in development, just simulate API call
-      if (process.env.NODE_ENV === 'development' || usingFallbackAuth) {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // Remove from the list
-        setLocations(prev => prev.filter(loc => loc.id !== id));
-        setLoading(false);
-        return;
-      }
-      
-      // Real API call
+      // Real API call to delete location
       const response = await fetch(`/api/geo-admin/locations?id=${id}`, {
         method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${session?.accessToken || localStorage.getItem('admin_token') || ''}`
+          'Content-Type': 'application/json'
         }
       });
       
-      if (!response.ok) {
-        throw new Error(`Failed to delete location: ${response.status}`);
+      const data = await response.json();
+      
+      if (response.ok || data.success) {
+        // Remove from the list
+        setLocations(prev => prev.filter(loc => loc.id !== id));
+      } else {
+        throw new Error(data.error || 'Failed to delete location');
       }
-      
-      // Remove from the list
-      setLocations(prev => prev.filter(loc => loc.id !== id));
-      setLoading(false);
-      
     } catch (err) {
       console.error('Error deleting location:', err);
-      setError('Failed to delete location');
+      setError('Failed to delete location. Please try again.');
+    } finally {
       setLoading(false);
     }
   };
@@ -258,45 +147,26 @@ export default function GeoAdminPage() {
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
   };
 
-  // Display loading state while checking authentication
-  if (authStatus === 'loading' && !usingFallbackAuth) {
-    return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
-
-  // Ensure user is authenticated before displaying the page
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-md p-8 max-w-md">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">Access Denied</h1>
-          <p className="text-gray-700 mb-4">
-            You do not have permission to access this page. This area is restricted to administrators only.
-          </p>
-          <button
-            onClick={() => router.push('/')}
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-          >
-            Return to Homepage
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-gray-100 py-8">
       <div className="container mx-auto px-4">
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <header className="bg-blue-600 text-white p-4">
-            <h1 className="text-2xl font-bold">Nepal Geo Explorer Admin</h1>
-            <p>Manage location submissions</p>
-            {usingFallbackAuth && (
+            <div className="flex justify-between items-center">
+              <div>
+                <h1 className="text-2xl font-bold">Nepal Geo Explorer Admin</h1>
+                <p>Manage location submissions</p>
+              </div>
+              <a 
+                href="/"
+                className="bg-white hover:bg-gray-100 text-blue-600 px-4 py-2 rounded transition-colors"
+              >
+                Back to Home
+              </a>
+            </div>
+            {isUsingFallbackData && (
               <div className="mt-2 text-xs bg-yellow-500 text-white px-2 py-1 rounded inline-block">
-                Using fallback authentication
+                Database connection issue - using sample data
               </div>
             )}
           </header>
@@ -340,7 +210,7 @@ export default function GeoAdminPage() {
               <div className="bg-red-100 text-red-700 p-4 rounded">
                 <p>{error}</p>
                 <button 
-                  onClick={() => window.location.reload()}
+                  onClick={() => fetchLocations()}
                   className="mt-2 text-sm underline"
                 >
                   Try again
