@@ -4,7 +4,7 @@ import clientPromise from '../../../lib/mongodb';
 import { MongoLocation, formatLocation } from '../../../lib/locationSchema';
 import { ObjectId } from 'mongodb';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../../auth/[...nextauth]/route';
+import { authOptions } from '../../auth/authOptions';
 
 // Helper function to verify admin authentication
 async function verifyAdminAuth() {
