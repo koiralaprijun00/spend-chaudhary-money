@@ -1,9 +1,12 @@
 // src/app/api/auth/authOptions.ts
-import { NextAuthOptions, User } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import jwt from "jsonwebtoken";
+import { NextAuthOptions, User } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import jwt from 'jsonwebtoken';
+import { MongoClient } from 'mongodb';
 
-declare module "next-auth" {
+const MONGO_URI = process.env.MONGODB_URI; 
+
+declare module 'next-auth' {
   interface User {
     accessToken?: string;
     role?: string;
@@ -15,12 +18,11 @@ declare module "next-auth" {
   }
 }
 
-// Configure NextAuth options
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   cookies: {
     sessionToken: {
-      name: `next-auth.session-token`,
+      name: 'next-auth.session-token',
       options: {
         httpOnly: true,
         sameSite: 'lax',
@@ -30,15 +32,15 @@ export const authOptions: NextAuthOptions = {
     },
   },
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
       },
 
       async authorize(credentials): Promise<User | null> {
@@ -47,44 +49,43 @@ export const authOptions: NextAuthOptions = {
         }
 
         try {
-          // Try fallback authentication for admins in production
-          // This will bypass the MongoDB connection issue
-          if (
-            process.env.NODE_ENV === 'production' && 
-            credentials.email === process.env.ADMIN_EMAIL &&
-            credentials.password === process.env.ADMIN_PASSWORD
-          ) {
-            console.log('Using fallback admin authentication');
+          const client = new MongoClient(MONGO_URI!);
+          await client.connect();
+          const db = client.db('geo-nepal');
+          const usersCollection = db.collection('users');
+
+          const user = await usersCollection.findOne({ email: credentials.email });
+
+          if (user && user.password === credentials.password) {
+            const accessToken = jwt.sign(
+              { id: user._id, email: user.email, role: user.role },
+              process.env.JWT_SECRET || 'default_secret_key',
+              { expiresIn: '30d' }
+            );
             return {
-              id: 'admin-fallback',
-              email: credentials.email,
-              name: 'Admin',
-              role: 'admin',
-              accessToken: jwt.sign(
-                { id: 'admin-fallback', email: credentials.email, role: 'admin' },
-                process.env.JWT_SECRET || "default_secret_key",
-                { expiresIn: "30d" }
-              )
+              id: user._id.toString(),
+              email: user.email,
+              name: user.name,
+              role: user.role,
+              accessToken,
             };
           }
-          
-          // If not admin or not in production, return null
           return null;
         } catch (error) {
-          console.error("Auth error:", error);
+          console.error('Authentication error:', error);
           return null;
         }
-      }
-    })
+      },
+    }),
   ],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.accessToken = user.accessToken;
         token.role = user.role;
-        console.log('Setting JWT token data:', { 
-          accessToken: token.accessToken ? '[present]' : '[missing]', 
-          role: token.role 
+        console.log('Setting JWT token data:', {
+          accessToken: token.accessToken ? '[present]' : '[missing]',
+          role: token.role,
         });
       }
       return token;
@@ -92,15 +93,15 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       session.accessToken = token.accessToken as string;
       session.role = token.role as string;
-      console.log('Setting session data:', { 
-        accessToken: session.accessToken ? '[present]' : '[missing]', 
-        role: session.role 
+      console.log('Setting session data:', {
+        accessToken: session.accessToken ? '[present]' : '[missing]',
+        role: session.role,
       });
       return session;
     },
   },
   pages: {
-    signIn: "/login",
-    error: "/error"
-  }
+    signIn: '/login',
+    error: '/error', // Optional, you can set a custom error page
+  },
 };

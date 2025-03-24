@@ -1,4 +1,3 @@
-// In src/app/api/geo-admin/locations/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '../../../lib/mongodb';
 import { MongoLocation, formatLocation } from '../../../lib/locationSchema';
@@ -112,7 +111,6 @@ export async function GET(request: NextRequest) {
 }
 
 
-// In src/app/api/geo-admin/locations/route.ts
 // PUT: Update a location (primarily for status changes)
 export async function PUT(request: NextRequest) {
   try {
@@ -137,11 +135,11 @@ export async function PUT(request: NextRequest) {
     const db = client.db('geo-nepal');
     const locationsCollection = db.collection<MongoLocation>('locations');
     
-     // Use the safe ObjectId conversion
-     const objectId = safeObjectId(data.id);
-     if (!objectId) {
-       return NextResponse.json({ error: 'Invalid location ID format' }, { status: 400 });
-     }
+    // Use the safe ObjectId conversion
+    const objectId = safeObjectId(data.id);
+    if (!objectId) {
+      return NextResponse.json({ error: 'Invalid location ID format' }, { status: 400 });
+    }
     
     // Prepare update data (removing id field which is not in our MongoDB schema)
     const { id, ...updateData } = data;
@@ -154,23 +152,27 @@ export async function PUT(request: NextRequest) {
     console.log('Updating location with ID:', objectId, 'Update data:', updateData);
     
     // Update the location
-const result = await locationsCollection.findOneAndUpdate(
-  { _id: objectId },
-  { $set: updateData },
-  { returnDocument: 'after' }
-);
+    const updateResult = await locationsCollection.updateOne(
+      { _id: objectId },
+      { $set: updateData }
+    );
 
-// Handle null result differently
-if (!result) {
-  console.log('No document found for update with ID:', objectId);
-  return NextResponse.json({ error: 'Location not found' }, { status: 404 });
-}
+    if (updateResult.matchedCount === 0) {
+      console.log('No document found for update with ID:', objectId);
+      return NextResponse.json({ error: 'Location not found' }, { status: 404 });
+    }
 
-// Return the updated document
-return NextResponse.json({ 
-  location: formatLocation(result),
-  success: true 
-});
+    const updatedLocation = await locationsCollection.findOne({ _id: objectId });
+    if (!updatedLocation) {
+      console.log('No document found after update with ID:', objectId);
+      return NextResponse.json({ error: 'Location not found' }, { status: 404 });
+    }
+
+    // Return the updated document
+    return NextResponse.json({ 
+      location: formatLocation(updatedLocation),
+      success: true 
+    });
   } catch (error) {
     console.error('Error in PUT location:', error);
     return NextResponse.json({ error: 'Internal server error', details: error instanceof Error ? error.message : String(error) }, { status: 500 });
