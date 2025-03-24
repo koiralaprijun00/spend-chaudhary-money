@@ -46,31 +46,32 @@ export default function GeoAdminPage() {
   }, [session]);
 
   // Fetch locations based on active tab
-  const fetchLocations = async () => {
-    if (authStatus !== 'authenticated') return;
-  
-    setLoading(true);
-    setError(null);
-  
-    try {
-      const response = await fetch('/api/geo-admin/locations', {
-        headers: {
-          'Authorization': `Bearer ${session?.accessToken}`,
-        },
-      });
-  
-      if (!response.ok) {
-        throw new Error(`Failed to fetch locations: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      setLocations(data.locations || []);
-    } catch (err) {
-      setError('Failed to fetch locations');
-    } finally {
-      setLoading(false);
+const fetchLocations = async () => {
+  if (authStatus !== 'authenticated') return;
+
+  setLoading(true);
+  setError(null);
+
+  try {
+    const response = await fetch(`/api/geo-admin/locations?status=${activeTab}`, {
+      headers: {
+        'Authorization': `Bearer ${session?.accessToken}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch locations: ${response.status}`);
     }
-  };
+
+    const data = await response.json();
+    setLocations(data.locations || []);
+  } catch (err) {
+    setError('Failed to fetch locations');
+    console.error('Error fetching locations:', err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => {
     if (authStatus === 'unauthenticated') {
@@ -85,60 +86,91 @@ export default function GeoAdminPage() {
   }, [authStatus, session, activeTab]);
 
   // Update location status
-  const updateLocationStatus = async (id: string, newStatus: 'approved' | 'rejected') => {
-    try {
-      setLoading(true);
-      const response = await fetch('/api/geo-admin/locations', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session?.accessToken}`, // Make sure to include the token
-        },
-        body: JSON.stringify({ id, status: newStatus }),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`Failed to update location: ${response.status}`);
-      }
-  
-      setLocations(prev => prev.filter(loc => loc.id !== id));
-      setLoading(false);
-    } catch (err) {
-      console.error('Error updating location:', err);
-      setError('Failed to update location status');
-      setLoading(false);
+  // Update location status
+const updateLocationStatus = async (id: string, newStatus: 'approved' | 'rejected') => {
+  try {
+    setLoading(true);
+    const response = await fetch('/api/geo-admin/locations', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${session?.accessToken}`,
+      },
+      body: JSON.stringify({ id, status: newStatus }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to update location: ${response.status}`);
     }
-  };  
+
+    // Update the local state after approval/rejection
+    setLocations(prevLocations => {
+      // Find the location to update
+      const locationToUpdate = prevLocations.find(loc => loc.id === id);
+      
+      // If the location wasn't found, return unchanged list
+      if (!locationToUpdate) return prevLocations;
+      
+      // If we're in the pending tab and updating status, we want to remove it from view
+      if (activeTab === 'pending') {
+        return prevLocations.filter(loc => loc.id !== id);
+      } 
+      // If we're in the target status tab (approved/rejected), update it in place
+      else if (
+        (activeTab === 'approved' && newStatus === 'approved') || 
+        (activeTab === 'rejected' && newStatus === 'rejected')
+      ) {
+        return prevLocations.map(loc => 
+          loc.id === id ? { ...loc, status: newStatus } : loc
+        );
+      }
+      // If we're in a different tab than the new status, remove it from this tab's view
+      else {
+        return prevLocations.filter(loc => loc.id !== id);
+      }
+    });
+
+    setLoading(false);
+  } catch (err) {
+    console.error('Error updating location:', err);
+    setError('Failed to update location status');
+    setLoading(false);
+  }
+};
+  
+  
 
   // Delete a location
-  const deleteLocation = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this location?')) {
-      return;
+  // Delete a location
+const deleteLocation = async (id: string) => {
+  if (!confirm('Are you sure you want to delete this location?')) {
+    return;
+  }
+
+  try {
+    setLoading(true);
+    const response = await fetch(`/api/geo-admin/locations?id=${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${session?.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete location: ${response.status}`);
     }
-  
-    try {
-      setLoading(true);
-      const response = await fetch(`/api/geo-admin/locations?id=${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${session?.accessToken}`, // Include access token
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (!response.ok) {
-        throw new Error(`Failed to delete location: ${response.status}`);
-      }
-  
-      setLocations(prev => prev.filter(loc => loc.id !== id));
-      setLoading(false);
-  
-    } catch (err) {
-      console.error('Error deleting location:', err);
-      setError('Failed to delete location');
-      setLoading(false);
-    }
-  };
+
+    // Update the UI state by removing the deleted location
+    setLocations(prevLocations => prevLocations.filter(location => location.id !== id));
+    
+    setLoading(false);
+  } catch (err) {
+    console.error('Error deleting location:', err);
+    setError('Failed to delete location');
+    setLoading(false);
+  }
+};
   
 
   // View location details

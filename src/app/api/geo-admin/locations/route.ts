@@ -178,3 +178,48 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: 'Internal server error', details: error instanceof Error ? error.message : String(error) }, { status: 500 });
   }
 }
+
+
+// DELETE: Delete a location
+export async function DELETE(request: NextRequest) {
+  try {
+    // Verify admin authentication
+    const isAuthenticated = await verifyAdminAuth(request);
+    
+    if (!isAuthenticated) {
+      console.log('Authentication failed for DELETE request');
+      return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
+    }
+
+    // Get location ID from the query parameters
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json({ error: 'Location ID is required' }, { status: 400 });
+    }
+
+    // Convert ID to ObjectId
+    const objectId = safeObjectId(id);
+    if (!objectId) {
+      return NextResponse.json({ error: 'Invalid location ID format' }, { status: 400 });
+    }
+
+    // Connect to MongoDB and delete the location
+    const client = await clientPromise;
+    const db = client.db('geo-nepal');
+    const locationsCollection = db.collection<MongoLocation>('locations');
+
+    const result = await locationsCollection.deleteOne({ _id: objectId });
+
+    // If the location does not exist
+    if (result.deletedCount === 0) {
+      return NextResponse.json({ error: 'Location not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: 'Location deleted successfully' });
+  } catch (error) {
+    console.error('Error in DELETE location:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
