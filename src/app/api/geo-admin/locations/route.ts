@@ -5,6 +5,16 @@ import { MongoLocation, formatLocation } from '../../../lib/locationSchema';
 import { ObjectId } from 'mongodb';
 import jwt from 'jsonwebtoken';
 
+// Helper function to safely convert string to ObjectId
+function safeObjectId(id: string): ObjectId | null {
+  try {
+    return new ObjectId(id);
+  } catch (error) {
+    console.error('Invalid ObjectId:', id, error);
+    return null;
+  }
+}
+
 // Helper function to verify admin authentication
 async function verifyAdminAuth(request: NextRequest) {
   try {
@@ -127,14 +137,11 @@ export async function PUT(request: NextRequest) {
     const db = client.db('geo-nepal');
     const locationsCollection = db.collection<MongoLocation>('locations');
     
-    // Convert string ID to ObjectId
-    let objectId;
-    try {
-      objectId = new ObjectId(data.id);
-    } catch (error) {
-      console.error('Invalid ObjectId format:', data.id, error);
-      return NextResponse.json({ error: 'Invalid location ID format' }, { status: 400 });
-    }
+     // Use the safe ObjectId conversion
+     const objectId = safeObjectId(data.id);
+     if (!objectId) {
+       return NextResponse.json({ error: 'Invalid location ID format' }, { status: 400 });
+     }
     
     // Prepare update data (removing id field which is not in our MongoDB schema)
     const { id, ...updateData } = data;
