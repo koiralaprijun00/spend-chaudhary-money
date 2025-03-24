@@ -2,7 +2,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
-import { getFestivalContent } from '../../../lib/festival-content';
+import { getFestivalContent } from '../../../../lib/festival-content';
 
 interface FestivalContent {
   slug: string;
