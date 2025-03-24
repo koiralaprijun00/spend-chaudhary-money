@@ -1,118 +1,86 @@
-// src/app/[locale]/login/page.tsx
-'use client';
+// src/app/login/page.tsx
+'use client'
 
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  // Check if already logged in on component mount
-  useEffect(() => {
-    const token = localStorage.getItem('admin_token');
-    if (token) {
-      router.push('/geo-admin');
-    }
-  }, [router]);
-  
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    setIsLoading(true);
-  
-    try {
-      // Hard-coded check for admin credentials
-      // In a real application, these would be securely verified on the server
-      if (email === "kprijun@gmail.com" && password === "nepal123") {
-        // Generate a simple token (insecure but works for demo)
-        const token = btoa(`${email}:${new Date().getTime()}`);
-        
-        // Store auth information in localStorage
-        localStorage.setItem('admin_token', token);
-        localStorage.setItem('admin_user', JSON.stringify({
-          id: 'admin-user',
-          email,
-          name: 'Admin',
-          role: 'admin'
-        }));
-        
-        // Redirect to admin page
-        router.push('/geo-admin');
-        return;
-      }
-      
-      // If credentials don't match
+    setError(null);
+    setLoading(true);
+
+    // Trigger next-auth signIn method
+    const res = await signIn('credentials', {
+      redirect: false,
+      email,
+      password,
+    });
+
+    setLoading(false);
+
+    if (res?.error) {
       setError('Invalid email or password');
-      setIsLoading(false);
-    } catch (error) {
-      console.error('Login error:', error);
-      setError('An error occurred during login. Please try again.');
-      setIsLoading(false);
+    } else {
+      // Redirect to geo-admin page upon successful login
+      router.push('/geo-admin');
     }
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold">Geo Nepal Admin Login</h1>
-          <p className="mt-2 text-gray-600">Please sign in to access the admin area</p>
-        </div>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+        <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
         
-        {error && (
-          <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg">
-            {error}
-          </div>
-        )}
-        
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
+        {error && <div className="text-red-600 text-center mb-4">{error}</div>}
+
+        <form onSubmit={handleLogin}>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
             <input
+              type="email"
               id="email"
               name="email"
-              type="email"
-              required
-              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
-          
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
+
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
             <input
+              type="password"
               id="password"
               name="password"
-              type="password"
-              required
-              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
-          
-          <div>
+
+          <div className="flex items-center justify-between">
             <button
               type="submit"
-              disabled={isLoading}
-              className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed"
+              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              disabled={loading}
             >
-              {isLoading ? 'Signing in...' : 'Sign in'}
+              {loading ? 'Logging in...' : 'Login'}
             </button>
           </div>
         </form>
-        
-        <div className="text-center text-sm text-gray-500 mt-4">
-          <p>If you continue to experience issues, please contact the site administrator.</p>
+
+        <div className="mt-4 text-center">
+          <p className="text-sm text-gray-600">Don't have an account? <a href="/signup" className="text-blue-600 hover:underline">Sign up</a></p>
         </div>
       </div>
     </div>

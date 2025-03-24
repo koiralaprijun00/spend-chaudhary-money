@@ -1,8 +1,14 @@
-// src/app/[locale]/geo-admin/page.tsx
 'use client'
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+
+declare module 'next-auth' {
+  interface Session {
+    accessToken?: string;
+  }
+}
 
 interface Location {
   id: string;
@@ -16,88 +22,87 @@ interface Location {
   reviewedAt?: string;
 }
 
-export default function PublicGeoAdminPage() {
+export default function GeoAdminPage() {
   const [locations, setLocations] = useState<Location[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'pending' | 'approved' | 'rejected'>('pending');
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isUsingFallbackData, setIsUsingFallbackData] = useState(false);
   
   const router = useRouter();
-
-  // Load locations on component mount
-  useEffect(() => {
-    fetchLocations();
-  }, []);
+  const { data: session, status: authStatus } = useSession();
 
   // Fetch locations based on active tab
   const fetchLocations = async () => {
+    if (authStatus !== 'authenticated') return;
+
     setLoading(true);
     setError(null);
-    setIsUsingFallbackData(false);
 
     try {
-      // Real API call to get locations
       const response = await fetch(`/api/geo-admin/locations?status=${activeTab}`, {
-        method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Authorization': `Bearer ${session?.accessToken}`,
+        },
       });
-      
-      const data = await response.json();
-      
-      if (data.error && data.locations) {
-        // Using fallback data
-        setIsUsingFallbackData(true);
-        setLocations(data.locations);
-      } else if (response.ok) {
-        // Using real data
-        setLocations(data.locations || []);
-      } else {
-        throw new Error(data.error || 'Failed to fetch locations');
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch locations: ${response.status}`);
       }
+
+      const data = await response.json();
+      setLocations(data.locations || []);
     } catch (err) {
-      console.error('Fetch error:', err);
-      setError('Failed to fetch locations. Please try again.');
+      setError('Failed to fetch locations');
     } finally {
       setLoading(false);
     }
   };
 
-  // Re-fetch locations when tab changes
   useEffect(() => {
-    fetchLocations();
-  }, [activeTab]);
+    console.log("Session in geo-admin page:", session);
+    console.log("User role:", session?.user?.role);
+  }, [session]);
+
+  useEffect(() => {
+    if (authStatus === 'unauthenticated') {
+      router.push('/login');
+      return;
+    }
+    if (authStatus === 'authenticated' && session?.user?.role === 'admin') {
+      fetchLocations();
+    }
+  }, [authStatus, session, router]);
+
+  useEffect(() => {
+    if (authStatus === 'authenticated' && session?.user?.role === 'admin') {
+      fetchLocations();
+    }
+  }, [activeTab, authStatus]);
 
   // Update location status
   const updateLocationStatus = async (id: string, newStatus: 'approved' | 'rejected') => {
     try {
       setLoading(true);
-      
-      // Real API call to update location
       const response = await fetch('/api/geo-admin/locations', {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ id, status: newStatus }),
       });
       
-      const data = await response.json();
-      
-      if (response.ok || data.success) {
-        // Remove the location from the current view
-        setLocations(prev => prev.filter(loc => loc.id !== id));
-      } else {
-        throw new Error(data.error || 'Failed to update location');
+      if (!response.ok) {
+        throw new Error(`Failed to update location: ${response.status}`);
       }
+
+      setLocations(prev => prev.filter(loc => loc.id !== id));
+      setLoading(false);
+      
     } catch (err) {
       console.error('Error updating location:', err);
-      setError('Failed to update location status. Please try again.');
-    } finally {
+      setError('Failed to update location status');
       setLoading(false);
     }
   };
@@ -110,27 +115,20 @@ export default function PublicGeoAdminPage() {
     
     try {
       setLoading(true);
-      
-      // Real API call to delete location
       const response = await fetch(`/api/geo-admin/locations?id=${id}`, {
         method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        }
       });
       
-      const data = await response.json();
-      
-      if (response.ok || data.success) {
-        // Remove from the list
-        setLocations(prev => prev.filter(loc => loc.id !== id));
-      } else {
-        throw new Error(data.error || 'Failed to delete location');
+      if (!response.ok) {
+        throw new Error(`Failed to delete location: ${response.status}`);
       }
+      
+      setLocations(prev => prev.filter(loc => loc.id !== id));
+      setLoading(false);
+      
     } catch (err) {
       console.error('Error deleting location:', err);
-      setError('Failed to delete location. Please try again.');
-    } finally {
+      setError('Failed to delete location');
       setLoading(false);
     }
   };
@@ -147,28 +145,40 @@ export default function PublicGeoAdminPage() {
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
   };
 
+  if (authStatus === 'loading') {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
+
+  if (!session?.user?.role || session?.user?.role !== 'admin') {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="bg-white rounded-lg shadow-md p-8 max-w-md">
+          <h1 className="text-2xl font-bold text-red-600 mb-4">Access Denied</h1>
+          <p className="text-gray-700 mb-4">
+            You do not have permission to access this page. This area is restricted to administrators only.
+          </p>
+          <button
+            onClick={() => router.push('/')}
+            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          >
+            Return to Homepage
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-100 py-8">
       <div className="container mx-auto px-4">
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <header className="bg-blue-600 text-white p-4">
-            <div className="flex justify-between items-center">
-              <div>
-                <h1 className="text-2xl font-bold">Nepal Geo Explorer Admin</h1>
-                <p>Manage location submissions</p>
-              </div>
-              <a 
-                href="/"
-                className="bg-white hover:bg-gray-100 text-blue-600 px-4 py-2 rounded transition-colors"
-              >
-                Back to Home
-              </a>
-            </div>
-            {isUsingFallbackData && (
-              <div className="mt-2 text-xs bg-yellow-500 text-white px-2 py-1 rounded inline-block">
-                Database connection issue - using sample data
-              </div>
-            )}
+            <h1 className="text-2xl font-bold">Nepal Geo Explorer Admin</h1>
+            <p>Manage location submissions</p>
           </header>
           
           {/* Tab Navigation */}
@@ -210,7 +220,7 @@ export default function PublicGeoAdminPage() {
               <div className="bg-red-100 text-red-700 p-4 rounded">
                 <p>{error}</p>
                 <button 
-                  onClick={() => fetchLocations()}
+                  onClick={() => window.location.reload()}
                   className="mt-2 text-sm underline"
                 >
                   Try again
