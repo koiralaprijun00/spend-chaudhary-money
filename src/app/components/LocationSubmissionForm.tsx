@@ -180,8 +180,7 @@ export default function LocationSubmissionForm({ onCancel }: SubmissionProps) {
         });
   
         const uploadResult = await uploadResponse.json();
-        console.log('Upload Response:', { status: uploadResponse.status, body: uploadResult });
-  
+        
         if (!uploadResponse.ok) {
           // Safely access the error message from uploadResult
           const errorMessage = uploadResult && typeof uploadResult === 'object' && uploadResult.error 
@@ -189,7 +188,6 @@ export default function LocationSubmissionForm({ onCancel }: SubmissionProps) {
             : 'Failed to upload image';
           throw new Error(errorMessage);
         }
-  
         imageUrl = uploadResult.imageUrl;
       }
   
@@ -211,8 +209,7 @@ export default function LocationSubmissionForm({ onCancel }: SubmissionProps) {
       });
   
       const responseData = await response.json();
-      console.log('Location Submission Response:', { status: response.status, body: responseData });
-  
+      
       if (!response.ok) {
         // Safely access the error message from responseData
         const errorMessage = responseData && typeof responseData === 'object' && responseData.error 
@@ -220,7 +217,6 @@ export default function LocationSubmissionForm({ onCancel }: SubmissionProps) {
           : 'Failed to submit location';
         throw new Error(errorMessage);
       }
-  
       // Show success message and redirect
       alert('Location submitted successfully! It will be reviewed by our team.');
       router.push('/geo-nepal');

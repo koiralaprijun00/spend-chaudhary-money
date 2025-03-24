@@ -12,20 +12,12 @@ export default function LoginPage() {
   const router = useRouter();
 
 
-  // Add this near the top of your login component
-useEffect(() => {
-    console.log("Login page mounted");
-    
-    // Check if there's a stored token in localStorage
-    const token = localStorage.getItem('next-auth.token');
-    console.log("Stored token:", token);
-  }, []);
+
   
   // And add this to your login form submission handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    console.log("Attempting login with:", { email, password });
   
     try {
       const result = await signIn('credentials', {
@@ -34,7 +26,6 @@ useEffect(() => {
         password,
       });
   
-      console.log("Login result:", result);
   
       if (result?.error) {
         setError('Invalid email or password');

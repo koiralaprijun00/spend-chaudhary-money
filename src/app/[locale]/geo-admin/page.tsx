@@ -36,8 +36,6 @@ export default function GeoAdminPage() {
 
   // Debugging session role
   useEffect(() => {
-    // console.log("Session in geo-admin page:", session);
-    // console.log("User role 01:", session?.role);
   }, [session]);
 
   // Fetch locations based on active tab
@@ -53,9 +51,6 @@ export default function GeoAdminPage() {
           'Authorization': `Bearer ${session.accessToken}`,  // Ensure accessToken is included here
         },
       });
-
-      console.log('Session:', session);
-console.log('Access Token:', session?.accessToken); 
 
       if (!response.ok) {
         throw new Error(`Failed to fetch locations: ${response.status}`);
