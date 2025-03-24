@@ -46,31 +46,39 @@ export default function GeoNepalGame() {
 
   // Fetch locations on component mount
   useEffect(() => {
-    const fetchLocations = async () => {
-      try {
-        const response = await fetch('/api/geo-nepal/locations');
-        if (!response.ok) {
-          throw new Error(`Failed to fetch locations: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        setLocations(data.locations || []);
-        setBounds(data.bounds || NEPAL_BOUNDS);
-        
-        // If we got locations, initialize the game
-        if (data.locations && data.locations.length > 0) {
-          setGameState('playing');
-          selectRandomLocation(data.locations);
-        } else {
-          setError('No locations found. Please try again later.');
-          setGameState('playing'); // Show placeholder UI
-        }
-      } catch (error) {
-        console.error('Error fetching locations:', error);
-        setError('Failed to load game data. Please try again later.');
-        setGameState('playing'); // Show placeholder UI
-      }
-    };
+    // Modify the fetchLocations function
+const fetchLocations = async () => {
+  try {
+    // Add a timeout parameter to the fetch request
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+    
+    const response = await fetch('/api/geo-nepal/locations', {
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch locations: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    setLocations(data.locations || []);
+    setBounds(data.bounds || NEPAL_BOUNDS);
+    
+    if (data.locations && data.locations.length > 0) {
+      setGameState('playing');
+      selectRandomLocation(data.locations);
+    } else {
+      setError('No locations found. Please try again later.');
+      setGameState('playing'); // Show placeholder UI
+    }
+  } catch (error) {
+    console.error('Error fetching locations:', error);
+    setError('Failed to load game data. Please try again later.');
+    setGameState('playing'); // Show placeholder UI
+  }
+};
     
     fetchLocations();
   }, []);

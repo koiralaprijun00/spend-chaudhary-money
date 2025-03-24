@@ -4,15 +4,18 @@ import { MongoLocation, formatLocation } from './locationSchema';
 import { Location } from '../data/geo-nepal/geo-data';
 
 // Get all approved locations from MongoDB for the game
+// Optimize the getApprovedLocations function
 export async function getApprovedLocations(): Promise<Location[]> {
   try {
     const client = await clientPromise;
     const db = client.db('geo-nepal');
     const locationsCollection = db.collection<MongoLocation>('locations');
     
-    // Get only approved locations
+    // Limit the number of locations and select only necessary fields
     const approvedLocations = await locationsCollection
       .find({ status: 'approved' })
+      .project({ name: 1, lat: 1, lng: 1, imageUrl: 1, funFact: 1 })
+      .limit(20) // Limit to 20 locations to prevent timeouts
       .toArray();
     
     // Convert to the format expected by the game
