@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 
 interface Location {
@@ -25,9 +26,22 @@ export default function GeoAdminPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const router = useRouter();
+  const { data: session, status: authStatus } = useSession();
+
+  // Check authentication
+  useEffect(() => {
+    if (authStatus === 'unauthenticated') {
+      router.push('/login');
+    }
+  }, [authStatus, router]);
 
   // Fetch locations based on the active tab
   useEffect(() => {
+    // Only fetch data if authenticated
+    if (authStatus !== 'authenticated') {
+      return;
+    }
+
     const fetchLocations = async () => {
       setLoading(true);
       setError(null);
@@ -50,7 +64,7 @@ export default function GeoAdminPage() {
     };
     
     fetchLocations();
-  }, [activeTab]); // Re-fetch locations whenever the active tab changes
+  }, [activeTab, authStatus]); // Re-fetch when tab changes or auth status changes
 
   // Update location status
   const updateLocationStatus = async (id: string, newStatus: 'approved' | 'rejected') => {
@@ -117,6 +131,35 @@ export default function GeoAdminPage() {
     const date = new Date(dateString);
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
   };
+
+  // Display loading state while checking authentication
+  if (authStatus === 'loading') {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
+
+  // Check if user is authenticated and has admin role
+  if (!session?.user?.role || session.user.role !== 'admin') {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="bg-white rounded-lg shadow-md p-8 max-w-md">
+          <h1 className="text-2xl font-bold text-red-600 mb-4">Access Denied</h1>
+          <p className="text-gray-700 mb-4">
+            You do not have permission to access this page. This area is restricted to administrators only.
+          </p>
+          <button
+            onClick={() => router.push('/')}
+            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          >
+            Return to Homepage
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 py-8">
