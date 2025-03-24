@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 interface Location {
   id: string;
@@ -20,6 +21,8 @@ export default function GeoAdminPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'pending' | 'approved' | 'rejected'>('pending');
+  const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const router = useRouter();
 
@@ -30,7 +33,6 @@ export default function GeoAdminPage() {
       setError(null);
       
       try {
-        // Updated API path to match the delete operation pattern
         const response = await fetch(`/api/geo-admin/locations?status=${activeTab}`);
         
         if (!response.ok) {
@@ -48,34 +50,12 @@ export default function GeoAdminPage() {
     };
     
     fetchLocations();
-  }, [activeTab]); // Re-fetch locations whenever the active tab changes or on initial load
-
-  const handleLocationSubmit = async (newLocation: Location) => {
-    try {
-      const response = await fetch('/api/geo-admin/locations', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newLocation),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Failed to submit location');
-      }
-  
-      // Refresh the list of locations after a successful submission
-      setLocations(prevLocations => [...prevLocations, newLocation]);
-      alert('Location submitted successfully');
-    } catch (error) {
-      console.error('Error submitting location:', error);
-      alert('Failed to submit location');
-    }
-  };
+  }, [activeTab]); // Re-fetch locations whenever the active tab changes
 
   // Update location status
   const updateLocationStatus = async (id: string, newStatus: 'approved' | 'rejected') => {
     try {
+      setLoading(true);
       const response = await fetch('/api/geo-admin/locations', {
         method: 'PUT',
         headers: {
@@ -88,24 +68,14 @@ export default function GeoAdminPage() {
         throw new Error(`Failed to update location: ${response.status}`);
       }
       
-      // Refresh the data instead of just filtering
-      const fetchLocations = async () => {
-        try {
-          const response = await fetch(`/api/geo-admin/locations?status=${activeTab}`);
-          if (response.ok) {
-            const data = await response.json();
-            setLocations(data.locations || []);
-          }
-        } catch (err) {
-          console.error('Error refreshing locations:', err);
-        }
-      };
-      
-      fetchLocations();
+      // Remove the location from the current view
+      setLocations(prev => prev.filter(loc => loc.id !== id));
+      setLoading(false);
       
     } catch (err) {
       console.error('Error updating location:', err);
       setError('Failed to update location status');
+      setLoading(false);
     }
   };
 
@@ -116,6 +86,7 @@ export default function GeoAdminPage() {
     }
     
     try {
+      setLoading(true);
       const response = await fetch(`/api/geo-admin/locations?id=${id}`, {
         method: 'DELETE',
       });
@@ -125,13 +96,26 @@ export default function GeoAdminPage() {
       }
       
       // Remove from the list
-      const updatedLocations = locations.filter(loc => loc.id !== id);
-      setLocations(updatedLocations);
+      setLocations(prev => prev.filter(loc => loc.id !== id));
+      setLoading(false);
       
     } catch (err) {
       console.error('Error deleting location:', err);
       setError('Failed to delete location');
+      setLoading(false);
     }
+  };
+
+  // View location details
+  const viewLocationDetails = (location: Location) => {
+    setSelectedLocation(location);
+    setIsModalOpen(true);
+  };
+
+  // Format date 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
   };
 
   return (
@@ -221,7 +205,8 @@ export default function GeoAdminPage() {
                               <img 
                                 src={location.imageUrl} 
                                 alt={location.name}
-                                className="h-16 w-24 object-cover rounded"
+                                className="h-16 w-24 object-cover rounded cursor-pointer"
+                                onClick={() => viewLocationDetails(location)}
                               />
                             </div>
                           )}
@@ -238,14 +223,18 @@ export default function GeoAdminPage() {
                         </td>
                         <td className="px-4 py-3">
                           <div className="text-sm">
-                            {new Date(location.submittedAt).toLocaleDateString()}
-                          </div>
-                          <div className="text-xs text-gray-500">
-                            {new Date(location.submittedAt).toLocaleTimeString()}
+                            {formatDate(location.submittedAt)}
                           </div>
                         </td>
                         <td className="px-4 py-3">
-                          <div className="flex space-x-2">
+                          <div className="flex flex-col space-y-2">
+                            <button
+                              onClick={() => viewLocationDetails(location)}
+                              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-md text-sm hover:bg-blue-200"
+                            >
+                              View Details
+                            </button>
+                            
                             {activeTab === 'pending' && (
                               <>
                                 <button
@@ -262,6 +251,7 @@ export default function GeoAdminPage() {
                                 </button>
                               </>
                             )}
+                            
                             <button
                               onClick={() => deleteLocation(location.id)}
                               className="px-3 py-1 bg-gray-100 text-gray-800 rounded-md text-sm hover:bg-gray-200"
@@ -279,6 +269,114 @@ export default function GeoAdminPage() {
           </div>
         </div>
       </div>
+
+      {/* Location Details Modal */}
+      {isModalOpen && selectedLocation && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg max-w-2xl w-full m-4 max-h-[90vh] overflow-y-auto">
+            <div className="p-4 border-b">
+              <div className="flex justify-between items-center">
+                <h2 className="text-xl font-bold">{selectedLocation.name}</h2>
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            
+            <div className="p-4">
+              {/* Image */}
+              {selectedLocation.imageUrl && (
+                <div className="mb-4">
+                  <img 
+                    src={selectedLocation.imageUrl} 
+                    alt={selectedLocation.name}
+                    className="w-full h-64 object-cover rounded"
+                  />
+                </div>
+              )}
+              
+              {/* Details */}
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-medium text-gray-700">Coordinates</h3>
+                  {selectedLocation.lat && selectedLocation.lng ? (
+                    <p>Latitude: {selectedLocation.lat}, Longitude: {selectedLocation.lng}</p>
+                  ) : (
+                    <p className="text-gray-500">No coordinates provided</p>
+                  )}
+                </div>
+                
+                <div>
+                  <h3 className="font-medium text-gray-700">Fun Fact</h3>
+                  <p>{selectedLocation.funFact || 'No fun fact provided'}</p>
+                </div>
+                
+                <div>
+                  <h3 className="font-medium text-gray-700">Submission Details</h3>
+                  <p>Submitted: {formatDate(selectedLocation.submittedAt)}</p>
+                  {selectedLocation.reviewedAt && (
+                    <p>Reviewed: {formatDate(selectedLocation.reviewedAt)}</p>
+                  )}
+                  <p>Status: 
+                    <span className={`ml-2 font-medium ${
+                      selectedLocation.status === 'approved' ? 'text-green-600' :
+                      selectedLocation.status === 'rejected' ? 'text-red-600' :
+                      'text-yellow-600'
+                    }`}>
+                      {selectedLocation.status.charAt(0).toUpperCase() + selectedLocation.status.slice(1)}
+                    </span>
+                  </p>
+                </div>
+              </div>
+              
+              {/* Action buttons */}
+              <div className="flex justify-end space-x-2 mt-6">
+                <button
+                  onClick={() => {
+                    setIsModalOpen(false);
+                    if (activeTab === 'pending') {
+                      updateLocationStatus(selectedLocation.id, 'approved');
+                    }
+                  }}
+                  className={`px-4 py-2 rounded ${
+                    activeTab === 'pending' 
+                      ? 'bg-green-500 text-white hover:bg-green-600' 
+                      : 'bg-gray-300 text-gray-700'
+                  }`}
+                  disabled={activeTab !== 'pending'}
+                >
+                  Approve
+                </button>
+                <button
+                  onClick={() => {
+                    setIsModalOpen(false);
+                    if (activeTab === 'pending') {
+                      updateLocationStatus(selectedLocation.id, 'rejected');
+                    }
+                  }}
+                  className={`px-4 py-2 rounded ${
+                    activeTab === 'pending' 
+                      ? 'bg-red-500 text-white hover:bg-red-600' 
+                      : 'bg-gray-300 text-gray-700'
+                  }`}
+                  disabled={activeTab !== 'pending'}
+                >
+                  Reject
+                </button>
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

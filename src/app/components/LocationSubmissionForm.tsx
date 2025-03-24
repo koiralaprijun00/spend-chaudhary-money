@@ -1,14 +1,14 @@
 'use client'
 
 import { useState, useRef, FormEvent, useEffect } from 'react';
-import { Location } from '../data/geo-nepal/geo-data';
+import { useRouter } from 'next/navigation';
+import { Location } from '../../data/geo-nepal/geo-data';
 
 type SubmissionProps = {
-  onSubmit: (newLocation: Omit<Location, 'id'>) => void;
   onCancel: () => void;
 };
 
-export default function LocationSubmissionForm({ onSubmit, onCancel }: SubmissionProps) {
+export default function LocationSubmissionForm({ onCancel }: SubmissionProps) {
   const [name, setName] = useState('');
   const [lat, setLat] = useState('');
   const [lng, setLng] = useState('');
@@ -19,12 +19,14 @@ export default function LocationSubmissionForm({ onSubmit, onCancel }: Submissio
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isGettingLocation, setIsGettingLocation] = useState(false);
   const [locationMethod, setLocationMethod] = useState<'manual' | 'auto'>('manual');
+  const [uploadProgress, setUploadProgress] = useState(0);
   
   // Added state for client-side rendering detection
   const [isClient, setIsClient] = useState(false);
   const [isGeolocationAvailable, setIsGeolocationAvailable] = useState(false);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   // Check if we're in the browser and set up geolocation only after component mounts
   useEffect(() => {
@@ -166,27 +168,59 @@ export default function LocationSubmissionForm({ onSubmit, onCancel }: Submissio
     setIsSubmitting(true);
     
     try {
-      // In a real implementation, you would upload the image to your storage service here
-      // and get back the URL to store in the database
+      let imageUrl = '';
       
-      // Mock image upload - in a real app, replace with actual upload logic
-      // and await the response to get the image URL
-      const mockImageUrl = `/images/user-submissions/${imageFile!.name}`;
+      // Upload the image first
+      if (imageFile) {
+        const formData = new FormData();
+        formData.append('file', imageFile);
+        
+        const uploadResponse = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData,
+        });
+        
+        if (!uploadResponse.ok) {
+          const errorData = await uploadResponse.json();
+          throw new Error(errorData.error || 'Failed to upload image');
+        }
+        
+        const uploadResult = await uploadResponse.json();
+        imageUrl = uploadResult.imageUrl;
+      }
       
-      // Create the new location object
-      const newLocation: Omit<Location, 'id'> = {
+      // Submit the location data
+      const locationData = {
         name,
         lat: parseFloat(lat),
         lng: parseFloat(lng),
-        imageUrl: mockImageUrl,
+        imageUrl,
         funFact
       };
       
-      onSubmit(newLocation);
+      const response = await fetch('/api/geo-admin/locations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(locationData)
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to submit location');
+      }
+      
+      // Show success message and redirect
+      alert('Location submitted successfully! It will be reviewed by our team.');
+      router.push('/geo-nepal');
+      
     } catch (error) {
       console.error('Error submitting location:', error);
-      setErrors(prev => ({ ...prev, submit: 'Failed to submit location. Please try again.' }));
-    } finally {
+      setErrors(prev => ({ 
+        ...prev, 
+        submit: error instanceof Error ? error.message : 'Failed to submit location. Please try again.' 
+      }));
       setIsSubmitting(false);
     }
   };
@@ -212,6 +246,7 @@ export default function LocationSubmissionForm({ onSubmit, onCancel }: Submissio
             onChange={(e) => setName(e.target.value)}
             className={`w-full px-3 py-2 border rounded-md ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
             placeholder="e.g., Annapurna Base Camp"
+            disabled={isSubmitting}
           />
           {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
         </div>
@@ -227,6 +262,7 @@ export default function LocationSubmissionForm({ onSubmit, onCancel }: Submissio
                 <button
                   type="button"
                   onClick={() => handleLocationMethodChange('manual')}
+                  disabled={isSubmitting}
                   className={`flex-1 py-2 px-3 rounded-md transition ${
                     locationMethod === 'manual'
                       ? 'bg-blue-600 text-white'
@@ -239,12 +275,12 @@ export default function LocationSubmissionForm({ onSubmit, onCancel }: Submissio
                 <button
                   type="button"
                   onClick={() => handleLocationMethodChange('auto')}
-                  disabled={!isGeolocationAvailable || isGettingLocation}
+                  disabled={!isGeolocationAvailable || isGettingLocation || isSubmitting}
                   className={`flex-1 py-2 px-3 rounded-md transition ${
                     locationMethod === 'auto'
                       ? 'bg-blue-600 text-white'
                       : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
-                  } ${(!isGeolocationAvailable || isGettingLocation) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  } ${(!isGeolocationAvailable || isGettingLocation || isSubmitting) ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   {isGettingLocation ? 'Getting Location...' : 'Use My Current Location'}
                 </button>
@@ -277,6 +313,7 @@ export default function LocationSubmissionForm({ onSubmit, onCancel }: Submissio
                 }}
                 className={`w-full px-3 py-2 border rounded-md ${errors.lat ? 'border-red-500' : 'border-gray-300'}`}
                 placeholder="e.g., 28.5308"
+                disabled={isSubmitting}
               />
               {errors.lat && <p className="mt-1 text-sm text-red-500">{errors.lat}</p>}
             </div>
@@ -295,6 +332,7 @@ export default function LocationSubmissionForm({ onSubmit, onCancel }: Submissio
                 }}
                 className={`w-full px-3 py-2 border rounded-md ${errors.lng ? 'border-red-500' : 'border-gray-300'}`}
                 placeholder="e.g., 83.8800"
+                disabled={isSubmitting}
               />
               {errors.lng && <p className="mt-1 text-sm text-red-500">{errors.lng}</p>}
             </div>
@@ -318,6 +356,7 @@ export default function LocationSubmissionForm({ onSubmit, onCancel }: Submissio
             className={`w-full px-3 py-2 border rounded-md ${errors.funFact ? 'border-red-500' : 'border-gray-300'}`}
             rows={3}
             placeholder="Share an interesting fact about this location"
+            disabled={isSubmitting}
           />
           {errors.funFact && <p className="mt-1 text-sm text-red-500">{errors.funFact}</p>}
         </div>
@@ -332,8 +371,8 @@ export default function LocationSubmissionForm({ onSubmit, onCancel }: Submissio
               <div 
                 className={`border-2 border-dashed rounded-lg p-4 text-center cursor-pointer ${
                   errors.image ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:bg-gray-50'
-                }`}
-                onClick={() => fileInputRef.current?.click()}
+                } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                onClick={() => !isSubmitting && fileInputRef.current?.click()}
               >
                 {preview ? (
                   <div className="relative">
@@ -346,6 +385,7 @@ export default function LocationSubmissionForm({ onSubmit, onCancel }: Submissio
                         setImageFile(null);
                         setPreview(null);
                       }}
+                      disabled={isSubmitting}
                     >
                       ✕
                     </button>
@@ -364,31 +404,22 @@ export default function LocationSubmissionForm({ onSubmit, onCancel }: Submissio
                   ref={fileInputRef}
                   onChange={handleImageChange}
                   className="hidden"
+                  disabled={isSubmitting}
                 />
               </div>
               {errors.image && <p className="mt-1 text-sm text-red-500">{errors.image}</p>}
-            </div>
-          </div>
-        </div>
-        
-        <div className="flex justify-end space-x-4">
-          <button
-            type="button"
-            onClick={onCancel}
-            className="px-4 py-2 text-gray-600 hover:text-gray-800"
-            disabled={isSubmitting}
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition disabled:opacity-50"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Submitting...' : 'Submit Location'}
-          </button>
-        </div>
-      </form>
-    </div>
-  );
-}
+              
+              {/* Upload progress bar */}
+              {isSubmitting && uploadProgress > 0 && uploadProgress < 100 && (
+                <div className="mt-2">
+                  <div className="bg-gray-200 rounded-full h-2.5">
+                    <div 
+                      className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" 
+                      style={{ width: `${uploadProgress}%` }}
+                    ></div>
+                  </div>
+                  <p className="text-xs text-gray-500 text-center mt-1">
+                    Uploading image: {uploadProgress}%
+                  </p>
+                </div>
+              )}
