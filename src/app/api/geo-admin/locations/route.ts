@@ -8,13 +8,36 @@ import { authOptions } from '../../auth/authOptions';
 
 // Helper function to verify admin authentication
 async function verifyAdminAuth() {
-  const session = await getServerSession(authOptions);
-  
-  if (!session || session.user?.role !== 'admin') {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session || !session.accessToken) {
+      return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
+    }
+    
+    // If there's no session, return false
+    if (!session) {
+      console.log("No session found");
+      return false;
+    }
+    
+    // Check if the user object exists and has a role property
+    if (!session.user || !session.user.role) {
+      console.log("User or role not found in session");
+      return false;
+    }
+    
+    // Check if the role is 'admin'
+    if (session.user.role !== 'admin') {
+      console.log(`Role is '${session.user.role}', not 'admin'`);
+      return false;
+    }
+    
+    console.log("Authentication successful");
+    return true;
+  } catch (error) {
+    console.error("Error in verifyAdminAuth:", error);
     return false;
   }
-  
-  return true;
 }
 
 // GET: Fetch locations with optional status filter

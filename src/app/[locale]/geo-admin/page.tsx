@@ -3,7 +3,13 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import Image from 'next/image';
+
+declare module 'next-auth' {
+  interface Session {
+    accessToken?: string;
+    role?: string; // Ensure role is included in the session type
+  }
+}
 
 interface Location {
   id: string;
@@ -28,45 +34,58 @@ export default function GeoAdminPage() {
   const router = useRouter();
   const { data: session, status: authStatus } = useSession();
 
-  // Check authentication
+  // Debugging session role
+  useEffect(() => {
+    // console.log("Session in geo-admin page:", session);
+    // console.log("User role 01:", session?.role);
+  }, [session]);
+
+  // Fetch locations based on active tab
+  const fetchLocations = async () => {
+    if (authStatus !== 'authenticated' || !session?.accessToken) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(`/api/geo-admin/locations?status=${activeTab}`, {
+        headers: {
+          'Authorization': `Bearer ${session.accessToken}`,  // Ensure accessToken is included here
+        },
+      });
+
+      console.log('Session:', session);
+console.log('Access Token:', session?.accessToken); 
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch locations: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setLocations(data.locations || []);
+    } catch (err) {
+      setError('Failed to fetch locations');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle session check and fetch locations if authenticated as admin
   useEffect(() => {
     if (authStatus === 'unauthenticated') {
       router.push('/login');
-    }
-  }, [authStatus, router]);
-
-  // Fetch locations based on the active tab
-  useEffect(() => {
-    // Only fetch data if authenticated
-    if (authStatus !== 'authenticated') {
       return;
     }
+    if (authStatus === 'authenticated' && session?.role === 'admin') {
+      fetchLocations();
+    }
+  }, [authStatus, session, router]);
 
-    const fetchLocations = async () => {
-      setLoading(true);
-      setError(null);
-      
-      try {
-        // Use the public endpoint for now
-        const response = await fetch(`/api/geo-nepal/locations?status=${activeTab}`);
-        
-        if (!response.ok) {
-          console.error(`Failed to fetch locations: ${response.status}`);
-          throw new Error(`Failed to fetch locations: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log("Fetched locations:", data); // Add debug logging
-        setLocations(data.locations || []);
-      } catch (err) {
-        console.error('Error fetching locations:', err);
-        setError('Failed to fetch locations');
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchLocations();
+  // Re-fetch locations when tab changes
+  useEffect(() => {
+    if (authStatus === 'authenticated' && session?.role === 'admin') {
+      fetchLocations();
+    }
   }, [activeTab, authStatus]); // Re-fetch when tab changes or auth status changes
 
   // Update location status
@@ -144,8 +163,8 @@ export default function GeoAdminPage() {
     );
   }
 
-  // Check if user is authenticated and has admin role
-  if (!session?.user?.role || session.user.role !== 'admin') {
+  // Ensure user role is admin before displaying the page
+  if (!session?.role || session?.role !== 'admin') {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <div className="bg-white rounded-lg shadow-md p-8 max-w-md">
