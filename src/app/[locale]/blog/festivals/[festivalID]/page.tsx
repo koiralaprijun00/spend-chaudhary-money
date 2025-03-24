@@ -40,7 +40,6 @@ export default async function FestivalPage({ params }: PageProps) {
     const festivalContent = await getFestivalContent(festivalId, locale) as FestivalContent | null;
     
     if (!festivalContent) {
-      console.log(`No content found for festival: ${festivalId}`);
       return notFound();
     }
 

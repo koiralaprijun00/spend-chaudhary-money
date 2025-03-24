@@ -11,8 +11,6 @@ export async function getFestivalContent(slug, locale = "en") {
     const normalizedSlug = slug.toLowerCase();
     const localePath = path.join(CONTENT_DIR, locale);
     const fullPath = path.join(localePath, `${normalizedSlug}.md`);
-
-    console.log(`Attempting to read: ${fullPath}`);
     
     try {
       const fileContents = await fs.readFile(fullPath, "utf8");
@@ -25,8 +23,6 @@ export async function getFestivalContent(slug, locale = "en") {
         isFallback: false 
       };
     } catch (error) {
-      console.log(`File not found for ${normalizedSlug} in ${locale}, trying fallback`);
-      
       // Path for English fallback
       const fallbackPath = path.join(CONTENT_DIR, "en", `${normalizedSlug}.md`);
       
