@@ -202,7 +202,7 @@ export default function LocationSubmissionForm({ onCancel }: SubmissionProps) {
         funFact,
       };
   
-      const response = await fetch('/api/geo-admin/locations', {
+      const response = await fetch('/api/geo-nepal/submit-location', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
