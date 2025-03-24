@@ -1,7 +1,7 @@
 // src/app/lib/locationService.ts
 import clientPromise from './mongodb';
 import { MongoLocation, formatLocation } from './locationSchema';
-import { Location } from '../../data/geo-nepal/geo-data.tsx';
+import { Location } from '../data/geo-nepal/geo-data.tsx';
 
 // Get all approved locations from MongoDB for the game
 export async function getApprovedLocations(): Promise<Location[]> {

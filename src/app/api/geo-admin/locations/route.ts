@@ -1,7 +1,7 @@
 // app/api/geo-admin/locations/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import clientPromise from '../../lib/mongodb';
-import { MongoLocation, formatLocation } from '../../lib/locationSchema';
+import clientPromise from '../../../lib/mongodb';
+import { MongoLocation, formatLocation } from '../../../lib/locationSchema';
 import { ObjectId } from 'mongodb';
 
 // GET: Fetch locations with optional status filter
@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
     }
     
     // Filter by status if provided
-    const query = status ? { status } : {};
+    const query = status ? { status: { $eq: status as "pending" | "approved" | "rejected" } } : {};
     const locations = await locationsCollection.find(query).toArray();
     
     return NextResponse.json({ 

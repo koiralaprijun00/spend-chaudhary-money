@@ -1,6 +1,6 @@
 // app/api/geo-nepal/locations/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getApprovedLocations, getLocationById } from '../../lib/locationService';
+import { getApprovedLocations, getLocationById } from '../../../lib/locationService';
 import { OFFICIAL_LOCATIONS, NEPAL_BOUNDS } from '@/app/data/geo-nepal/geo-data';
 
 // GET all locations for the game

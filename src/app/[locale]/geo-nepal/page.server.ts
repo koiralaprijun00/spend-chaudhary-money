@@ -1,5 +1,5 @@
 // src/app/geo-nepal/page.server.ts - this runs on the server to fetch the data
-import { getApprovedLocations } from '../lib/locationService';
+import { getApprovedLocations } from '../../lib/locationService';
 import { Location, NEPAL_BOUNDS } from '@/app/data/geo-nepal/geo-data';
 
 // This function runs on the server to pre-fetch approved locations
