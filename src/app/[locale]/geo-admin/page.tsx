@@ -47,13 +47,16 @@ export default function GeoAdminPage() {
       setError(null);
       
       try {
-        const response = await fetch(`/api/geo-admin/locations?status=${activeTab}`);
+        // Use the public endpoint for now
+        const response = await fetch(`/api/geo-nepal/locations?status=${activeTab}`);
         
         if (!response.ok) {
+          console.error(`Failed to fetch locations: ${response.status}`);
           throw new Error(`Failed to fetch locations: ${response.status}`);
         }
         
         const data = await response.json();
+        console.log("Fetched locations:", data); // Add debug logging
         setLocations(data.locations || []);
       } catch (err) {
         console.error('Error fetching locations:', err);
