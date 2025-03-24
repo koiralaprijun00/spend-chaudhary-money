@@ -2,7 +2,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from 'next-intl';
-import GoogleAdsense from "../components/GoogleAdsense";
 
 export default function HomePage() {
   const t = useTranslations("Translations"); 
