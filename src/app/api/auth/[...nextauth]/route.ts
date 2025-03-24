@@ -5,3 +5,4 @@ import { authOptions } from "../authOptions";
 // Create and export the route handlers
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
+

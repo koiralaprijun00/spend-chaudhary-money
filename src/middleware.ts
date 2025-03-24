@@ -19,16 +19,13 @@ export default async function middleware(request: NextRequest) {
   }
   
   // Check if this is an admin route that needs protection
-  if (
-    pathname.includes('/geo-admin') || 
-    pathname.includes('/api/geo-admin')
-  ) {
-    // Verify authentication for admin routes
-    // This can be done in the API route and page components as well
-    // We'll just pass through here
+  if (pathname.startsWith('/api/geo-admin')) {
+    // For API routes, we should NOT apply the intl middleware
+    // Just return undefined to continue to the API route handler
+    return undefined;
   }
 
-  // Apply internationalization for all routes
+  // Apply internationalization for all non-API routes
   return intlMiddleware(request);
 }
 

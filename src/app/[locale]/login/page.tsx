@@ -1,7 +1,7 @@
 // src/app/[locale]/login/page.tsx
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
@@ -11,30 +11,70 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
+
+  // Add this near the top of your login component
+useEffect(() => {
+    console.log("Login page mounted");
+    
+    // Check if there's a stored token in localStorage
+    const token = localStorage.getItem('next-auth.token');
+    console.log("Stored token:", token);
+  }, []);
+  
+  // And add this to your login form submission handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-
+    console.log("Attempting login with:", { email, password });
+  
     try {
       const result = await signIn('credentials', {
         redirect: false,
         email,
         password,
       });
-
+  
+      console.log("Login result:", result);
+  
       if (result?.error) {
         setError('Invalid email or password');
         return;
       }
-
+  
       // Redirect to admin page on successful login
       router.push('/geo-admin');
       router.refresh();
     } catch (error) {
-      setError('An error occurred during login');
       console.error('Login error:', error);
+      setError('An error occurred during login');
     }
   };
+
+
+//   const handleSubmit = async (e: React.FormEvent) => {
+//     e.preventDefault();
+//     setError('');
+
+//     try {
+//       const result = await signIn('credentials', {
+//         redirect: false,
+//         email,
+//         password,
+//       });
+
+//       if (result?.error) {
+//         setError('Invalid email or password');
+//         return;
+//       }
+
+//       // Redirect to admin page on successful login
+//       router.push('/geo-admin');
+//       router.refresh();
+//     } catch (error) {
+//       setError('An error occurred during login');
+//       console.error('Login error:', error);
+//     }
+//   };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
