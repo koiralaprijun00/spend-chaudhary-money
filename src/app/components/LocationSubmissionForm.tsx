@@ -193,7 +193,7 @@ const handleSubmit = async (e: FormEvent) => {
           // If in production and we get a timeout, use fallback image
           if (uploadResponse.status === 504 || uploadResponse.status === 500) {
             console.log('Image upload failed, using fallback image');
-            imageUrl = 'https://res.cloudinary.com/your-cloud-name/image/upload/v1/geo-nepal/default_location.jpg';
+            imageUrl = 'https://res.cloudinary.com/duz68qptr/image/upload/v1/geo-nepal/default_location.jpg';
           } else {
             const errorText = await uploadResponse.text();
             console.error('Image upload failed:', errorText);
@@ -208,7 +208,7 @@ const handleSubmit = async (e: FormEvent) => {
         // If upload fails in production, use a fallback image
         if (process.env.NODE_ENV === 'production') {
           console.error('Upload error, using fallback:', uploadError);
-          imageUrl = 'https://res.cloudinary.com/your-cloud-name/image/upload/v1/geo-nepal/default_location.jpg';
+          imageUrl = 'https://res.cloudinary.com/duz68qptr/image/upload/v1/geo-nepal/default_location.jpg';
         } else {
           throw uploadError;
         }

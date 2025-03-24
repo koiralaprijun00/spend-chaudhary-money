@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
       clearTimeout(requestTimeout);
       return NextResponse.json({ 
         success: true, 
-        imageUrl: 'https://res.cloudinary.com/your-cloud-name/image/upload/v1/geo-nepal/default_location.jpg' 
+        imageUrl: 'https://res.cloudinary.com/duz68qptr/image/upload/v1/geo-nepal/default_location.jpg'
       });
     }
     

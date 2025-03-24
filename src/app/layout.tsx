@@ -3,6 +3,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import "mapbox-gl/dist/mapbox-gl.css"; // Keep this for build-time CSS inclusion
 import { Metadata } from "next";
 import { AuthProvider } from './[locale]/providers';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: "Piromomo: The Fun Side of Nepal You Didn't Know You Needed!",
@@ -57,6 +58,7 @@ export default function RootLayout({
       <body className="antialiased">
       <AuthProvider>
         {children}
+        <Analytics />
         </AuthProvider>
         <GoogleAnalytics gaId="G-X744G6P5C9" />
       </body>
