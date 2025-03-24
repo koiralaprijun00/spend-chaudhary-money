@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { TbArrowBigLeftLinesFilled } from "react-icons/tb";
-import FAQSection from '../components/FAQSection';
+import FAQSection from '../../components/FAQSection';
 
 export default function BlogPage() {
   return (
@@ -15,7 +15,14 @@ export default function BlogPage() {
       </Head>
 
 
-    <div className="flex justify-start mt-8">
+
+      
+<div className="min-h-screen flex justify-center px-4">
+      <div className="max-w-3xl w-full py-12">
+          <article className="bg-white rounded-3xl py-8">
+            <header className="mb-12 border-b pb-6">
+
+    <div className="flex justify-start mb-8">
   <Link
     href="/spend"
     aria-label="Go back to spending page"
@@ -25,12 +32,6 @@ export default function BlogPage() {
     Go Back 
   </Link>
 </div>
-
-      
-<div className="min-h-screen flex justify-center px-4">
-      <div className="max-w-3xl w-full py-12">
-          <article className="bg-white rounded-3xl py-8">
-            <header className="mb-12 border-b pb-6">
               <h1 className="text-4xl font-bold text-left text-gray-800 mb-4">
                 How Rich is Binod Chaudhary? Nepal’s First Billionaire
               </h1>
