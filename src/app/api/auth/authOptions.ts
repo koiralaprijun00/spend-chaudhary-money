@@ -17,6 +17,7 @@ declare module "next-auth" {
 
 // Configure NextAuth options
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
     cookies: {
         sessionToken: {
           name: `next-auth.session-token`,
