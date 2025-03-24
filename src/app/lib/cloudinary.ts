@@ -8,35 +8,47 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET || ''
 });
 
-// Log the configuration (censored for security)
-console.log('Cloudinary config:', {
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME ? '[set]' : '[missing]',
-  api_key: process.env.CLOUDINARY_API_KEY ? '[set]' : '[missing]',
-  api_secret: process.env.CLOUDINARY_API_SECRET ? '[set]' : '[missing]'
-});
-
 export async function uploadImage(file: Buffer, folderName: string = 'geo-nepal'): Promise<string> {
   try {
     console.log('Starting Cloudinary upload...');
     
-    // Convert buffer to base64
-    const base64Data = `data:image/jpeg;base64,${file.toString('base64')}`;
+    // Use a timeout promise to prevent hanging
+    const uploadPromise = new Promise<string>((resolve, reject) => {
+      // Convert buffer to base64
+      const base64Data = `data:image/jpeg;base64,${file.toString('base64')}`;
+      
+      // Upload to Cloudinary with additional options
+      cloudinary.uploader.upload(
+        base64Data, 
+        {
+          folder: folderName,
+          transformation: [
+            { width: 800, crop: "limit" },
+            { quality: "auto:good" }
+          ],
+          timeout: 30000 // 30 second timeout
+        },
+        (error, result) => {
+          if (error) {
+            console.error('Cloudinary upload error:', error);
+            reject(error);
+          } else if (result) {
+            console.log('Cloudinary upload successful');
+            resolve(result.secure_url);
+          } else {
+            reject(new Error('Unknown error during Cloudinary upload'));
+          }
+        }
+      );
+    });
     
-    // Upload to Cloudinary with additional options
-    const uploadOptions = {
-      folder: folderName,
-      transformation: [
-        { width: 800, crop: "limit" },
-        { quality: "auto:good" }
-      ],
-      timeout: 60000 // Set a longer timeout (60 seconds)
-    };
+    // Set an overall timeout
+    const timeoutPromise = new Promise<never>((_, reject) => {
+      setTimeout(() => reject(new Error('Cloudinary upload timed out after 30s')), 30000);
+    });
     
-    console.log('Upload options:', { ...uploadOptions, folder: uploadOptions.folder });
-    const result = await cloudinary.uploader.upload(base64Data, uploadOptions);
-    
-    console.log('Cloudinary upload successful:', result.secure_url);
-    return result.secure_url;
+    // Race between upload and timeout
+    return await Promise.race([uploadPromise, timeoutPromise]);
   } catch (error) {
     console.error('Error uploading image to Cloudinary:', error);
     throw new Error(error instanceof Error ? error.message : 'Failed to upload image');

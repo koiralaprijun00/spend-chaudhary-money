@@ -160,7 +160,6 @@ export default function LocationSubmissionForm({ onCancel }: SubmissionProps) {
   };
 
   // Handle form submission
- // Inside handleSubmit function in LocationSubmissionForm.tsx
 const handleSubmit = async (e: FormEvent) => {
   e.preventDefault();
 
@@ -175,21 +174,45 @@ const handleSubmit = async (e: FormEvent) => {
       const formData = new FormData();
       formData.append('file', imageFile);
 
-      console.log('Uploading image...'); // Add logging
-      const uploadResponse = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
+      console.log('Uploading image...', imageFile.size); // Add size logging
+      
+      try {
+        // Set a client-side timeout for the upload request
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+        
+        const uploadResponse = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData,
+          signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
 
-      if (!uploadResponse.ok) {
-        const errorText = await uploadResponse.text();
-        console.error('Image upload failed:', errorText);
-        throw new Error(`Failed to upload image: ${uploadResponse.status} ${errorText}`);
+        if (!uploadResponse.ok) {
+          // If in production and we get a timeout, use fallback image
+          if (uploadResponse.status === 504 || uploadResponse.status === 500) {
+            console.log('Image upload failed, using fallback image');
+            imageUrl = 'https://res.cloudinary.com/your-cloud-name/image/upload/v1/geo-nepal/default_location.jpg';
+          } else {
+            const errorText = await uploadResponse.text();
+            console.error('Image upload failed:', errorText);
+            throw new Error(`Failed to upload image: ${uploadResponse.status} ${errorText}`);
+          }
+        } else {
+          const uploadResult = await uploadResponse.json();
+          imageUrl = uploadResult.imageUrl;
+          console.log('Image uploaded successfully:', imageUrl);
+        }
+      } catch (uploadError) {
+        // If upload fails in production, use a fallback image
+        if (process.env.NODE_ENV === 'production') {
+          console.error('Upload error, using fallback:', uploadError);
+          imageUrl = 'https://res.cloudinary.com/your-cloud-name/image/upload/v1/geo-nepal/default_location.jpg';
+        } else {
+          throw uploadError;
+        }
       }
-
-      const uploadResult = await uploadResponse.json();
-      imageUrl = uploadResult.imageUrl;
-      console.log('Image uploaded successfully:', imageUrl); // Add logging
     }
 
     // Submit the location data
@@ -201,7 +224,7 @@ const handleSubmit = async (e: FormEvent) => {
       funFact,
     };
 
-    console.log('Submitting location data:', locationData); // Add logging
+    console.log('Submitting location data:', locationData);
     const response = await fetch('/api/geo-nepal/submit-location', {
       method: 'POST',
       headers: {
@@ -411,7 +434,10 @@ const handleSubmit = async (e: FormEvent) => {
                     <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
                       <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <p className="mt-1 text-sm text-gray-500">Click to upload an image (max 5MB)</p>
+                    <p className="mt-1 text-sm text-gray-500">Click to upload an image (max 3MB)</p>
+                    <p className="text-xs text-amber-600 mt-1">
+                      Note: Smaller images (less than 1MB) upload faster
+                    </p>
                   </>
                 )}
                 <input
