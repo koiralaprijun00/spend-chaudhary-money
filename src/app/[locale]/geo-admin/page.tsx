@@ -1,4 +1,3 @@
-// app/[locale]/geo-admin/page.tsx
 'use client'
 
 import { useState, useEffect } from 'react';
@@ -16,8 +15,6 @@ interface Location {
   reviewedAt?: string;
 }
 
-
-
 export default function GeoAdminPage() {
   const [locations, setLocations] = useState<Location[]>([]);
   const [loading, setLoading] = useState(true);
@@ -26,35 +23,36 @@ export default function GeoAdminPage() {
   
   const router = useRouter();
 
-// Fetch locations based on the active tab - KEEP ONLY THIS ONE useEffect
-useEffect(() => {
-  const fetchLocations = async () => {
-    setLoading(true);
-    setError(null);
-    
-    try {
-      const response = await fetch(`/api/locations?status=${activeTab}&admin=true`);
+  // Fetch locations based on the active tab
+  useEffect(() => {
+    const fetchLocations = async () => {
+      setLoading(true);
+      setError(null);
       
-      if (!response.ok) {
-        throw new Error(`Failed to fetch locations: ${response.status}`);
+      try {
+        // Updated API path to match the delete operation pattern
+        const response = await fetch(`/api/geo-admin/locations?status=${activeTab}`);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch locations: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setLocations(data.locations || []);
+      } catch (err) {
+        console.error('Error fetching locations:', err);
+        setError('Failed to fetch locations');
+      } finally {
+        setLoading(false);
       }
-      
-      const data = await response.json();
-      setLocations(data.locations || []);
-    } catch (err) {
-      console.error('Error fetching locations:', err);
-      setError('Failed to fetch locations');
-    } finally {
-      setLoading(false);
-    }
-  };
-  
-  fetchLocations();
-}, [activeTab]); // Re-fetch locations whenever the active tab changes or on initial load
+    };
+    
+    fetchLocations();
+  }, [activeTab]); // Re-fetch locations whenever the active tab changes or on initial load
 
   const handleLocationSubmit = async (newLocation: Location) => {
     try {
-      const response = await fetch('/api/locations', {
+      const response = await fetch('/api/geo-admin/locations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,41 +73,41 @@ useEffect(() => {
     }
   };
 
- // Update location status
-const updateLocationStatus = async (id: string, newStatus: 'approved' | 'rejected') => {
-  try {
-    const response = await fetch('/api/locations?admin=true', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id, status: newStatus }),
-    });
-    
-    if (!response.ok) {
-      throw new Error(`Failed to update location: ${response.status}`);
-    }
-    
-    // Refresh the data instead of just filtering
-    const fetchLocations = async () => {
-      try {
-        const response = await fetch(`/api/locations?status=${activeTab}&admin=true`);
-        if (response.ok) {
-          const data = await response.json();
-          setLocations(data.locations || []);
-        }
-      } catch (err) {
-        console.error('Error refreshing locations:', err);
+  // Update location status
+  const updateLocationStatus = async (id: string, newStatus: 'approved' | 'rejected') => {
+    try {
+      const response = await fetch('/api/geo-admin/locations', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id, status: newStatus }),
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Failed to update location: ${response.status}`);
       }
-    };
-    
-    fetchLocations();
-    
-  } catch (err) {
-    console.error('Error updating location:', err);
-    setError('Failed to update location status');
-  }
-};
+      
+      // Refresh the data instead of just filtering
+      const fetchLocations = async () => {
+        try {
+          const response = await fetch(`/api/geo-admin/locations?status=${activeTab}`);
+          if (response.ok) {
+            const data = await response.json();
+            setLocations(data.locations || []);
+          }
+        } catch (err) {
+          console.error('Error refreshing locations:', err);
+        }
+      };
+      
+      fetchLocations();
+      
+    } catch (err) {
+      console.error('Error updating location:', err);
+      setError('Failed to update location status');
+    }
+  };
 
   // Delete a location
   const deleteLocation = async (id: string) => {

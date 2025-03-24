@@ -28,7 +28,7 @@ export default function LocationSubmissionPage() {
       
       // Redirect after a delay
       setTimeout(() => {
-        router.push('/');
+        router.push('/geo-nepal');
       }, 3000);
     } catch (error) {
       console.error('Error submitting location:', error);
@@ -38,7 +38,7 @@ export default function LocationSubmissionPage() {
 
   // Cancel submission and return to home
   const handleCancel = () => {
-    router.push('/');
+    router.push('/geo-nepal');
   };
 
   return (
