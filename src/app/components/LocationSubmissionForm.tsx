@@ -160,76 +160,86 @@ export default function LocationSubmissionForm({ onCancel }: SubmissionProps) {
   };
 
   // Handle form submission
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-  
-    if (!validateForm()) return;
-    setIsSubmitting(true);
-  
-    try {
-      let imageUrl = '';
-  
-      // Upload the image first
-      if (imageFile) {
-        const formData = new FormData();
-        formData.append('file', imageFile);
-  
-        const uploadResponse = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData,
-        });
-  
-        const uploadResult = await uploadResponse.json();
-        
-        if (!uploadResponse.ok) {
-          // Safely access the error message from uploadResult
-          const errorMessage = uploadResult && typeof uploadResult === 'object' && uploadResult.error 
-            ? uploadResult.error 
-            : 'Failed to upload image';
-          throw new Error(errorMessage);
-        }
-        imageUrl = uploadResult.imageUrl;
-      }
-  
-      // Submit the location data
-      const locationData = {
-        name,
-        lat: parseFloat(lat),
-        lng: parseFloat(lng),
-        imageUrl,
-        funFact,
-      };
-  
-      const response = await fetch('/api/geo-nepal/submit-location', {
+ // Inside handleSubmit function in LocationSubmissionForm.tsx
+const handleSubmit = async (e: FormEvent) => {
+  e.preventDefault();
+
+  if (!validateForm()) return;
+  setIsSubmitting(true);
+
+  try {
+    let imageUrl = '';
+
+    // Upload the image first
+    if (imageFile) {
+      const formData = new FormData();
+      formData.append('file', imageFile);
+
+      console.log('Uploading image...'); // Add logging
+      const uploadResponse = await fetch('/api/upload', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(locationData),
+        body: formData,
       });
-  
-      const responseData = await response.json();
-      
-      if (!response.ok) {
-        // Safely access the error message from responseData
-        const errorMessage = responseData && typeof responseData === 'object' && responseData.error 
-          ? responseData.error 
-          : 'Failed to submit location';
-        throw new Error(errorMessage);
+
+      if (!uploadResponse.ok) {
+        const errorText = await uploadResponse.text();
+        console.error('Image upload failed:', errorText);
+        throw new Error(`Failed to upload image: ${uploadResponse.status} ${errorText}`);
       }
-      // Show success message and redirect
-      alert('Location submitted successfully! It will be reviewed by our team.');
-      router.push('/geo-nepal');
-    } catch (error) {
-      console.error('Error submitting location:', error);
-      setErrors(prev => ({
-        ...prev,
-        submit: error instanceof Error ? error.message : 'Failed to submit location. Please try again.',
-      }));
-    } finally {
-      setIsSubmitting(false);
+
+      const uploadResult = await uploadResponse.json();
+      imageUrl = uploadResult.imageUrl;
+      console.log('Image uploaded successfully:', imageUrl); // Add logging
     }
-  };
+
+    // Submit the location data
+    const locationData = {
+      name,
+      lat: parseFloat(lat),
+      lng: parseFloat(lng),
+      imageUrl,
+      funFact,
+    };
+
+    console.log('Submitting location data:', locationData); // Add logging
+    const response = await fetch('/api/geo-nepal/submit-location', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(locationData),
+    });
+
+    // Log the exact response for debugging
+    const responseText = await response.text();
+    console.log('Server response:', response.status, responseText);
+
+    let responseData;
+    try {
+      // Try to parse the response as JSON
+      responseData = JSON.parse(responseText);
+    } catch (e) {
+      console.error('Failed to parse response as JSON:', e);
+      throw new Error(`Server returned non-JSON response: ${responseText}`);
+    }
+    
+    if (!response.ok) {
+      throw new Error(responseData.error || 'Failed to submit location');
+    }
+
+    // Show success message and redirect
+    alert('Location submitted successfully! It will be reviewed by our team.');
+    router.push('/geo-nepal');
+  } catch (error) {
+    console.error('Error submitting location:', error);
+    setErrors(prev => ({
+      ...prev,
+      submit: error instanceof Error ? error.message : 'Failed to submit location. Please try again.',
+    }));
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl mx-auto">

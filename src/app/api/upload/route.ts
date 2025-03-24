@@ -4,12 +4,15 @@ import { uploadImage } from '../../lib/cloudinary';
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('Received image upload request');
     const formData = await request.formData();
     const file = formData.get('file') as File;
     
     if (!file) {
       return NextResponse.json({ error: 'No file provided' }, { status: 400 });
     }
+    
+    console.log('File received:', file.name, file.type, file.size);
     
     // Check file type
     if (!file.type.startsWith('image/')) {
@@ -22,16 +25,22 @@ export async function POST(request: NextRequest) {
     }
     
     // Convert file to buffer
+    console.log('Converting file to buffer...');
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
     
     // Upload to Cloudinary
+    console.log('Uploading to Cloudinary...');
     const imageUrl = await uploadImage(buffer);
+    console.log('Image uploaded successfully:', imageUrl);
     
     return NextResponse.json({ success: true, imageUrl });
   } catch (error) {
     console.error('Error uploading image:', error);
-    return NextResponse.json({ error: 'Failed to upload image' }, { status: 500 });
+    return NextResponse.json({ 
+      error: 'Failed to upload image',
+      details: error instanceof Error ? error.message : String(error)
+    }, { status: 500 });
   }
 }
 

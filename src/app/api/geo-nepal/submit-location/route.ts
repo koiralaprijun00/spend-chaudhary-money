@@ -5,7 +5,9 @@ import { MongoLocation } from '../../../lib/locationSchema';
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('Received location submission request');
     const data = await request.json();
+    console.log('Request data:', data);
     
     // Validate required fields
     if (!data.name) {
@@ -21,7 +23,9 @@ export async function POST(request: NextRequest) {
     }
     
     // Connect to MongoDB
+    console.log('Connecting to MongoDB...');
     const client = await clientPromise;
+    console.log('Connected to MongoDB');
     const db = client.db('geo-nepal');
     const locationsCollection = db.collection<MongoLocation>('locations');
     
@@ -37,8 +41,11 @@ export async function POST(request: NextRequest) {
       submittedBy: data.submittedBy || 'anonymous'
     };
     
+    console.log('Inserting new location into database:', newLocation);
+    
     // Add to database
     const result = await locationsCollection.insertOne(newLocation);
+    console.log('Insert result:', result);
     
     // Return success
     return NextResponse.json({ 
@@ -47,6 +54,10 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Error in POST location:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    // Return more detailed error information
+    return NextResponse.json({ 
+      error: 'Internal server error', 
+      details: error instanceof Error ? error.message : String(error)
+    }, { status: 500 });
   }
 }
