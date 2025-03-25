@@ -41,12 +41,18 @@ export default function HomePage() {
                 <span className="text-yellow-500 animate-pulse">💰</span>
                 <span>{t('billionaireBadge')}</span>
               </div>
-              
+
               {/* Main content */}
               <div className="flex items-center relative z-10">
                 <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mr-4 group-hover:shadow-lg transition-all duration-300">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 group-hover:from-yellow-300 group-hover:to-yellow-500 transition-colors duration-300 flex items-center justify-center">
-                    <span className="text-white text-2xl font-bold group-hover:scale-110 transition-transform duration-300">$</span>
+                  <div className="w-16 h-16 rounded-full bg-gradient-tobg-whit transition-colors duration-300 flex items-center justify-center">
+                  <Image
+                      src="/spend-money.png"
+                      alt="Spend Binod Chaudhary's Money"
+                      width={64}
+                      height={64}
+                      className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
+                    />
                   </div>
                 </div>
                 <div>
@@ -71,7 +77,7 @@ export default function HomePage() {
                 <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mr-4 group-hover:shadow-lg transition-all duration-300">
                   <div className="w-16 h-16 rounded-full overflow-hidden">
                     <Image
-                      src="/festival-header.jpg"
+                      src="/guess-the-fesival.png"
                       alt="Festival Celebration"
                       width={64}
                       height={64}
@@ -101,7 +107,7 @@ export default function HomePage() {
                 <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mr-4 group-hover:shadow-lg transition-all duration-300">
                   <div className="w-16 h-16 rounded-full overflow-hidden">
                     <Image
-                      src="/kings-of-nepal.jpg" 
+                      src="/kings-of-nepal.png" 
                       alt="Kings of Nepal"
                       width={64}
                       height={64}
@@ -128,8 +134,14 @@ export default function HomePage() {
               {/* Main content */}
               <div className="flex items-center relative z-10">
                 <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mr-4 group-hover:shadow-lg transition-all duration-300">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 group-hover:from-blue-300 group-hover:to-indigo-400 transition-colors duration-300 flex items-center justify-center">
-                    <span className="text-white text-2xl font-bold group-hover:scale-110 transition-transform duration-300">📍</span>
+                  <div className="w-16 h-16 rounded-full bg-white transition-colors duration-300 flex items-center justify-center">
+                  <Image
+            src="/guess-district.png" 
+            alt="Guess District"
+            width={64}
+            height={64}
+            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
+          />
                   </div>
                 </div>
                 <div>
@@ -151,8 +163,14 @@ export default function HomePage() {
               {/* Main content */}
               <div className="flex items-center relative z-10">
                 <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mr-4 group-hover:shadow-lg transition-all duration-300">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-green-400 to-teal-500 group-hover:from-green-300 group-hover:to-teal-400 transition-colors duration-300 flex items-center justify-center">
-                    <span className="text-white text-2xl font-bold group-hover:scale-110 transition-transform duration-300">📝</span>
+                  <div className="w-16 h-16 rounded-full bg-white transition-colors duration-300 flex items-center justify-center">
+                  <Image
+            src="/life-checklist.png" 
+            alt="Life Checklist"
+            width={64}
+            height={64}
+            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
+          />
                   </div>
                 </div>
                 <div>
@@ -175,8 +193,14 @@ export default function HomePage() {
     {/* Main content */}
     <div className="flex items-center relative z-10">
       <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mr-4 group-hover:shadow-lg transition-all duration-300">
-        <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-300 to-indigo-400 group-hover:from-blue-200 group-hover:to-indigo-300 transition-colors duration-300 flex items-center justify-center">
-          <span className="text-white text-2xl font-bold group-hover:scale-110 transition-transform duration-300">❓</span>
+        <div className="w-16 h-16 rounded-full bg-white transition-colors duration-300 flex items-center justify-center">
+        <Image
+            src="/gk-nepal.png" 
+            alt="General Knowledge"
+            width={64}
+            height={64}
+            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
+          />
         </div>
       </div>
       <div>
