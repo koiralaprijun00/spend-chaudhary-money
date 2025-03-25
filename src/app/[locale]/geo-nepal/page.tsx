@@ -9,7 +9,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 // Dynamically import the Map component
-const Map = dynamic(() => import('../../components/GeoMap').then(mod => mod.default), { ssr: false });
+const Map = dynamic(() => import('../../components/GeoMap').then(mod => mod.default), { 
+  ssr: false,
+  loading: () => <div className="h-full w-full bg-gray-200 flex items-center justify-center">Loading Map...</div>
+});
 
 type GuessLocation = {
   lat: number;
@@ -293,7 +296,7 @@ export default function GeoNepalGame() {
       </header>
 
       {/* Main content with flex-grow */}
-      <main className="flex flex-1 overflow-hidden">
+      <main className="flex flex-col lg:flex-row flex-1 overflow-hidden">
         {/* Loading state */}
         {gameState === 'loading' && (
           <div className="h-full w-full flex items-center justify-center">
@@ -583,7 +586,7 @@ export default function GeoNepalGame() {
             </div>
 
             {/* Full-width map with flex-grow to fill available space */}
-            <div className="flex-grow h-full">
+            <div className="flex-grow h-full min-h-[50vh] lg:min-h-0">
               <Map 
                 guessMode={gameState === 'playing'}
                 onSelect={setSelectedLocation}
