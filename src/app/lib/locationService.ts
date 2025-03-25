@@ -15,7 +15,7 @@ export async function getApprovedLocations(): Promise<Location[]> {
     const approvedLocations = await locationsCollection
       .find({ status: 'approved' })
       .project({ name: 1, lat: 1, lng: 1, imageUrl: 1, funFact: 1 })
-      .limit(20) // Limit to 20 locations to prevent timeouts
+      .limit(40) // Limit to 20 locations to prevent timeouts
       .toArray();
     
     // Convert to the format expected by the game

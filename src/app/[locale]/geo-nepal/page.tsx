@@ -28,6 +28,7 @@ export default function GeoNepalGame() {
   const [score, setScore] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
   const [round, setRound] = useState(1);
+  const [timeUpMessage, setTimeUpMessage] = useState('');
   const [maxRounds, setMaxRounds] = useState(5);
   const [usedLocations, setUsedLocations] = useState<(number | string)[]>([]);
   const [remainingTime, setRemainingTime] = useState(30);
@@ -133,17 +134,36 @@ const fetchLocations = async () => {
     setShowFunFact(false);
   };
 
+
   const handleTimeUp = () => {
-    if (!currentLocation || selectedLocation) return;
-    
-    const randomLat = bounds.southwest.lat + 
-      Math.random() * (bounds.northeast.lat - bounds.southwest.lat);
-    const randomLng = bounds.southwest.lng + 
-      Math.random() * (bounds.northeast.lng - bounds.southwest.lng);
-    
-    setSelectedLocation({ lat: randomLat, lng: randomLng });
-    handleGuess();
-  };
+    if (!currentLocation || gameState !== 'playing') return;
+  
+    setTimerActive(false);
+  
+    const offsetLat = currentLocation.lat + 0.1;
+    const offsetLng = currentLocation.lng + 0.1;
+  
+    setSelectedLocation({ lat: offsetLat, lng: offsetLng });
+    setGuessedLocation({ lat: offsetLat, lng: offsetLng });
+  
+    const timeoutDistance = haversineDistance(
+      offsetLat, offsetLng,
+      currentLocation.lat, currentLocation.lng
+    );
+  
+    setDistance(timeoutDistance);
+    setScore(0);
+    setTimeUpMessage("⏰ Time's up!");
+  
+    setGameHistory(prev => [...prev, {
+      location: currentLocation,
+      guess: { lat: offsetLat, lng: offsetLng },
+      score: 0,
+      distance: timeoutDistance
+    }]);
+  
+    setGameState('result');
+  };  
 
   const handleGuess = () => {
     if (gameState !== 'playing' || !currentLocation || !selectedLocation) return;
@@ -194,6 +214,7 @@ const fetchLocations = async () => {
     setSelectedLocation(null);
     setScore(0);
     setGameState('playing');
+    setTimeUpMessage('');
   };
 
   const restartGame = () => {
@@ -209,6 +230,7 @@ const fetchLocations = async () => {
     setRemainingTime(30);
     setShowFunFact(false);
     setGameHistory([]);
+    setTimeUpMessage('');
   };
 
   const formatTime = (seconds: number) => {
@@ -382,6 +404,13 @@ const fetchLocations = async () => {
 
                   {gameState === 'result' && currentLocation && guessedLocation && (
                     <div className="space-y-5">
+                    {timeUpMessage && (
+                      <div className="bg-yellow-100 text-yellow-800 text-center p-3 rounded-md font-semibold shadow-sm">
+                        {timeUpMessage}
+                      </div>
+                    )}
+
+                   
                       <div className="bg-blue-50 border border-blue-200 p-5 rounded-lg shadow-sm">
                         <div className="text-3xl font-bold text-center text-blue-800 mb-2">Score: {score}</div>
                         <div className="text-lg text-center text-blue-600">Total: {totalScore}</div>
