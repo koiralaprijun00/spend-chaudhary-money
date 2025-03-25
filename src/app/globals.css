@@ -359,3 +359,31 @@ a {
 .checklist-item h3 {
   font-family: 'Rubik', Arial, sans-serif;
 }
+.gradient-btn {
+  position: relative;
+  padding: 2px; /* Simulates border thickness */
+  background: linear-gradient(to right, #8B5CF6, #EC4899);
+  border-radius: 0.5rem; /* Matches rounded-lg */
+}
+
+.gradient-btn > span {
+  display: block;
+  padding: 0.5rem 1rem; /* Inner padding (equivalent to px-4 py-2) */
+  background: white; /* Inner background color */
+  border-radius: 0.375rem; /* Slightly smaller to fit inside */
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .gradient-btn {
+    background: linear-gradient(to right, #D8B4FE, #F9A8D4);
+  }
+  .gradient-btn > span {
+    background: #1F2937; /* Dark mode inner background */
+  }
+}
+
+/* Hover effect */
+.gradient-btn:hover {
+  opacity: 0.75;
+}

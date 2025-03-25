@@ -15,6 +15,9 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    // Common link classes for both desktop and mobile
+    const linkClasses = "text-gray-400 hover:from-orange-500 hover:text-orange-500 px-3 py-2 rounded-md text-sm font-medium transition-all";
+
     return (
         <nav className="bg-white dark:bg-gray-900 shadow-sm mb-4">
             <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
@@ -26,22 +29,22 @@ const Navbar = () => {
 
                 {/* Center: Desktop Navigation Links */}
                 <div className="hidden md:flex items-center space-x-4 mx-4">
-                    <Link href="/spend" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    <Link href="/spend" className={linkClasses}>
                         {t('spendBinodTitle')}
                     </Link>
-                    <Link href="/guess-festival" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    <Link href="/guess-festival" className={linkClasses}>
                         {t('games.guessFestival.title')}
                     </Link>
-                    <Link href="/kings-of-nepal" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    <Link href="/kings-of-nepal" className={linkClasses}>
                         {t('kingsOfNepal.title')}
                     </Link>
-                    <Link href="/name-districts" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    <Link href="/name-districts" className={linkClasses}>
                         {t('nameDistrictTitle')}
                     </Link>
-                    <Link href="/life-checklist" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    <Link href="/life-checklist" className={linkClasses}>
                         {t('nepalChecklist.navbarTitle')}
                     </Link>
-                    <Link href="/general-knowledge" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    <Link href="/general-knowledge" className={linkClasses}>
                         {t('nepalGk.titleshort') || 'Nepal GK Quiz'}
                     </Link>
                 </div>
@@ -75,42 +78,42 @@ const Navbar = () => {
                         <div className="flex flex-col space-y-3">
                             <Link 
                                 href="/spend" 
-                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                className={linkClasses}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 {t('spendBinodTitle')}
                             </Link>
                             <Link 
                                 href="/guess-festival" 
-                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                className={linkClasses}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 {t('games.guessFestival.title')}
                             </Link>
                             <Link 
                                 href="/kings-of-nepal" 
-                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                className={linkClasses}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 {t('kingsOfNepal.title')}
                             </Link>
                             <Link 
                                 href="/name-districts" 
-                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                className={linkClasses}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 {t('nameDistrictTitle')}
                             </Link>
                             <Link 
                                 href="/life-checklist" 
-                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                className={linkClasses}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 {t('nepalChecklist.navbarTitle')}
                             </Link>
                             <Link 
                                 href="/nepal-gk" 
-                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                className={linkClasses}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 {t('nepalGk.title') || 'Nepal GK Quiz'}

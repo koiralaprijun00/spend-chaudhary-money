@@ -19,17 +19,21 @@ export default function HomePage() {
       
       <div className="relative z-10 container mx-auto flex flex-col items-center px-4">
         {/* Header Section - Enhanced with animation */}
-        <div className="py-1 ">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-300 to-red-300 dark:from-orange-600 dark:to-red-600 rounded-full blur-lg opacity-60 scale-100 animate-pulse"></div>
-          </div>
-          <h1 className="text-3xl md:text-6xl font-bold text-center text-transparent bg-gradient-to-r from-red-600 to-blue-700 bg-clip-text">
-            {t('piromomo')} 
-          </h1>
-          <p className="mt-3 text-center text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-300">
-            <span className="inline-block animate-bounce-light delay-100">{t('tagline')}</span>
-          </p>
-        </div>
+        <div className="py-4 pl-0 md:pl-8 w-full">
+  <div className="relative">
+    {/* Updated background gradient with more vibrant colors */}
+    <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 dark:from-purple-700 dark:via-pink-700 dark:to-orange-700 rounded-lg blur-xl opacity-50 scale-105 animate-pulse"></div>
+  </div>
+  {/* New title styling with solid color and shadow */}
+  <h1 className="relative inline text-3xl md:text-6xl font-extrabold text-left bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-300 dark:to-pink-300 bg-clip-text text-transparent">
+  {t('piromomo')}
+  <span className="absolute -bottom-2 left-0 w-16 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></span>
+</h1>  
+  {/* Updated tagline with complementary colors and slight gradient */}
+  <p className="mt-4 text-left text-sm sm:text-md font-medium text-gray-400 dark:text-gray-200">
+    <span className="inline-block animate-bounce-light delay-100">{t('tagline')}</span>
+  </p>
+</div>
 
         {/* Fun Card Section - Improved layout for all screen sizes */}
         <div className="w-full my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl">
