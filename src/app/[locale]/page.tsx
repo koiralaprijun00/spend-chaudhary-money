@@ -18,17 +18,9 @@ export default function HomePage() {
       
       <div className="relative z-10 container mx-auto flex flex-col items-center px-4">
         {/* Header Section - Enhanced with animation */}
-        <div className="py-1 flex flex-col items-center">
+        <div className="py-1 ">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-orange-300 to-red-300 dark:from-orange-600 dark:to-red-600 rounded-full blur-lg opacity-60 scale-100 animate-pulse"></div>
-            <Image 
-              src="/images/momo-header.png" 
-              alt="Piromomo Logo" 
-              width={160} 
-              priority={true}
-              height={160} 
-              className="relative z-10 drop-shadow-xl hover:scale-105 transition-transform duration-300" 
-            />
           </div>
           <h1 className="mt-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-red-600 dark:from-orange-400 dark:to-red-400">
             {t('piromomo')} {/* Fixed: No need for 'homepage.piromomo' */}
@@ -39,7 +31,7 @@ export default function HomePage() {
         </div>
 
         {/* Fun Card Section - Improved layout for all screen sizes */}
-        <div className="w-full my-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
+        <div className="w-full my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl">
           {/* Spend Binod Chaudhary's Money Card */}
           <Link href="/spend" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-purple-600 to-pink-500 dark:from-purple-700 dark:to-pink-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
@@ -193,7 +185,69 @@ export default function HomePage() {
     </div>
   </div>
 </Link>
-          
+
+{/* PattaLagau Geographic Game Card */}
+<Link href="/geo-nepal" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
+  <div className="relative px-6 py-12 h-full bg-gradient-to-br from-emerald-500 to-teal-400 dark:from-emerald-600 dark:to-teal-500 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+    {/* Badge */}
+    <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform -rotate-2 hover:rotate-0 transition-transform">
+      <span className="text-sm animate-pulse">🏔️</span>
+      <span>{t('geographyBadge') || 'Geography'}</span>
+    </div>
+    
+    {/* Main content */}
+    <div className="flex items-center relative z-10">
+      <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mr-4 group-hover:shadow-lg transition-all duration-300">
+        <div className="w-16 h-16 rounded-full overflow-hidden">
+          <Image
+            src="/geo-nepal-icon.png" 
+            alt="Nepal Map"
+            width={64}
+            height={64}
+            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
+          />
+        </div>
+      </div>
+      <div>
+        <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">
+        {t('pattalagauTitle')}
+        </h2>
+        <p className="mt-1 text-white text-opacity-90">
+          {t('pattalagau.description') || 'Test your Nepal geography knowledge in this location-finding game!'}
+        </p>
+      </div>
+    </div>
+  </div>
+</Link>
+
+<div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
+     crossOrigin="anonymous"></script>
+<ins className="adsbygoogle"
+     style={{ display: "block", textAlign: "center" }}
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-4708248697764153" 
+     data-ad-slot="9090491143"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
+     crossOrigin="anonymous"></script>
+<ins className="adsbygoogle"
+     style={{ display: "block", textAlign: "center" }}
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-4708248697764153"
+     data-ad-slot="1212001127"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
         </div>
 
         {/* Content Separator with visual element */}

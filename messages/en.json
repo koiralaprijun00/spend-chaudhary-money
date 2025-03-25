@@ -1,5 +1,10 @@
   {
   "Translations":{
+    "pattalagauTitle": "Pattalagau",
+    "geographyBadge": "Geography",
+  "pattalagau": {
+    "description": "Test your Nepal geography knowledge in this location-finding game!"
+  },
     "more": "More",
     "allCategories": "All Categories",
     "finalScoreMessage": "You scored {score} points!",

@@ -1,5 +1,10 @@
 {
   "Translations": {
+    "pattalagauTitle": "पत्ता लागाउ",
+      "geographyBadge": "भूगोल",
+      "pattalagau": {
+        "description": "यस स्थान-खोज्ने खेलमा आफ्नो नेपालको भूगोल ज्ञान परीक्षण गर्नुहोस्!"
+      },
     "more": "थप",
     "allCategories" : "सबै श्रेणीहरू",
     "finalScoreMessage": "तपाईंको अन्तिम  {score} अंक छन्!",
