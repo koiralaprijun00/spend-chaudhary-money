@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import { useTranslations } from 'next-intl';
 
 export default function HomePage() {
@@ -187,7 +188,7 @@ export default function HomePage() {
 </Link>
 
 {/* PattaLagau Geographic Game Card */}
-<Link href="/geo-nepal" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
+<Link href="/geo-nepal" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-emerald-300 rounded-3xl">
   <div className="relative px-6 py-12 h-full bg-gradient-to-br from-emerald-500 to-teal-400 dark:from-emerald-600 dark:to-teal-500 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
     {/* Badge */}
     <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform -rotate-2 hover:rotate-0 transition-transform">
@@ -210,7 +211,7 @@ export default function HomePage() {
       </div>
       <div>
         <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">
-        {t('pattalagauTitle')}
+          {t('pattalagauTitle') || 'PattaLagau'}
         </h2>
         <p className="mt-1 text-white text-opacity-90">
           {t('pattalagau.description') || 'Test your Nepal geography knowledge in this location-finding game!'}
@@ -220,32 +221,30 @@ export default function HomePage() {
   </div>
 </Link>
 
-<div>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
-     crossOrigin="anonymous"></script>
-<ins className="adsbygoogle"
-     style={{ display: "block", textAlign: "center" }}
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-4708248697764153" 
-     data-ad-slot="9090491143"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<div className="w-full">
+  <div id="ad-container-1" className="mx-auto my-4"></div>
+  <Script id="google-adsense-1" strategy="lazyOnload">
+    {`
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.error('Ad error:', e);
+      }
+    `}
+  </Script>
 </div>
 
-<div>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
-     crossOrigin="anonymous"></script>
-<ins className="adsbygoogle"
-     style={{ display: "block", textAlign: "center" }}
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-4708248697764153"
-     data-ad-slot="1212001127"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<div className="w-full">
+  <div id="ad-container-2" className="mx-auto my-4"></div>
+  <Script id="google-adsense-2" strategy="lazyOnload">
+    {`
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.error('Ad error:', e);
+      }
+    `}
+  </Script>
 </div>
 
         </div>
