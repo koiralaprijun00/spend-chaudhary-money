@@ -19,12 +19,12 @@ const Navbar = () => {
     const linkClasses = "text-gray-400 hover:from-orange-500 hover:text-orange-500 px-3 py-2 rounded-md text-sm font-medium transition-all";
 
     return (
-        <nav className="bg-white dark:bg-gray-900 shadow-sm mb-4">
+        <nav className="bg-white shadow-sm mb-4">
             <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
                 {/* Left side: Logo and brand name */}
                 <Link href="/" className="flex items-center">
                     <Image src="/images/momo.png" alt="Piro Momo Logo" width={40} height={40} className="mr-2" />
-                    <span className="text-gray-800 dark:text-white text-xl font-bold">{t('piromomo')}</span>
+                    <span className="text-gray-800 text-xl font-bold">{t('piromomo')}</span>
                 </Link>
 
                 {/* Center: Desktop Navigation Links */}
