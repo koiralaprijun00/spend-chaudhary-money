@@ -248,6 +248,154 @@ const deleteLocation = async (id: string) => {
               Rejected
             </button>
           </div>
+
+{/* Location Details Modal */}
+{isModalOpen && selectedLocation && (
+  <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 backdrop-blur-sm transition-all duration-300">
+    <div className="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden">
+      {/* Header with gradient background */}
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-4 text-white">
+        <div className="flex justify-between items-center">
+          <h2 className="text-2xl font-bold">{selectedLocation.name}</h2>
+          <button 
+            onClick={() => setIsModalOpen(false)}
+            className="text-white hover:text-blue-200 transition-colors"
+            aria-label="Close modal"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <div className="overflow-y-auto p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Image section */}
+          {selectedLocation.imageUrl && (
+            <div className="col-span-1 md:col-span-2">
+               <img 
+                src={selectedLocation.imageUrl} 
+                alt={selectedLocation.name}
+                className="w-full max-h-96 object-contain rounded-lg shadow-md hover:shadow-lg transition-shadow"
+              />
+            </div>
+          )}
+          
+          {/* Details section */}
+          <div className="space-y-4">
+            {(selectedLocation.lat !== undefined && selectedLocation.lng !== undefined) && (
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                <h3 className="text-sm font-semibold text-blue-700 uppercase tracking-wider">Coordinates</h3>
+                <div className="mt-2 text-gray-700 flex flex-col">
+                  <div className="flex items-center">
+                    <span className="font-medium mr-2">Latitude:</span> 
+                    <code className="bg-gray-100 px-2 py-1 rounded">{selectedLocation.lat}</code>
+                  </div>
+                  <div className="flex items-center mt-1">
+                    <span className="font-medium mr-2">Longitude:</span> 
+                    <code className="bg-gray-100 px-2 py-1 rounded">{selectedLocation.lng}</code>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            {selectedLocation.funFact && (
+              <div className="bg-amber-50 p-4 rounded-lg border border-amber-100">
+                <h3 className="text-sm font-semibold text-amber-700 uppercase tracking-wider">Fun Fact</h3>
+                <p className="mt-2 text-gray-700 italic">{selectedLocation.funFact}</p>
+              </div>
+            )}
+          </div>
+          
+          {/* Status section */}
+          <div className="space-y-4">
+            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+              <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wider">Submission Info</h3>
+              <div className="mt-2 space-y-2">
+                <div className="flex items-center">
+                  <span className="font-medium min-w-24">Status:</span>
+                  <span className={`ml-2 px-3 py-1 text-xs rounded-full font-medium ${
+                    selectedLocation.status === 'approved' ? 'bg-green-100 text-green-800' :
+                    selectedLocation.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                    'bg-yellow-100 text-yellow-800'
+                  }`}>
+                    {selectedLocation.status.toUpperCase()}
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <span className="font-medium min-w-24">Submitted:</span>
+                  <span className="ml-2 text-gray-600">{formatDate(selectedLocation.submittedAt)}</span>
+                </div>
+                {selectedLocation.reviewedAt && (
+                  <div className="flex items-center">
+                    <span className="font-medium min-w-24">Reviewed:</span>
+                    <span className="ml-2 text-gray-600">{formatDate(selectedLocation.reviewedAt)}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Action buttons */}
+        <div className="mt-8 pt-4 border-t border-gray-200 flex flex-wrap justify-end gap-3">
+          {selectedLocation.status === 'pending' && (
+            <>
+              <button
+                onClick={() => {
+                  updateLocationStatus(selectedLocation.id, 'approved');
+                  setIsModalOpen(false);
+                }}
+                className="px-4 py-2 bg-green-600 text-white rounded-lg font-medium shadow-sm hover:bg-green-700 hover:shadow transition-all flex items-center"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                Approve
+              </button>
+              <button
+                onClick={() => {
+                  updateLocationStatus(selectedLocation.id, 'rejected');
+                  setIsModalOpen(false);
+                }}
+                className="px-4 py-2 bg-red-600 text-white rounded-lg font-medium shadow-sm hover:bg-red-700 hover:shadow transition-all flex items-center"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+                Reject
+              </button>
+            </>
+          )}
+          <button
+            onClick={() => {
+              if (confirm('Are you sure you want to delete this location?')) {
+                deleteLocation(selectedLocation.id);
+                setIsModalOpen(false);
+              }
+            }}
+            className="px-4 py-2 bg-gray-700 text-white rounded-lg font-medium shadow-sm hover:bg-gray-800 hover:shadow transition-all flex items-center"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+            </svg>
+            Delete
+          </button>
+          <button
+            onClick={() => setIsModalOpen(false)}
+            className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium shadow-sm hover:bg-gray-300 hover:shadow transition-all flex items-center"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
           
           {/* Content */}
           <div className="p-4">
