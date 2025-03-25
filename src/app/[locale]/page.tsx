@@ -23,8 +23,8 @@ export default function HomePage() {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-orange-300 to-red-300 dark:from-orange-600 dark:to-red-600 rounded-full blur-lg opacity-60 scale-100 animate-pulse"></div>
           </div>
-          <h1 className="mt-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-red-600 dark:from-orange-400 dark:to-red-400">
-            {t('piromomo')} {/* Fixed: No need for 'homepage.piromomo' */}
+          <h1 className="text-3xl md:text-6xl font-bold text-center text-transparent bg-gradient-to-r from-red-600 to-blue-700 bg-clip-text">
+            {t('piromomo')} 
           </h1>
           <p className="mt-3 text-center text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-300">
             <span className="inline-block animate-bounce-light delay-100">{t('tagline')}</span>

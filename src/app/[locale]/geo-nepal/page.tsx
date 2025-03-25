@@ -268,7 +268,7 @@ export default function GeoNepalGame() {
       <header className="bg-white shadow-sm h-16 flex items-center border-b border-gray-200 flex-shrink-0">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-red-600 to-blue-700 bg-clip-text text-transparent">
+            <h1 className=" text-2xl font-bold bg-gradient-to-r from-red-600 to-blue-700 bg-clip-text text-transparent">
               Nepal GeoGuesser
             </h1>
           </div>
