@@ -1,8 +1,19 @@
   {
   "Translations":{
-    "switchLanguage": "English",
+    "firstofNepalTitle": "Firsts of Nepal",
+  "firstofNepalSubtitle": "Exploring the pioneering individuals who shaped Nepal's history with their groundbreaking achievements and remarkable firsts.",
+  "firstofNepalShortSubtitle": "Who is the first to do what in Nepal? Find out.",
+  "firstofNepalBadge": "Pioneers",
+  "searchPlaceholder": "Search by name, category, or description...",
+  "noResults": "No results found",
+  "showingResults": "Showing {count} results",
+  "showingResultsFor": "Showing {count} results for \"{searchTerm}\"",
+  "firstCategory": "First {category}",
+  "noMatches": "We couldn't find any matches for \"{searchTerm}\".",
+  "clearSearch": "Clear search",
     "pattalagauTitle": "Patta Lagau",
     "geographyBadge": "Geography",
+    "switchLanguage": "English",
   "pattalagau": {
     "description": "Test your Nepal geography knowledge in this location-finding game!"
   },

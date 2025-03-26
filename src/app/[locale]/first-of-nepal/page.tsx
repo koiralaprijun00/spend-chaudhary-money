@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Search, X, Filter } from 'lucide-react';
 import { RiCircleLine } from 'react-icons/ri';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 interface FirstItem {
     category: string;
@@ -551,6 +552,8 @@ export default function FirstsOfNepal() {
     } | null>(null);
     const gridRef = useRef<HTMLDivElement>(null);
 
+    const t = useTranslations();
+
     const filteredFirsts = nepaliFirsts.filter(
         (item) => {
             const matchesSearch = 
@@ -595,12 +598,12 @@ export default function FirstsOfNepal() {
                     className="mb-16 text-center"
                 >
                     <h1 className="text-5xl md:text-7xl font-bold text-gray-900 uppercase tracking-tight">
-                        <span className="text-red-600">Firsts</span> of Nepal
-                    </h1>
-                    <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-                        Exploring the pioneering individuals who shaped Nepal's history with their 
-                        groundbreaking achievements and remarkable firsts.
-                    </p>
+            <span className="text-red-600 mr-4">Firsts</span>
+            of Nepal
+          </h1>
+          <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+          Exploring the pioneering individuals who shaped Nepal's history with their groundbreaking achievements and remarkable firsts.
+          </p>
                 </motion.div>
 
                 {/* Search Section */}

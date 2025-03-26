@@ -30,6 +30,7 @@ export default function HomePage() {
 
         {/* Fun Card Section - Improved layout for all screen sizes */}
         <div className="w-full my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl">
+          
           {/* Spend Binod Chaudhary's Money Card */}
           <Link href="/spend" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-purple-600 to-pink-500 dark:from-purple-700 dark:to-pink-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
@@ -62,7 +63,7 @@ export default function HomePage() {
 
           {/* Guess the Festival Card */}
           <Link href="/guess-festival" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-orange-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-orange-500 to-yellow-400 dark:from-orange-600 dark:to-yellow-500 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-red-500 to-amber-400 dark:from-red-600 dark:to-amber-500 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white dark:bg-yellow-100 text-orange-600 font-bold text-xs py-1 px-3 rounded-full shadow-md transform -rotate-2 hover:rotate-0 transition-transform flex items-center gap-1">
                 <span className="text-sm animate-pulse">✨</span>
@@ -92,7 +93,7 @@ export default function HomePage() {
 
           {/* Kings of Nepal Card - NEW */}
           <Link href="/kings-of-nepal" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-blue-600 to-indigo-500 dark:from-blue-700 dark:to-indigo-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-teal-600 to-blue-500 dark:from-teal-700 dark:to-blue-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform -rotate-2 hover:rotate-0 transition-transform">
                 <span className="text-yellow-500 animate-pulse">👑</span>
@@ -119,9 +120,10 @@ export default function HomePage() {
               </div>
             </div>
           </Link>
-
+         
+          {/* Name District */}
           <Link href="/name-districts" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-cyan-500 to-emerald-500 dark:from-cyan-600 dark:to-emerald-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform -rotate-2 hover:rotate-0 transition-transform">
                 <span className="text-sm animate-pulse">🗺️</span>
@@ -149,8 +151,9 @@ export default function HomePage() {
             </div>
           </Link>
 
+          {/* Life Checklist */}
           <Link href="/life-checklist" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-green-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-green-500 to-teal-400 dark:from-green-600 dark:to-teal-500 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-lime-500 to-cyan-400 dark:from-lime-600 dark:to-cyan-500 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-green-600 dark:text-green-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform -rotate-2 hover:rotate-0 transition-transform">
                 <span className="text-sm animate-pulse">✅</span>
@@ -180,7 +183,7 @@ export default function HomePage() {
 
           {/* Nepal GK Quiz Card */}
 <Link href="/general-knowledge" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
-  <div className="relative px-6 py-12 h-full bg-gradient-to-br from-blue-400 to-indigo-500 dark:from-blue-500 dark:to-indigo-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+  <div className="relative px-6 py-12 h-full bg-gradient-to-br from-indigo-500 to-lime-400 dark:from-indigo-600 dark:to-lime-500 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
     {/* Badge */}
     <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform -rotate-2 hover:rotate-0 transition-transform">
       <span className="text-yellow-500 animate-pulse">🧠</span>
@@ -191,7 +194,7 @@ export default function HomePage() {
     <div className="flex items-center relative z-10">
       <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mr-4 group-hover:shadow-lg transition-all duration-300">
         <div className="w-16 h-16 rounded-full bg-white transition-colors duration-300 flex items-center justify-center">
-        <Image
+          <Image
             src="/gk-nepal.png" 
             alt="General Knowledge"
             width={64}
@@ -210,7 +213,7 @@ export default function HomePage() {
 
 {/* PattaLagau Geographic Game Card */}
 <Link href="/geo-nepal" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-emerald-300 rounded-3xl">
-  <div className="relative px-6 py-12 h-full bg-gradient-to-br from-emerald-500 to-teal-400 dark:from-emerald-600 dark:to-teal-500 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+  <div className="relative px-6 py-12 h-full bg-gradient-to-br from-green-600 to-sky-500 dark:from-green-700 dark:to-sky-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
     {/* Badge */}
     <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform -rotate-2 hover:rotate-0 transition-transform">
       <span className="text-sm animate-pulse">🏔️</span>
@@ -242,18 +245,35 @@ export default function HomePage() {
   </div>
 </Link>
 
-<div className="w-full">
-  <div id="ad-container-1" className="mx-auto my-4"></div>
-  <Script id="google-adsense-1" strategy="lazyOnload">
-    {`
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.error('Ad error:', e);
-      }
-    `}
-  </Script>
-</div>
+{/*Firsts of Nepal */}
+<Link href="/first-of-nepal" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-orange-300 rounded-3xl">
+  <div className="relative px-6 py-12 h-full bg-gradient-to-br from-amber-500 to-violet-500 dark:from-amber-600 dark:to-violet-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+    {/* Badge */}
+    <div className="absolute top-3 right-3 bg-white dark:bg-yellow-100 text-orange-600 font-bold text-xs py-1 px-3 rounded-full shadow-md transform -rotate-2 hover:rotate-0 transition-transform flex items-center gap-1">
+      <span className="text-sm animate-pulse">✨</span>
+      <span>{t('firstofNepalBadge')}</span>
+    </div>
+    
+    {/* Main content */}
+    <div className="flex items-center relative z-10">
+      <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mr-4 group-hover:shadow-lg transition-all duration-300">
+        <div className="w-16 h-16 rounded-full overflow-hidden">
+          <Image
+            src="/first-of-nepal.png"
+            alt="First of Nepal"
+            width={64}
+            height={64}
+            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
+          />
+        </div>
+      </div>
+      <div>
+        <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">{t('firstofNepalTitle')}</h2>
+        <p className="mt-1 text-white text-opacity-90">{t('firstofNepalShortSubtitle')}</p>
+      </div>
+    </div>
+  </div>
+</Link>
 
 <div className="w-full">
   <div id="ad-container-2" className="mx-auto my-4"></div>
