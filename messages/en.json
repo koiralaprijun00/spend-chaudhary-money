@@ -1,5 +1,7 @@
   {
   "Translations":{
+   
+    "First": "First",
   "firstofNepalTitle": "Firsts of Nepal",
   "firstofNepalSubtitle": "Exploring the pioneering individuals who shaped Nepal's history with their groundbreaking achievements and remarkable firsts.",
   "firstofNepalShortSubtitle": "Who is the first to do what in Nepal? Find out.",
@@ -46,7 +48,8 @@
       "navbarTitle": "Nepal Life Checklist",
       "title": "Are you a real Nepali? Himalayan tales and tea addiction",
       "subtitle": "Prove your Nepali-ness with momos and chaos!",
-      "description": " Try if you are a real Nepali."
+      "description": " Try if you are a real Nepali.",
+      "completionText": "{completed} / {total} completed ({percent}%)"
     },
     "bucket":"CheckList",
     "piromomo": "Piromomo",
