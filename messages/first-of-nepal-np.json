@@ -1,0 +1,678 @@
+{
+    "firstsOfNepal":{
+       "items":{
+          "bhimsenThapa":{
+             "category":"प्रधानमन्त्री",
+             "name":"भीमसेन थापा",
+             "year":"१८६३ ",
+             "description":"नेपालको पहिलो प्रधानमन्त्रीको रूपमा सेवा गरे, जसलाई मुख्तियार पनि भनिन्छ, र विभिन्न प्रशासनिक सुधारहरू लागू गरे।",
+             "imagePath":"/images/first-of-nepal/bhimsen-thapa.jpg"
+          },
+          "ramBaranYadav":{
+             "category":"राष्ट्रपति",
+             "name":"राम बरण यादव",
+             "year":"२०६५ ",
+             "description":"नेपाललाई संघीय लोकतान्त्रिक गणतन्त्र घोषणा गरिएपछि पहिलो राष्ट्रपति बने।",
+             "imagePath":"/images/first-of-nepal/ram-baran-yadav.jpg"
+          },
+          "sushilaKarki":{
+             "category":"महिला न्यायाधीश",
+             "name":"सुशीला कार्की",
+             "year":"२०७३ ",
+             "description":"नेपालको सर्वोच्च अदालतको पहिलो महिला प्रधानन्यायाधीश।",
+             "imagePath":"/images/first-of-nepal/sushila-karki.jpg"
+          },
+          "bidhanLama":{
+             "category":"ओलम्पिक पदक विजेता",
+             "name":"बिधान लामा",
+             "year":"२०४५ ",
+             "description":"ताइक्वान्डो प्रदर्शनी खेलमा ओलम्पिक पदक (कांस्य) जित्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/bidhan-lama.jpg"
+          },
+          "tenzingNorgay":{
+             "category":"एभरेस्ट आरोही",
+             "name":"तेन्जिङ नोर्गे",
+             "year":"२०१० ",
+             "description":"एडमन्ड हिलारीसँगै माउन्ट एभरेस्टको शिखरमा पुग्ने पहिलो व्यक्ति।",
+             "imagePath":"/images/first-of-nepal/tenzing-norgay.jpg"
+          },
+          "pasangLhamuSherpa":{
+             "category":"महिला पर्वतारोही",
+             "name":"पासाङ ल्हामु शेर्पा",
+             "year":"२०५० ",
+             "description":"माउन्ट एभरेस्ट सफलतापूर्वक चढ्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/pasang-lhamu-sherpa.jpg"
+          },
+          "buddhaKrishnaBam":{
+             "category":"नोबेल पुरस्कार मनोनीत",
+             "name":"बुद्ध कृष्ण बम",
+             "year":"२०५६ ",
+             "description":"भौतिकशास्त्रमा नोबेल पुरस्कारको लागि मनोनीत हुने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/buddha-krishna-bam.jpg"
+          },
+          "baikunthaManandhar":{
+             "category":"अन्तर्राष्ट्रिय फुटबलर",
+             "name":"बैकुण्ठ मानन्धर",
+             "year":"२०३९ ",
+             "description":"अन्तर्राष्ट्रिय लिगमा व्यावसायिक रूपमा खेल्ने पहिलो नेपाली फुटबलर।",
+             "imagePath":"/images/first-of-nepal/baikuntha-manandhar.jpg"
+          },
+          "dwarikaDeviThakurani":{
+             "category":"महिला मन्त्री",
+             "name":"द्वारिका देवी ठकुरानी",
+             "year":"२०१५ ",
+             "description":"नेपालको मन्त्रिपरिषदमा पहिलो महिला मन्त्री।",
+             "imagePath":"/images/first-of-nepal/dwarika-devi-thakurani.jpg"
+          },
+          "rakeshSharma":{
+             "category":"वाणिज्यिक पाइलट",
+             "name":"राकेश शर्मा",
+             "year":"२०२८ ",
+             "description":"नेपालको पहिलो वाणिज्यिक एयरलाइन पाइलट।",
+             "imagePath":"/images/first-of-nepal/rakesh-sharma.jpg"
+          },
+          "lainSinghBangdel":{
+             "category":"अन्तर्राष्ट्रिय कलाकार",
+             "name":"लैन सिंह बाङ्देल",
+             "year":"२०१९ ",
+             "description":"अन्तर्राष्ट्रिय रूपमा मान्यता प्राप्त पहिलो आधुनिक नेपाली कलाकार।",
+             "imagePath":"/images/first-of-nepal/lain-singh-bangdel.jpg"
+          },
+          "hiraSinghKhatri":{
+             "category":"फिल्म निर्देशक",
+             "name":"हिरा सिंह खत्री",
+             "year":"२००८ ",
+             "description":"पहिलो नेपाली फिचर फिल्म 'आमा' को निर्देशन गरे।",
+             "imagePath":"/images/first-of-nepal/hira-singh-khatri.jpg"
+          },
+          "yankilaSherpa":{
+             "category":"महिला उद्यमी",
+             "name":"यान्किला शेर्पा",
+             "year":"२०४१ ",
+             "description":"नेपालमा ठूलो पर्यटन कम्पनी स्थापना गर्ने पहिलो महिला उद्यमी।",
+             "imagePath":"/images/first-of-nepal/yankila-sherpa.jpg"
+          },
+          "sirishGurung":{
+             "category":"ओलम्पिक पौडीबाज",
+             "name":"सिरिश गुरुङ",
+             "year":"२०६१ ",
+             "description":"ओलम्पिक पौडीमा प्रतिस्पर्धा गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/sirish-gurung.jpg"
+          },
+          "sahanaPradhan":{
+             "category":"महिला कूटनीतिज्ञ",
+             "name":"सहाना प्रधान",
+             "year":"२०३८ ",
+             "description":"नेपालको पहिलो महिला राजदूत।",
+             "imagePath":"/images/first-of-nepal/sahana-pradhan.jpg"
+          },
+          "sandukRuit":{
+             "category":"चिकित्सक",
+             "name":"सन्दुक रुइत",
+             "year":"२०४३ ",
+             "description":"क्रान्तिकारी मोतियाबिन्दु शल्यक्रिया प्रविधि विकास गर्ने पहिलो नेपाली डाक्टर।",
+             "imagePath":"/images/first-of-nepal/sanduk-ruit.jpg"
+          },
+          "bilamLalShrestha":{
+             "category":"चेस ग्रान्डमास्टर",
+             "name":"बिलम लाल श्रेष्ठ",
+             "year":"२०५३ ",
+             "description":"अन्तर्राष्ट्रिय मास्टरको दर्जा प्राप्त गर्ने पहिलो नेपाली चेस खेलाडी।",
+             "imagePath":"/images/first-of-nepal/bilam-lal-shrestha.jpg"
+          },
+          "prekshyaLama":{
+             "category":"महिला प्रहरी अधिकारी",
+             "name":"प्रेक्षा लामा",
+             "year":"२०३२ ",
+             "description":"नेपालको पहिलो महिला प्रहरी अधिकारी।",
+             "imagePath":"/images/first-of-nepal/prekshya-lama.jpg"
+          },
+          "minBahadurPoudel":{
+             "category":"अन्तर्राष्ट्रिय वैज्ञानिक",
+             "name":"मिन बहादुर पौडेल",
+             "year":"२०४९ ",
+             "description":"नेचर जर्नलमा अनुसन्धान प्रकाशित गर्ने पहिलो नेपाली वैज्ञानिक।",
+             "imagePath":"/images/first-of-nepal/min-bahadur-poudel.jpg"
+          },
+          "sitaTamang":{
+             "category":"म्याराथन धावक",
+             "name":"सीता तामाङ",
+             "year":"२०५७ ",
+             "description":"अन्तर्राष्ट्रिय म्याराथनमा प्रतिस्पर्धा गर्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/sita-tamang.jpg"
+          },
+          "arjunBhandari":{
+             "category":"अन्तरिक्ष अनुसन्धानकर्ता",
+             "name":"अर्जुन भण्डारी",
+             "year":"२०६७ ",
+             "description":"नासाको कोषमा आधारित अन्तरिक्ष अनुसन्धान परियोजनामा योगदान गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/arjun-bhandari.jpg"
+          },
+          "buddhiMayaSubedi":{
+             "category":"महिला पाइलट",
+             "name":"बुद्धि माया सुबेदी",
+             "year":"२०५० ",
+             "description":"नेपालमा वाणिज्यिक एयरलाइन उडाउने पहिलो महिला पाइलट।",
+             "imagePath":"/images/first-of-nepal/buddhi-maya-subedi.jpg"
+          },
+          "pratimaPoudel":{
+             "category":"महिला इन्जिनियर",
+             "name":"प्रतिमा पौडेल",
+             "year":"२०५६ ",
+             "description":"सिभिल इन्जिनियर बन्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/pratima-poudel.jpg"
+          },
+          "gangaPrasadTiwari":{
+             "category":"व्यावसायिक पाइलट",
+             "name":"गंगा प्रसाद तिवारी",
+             "year":"२०४६ ",
+             "description":"व्यावसायिक वाणिज्यिक पाइलट बन्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/ganga-prasad-tiwari.jpg"
+          },
+          "nishaAdhikari":{
+             "category":"महिला फिल्म निर्माता",
+             "name":"निशा अधिकारी",
+             "year":"२०६९ ",
+             "description":"वाणिज्यिक रूपमा सफल फिल्म निर्देशन गर्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/nisha-adhikari.jpg"
+          },
+          "rohitJohnChhetri":{
+             "category":"टिभी प्रस्तोता",
+             "name":"रोहित जोन क्षेत्री",
+             "year":"२०६२ ",
+             "description":"राष्ट्रिय रूपमा मान्यता प्राप्त प्राइम टाइम शो होस्ट गर्ने पहिलो नेपाली टिभी प्रस्तोता।",
+             "imagePath":"/images/first-of-nepal/rohit-john-chhetri.jpg"
+          },
+          "sanjitaPandey":{
+             "category":"महिला वैज्ञानिक",
+             "name":"सञ्जिता पाण्डे",
+             "year":"२०५९ ",
+             "description":"जेनेटिक्स क्षेत्रमा नवीन अनुसन्धान गर्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/sanjita-pandey.jpg"
+          },
+          "sudeepSharma":{
+             "category":"प्रसिद्ध फोटोग्राफर",
+             "name":"सुदीप शर्मा",
+             "year":"२०५७ ",
+             "description":"अन्तर्राष्ट्रिय प्रदर्शनी र विश्वव्यापी मान्यता प्राप्त गर्ने पहिलो नेपाली फोटोग्राफर।",
+             "imagePath":"/images/first-of-nepal/sudeep-sharma.jpg"
+          },
+          "biraGun":{
+             "category":"नेपालको बन्दूक",
+             "name":"बिरा गन",
+             "year":"१९०३ ",
+             "description":"नेपालमा निर्मित पहिलो बन्दूक, जसको ऐतिहासिक महत्त्व र शिल्प कौशलका लागि परिचित छ।",
+             "imagePath":"/images/first-of-nepal/bira-gun.jpg"
+          },
+          "narayanGopal":{
+             "category":"गायक",
+             "name":"नारायण गोपाल",
+             "year":"२०१७ ",
+             "description":"शास्त्रीय र आधुनिक संगीतका लागि अन्तर्राष्ट्रिय ख्याति कमाउने पहिलो नेपाली गायक।",
+             "imagePath":"/images/first-of-nepal/narayan-gopal.jpg"
+          },
+          "binodChaudhary":{
+             "category":"उद्यमी",
+             "name":"विनोद चौधरी",
+             "year":"२०५० ",
+             "description":"अर्बपति बन्ने पहिलो नेपाली र चौधरी समूहको संस्थापक।",
+             "imagePath":"/images/first-of-nepal/binod-chaudhary.jpg"
+          },
+          "bishweshwarPrasadKoirala":{
+             "category":"राजनीतिक नेता",
+             "name":"विश्वेश्वर प्रसाद कोइराला",
+             "year":"२०१६ ",
+             "description":"लोकतान्त्रिक आन्दोलनबाट पहिलो नेपाली प्रधानमन्त्री बने र नेपाललाई राजनीतिक परिवर्तनको महत्त्वपूर्ण युगमा नेतृत्व गरे।",
+             "imagePath":"/images/first-of-nepal/bishweshwar-prasad-koirala.jpg"
+          },
+          "madanKrishnaShrestha":{
+             "category":"सामाजिक कार्यकर्ता",
+             "name":"मदन कृष्ण श्रेष्ठ",
+             "year":"२०४७ ",
+             "description":"कमेडी मार्फत सामाजिक कार्य र चेतना फैलाउने पहिलो नेपाली अभिनेता र हास्यकलाकार।",
+             "imagePath":"/images/first-of-nepal/madan-krishna-shrestha.jpg"
+          },
+          "nischalPoudel":{
+             "category":"ई-कमर्स उद्यमी",
+             "name":"निश्चल पौडेल",
+             "year":"२०७२ ",
+             "description":"अन्तर्राष्ट्रिय रूपमा मान्यता प्राप्त सफल ई-कमर्स प्लेटफर्म सुरु गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/nischal-poudel.jpg"
+          },
+          "mayaSherpa":{
+             "category":"महिला पर्वत गाइड",
+             "name":"माया शेर्पा",
+             "year":"२०५८ ",
+             "description":"हिमालमा पर्वत गाइडको रूपमा काम गर्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/maya-sherpa.jpg"
+          },
+          "laxmiPrasadDevkota":{
+             "category":"राष्ट्रिय कवि",
+             "name":"लक्ष्मी प्रसाद देवकोटा",
+             "year":"१९८७ ",
+             "description":"नेपाली साहित्य र राष्ट्रिय पहिचानमा योगदान दिने पहिलो व्यापक रूपमा मान्यता प्राप्त नेपाली कवि।",
+             "imagePath":"/images/first-of-nepal/laxmi-prasad-devkota.jpg"
+          },
+          "sumanBTamang":{
+             "category":"अन्तरिक्ष वैज्ञानिक",
+             "name":"सुमन बी. तामाङ",
+             "year":"२०७२ ",
+             "description":"विदेशमा अन्तरिक्ष अनुसन्धान संस्थानमा काम गर्ने र अन्तरिक्ष परियोजनामा योगदान गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/suman-b-tamang.jpg"
+          },
+          "puspaBhandari":{
+             "category":"विश्व च्याम्पियन",
+             "name":"पुष्पा भण्डारी",
+             "year":"२०६४ ",
+             "description":"वेटलिफ्टिङ खेलमा विश्व च्याम्पियनशिप उपाधि जित्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/puspa-bhandari.jpg"
+          },
+          "rohitRajPoudel":{
+             "category":"अन्तर्राष्ट्रिय चेस च्याम्पियन",
+             "name":"रोहित राज पौडेल",
+             "year":"२०७० ",
+             "description":"ग्रान्डमास्टर स्तरको अन्तर्राष्ट्रिय चेस टूर्नामेंट जित्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/rohit-raj-poudel.jpg"
+          },
+          "nandaLalPoudel":{
+             "category":"महिला बक्सर",
+             "name":"नन्द लाल पौडेल",
+             "year":"२०५५ ",
+             "description":"अन्तर्राष्ट्रिय बक्सिङ प्रतियोगिताहरूमा नेपालको प्रतिनिधित्व गर्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/nanda-lal-poudel.jpg"
+          },
+          "amitBhandari":{
+             "category":"माउन्टेन बाइकर",
+             "name":"अमित भण्डारी",
+             "year":"२०६७ ",
+             "description":"अन्तर्राष्ट्रिय माउन्टेन बाइकिङ च्याम्पियनशिपमा प्रतिस्पर्धा गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/amit-bhandari.jpg"
+          },
+          "rohitKumar":{
+             "category":"खेल पत्रकार",
+             "name":"रोहित कुमार",
+             "year":"२०४९ ",
+             "description":"प्रमुख खेल नेटवर्कको लागि अन्तर्राष्ट्रिय घटनाहरू कभर गर्ने पहिलो नेपाली खेल पत्रकार।",
+             "imagePath":"/images/first-of-nepal/rohit-kumar.jpg"
+          },
+          "puspaRajChhetri":{
+             "category":"टिभी निर्देशक",
+             "name":"पुष्प राज क्षेत्री",
+             "year":"२०४२ ",
+             "description":"राष्ट्रिय टेलिभिजन श्रृंखला निर्देशन गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/puspa-raj-chhetri.jpg"
+          },
+          "sitaSahi":{
+             "category":"वातावरण संरक्षण कार्यकर्ता",
+             "name":"सीता साही",
+             "year":"२०६२ ",
+             "description":"वन्यजन्तु संरक्षण र बासस्थान संरक्षणमा केन्द्रित राष्ट्रिय वातावरण संगठनको नेतृत्व गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/sita-sahi.jpg"
+          },
+          "shreehariSharma":{
+             "category":"जलवायु वैज्ञानिक",
+             "name":"डा. श्रीहरि शर्मा",
+             "year":"२०६७ ",
+             "description":"हिमाली पारिस्थितिक प्रणालीमा जलवायु मोडलिङ र प्रभावमा विशेषज्ञता हासिल गर्ने पहिलो नेपाली वैज्ञानिक।",
+             "imagePath":"/images/first-of-nepal/shreehari-sharma.jpg"
+          },
+          "deepaShrestha":{
+             "category":"वन्यजन्तु फोटोग्राफर",
+             "name":"दीपा श्रेष्ठ",
+             "year":"२०६९ ",
+             "description":"आफ्नो कामको लागि अन्तर्राष्ट्रिय मान्यता प्राप्त गर्ने पहिलो नेपाली महिला वन्यजन्तु फोटोग्राफर।",
+             "imagePath":"/images/first-of-nepal/deepa-shrestha.jpg"
+          },
+          "parijat":{
+             "category":"महिला लेखक",
+             "name":"परिजात",
+             "year":"२०१७ ",
+             "description":"आफ्नो साहित्यिक कृतिहरूको लागि व्यापक मान्यता प्राप्त गर्ने पहिलो महिला नेपाली उपन्यासकार।",
+             "imagePath":"/images/first-of-nepal/parijat.jpg"
+          },
+          "sumanAdhikari":{
+             "category":"मानव अधिकार कार्यकर्ता",
+             "name":"सुमन अधिकारी",
+             "year":"२०६१ ",
+             "description":"मानव अधिकार र राजनीतिक स्वतन्त्रतामा केन्द्रित एनजीओ स्थापना गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/suman-adhikari.jpg"
+          },
+          "anilShrestha":{
+             "category":"साइबर सुरक्षा विशेषज्ञ",
+             "name":"अनिल श्रेष्ठ",
+             "year":"२०७५ ",
+             "description":"बहुराष्ट्रिय टेक कम्पनीको लागि साइबर सुरक्षा पहलको नेतृत्व गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/anil-shrestha.jpg"
+          },
+          "ritaBhandari":{
+             "category":"महिला अन्तरिक्ष यात्री उम्मेदवार",
+             "name":"रिता भण्डारी",
+             "year":"२०७७ ",
+             "description":"नागरिक अन्तरिक्ष मिसनको लागि उम्मेदवारको रूपमा छनोट हुने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/rita-bhandari.jpg"
+          },
+          "sureshPokharel":{
+             "category":"एआई अनुसन्धानकर्ता",
+             "name":"सुरेश पोखरेल",
+             "year":"२०७३ ",
+             "description":"अन्तर्राष्ट्रिय जर्नलमा कृत्रिम बुद्धिमत्तामा समीक्षा गरिएको पेपर प्रकाशित गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/suresh-pokharel.jpg"
+          },
+          "krishnaBahadurThapa":{
+             "category":"प्यारालम्पिक खेलाडी",
+             "name":"कृष्ण बहादुर थापा",
+             "year":"२०६५ ",
+             "description":"प्यारालम्पिक खेलहरूमा ह्वीलचेयर दौडमा भाग लिने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/krishna-bahadur-thapa.jpg"
+          },
+          "rubinaChhetri":{
+             "category":"महिला क्रिकेटर",
+             "name":"रुबिना क्षेत्री",
+             "year":"२०६८ ",
+             "description":"अन्तर्राष्ट्रिय खेलमा राष्ट्रिय महिला क्रिकेट टोलीको कप्तानी गर्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/rubina-chhetri.jpg"
+          },
+          "kiranBhattarai":{
+             "category":"वृत्तचित्र निर्माता",
+             "name":"किरण भट्टराई",
+             "year":"२०६० ",
+             "description":"हिमाली जैविक विविधतामा वृत्तचित्रको लागि अन्तर्राष्ट्रिय पुरस्कार जित्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/kiran-bhattarai.jpg"
+          },
+          "prabinLama":{
+             "category":"रोबोटिक्स इन्जिनियर",
+             "name":"प्रबिन लामा",
+             "year":"२०७१ ",
+             "description":"अन्तर्राष्ट्रिय रोबोटिक्स प्रदर्शनीमा प्रदर्शित रोबोट डिजाइन गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/prabin-lama.jpg"
+          },
+          "anitaShrestha":{
+             "category":"महिला शल्यचिकित्सक",
+             "name":"अनिता श्रेष्ठ",
+             "year":"२०४४ ",
+             "description":"सफल ओपन-हार्ट शल्यक्रिया गर्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/anita-shrestha.jpg"
+          },
+          "hariRoka":{
+             "category":"अन्तर्राष्ट्रिय म्याराथन विजेता",
+             "name":"हरि रोक",
+             "year":"२०५४ ",
+             "description":"एसियामा ठूलो अन्तर्राष्ट्रिय म्याराथन जित्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/hari-roka.jpg"
+          },
+          "kamalaShrestha":{
+             "category":"महिला पत्रकार",
+             "name":"कमला श्रेष्ठ",
+             "year":"२०२२ ",
+             "description":"क्षेत्रीय द्वन्द्वहरूको समयमा युद्ध संवाददाताको रूपमा काम गर्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/kamala-shrestha.jpg"
+          },
+          "dineshAdhikari":{
+             "category":"क्वान्टम भौतिकशास्त्री",
+             "name":"दिनेश अधिकारी",
+             "year":"२०७६ ",
+             "description":"क्वान्टम कम्प्युटिङ अनुसन्धानमा सफलता हासिल गर्न योगदान गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/dinesh-adhikari.jpg"
+          },
+          "saritaMaskey":{
+             "category":"महिला वास्तुकार",
+             "name":"सरिता मास्के",
+             "year":"२०३७ ",
+             "description":"राष्ट्रिय रूपमा मान्यता प्राप्त सार्वजनिक भवन डिजाइन गर्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/sarita-maskey.jpg"
+          },
+          "lilaGurung":{
+             "category":"महिला रेडियो प्रस्तोता",
+             "name":"लीला गुरुङ",
+             "year":"२०२७ ",
+             "description":"राष्ट्रव्यापी प्रसारण हुने रेडियो कार्यक्रम सञ्चालन गर्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/lila-gurung.jpg"
+          },
+          "monikaThapa":{
+             "category":"महिला चेस खेलाडी",
+             "name":"मोनिका थापा",
+             "year":"२०६६ ",
+             "description":"चेसमा वुमन इन्टरनेशनल मास्टरको उपाधि प्राप्त गर्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/monika-thapa.jpg"
+          },
+          "bikashPandey":{
+             "category":"नवीकरणीय ऊर्जा नवप्रवर्तक",
+             "name":"विकास पाण्डे",
+             "year":"२०५५ ",
+             "description":"ग्रामीण विद्युतीकरणको लागि ठूलो स्तरको माइक्रो-हाइड्रोपावर परियोजना लागू गर्ने पहिलो नेपाली।",
+             "imagePath":"/images/first-of-nepal/bikash-pandey.jpg"
+          },
+          "anjaliTamang":{
+             "category":"महिला म्याराथन धावक",
+             "name":"अञ्जली तामाङ",
+             "year":"२०६३ ",
+             "description":"राष्ट्रिय म्याराथन च्याम्पियनशिप जित्ने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/anjali-tamang.jpg"
+          },
+          "dawaYangzumSherpa":{
+             "category":"महिला पर्वतारोहण प्रशिक्षक",
+             "name":"दावा याङ्जुम शेर्पा",
+             "year":"२०६९ ",
+             "description":"अन्तर्राष्ट्रिय पर्वतारोहण गाइडको रूपमा प्रमाणित हुने पहिलो नेपाली महिला।",
+             "imagePath":"/images/first-of-nepal/dawa-yangzum-sherpa.jpg"
+          },
+          "aama":{
+             "category":"नेपालमा निर्मित फिल्म",
+             "name":"आमा",
+             "year":"२०२१ ",
+             "description":"नेपालमा निर्मित पहिलो फिल्म, हिरा सिंह खत्रीले निर्देशन गरेको र नेपाली सरकारद्वारा बनाइएको, अक्टोबर ७, १९६४ मा रिलीज भएको।",
+             "imagePath":"/images/first-of-nepal/aama.jpg"
+          },
+          "maitighar":{
+             "category":"निजी रूपमा निर्मित फिल्म",
+             "name":"माइतीघर",
+             "year":"२०२३ ",
+             "description":"सुमोनाञ्जली फिल्म्स प्राइभेट लिमिटेडद्वारा निजी ब्यानरमा निर्मित पहिलो नेपाली फिल्म, माला सिन्हा र भारतीय योगदानसहित।",
+             "imagePath":"/images/first-of-nepal/maitighar.jpg"
+          },
+          "kumari":{
+             "category":"रंगीन फिल्म",
+             "name":"कुमारी",
+             "year":"२०३४ ",
+             "description":"रंगीन रूपमा निर्मित पहिलो नेपाली फिल्म, प्रेम बहादुर बस्नेतले रोयल नेपाल फिल्म कर्पोरेसनअन्तर्गत निर्देशन गरे।",
+             "imagePath":"/images/first-of-nepal/kumari.jpg"
+          },
+          "legendOfShankhadhar":{
+             "category":"एनिमेटेड फिल्म",
+             "name":"द लिजेन्ड अफ शंखधर",
+             "year":"२०७३ ",
+             "description":"पहिलो एनिमेटेड नेपाली फिल्म, शंखधर शाख्वाको जीवनीमा आधारित, जसले नेपाल सम्बत् युग ८७९ मा सुरु गरे।",
+             "imagePath":"/images/first-of-nepal/legend-of-shankhadhar.jpg"
+          },
+          "bijuliMachine":{
+             "category":"विज्ञान कथा फिल्म",
+             "name":"बिजुली मेसिन",
+             "year":"२०७३ ",
+             "description":"सामाजिक कथासहितको पहिलो नेपाली विज्ञान कथा फिल्म, नविन अवालले निर्देशन गरे, समाजमा बिजुली कटौतीको समस्या सम्बोधन गर्दै।",
+             "imagePath":"/images/first-of-nepal/bijuli-machine.jpg"
+          },
+          "motiramBhatta":{
+             "category":"नेपाली साहित्य",
+             "name":"मोतिराम भट्ट",
+             "year":"१९०८ ",
+             "description":"नेपाली साहित्यका पहिलो कवि, भाषाको विकासमा योगदानका लागि परिचित।",
+             "imagePath":"/images/first-of-nepal/motiram-bhatta.jpg"
+          },
+          "bhanubhaktaAcharya":{
+             "category":"नेपाली कवि",
+             "name":"भानुभक्त आचार्य",
+             "year":"१८८९ ",
+             "description":"नेपालीमा लेख्ने पहिलो कवि, रामायणको अनुवादका लागि परिचित, जसले उनलाई 'आदिकवि'को उपाधि दिलायो।",
+             "imagePath":"/images/first-of-nepal/bhanubhakta-acharya.jpg"
+          },
+          "gorkhapatra":{
+             "category":"अखबार",
+             "name":"गोरखापत्र",
+             "year":"१९५८ ",
+             "description":"राणा शासनकालमा प्रकाशित पहिलो नेपाली भाषाको अखबार, जसले नेपालमा छापा माध्यमको सुरुवात गर्यो।",
+             "imagePath":"/images/first-of-nepal/gorkhapatra.jpg"
+          },
+          "tribhuvanUniversity":{
+             "category":"विश्वविद्यालय",
+             "name":"त्रिभुवन विश्वविद्यालय",
+             "year":"२०१६ ",
+             "description":"उच्च शिक्षा र अनुसन्धान अवसर प्रदान गर्न स्थापित नेपालको पहिलो विश्वविद्यालय।",
+             "imagePath":"/images/first-of-nepal/tribhuvan-university.jpg"
+          },
+          "pharpingHydropowerStation":{
+             "category":"जलविद्युत परियोजना",
+             "name":"फर्पिङ जलविद्युत स्टेशन",
+             "year":"१९६८ ",
+             "description":"राणा कालमा सञ्चालित नेपालको पहिलो जलविद्युत स्टेशन, ५०० किलोवाट उत्पादन गर्ने।",
+             "imagePath":"/images/first-of-nepal/pharping-hydropower.jpg"
+          },
+          "nepalTelevision":{
+             "category":"टेलिभिजन प्रसारण",
+             "name":"नेपाल टेलिभिजन",
+             "year":"२०४२ ",
+             "description":"राज्य नियन्त्रणमा जनवरी ३१, १९८५ मा सुरु भएको नेपालको पहिलो टेलिभिजन प्रसारण।",
+             "imagePath":"/images/first-of-nepal/nepal-television.jpg"
+          },
+          "royalNepalAirlines":{
+             "category":"अन्तर्राष्ट्रिय उडान",
+             "name":"रोयल नेपाल एयरलाइन्स",
+             "year":"२०१५ ",
+             "description":"नेपालको राष्ट्रिय वाहकद्वारा काठमाडौंलाई भारतको पटनासँग जोड्ने पहिलो अन्तर्राष्ट्रिय उडान।",
+             "imagePath":"/images/first-of-nepal/royal-nepal-airlines.jpg"
+          },
+          "divyaUpadesh":{
+             "category":"मुद्रित पुस्तक",
+             "name":"पृथ्वी नारायण शाहको दिव्य उपदेश",
+             "year":"१९२४ ",
+             "description":"आधुनिक नेपालका संस्थापकको शिक्षाहरूको संग्रह, नेपालीमा छापिएको पहिलो पुस्तक।",
+             "imagePath":"/images/first-of-nepal/divya-upadesh.jpg"
+          },
+          "karnaliRiverBridge":{
+             "category":"झोलुङ्गे पुल",
+             "name":"कर्णाली नदी पुल (चिसापानी)",
+             "year":"२०५० ",
+             "description":"कर्णाली नदीमा फैलिएको नेपालको पहिलो ठूलो झोलुङ्गे पुल, सुदूर पश्चिममा सम्पर्क सुधार गर्न।",
+             "imagePath":"/images/first-of-nepal/karnali-bridge.jpg"
+          },
+          "tribhuvanAirport":{
+             "category":"विमानस्थल",
+             "name":"त्रिभुवन विमानस्थल",
+             "year":"२००६ ",
+             "description":"नेपालको पहिलो विमानस्थल, मूल रूपमा गौचर विमानस्थल भनिन्थ्यो, अहिले त्रिभुवन अन्तर्राष्ट्रिय विमानस्थलको नामले चिनिन्छ।",
+             "imagePath":"/images/first-of-nepal/tribhuvan-airport.jpg"
+          },
+          "nepalPrajaParishad":{
+             "category":"राजनीतिक पार्टी",
+             "name":"नेपाल प्रजा परिषद्",
+             "year":"१९९३ ",
+             "description":"राणा शासनको विरोध र लोकतन्त्रको वकालत गर्न स्थापित नेपालको पहिलो राजनीतिक पार्टी।",
+             "imagePath":"/images/first-of-nepal/nepal-praja-parishad.jpg"
+          },
+          "governmentOfNepalAct":{
+             "category":"संविधान",
+             "name":"नेपाल सरकार ऐन",
+             "year":"२००५ ",
+             "description":"पद्म शमशेर राणाद्वारा प्रस्तुत नेपालको पहिलो लिखित संविधान, यद्यपि राणा शासनमा प्रतीकात्मक थियो।",
+             "imagePath":"/images/first-of-nepal/government-of-nepal-act.jpg"
+          },
+          "generalElection1959":{
+             "category":"लोकतान्त्रिक निर्वाचन",
+             "name":"सामान्य निर्वाचन",
+             "year":"२०१६ ",
+             "description":"राजा महेन्द्रको शासनमा भएको नेपालको पहिलो लोकतान्त्रिक निर्वाचन, नेपाली कांग्रेसले जित्यो।",
+             "imagePath":"/images/first-of-nepal/1959-election.jpg"
+          },
+          "radioNepal":{
+             "category":"रेडियो प्रसारण",
+             "name":"रेडियो नेपाल",
+             "year":"२००८ ",
+             "description":"राणा शासनको पतनपछि अप्रिल २, १९५१ मा सुरु भएको नेपालको पहिलो रेडियो स्टेशन।",
+             "imagePath":"/images/first-of-nepal/radio-nepal.jpg"
+          },
+          "pashupatiStamp":{
+             "category":"हुलाक टिकट",
+             "name":"नेपाल पशुपति टिकट",
+             "year":"१९६४ ",
+             "description":"राणा कालमा पशुपतिनाथ मन्दिरको चित्रण भएको नेपालमा जारी पहिलो हुलाक टिकट।",
+             "imagePath":"/images/first-of-nepal/pashupati-stamp.jpg"
+          },
+          "shrimanGambhir":{
+             "category":"राष्ट्रिय गान",
+             "name":"श्रीमान् गम्भीर",
+             "year":"१९८१ ",
+             "description":"राणा युगमा रचिएको नेपालको पहिलो राष्ट्रिय गान, २००६ सम्म प्रयोग भएको।",
+             "imagePath":"/images/first-of-nepal/shriman-gambhir.jpg"
+          },
+          "chitwanNationalPark":{
+             "category":"राष्ट्रिय निकुञ्ज",
+             "name":"चितवन राष्ट्रिय निकुञ्ज",
+             "year":"२०२९ ",
+             "description":"बंगाल बाघ र एकसिंगे गैंडा संरक्षण गर्न स्थापित नेपालको पहिलो राष्ट्रिय निकुञ्ज।",
+             "imagePath":"/images/first-of-nepal/chitwan-national-park.jpg"
+          },
+          "mercantileCommunications":{
+             "category":"इन्टरनेट सेवा",
+             "name":"मर्कन्टाइल कम्युनिकेसन्स",
+             "year":"२०५२ ",
+             "description":"इमेल र डायल-अप कनेक्टिभिटी परिचय गराउने नेपालको पहिलो इन्टरनेट सेवा प्रदायक।",
+             "imagePath":"/images/first-of-nepal/mercantile-communications.jpg"
+          },
+          "nepaliSat1":{
+             "category":"उपग्रह प्रक्षेपण",
+             "name":"नेपालीसाट-१",
+             "year":"२०७६ ",
+             "description":"जापानको सहयोगमा अनुसन्धानको लागि अन्तरिक्षमा प्रक्षेपण गरिएको पहिलो नेपाली उपग्रह, क्यूबसाट।",
+             "imagePath":"/images/first-of-nepal/nepalisat-1.jpg"
+          },
+          "nepalVsMCC":{
+             "category":"अन्तर्राष्ट्रिय क्रिकेट खेल",
+             "name":"नेपाल बनाम एमसीसी",
+             "year":"२०५३ ",
+             "description":"मेरीलेबोन क्रिकेट क्लब (एमसीसी) सँग नेपालले खेलेको पहिलो अन्तर्राष्ट्रिय क्रिकेट खेल।",
+             "imagePath":"/images/first-of-nepal/nepal-mcc-1996.jpg"
+          },
+          "birHospital":{
+             "category":"अस्पताल",
+             "name":"बीर अस्पताल",
+             "year":"१९४६ ",
+             "description":"बीर शमशेर राणाद्वारा स्थापित नेपालको पहिलो आधुनिक अस्पताल, सार्वजनिक स्वास्थ्य सेवा प्रदान गर्ने।",
+             "imagePath":"/images/first-of-nepal/bir-hospital.jpg"
+          },
+          "durbarHighSchool":{
+             "category":"विद्यालय",
+             "name":"दरबार हाइ स्कूल",
+             "year":"१९११ ",
+             "description":"सुरुमा राणा बालबालिकाहरूको लागि स्थापित नेपालको पहिलो औपचारिक विद्यालय, पछि सर्वसाधारणको लागि खुला।",
+             "imagePath":"/images/first-of-nepal/durbar-high-school.jpg"
+          },
+          "kaiserLibrary":{
+             "category":"पुस्तकालय",
+             "name":"कैसर पुस्तकालय",
+             "year":"१९६४ ",
+             "description":"कैसर शमशेर राणाद्वारा स्थापित नेपालको पहिलो सार्वजनिक पुस्तकालय, पुस्तकहरूको विशाल संग्रहसहित।",
+             "imagePath":"/images/first-of-nepal/kaiser-library.jpg"
+          },
+          "nationalMuseum":{
+             "category":"संग्रहालय",
+             "name":"नेपाल राष्ट्रिय संग्रहालय",
+             "year":"१९८५ ",
+             "description":"कला, इतिहास र संस्कृति संरक्षण गर्न काठमाडौंमा खोलिएको नेपालको पहिलो संग्रहालय।",
+             "imagePath":"/images/first-of-nepal/national-museum.jpg"
+          },
+          "nepalBankLimited":{
+             "category":"बैंक",
+             "name":"नेपाल बैंक लिमिटेड",
+             "year":"१९९४ ",
+             "description":"वित्तीय सेवाहरू आधुनिकीकरण गर्न स्थापित नेपालको पहिलो वाणिज्यिक बैंक।",
+             "imagePath":"/images/first-of-nepal/nepal-bank-limited.jpg"
+          },
+          "kathmanduValleyUnesco":{
+             "category":"युनेस्को विश्व सम्पदा स्थल",
+             "name":"काठमाडौं उपत्यका",
+             "year":"२०३६ ",
+             "description":"युनेस्को विश्व सम्पदा स्थलको रूपमा सूचीबद्ध पहिलो नेपाली स्थल, यसको सांस्कृतिक महत्तवलाई मान्यता दिँदै।",
+             "imagePath":"/images/first-of-nepal/kathmandu-valley-unesco.jpg"
+          }
+       }
+    }
+ }

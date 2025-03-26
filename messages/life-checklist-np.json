@@ -1,0 +1,502 @@
+{
+  "lifeChecklist": {
+    "ebc_trek": {
+      "id": "ebc_trek",
+      "title": "एभरेस्ट आधार शिविरको पदयात्रा",
+      "description": "विश्वको सबैभन्दा अग्लो हिमालको फेदमा उभिनुहोस्",
+      "image": "/images/checklist/ebc.jpg"
+    },
+    "annapurna_circuit": {
+      "id": "annapurna_circuit",
+      "title": "अन्नपूर्णा सर्किट पूरा गर्नुहोस्",
+      "description": "विविध परिदृश्यहरूको पदयात्रा गर्नुहोस् र थोरङ्ग ला पास पार गर्नुहोस्",
+      "image": "/images/checklist/annapurna.jpg"
+    },
+    "dashain_celebration": {
+      "id": "dashain_celebration",
+      "title": "नेपाली परिवारसँग दशैं मनाउनुहोस्",
+      "description": "नेपालको सबैभन्दा ठूलो चाडमा टीका र जमरा लिनुहोस्",
+      "image": "/images/checklist/dashain.jpg"
+    },
+    "momo_feast": {
+      "id": "momo_feast",
+      "title": "मोमो खानुहोस् जबसम्म हिँड्न नसक्नुहुन्छ",
+      "description": "एकै बसेमा नेपालको प्रिय मोमोका कम्तीमा ५ प्रकारहरू चाख्नुहोस्",
+      "image": "/images/checklist/momos.jpg"
+    },
+    "dal_bhat": {
+      "id": "dal_bhat",
+      "title": "दाल भातको शक्ति २४ घण्टा सिक्नुहोस्",
+      "description": "नेपालको ऊर्जादायी आधारभूत खानाको अनुभव लिनुहोस्",
+      "image": "/images/checklist/dalbhat.jpg"
+    },
+    "rhino_spotting": {
+      "id": "rhino_spotting",
+      "title": "चितवनमा एकसिंगे गैंडा हेर्नुहोस्",
+      "description": "यी शानदार प्राणीहरूलाई उनीहरूको प्राकृतिक बासस्थानमा देख्नुहोस्",
+      "image": "/images/checklist/rhino.jpg"
+    },
+    "temple_run": {
+      "id": "temple_run",
+      "title": "काठमाडौं उपत्यकाका सात यूनेस्को विश्व सम्पदा स्थलहरू भ्रमण गर्नुहोस्",
+      "description": "मन्दिर, चोक र स्तूपाहरूको सांस्कृतिक म्याराथन",
+      "image": "/images/checklist/heritage.jpg"
+    },
+    "bargain_thamel": {
+      "id": "bargain_thamel",
+      "title": "थमेलमा सफलतापूर्वक मोलतोल गर्नुहोस्",
+      "description": "सुरुको मागिएको मूल्यमा कम्तीमा ५०% छुट लिनुहोस्",
+      "image": "/images/checklist/thamel.jpg"
+    },
+    "tihar_lights": {
+      "id": "tihar_lights",
+      "title": "तिहारको प्रकाश उत्सव अनुभव गर्नुहोस्",
+      "description": "तेलको बत्ती र मैनबत्तीले उज्यालो पारिएका घरहरू देख्नुहोस्",
+      "image": "/images/checklist/tihar.jpg"
+    },
+    "raksi_local": {
+      "id": "raksi_local",
+      "title": "स्थानीयहरूसँग घरेलु रक्सी चाख्नुहोस्",
+      "description": "नेपालको परम्परागत आसवित रक्सीको स्वाद लिनुहोस् (र बाँच्नुहोस्)",
+      "image": "/images/checklist/raksi.jpg"
+    },
+    "monkey_temple": {
+      "id": "monkey_temple",
+      "title": "स्वयम्भूनाथमा आफ्नो नास्ता जोगाउनुहोस्",
+      "description": "स्थानीय बाँदरहरूलाई खाना नगुमाई 'मन्की टेम्पल' भ्रमण गर्नुहोस्",
+      "image": "/images/checklist/monkeytemple.jpg"
+    },
+    "paragliding_pokhara": {
+      "id": "paragliding_pokhara",
+      "title": "पोखरामा प्याराग्लाइडिङ गर्नुहोस्",
+      "description": "फेवा तालमाथि चीलहरूसँगै उड्नुहोस्",
+      "image": "/images/checklist/paraglide.jpg"
+    },
+    "phewa_boat": {
+      "id": "phewa_boat",
+      "title": "फेवा तालमा डुंगा चलाउनुहोस्",
+      "description": "तालको बीचमा रहेको ताल बाराही मन्दिरसम्म नेभिगेट गर्नुहोस्",
+      "image": "/images/checklist/phewa.jpg"
+    },
+    "langtang_trek": {
+      "id": "langtang_trek",
+      "title": "लाङटाङ उपत्यकाको पदयात्रा गर्नुहोस्",
+      "description": "कम भीडभाड भएको मार्गमा 'हिमनदीको उपत्यका' को अनुभव लिनुहोस्",
+      "image": "/images/checklist/langtang.jpg"
+    },
+    "yak_cheese": {
+      "id": "yak_cheese",
+      "title": "हिमाली याकको चिज खानुहोस्",
+      "description": "उच्च हिमाली क्षेत्रको विशिष्ट स्वादको चिजको मजा लिनुहोस्",
+      "image": "/images/checklist/yakcheese.jpg"
+    },
+    "blackout_kathmandu": {
+      "id": "blackout_kathmandu",
+      "title": "काठमाडौंको बिजुली कटौती अनुभव गर्नुहोस्",
+      "description": "अनायासै मैनबत्तीको उज्यालो साँझको आनन्द लिनुहोस्",
+      "image": "/images/checklist/powerout.jpg"
+    },
+    "holi_colors": {
+      "id": "holi_colors",
+      "title": "होलीको रंगमा पूर्ण रूपमा ढाकिनुहोस्",
+      "description": "रंगको चाडमा हिँड्ने इन्द्रेणी बन्नुहोस्",
+      "image": "/images/checklist/holi.jpg"
+    },
+    "himalayan_sunrise": {
+      "id": "himalayan_sunrise",
+      "title": "साराङकोटबाट सूर्योदय हेर्नुहोस्",
+      "description": "बिहानको उज्यालोमा अन्नपूर्णा हिमश्रृंखला सुनौलो देख्नुहोस्",
+      "image": "/images/checklist/sunrise.jpg"
+    },
+    "eat_gundruk": {
+      "id": "eat_gundruk",
+      "title": "गुन्द्रुकको स्वाद विकास गर्नुहोस्",
+      "description": "नेपालको किण्वित हरियो सागको विशेषता चाख्नुहोस्",
+      "image": "/images/checklist/gundruk.jpg"
+    },
+    "white_water_rafting": {
+      "id": "white_water_rafting",
+      "title": "त्रिशूली नदीमा ह्वाइट वाटर राफ्टिङ गर्नुहोस्",
+      "description": "सुन्दर घाँटीहरूबाट रोमाञ्चक छालहरू पार गर्नुहोस्",
+      "image": "/images/checklist/rafting.jpg"
+    },
+    "mustang_valley": {
+      "id": "mustang_valley",
+      "title": "माथिल्लो मुस्ताङ भ्रमण गर्नुहोस्",
+      "description": "'निषेधित राज्य' र यसको तिब्बती संस्कृति अन्वेषण गर्नुहोस्",
+      "image": "/images/checklist/mustang.jpg"
+    },
+    "homestay_village": {
+      "id": "homestay_village",
+      "title": "परम्परागत गाउँको होमस्टेमा बस्नुहोस्",
+      "description": "प्रामाणिक ग्रामीण नेपाली जीवनको अनुभव लिनुहोस्",
+      "image": "/images/checklist/homestay.jpg"
+    },
+    "boudha_prayer": {
+      "id": "boudha_prayer",
+      "title": "बौद्धनाथमा प्रार्थना चक्र घुमाउनुहोस्",
+      "description": "तिब्बती तीर्थयात्रीहरूसँगै ठूलो स्तूपको परिक्रमा गर्नुहोस्",
+      "image": "/images/checklist/boudha.jpg"
+    },
+    "pashupatinath_ceremony": {
+      "id": "pashupatinath_ceremony",
+      "title": "पशुपतिनाथमा आरती समारोह हेर्नुहोस्",
+      "description": "नेपालको पवित्र हिन्दू स्थलमा साँझको अग्नि अनुष्ठानको अनुभव लिनुहोस्",
+      "image": "/images/checklist/pashupatinath.jpg"
+    },
+    "rickshaw_ride": {
+      "id": "rickshaw_ride",
+      "title": "पुरानो काठमाडौंमा रिक्सा सयर गर्नुहोस्",
+      "description": "परम्परागत तरिकाले साँघुरा सडकहरू घुम्नुहोस्",
+      "image": "/images/checklist/rickshaw.jpg"
+    },
+    "newar_feast": {
+      "id": "newar_feast",
+      "title": "परम्परागत नेवारी भोजको आनन्द लिनुहोस्",
+      "description": "साहसी भएमा ८४ परिकारहरू चाख्नुहोस्",
+      "image": "/images/checklist/newari.jpg"
+    },
+    "earthquake_story": {
+      "id": "earthquake_story",
+      "title": "स्थानीयको २०१५ को भूकम्प कथा सुन्नुहोस्",
+      "description": "नेपालको हालको चुनौतीपूर्ण इतिहाससँग जोडिनुहोस्",
+      "image": "/images/checklist/earthquake.jpg"
+    },
+    "bhaktapur_pottery": {
+      "id": "bhaktapur_pottery",
+      "title": "भक्तपुरमा माटोको भाँडा बनाउनुहोस्",
+      "description": "यो प्राचीन नेवारी हस्तकलामा आफ्नो हात आजमाउनुहोस्",
+      "image": "/images/checklist/pottery.jpg"
+    },
+    "mountain_leeches": {
+      "id": "mountain_leeches",
+      "title": "मानसुन पदयात्रापछि जुकाहरू हटाउनुहोस्",
+      "description": "वर्षायामका पदयात्रीहरूको लागि एक परम्परागत अनुभव",
+      "image": "/images/checklist/leech.jpg"
+    },
+    "everest_beer": {
+      "id": "everest_beer",
+      "title": "५००० मिटरमा एभरेस्ट बियर पिउनुहोस्",
+      "description": "सम्भवतः तपाईंले कहिल्यै पिउने सबैभन्दा उचाइको बियर",
+      "image": "/images/checklist/everestbeer.jpg"
+    },
+    "jungle_safari": {
+      "id": "jungle_safari",
+      "title": "बर्दिया राष्ट्रिय निकुञ्जमा जीप सफारी गर्नुहोस्",
+      "description": "नेपालको दुर्गम जंगलमा जंगली बाघहरू खोज्नुहोस्",
+      "image": "/images/checklist/bardia.jpg"
+    },
+    "terraced_fields": {
+      "id": "terraced_fields",
+      "title": "खेतका सिँढीहरूमा हिँड्नुहोस्",
+      "description": "शताब्दीऔं पुरानो कृषि इन्जिनियरिङको प्रशंसा गर्नुहोस्",
+      "image": "/images/checklist/ricefield.jpg"
+    },
+    "suspension_bridge": {
+      "id": "suspension_bridge",
+      "title": "हिमाली झोलुङ्गे पुल पार गर्नुहोस्",
+      "description": "उचाइको डरको परीक्षा लिनुहोस् र दृश्यको प्रशंसा गर्नुहोस्",
+      "image": "/images/checklist/bridge.jpg"
+    },
+    "namobuddha_monastery": {
+      "id": "namobuddha_monastery",
+      "title": "नमोबुद्ध मठमा रात बिताउनुहोस्",
+      "description": "बौद्ध भिक्षुहरूको दैनिक दिनचर्या अनुभव गर्नुहोस्",
+      "image": "/images/checklist/namobuddha.jpg"
+    },
+    "buy_khukuri": {
+      "id": "buy_khukuri",
+      "title": "प्रामाणिक खुकुरी चक्कु किन्नुहोस्",
+      "description": "गोरखालीहरूको परम्परागत ब्लेडको मालिक बन्नुहोस्",
+      "image": "/images/checklist/khukuri.jpg"
+    },
+    "cook_nepali": {
+      "id": "cook_nepali",
+      "title": "नेपाली खाना पकाउने कक्षा लिनुहोस्",
+      "description": "मोमो र थप कुराहरूको कला सिक्नुहोस्",
+      "image": "/images/checklist/cooking.jpg"
+    },
+    "bungee_jump": {
+      "id": "bungee_jump",
+      "title": "लास्ट रिसोर्टबाट बन्जी जम्प गर्नुहोस्",
+      "description": "भोटे कोसी खोंचमा १६० मिटर उचाइबाट हाम फाल्नुहोस्",
+      "image": "/images/checklist/bungee.jpg"
+    },
+    "juju_dhau": {
+      "id": "juju_dhau",
+      "title": "भक्तपुरमा जुजु धौ खानुहोस्",
+      "description": "यो 'दहीको राजा' लाई यसको गृहनगरमा चाख्नुहोस्",
+      "image": "/images/checklist/jujudhau.jpg"
+    },
+    "poon_hill": {
+      "id": "poon_hill",
+      "title": "पुन हिलमा सूर्योदय",
+      "description": "पहिलो उज्यालोले अन्नपूर्णा हिमश्रृंखलालाई छुने हेर्नुहोस्",
+      "image": "/images/checklist/poonhill.jpg"
+    },
+    "kora_circuit": {
+      "id": "kora_circuit",
+      "title": "बौद्धनाथ वरिपरि कोरा पूरा गर्नुहोस्",
+      "description": "तीर्थयात्रीहरूसँगै पवित्र दक्षिणावर्त परिक्रमा गर्नुहोस्",
+      "image": "/images/checklist/kora.jpg"
+    },
+    "goat_festival": {
+      "id": "goat_festival",
+      "title": "दशैंको बाख्रा चाड हेर्नुहोस्",
+      "description": "प्राचीन बलिदान परम्पराहरूको अनुभव लिनुहोस्",
+      "image": "/images/checklist/goatfestival.jpg"
+    },
+    "trekker_tan": {
+      "id": "trekker_tan",
+      "title": "हिमाली पदयात्रीको ट्यान पाउनुहोस्",
+      "description": "विशिष्ट घामले डढेको अनुहार र नाक बाहेकको रंग लिएर फर्कनुहोस्",
+      "image": "/images/checklist/trekkingtan.jpg"
+    },
+    "kumari_sighting": {
+      "id": "kumari_sighting",
+      "title": "जीवित देवी कुमारी देख्नुहोस्",
+      "description": "नेपालको जीवित देवीलाई उनको झ्यालमा एक झलक हेर्नुहोस्",
+      "image": "/images/checklist/kumari.jpg"
+    },
+    "monsoon_downpour": {
+      "id": "monsoon_downpour",
+      "title": "मानसुनको पानीमा भिज्नुहोस्",
+      "description": "प्रकृतिको सबैभन्दा नाटकीय वर्षाको अनुभव लिनुहोस्",
+      "image": "/images/checklist/monsoon.jpg"
+    },
+    "gompas_visit": {
+      "id": "gompas_visit",
+      "title": "तीन फरक गोम्पाहरू भ्रमण गर्नुहोस्",
+      "description": "बौद्ध मन्दिरहरूको अनौठो शैलीहरूको तुलना गर्नुहोस्",
+      "image": "/images/checklist/gompa.jpg"
+    },
+    "microbus_ride": {
+      "id": "microbus_ride",
+      "title": "माइक्रोबस सयरमा बाँच्नुहोस्",
+      "description": "काठमाडौंको सबैभन्दा रोमाञ्चक सार्वजनिक यातायातको अनुभव लिनुहोस्",
+      "image": "/images/checklist/microbus.jpg"
+    },
+    "sel_roti": {
+      "id": "sel_roti",
+      "title": "सडक विक्रेताबाट ताजा सेल रोटी खानुहोस्",
+      "description": "नेपालको परम्परागत चामलको रोटीको मजा लिनुहोस्",
+      "image": "/images/checklist/selroti.jpg"
+    },
+    "nepal_coffee": {
+      "id": "nepal_coffee",
+      "title": "हिमाली क्षेत्रमा उब्जिएको कफी पिउनुहोस्",
+      "description": "नेपालको उदीयमान विशेष कफी दृश्यको स्वाद लिनुहोस्",
+      "image": "/images/checklist/coffee.jpg"
+    },
+    "chatpatay_street": {
+      "id": "chatpatay_street",
+      "title": "सडकको गाडीबाट मसालेदार चटपटे खानुहोस्",
+      "description": "यो ट्याङ्गी नास्ताले आफ्नो मसाला सहनशीलता जाँच्नुहोस्",
+      "image": "/images/checklist/chatpatay.jpg"
+    },
+    "sunset_nagarkot": {
+      "id": "sunset_nagarkot",
+      "title": "नागार्जुनबाट सूर्यास्त हेर्नुहोस्",
+      "description": "सूर्य विश्वका अग्ला हिमालहरू पछाडि झर्दा हेर्नुहोस्",
+      "image": "/images/checklist/nagarkot.jpg"
+    },
+    "chhang_drink": {
+      "id": "chhang_drink",
+      "title": "परम्परागत काठको कपमा छ्याङ पिउनुहोस्",
+      "description": "टोङ्बाबाट कोदोको बियर पिउनुहोस्",
+      "image": "/images/checklist/chhang.jpg"
+    },
+    "drive_pokhara": {
+      "id": "drive_pokhara",
+      "title": "काठमाडौंबाट पोखरासम्म सडक यात्रा गर्नुहोस्",
+      "description": "घुमाउरो राजमार्गको यात्राको अनुभव लिनुहोस्",
+      "image": "/images/checklist/roadtrip.jpg"
+    },
+    "sukuti_snack": {
+      "id": "sukuti_snack",
+      "title": "रक्सीसँग सुकुटी खानुहोस्",
+      "description": "सुकेको मासुलाई स्थानीय पेयसँग जोड्नुहोस्",
+      "image": "/images/checklist/sukuti.jpg"
+    },
+    "janai_purnima": {
+      "id": "janai_purnima",
+      "title": "जनै पूर्णिमाको लागि रक्षा बन्धन धागो लिनुहोस्",
+      "description": "आफ्नो नाडीमा पवित्र संरक्षण धागो प्राप्त गर्नुहोस्",
+      "image": "/images/checklist/janai.jpg"
+    },
+    "tika_red": {
+      "id": "tika_red",
+      "title": "रातो टीका आशीर्वाद लिनुहोस्",
+      "description": "परम्परागत रातो टीका आफ्नो निधारमा लगाउनुहोस्",
+      "image": "/images/checklist/tika.jpg"
+    },
+    "night_bus": {
+      "id": "night_bus",
+      "title": "रातभरको बस यात्रामा बाँच्नुहोस्",
+      "description": "स्थानीय तरिकाले लामो दूरीको यात्रा गर्नुहोस्",
+      "image": "/images/checklist/nightbus.jpg"
+    },
+    "hill_station": {
+      "id": "hill_station",
+      "title": "हिल स्टेशनमा आराम गर्नुहोस्",
+      "description": "धुलिखेल, बन्दीपुर वा अर्को हिमाली विश्रामस्थलमा आराम गर्नुहोस्",
+      "image": "/images/checklist/hillstation.jpg"
+    },
+    "wedding_crasher": {
+      "id": "wedding_crasher",
+      "title": "नेपाली विवाहमा निम्तो पाउनुहोस्",
+      "description": "बहु-दिनको उत्सवको रंग र खुशीको अनुभव लिनुहोस्",
+      "image": "/images/checklist/wedding.jpg"
+    },
+    "lumbini_pilgrimage": {
+      "id": "lumbini_pilgrimage",
+      "title": "लुम्बिनीमा बुद्धको जन्मस्थल भ्रमण गर्नुहोस्",
+      "description": "बौद्ध धर्मको सुरुवात भएको ठाउँमा तीर्थयात्रा गर्नुहोस्",
+      "image": "/images/checklist/lumbini.jpg"
+    },
+    "indra_jatra": {
+      "id": "indra_jatra",
+      "title": "काठमाडौंमा इन्द्र जात्रा हेर्नुहोस्",
+      "description": "यो प्रमुख नेवारी चाडमा कुमारीको रथयात्रा र लाके नाच हेर्नुहोस्",
+      "image": "/images/checklist/indrajatra.jpg"
+    },
+    "chyaang_drink": {
+      "id": "chyaang_drink",
+      "title": "गाउँका ज्येष्ठहरूसँग छ्याङ साझा गर्नुहोस्",
+      "description": "परम्परागत भाँडाहरूबाट घरेलु चामलको बियर पिउने सामाजिक अनुष्ठानमा भाग लिनुहोस्",
+      "image": "/images/checklist/chyaang.jpg"
+    },
+    "gai_jatra": {
+      "id": "gai_jatra",
+      "title": "गाईजात्रा चाड अनुभव गर्नुहोस्",
+      "description": "दिवंगतहरूलाई सम्मान गर्ने व्यंग्यात्मक प्रदर्शनसहित 'गाई चाड' हेर्नुहोस्",
+      "image": "/images/checklist/gaijatra.jpg"
+    },
+    "bhimsen_tower": {
+      "id": "bhimsen_tower",
+      "title": "पुनर्निर्मित भीमसेन टावर (धरहरा) चढ्नुहोस्",
+      "description": "२०१५ को भूकम्पपछि पुनर्निर्मित काठमाडौंको प्रतिष्ठित स्थलमा चढ्नुहोस्",
+      "image": "/images/checklist/dharahara.jpg"
+    },
+    "mardi_himal": {
+      "id": "mardi_himal",
+      "title": "कम भीडभाड भएको मर्दी हिमाल मार्गको पदयात्रा गर्नुहोस्",
+      "description": "यो नयाँ, शान्त पदयात्रा मार्गमा अन्नपूर्णाको मनमोहक दृश्यको अनुभव लिनुहोस्",
+      "image": "/images/checklist/mardihimal.jpg"
+    },
+    "janakpur_visit": {
+      "id": "janakpur_visit",
+      "title": "जनकपुरको जानकी मन्दिर भ्रमण गर्नुहोस्",
+      "description": "तराईको यो महत्वपूर्ण धार्मिक स्थलमा सीताको जन्मस्थान अन्वेषण गर्नुहोस्",
+      "image": "/images/checklist/janakpur.jpg"
+    },
+    "gosaikunda_lake": {
+      "id": "gosaikunda_lake",
+      "title": "पवित्र गोसाइँकुण्ड तालमा पुग्नुहोस्",
+      "description": "हिन्दू र बौद्ध दुवैले सम्मान गर्ने यो उच्च हिमाली तालमा पदयात्रा गर्नुहोस्",
+      "image": "/images/checklist/gosaikunda.jpg"
+    },
+    "jwala_mai": {
+      "id": "jwala_mai",
+      "title": "ज्वाला माई मन्दिरमा अनन्त ज्वाला हेर्नुहोस्",
+      "description": "मुक्तिनाथमा शताब्दीऔंदेखि बलिरहेको प्राकृतिक ग्यासको ज्वाला देख्नुहोस्",
+      "image": "/images/checklist/jwalamai.jpg"
+    },
+    "dolpa_visit": {
+      "id": "dolpa_visit",
+      "title": "दुर्गम डोल्पा क्षेत्र अन्वेषण गर्नुहोस्",
+      "description": "नेपालको सबैभन्दा अलग र सांस्कृतिक रूपमा संरक्षित क्षेत्रमा प्रवेश गर्नुहोस्",
+      "image": "/images/checklist/dolpa.jpg"
+    },
+    "sarangi_music": {
+      "id": "sarangi_music",
+      "title": "परम्परागत सारंगी संगीत सुन्नुहोस्",
+      "description": "यो नेपाली तारवाला वाद्ययन्त्रको मनमोहक धुन सुन्नुहोस्",
+      "image": "/images/checklist/sarangi.jpg"
+    },
+    "chautari_rest": {
+      "id": "chautari_rest",
+      "title": "गाउँको चौतारीमा आराम गर्नुहोस्",
+      "description": "पिपलको रूख वरिपरि बनेको परम्परागत विश्रामस्थलमा विश्राम लिनुहोस्",
+      "image": "/images/checklist/chautari.jpg"
+    },
+    "losar_celebration": {
+      "id": "losar_celebration",
+      "title": "लोसार (तिब्बती नयाँ वर्ष) मनाउनुहोस्",
+      "description": "नेपालको उच्च हिमाली समुदायहरूसँग जीवन्त उत्सवमा सामेल हुनुहोस्",
+      "image": "/images/checklist/losar.jpg"
+    },
+    "ropain_festival": {
+      "id": "ropain_festival",
+      "title": "रोपाइँ (धान रोप्ने) चाडमा सामेल हुनुहोस्",
+      "description": "यो कृषि उत्सवमा स्थानीयहरूसँग धान रोप्दै हिलोमा रमाउनुहोस्",
+      "image": "/images/checklist/ropain.jpg"
+    },
+    "chepang_village": {
+      "id": "chepang_village",
+      "title": "चेपाङ समुदाय भ्रमण गर्नुहोस्",
+      "description": "नेपालको सबैभन्दा सीमान्तकृत आदिवासी समूहहरू मध्ये एकको बारेमा जान्नुहोस्",
+      "image": "/images/checklist/chepang.jpg"
+    },
+    "nepal_bandh": {
+      "id": "nepal_bandh",
+      "title": "नेपाल बन्द (हड्ताल) अनुभव गर्नुहोस्",
+      "description": "सबै कुरा रहस्यमय ढंगले बन्द हुँदा रचनात्मक तरिकाले नेभिगेट गर्नुहोस्",
+      "image": "/images/checklist/bandh.jpg"
+    },
+    "kumari_puja": {
+      "id": "kumari_puja",
+      "title": "कुमारीबाट आशीर्वाद लिनुहोस्",
+      "description": "विशेष समारोहमा नेपालको जीवित देवीबाट टीका लिनुहोस्",
+      "image": "/images/checklist/kumaripuja.jpg"
+    },
+    "tansen_dhaka": {
+      "id": "tansen_dhaka",
+      "title": "तानसेनमा प्रामाणिक ढाका कपडा किन्नुहोस्",
+      "description": "यो रंगीन परम्परागत कपडा यसको मूल उत्पादन केन्द्रबाट खरिद गर्नुहोस्",
+      "image": "/images/checklist/dhaka.jpg"
+    },
+    "last_royal_palace": {
+      "id": "last_royal_palace",
+      "title": "नारायणहिटी दरबार संग्रहालयको भ्रमण गर्नुहोस्",
+      "description": "नेपालको नाटकीय २००१ को शाही हत्याकाण्डको स्थलमा हिँड्नुहोस्",
+      "image": "/images/checklist/narayanhiti.jpg"
+    },
+    "mahakali_rafting": {
+      "id": "mahakali_rafting",
+      "title": "महाकाली नदीमा राफ्टिङ गर्नुहोस्",
+      "description": "नेपालको पश्चिमी सीमाको नदीमा कक्षा IV-V छालहरू पार गर्नुहोस्",
+      "image": "/images/checklist/mahakali.jpg"
+    },
+    "khaptad_national_park": {
+      "id": "khaptad_national_park",
+      "title": "खप्तड राष्ट्रिय निकुञ्ज अन्वेषण गर्नुहोस्",
+      "description": "सुदूरपश्चिम नेपालको 'नेपालको स्विट्जरल्याण्ड' र यसको अनौठो पठार पारिस्थितिकी पत्ता लगाउनुहोस्",
+      "image": "/images/checklist/khaptad.jpg"
+    },
+    "rara_lake": {
+      "id": "rara_lake",
+      "title": "रारा तालको किनारमा उभिनुहोस्",
+      "description": "मुगु जिल्लाको दुर्गम स्थानमा रहेको नेपालको सबैभन्दा ठूलो ताल भ्रमण गर्नुहोस्",
+      "image": "/images/checklist/rara.jpg"
+    },
+    "newar_jyapu": {
+      "id": "newar_jyapu",
+      "title": "ज्यापु किसानहरूसँग खेती गर्नुहोस्",
+      "description": "काठमाडौं उपत्यकाका आदिवासी किसानहरूबाट परम्परागत खेती सिक्नुहोस्",
+      "image": "/images/checklist/jyapu.jpg"
+    },
+    "bhojpur_knife": {
+      "id": "bhojpur_knife",
+      "title": "भोजपुरमा खुकुरी बनाइँदै हेर्नुहोस्",
+      "description": "नेपालको राष्ट्रिय चक्कु बनाउने मास्टर कारीगरहरू हेर्नुहोस्",
+      "image": "/images/checklist/bhojpurkhukuri.jpg"
+    },
+    "barah_temple": {
+      "id": "barah_temple",
+      "title": "सुनसरीको बराह मन्दिर भ्रमण गर्नुहोस्",
+      "description": "कोशी नदीबाट उभिएको यो महत्वपूर्ण विष्णु मन्दिर अन्वेषण गर्नुहोस्",
+      "image": "/images/checklist/baraha.jpg"
+    }
+  }
+}

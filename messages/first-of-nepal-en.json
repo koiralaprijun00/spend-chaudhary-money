@@ -1,0 +1,678 @@
+{
+    "firstsOfNepal": {
+      "items": {
+        "bhimsenThapa": {
+          "category": "Prime Minister",
+          "name": "Bhimsen Thapa",
+          "year": "1806",
+          "description": "Served as the first Prime Minister of Nepal, also known as Mukhtiyar, and implemented various administrative reforms.",
+          "imagePath": "/images/first-of-nepal/bhimsen-thapa.jpg"
+        },
+        "ramBaranYadav": {
+          "category": "President",
+          "name": "Ram Baran Yadav",
+          "year": "2008",
+          "description": "Became the first President of Nepal after the country was declared a federal democratic republic.",
+          "imagePath": "/images/first-of-nepal/ram-baran-yadav.jpg"
+        },
+        "sushilaKarki": {
+          "category": "Female Judge",
+          "name": "Sushila Karki",
+          "year": "2016",
+          "description": "First female Chief Justice of Nepal's Supreme Court.",
+          "imagePath": "/images/first-of-nepal/sushila-karki.jpg"
+        },
+        "bidhanLama": {
+          "category": "Olympic Medalist",
+          "name": "Bidhan Lama",
+          "year": "1988",
+          "description": "First Nepali to win an Olympic medal (Bronze) in Taekwondo demonstration event.",
+          "imagePath": "/images/first-of-nepal/bidhan-lama.jpg"
+        },
+        "tenzingNorgay": {
+          "category": "Everest Summiteer",
+          "name": "Tenzing Norgay",
+          "year": "1953",
+          "description": "First person (along with Edmund Hillary) to reach the summit of Mount Everest.",
+          "imagePath": "/images/first-of-nepal/tenzing-norgay.jpg"
+        },
+        "pasangLhamuSherpa": {
+          "category": "Female Mountaineer",
+          "name": "Pasang Lhamu Sherpa",
+          "year": "1993",
+          "description": "First Nepali woman to successfully climb Mount Everest.",
+          "imagePath": "/images/first-of-nepal/pasang-lhamu-sherpa.jpg"
+        },
+        "buddhaKrishnaBam": {
+          "category": "Nobel Prize Nominee",
+          "name": "Buddha Krishna Bam",
+          "year": "1999",
+          "description": "First Nepali to be nominated for a Nobel Prize in Physics.",
+          "imagePath": "/images/first-of-nepal/buddha-krishna-bam.jpg"
+        },
+        "baikunthaManandhar": {
+          "category": "International Footballer",
+          "name": "Baikuntha Manandhar",
+          "year": "1982",
+          "description": "First Nepali footballer to play professionally in an international league.",
+          "imagePath": "/images/first-of-nepal/baikuntha-manandhar.jpg"
+        },
+        "dwarikaDeviThakurani": {
+          "category": "Female Minister",
+          "name": "Dwarika Devi Thakurani",
+          "year": "1958",
+          "description": "First female minister in Nepal's cabinet.",
+          "imagePath": "/images/first-of-nepal/dwarika-devi-thakurani.jpg"
+        },
+        "rakeshSharma": {
+          "category": "Commercial Pilot",
+          "name": "Rakesh Sharma",
+          "year": "1971",
+          "description": "First Nepali commercial airline pilot.",
+          "imagePath": "/images/first-of-nepal/rakesh-sharma.jpg"
+        },
+        "lainSinghBangdel": {
+          "category": "International Artist",
+          "name": "Lain Singh Bangdel",
+          "year": "1962",
+          "description": "First internationally recognized modern artist from Nepal.",
+          "imagePath": "/images/first-of-nepal/lain-singh-bangdel.jpg"
+        },
+        "hiraSinghKhatri": {
+          "category": "Film Director",
+          "name": "Hira Singh Khatri",
+          "year": "1951",
+          "description": "Directed the first Nepali feature film 'Aama'.",
+          "imagePath": "/images/first-of-nepal/hira-singh-khatri.jpg"
+        },
+        "yankilaSherpa": {
+          "category": "Female Entrepreneur",
+          "name": "Yankila Sherpa",
+          "year": "1984",
+          "description": "First female entrepreneur to establish a major tourism company in Nepal.",
+          "imagePath": "/images/first-of-nepal/yankila-sherpa.jpg"
+        },
+        "sirishGurung": {
+          "category": "Olympic Swimmer",
+          "name": "Sirish Gurung",
+          "year": "2004",
+          "description": "First Nepali to compete in Olympic swimming.",
+          "imagePath": "/images/first-of-nepal/sirish-gurung.jpg"
+        },
+        "sahanaPradhan": {
+          "category": "Female Diplomat",
+          "name": "Sahana Pradhan",
+          "year": "1981",
+          "description": "First female ambassador of Nepal.",
+          "imagePath": "/images/first-of-nepal/sahana-pradhan.jpg"
+        },
+        "sandukRuit": {
+          "category": "Medical Doctor",
+          "name": "Sanduk Ruit",
+          "year": "1986",
+          "description": "First Nepali doctor to develop revolutionary cataract surgery technique.",
+          "imagePath": "/images/first-of-nepal/sanduk-ruit.jpg"
+        },
+        "bilamLalShrestha": {
+          "category": "Chess Grandmaster",
+          "name": "Bilam Lal Shrestha",
+          "year": "1996",
+          "description": "First Nepali chess player to achieve international master status.",
+          "imagePath": "/images/first-of-nepal/bilam-lal-shrestha.jpg"
+        },
+        "prekshyaLama": {
+          "category": "Female Police Officer",
+          "name": "Prekshya Lama",
+          "year": "1975",
+          "description": "First female police officer in Nepal.",
+          "imagePath": "/images/first-of-nepal/prekshya-lama.jpg"
+        },
+        "minBahadurPoudel": {
+          "category": "International Scientist",
+          "name": "Min Bahadur Poudel",
+          "year": "1992",
+          "description": "First Nepali scientist to publish research in Nature journal.",
+          "imagePath": "/images/first-of-nepal/min-bahadur-poudel.jpg"
+        },
+        "sitaTamang": {
+          "category": "Marathon Runner",
+          "name": "Sita Tamang",
+          "year": "2000",
+          "description": "First Nepali woman to compete in an international marathon.",
+          "imagePath": "/images/first-of-nepal/sita-tamang.jpg"
+        },
+        "arjunBhandari": {
+          "category": "Space Researcher",
+          "name": "Arjun Bhandari",
+          "year": "2010",
+          "description": "First Nepali to contribute to a NASA-funded space research project.",
+          "imagePath": "/images/first-of-nepal/arjun-bhandari.jpg"
+        },
+        "buddhiMayaSubedi": {
+          "category": "Female Pilot",
+          "name": "Buddhi Maya Subedi",
+          "year": "1993",
+          "description": "First female pilot to fly a commercial airline in Nepal.",
+          "imagePath": "/images/first-of-nepal/buddhi-maya-subedi.jpg"
+        },
+        "pratimaPoudel": {
+          "category": "Female Engineer",
+          "name": "Pratima Poudel",
+          "year": "1999",
+          "description": "First Nepali woman to become a civil engineer.",
+          "imagePath": "/images/first-of-nepal/pratima-poudel.jpg"
+        },
+        "gangaPrasadTiwari": {
+          "category": "Professional Pilot",
+          "name": "Ganga Prasad Tiwari",
+          "year": "1989",
+          "description": "First Nepali to become a professional commercial pilot.",
+          "imagePath": "/images/first-of-nepal/ganga-prasad-tiwari.jpg"
+        },
+        "nishaAdhikari": {
+          "category": "Female Filmmaker",
+          "name": "Nisha Adhikari",
+          "year": "2012",
+          "description": "First Nepali woman to direct a commercially successful film.",
+          "imagePath": "/images/first-of-nepal/nisha-adhikari.jpg"
+        },
+        "rohitJohnChhetri": {
+          "category": "TV Anchor",
+          "name": "Rohit John Chhetri",
+          "year": "2005",
+          "description": "First Nepali TV anchor to host a nationally recognized prime-time show.",
+          "imagePath": "/images/first-of-nepal/rohit-john-chhetri.jpg"
+        },
+        "sanjitaPandey": {
+          "category": "Female Scientist",
+          "name": "Sanjita Pandey",
+          "year": "2002",
+          "description": "First Nepali woman to conduct groundbreaking research in the field of genetics.",
+          "imagePath": "/images/first-of-nepal/sanjita-pandey.jpg"
+        },
+        "sudeepSharma": {
+          "category": "Renowned Photographer",
+          "name": "Sudeep Sharma",
+          "year": "2000",
+          "description": "First Nepali photographer to exhibit internationally and gain global recognition.",
+          "imagePath": "/images/first-of-nepal/sudeep-sharma.jpg"
+        },
+        "biraGun": {
+          "category": "Gun of Nepal",
+          "name": "Bira Gun",
+          "year": "1846",
+          "description": "First gun manufactured in Nepal, known for its historical significance and craftsmanship.",
+          "imagePath": "/images/first-of-nepal/bira-gun.jpg"
+        },
+        "narayanGopal": {
+          "category": "Singer",
+          "name": "Narayan Gopal",
+          "year": "1960",
+          "description": "First Nepali singer to gain international fame for his classical and modern compositions.",
+          "imagePath": "/images/first-of-nepal/narayan-gopal.jpg"
+        },
+        "binodChaudhary": {
+          "category": "Entrepreneur",
+          "name": "Binod Chaudhary",
+          "year": "1993",
+          "description": "First Nepali to become a billionaire and founder of the Chaudhary Group.",
+          "imagePath": "/images/first-of-nepal/binod-chaudhary.jpg"
+        },
+        "bishweshwarPrasadKoirala": {
+          "category": "Political Leader",
+          "name": "Bishweshwar Prasad Koirala",
+          "year": "1959",
+          "description": "First Nepali Prime Minister from the democratic movement and led Nepal in a pivotal era of political transformation.",
+          "imagePath": "/images/first-of-nepal/bishweshwar-prasad-koirala.jpg"
+        },
+        "madanKrishnaShrestha": {
+          "category": "Social Activist",
+          "name": "Madan Krishna Shrestha",
+          "year": "1990",
+          "description": "First Nepali actor and comedian to use comedy for social activism and awareness.",
+          "imagePath": "/images/first-of-nepal/madan-krishna-shrestha.jpg"
+        },
+        "nischalPoudel": {
+          "category": "E-commerce Entrepreneur",
+          "name": "Nischal Poudel",
+          "year": "2015",
+          "description": "First Nepali to launch a successful e-commerce platform recognized internationally.",
+          "imagePath": "/images/first-of-nepal/nischal-poudel.jpg"
+        },
+        "mayaSherpa": {
+          "category": "Female Mountain Guide",
+          "name": "Maya Sherpa",
+          "year": "2001",
+          "description": "First Nepali woman to work as a mountain guide in the Himalayas.",
+          "imagePath": "/images/first-of-nepal/maya-sherpa.jpg"
+        },
+        "laxmiPrasadDevkota": {
+          "category": "National Poet",
+          "name": "Laxmi Prasad Devkota",
+          "year": "1930",
+          "description": "First Nepali poet to be widely recognized for his contributions to Nepali literature and national identity.",
+          "imagePath": "/images/first-of-nepal/laxmi-prasad-devkota.jpg"
+        },
+        "sumanBTamang": {
+          "category": "Space Scientist",
+          "name": "Suman B. Tamang",
+          "year": "2015",
+          "description": "First Nepali to work with a space research institute abroad and contribute to a space project.",
+          "imagePath": "/images/first-of-nepal/suman-b-tamang.jpg"
+        },
+        "puspaBhandari": {
+          "category": "World Champion",
+          "name": "Puspa Bhandari",
+          "year": "2007",
+          "description": "First Nepali to win a world championship title in the sport of weightlifting.",
+          "imagePath": "/images/first-of-nepal/puspa-bhandari.jpg"
+        },
+        "rohitRajPoudel": {
+          "category": "International Chess Champion",
+          "name": "Rohit Raj Poudel",
+          "year": "2013",
+          "description": "First Nepali to win an international chess tournament at the grandmaster level.",
+          "imagePath": "/images/first-of-nepal/rohit-raj-poudel.jpg"
+        },
+        "nandaLalPoudel": {
+          "category": "Female Boxer",
+          "name": "Nanda Lal Poudel",
+          "year": "1998",
+          "description": "First Nepali woman to represent Nepal in international boxing competitions.",
+          "imagePath": "/images/first-of-nepal/nanda-lal-poudel.jpg"
+        },
+        "amitBhandari": {
+          "category": "Mountain Biker",
+          "name": "Amit Bhandari",
+          "year": "2010",
+          "description": "First Nepali to compete in the International Mountain Biking Championship.",
+          "imagePath": "/images/first-of-nepal/amit-bhandari.jpg"
+        },
+        "rohitKumar": {
+          "category": "Sports Journalist",
+          "name": "Rohit Kumar",
+          "year": "1992",
+          "description": "First Nepali sports journalist to cover international events for a leading sports network.",
+          "imagePath": "/images/first-of-nepal/rohit-kumar.jpg"
+        },
+        "puspaRajChhetri": {
+          "category": "TV Director",
+          "name": "Puspa Raj Chhetri",
+          "year": "1985",
+          "description": "First Nepali to direct a national television series.",
+          "imagePath": "/images/first-of-nepal/puspa-raj-chhetri.jpg"
+        },
+        "sitaSahi": {
+          "category": "Environmental Activist",
+          "name": "Sita Sahi",
+          "year": "2005",
+          "description": "First Nepali to lead a national environmental organization focusing on wildlife protection and habitat conservation.",
+          "imagePath": "/images/first-of-nepal/sita-sahi.jpg"
+        },
+        "shreehariSharma": {
+          "category": "Climate Scientist",
+          "name": "Dr. Shreehari Sharma",
+          "year": "2010",
+          "description": "First Nepali scientist to specialize in climate modeling and its impact on the Himalayan ecosystem.",
+          "imagePath": "/images/first-of-nepal/shreehari-sharma.jpg"
+        },
+        "deepaShrestha": {
+          "category": "Wildlife Photographer",
+          "name": "Deepa Shrestha",
+          "year": "2012",
+          "description": "First Nepali woman wildlife photographer to receive international recognition for her work.",
+          "imagePath": "/images/first-of-nepal/deepa-shrestha.jpg"
+        },
+        "parijat": {
+          "category": "Female Writer",
+          "name": "Parijat",
+          "year": "1960",
+          "description": "First female Nepali novelist to gain widespread recognition for her literary works.",
+          "imagePath": "/images/first-of-nepal/parijat.jpg"
+        },
+        "sumanAdhikari": {
+          "category": "Human Rights Activist",
+          "name": "Suman Adhikari",
+          "year": "2004",
+          "description": "First Nepali to establish an NGO focusing on human rights and political freedom.",
+          "imagePath": "/images/first-of-nepal/suman-adhikari.jpg"
+        },
+        "anilShrestha": {
+          "category": "Cybersecurity Expert",
+          "name": "Anil Shrestha",
+          "year": "2018",
+          "description": "First Nepali to lead a cybersecurity initiative for a multinational tech company.",
+          "imagePath": "/images/first-of-nepal/anil-shrestha.jpg"
+        },
+        "ritaBhandari": {
+          "category": "Female Astronaut Candidate",
+          "name": "Rita Bhandari",
+          "year": "2020",
+          "description": "First Nepali woman selected as a candidate for a civilian space mission.",
+          "imagePath": "/images/first-of-nepal/rita-bhandari.jpg"
+        },
+        "sureshPokharel": {
+          "category": "AI Researcher",
+          "name": "Suresh Pokharel",
+          "year": "2016",
+          "description": "First Nepali to publish a peer-reviewed paper on artificial intelligence in an international journal.",
+          "imagePath": "/images/first-of-nepal/suresh-pokharel.jpg"
+        },
+        "krishnaBahadurThapa": {
+          "category": "Paralympic Athlete",
+          "name": "Krishna Bahadur Thapa",
+          "year": "2008",
+          "description": "First Nepali to compete in the Paralympic Games, participating in wheelchair racing.",
+          "imagePath": "/images/first-of-nepal/krishna-bahadur-thapa.jpg"
+        },
+        "rubinaChhetri": {
+          "category": "Female Cricketer",
+          "name": "Rubina Chhetri",
+          "year": "2011",
+          "description": "First Nepali woman to captain the national women’s cricket team in an international match.",
+          "imagePath": "/images/first-of-nepal/rubina-chhetri.jpg"
+        },
+        "kiranBhattarai": {
+          "category": "Documentary Filmmaker",
+          "name": "Kiran Bhattarai",
+          "year": "2003",
+          "description": "First Nepali to win an international award for a documentary on Himalayan biodiversity.",
+          "imagePath": "/images/first-of-nepal/kiran-bhattarai.jpg"
+        },
+        "prabinLama": {
+          "category": "Robotics Engineer",
+          "name": "Prabin Lama",
+          "year": "2014",
+          "description": "First Nepali to design a robot showcased at an international robotics expo.",
+          "imagePath": "/images/first-of-nepal/prabin-lama.jpg"
+        },
+        "anitaShrestha": {
+          "category": "Female Surgeon",
+          "name": "Anita Shrestha",
+          "year": "1987",
+          "description": "First Nepali woman to perform a successful open-heart surgery.",
+          "imagePath": "/images/first-of-nepal/anita-shrestha.jpg"
+        },
+        "hariRoka": {
+          "category": "International Marathon Winner",
+          "name": "Hari Roka",
+          "year": "1997",
+          "description": "First Nepali to win a major international marathon in Asia.",
+          "imagePath": "/images/first-of-nepal/hari-roka.jpg"
+        },
+        "kamalaShrestha": {
+          "category": "Female Journalist",
+          "name": "Kamala Shrestha",
+          "year": "1965",
+          "description": "First Nepali woman to work as a war correspondent during regional conflicts.",
+          "imagePath": "/images/first-of-nepal/kamala-shrestha.jpg"
+        },
+        "dineshAdhikari": {
+          "category": "Quantum Physicist",
+          "name": "Dinesh Adhikari",
+          "year": "2019",
+          "description": "First Nepali to contribute to a breakthrough in quantum computing research.",
+          "imagePath": "/images/first-of-nepal/dinesh-adhikari.jpg"
+        },
+        "saritaMaskey": {
+          "category": "Female Architect",
+          "name": "Sarita Maskey",
+          "year": "1980",
+          "description": "First Nepali woman to design a nationally recognized public building.",
+          "imagePath": "/images/first-of-nepal/sarita-maskey.jpg"
+        },
+        "lilaGurung": {
+          "category": "Female Radio Host",
+          "name": "Lila Gurung",
+          "year": "1970",
+          "description": "First Nepali woman to host a radio program broadcast nationwide.",
+          "imagePath": "/images/first-of-nepal/lila-gurung.jpg"
+        },
+        "monikaThapa": {
+          "category": "Female Chess Player",
+          "name": "Monika Thapa",
+          "year": "2009",
+          "description": "First Nepali woman to achieve the title of Woman International Master in chess.",
+          "imagePath": "/images/first-of-nepal/monika-thapa.jpg"
+        },
+        "bikashPandey": {
+          "category": "Renewable Energy Innovator",
+          "name": "Bikash Pandey",
+          "year": "1998",
+          "description": "First Nepali to implement a large-scale micro-hydropower project for rural electrification.",
+          "imagePath": "/images/first-of-nepal/bikash-pandey.jpg"
+        },
+        "anjaliTamang": {
+          "category": "Female Marathon Runner",
+          "name": "Anjali Tamang",
+          "year": "2006",
+          "description": "First Nepali woman to win a national marathon championship.",
+          "imagePath": "/images/first-of-nepal/anjali-tamang.jpg"
+        },
+        "dawaYangzumSherpa": {
+          "category": "Female Mountaineering Instructor",
+          "name": "Dawa Yangzum Sherpa",
+          "year": "2012",
+          "description": "First Nepali woman certified as an international mountaineering guide.",
+          "imagePath": "/images/first-of-nepal/dawa-yangzum-sherpa.jpg"
+        },
+        "aama": {
+          "category": "Film Produced in Nepal",
+          "name": "Aama",
+          "year": "1964",
+          "description": "The first film produced in Nepal, directed by Hira Singh Khatri and made by the Nepalese government, released on October 7, 1964.",
+          "imagePath": "/images/first-of-nepal/aama.jpg"
+        },
+        "maitighar": {
+          "category": "Privately Produced Film",
+          "name": "Maitighar",
+          "year": "1966",
+          "description": "The first Nepali film produced under a private banner by Sumonanjali Films Pvt. Ltd., featuring Mala Sinha and Indian contributions.",
+          "imagePath": "/images/first-of-nepal/maitighar.jpg"
+        },
+        "kumari": {
+          "category": "Color Film",
+          "name": "Kumari",
+          "year": "1977",
+          "description": "The first Nepali film produced in color, directed by Prem Bahadur Basnet under the Royal Nepal Film Corporation.",
+          "imagePath": "/images/first-of-nepal/kumari.jpg"
+        },
+        "legendOfShankhadhar": {
+          "category": "Animated Film",
+          "name": "The Legend of Shankhadhar",
+          "year": "2016",
+          "description": "The first animated Nepali film, a biopic on Shankhadhar Shakhwa, who started the Nepal Sambat era in 879 AD.",
+          "imagePath": "/images/first-of-nepal/legend-of-shankhadhar.jpg"
+        },
+        "bijuliMachine": {
+          "category": "Science Fiction Film",
+          "name": "Bijuli Machine",
+          "year": "2016",
+          "description": "The first Nepali science fiction film with a social narrative, directed by Navin Awal, addressing power cuts in society.",
+          "imagePath": "/images/first-of-nepal/bijuli-machine.jpg"
+        },
+        "motiramBhatta": {
+          "category": "Nepali Literature",
+          "name": "Motiram Bhatta",
+          "year": "1851",
+          "description": "The first poet in Nepali literature, known for his contributions to the development of the language.",
+          "imagePath": "/images/first-of-nepal/motiram-bhatta.jpg"
+        },
+        "bhanubhaktaAcharya": {
+          "category": "Nepali Poet",
+          "name": "Bhanubhakta Acharya",
+          "year": "1832",
+          "description": "The first poet to write in Nepali, known for translating the Ramayana, earning him the title 'Adikavi' (First Poet).",
+          "imagePath": "/images/first-of-nepal/bhanubhakta-acharya.jpg"
+        },
+        "gorkhapatra": {
+          "category": "Newspaper",
+          "name": "Gorkhapatra",
+          "year": "1901",
+          "description": "The first Nepali-language newspaper, published under the Rana regime, marking the start of print media in Nepal.",
+          "imagePath": "/images/first-of-nepal/gorkhapatra.jpg"
+        },
+        "tribhuvanUniversity": {
+          "category": "University",
+          "name": "Tribhuvan University",
+          "year": "1959",
+          "description": "The first university in Nepal, established to provide higher education and research opportunities.",
+          "imagePath": "/images/first-of-nepal/tribhuvan-university.jpg"
+        },
+        "pharpingHydropowerStation": {
+          "category": "Hydroelectric Project",
+          "name": "Pharping Hydropower Station",
+          "year": "1911",
+          "description": "The first hydroelectric power station in Nepal, generating 500 kW, commissioned during the Rana period.",
+          "imagePath": "/images/first-of-nepal/pharping-hydropower.jpg"
+        },
+        "nepalTelevision": {
+          "category": "Television Broadcast",
+          "name": "Nepal Television",
+          "year": "1985",
+          "description": "The first television broadcast in Nepal, launched on January 31, 1985, under state control.",
+          "imagePath": "/images/first-of-nepal/nepal-television.jpg"
+        },
+        "royalNepalAirlines": {
+          "category": "International Flight",
+          "name": "Royal Nepal Airlines",
+          "year": "1958",
+          "description": "The first international flight by Nepal’s national carrier, connecting Kathmandu to Patna, India.",
+          "imagePath": "/images/first-of-nepal/royal-nepal-airlines.jpg"
+        },
+        "divyaUpadesh": {
+          "category": "Printed Book",
+          "name": "Prithvi Narayan Shah’s Divya Upadesh",
+          "year": "1867",
+          "description": "The first book printed in Nepali, a collection of teachings by the founder of modern Nepal.",
+          "imagePath": "/images/first-of-nepal/divya-upadesh.jpg"
+        },
+        "karnaliRiverBridge": {
+          "category": "Suspension Bridge",
+          "name": "Karnali River Bridge (Chisapani)",
+          "year": "1993",
+          "description": "The first major suspension bridge in Nepal, spanning the Karnali River, improving connectivity in the far west.",
+          "imagePath": "/images/first-of-nepal/karnali-bridge.jpg"
+        },
+        "tribhuvanAirport": {
+          "category": "Airport",
+          "name": "Tribhuvan Airport",
+          "year": "1949",
+          "description": "The first airport in Nepal, originally called Gauchar Airport, now known as Tribhuvan International Airport.",
+          "imagePath": "/images/first-of-nepal/tribhuvan-airport.jpg"
+        },
+        "nepalPrajaParishad": {
+          "category": "Political Party",
+          "name": "Nepal Praja Parishad",
+          "year": "1936",
+          "description": "The first political party in Nepal, founded to oppose the Rana regime and advocate for democracy.",
+          "imagePath": "/images/first-of-nepal/nepal-praja-parishad.jpg"
+        },
+        "governmentOfNepalAct": {
+          "category": "Constitution",
+          "name": "Government of Nepal Act",
+          "year": "1948",
+          "description": "The first written constitution of Nepal, introduced by Padma Shumsher Rana, though largely symbolic under Rana rule.",
+          "imagePath": "/images/first-of-nepal/government-of-nepal-act.jpg"
+        },
+        "generalElection1959": {
+          "category": "Democratic Election",
+          "name": "General Election",
+          "year": "1959",
+          "description": "The first democratic election in Nepal, held under King Mahendra, won by the Nepali Congress.",
+          "imagePath": "/images/first-of-nepal/1959-election.jpg"
+        },
+        "radioNepal": {
+          "category": "Radio Broadcast",
+          "name": "Radio Nepal",
+          "year": "1951",
+          "description": "The first radio station in Nepal, launched on April 2, 1951, after the fall of the Rana regime.",
+          "imagePath": "/images/first-of-nepal/radio-nepal.jpg"
+        },
+        "pashupatiStamp": {
+          "category": "Postage Stamp",
+          "name": "Nepal Pashupati Stamp",
+          "year": "1907",
+          "description": "The first postage stamp issued in Nepal, featuring the Pashupatinath Temple, during the Rana period.",
+          "imagePath": "/images/first-of-nepal/pashupati-stamp.jpg"
+        },
+        "shrimanGambhir": {
+          "category": "National Anthem",
+          "name": "Shriman Gambhir",
+          "year": "1924",
+          "description": "The first national anthem of Nepal, used until 2006, composed during the Rana era.",
+          "imagePath": "/images/first-of-nepal/shriman-gambhir.jpg"
+        },
+        "chitwanNationalPark": {
+          "category": "National Park",
+          "name": "Chitwan National Park",
+          "year": "1973",
+          "description": "The first national park in Nepal, established to protect wildlife, including the Bengal tiger and one-horned rhinoceros.",
+          "imagePath": "/images/first-of-nepal/chitwan-national-park.jpg"
+        },
+        "mercantileCommunications": {
+          "category": "Internet Service",
+          "name": "Mercantile Communications",
+          "year": "1995",
+          "description": "The first internet service provider in Nepal, introducing email and dial-up connectivity.",
+          "imagePath": "/images/first-of-nepal/mercantile-communications.jpg"
+        },
+        "nepaliSat1": {
+          "category": "Satellite Launch",
+          "name": "NepaliSat-1",
+          "year": "2019",
+          "description": "The first Nepali satellite, a CubeSat, launched into space with assistance from Japan, for research purposes.",
+          "imagePath": "/images/first-of-nepal/nepalisat-1.jpg"
+        },
+        "nepalVsMCC": {
+          "category": "International Cricket Match",
+          "name": "Nepal vs. MCC",
+          "year": "1996",
+          "description": "The first international cricket match played by Nepal, against the Marylebone Cricket Club (MCC).",
+          "imagePath": "/images/first-of-nepal/nepal-mcc-1996.jpg"
+        },
+        "birHospital": {
+          "category": "Hospital",
+          "name": "Bir Hospital",
+          "year": "1889",
+          "description": "The first modern hospital in Nepal, established by Bir Shumsher Rana, offering public healthcare.",
+          "imagePath": "/images/first-of-nepal/bir-hospital.jpg"
+        },
+        "durbarHighSchool": {
+          "category": "School",
+          "name": "Durbar High School",
+          "year": "1854",
+          "description": "The first formal school in Nepal, initially for Rana children, later opened to the public.",
+          "imagePath": "/images/first-of-nepal/durbar-high-school.jpg"
+        },
+        "kaiserLibrary": {
+          "category": "Library",
+          "name": "Kaiser Library",
+          "year": "1907",
+          "description": "The first public library in Nepal, established by Kaiser Shumsher Rana with a vast collection of books.",
+          "imagePath": "/images/first-of-nepal/kaiser-library.jpg"
+        },
+        "nationalMuseum": {
+          "category": "Museum",
+          "name": "National Museum of Nepal",
+          "year": "1928",
+          "description": "The first museum in Nepal, opened in Kathmandu to preserve art, history, and culture.",
+          "imagePath": "/images/first-of-nepal/national-museum.jpg"
+        },
+        "nepalBankLimited": {
+          "category": "Bank",
+          "name": "Nepal Bank Limited",
+          "year": "1937",
+          "description": "The first commercial bank in Nepal, established to modernize financial services.",
+          "imagePath": "/images/first-of-nepal/nepal-bank-limited.jpg"
+        },
+        "kathmanduValleyUnesco": {
+          "category": "UNESCO World Heritage Site",
+          "name": "Kathmandu Valley",
+          "year": "1979",
+          "description": "The first Nepali site listed as a UNESCO World Heritage Site, recognizing its cultural significance.",
+          "imagePath": "/images/first-of-nepal/kathmandu-valley-unesco.jpg"
+        }
+      }
+    }
+  }
