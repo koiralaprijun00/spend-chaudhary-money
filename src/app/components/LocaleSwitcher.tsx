@@ -31,7 +31,7 @@ export default function LocaleSwitcher() {
     <button
     onClick={switchLocale}
     disabled={isPending}
-    className="gradient-btn px-4 py-2 text-orange-700 text-sm md:text-md font-medium rounded-lg shadow-sm hover:text-orange-500 transition-all duration-300 disabled:opacity-50"
+    className="gradient-btn px-4 py-2 dark:bg-white dark:text-orange-700 dark:hover:text-orange-500 dark:hover:bg-orange-500 text-orange-700 text-sm md:text-md font-medium rounded-lg shadow-sm hover:text-orange-500 transition-all duration-300 disabled:opacity-50"
   >
     <span>
       {currentLocale === 'en' ? 'नेपाली' : 'English'}
