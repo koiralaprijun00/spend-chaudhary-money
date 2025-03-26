@@ -1,0 +1,88 @@
+{
+  "kingsofnepal": {
+    "prithvi_narayan_shah": {
+      "id": "prithvi_narayan_shah",
+      "title": "Prithvi Narayan Shah",
+      "description": "Prithvi Narayan Shah, the first King of unified Nepal, is regarded as one of the most important figures in Nepalese history. He was a visionary leader who unified various small principalities and kingdoms under a single rule, establishing the foundation of the Kingdom of Nepal. Before his reign, the region was fragmented into small, often warring states, but through his military prowess, strategic alliances, and leadership, Prithvi Narayan Shah managed to bring them together. His reign marked the beginning of the Shah dynasty and laid the groundwork for Nepal's political structure. He is remembered as the unifier of Nepal and the founder of the Shah monarchy.",
+      "reign_years": "1743-1775",
+      "image": "/kings-of-nepal/01-king-pns.jpg"
+    },
+    "pratap_singh_shah": {
+      "id": "pratap_singh_shah",
+      "title": "Pratap Singh Shah",
+      "description": "Pratap Singh Shah was the second King of unified Nepal and the eldest son of Prithvi Narayan Shah. His reign, however, was short-lived, lasting only two years. Pratap Singh Shah succeeded his father after his death, but due to his young age, the administration was mostly under the influence of his regents. Pratap Singh’s rule was overshadowed by internal strife and struggles for power, and his reign ended prematurely when he died in 1777, after which his brother, Rana Bahadur Shah, became king. Despite his brief rule, he remains a significant figure in Nepalese history as the son of the unifier of Nepal.",
+      "reign_years": "1775-1777",
+      "image": "/kings-of-nepal/02-king-pss.jpg"
+    },
+    "rana_bahadur_shah": {
+      "id": "rana_bahadur_shah",
+      "title": "Rana Bahadur Shah",
+      "description": "Rana Bahadur Shah ascended to the throne at a young age, and his reign was marked by turmoil and controversy. Known for his volatile personality, he became king as a child and later abdicated the throne in 1799 to become an ascetic. His abdication and the circumstances surrounding it have been a subject of intrigue in Nepalese history. During his reign, the kingdom saw various internal power struggles, which eventually led to his voluntary retreat from the throne. Despite his short rule, his life and abdication played a significant role in shaping Nepal's monarchy in the years that followed.",
+      "reign_years": "1777-1799",
+      "image": "/kings-of-nepal/03-king-rbs.jpg"
+    },
+    "girvan_yuddha_bikram_shah": {
+      "id": "girvan_yuddha_bikram_shah",
+      "title": "Girvan Yuddha Bikram Shah",
+      "description": "Girvan Yuddha Bikram Shah’s reign was largely defined by the period of the Anglo-Nepalese War, which occurred during his time on the throne. His leadership saw Nepal expanding its territorial boundaries. The war with the British East India Company, however, resulted in the signing of the Sugauli Treaty, which caused Nepal to lose substantial land. Despite these challenges, he was a significant monarch during the expansion and consolidation of Nepal. His reign marked an important phase in Nepalese military history and territorial politics.",
+      "reign_years": "1799-1816",
+      "image": "/kings-of-nepal/04-king-gybs.jpg"
+    },
+    "rajendra_bikram_shah": {
+      "id": "rajendra_bikram_shah",
+      "title": "Rajendra Bikram Shah",
+      "description": "Rajendra Bikram Shah was the king during the rise of the powerful Rana regime, which gradually reduced the monarchy to a ceremonial position. His reign is considered to be one of the final years of the Shah dynasty's direct control, as the Rana family took over the administration of the country and held de facto power. Rajendra's reign saw the weakening of royal authority, which led to the establishment of a hereditary prime ministerial position for the Ranas. The changes during his rule marked the end of the Shah monarchy’s actual governance and the beginning of the Rana era.",
+      "reign_years": "1816-1847",
+      "image": "/kings-of-nepal/05-king-rbs.jpg"
+    },
+    "surendra_bikram_shah": {
+      "id": "surendra_bikram_shah",
+      "title": "Surendra Bikram Shah",
+      "description": "Surendra Bikram Shah was the first king to rule under the total control of the Rana Prime Ministers. Though he held the title of king, the Ranas, particularly Jung Bahadur Rana, exercised full control over the governance of Nepal. His reign marked a period of minimal royal influence, as the Ranas consolidated their political power and sidelined the monarchy. The Rana regime, which lasted for over a century, effectively rendered the Shah monarchy powerless, and Surendra’s reign was a key chapter in that historical period.",
+      "reign_years": "1847-1881",
+      "image": "/kings-of-nepal/06-king-sbs.jpg"
+    },
+    "prithvi_bir_bikram_shah": {
+      "id": "prithvi_bir_bikram_shah",
+      "title": "Prithvi Bir Bikram Shah",
+      "description": "Prithvi Bir Bikram Shah was a modernizer who introduced several significant reforms to Nepal. Under his rule, the first college and hospital were established in the country, marking a period of modernization. Despite his efforts to reform and open Nepal to the outside world, his reign was marred by the dominance of the Rana family, which continued to control the country. He is remembered for attempting to modernize Nepal’s infrastructure, education, and health systems, though his reign was limited by the political reality of the time.",
+      "reign_years": "1881-1911",
+      "image": "/kings-of-nepal/07-king-pbbs.png"
+    },
+    "tribhuvan_bir_bikram_shah": {
+      "id": "tribhuvan_bir_bikram_shah",
+      "title": "Tribhuvan Bir Bikram Shah",
+      "description": "Tribhuvan Bir Bikram Shah is known for playing a pivotal role in the overthrow of the Rana regime. His reign saw the establishment of democracy in Nepal, a significant turning point in the nation's history. With support from India, he was able to end the centuries-long Rana rule and restore the Shah monarchy’s position, although the Rana family still held considerable influence until 1951. Tribhuvan’s leadership was instrumental in the creation of a constitutional monarchy and the opening of Nepal to democratic reforms.",
+      "reign_years": "1911-1955",
+      "image": "/kings-of-nepal/08-king-tbbs.png"
+    },
+    "mahendra_bir_bikram_shah": {
+      "id": "mahendra_bir_bikram_shah",
+      "title": "Mahendra Bir Bikram Shah",
+      "description": "Mahendra Bir Bikram Shah is known for introducing the Panchayat system, a partyless political system, and overseeing several major infrastructure projects in Nepal. His reign saw the monarchy strengthening its role in politics, and he centralized power by taking complete control of the political system. Mahendra's rule was marked by efforts to modernize the country, but also by authoritarianism and suppression of political opposition. His reign laid the groundwork for Nepal’s political landscape for decades.",
+      "reign_years": "1955-1972",
+      "image": "/kings-of-nepal/10-king-mbbs.jpg"
+    },
+    "birendra_bir_bikram_shah": {
+      "id": "birendra_bir_bikram_shah",
+      "title": "Birendra Bir Bikram Shah",
+      "description": "Birendra Bir Bikram Shah played a crucial role in Nepal’s transition from an absolute monarchy to a constitutional monarchy. His reign saw the introduction of democratic reforms and the adoption of a new constitution that allowed for parliamentary elections. Birendra is remembered for his commitment to democratizing Nepal and improving relations with the international community. His reign was a period of significant social and political change, which set the stage for a more open and democratic society.",
+      "reign_years": "1972-2001",
+      "image": "/kings-of-nepal/11-king-bbs.jpg"
+    },
+    "dipendra_bir_bikram_shah": {
+      "id": "dipendra_bir_bikram_shah",
+      "title": "Dipendra Bir Bikram Shah",
+      "description": "Dipendra Bir Bikram Shah had the shortest reign in Nepalese history, lasting only three days while he was in a coma. He was responsible for a tragic incident in Nepal’s royal family when he reportedly killed his family members in a dispute over the throne, before succumbing to self-inflicted gunshot wounds. His brief and tragic reign left an indelible mark on Nepal’s monarchy, as it was followed by the immediate succession of his father, Gyanendra.",
+      "reign_years": "2001-2001",
+      "image": "/kings-of-nepal/12-king-dbbs.jpg"
+    },
+    "gyanendra_bir_bikram_shah": {
+      "id": "gyanendra_bir_bikram_shah",
+      "title": "Gyanendra Bir Bikram Shah",
+      "description": "Gyanendra Bir Bikram Shah was the last king of Nepal. His reign marked the final phase of the monarchy before the abolition in 2008. Gyanendra’s actions, particularly his decision to dissolve the parliament and rule by royal decree, accelerated the abolition of the monarchy. Under pressure from the political movements of the time, the monarchy was finally dissolved, and Nepal became a republic. Gyanendra’s reign is often remembered for the tragic royal massacre and the monarchy’s eventual collapse.",
+      "reign_years": "2001-2008",
+      "image": "/kings-of-nepal/13-king-gbbs.jpg"
+    }
+  }
+}
