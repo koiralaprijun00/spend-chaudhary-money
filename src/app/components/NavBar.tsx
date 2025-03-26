@@ -69,7 +69,8 @@ const Navbar = () => {
         { href: "/name-districts", label: t('nameDistrictTitle') },
         { href: "/life-checklist", label: t('nepalChecklist.navbarTitle') },
         { href: "/general-knowledge", label: t('nepalGk.titleshort') || 'Nepal GK Quiz' },
-        { href: "/patta-lagau", label: t('pattalagauTitle') || 'Patta Lagau'}
+        { href: "/patta-lagau", label: t('pattalagauTitle') || 'Patta Lagau'},
+        { href: "/first-of-nepal", label: t('firstofNepalTitle') || 'Firsts of Nepal'}
     ];
 
     return (
