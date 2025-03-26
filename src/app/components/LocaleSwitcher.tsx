@@ -34,7 +34,7 @@ export default function LocaleSwitcher() {
     className="gradient-btn px-4 py-2 text-orange-700 text-sm md:text-md font-medium rounded-lg shadow-sm hover:text-orange-500 transition-all duration-300 disabled:opacity-50"
   >
     <span>
-      {currentLocale === 'en' ? 'नेपालीमा' : 'in English'}
+      {currentLocale === 'en' ? 'नेपाली' : 'English'}
       {isPending && <span className="ml-2 inline-block animate-spin">⟳</span>}
     </span>
   </button>

@@ -12,7 +12,7 @@ export default function HomePage() {
         <div className="absolute -bottom-10 -right-10 w-44 h-44 bg-orange-200 dark:bg-orange-700 opacity-20 rounded-full animate-float-slower"></div>
       </div>
       
-      <div className="relative z-10 container mx-auto  flex flex-col items-center">
+      <div className="relative z-10 container flex flex-row">
         {/* Header Section - Enhanced with animation */}
         <div className="py-1 flex flex-col items-center">
           <div className="relative">
@@ -35,7 +35,7 @@ export default function HomePage() {
         </div>
 
         {/* Fun Card Section - Improved layout for all screen sizes */}
-        <div className="w-full my-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 max-w-5xl">
           {/* Spend Binod Chaudhary's Money Card */}
           <Link href="/spend" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-purple-600 to-pink-500 dark:from-purple-700 dark:to-pink-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
