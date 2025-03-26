@@ -15,6 +15,7 @@ interface FirstItem {
     imagePath: string;
 }
 
+
 const nepaliFirsts: FirstItem[] = [
     {
         category: 'Prime Minister',
@@ -150,34 +151,6 @@ const nepaliFirsts: FirstItem[] = [
         imagePath: '/images/first-of-nepal/min-bahadur-poudel.jpg'
     },
     {
-        category: 'Constitutional Expert',
-        name: 'Ganesh Raj Sharma',
-        year: '1948',
-        description: 'First constitutional law expert of Nepal.',
-        imagePath: '/images/first-of-nepal/ganesh-raj-sharma.jpg'
-    },
-    {
-        category: 'Astronomer',
-        name: 'Hari Prasad Shrestha',
-        year: '1975',
-        description: 'First Nepali astronomer to map the night sky from the Himalayas.',
-        imagePath: '/images/first-of-nepal/hari-prasad-shrestha.jpg'
-    },
-    {
-        category: 'Environmentalist',
-        name: 'Maya Gurung',
-        year: '1989',
-        description: 'First Nepali woman to lead a national conservation initiative.',
-        imagePath: '/images/first-of-nepal/maya-gurung.jpg'
-    },
-    {
-        category: 'Software Engineer',
-        name: 'Rajan Karki',
-        year: '1995',
-        description: 'First Nepali to develop an internationally recognized software application.',
-        imagePath: '/images/first-of-nepal/rajan-karki.jpg'
-    },
-    {
         category: 'Marathon Runner',
         name: 'Sita Tamang',
         year: '2000',
@@ -239,6 +212,13 @@ const nepaliFirsts: FirstItem[] = [
         year: '2000',
         description: 'First Nepali photographer to exhibit internationally and gain global recognition.',
         imagePath: '/images/first-of-nepal/sudeep-sharma.jpg'
+    },
+    {
+        category: 'Gun of Nepal',
+        name: 'Bira Gun',
+        year: '1846',
+        description: 'First gun manufactured in Nepal, known for its historical significance and craftsmanship.',
+        imagePath: '/images/first-of-nepal/bira-gun.jpg'
     },
     {
         category: 'Singer',
@@ -458,26 +438,13 @@ const nepaliFirsts: FirstItem[] = [
         imagePath: '/images/first-of-nepal/sarita-maskey.jpg'
     },
     {
-        category: 'Wildlife Conservationist',
-        name: 'Rameshwor Bohara',
-        year: '1994',
-        description: 'First Nepali to establish a sanctuary for endangered Himalayan species.',
-        imagePath: '/images/first-of-nepal/rameshwor-bohara.jpg'
-    },
-    {
         category: 'Female Radio Host',
         name: 'Lila Gurung',
         year: '1970',
         description: 'First Nepali woman to host a radio program broadcast nationwide.',
         imagePath: '/images/first-of-nepal/lila-gurung.jpg'
     },
-    {
-        category: 'Video Game Developer',
-        name: 'Santosh Karki',
-        year: '2017',
-        description: 'First Nepali to develop a video game released on an international platform.',
-        imagePath: '/images/first-of-nepal/santosh-karki.jpg'
-    },
+
     {
         category: 'Female Chess Player',
         name: 'Monika Thapa',
@@ -500,18 +467,248 @@ const nepaliFirsts: FirstItem[] = [
         imagePath: '/images/first-of-nepal/anjali-tamang.jpg'
     },
     {
-        category: 'Digital Artist',
-        name: 'Pradeep Rai',
-        year: '2013',
-        description: 'First Nepali digital artist to have work featured in an international animation festival.',
-        imagePath: '/images/first-of-nepal/pradeep-rai.jpg'
-    },
-    {
         category: 'Female Mountaineering Instructor',
         name: 'Dawa Yangzum Sherpa',
         year: '2012',
         description: 'First Nepali woman certified as an international mountaineering guide.',
         imagePath: '/images/first-of-nepal/dawa-yangzum-sherpa.jpg'
+    },
+    {
+        category: 'Film Produced in Nepal',
+        name: 'Aama',
+        year: '1964',
+        description: 'The first film produced in Nepal, directed by Hira Singh Khatri and made by the Nepalese government, released on October 7, 1964.',
+        imagePath: '/images/first-of-nepal/aama.jpg'
+    },
+    {
+        category: 'Privately Produced Film',
+        name: 'Maitighar',
+        year: '1966',
+        description: 'The first Nepali film produced under a private banner by Sumonanjali Films Pvt. Ltd., featuring Mala Sinha and Indian contributions.',
+        imagePath: '/images/first-of-nepal/maitighar.jpg'
+    },
+    {
+        category: 'Color Film',
+        name: 'Kumari',
+        year: '1977',
+        description: 'The first Nepali film produced in color, directed by Prem Bahadur Basnet under the Royal Nepal Film Corporation.',
+        imagePath: '/images/first-of-nepal/kumari.jpg'
+    },
+    {
+        category: 'Animated Film',
+        name: 'The Legend of Shankhadhar',
+        year: '2016',
+        description: 'The first animated Nepali film, a biopic on Shankhadhar Shakhwa, who started the Nepal Sambat era in 879 AD.',
+        imagePath: '/images/first-of-nepal/legend-of-shankhadhar.jpg'
+    },
+    {
+        category: 'Science Fiction Film',
+        name: 'Bijuli Machine',
+        year: '2016',
+        description: 'The first Nepali science fiction film with a social narrative, directed by Navin Awal, addressing power cuts in society.',
+        imagePath: '/images/first-of-nepal/bijuli-machine.jpg'
+    },
+    {
+        category: 'Nepali Literature',
+        name: 'Motiram Bhatta',
+        year: '1851',
+        description: 'The first poet in Nepali literature, known for his contributions to the development of the language.',
+        imagePath: '/images/first-of-nepal/motiram-bhatta.jpg'
+    },
+    {
+        category: 'Nepali Poet',
+        name: 'Bhanubhakta Acharya',
+        year: '1832',
+        description: 'The first poet to write in Nepali, known for translating the Ramayana, earning him the title "Adikavi" (First Poet).',
+        imagePath: '/images/first-of-nepal/bhanubhakta-acharya.jpg'
+    },
+    {
+        category: 'Newspaper',
+        name: 'Gorkhapatra',
+        year: '1901',
+        description: 'The first Nepali-language newspaper, published under the Rana regime, marking the start of print media in Nepal.',
+        imagePath: '/images/first-of-nepal/gorkhapatra.jpg'
+    },
+    {
+        category: 'University',
+        name: 'Tribhuvan University',
+        year: '1959',
+        description: 'The first university in Nepal, established to provide higher education and research opportunities.',
+        imagePath: '/images/first-of-nepal/tribhuvan-university.jpg'
+    },
+    {
+        category: 'Hydroelectric Project',
+        name: 'Pharping Hydropower Station',
+        year: '1911',
+        description: 'The first hydroelectric power station in Nepal, generating 500 kW, commissioned during the Rana period.',
+        imagePath: '/images/first-of-nepal/pharping-hydropower.jpg'
+    },
+    {
+        category: 'Television Broadcast',
+        name: 'Nepal Television',
+        year: '1985',
+        description: 'The first television broadcast in Nepal, launched on January 31, 1985, under state control.',
+        imagePath: '/images/first-of-nepal/nepal-television.jpg'
+    },
+    {
+        category: 'International Flight',
+        name: 'Royal Nepal Airlines',
+        year: '1958',
+        description: 'The first international flight by Nepal’s national carrier, connecting Kathmandu to Patna, India.',
+        imagePath: '/images/first-of-nepal/royal-nepal-airlines.jpg'
+    },
+    {
+        category: 'Printed Book',
+        name: 'Prithvi Narayan Shah’s Divya Upadesh',
+        year: '1867',
+        description: 'The first book printed in Nepali, a collection of teachings by the founder of modern Nepal.',
+        imagePath: '/images/first-of-nepal/divya-upadesh.jpg'
+    },
+  
+    {
+        category: 'Suspension Bridge',
+        name: 'Karnali River Bridge (Chisapani)',
+        year: '1993',
+        description: 'The first major suspension bridge in Nepal, spanning the Karnali River, improving connectivity in the far west.',
+        imagePath: '/images/first-of-nepal/karnali-bridge.jpg'
+    },
+   
+    {
+        category: 'Airport',
+        name: 'Tribhuvan Airport',
+        year: '1949',
+        description: 'The first airport in Nepal, originally called Gauchar Airport, now known as Tribhuvan International Airport.',
+        imagePath: '/images/first-of-nepal/tribhuvan-airport.jpg'
+    },
+    {
+        category: 'Political Party',
+        name: 'Nepal Praja Parishad',
+        year: '1936',
+        description: 'The first political party in Nepal, founded to oppose the Rana regime and advocate for democracy.',
+        imagePath: '/images/first-of-nepal/nepal-praja-parishad.jpg'
+    },
+    {
+        category: 'Constitution',
+        name: 'Government of Nepal Act',
+        year: '1948',
+        description: 'The first written constitution of Nepal, introduced by Padma Shumsher Rana, though largely symbolic under Rana rule.',
+        imagePath: '/images/first-of-nepal/government-of-nepal-act.jpg'
+    },
+    {
+        category: 'Democratic Election',
+        name: 'General Election',
+        year: '1959',
+        description: 'The first democratic election in Nepal, held under King Mahendra, won by the Nepali Congress.',
+        imagePath: '/images/first-of-nepal/1959-election.jpg'
+    },
+    {
+        category: 'Radio Broadcast',
+        name: 'Radio Nepal',
+        year: '1951',
+        description: 'The first radio station in Nepal, launched on April 2, 1951, after the fall of the Rana regime.',
+        imagePath: '/images/first-of-nepal/radio-nepal.jpg'
+    },
+    {
+        category: 'Postage Stamp',
+        name: 'Nepal Pashupati Stamp',
+        year: '1907',
+        description: 'The first postage stamp issued in Nepal, featuring the Pashupatinath Temple, during the Rana period.',
+        imagePath: '/images/first-of-nepal/pashupati-stamp.jpg'
+    },
+    {
+        category: 'National Anthem',
+        name: 'Shriman Gambhir',
+        year: '1924',
+        description: 'The first national anthem of Nepal, used until 2006, composed during the Rana era.',
+        imagePath: '/images/first-of-nepal/shriman-gambhir.jpg'
+    },
+    {
+        category: 'National Park',
+        name: 'Chitwan National Park',
+        year: '1973',
+        description: 'The first national park in Nepal, established to protect wildlife, including the Bengal tiger and one-horned rhinoceros.',
+        imagePath: '/images/first-of-nepal/chitwan-national-park.jpg'
+    },
+    {
+        category: 'Internet Service',
+        name: 'Mercantile Communications',
+        year: '1995',
+        description: 'The first internet service provider in Nepal, introducing email and dial-up connectivity.',
+        imagePath: '/images/first-of-nepal/mercantile-communications.jpg'
+    },
+   
+    {
+        category: 'Satellite Launch',
+        name: 'NepaliSat-1',
+        year: '2019',
+        description: 'The first Nepali satellite, a CubeSat, launched into space with assistance from Japan, for research purposes.',
+        imagePath: '/images/first-of-nepal/nepalisat-1.jpg'
+    },
+    {
+        category: 'Stock Exchange',
+        name: 'Nepal Stock Exchange (NEPSE)',
+        year: '1993',
+        description: 'The first stock exchange in Nepal, established to facilitate trading of securities.',
+        imagePath: '/images/first-of-nepal/nepal-stock-exchange.jpg'
+    },
+    {
+        category: 'Olympic Participation',
+        name: 'Nepal at the Olympics',
+        year: '1964',
+        description: 'The first time Nepal participated in the Summer Olympics, held in Tokyo, Japan.',
+        imagePath: '/images/first-of-nepal/nepal-olympics-1964.jpg'
+    },
+   
+    {
+        category: 'International Cricket Match',
+        name: 'Nepal vs. MCC',
+        year: '1996',
+        description: 'The first international cricket match played by Nepal, against the Marylebone Cricket Club (MCC).',
+        imagePath: '/images/first-of-nepal/nepal-mcc-1996.jpg'
+    },
+    {
+        category: 'Hospital',
+        name: 'Bir Hospital',
+        year: '1889',
+        description: 'The first modern hospital in Nepal, established by Bir Shumsher Rana, offering public healthcare.',
+        imagePath: '/images/first-of-nepal/bir-hospital.jpg'
+    },
+    {
+        category: 'School',
+        name: 'Durbar High School',
+        year: '1854',
+        description: 'The first formal school in Nepal, initially for Rana children, later opened to the public.',
+        imagePath: '/images/first-of-nepal/durbar-high-school.jpg'
+    },
+    {
+        category: 'Library',
+        name: 'Kaiser Library',
+        year: '1907',
+        description: 'The first public library in Nepal, established by Kaiser Shumsher Rana with a vast collection of books.',
+        imagePath: '/images/first-of-nepal/kaiser-library.jpg'
+    },
+    {
+        category: 'Museum',
+        name: 'National Museum of Nepal',
+        year: '1928',
+        description: 'The first museum in Nepal, opened in Kathmandu to preserve art, history, and culture.',
+        imagePath: '/images/first-of-nepal/national-museum.jpg'
+    },
+ 
+    {
+        category: 'Bank',
+        name: 'Nepal Bank Limited',
+        year: '1937',
+        description: 'The first commercial bank in Nepal, established to modernize financial services.',
+        imagePath: '/images/first-of-nepal/nepal-bank-limited.jpg'
+    },
+   
+    {
+        category: 'UNESCO World Heritage Site',
+        name: 'Kathmandu Valley',
+        year: '1979',
+        description: 'The first Nepali site listed as a UNESCO World Heritage Site, recognizing its cultural significance.',
+        imagePath: '/images/first-of-nepal/kathmandu-valley-unesco.jpg'
     }
 ];
 
@@ -552,7 +749,6 @@ export default function FirstsOfNepal() {
     } | null>(null);
     const gridRef = useRef<HTMLDivElement>(null);
 
-    const t = useTranslations();
 
     const filteredFirsts = nepaliFirsts.filter(
         (item) => {
@@ -588,57 +784,63 @@ export default function FirstsOfNepal() {
         }
     };
 
+    const t = useTranslations('Translations');
+
     return (
         <div className="min-h-screen bg-gray-50">
             <div className="container mx-auto px-4 py-16">
                 {/* Hero Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-16 text-center"
-                >
-                    <h1 className="text-5xl md:text-7xl font-bold text-gray-900 uppercase tracking-tight">
-            <span className="text-red-600 mr-4">Firsts</span>
-            of Nepal
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-16 text-center"
+        >
+          <h1 className="inline text-5xl md:text-7xl font-bold bg-gradient-to-r from-red-600 to-blue-700 bg-clip-text text-transparent uppercase tracking-tight">
+            {t('firstofNepalTitle')}
           </h1>
           <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-          Exploring the pioneering individuals who shaped Nepal's history with their groundbreaking achievements and remarkable firsts.
+            {t('firstofNepalSubtitle')}
           </p>
-                </motion.div>
+        </motion.div>
 
-                {/* Search Section */}
-                <div className="max-w-4xl mx-auto mb-16">
-                    <div className="flex flex-col gap-4 items-center">
-                        <div className="relative w-full">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <Search className="h-5 w-5 text-gray-400" />
-                            </div>
-                            <input
-                                type="text"
-                                placeholder="Search by name, category, or description..."
-                                className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50 focus:outline-none text-lg transition duration-200"
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                            />
-                            {searchTerm && (
-                                <button 
-                                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                                    onClick={() => setSearchTerm('')}
-                                >
-                                    <X className="h-5 w-5 text-gray-400 hover:text-gray-600" />
-                                </button>
-                            )}
-                        </div>
-                    </div>
-                    
-                    <div className="mt-4 text-sm text-gray-500">
-                        {filteredFirsts.length === 0 ? (
-                            <span>No results found</span>
-                        ) : (
-                            <span>Showing {filteredFirsts.length} results {searchTerm && `for "${searchTerm}"`}</span>
-                        )}
-                    </div>
-                </div>
+               {/* Search Section */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="flex flex-col gap-4 items-center">
+            <div className="relative w-full">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                type="text"
+                placeholder={t('searchPlaceholder')}
+                className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50 focus:outline-none text-lg transition duration-200"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              {searchTerm && (
+                <button
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  onClick={() => setSearchTerm('')}
+                >
+                  <X className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-4 text-sm text-gray-500">
+            {filteredFirsts.length === 0 ? (
+              <span>{t('noResults')}</span>
+            ) : (
+              <span>
+                {t(searchTerm ? 'showingResultsFor' : 'showingResults', {
+                  count: filteredFirsts.length,
+                  searchTerm,
+                })}
+              </span>
+            )}
+          </div>
+        </div>
 
 <div 
     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative"
@@ -674,10 +876,10 @@ export default function FirstsOfNepal() {
                         <RiCircleLine size={20} />
                     </motion.div>
                 </div>
-                <div className="text-xl font-bold text-red-600 uppercase tracking-wide mb-2">
+                <div className="text-xl font-bold text-red-600 uppercase tracking-wide mb-4">
                     First {item.category}
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                <h2 className="text-2xl font-bold text-gray-900 mb-1">
                     {item.name}
                 </h2>
                 <p className="text-gray-600 leading-relaxed overflow-hidden text-ellipsis flex-grow">
@@ -715,25 +917,23 @@ export default function FirstsOfNepal() {
 
                 {/* No Results Message */}
                 {filteredFirsts.length === 0 && (
-                    <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="text-center py-16"
+                    <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-center py-16"
+                  >
+                    <div className="inline-flex justify-center items-center w-16 h-16 bg-gray-100 rounded-full mb-4">
+                      <Search className="h-8 w-8 text-gray-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{t('noResults')}</h3>
+                    <p className="text-gray-600 mb-6">{t('noMatches', { searchTerm })}</p>
+                    <button
+                      onClick={() => setSearchTerm('')}
+                      className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition duration-200"
                     >
-                        <div className="inline-flex justify-center items-center w-16 h-16 bg-gray-100 rounded-full mb-4">
-                            <Search className="h-8 w-8 text-gray-400" />
-                        </div>
-                        <h3 className="text-xl font-semibold text-gray-800 mb-2">No results found</h3>
-                        <p className="text-gray-600 mb-6">
-                            We couldn't find any matches for "{searchTerm}".
-                        </p>
-                        <button 
-                            onClick={clearFilters}
-                            className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition duration-200"
-                        >
-                            Clear search
-                        </button>
-                    </motion.div>
+                      {t('clearSearch')}
+                    </button>
+                  </motion.div>
                 )}
             </div>
         </div>

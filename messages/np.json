@@ -1,6 +1,7 @@
 {
   "Translations": {
       "firstofNepalTitle": "नेपालका पहिलोहरू",
+      "firstofNepalSubtitle": "आफ्नो अभूतपूर्व उपलब्धिहरू र उल्लेखनीय पहिलो कार्यहरूद्वारा नेपालको इतिहासलाई आकार दिने अग्रगामी व्यक्तिहरूको अन्वेषण गर्दै।",
       "firstofNepalShortSubtitle": "नेपालका इतिहासमा अग्रगामी व्यक्तिहरूको खोज",
       "firstofNepalBadge": "अग्रगामी",
       "subtitle": "नेपालको इतिहासलाई उनीहरूका अभूतपूर्व उपलब्धि र उल्लेखनीय पहिलोहरूसँग आकार दिने अग्रगामी व्यक्तिहरूको खोज।",
@@ -8,9 +9,9 @@
       "noResults": "कुनै नतिजा फेला परेन",
       "showingResults": "{count} नतिजाहरू देखाइँदै",
       "showingResultsFor": "\"{searchTerm}\" का लागि {count} नतिजाहरू देखाइँदै",
-      "firstCategory": "पहिलो {category}",
-      "noMatches": "हामीले \"{searchTerm}\" का लागि कुनै मिलान फेला पार्न सकेनौं।",
-      "clearSearch": "खोज मेटाउनुहोस्",
+     "firstCategory": "पहिलो {category}",
+     "noMatches": "हामीले \"{searchTerm}\" का लागि कुनै मिलान फेला पार्न सकेनौं।",
+    "clearSearch": "खोज मेटाउनुहोस्",
     "pattalagauTitle": "पत्ता लागाउ",
       "geographyBadge": "भूगोल",
       "switchLanguage": "नेपाली",
