@@ -15,6 +15,7 @@ export default function Home() {
   const [budget] = useState(237500000000)
   const [spent, setSpent] = useState(0)
   const [purchases, setPurchases] = useState<Purchases>({})
+  const [isReceiptModalOpen, setReceiptModalOpen] = useState(false); // New state for receipt modal
 
   // Ref for the purchases summary area
   const purchasesRef = useRef<HTMLDivElement>(null)
@@ -81,11 +82,10 @@ export default function Home() {
           )}
         </div>
       </div>
-      <div className="p-6 bg-lightGray rounded-lg shadow sticky top-5 h-screen overflow-y-auto hidden md:block">
+      <div className="md:block hidden p-6 bg-lightGray rounded-lg shadow sticky top-5 h-screen overflow-y-auto">
         <div className="flex flex-col h-full">
           <SocialShare summaryRef={purchasesRef} totalSpent={totalSpent} />
           <div className="flex flex-col h-full">
-            {/* <div className="py-6 px-4 mb-4 border-t rounded-md bg-[#0055a4] text-white"> */}
             <div className="py-6 mb-4 border-b-2 border-gray-600 border-dashed">
               <h2 className="text-2xl mb-8 font-semibold">RECEIPT</h2>
               <p className="flex justify-between text-xl font-bold text-right">
@@ -115,6 +115,51 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <button
+        onClick={() => setReceiptModalOpen(true)}
+        className="fixed bottom-4 right-4 bg-orange-400 text-white border-4 font-bold rounded-md md:hidden border-orange-600 shadow-lg  p-3"
+      >
+        View Receipt
+      </button>
+
+      {isReceiptModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-6">
+          <div className="bg-white p-6 rounded-lg w-full max-w-md relative">
+            <button
+              onClick={() => setReceiptModalOpen(false)}
+              className="absolute top-4 right-5 text-gray-500 bg-gray-200 px-2 py-2 rounded-full focus:outline-none"
+            >
+              X
+            </button>
+            <div className="py-6 mb-4 border-b-2 border-gray-600 border-dashed">
+              <h2 className="text-2xl mb-8 font-semibold">RECEIPT</h2>
+              <p className="flex justify-between text-xl font-bold text-right">
+                <span className="block">Total Spent:</span> NPR {totalSpent.toLocaleString()}
+              </p>
+            </div>
+            <div className="overflow-y-auto max-h-[60vh]">
+              {Object.keys(purchases).length === 0 ? (
+                <p className="text-gray-500">No purchases yet!</p>
+              ) : (
+                initialProducts
+                  .filter((product) => purchases[product.id])
+                  .map((product) => (
+                    <div key={product.id} className="mb-4">
+                      <div className="flex justify-between items-center">
+                        <div className="font-medium">{product.name}</div>
+                        <div className="text-gray-500">x{purchases[product.id]}</div>
+                      </div>
+                      <div className="text-right mt-1">
+                        NPR {(purchases[product.id] * product.price).toLocaleString()}
+                      </div>
+                      <hr className="my-2 border-gray-300" />
+                    </div>
+                  ))
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
