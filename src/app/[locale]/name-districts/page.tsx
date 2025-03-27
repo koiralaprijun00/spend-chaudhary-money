@@ -7,10 +7,21 @@ import { districtData } from '../../data/district-data';
 
 const TOTAL_DISTRICTS = districtData.length;
 
+// Helper function to convert numbers to Nepali numerals
+const toNepaliNumerals = (num: number): string => {
+  const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+  return num
+    .toString()
+    .split('')
+    .map(digit => nepaliDigits[parseInt(digit)])
+    .join('');
+};
+
 const NepalDistrictQuiz: React.FC = () => {
-  const t = useTranslations('Translations');
+  const t = useTranslations('Translations'); // For general UI translations
+  const tDistricts = useTranslations('districts'); // For district names
   const locale = useLocale();
-  const isNepali = locale === 'ne';
+  const isNepali = locale === 'np'; // Assuming 'np' for Nepali locale
 
   // Game state
   const [gameStarted, setGameStarted] = useState(false);
@@ -70,14 +81,13 @@ const NepalDistrictQuiz: React.FC = () => {
       const availableDistricts = districtData.filter(d => d.id !== currentDistrict.id);
       const shuffledDistricts = shuffleArray(availableDistricts);
       const distractors = shuffledDistricts.slice(0, 2);
-      const languageKey = isNepali ? 'ne' : 'en';
       const choices = [
-        currentDistrict.translations[languageKey],
-        ...distractors.map(d => d.translations[languageKey])
+        tDistricts(currentDistrict.id),
+        ...distractors.map(d => tDistricts(d.id)),
       ];
       setOptions(shuffleArray(choices));
     }
-  }, [currentDistrictIndex, randomizedDistricts, locale]);
+  }, [currentDistrictIndex, randomizedDistricts, tDistricts]);
 
   // Scroll pagination to active district
   useEffect(() => {
@@ -87,7 +97,7 @@ const NepalDistrictQuiz: React.FC = () => {
         activeButton.scrollIntoView({
           behavior: 'smooth',
           inline: 'center',
-          block: 'nearest'
+          block: 'nearest',
         });
       }
     }
@@ -101,8 +111,8 @@ const NepalDistrictQuiz: React.FC = () => {
     const guess = currentGuess.trim().toLowerCase();
     const isCorrect =
       currentDistrict.id.toLowerCase() === guess ||
-      currentDistrict.translations.en.toLowerCase() === guess ||
-      currentDistrict.translations.ne.toLowerCase() === guess;
+      tDistricts(currentDistrict.id).toLowerCase() === guess ||
+      (isNepali ? currentDistrict.translations.ne.toLowerCase() : currentDistrict.translations.en.toLowerCase()) === guess;
 
     if (isCorrect) {
       handleCorrectAnswer(currentDistrict);
@@ -114,9 +124,7 @@ const NepalDistrictQuiz: React.FC = () => {
 
   const handleMultipleChoiceSelection = (selectedOption: string) => {
     const currentDistrict = randomizedDistricts[currentDistrictIndex];
-    const languageKey = isNepali ? 'ne' : 'en';
-    const isCorrect =
-      currentDistrict.translations[languageKey].toLowerCase() === selectedOption.toLowerCase();
+    const isCorrect = tDistricts(currentDistrict.id).toLowerCase() === selectedOption.toLowerCase();
 
     if (isCorrect) {
       handleCorrectAnswer(currentDistrict);
@@ -126,12 +134,11 @@ const NepalDistrictQuiz: React.FC = () => {
     }
   };
 
-  const handleCorrectAnswer = (district: { id: string, translations: { en: string, ne: string } }) => {
+  const handleCorrectAnswer = (district: { id: string }) => {
     if (!correctGuesses.includes(district.id)) {
       setCorrectGuesses(prev => [...prev, district.id]);
     }
-    const languageKey = isNepali ? 'ne' : 'en';
-    setFeedback(t('correct', { district: district.translations[languageKey] }));
+    setFeedback(t('correct', { district: tDistricts(district.id) }));
     setCurrentGuess('');
     const newStreak = streak + 1;
     setStreak(newStreak);
@@ -207,7 +214,6 @@ const NepalDistrictQuiz: React.FC = () => {
       });
     }, 1000);
 
-    // Reset scroll to start
     if (paginationRef.current) {
       paginationRef.current.scrollLeft = 0;
     }
@@ -330,7 +336,7 @@ const NepalDistrictQuiz: React.FC = () => {
                       {correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id) && (
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="bg-green-500 text-white px-3 py-1 rounded-lg text-lg font-bold opacity-90">
-                            {randomizedDistricts[currentDistrictIndex].translations[isNepali ? 'ne' : 'en']}
+                            {tDistricts(randomizedDistricts[currentDistrictIndex].id)}
                           </div>
                         </div>
                       )}
@@ -343,16 +349,16 @@ const NepalDistrictQuiz: React.FC = () => {
               <div className="flex items-center justify-between gap-2 mb-5">
                 <button
                   onClick={goToPrevDistrict}
-                  className="border border-gray-300 rounded px-3 py-1 hover:bg-gray-50 disabled:opacity-50 flex items-center "
+                  className="border border-gray-300 rounded px-3 py-1 hover:bg-gray-50 disabled:opacity-50 flex items-center"
                   disabled={currentDistrictIndex === 0}
                 >
                   ← {t('prev')}
                 </button>
                 <div
-  ref={paginationRef}
-  className="flex-1 flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide"
-  style={{ scrollBehavior: 'smooth' }}
->
+                  ref={paginationRef}
+                  className="flex-1 flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide"
+                  style={{ scrollBehavior: 'smooth' }}
+                >
                   {randomizedDistricts.map((district, index) => (
                     <button
                       key={index}
@@ -365,7 +371,7 @@ const NepalDistrictQuiz: React.FC = () => {
                           : 'hover:bg-gray-50'
                       }`}
                     >
-                      {index + 1}
+                      {isNepali ? toNepaliNumerals(index + 1) : index + 1}
                     </button>
                   ))}
                 </div>
@@ -386,7 +392,7 @@ const NepalDistrictQuiz: React.FC = () => {
                     onClick={() => handleMultipleChoiceSelection(option)}
                     className={`p-2 text-center rounded-lg text-sm font-medium transition-colors ${
                       correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id)
-                        ? randomizedDistricts[currentDistrictIndex].translations[isNepali ? 'ne' : 'en'] === option
+                        ? tDistricts(randomizedDistricts[currentDistrictIndex].id) === option
                           ? 'bg-green-500 text-white'
                           : 'bg-gray-200 text-gray-500 cursor-not-allowed'
                         : 'bg-white border border-gray-300 hover:bg-gray-50'
@@ -438,7 +444,7 @@ const NepalDistrictQuiz: React.FC = () => {
                         return district ? (
                           <div key={id} className="text-green-600 flex items-center bg-green-50 p-1 rounded">
                             <span className="mr-1">✓</span>
-                            <span>{district.translations[isNepali ? 'ne' : 'en']}</span>
+                            <span>{tDistricts(district.id)}</span>
                           </div>
                         ) : null;
                       })}

@@ -24,6 +24,7 @@ export default async function LocaleLayout({
   let firstOfNepalMessages;
   let LifeChecklistMessages;
   let kingsofnepalMessages;
+  let nameDistrictMessages;
   
   try {
     // Load main messages
@@ -34,13 +35,15 @@ export default async function LocaleLayout({
       firstOfNepalMessages = (await import(`../../../messages/first-of-nepal-${resolvedLocale}.json`)).default;
       LifeChecklistMessages = (await import(`../../../messages/life-checklist-${resolvedLocale}.json`)).default;
       kingsofnepalMessages = (await import(`../../../messages/kings-of-nepal-${resolvedLocale}.json`)).default;
+      nameDistrictMessages = (await import(`../../../messages/name-district-${resolvedLocale}.json`)).default;
       
       // Merge the messages - this will add the First of Nepal content to the main messages
       messages = {
         ...messages,
         ...firstOfNepalMessages,
         ...LifeChecklistMessages,
-        ...kingsofnepalMessages
+        ...kingsofnepalMessages,
+        ...nameDistrictMessages
       };
     } catch (firstOfNepalError) {
       // If First of Nepal messages can't be loaded, continue with just the main messages
@@ -56,11 +59,15 @@ export default async function LocaleLayout({
       const enFirstOfNepalMessages = (await import('../../../messages/first-of-nepal-en.json')).default;
       const enLifeChecklistMessages = (await import('../../../messages/life-checklist-en.json')).default;
       const enkingsofnepalMessages = (await import('../../../messages/kings-of-nepal-en.json')).default;
+      const ennameDistrictMessages = (await import('../../../messages/name-district-en.json')).default;
+
+
       messages = {
         ...messages,
         ...enFirstOfNepalMessages,
         ...enLifeChecklistMessages,
-        ...enkingsofnepalMessages
+        ...enkingsofnepalMessages,
+        ...ennameDistrictMessages
       };
     } catch (firstOfNepalError) {
       console.log('No English First of Nepal messages found for fallback.');
