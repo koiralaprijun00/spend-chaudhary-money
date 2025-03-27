@@ -285,7 +285,11 @@ export default function HomePage() {
           </div>
 
         <div className="w-full mx-auto flex justify-center items-center mt-12">
-          <AdSense adSlot="5025391116" /> {/* Replace with your actual ad slot ID */}
+          <div style={{ width: "100%", height: "250px" }}>
+            <AdSense
+              adSlot="5025391116" 
+              />
+          </div>
         </div>
 
         </div>
