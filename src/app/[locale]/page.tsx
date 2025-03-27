@@ -9,8 +9,7 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen">
-      
-      <div className="relative z-10 container mx-auto flex flex-col items-start justify-between px-4 md:px-0">
+      <div className="relative z-10 container mx-auto flex flex-col items-start justify-between px-4">
         {/* Header Section - Enhanced with animation */}
         <div className="py-4 w-full">
   <div className="relative">
