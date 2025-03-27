@@ -142,17 +142,6 @@ export default function NepalChecklistPage() {
               </div>
             ))}
           </div>
-          
-          {/* Mobile horizontal ad - only visible on mobile and smaller tablets */}
-          {adsLoaded && (
-            <div className="block lg:hidden w-full my-8 border border-gray-100" style={{ height: '250px' }}>
-              <AdSenseGoogle 
-                adSlot="6865219846" // Replace with your actual ad slot
-                adFormat="horizontal" 
-                style={{ width: '100%', height: '250px' }}
-              />
-            </div>
-          )}
         </div>
         
         {/* Right sidebar ad - hidden on mobile */}
@@ -160,7 +149,7 @@ export default function NepalChecklistPage() {
           {adsLoaded && (
             <div className="border border-gray-100" style={{ width: '160px', height: '600px' }}>
               <AdSenseGoogle 
-                adSlot="6865219846" // Replace with your actual ad slot
+                adSlot="9978468343" // Replace with your actual ad slot
                 adFormat="vertical"
                 style={{ width: '160px', height: '600px' }}
               />
