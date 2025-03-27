@@ -8,6 +8,7 @@ import { Location, NEPAL_BOUNDS } from '../../data/geo-nepal/geo-data';
 import Link from 'next/link';
 import Image from 'next/image';
 
+
 // Dynamically import the Map component
 const Map = dynamic(() => import('../../components/GeoMap').then(mod => mod.default), { 
   ssr: false,
@@ -266,7 +267,7 @@ export default function GeoNepalGame() {
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-red-600 to-blue-700 bg-clip-text text-transparent">
-              Nepal GeoGuesser
+              Patta Lagau
             </h1>
           </div>
           <Link 
