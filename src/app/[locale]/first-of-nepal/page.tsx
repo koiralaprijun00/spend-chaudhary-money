@@ -6,6 +6,7 @@ import { Search, X } from 'lucide-react';
 import { RiCircleLine } from 'react-icons/ri';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import AdSenseGoogle from '../../components/AdSenseGoogle'; // Import AdSense component
 
 // Add this new component for the floating image
 const FloatingImage = ({ 
@@ -102,153 +103,182 @@ export default function FirstsOfNepal() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            <div className="container mx-auto px-4 py-16">
-                {/* Hero Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-16 text-center"
-                >
-                    <h1 className="inline text-5xl md:text-7xl font-bold bg-gradient-to-r from-red-600 to-blue-700 bg-clip-text text-transparent uppercase tracking-tight">
-                        {mainT('firstofNepalTitle')}
-                    </h1>
-                    <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-                        {mainT('firstofNepalSubtitle')}
-                    </p>
-                </motion.div>
+        <div className="min-h-screen w-full">
+            {/* Main layout with sidebars */}
+            <div className="flex justify-center">
+                {/* Left sidebar ad - hidden on mobile */}
+                <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] ml-4">
+                    <div className="w-[160px] h-[600px]">
+                        <AdSenseGoogle
+                            adSlot="6865219846" // Use your actual left sidebar ad slot ID
+                            adFormat="vertical"
+                            style={{ width: '160px', height: '400px' }}
+                        />
+                    </div>
+                </div>
+                
+                {/* Main content */}
+                <div className="flex-1 bg-gray-50">
+                    <div className="container mx-auto px-4 py-16">
+                        {/* Hero Header */}
+                        <motion.div
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-16 text-center"
+                        >
+                            <h1 className="inline text-5xl md:text-7xl font-bold bg-gradient-to-r from-red-600 to-blue-700 bg-clip-text text-transparent uppercase tracking-tight">
+                                {mainT('firstofNepalTitle')}
+                            </h1>
+                            <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+                                {mainT('firstofNepalSubtitle')}
+                            </p>
+                        </motion.div>
 
-                {/* Search Section */}
-                <div className="max-w-4xl mx-auto mb-16">
-                    <div className="flex flex-col gap-4 items-center">
-                        <div className="relative w-full">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <Search className="h-5 w-5 text-gray-400" />
+                        {/* Search Section */}
+                        <div className="max-w-4xl mx-auto mb-16">
+                            <div className="flex flex-col gap-4 items-center">
+                                <div className="relative w-full">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <Search className="h-5 w-5 text-gray-400" />
+                                    </div>
+                                    <input
+                                        type="text"
+                                        placeholder={mainT('searchPlaceholder')}
+                                        className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50 focus:outline-none text-lg transition duration-200"
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                    />
+                                    {searchTerm && (
+                                        <button
+                                        className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                                        onClick={() => setSearchTerm('')}
+                                        >
+                                        <X className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                                        </button>
+                                    )}
+                                </div>
                             </div>
-                            <input
-                                type="text"
-                                placeholder={mainT('searchPlaceholder')}
-                                className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50 focus:outline-none text-lg transition duration-200"
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                            />
-                            {searchTerm && (
-                                <button
-                                className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                                onClick={() => setSearchTerm('')}
+
+                            <div className="mt-4 text-sm text-gray-500">
+                                {filteredFirsts.length === 0 ? (
+                                    <span>{mainT('noResults')}</span>
+                                ) : (
+                                    <span>
+                                        {mainT(searchTerm ? 'showingResultsFor' : 'showingResults', {
+                                        count: filteredFirsts.length,
+                                        searchTerm,
+                                        })}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+
+                        <div 
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative"
+                            ref={gridRef}
+                        >
+                            {filteredFirsts.map((item, index) => (
+                                <motion.div
+                                    key={item.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.05 }}
+                                    className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[300px] flex flex-col"
                                 >
-                                <X className="h-5 w-5 text-gray-400 hover:text-gray-600" />
-                                </button>
+                                    <div className="p-6 flex flex-col h-full">
+                                        <div className="flex justify-between items-center mb-4">
+                                            <div className="inline-block text-red-800 rounded-full text-sm font-medium">
+                                                {item.year}
+                                            </div>
+                                            <motion.div 
+                                                className="w-6 h-6 flex items-center justify-center text-gray-500 hover:text-gray-700 cursor-pointer relative"
+                                                onMouseEnter={(e) => handleMouseEnter(item, e)}
+                                                onMouseLeave={() => setHoveredItem(null)}
+                                                animate={{
+                                                    scale: [1, 1.1, 1],
+                                                }}
+                                                transition={{
+                                                    duration: 1.5,
+                                                    repeat: Infinity,
+                                                    ease: "easeInOut"
+                                                }}
+                                            >
+                                                <RiCircleLine size={20} />
+                                            </motion.div>
+                                        </div>
+                                        <div className="text-xl font-bold text-red-600 uppercase tracking-wide mb-4">
+                                        {mainT('First')} {item.category}
+                                        </div>
+                                        <h2 className="text-2xl font-bold text-gray-900 mb-1">
+                                            {item.name}
+                                        </h2>
+                                        <p className="text-gray-600 leading-relaxed overflow-hidden text-ellipsis flex-grow">
+                                            {item.description}
+                                        </p>
+                                        <div className="mt-6 flex gap-4">
+                                            <Link
+                                                href={`https://en.wikipedia.org/wiki/${encodeURIComponent(item.name)}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-gray-400 hover:text-blue-800 text-sm font-medium"
+                                            >
+                                                Wikipedia
+                                            </Link>
+                                            <Link
+                                                href={`https://www.google.com/search?q=${encodeURIComponent(item.name + ' ' + item.category + ' Nepal')}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-gray-400 hover:text-blue-800 text-sm font-medium"
+                                            >
+                                                Google
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                            {hoveredItem && (
+                                <FloatingImage 
+                                    imagePath={firstItems.find(item => item.name === hoveredItem.name)?.imagePath || ''}
+                                    name={hoveredItem.name}
+                                    position={hoveredItem.position}
+                                />
                             )}
                         </div>
-                    </div>
 
-                    <div className="mt-4 text-sm text-gray-500">
-                        {filteredFirsts.length === 0 ? (
-                            <span>{mainT('noResults')}</span>
-                        ) : (
-                            <span>
-                                {mainT(searchTerm ? 'showingResultsFor' : 'showingResults', {
-                                count: filteredFirsts.length,
-                                searchTerm,
-                                })}
-                            </span>
+                        {/* No Results Message */}
+                        {filteredFirsts.length === 0 && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                className="text-center py-16"
+                            >
+                                <div className="inline-flex justify-center items-center w-16 h-16 bg-gray-100 rounded-full mb-4">
+                                    <Search className="h-8 w-8 text-gray-400" />
+                                </div>
+                                <h3 className="text-xl font-semibold text-gray-800 mb-2">{mainT('noResults')}</h3>
+                                <p className="text-gray-600 mb-6">{mainT('noMatches', { searchTerm })}</p>
+                                <button
+                                    onClick={() => setSearchTerm('')}
+                                    className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition duration-200"
+                                >
+                                    {mainT('clearSearch')}
+                                </button>
+                            </motion.div>
                         )}
+                        
                     </div>
                 </div>
-
-                <div 
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative"
-                    ref={gridRef}
-                >
-                    {filteredFirsts.map((item, index) => (
-                        <motion.div
-                            key={item.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.05 }}
-                            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[300px] flex flex-col"
-                        >
-                            <div className="p-6 flex flex-col h-full">
-                                <div className="flex justify-between items-center mb-4">
-                                    <div className="inline-block text-red-800 rounded-full text-sm font-medium">
-                                        {item.year}
-                                    </div>
-                                    <motion.div 
-                                        className="w-6 h-6 flex items-center justify-center text-gray-500 hover:text-gray-700 cursor-pointer relative"
-                                        onMouseEnter={(e) => handleMouseEnter(item, e)}
-                                        onMouseLeave={() => setHoveredItem(null)}
-                                        animate={{
-                                            scale: [1, 1.1, 1],
-                                        }}
-                                        transition={{
-                                            duration: 1.5,
-                                            repeat: Infinity,
-                                            ease: "easeInOut"
-                                        }}
-                                    >
-                                        <RiCircleLine size={20} />
-                                    </motion.div>
-                                </div>
-                                <div className="text-xl font-bold text-red-600 uppercase tracking-wide mb-4">
-                                {mainT('First')} {item.category}
-                                </div>
-                                <h2 className="text-2xl font-bold text-gray-900 mb-1">
-                                    {item.name}
-                                </h2>
-                                <p className="text-gray-600 leading-relaxed overflow-hidden text-ellipsis flex-grow">
-                                    {item.description}
-                                </p>
-                                <div className="mt-6 flex gap-4">
-                                    <Link
-                                        href={`https://en.wikipedia.org/wiki/${encodeURIComponent(item.name)}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-gray-400 hover:text-blue-800 text-sm font-medium"
-                                    >
-                                        Wikipedia
-                                    </Link>
-                                    <Link
-                                        href={`https://www.google.com/search?q=${encodeURIComponent(item.name + ' ' + item.category + ' Nepal')}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-gray-400 hover:text-blue-800 text-sm font-medium"
-                                    >
-                                        Google
-                                    </Link>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                    {hoveredItem && (
-                        <FloatingImage 
-                            imagePath={firstItems.find(item => item.name === hoveredItem.name)?.imagePath || ''}
-                            name={hoveredItem.name}
-                            position={hoveredItem.position}
+                
+                {/* Right sidebar ad - hidden on mobile */}
+                <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] mr-4">
+                    <div className="w-[160px] h-[600px]">
+                        <AdSenseGoogle 
+                            adSlot="9978468343" // Use your actual right sidebar ad slot ID
+                            adFormat="vertical"
+                            style={{ width: '160px', height: '400px' }}
                         />
-                    )}
+                    </div>
                 </div>
-
-                {/* No Results Message */}
-                {filteredFirsts.length === 0 && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="text-center py-16"
-                    >
-                        <div className="inline-flex justify-center items-center w-16 h-16 bg-gray-100 rounded-full mb-4">
-                            <Search className="h-8 w-8 text-gray-400" />
-                        </div>
-                        <h3 className="text-xl font-semibold text-gray-800 mb-2">{mainT('noResults')}</h3>
-                        <p className="text-gray-600 mb-6">{mainT('noMatches', { searchTerm })}</p>
-                        <button
-                            onClick={() => setSearchTerm('')}
-                            className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition duration-200"
-                        >
-                            {mainT('clearSearch')}
-                        </button>
-                    </motion.div>
-                )}
             </div>
         </div>
     );
