@@ -4,6 +4,7 @@ import "mapbox-gl/dist/mapbox-gl.css"; // Keep this for build-time CSS inclusion
 import { Metadata } from "next";
 import { AuthProvider } from './[locale]/providers';
 import { Analytics } from '@vercel/analytics/next';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: "Piromomo: The Fun Side of Nepal You Didn't Know You Needed!",
@@ -47,6 +48,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <Script
+    async
+    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153`}
+    strategy="lazyOnload"
+    crossOrigin="anonymous"
+   ></Script>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Mapbox CSS is already imported at build time, but if you need it dynamically: */}
