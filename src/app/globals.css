@@ -16,7 +16,14 @@
     font-family: 'Phudu', Arial, sans-serif;
   }
 }
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
 body {
   font-family: 'Phudu', Arial, sans-serif;
 }

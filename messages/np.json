@@ -11,6 +11,7 @@
     "unguessedPlaceholder": "?????",
     "giveUpButton": "छोड्नुहोस् र उत्तरहरू हेर्नुहोस्",
     "gaveUpHeading": "प्रश्नोत्तरी समाप्त - तपाईंले छोड्नुभयो",
+    "correctDistricts": "सही जिल्लाहरू",
     "perfectScoreHeading": "बधाई छ! पूर्ण अंक!",
     "timesUpHeading": "समय समाप्त!",
     "resultsMessage": "तपाईंले {total} मध्ये {count} राजाहरूको नाम भन्नुभयो.{isPerfect, select, true{ - नेपालको इतिहासको प्रभावशाली ज्ञान!} other{}}",
