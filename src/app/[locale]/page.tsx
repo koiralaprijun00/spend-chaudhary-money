@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
+import  AdSense  from "../components/AdSenseGoogle";
 import { useTranslations } from 'next-intl';
 
 export default function HomePage() {
@@ -274,29 +274,20 @@ export default function HomePage() {
     </div>
   </div>
 </Link>
-
-<div className="w-full">
-  <div id="ad-container-2" className="mx-auto my-4"></div>
-  <Script id="google-adsense-2" strategy="lazyOnload">
-    {`
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.error('Ad error:', e);
-      }
-    `}
-  </Script>
-</div>
-
         </div>
 
         {/* Content Separator with visual element */}
-        <div className="w-full flex justify-center my-8">
+        <div className="w-full flex flex-col items-center justify-center my-8">
           <div className="relative w-3/4 max-w-md h-1 bg-gradient-to-r from-transparent via-orange-300 dark:via-orange-500 to-transparent">
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 rounded-full p-2 shadow-md">
               <span className="text-2xl">🍜</span>
             </div>
           </div>
+
+        <div className="w-full mx-auto flex justify-center items-center mt-12">
+          <AdSense adSlot="5025391116" /> {/* Replace with your actual ad slot ID */}
+        </div>
+
         </div>
       </div>
     </main>
