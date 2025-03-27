@@ -7,7 +7,7 @@ import { haversineDistance } from '../../components/geo-distance';
 import { Location, NEPAL_BOUNDS } from '../../data/geo-nepal/geo-data';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import AdSenseGoogle from '../../components/AdSenseGoogle'; // Import AdSense component
 
 // Dynamically import the Map component
 const Map = dynamic(() => import('../../components/GeoMap').then(mod => mod.default), { 
@@ -327,9 +327,10 @@ export default function GeoNepalGame() {
         {/* Game content */}
         {!error && gameState !== 'loading' && (
           <>
-            {/* Game panel */}
-            <div className="w-full md:w-96 h-auto md:h-full flex-shrink-0 bg-white border-b md:border-b-0 md:border-r border-gray-200 overflow-y-auto">
-              <div className="p-4">
+            {/* Left column with game controls and ad */}
+            <div className="flex flex-col w-full md:w-96 h-auto md:h-full flex-shrink-0 bg-white border-b md:border-b-0 md:border-r border-gray-200 overflow-y-auto">
+              {/* Game panel */}
+              <div className="p-4 flex-1">
                 {/* Header with score and round info */}
                 <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 mb-4 rounded-lg shadow-lg">
                   <div className="flex justify-between items-center">
@@ -577,6 +578,17 @@ export default function GeoNepalGame() {
                     </div>
                   </div>
                 )}
+              </div>
+
+              {/* Square AdSense ad below the game panel */}
+              <div className="p-4 flex justify-center">
+                <div className="w-[300px] h-[250px]">
+                  <AdSenseGoogle
+                    adSlot="9573643237" // Replace with your actual ad slot ID
+                    adFormat="rectangle"
+                    style={{ width: '300px', height: '250px' }}
+                  />
+                </div>
               </div>
             </div>
 
