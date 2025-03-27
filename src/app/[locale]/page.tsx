@@ -212,7 +212,7 @@ export default function HomePage() {
 </Link>
 
 {/* PattaLagau Geographic Game Card */}
-<Link href="/geo-nepal" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-emerald-300 rounded-3xl">
+<Link href="/patta-lagau" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-emerald-300 rounded-3xl">
   <div className="relative px-6 py-12 h-full bg-gradient-to-br from-green-600 to-sky-500 dark:from-green-700 dark:to-sky-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
     {/* Badge */}
     <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform -rotate-2 hover:rotate-0 transition-transform">
