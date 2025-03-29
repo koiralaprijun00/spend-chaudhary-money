@@ -1,5 +1,9 @@
 {
   "Translations": {
+
+      "nepaliDateConverterBadge": "मिति",
+      "nepaliDateConverterTitle": "नेपाली मिति रूपान्तरण",
+      "nepaliDateConverterDescription": "नेपाली मिति र ग्रेगोरियन मितिमा रूपान्तरण गर्नुहोस्",
     "kingQuizTitle": "नेपालका राजाहरू प्रश्नोत्तरी",
     "learnAboutKingsLink": "नेपालका राजाहरूको बारेमा जान्नुहोस् →",
     "progressCounter": "{total} मध्ये {current} ({percent}%)",

@@ -273,6 +273,37 @@ export default function HomePage() {
     </div>
   </div>
 </Link>
+
+{/* Nepali Date Converter Link */}
+<Link href="/date-converter" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-teal-300 rounded-3xl">
+  <div className="relative px-6 py-12 h-full bg-gradient-to-br from-teal-500 to-blue-400 dark:from-teal-600 dark:to-blue-500 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+    {/* Badge */}
+    <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-teal-600 dark:text-teal-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform -rotate-2 hover:rotate-0 transition-transform">
+      <span className="text-yellow-500 animate-pulse">📅</span>
+      <span>{t('nepaliDateConverterBadge')}</span>
+    </div>
+    
+    {/* Main content */}
+    <div className="flex items-center relative z-10">
+      <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mr-4 group-hover:shadow-lg transition-all duration-300">
+        <div className="w-16 h-16 rounded-full overflow-hidden">
+          <Image
+            src="/date-converter.png" 
+            alt="Nepali Date Converter"
+            width={64}
+            height={64}
+            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
+          />
+        </div>
+      </div>
+      <div>
+        <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">{t('nepaliDateConverterTitle')}</h2>
+        <p className="mt-1 text-white text-opacity-90">{t('nepaliDateConverterDescription')}</p>
+      </div>
+    </div>
+  </div>
+</Link>
+
         </div>
 
         {/* Content Separator with visual element */}

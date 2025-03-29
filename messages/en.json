@@ -1,5 +1,8 @@
   {
   "Translations":{
+      "nepaliDateConverterBadge": "Nepali Date Converter",
+      "nepaliDateConverterTitle": "Nepali Date Converter",
+      "nepaliDateConverterDescription": "Convert between Nepali and English dates seamlessly.",    
     "kingTitle": "Kings of Nepal",
     "kingQuizTitle": "Kings of Nepal Quiz",
     "learnAboutKingsLink": "Learn about the Kings of Nepal →",
