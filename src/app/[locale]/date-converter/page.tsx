@@ -74,40 +74,43 @@ export default function Home() {
       <div className="max-w-4xl mx-auto">
         <div className="relative flex flex-col items-center justify-center text-center space-y-8">
           <h1 className="text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-black to-[#ff5f5f]">
-            Rajani Nepali Date Converter
+            Piromomo Nepali Date Converter - Not Rajan's
           </h1>
 
           <div className="space-y-4 text-lg">
             <p className="text-black/80">
-              Effortlessly convert between Nepali (Bikram Sambat) and English (Gregorian) calendars. Rajan Wala but better looking.
+              Effortlessly convert between Nepali (Bikram Sambat) and English (Gregorian) calendars.
             </p>
           </div>
 
           <div className="flex justify-center space-x-4">
-  <button
-    className={`py-2 px-6 text-xl font-semibold rounded-xl transition-all duration-300 transform ${
-      activeTab === "toNepali"
-        ? "bg-gradient-to-r from-[#ff5f5f] to-[#ff4646] text-white shadow-lg scale-105 border-2 border-[#ff5f5f]"
-        : "bg-[#f0f0f0] text-gray-400 shadow-md scale-95 hover:scale-105 hover:shadow-lg"
-    }`}
-    onClick={() => setActiveTab("toNepali")}
-  >
-    English to Nepali
-  </button>
-  <button
-    className={`py-2 px-6 text-xl font-semibold rounded-xl transition-all duration-300 transform ${
-      activeTab === "toEnglish"
-        ? "bg-gradient-to-r from-[#ff5f5f] to-[#ff4646] text-white shadow-lg scale-105 border-2 border-[#ff5f5f]"
-        : "bg-[#f0f0f0] text-gray-400 shadow-md scale-95 hover:scale-105 hover:shadow-lg"
-    }`}
-    onClick={() => setActiveTab("toEnglish")}
-  >
-    Nepali to English
-  </button>
-</div>
+            <button
+              className={`py-2 px-6 text-xl font-semibold rounded-xl transition-all duration-300 transform ${
+                activeTab === "toNepali"
+                  ? "bg-gradient-to-r from-[#ff5f5f] to-[#ff4646] text-white shadow-lg scale-105 border-2 border-[#ff5f5f]"
+                  : "bg-[#f0f0f0] text-gray-400 shadow-md scale-95 hover:scale-105 hover:shadow-lg"
+              }`}
+              onClick={() => setActiveTab("toNepali")}
+            >
+              English to Nepali
+            </button>
+            <button
+              className={`py-2 px-6 text-xl font-semibold rounded-xl transition-all duration-300 transform ${
+                activeTab === "toEnglish"
+                  ? "bg-gradient-to-r from-[#ff5f5f] to-[#ff4646] text-white shadow-lg scale-105 border-2 border-[#ff5f5f]"
+                  : "bg-[#f0f0f0] text-gray-400 shadow-md scale-95 hover:scale-105 hover:shadow-lg"
+              }`}
+              onClick={() => setActiveTab("toEnglish")}
+            >
+              Nepali to English
+            </button>
+          </div>
 
-
-          <div className={`space-y-6 mt-6 ${theme.cardBg} p-8 rounded-lg shadow-xl transition-all duration-300`}>
+          <div
+            className={`space-y-6 mt-6 ${theme.cardBg} p-8 rounded-lg shadow-xl transition-all duration-500 ease-in-out transform ${
+              isAnimating ? "opacity-50" : "opacity-100"
+            }`}
+          >
             {activeTab === "toNepali" && (
               <div className="space-y-6">
                 <div className="grid grid-cols-3 gap-4">
@@ -146,7 +149,9 @@ export default function Home() {
                   </div>
                 </div>
                 <button
-                  className={`w-full p-4 mt-4 rounded-xl font-medium ${theme.primaryBtn} transform transition-transform duration-300 ${isAnimating ? "opacity-70" : ""}`}
+                  className={`w-full p-4 mt-4 rounded-xl font-medium ${theme.primaryBtn} transform transition-transform duration-300 ${
+                    isAnimating ? "opacity-70" : ""
+                  }`}
                   onClick={convertToNepali}
                   disabled={isAnimating}
                 >
@@ -193,7 +198,9 @@ export default function Home() {
                   </div>
                 </div>
                 <button
-                  className={`w-full p-4 mt-4 rounded-xl font-medium ${theme.primaryBtn} transform transition-transform duration-300 ${isAnimating ? "opacity-70" : ""}`}
+                  className={`w-full p-4 mt-4 rounded-xl font-medium ${theme.primaryBtn} transform transition-transform duration-300 ${
+                    isAnimating ? "opacity-70" : ""
+                  }`}
                   onClick={convertToEnglish}
                   disabled={isAnimating}
                 >
@@ -206,13 +213,13 @@ export default function Home() {
               <div className="mt-8 p-6 rounded-lg border border-white/10 bg-[#f5f5f5] text-center">
                 <h3 className="text-xl font-semibold mb-2">Converted Date:</h3>
                 <p className="text-3xl font-bold text-[#ff5f5f]">{convertedDate}</p>
-                <p className="mt-2 text-sm text-black/60">{activeTab === "toNepali" ? "Nepali Date" : "English Date"}</p>
+                <p className="mt-2 text-sm text-black/60">
+                  {activeTab === "toNepali" ? "Nepali Date" : "English Date"}
+                </p>
               </div>
             )}
           </div>
         </div>
-
-
       </div>
     </main>
   );
