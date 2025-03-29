@@ -15,6 +15,7 @@
     "@vercel/analytics": "^1.5.0",
     "cloudinary": "^2.6.0",
     "clsx": "^2.0.0",
+    "d3": "^7.9.0",
     "framer-motion": "^12.6.2",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
+    "@types/d3": "^7.4.3",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
