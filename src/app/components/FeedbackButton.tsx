@@ -1,0 +1,39 @@
+'use client';
+
+import { useState } from 'react';
+import FeedbackModal from './FeedbackModal';
+
+export default function FeedbackButton() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <>
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+        aria-label="Give Feedback"
+        title="Give Feedback"
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          className="h-5 w-5" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={2} 
+            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" 
+          />
+        </svg>
+      </button>
+      
+      <FeedbackModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
+  );
+}

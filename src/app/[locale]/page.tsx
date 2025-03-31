@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import  AdSense  from "../components/AdSenseGoogle";
 import { useTranslations } from 'next-intl';
+import FeedbackButton from "../components/FeedbackButton";
 
 export default function HomePage() {
   const t = useTranslations("Translations"); 
@@ -324,6 +325,8 @@ export default function HomePage() {
 
         </div>
       </div>
+      {/* Feedback Button */}
+<FeedbackButton />
     </main>
   );
 }
