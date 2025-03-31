@@ -1,5 +1,9 @@
   {
   "Translations":{
+    "feedbackCancelButton": "Cancel",
+    "feedbackSubmitButton": "Submit Feedback",
+    "shareFeedbackTitle": "Share Your Feedback",
+    "feedbackDescription": "We're working hard to improve this website every day. Your feedback means a lot to us and helps us make Piromomo better for everyone. Thank you for your support on this journey!",
       "nepaliDateConverterBadge": "Nepali Date Converter",
       "nepaliDateConverterTitle": "Nepali Date Converter",
       "nepaliDateConverterDescription": "Convert between Nepali and English dates seamlessly.",    

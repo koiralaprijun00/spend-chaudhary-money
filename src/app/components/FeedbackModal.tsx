@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface FeedbackModalProps {
   isOpen: boolean;
@@ -14,6 +15,9 @@ export default function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+
+
+  const t = useTranslations("Translations"); 
 
   // Handle click outside the modal
   useEffect(() => {
@@ -112,9 +116,9 @@ export default function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
           </div>
         ) : (
           <>
-            <div className="bg-gradient-to-r from-orange-500 to-red-500 p-4 text-white">
+            <div className="bg-gradient-to-r from-blue-800 to-red-900 p-4 text-white">
               <div className="flex justify-between items-center">
-                <h2 className="text-xl font-bold">Share Your Feedback</h2>
+                <h2 className="text-xl font-bold">{t('shareFeedbackTitle')}</h2>
                 <button
                   onClick={onClose}
                   className="text-white hover:text-gray-200 transition-colors"
@@ -124,6 +128,9 @@ export default function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   </svg>
                 </button>
               </div>
+              <p className="mt-2 text-sm font-semibold text-white text-opacity-90">
+              {t('feedbackDescription')}
+              </p>
             </div>
             
             <form onSubmit={handleSubmit} className="p-6">
@@ -160,9 +167,6 @@ export default function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   placeholder="your@email.com"
                   className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 dark:bg-gray-700 dark:text-white"
                 />
-                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                  We'll never share your email with anyone else.
-                </p>
               </div>
               
               <div className="flex justify-end">
