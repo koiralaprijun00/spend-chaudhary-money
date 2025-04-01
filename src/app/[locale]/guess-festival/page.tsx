@@ -222,14 +222,9 @@ const generateOptions = (correctFestivalId: FestivalId) => {
         
         {/* Main content */}
         <div className="flex justify-center scale-90 flex-1">
-          <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-            <div className="absolute top-20 left-10 w-40 h-40 bg-orange-200 dark:bg-orange-700 opacity-20 rounded-full animate-float"></div>
-            <div className="absolute bottom-40 right-20 w-32 h-32 bg-yellow-200 dark:bg-yellow-700 opacity-20 rounded-full animate-float-delay"></div>
-            <div className="absolute top-1/2 left-1/4 w-36 h-36 bg-red-200 dark:bg-red-700 opacity-20 rounded-full animate-float-slow"></div>
-          </div>
           
           <div className="relative z-10 w-full md:max-w-3xl">
-            <div className="flex flex-col pt-4 md:py-12 md:px-10 bg-gradient-to-b from-white via-yellow-50 to-orange-50 dark:from-gray-800 dark:via-gray-800 dark:to-gray-800 rounded-3xl shadow-none md:shadow-2xl">
+            <div className="flex flex-col pt-4 md:py-12 md:px-10  dark:from-gray-800 dark:via-gray-800 dark:to-gray-800 rounded-3xl shadow-none md:shadow-2xl">
               
               <GuessFestivalHeader
                 gameMode={gameMode}
@@ -242,7 +237,7 @@ const generateOptions = (correctFestivalId: FestivalId) => {
                 timeLeft={timeLeft}
               />
               
-              <div className="relative p-1 rounded-xl bg-gradient-to-br from-orange-400 to-purple-500 mb-6 shadow-lg">
+              <div className="relative p-1 rounded-xl bg-gradient-to-br from-blue-600 to-red-500 mb-6 shadow-lg">
                 <div className="bg-white dark:bg-gray-800 rounded-lg p-6 md:p-8">
                   <QuizSection
                     currentFestival={currentFestival}

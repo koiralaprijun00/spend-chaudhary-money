@@ -78,6 +78,13 @@
              "description":"अन्तर्राष्ट्रिय रूपमा मान्यता प्राप्त पहिलो आधुनिक नेपाली कलाकार।",
              "imagePath":"/images/first-of-nepal/lain-singh-bangdel.jpg"
           },
+          "ramaSingh": {
+            "category": "महिला फुटबलर",
+            "name": "रमा सिंह",
+            "year": "२०४०",
+            "description": "महिला फुटबलको लागि अन्तर्राष्ट्रिय स्तरमा मान्यता प्राप्त गर्ने पहिलो नेपाली महिला।",
+            "imagePath": "/images/first-of-nepal/rama-singh.jpg"
+          },
           "hiraSinghKhatri":{
              "category":"फिल्म निर्देशक",
              "name":"हिरा सिंह खत्री",
