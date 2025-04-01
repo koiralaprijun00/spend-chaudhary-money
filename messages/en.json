@@ -1,5 +1,6 @@
   {
   "Translations":{
+    "KingsofNepalTitle": "Name the Kings of Nepal",
     "feedbackCancelButton": "Cancel",
     "feedbackSubmitButton": "Submit Feedback",
     "shareFeedbackTitle": "Share Your Feedback",
@@ -8,7 +9,7 @@
       "nepaliDateConverterTitle": "Nepali Date Converter",
       "nepaliDateConverterDescription": "Convert between Nepali and English dates seamlessly.",    
     "kingTitle": "Kings of Nepal",
-    "kingQuizTitle": "Kings of Nepal Quiz",
+    "kingQuizTitle": "Write all Kings of Nepal",
     "learnAboutKingsLink": "Learn about the Kings of Nepal →",
     "progressCounter": "{current} of {total} ({percent}%)",
     "inputPlaceholder": "Type a king's name...",
@@ -177,7 +178,7 @@
     "quizInvitation": "Now that you've explored the kings of Nepal, see how many you can remember in our interactive quiz.",
     "scrollToKing": "Scroll to {name}",
     "quizInstructions": "You have 5 minutes to name all {kingCount} kings who ruled Nepal from 1743 to 2008.",
-"typeNamesInstruction": "Type the names in any order.",
+"typeNamesInstruction": "Type the names in any order. You have to match the full nam with the correct kings.",
 "startQuiz": "Start Quiz",
 "LearnAboutKingsLink": "Learn more about the kings",
 "enlightenment": "Age of Enlightenment",
