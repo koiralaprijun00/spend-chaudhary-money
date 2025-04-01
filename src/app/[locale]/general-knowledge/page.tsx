@@ -5,8 +5,8 @@ import { useTranslations, useLocale } from 'next-intl';
 import QuizSection from '../nepal-gk-components/QuizSection';
 import AnswerReveal from '../nepal-gk-components/AnswerReveal';
 import { gkQuestions } from '../../data/general-knowledge/gk-data';
-import Image from 'next/image';
-import AdSenseGoogle from '../../components/AdSenseGoogle'; // Import AdSense component
+import AdSenseGoogle from '../../components/AdSenseGoogle';
+import GameButton from '../../components/ui/GameButton';
 
 export default function NepalGKQuiz() {
   const t = useTranslations('Translations');
@@ -98,8 +98,8 @@ export default function NepalGKQuiz() {
   };
   
   // Handle category change
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCategory(e.target.value);
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
   };
   
   // Share score
@@ -116,10 +116,12 @@ export default function NepalGKQuiz() {
         });
       } else {
         await navigator.clipboard.writeText(shareMessage);
+        alert('Score copied to clipboard! Paste it to share.');
       }
     } catch (error) {
       console.error('Sharing failed:', error);
       await navigator.clipboard.writeText(shareMessage);
+      alert('Score copied to clipboard! Paste it to share.');
     }
   };
   
@@ -129,6 +131,16 @@ export default function NepalGKQuiz() {
     return gkQuestions.filter(q => q.category === category).length;
   };
   
+  // Safe translation function
+  const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
+    try {
+      return t(key, params);
+    } catch (error) {
+      console.warn(`Translation key not found: ${key}`);
+      return defaultValue;
+    }
+  };
+
   return (
     <div className="min-h-screen w-full">
       {/* Main layout with sidebars */}
@@ -137,101 +149,142 @@ export default function NepalGKQuiz() {
         <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] ml-4">
           <div className="w-[160px] h-[600px]">
             <AdSenseGoogle
-              adSlot="6865219846" // Use your actual left sidebar ad slot ID
+              adSlot="6865219846"
               adFormat="vertical"
               style={{ width: '160px', height: '400px' }}
             />
           </div>
         </div>
         
-        {/* Main content */}
-        <div className="flex justify-center scale-100 flex-1">
-          {/* Background elements */}
-          <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-            <div className="absolute top-20 left-10 w-40 h-40 bg-blue-200 dark:bg-blue-700 opacity-20 rounded-full animate-float"></div>
-            <div className="absolute bottom-40 right-20 w-32 h-32 bg-indigo-200 dark:bg-indigo-700 opacity-20 rounded-full animate-float-delay"></div>
-            <div className="absolute top-1/2 left-1/4 w-36 h-36 bg-green-200 dark:bg-green-700 opacity-20 rounded-full animate-float-slow"></div>
-          </div>
-          
-          <div className="relative z-10 w-full md:max-w-3xl">
-            <div className="flex flex-col pt-4 mt-1 md:mt-4 md:py-8 px-2 py-2 md:px-10 bg-gradient-to-b from-white via-blue-50 to-indigo-50 dark:from-gray-800 dark:via-gray-800 dark:to-gray-800 rounded-3xl shadow-none md:shadow-2xl">
-              
-              {/* Header with appropriately sized categories */}
-              <header className="mb-8">
-                {/* Bigger heading in one row */}
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-600 dark:text-gray-200 mb-4">
-                  {t('nepalGk.title') || 'Nepal General Knowledge Quiz'}
-                </h1>
+        {/* Main content area */}
+        <div className="flex-1 px-4 py-8">
+          <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
+            {/* Left column - Categories, Score */}
+            <div className="hidden md:block md:w-1/3 space-y-6">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <div className="mb-8">
+                  <h1 className="text-3xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
+                    {safeT('nepalGk.title', 'Nepal GK Quiz')}
+                  </h1>
+                  <p className="text-left text-gray-600 dark:text-gray-300">
+                    Test your knowledge about Nepal!
+                  </p>
+                </div>
                 
-                {/* Categories section with natural width select */}
-                <div className="flex items-center space-x-3 w-full mb-4">
-                  <label 
-                    htmlFor="category-select" 
-                    className="text-sm font-semibold text-gray-800 dark:text-gray-200 whitespace-nowrap"
-                  >
-                    Categories:
-                  </label>
+                {/* Category Selector */}
+                <div className="mb-6">
+                  <h2 className="text-sm mb-2">Categories</h2>
                   <select
-                    id="category-select"
                     value={selectedCategory}
-                    onChange={handleCategoryChange}
-                    className="w-auto appearance-none py-1.5 pl-3 pr-8 text-sm font-medium border-2 border-blue-700 dark:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 shadow-sm hover:border-blue-600 dark:hover:border-blue-400 transition-colors"
+                    onChange={(e) => handleCategoryChange(e.target.value)}
+                    className="w-full px-3 py-2 border-2 border-blue-600 dark:border-blue-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   >
                     {categories.map((category) => (
                       <option key={category} value={category}>
                         {category === 'all' 
-                          ? t('allCategories') || 'All Categories' 
+                          ? 'All Categories' 
                           : `${category} (${getQuestionCount(category)})`}
                       </option>
                     ))}
                   </select>
                 </div>
                 
-                {/* Score and share button below */}
-                <div className="flex justify-end items-center">
-                  <div className="bg-orange-300 dark:bg-gray-700 px-4 py-1.5 rounded-lg shadow-md mr-3">
-                    <p className="font-bold dark:text-white">{t('score') || 'Score'}: {score}</p>
+                {/* Score Display */}
+                <div>
+                  <h2 className="text-sm mb-3">Score</h2>
+                  <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
+                    <div className="bg-white dark:bg-gray-800 rounded-md p-2 flex justify-between items-center">
+                      <div className="flex items-center">
+                        <span className="text-3xl font-bold">{score}</span>
+                        <span className="ml-2 text-gray-600 dark:text-gray-300">{t('points')}</span>
+                      </div>
+                    </div>
                   </div>
-                  
-                  <button 
-                    onClick={handleShareScore}
-                    className="bg-white dark:bg-gray-700 p-1.5 rounded-lg shadow-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
-                    aria-label={t('shareScore') || 'Share Score'}
-                    title={t('shareScore') || 'Share Score'}
-                  >
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      className="w-5 h-5 text-gray-700 dark:text-gray-200"
-                    >
-                      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                      <polyline points="16 6 12 2 8 6"></polyline>
-                      <line x1="12" y1="2" x2="12" y2="15"></line>
-                    </svg>
-                  </button>
                 </div>
-              </header>
-              
-              {/* Main quiz container */}
-              <div className="relative p-1 rounded-xl bg-gradient-to-br from-blue-400 to-indigo-500 mb-6 shadow-lg">
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-6 md:p-8">
-                  {/* No questions message */}
+                
+                {/* Action Buttons */}
+                <div className="mt-6 space-y-3">
+                  <GameButton
+                    onClick={restartGame}
+                    type="neutral"
+                    size="sm"
+                    fullWidth
+                  >
+                    Restart Quiz
+                  </GameButton>
+                  
+                  {score > 0 && (
+                    <GameButton
+                      onClick={handleShareScore}
+                      type="success"
+                      size="sm"
+                      fullWidth
+                    >
+                      Share Score
+                    </GameButton>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Right column - Quiz Content */}
+            <div className="md:w-2/3 w-full">
+              <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
+                <div className="bg-white dark:bg-gray-800 rounded-lg p-4 md:p-6">
+                  {/* Mobile header */}
+                  <div className="md:hidden mb-6">
+                    <h1 className="text-2xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
+                      Nepal GK Quiz
+                    </h1>
+                    
+                    {/* Mobile Category Selector */}
+                    <div className="mb-4 flex justify-center">
+                      <select
+                        value={selectedCategory}
+                        onChange={(e) => handleCategoryChange(e.target.value)}
+                        className="w-full max-w-xs px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                      >
+                        {categories.map((category) => (
+                          <option key={category} value={category}>
+                            {category === 'all' 
+                              ? 'All Categories' 
+                              : `${category} (${getQuestionCount(category)})`}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    
+                    {/* Mobile Score Display */}
+                    <div className="flex justify-between items-center mb-4">
+                      <div className="bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-lg">
+                        <span className="font-bold">{t('score')}: {score}</span>
+                      </div>
+                      
+                      {score > 0 && (
+                        <GameButton
+                          onClick={handleShareScore}
+                          type="neutral"
+                          size="sm"
+                        >
+                          Share Score
+                        </GameButton>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Quiz Content */}
                   {(shuffledQuestions.length === 0 && isMounted) ? (
                     <div className="text-center py-8">
                       <p className="text-lg text-gray-600 dark:text-gray-300">
-                        {t('noQuestionsInCategory') || 'No questions available in this category.'}
+                        {safeT('noQuestionsInCategory', 'No questions available in this category.')}
                       </p>
-                      <button
+                      <GameButton
                         onClick={() => setSelectedCategory('all')}
-                        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                        type="primary"
+                        className="mt-4"
                       >
-                        {t('viewAllCategories') || 'View All Categories'}
-                      </button>
+                        {safeT('viewAllCategories', 'View All Categories')}
+                      </GameButton>
                     </div>
                   ) : currentQuestion ? (
                     <>
@@ -257,11 +310,6 @@ export default function NepalGKQuiz() {
                   ) : null}
                 </div>
               </div>
-              
-              {/* Info text at bottom */}
-              <div className="text-center mb-6 text-sm text-gray-500 dark:text-gray-400">
-                <p>{t('nepalGk.description') || 'Test your knowledge about Nepal with this quiz covering history, geography, culture, and more!'}</p>
-              </div>
             </div>
           </div>
         </div>
@@ -270,11 +318,36 @@ export default function NepalGKQuiz() {
         <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] mr-4">
           <div className="w-[160px] h-[600px]">
             <AdSenseGoogle 
-              adSlot="9978468343" // Use your actual right sidebar ad slot ID
+              adSlot="9978468343"
               adFormat="vertical"
               style={{ width: '160px', height: '400px' }}
             />
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Footer */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-2 z-10">
+        <div className="flex justify-between items-center">
+          <GameButton
+            onClick={restartGame}
+            type="neutral"
+            size="sm"
+            className="py-1 text-xs"
+          >
+            Restart Quiz
+          </GameButton>
+          
+          {score > 0 && (
+            <GameButton
+              onClick={handleShareScore}
+              type="success"
+              size="sm"
+              className="py-1 text-xs"
+            >
+              Share Score
+            </GameButton>
+          )}
         </div>
       </div>
     </div>

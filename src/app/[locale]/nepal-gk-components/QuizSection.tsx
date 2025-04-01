@@ -71,7 +71,7 @@ export default function QuizSection({
       {/* Question with category badge on the right */}
       <div className="relative mb-8">
         <div className="flex justify-between items-start">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2 pl-2 flex-1 pr-4">
+          <h2 className="text-xl md:text-2xl font-lora text-gray-800 dark:text-gray-100 mb-2 pl-2 flex-1 pr-4">
             {currentQuestion.question}
           </h2>
         </div>
