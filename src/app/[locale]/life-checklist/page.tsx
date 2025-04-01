@@ -230,7 +230,7 @@ export default function NepalChecklistPage() {
                             )}
                           </div>
                           <div>
-                            <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
+                            <h3 className="text-lg font-lora font-semibold mb-2 text-gray-900 dark:text-gray-100">
                               {item.title}
                             </h3>
                             <p className="text-gray-600 dark:text-gray-400 text-sm">

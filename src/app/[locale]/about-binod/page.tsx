@@ -31,10 +31,9 @@ export default function BlogPage() {
     <TbArrowBigLeftLinesFilled className="mr-2 transition-colors duration-200 group-hover:text-gray-800" size={28} />
     Go Back 
   </Link>
-</div>
-              <h1 className="text-4xl font-bold text-left text-gray-800 mb-4">
-                How Rich is Binod Chaudhary? Nepal’s First Billionaire
-              </h1>
+</div><h1 className="text-3xl md:text-4xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-4">
+  How Rich is Binod Chaudhary? Nepal's First Billionaire
+</h1>
             </header>
 
             <section className="mb-8 px-4 md:px-8">
@@ -141,7 +140,7 @@ export default function BlogPage() {
             </section>
 
             {/* New Section: How Long Would It Take to Spend Binod Chaudhary’s Money? */}
-            <section className="mb-8 px-6 md:px-12 py-8 rounded-xl shadow-md bg-gradient-to-r from-blue-100 to-purple-100">
+            <section className="mb-8 px-6 md:px-12 py-8 rounded-xl shadow-md bg-gradient-to-r from-blue-200 to-red-200">
               <h2 className="text-3xl font-semibold text-gray-700 border-b pb-2">
                 How Long Would It Take to Spend Binod Chaudhary’s Money?
               </h2>

@@ -37,7 +37,7 @@ const QuizSection: React.FC<QuizSectionProps> = ({
 }) => {
   return (
     <div>
-      <h2 className="text-xl md:text-2xl font-lora font-bold mb-4">{currentFestival.question}</h2>
+      <h2 className="text-xl md:text-2xl font-lora mb-4">{currentFestival.question}</h2>
       
       {/* Options - Moved above clues */}
       {!isAnswered && (

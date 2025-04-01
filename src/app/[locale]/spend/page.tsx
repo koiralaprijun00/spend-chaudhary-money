@@ -5,6 +5,7 @@ import ProductCard from "../../components/ProductCard"
 import Header from "../../components/Header"
 import SocialShare from "../../components/SocialShare"
 import { initialProducts, Product } from "../../data/product"
+import GameButton from "../../components/ui/GameButton"
 
 interface Purchases {
   [key: number]: number
@@ -15,7 +16,7 @@ export default function Home() {
   const [budget] = useState(237500000000)
   const [spent, setSpent] = useState(0)
   const [purchases, setPurchases] = useState<Purchases>({})
-  const [isReceiptModalOpen, setReceiptModalOpen] = useState(false); // New state for receipt modal
+  const [isReceiptModalOpen, setReceiptModalOpen] = useState(false)
 
   // Ref for the purchases summary area
   const purchasesRef = useRef<HTMLDivElement>(null)
@@ -68,7 +69,7 @@ export default function Home() {
         </div>
         {/* Accessibility: Live Message for Budget Exceeded */}
         <div aria-live="polite" className="sr-only">
-          {spent > budget ? "Binod doesn’t have enough money! He is not Elon Musk." : ""}
+          {spent > budget ? "Binod doesn't have enough money! He is not Elon Musk." : ""}
         </div>
 
         <div
@@ -82,80 +83,87 @@ export default function Home() {
           )}
         </div>
       </div>
-      <div className="md:block hidden p-6 bg-lightGray rounded-lg shadow sticky top-5 h-screen overflow-y-auto">
+      <div className="md:block hidden p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg sticky top-5 h-screen overflow-y-auto">
         <div className="flex flex-col h-full">
           <SocialShare summaryRef={purchasesRef} totalSpent={totalSpent} />
           <div className="flex flex-col h-full">
             <div className="py-6 mb-4 border-b-2 border-gray-600 border-dashed">
-              <h2 className="text-2xl mb-8 font-semibold">RECEIPT</h2>
+              <h1 className="text-3xl mb-4 font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
+                Receipt
+              </h1>
               <p className="flex justify-between text-xl font-bold text-right">
-                <span className="block">Total Spent:</span> NPR {totalSpent.toLocaleString()}
+                <span className="block text-gray-600 dark:text-gray-300">Total Spent:</span> 
+                <span className="text-blue-600 dark:text-blue-400">NPR {totalSpent.toLocaleString()}</span>
               </p>
             </div>
             <div className="overflow-y-auto flex-grow max-h-screen">
               {Object.keys(purchases).length === 0
-                ? <p className="text-gray-500">No purchases yet!</p>
+                ? <p className="text-gray-500 dark:text-gray-400">No purchases yet!</p>
                 : initialProducts.filter(product => purchases[product.id]).map(product =>
-                    <div key={product.id} className="mb-4">
+                    <div key={product.id} className="mb-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                       <div className="flex justify-between items-center">
-                        <div className="font-medium">
+                        <div className="font-medium text-gray-800 dark:text-gray-200">
                           {product.name}
                         </div>
-                        <div className="text-gray-500">
+                        <div className="text-gray-500 dark:text-gray-400">
                           x{purchases[product.id]}
                         </div>
                       </div>
-                      <div className="text-right mt-1">
+                      <div className="text-right mt-1 text-blue-600 dark:text-blue-400 font-bold">
                         NPR {(purchases[product.id] * product.price).toLocaleString()}
                       </div>
-                      <hr className="my-2 border-gray-300" />
                     </div>
                   )}
             </div>
           </div>
         </div>
       </div>
-      <button
+      <GameButton
         onClick={() => setReceiptModalOpen(true)}
-        className="fixed bottom-4 right-4 bg-orange-400 text-white border-4 font-bold rounded-md md:hidden border-orange-600 shadow-lg  p-3"
+        type="neutral"
+        className="fixed bottom-4 right-4 md:hidden shadow-lg"
       >
         View Receipt
-      </button>
+      </GameButton>
 
       {isReceiptModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-6">
-          <div className="bg-white p-6 rounded-lg w-full max-w-md relative">
-            <button
-              onClick={() => setReceiptModalOpen(false)}
-              className="absolute top-4 right-5 text-gray-500 bg-gray-200 px-2 py-2 rounded-full focus:outline-none"
-            >
-              X
-            </button>
-            <div className="py-6 mb-4 border-b-2 border-gray-600 border-dashed">
-              <h2 className="text-2xl mb-8 font-semibold">RECEIPT</h2>
-              <p className="flex justify-between text-xl font-bold text-right">
-                <span className="block">Total Spent:</span> NPR {totalSpent.toLocaleString()}
-              </p>
-            </div>
-            <div className="overflow-y-auto max-h-[60vh]">
-              {Object.keys(purchases).length === 0 ? (
-                <p className="text-gray-500">No purchases yet!</p>
-              ) : (
-                initialProducts
-                  .filter((product) => purchases[product.id])
-                  .map((product) => (
-                    <div key={product.id} className="mb-4">
-                      <div className="flex justify-between items-center">
-                        <div className="font-medium">{product.name}</div>
-                        <div className="text-gray-500">x{purchases[product.id]}</div>
+          <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg w-full max-w-md">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 relative">
+              <button
+                onClick={() => setReceiptModalOpen(false)}
+                className="absolute top-4 right-5 text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 px-2 py-2 rounded-full focus:outline-none transition-colors"
+              >
+                X
+              </button>
+              <div className="py-6 mb-4 border-b-2 border-gray-600 border-dashed">
+                <h1 className="text-3xl mb-4 font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
+                  Receipt
+                </h1>
+                <p className="flex justify-between text-xl font-bold text-right">
+                  <span className="block text-gray-600 dark:text-gray-300">Total Spent:</span> 
+                  <span className="text-blue-600 dark:text-blue-400">NPR {totalSpent.toLocaleString()}</span>
+                </p>
+              </div>
+              <div className="overflow-y-auto max-h-[60vh]">
+                {Object.keys(purchases).length === 0 ? (
+                  <p className="text-gray-500 dark:text-gray-400">No purchases yet!</p>
+                ) : (
+                  initialProducts
+                    .filter((product) => purchases[product.id])
+                    .map((product) => (
+                      <div key={product.id} className="mb-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <div className="flex justify-between items-center">
+                          <div className="font-medium text-gray-800 dark:text-gray-200">{product.name}</div>
+                          <div className="text-gray-500 dark:text-gray-400">x{purchases[product.id]}</div>
+                        </div>
+                        <div className="text-right mt-1 text-blue-600 dark:text-blue-400 font-bold">
+                          NPR {(purchases[product.id] * product.price).toLocaleString()}
+                        </div>
                       </div>
-                      <div className="text-right mt-1">
-                        NPR {(purchases[product.id] * product.price).toLocaleString()}
-                      </div>
-                      <hr className="my-2 border-gray-300" />
-                    </div>
-                  ))
-              )}
+                    ))
+                )}
+              </div>
             </div>
           </div>
         </div>
