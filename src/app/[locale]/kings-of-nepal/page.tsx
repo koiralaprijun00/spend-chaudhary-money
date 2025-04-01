@@ -172,7 +172,7 @@ export default function KingsOfNepalQuiz() {
                     {safeT('kingQuizTitle', 'Write all Kings of Nepal Quiz')}
                   </h1>
                   <p className="text-left text-gray-600 dark:text-gray-300">
-                    {safeT('quizInstructions', `Name all ${sortedKings.length} kings of Nepal.`, { kingCount: sortedKings.length })}
+                  {safeT('quizInstructions', `You have 5 minutes to name all ${sortedKings.length} kings who ruled Nepal from 1743 to 2008.`, { kingCount: sortedKings.length })}
                   </p>
                   <p className="text-left text-gray-600 dark:text-gray-300 mt-2">
                     {safeT('typeNamesInstruction', 'Type the names of the kings in the input field.')}

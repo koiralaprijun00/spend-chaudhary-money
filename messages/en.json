@@ -1,5 +1,6 @@
   {
   "Translations":{
+    "districtNumber": "District {current} of {total}",
     "KingsofNepalTitle": "Name the Kings of Nepal",
     "feedbackCancelButton": "Cancel",
     "feedbackSubmitButton": "Submit Feedback",
@@ -9,7 +10,7 @@
       "nepaliDateConverterTitle": "Nepali Date Converter",
       "nepaliDateConverterDescription": "Convert between Nepali and English dates seamlessly.",    
     "kingTitle": "Kings of Nepal",
-    "kingQuizTitle": "Write all Kings of Nepal",
+    "kingQuizTitle": "Identify all Kings of Nepal",
     "learnAboutKingsLink": "Learn about the Kings of Nepal →",
     "progressCounter": "{current} of {total} ({percent}%)",
     "inputPlaceholder": "Type a king's name...",
@@ -186,7 +187,7 @@
       "imperialism": "Age of Imperialism",
       "worldWars": "World Wars Era",
       "modern": "Modern Era",
-      "title": "Nepal Districts Quiz",
+      "title": "Districts of Nepal",
       "instructions": "Try to name all 77 districts of Nepal by their shape on the map. Type the district name in the box and submit your guess.",
       "startGame": "Start Quiz",
       "guessingPlaceholder": "Enter district name...",
