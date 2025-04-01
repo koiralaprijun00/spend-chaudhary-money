@@ -4,6 +4,7 @@ import "mapbox-gl/dist/mapbox-gl.css"; // Keep this for build-time CSS inclusion
 import { Metadata } from "next";
 import { AuthProvider } from './[locale]/providers';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from 'next/script';
 
 export const metadata: Metadata = {
@@ -66,6 +67,7 @@ export default function RootLayout({
       <body className="antialiased">
       <AuthProvider>
         {children}
+        <SpeedInsights/>
         <Analytics />
         </AuthProvider>
         <GoogleAnalytics gaId="G-X744G6P5C9" />
