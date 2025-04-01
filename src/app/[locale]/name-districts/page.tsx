@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { districtData } from '../../data/district-data';
-import AdSenseGoogle from '../../components/AdSenseGoogle'; // Import AdSense component
+import AdSenseGoogle from '../../components/AdSenseGoogle';
 
 const TOTAL_DISTRICTS = districtData.length;
 
@@ -19,6 +19,25 @@ const toNepaliNumerals = (num: number): string => {
 };
 
 const NepalDistrictQuiz: React.FC = () => {
+  // Safe translation function to prevent errors
+const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
+  try {
+    return t(key, params);
+  } catch (error) {
+    console.warn(`Translation key not found: ${key}`);
+    return defaultValue;
+  }
+};
+
+  const safeTDistricts = (key: string, defaultValue: string = '') => {
+    try {
+      return tDistricts(key);
+    } catch (error) {
+      console.warn(`District translation key not found: ${key}`);
+      return defaultValue;
+    }
+  };
+
   const t = useTranslations('Translations'); // For general UI translations
   const tDistricts = useTranslations('districts'); // For district names
   const locale = useLocale();
@@ -83,8 +102,8 @@ const NepalDistrictQuiz: React.FC = () => {
       const shuffledDistricts = shuffleArray(availableDistricts);
       const distractors = shuffledDistricts.slice(0, 2);
       const choices = [
-        tDistricts(currentDistrict.id),
-        ...distractors.map(d => tDistricts(d.id)),
+        safeTDistricts(currentDistrict.id),
+        ...distractors.map(d => safeTDistricts(d.id)),
       ];
       setOptions(shuffleArray(choices));
     }
@@ -112,25 +131,25 @@ const NepalDistrictQuiz: React.FC = () => {
     const guess = currentGuess.trim().toLowerCase();
     const isCorrect =
       currentDistrict.id.toLowerCase() === guess ||
-      tDistricts(currentDistrict.id).toLowerCase() === guess ||
+      safeTDistricts(currentDistrict.id).toLowerCase() === guess ||
       (isNepali ? currentDistrict.translations.ne.toLowerCase() : currentDistrict.translations.en.toLowerCase()) === guess;
 
     if (isCorrect) {
       handleCorrectAnswer(currentDistrict);
     } else {
-      setFeedback(t('incorrect'));
+      setFeedback(safeT('incorrect', 'Incorrect'));
       setStreak(0);
     }
   };
 
   const handleMultipleChoiceSelection = (selectedOption: string) => {
     const currentDistrict = randomizedDistricts[currentDistrictIndex];
-    const isCorrect = tDistricts(currentDistrict.id).toLowerCase() === selectedOption.toLowerCase();
+    const isCorrect = safeTDistricts(currentDistrict.id).toLowerCase() === selectedOption.toLowerCase();
 
     if (isCorrect) {
       handleCorrectAnswer(currentDistrict);
     } else {
-      setFeedback(t('incorrect'));
+      setFeedback(safeT('incorrect', 'Incorrect'));
       setStreak(0);
     }
   };
@@ -139,7 +158,7 @@ const NepalDistrictQuiz: React.FC = () => {
     if (!correctGuesses.includes(district.id)) {
       setCorrectGuesses(prev => [...prev, district.id]);
     }
-    setFeedback(t('correct', { district: tDistricts(district.id) }));
+    setFeedback(safeT('correct', 'Correct! {district}', { district: safeTDistricts(district.id) }));
     setCurrentGuess('');
     const newStreak = streak + 1;
     setStreak(newStreak);
@@ -165,7 +184,7 @@ const NepalDistrictQuiz: React.FC = () => {
         .map(item => item.index);
       if (unansweredIndices.length > 0) {
         setCurrentDistrictIndex(unansweredIndices[0]);
-        setFeedback(t('remainingDistricts', { count: unansweredIndices.length }));
+        setFeedback(safeT('remainingDistricts', '{count} districts remaining', { count: unansweredIndices.length }));
       }
     } else {
       setGameOver(true);
@@ -249,10 +268,10 @@ const NepalDistrictQuiz: React.FC = () => {
       {/* Main layout with sidebars */}
       <div className="flex justify-center">
         {/* Left sidebar ad - hidden on mobile */}
-        <div className="hidden lg:block w-[160px] sticky top-40 self-start h-[600px] ml-4">
+        <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] ml-4">
           <div className="w-[160px] h-[600px]">
             <AdSenseGoogle
-              adSlot="6865219846" // Use your actual left sidebar ad slot ID
+              adSlot="6865219846"
               adFormat="vertical"
               style={{ width: '160px', height: '400px' }}
             />
@@ -260,227 +279,304 @@ const NepalDistrictQuiz: React.FC = () => {
         </div>
         
         {/* Main content */}
-        <div className="max-w-2xl mx-auto p-2">
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            {/* Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-3">
-              <div className="flex justify-between items-center">
-                <h1 className="text-xl font-bold">{t('title')}</h1>
-                {gameStarted && (
-                  <div className="flex gap-4 text-sm">
-                    <div className="text-center">
-                      <div className="text-xs text-blue-200">{t('score')}</div>
-                      <div className="font-bold">{correctGuesses.length}/{TOTAL_DISTRICTS}</div>
+        <div className="flex-1 px-4 py-8">
+          <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
+            {/* Left column - Title and Info */}
+            <div className="md:w-1/3 space-y-6">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <div className="mb-6">
+                  <h1 className="text-3xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
+                    {safeT('title', 'Nepal Districts Quiz')}
+                  </h1>
+                  <p className="text-left text-gray-600 dark:text-gray-300">
+                    {safeT('quizInstructions', 'You have 5 minutes to name all kings who ruled Nepal from 1743 to 2008.', { kingCount: 25 })}
+                  </p>
+                </div>
+                
+                {/* Progress Stats */}
+                <div className="mb-6">
+                  <h2 className="text-sm mb-2">Progress</h2>
+                  <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
+                    <div className="bg-white dark:bg-gray-800 rounded-md p-2 flex justify-between items-center">
+                      <div className="flex items-center">
+                        <span className="text-xl font-bold">{correctGuesses.length}</span>
+                        <span className="ml-2 text-gray-600 dark:text-gray-300">/ {TOTAL_DISTRICTS}</span>
+                      </div>
+                      
+                      <div className="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">
+                        <span className="font-mono text-gray-800 dark:text-gray-200">
+                          {getCompletionPercentage()}%
+                        </span>
+                      </div>
                     </div>
-                    <div className="text-center">
-                      <div className="text-xs text-blue-200">{t('timer')}</div>
-                      <div className="font-bold">{formatTime(timeLeft)}</div>
+                  </div>
+                </div>
+                
+                {/* Timer */}
+                <div className="mb-6">
+                  <h2 className="text-sm mb-2">Time Remaining</h2>
+                  <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
+                    <div className="bg-white dark:bg-gray-800 rounded-md p-2 flex justify-between items-center">
+                      <div className="flex items-center">
+                        <span className="text-xl font-bold font-mono">{formatTime(timeLeft)}</span>
+                      </div>
+                      
+                      {gameStarted && !gameOver && (
+                        <button
+                          onClick={handleGiveUp}
+                          className="bg-red-100 text-red-700 hover:bg-red-200 text-xs font-medium px-2 py-1 rounded"
+                        >
+                          {safeT('giveUp', 'Give Up')}
+                        </button>
+                      )}
                     </div>
+                  </div>
+                </div>
+                
+                {/* Streak */}
+                <div className="mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1">
+                      <h2 className="text-sm mb-1">Current Streak</h2>
+                      <div className="bg-blue-100 dark:bg-blue-900/30 rounded-md p-2">
+                        <span className="text-lg font-bold text-blue-800 dark:text-blue-400">{streak}</span>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h2 className="text-sm mb-1">Best Streak</h2>
+                      <div className="bg-orange-100 dark:bg-orange-900/30 rounded-md p-2">
+                        <span className="text-lg font-bold text-orange-800 dark:text-orange-400">{bestStreak}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {showResults && (
+                  <div className="space-y-3">
+                    <button
+                      onClick={startGame}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition"
+                    >
+                      {safeT('playAgain', 'Play Again')}
+                    </button>
                   </div>
                 )}
               </div>
-              {gameStarted && (
-                <div className="w-full bg-blue-800 rounded-full h-1 mt-2">
-                  <div
-                    className="bg-white h-1 rounded-full transition-all duration-300"
-                    style={{ width: `${getCompletionPercentage()}%` }}
-                  />
-                </div>
-              )}
             </div>
-
-            {/* Main content */}
-            <div className="p-3">
-              {gameStarted && !showResults && randomizedDistricts.length > 0 && (
-                <div className="quiz-container">
-                  <div className="flex gap-2 mb-3">
-                    <button
-                      onClick={goToPrevDistrict}
-                      className="border border-gray-300 rounded px-3 py-1 flex items-center hover:bg-gray-50 disabled:opacity-50"
-                      disabled={currentDistrictIndex === 0}
-                    >
-                      ← {t('prev')}
-                    </button>
-                    <form onSubmit={handleGuess} className="flex-1">
-                      <input
-                        ref={inputRef}
-                        type="text"
-                        value={currentGuess}
-                        onChange={(e) => setCurrentGuess(e.target.value)}
-                        placeholder={t('guessingPlaceholder')}
-                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        disabled={correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id)}
-                      />
-                    </form>
-                    <button
-                      onClick={goToNextDistrict}
-                      className="border border-gray-300 rounded px-3 py-1 flex items-center hover:bg-gray-50"
-                    >
-                      {t('next')} →
-                    </button>
-                  </div>
-
-                  <div className="flex justify-between mb-3">
+            
+            {/* Right column - Quiz Content */}
+            <div className="md:w-2/3">
+              <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
+                <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
+                  
+                  {/* Active game */}
+                  {gameStarted && !showResults && randomizedDistricts.length > 0 && (
                     <div>
-                      {feedback && (
-                        <p className={`text-sm font-medium ${feedback === t('incorrect') ? 'text-red-600' : 'text-green-600'}`}>
-                          {feedback}
-                        </p>
-                      )}
-                    </div>
-                    <button
-                      onClick={handleGiveUp}
-                      className="flex items-center gap-1 px-3 py-1 rounded text-xs font-medium bg-red-100 text-red-700 hover:bg-red-200"
-                    >
-                      <span>🏳️</span> {t('giveUp')}
-                    </button>
-                  </div>
-
-                  {/* District image */}
-                  <div className="mb-4">
-                    <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
-                      <div className="district-display bg-gray-100 p-4 flex justify-center items-center">
-                        <div className="relative w-full h-48 md:h-64">
-                          <Image
-                            src={randomizedDistricts[currentDistrictIndex].imagePath}
-                            alt="District Shape"
-                            fill
-                            sizes="(max-width: 768px) 100vw, 40vw"
-                            className="object-contain"
-                            priority
-                          />
-                          {correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id) && (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="bg-green-500 text-white px-3 py-1 rounded-lg text-lg font-bold opacity-90">
-                                {tDistricts(randomizedDistricts[currentDistrictIndex].id)}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Pagination */}
-                  <div className="flex items-center justify-between gap-2 mb-5">
-                    <button
-                      onClick={goToPrevDistrict}
-                      className="border border-gray-300 rounded px-3 py-1 hover:bg-gray-50 disabled:opacity-50 flex items-center"
-                      disabled={currentDistrictIndex === 0}
-                    >
-                      ← {t('prev')}
-                    </button>
-                    <div
-                      ref={paginationRef}
-                      className="flex-1 flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide"
-                      style={{ scrollBehavior: 'smooth' }}
-                    >
-                      {randomizedDistricts.map((district, index) => (
+                      {/* Game header with navigation */}
+                      <div className="flex items-center justify-between mb-4">
                         <button
-                          key={index}
-                          onClick={() => setCurrentDistrictIndex(index)}
-                          className={`border border-gray-300 rounded px-3 py-1 min-w-[40px] text-center ${
-                            correctGuesses.includes(district.id)
-                              ? 'bg-green-500 text-white'
-                              : currentDistrictIndex === index
-                              ? 'bg-orange-500 text-white'
-                              : 'hover:bg-gray-50'
-                          }`}
+                          onClick={goToPrevDistrict}
+                          className="text-sm border border-gray-300 rounded-md px-3 py-1 hover:bg-gray-50 disabled:opacity-50"
+                          disabled={currentDistrictIndex === 0}
                         >
-                          {isNepali ? toNepaliNumerals(index + 1) : index + 1}
+                          ← {safeT('prev', 'Previous')}
                         </button>
-                      ))}
-                    </div>
-                    <button
-                      onClick={goToNextDistrict}
-                      className="border border-gray-300 rounded px-3 py-1 hover:bg-gray-50 flex items-center"
-                      disabled={currentDistrictIndex === randomizedDistricts.length - 1}
-                    >
-                      {t('next')} →
-                    </button>
-                  </div>
-
-                  {/* Multiple choice options */}
-                  <div className="grid grid-cols-1 gap-2 mb-5">
-                    {options.map((option, index) => (
-                      <button
-                        key={`${option}-${index}`}
-                        onClick={() => handleMultipleChoiceSelection(option)}
-                        className={`p-2 text-center rounded-lg text-sm font-medium transition-colors ${
-                          correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id)
-                            ? tDistricts(randomizedDistricts[currentDistrictIndex].id) === option
-                              ? 'bg-green-500 text-white'
-                              : 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                            : 'bg-white border border-gray-300 hover:bg-gray-50'
-                        }`}
-                        disabled={correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id)}
-                      >
-                        {option}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Results overlay */}
-              {showResults && (
-                <div className="results-overlay">
-                  <div className="max-w-xl mx-auto">
-                    <h2 className="text-xl font-bold text-blue-800 mb-4">{t('gameOver')}</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-                      <div className="bg-gray-50 rounded-lg p-3">
-                        <h3 className="text-sm text-gray-500 mb-1">{t('finalScore')}</h3>
-                        <div className="text-2xl font-bold text-blue-600">{calculateScore()}</div>
-                      </div>
-                      <div className="bg-gray-50 rounded-lg p-3">
-                        <h3 className="text-sm text-gray-500 mb-1">{t('bestStreak')}</h3>
-                        <div className="text-2xl font-bold text-orange-600">{bestStreak}</div>
-                      </div>
-                      <div className="bg-gray-50 rounded-lg p-3">
-                        <h3 className="text-sm text-gray-500 mb-1">{t('correctDistricts')}</h3>
-                        <div className="text-2xl font-bold text-green-600">
-                          {correctGuesses.length}/{TOTAL_DISTRICTS}
-                        </div>
-                      </div>
-                    </div>
-                    <button
-                      onClick={startGame}
-                      className="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition-colors mb-6 mx-auto block"
-                    >
-                      {t('playAgain')}
-                    </button>
-                    {correctGuesses.length > 0 && (
-                      <div className="mb-4">
-                        <h3 className="text-lg font-bold mb-2 text-green-700">
-                          {t('correctGuesses')} ({correctGuesses.length})
-                        </h3>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
-                          {correctGuesses.map(id => {
-                            const district = randomizedDistricts.find(d => d.id === id);
-                            return district ? (
-                              <div key={id} className="text-green-600 flex items-center bg-green-50 p-1 rounded">
-                                <span className="mr-1">✓</span>
-                                <span>{tDistricts(district.id)}</span>
-                              </div>
-                            ) : null;
+                        <div className="font-medium">
+                          {safeT('districtNumber', 'District {current} of {total}', {
+                            current: isNepali ? toNepaliNumerals(currentDistrictIndex + 1) : currentDistrictIndex + 1,
+                            total: isNepali ? toNepaliNumerals(TOTAL_DISTRICTS) : TOTAL_DISTRICTS
                           })}
                         </div>
+                        <button
+                          onClick={goToNextDistrict}
+                          className="text-sm border border-gray-300 rounded-md px-3 py-1 hover:bg-gray-50"
+                        >
+                          {safeT('next', 'Next')} →
+                        </button>
                       </div>
-                    )}
-                  </div>
+                      
+                      {/* District image */}
+                      <div className="mb-6">
+                        <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 dark:border-gray-700">
+                          <div className="district-display bg-gray-100 dark:bg-gray-900 p-4 flex justify-center items-center">
+                            <div className="relative w-full h-48 md:h-64">
+                              <Image
+                                src={randomizedDistricts[currentDistrictIndex].imagePath}
+                                alt="District Shape"
+                                fill
+                                sizes="(max-width: 768px) 100vw, 40vw"
+                                className="object-contain"
+                                priority
+                              />
+                              {correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id) && (
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <div className="bg-green-500 text-white px-3 py-1 rounded-lg text-lg font-bold opacity-90">
+                                    {safeTDistricts(randomizedDistricts[currentDistrictIndex].id)}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Input form */}
+                      <form onSubmit={handleGuess} className="mb-4">
+                        <input
+                          ref={inputRef}
+                          type="text"
+                          value={currentGuess}
+                          onChange={(e) => setCurrentGuess(e.target.value)}
+                          placeholder={safeT('guessingPlaceholder', 'Type district name...')}
+                          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                          disabled={correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id)}
+                        />
+                      </form>
+                      
+                      {/* Feedback message */}
+                      {feedback && (
+                        <div className={`mb-4 p-2 rounded-lg text-center ${
+                          feedback === safeT('incorrect', 'Incorrect') 
+                            ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' 
+                            : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                        }`}>
+                          {feedback}
+                        </div>
+                      )}
+                      
+                      {/* Multiple choice options */}
+                      <div className="space-y-2 mb-6">
+                        {options.map((option, index) => (
+                          <button
+                            key={`${option}-${index}`}
+                            onClick={() => handleMultipleChoiceSelection(option)}
+                            className={`w-full p-3 text-center rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
+                              correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id)
+                                ? safeTDistricts(randomizedDistricts[currentDistrictIndex].id) === option
+                                  ? 'bg-green-500 text-white'
+                                  : 'bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-400'
+                                : 'bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'
+                            }`}
+                            disabled={correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id)}
+                          >
+                            {option}
+                          </button>
+                        ))}
+                      </div>
+                      
+                      {/* Pagination */}
+                      <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 p-2">
+                        <div
+                          ref={paginationRef}
+                          className="flex items-center gap-1 overflow-x-auto whitespace-nowrap py-1"
+                          style={{ scrollBehavior: 'smooth' }}
+                        >
+                          {randomizedDistricts.map((district, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setCurrentDistrictIndex(index)}
+                              className={`min-w-[32px] h-8 flex items-center justify-center rounded-md text-xs ${
+                                correctGuesses.includes(district.id)
+                                  ? 'bg-green-500 text-white'
+                                  : currentDistrictIndex === index
+                                  ? 'bg-blue-500 text-white'
+                                  : 'bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600'
+                              }`}
+                            >
+                              {isNepali ? toNepaliNumerals(index + 1) : index + 1}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Results overlay */}
+                  {showResults && (
+                    <div>
+                      <div className="mb-6">
+                        <h2 className="text-2xl font-bold mb-4">
+                          {safeT('gameOver', 'Game Over!')}
+                        </h2>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
+                            <h3 className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                              {safeT('finalScore', 'Final Score')}
+                            </h3>
+                            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                              {calculateScore()}
+                            </div>
+                          </div>
+                          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
+                            <h3 className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                              {safeT('bestStreak', 'Best Streak')}
+                            </h3>
+                            <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
+                              {bestStreak}
+                            </div>
+                          </div>
+                          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
+                            <h3 className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                              {safeT('correctDistricts', 'Correct Districts')}
+                            </h3>
+                            <div className="text-2xl font-bold text-green-600 dark:text-green-400">
+                              {correctGuesses.length}/{TOTAL_DISTRICTS}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {correctGuesses.length > 0 && (
+                        <div className="mb-6">
+                          <h3 className="text-lg font-medium mb-3 text-green-700 dark:text-green-500">
+                            {safeT('correctGuesses', 'Correct Guesses')} ({correctGuesses.length})
+                          </h3>
+                          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
+                            {correctGuesses.map(id => {
+                              const district = randomizedDistricts.find(d => d.id === id);
+                              return district ? (
+                                <div key={id} className="bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 flex items-center p-2 rounded-md">
+                                  <span className="mr-2">✓</span>
+                                  <span>{safeTDistricts(district.id)}</span>
+                                </div>
+                              ) : null;
+                            })}
+                          </div>
+                        </div>
+                      )}
+                      
+                      {correctGuesses.length < TOTAL_DISTRICTS && (
+                        <div className="mb-6">
+                          <h3 className="text-lg font-medium mb-3 text-red-700 dark:text-red-500">
+                            {safeT('incorrectGuesses', 'Missed Districts')} ({TOTAL_DISTRICTS - correctGuesses.length})
+                          </h3>
+                          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
+                            {randomizedDistricts
+                              .filter(district => !correctGuesses.includes(district.id))
+                              .map(district => (
+                                <div key={district.id} className="bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 flex items-center p-2 rounded-md">
+                                  <span className="mr-2">✗</span>
+                                  <span>{safeTDistricts(district.id)}</span>
+                                </div>
+                              ))
+                            }
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
-              )}
-
-              
+              </div>
             </div>
           </div>
         </div>
         
         {/* Right sidebar ad - hidden on mobile */}
-        <div className="hidden lg:block w-[160px] sticky top-40 self-start h-[600px] mr-4">
+        <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] mr-4">
           <div className="w-[160px] h-[600px]">
             <AdSenseGoogle 
-              adSlot="9978468343" // Use your actual right sidebar ad slot ID
+              adSlot="9978468343"
               adFormat="vertical"
               style={{ width: '160px', height: '400px' }}
             />

@@ -8,6 +8,14 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+       phudu: ['Phudu', 'sans-serif'],
+        oswald: ['Oswald', 'sans-serif'],
+        dmSans: ['DM Sans', 'sans-serif'],
+        sourceSans3: ['Source Sans 3', 'sans-serif'],
+        libreFranklin: ['Libre Franklin', 'sans-serif'],
+        lora: ['Lora', 'serif'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

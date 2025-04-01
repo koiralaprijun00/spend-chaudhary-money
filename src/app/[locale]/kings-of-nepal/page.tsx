@@ -3,7 +3,10 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import AdSenseGoogle from '../../components/AdSenseGoogle'; // Import AdSense component
+import AdSenseGoogle from '../../components/AdSenseGoogle';
+
+// Remove GameButton import if you haven't set it up yet
+// import GameButton from '../../components/ui/GameButton';
 
 interface King {
   id: string;
@@ -133,6 +136,16 @@ export default function KingsOfNepalQuiz() {
     }
   };
 
+  // Safe translation function to prevent errors
+  const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
+    try {
+      return t(key, params);
+    } catch (error) {
+      console.warn(`Translation key not found: ${key}`);
+      return defaultValue;
+    }
+  };
+
   return (
     <div className="min-h-screen w-full">
       {/* Main layout with sidebars */}
@@ -141,7 +154,7 @@ export default function KingsOfNepalQuiz() {
         <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] ml-4">
           <div className="w-[160px] h-[600px]">
             <AdSenseGoogle
-              adSlot="6865219846" // Use your actual left sidebar ad slot ID
+              adSlot="6865219846"
               adFormat="vertical"
               style={{ width: '160px', height: '400px' }}
             />
@@ -149,172 +162,197 @@ export default function KingsOfNepalQuiz() {
         </div>
         
         {/* Main content */}
-        <div className="bg-gray-50 py-8 px-4 flex-1">
-          <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8">
+        <div className="flex-1 px-4 py-8">
+          <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
             {/* Left Column - Title and Instructions */}
-            <div className="md:w-1/3">
-              <div className="mb-8 md:mt-8 mt-4 sticky top-8">
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">{t('kingQuizTitle')}</h1>
-                <p className="text-lg text-gray-700 mb-4">
-                  {t('quizInstructions', { kingCount: sortedKings.length })}
-                  <br />{t('typeNamesInstruction')}
-                </p>
-                <Link href="/kings-of-nepal/about" className="block mt-4 text-blue-600 hover:underline">
-                  {t('learnAboutKingsLink')}
-                </Link>
+            <div className="md:w-1/3 space-y-6">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <div className="mb-6">
+                  <h1 className="text-3xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
+                    {safeT('kingQuizTitle', 'Write all Kings of Nepal Quiz')}
+                  </h1>
+                  <p className="text-left text-gray-600 dark:text-gray-300">
+                  {safeT('quizInstructions', `You have 5 minutes to name all ${sortedKings.length} kings who ruled Nepal from 1743 to 2008.`, { kingCount: sortedKings.length })}
+                  </p>
+                  <p className="text-left text-gray-600 dark:text-gray-300 mt-2">
+                    {safeT('typeNamesInstruction', 'Type the names of the kings in the input field.')}
+                  </p>
+                </div>
+                
+                <div className="mb-6">
+                  <h2 className="text-sm mb-2">Progress</h2>
+                  <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
+                    <div className="bg-white dark:bg-gray-800 rounded-md p-2 flex justify-between items-center">
+                      <div className="flex items-center">
+                        <span className="text-xl font-bold">{correctAnswers.length}</span>
+                        <span className="ml-2 text-gray-600 dark:text-gray-300">/ {sortedKings.length}</span>
+                      </div>
+                      
+                      <div className="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">
+                        <span className="font-mono text-gray-800 dark:text-gray-200">
+                          {Math.round(percentComplete)}%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
                 {!gameStarted && !gameOver && (
                   <button
                     onClick={startGame}
-                    className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg shadow-md transition duration-200"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition"
                   >
-                    {t('startQuiz')}
+                    {safeT('startQuiz', 'Start Quiz')}
                   </button>
                 )}
+                
+                {gameStarted && !gameOver && (
+                  <button
+                    onClick={handleGiveUp}
+                    className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 font-medium py-2 px-4 rounded-md transition"
+                  >
+                    {safeT('giveUpButton', 'Give Up')}
+                  </button>
+                )}
+                
+                {gameOver && (
+                  <div className="space-y-3">
+                    <button
+                      onClick={handlePlayAgain}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition"
+                    >
+                      {safeT('playAgainButton', 'Play Again')}
+                    </button>
+                    
+                    <button
+                      onClick={handleShareScore}
+                      className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition flex items-center justify-center"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+                      </svg>
+                      {safeT('shareScoreButton', 'Share Score')}
+                    </button>
+                  </div>
+                )}
+                
+                <Link 
+                  href="/kings-of-nepal/about" 
+                  className="block mt-6 text-blue-600 hover:underline text-sm"
+                >
+                  {safeT('learnAboutKingsLink', 'Learn about the Kings of Nepal')}
+                </Link>
               </div>
             </div>
 
             {/* Right Column - Game Content */}
             <div className="md:w-2/3">
-              {/* Active game */}
-              {gameStarted && !gameOver && (
-                <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
-                  <div className="mb-2">
-                    <div className="flex justify-between text-sm text-gray-600 mb-1">
-                      <span>{t('progressCounter', { 
-                        current: correctAnswers.length, 
-                        total: sortedKings.length,
-                        percent: Math.round(percentComplete)
-                      })}</span>
+              <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
+                <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
+                  
+                  {/* Active game */}
+                  {gameStarted && !gameOver && (
+                    <div>
+                      <div className="mb-4">
+                        <h2 className="text-xl font-bold mb-2">{t('KingsofNepalTitle')}</h2>
+                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                          <div 
+                            className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+                            style={{ width: `${percentComplete}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                      
+                      <div className="mb-4">
+                        <input
+                          ref={inputRef}
+                          type="text"
+                          value={input}
+                          onChange={handleInputChange}
+                          placeholder={safeT('inputPlaceholder', 'Type a king\'s name...')}
+                          className="w-full p-3 text-lg border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                          autoComplete="off"
+                          autoCapitalize="off"
+                          spellCheck="false"
+                        />
+                      </div>
+                      
+                      <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+                        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                          <thead className="bg-gray-50 dark:bg-gray-800">
+                            <tr>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('numberSymbol', '#')}</th>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('reignLabel', 'Reign')}</th>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('kingNameLabel', 'King')}</th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                            {sortedKings.map((king, index) => (
+                              <tr key={king.id} className={correctAnswers.includes(king.id) ? "bg-green-50 dark:bg-green-900/20" : ""}>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{index + 1}</td>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{king.reignStart} - {king.reignEnd}</td>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
+                                  {correctAnswers.includes(king.id) ? (
+                                    <span className="font-medium">{king.name}</span>
+                                  ) : (
+                                    <span className="text-gray-400 dark:text-gray-600">{safeT('unguessedPlaceholder', '?????')}</span>
+                                  )}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2.5">
-                      <div 
-                        className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" 
-                        style={{ width: `${percentComplete}%` }}
-                      ></div>
+                  )}
+                  
+                  {/* Game over / results screen */}
+                  {gameOver && (
+                    <div>
+                      <div className="mb-6">
+                        <h2 className="text-2xl font-bold mb-2">
+                          {gaveUp 
+                            ? safeT('gaveUpHeading', 'You Gave Up')
+                            : correctAnswers.length === sortedKings.length 
+                              ? safeT('perfectScoreHeading', 'Perfect Score!')
+                              : safeT('timesUpHeading', 'Game Over!')}
+                        </h2>
+                        <p className="text-gray-600 dark:text-gray-300">
+                          You got {correctAnswers.length} out of {sortedKings.length} kings correct.
+                        </p>
+                      </div>
+                      
+                      <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 mb-6">
+                        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                          <thead className="bg-gray-50 dark:bg-gray-800">
+                            <tr>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('numberSymbol', '#')}</th>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('reignLabel', 'Reign')}</th>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('kingNameLabel', 'King')}</th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                            {sortedKings.map((king, index) => (
+                              <tr key={king.id} className={correctAnswers.includes(king.id) ? "bg-green-50 dark:bg-green-900/20" : "bg-red-50 dark:bg-red-900/20"}>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{index + 1}</td>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{king.reignStart} - {king.reignEnd}</td>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200 font-medium">
+                                  {king.name}
+                                  {correctAnswers.includes(king.id) ? (
+                                    <span className="ml-2 text-green-600 dark:text-green-400">✓</span>
+                                  ) : (
+                                    <span className="ml-2 text-red-600 dark:text-red-400">✗</span>
+                                  )}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="mb-2">
-                    <input
-                      ref={inputRef}
-                      type="text"
-                      value={input}
-                      onChange={handleInputChange}
-                      placeholder={t('inputPlaceholder')}
-                      className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      autoComplete="off"
-                      autoCapitalize="off"
-                      spellCheck="false"
-                    />
-                  </div>
-                  
-                  <div className="overflow-hidden rounded-lg border border-gray-200 mb-6">
-                    <table className="min-w-full divide-y divide-gray-200">
-                      <thead className="bg-gray-50">
-                        <tr>
-                          <th scope="col" className="px-4 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider">{t('numberSymbol')}</th>
-                          <th scope="col" className="px-4 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider">{t('reignLabel')}</th>
-                          <th scope="col" className="px-4 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider">{t('kingNameLabel')}</th>
-                        </tr>
-                      </thead>
-                      <tbody className="bg-white divide-y divide-gray-200">
-                        {sortedKings.map((king, index) => (
-                          <tr key={king.id} className={correctAnswers.includes(king.id) ? "bg-green-50" : ""}>
-                            <td className="px-4 py-3 whitespace-nowrap text-md text-gray-900">{index + 1}</td>
-                            <td className="px-4 py-3 whitespace-nowrap text-md text-gray-900">{king.reignStart} - {king.reignEnd}</td>
-                            <td className="px-4 py-3 whitespace-nowrap text-md text-gray-900">
-                              {correctAnswers.includes(king.id) ? (
-                                <span className="font-medium">{king.name}</span>
-                              ) : (
-                                <span className="text-gray-400">{t('unguessedPlaceholder')}</span>
-                              )}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  
-                  <div className="text-center">
-                    <button
-                      onClick={handleGiveUp}
-                      className="text-gray-600 hover:text-gray-800 underline text-sm font-medium"
-                    >
-                      {t('giveUpButton')}
-                    </button>
-                  </div>
+                  )}
                 </div>
-              )}
-              
-              {/* Game over / results screen */}
-              {gameOver && (
-                <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
-                  <div className="text-center mb-8">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-2">
-                      {gaveUp 
-                        ? t('gaveUpHeading')
-                        : correctAnswers.length === sortedKings.length 
-                          ? t('perfectScoreHeading')
-                          : t('timesUpHeading')}
-                    </h2>
-                    <p className="text-lg text-gray-600">
-                      {t.rich('resultsMessage', {
-                        count: correctAnswers.length,
-                        total: sortedKings.length,
-                        isPerfect: correctAnswers.length === sortedKings.length
-                      })}
-                    </p>
-                  </div>
-                  
-                  <div className="overflow-hidden rounded-lg border border-gray-200 mb-8">
-                    <table className="min-w-full divide-y divide-gray-200">
-                      <thead className="bg-gray-50">
-                        <tr>
-                          <th scope="col" className="px-4 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider">{t('numberSymbol')}</th>
-                          <th scope="col" className="px-4 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider">{t('reignLabel')}</th>
-                          <th scope="col" className="px-4 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider">{t('kingNameLabel')}</th>
-                        </tr>
-                      </thead>
-                      <tbody className="bg-white divide-y divide-gray-200">
-                        {sortedKings.map((king, index) => (
-                          <tr key={king.id} className={correctAnswers.includes(king.id) ? "bg-green-50" : "bg-red-50"}>
-                            <td className="px-4 py-3 whitespace-nowrap text-md text-gray-900">{index + 1}</td>
-                            <td className="px-4 py-3 whitespace-nowrap text-md text-gray-900">{king.reignStart} - {king.reignEnd}</td>
-                            <td className="px-4 py-3 whitespace-nowrap text-md text-gray-900 font-medium">
-                              {king.name}
-                              {correctAnswers.includes(king.id) ? (
-                                <span className="ml-2 text-green-600">✓</span>
-                              ) : (
-                                <span className="ml-2 text-red-600">✗</span>
-                              )}
-                            </td>
-                            
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  
-                  <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <button
-                      onClick={handlePlayAgain}
-                      className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg shadow-md transition duration-200"
-                    >
-                      {t('playAgainButton')}
-                    </button>
-                    <button
-                      onClick={handleShareScore}
-                      className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg shadow-md transition duration-200 flex items-center justify-center"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
-                      </svg>
-                      {t('shareScoreButton')}
-                    </button>
-                  </div>
-                </div>
-              )}
-
+              </div>
             </div>
           </div>
         </div>
@@ -323,7 +361,7 @@ export default function KingsOfNepalQuiz() {
         <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] mr-4">
           <div className="w-[160px] h-[600px]">
             <AdSenseGoogle 
-              adSlot="9978468343" // Use your actual right sidebar ad slot ID
+              adSlot="9978468343"
               adFormat="vertical"
               style={{ width: '160px', height: '400px' }}
             />

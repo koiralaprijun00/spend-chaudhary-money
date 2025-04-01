@@ -3,7 +3,6 @@
 import React from 'react';
 import { MdShare } from 'react-icons/md';
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
 
 interface AnswerRevealProps {
   isAnswered: boolean;

@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
-import { IoRefreshCircle } from 'react-icons/io5';
+import GameButton from '../../components/ui/GameButton';
 
 interface QuizSectionProps {
   currentFestival: {
@@ -17,112 +16,67 @@ interface QuizSectionProps {
   isAnswered: boolean;
   options: string[];
   handleGuess: (selectedOption: string) => void;
-  className?: string; // Add this line
+  className?: string;
 }
 
-export default function QuizSection({
+const QuizSection: React.FC<QuizSectionProps> = ({
   currentFestival,
   clueIndex,
   handleNextClue,
   isAnswered,
   options,
-  handleGuess,
-  className = "",
-}: QuizSectionProps) {
-  const t = useTranslations('Translations');
+  handleGuess
+}) => {
+  console.log("QuizSection rendered with isAnswered:", isAnswered); // Debug log
   
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [hintAnimation, setHintAnimation] = useState<boolean>(false);
-
-  // Reset selectedOption when currentFestival changes
-  useEffect(() => {
-    setSelectedOption(null);
-  }, [currentFestival]);
-
-  const handleNextClueLocal = () => {
-    if (!isAnswered) {
-      setHintAnimation(true);
-      handleNextClue();
-      setTimeout(() => setHintAnimation(false), 500);
-    }
-  };
-
-  const handleOptionClick = (option: string) => {
-    if (!isAnswered) {
-      setSelectedOption(option);
-      handleGuess(option);
-    }
-  };
-
   return (
-    <div className={`text-left ${className}`}>
-      {/* Question with festive decoration */}
-      <div className="relative mb-8">
-        <h2 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2 pl-2">
-          {currentFestival.question}
-        </h2>
-      </div>
-
-      {/* Options Grid */}
-      <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {options.map((option, index) => (
-          <button
-            key={index}
-            onClick={() => handleOptionClick(option)}
-            disabled={isAnswered}
-            className={`relative overflow-hidden px-4 py-3 text-sm md:text-base font-semibold rounded-xl shadow-md transition-all duration-300 transform hover:scale-[1.02] ${
-              isAnswered
-                ? option === selectedOption
-                  ? 'bg-gradient-to-br from-purple-800 to-purple-600 text-white'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
-                : option === selectedOption
-                  ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white'
-                  : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:border-purple-300 dark:hover:border-purple-500'
-            }`}
-          >
-            {option}
-            
-            {/* Selection indicator dots */}
-            {!isAnswered && option === selectedOption && (
-              <div className="absolute top-1 right-1 flex space-x-1">
-                <div className="w-1 h-1 rounded-full bg-white animate-pulse"></div>
-                <div className="w-1 h-1 rounded-full bg-white animate-pulse delay-100"></div>
-                <div className="w-1 h-1 rounded-full bg-white animate-pulse delay-200"></div>
-              </div>
-            )}
-          </button>
-        ))}
-      </div>
-
-      {/* Hint Section */}
-      <div className="relative bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-gray-800 dark:to-gray-800 p-4 rounded-xl border border-orange-200 dark:border-orange-800">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <p className="text-sm font-bold text-gray-700 dark:text-gray-300">
-              {t('hint')}:
-            </p>
+    <div>
+      <h2 className="text-xl md:text-2xl font-lora font-bold mb-4">{currentFestival.question}</h2>
+      
+      {/* Options - Moved above clues */}
+      {!isAnswered && (
+        <div className="mb-6">
+          <h3 className="text-md mb-3">Your Guess:</h3>
+          <div className="space-y-2">
+            {options.map((option, index) => (
+              <GameButton
+                key={index}
+                onClick={() => handleGuess(option)}
+                type="neutral"
+                fullWidth
+                className="text-left justify-start transition-transform duration-200 hover:scale-105"
+              >
+                {option}
+              </GameButton>
+            ))}
           </div>
-          
-          <button 
-            onClick={handleNextClueLocal}
-            disabled={isAnswered}
-            className={`flex items-center space-x-1 px-3 py-1 rounded-lg transition-all duration-300 ${
-              isAnswered 
-                ? 'text-gray-400 bg-gray-200 dark:bg-gray-700 cursor-not-allowed' 
-                : 'bg-orange-100 dark:bg-orange-900/30 text-orange-500 dark:text-orange-400 hover:bg-orange-500 hover:text-white'
-            }`}
-          >
-            <IoRefreshCircle className={`text-lg ${hintAnimation ? 'animate-spin' : ''}`} />
-          </button>
         </div>
-        
-        {/* Hint Text with animation */}
-        <div className={`mt-2 p-3 bg-white dark:bg-gray-700/50 rounded-lg shadow-inner ${hintAnimation ? 'animate-pulse' : ''}`}>
-          <p className="text-sm md:text-base font-medium text-gray-700 dark:text-gray-200">
-            {currentFestival.clues[clueIndex]}
-          </p>
+      )}
+      
+      {/* Clues Section - Explicitly hide if answered */}
+      {isAnswered === false ? (
+        <div className="clues-container">
+          <h3 className="text-m mb-2">Clues:</h3>
+          {/* Single clue container with fixed height and shuffle button */}
+          <div className="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg min-h-[80px] flex items-center justify-between">
+            <div>
+              {/* Only show the current clue based on clueIndex */}
+              {currentFestival.clues[clueIndex]}
+            </div>
+            
+            <GameButton 
+              type="grayNeutral"
+              onClick={handleNextClue}
+              size="sm"
+              className="ml-3 flex-shrink-0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+              </svg>
+            </GameButton>
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
-}
+};

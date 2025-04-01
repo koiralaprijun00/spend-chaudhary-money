@@ -118,7 +118,7 @@ export default function FirstsOfNepal() {
                 </div>
                 
                 {/* Main content */}
-                <div className="flex-1 bg-gray-50">
+                <div className="flex-1 ">
                     <div className="container mx-auto px-4 py-16">
                         {/* Hero Header */}
                         <motion.div
@@ -186,7 +186,7 @@ export default function FirstsOfNepal() {
                                     className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[300px] flex flex-col"
                                 >
                                     <div className="p-6 flex flex-col h-full">
-                                        <div className="flex justify-between items-center mb-4">
+                                        <div className="flex justify-between items-center mb-2">
                                             <div className="inline-block text-red-800 rounded-full text-sm font-medium">
                                                 {item.year}
                                             </div>
@@ -206,10 +206,10 @@ export default function FirstsOfNepal() {
                                                 <RiCircleLine size={20} />
                                             </motion.div>
                                         </div>
-                                        <div className="text-xl font-bold text-red-600 uppercase tracking-wide mb-4">
+                                        <div className="text-xl text-red-600 mb-4">
                                         {mainT('First')} {item.category}
                                         </div>
-                                        <h2 className="text-2xl font-bold text-gray-900 mb-1">
+                                        <h2 className="text-2xl font-lora font-semibold text-gray-900 mb-1">
                                             {item.name}
                                         </h2>
                                         <p className="text-gray-600 leading-relaxed overflow-hidden text-ellipsis flex-grow">
