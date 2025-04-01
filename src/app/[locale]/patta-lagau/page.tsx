@@ -259,7 +259,7 @@ export default function GeoNepalGame() {
       <Head>
         <title>Nepal GeoGuesser</title>
         <meta name="description" content="Test your knowledge of Nepal's geography" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/piro-momo-main.webp" />
       </Head>
 
       {/* Fixed height header */}
