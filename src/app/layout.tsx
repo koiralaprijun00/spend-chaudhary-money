@@ -71,7 +71,12 @@ export default function RootLayout({
           <SpeedInsights />
           <Analytics />
         </AuthProvider>
-        <GoogleAnalytics gaId="G-X744G6P5C9" />
+        {/* Load the script only when needed */}
+        <Script
+            id="gtag-script"
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=G-X744G6P5C9`}
+          />
       </body>
     </html>
   );
