@@ -40,7 +40,6 @@ export const metadata: Metadata = {
   },
 };
 
-// In root layout, we don't need params
 export default function RootLayout({
   children,
 }: {
@@ -49,27 +48,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <Script
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="preconnect" href="https://api.mapbox.com" />
+        <Script
           id="adsbygoogle-init"
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           crossOrigin="anonymous"
         />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* Mapbox CSS is already imported at build time, but if you need it dynamically: */}
         <link
           href="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css"
           rel="stylesheet"
         />
       </head>
       <body className="antialiased">
-      <AuthProvider>
-        {children}
-        <SpeedInsights/>
-        <Analytics />
+        <AuthProvider>
+          {children}
+          <SpeedInsights />
+          <Analytics />
         </AuthProvider>
         <GoogleAnalytics gaId="G-X744G6P5C9" />
       </body>
