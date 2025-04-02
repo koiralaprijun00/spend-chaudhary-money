@@ -48,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
         <link rel="preconnect" href="https://api.mapbox.com" />
         <Script
@@ -58,7 +59,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           href="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css"
