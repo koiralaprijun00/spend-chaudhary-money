@@ -161,12 +161,12 @@ export default function NepalGKQuiz() {
           <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
             {/* Left column - Categories, Score */}
             <div className="hidden md:block md:w-1/3 space-y-6">
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+              <div className="bg-white rounded-xl shadow-lg p-6">
                 <div className="mb-8">
                   <h1 className="text-3xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
                     {safeT('nepalGk.title', 'Nepal GK Quiz')}
                   </h1>
-                  <p className="text-left text-gray-600 dark:text-gray-300">
+                  <p className="text-left text-gray-600">
                     Test your knowledge about Nepal!
                   </p>
                 </div>
@@ -177,7 +177,7 @@ export default function NepalGKQuiz() {
                   <select
                     value={selectedCategory}
                     onChange={(e) => handleCategoryChange(e.target.value)}
-                    className="w-full px-3 py-2 border-2 border-blue-600 dark:border-blue-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                    className="w-full px-3 py-2 border-2 border-blue-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
                   >
                     {categories.map((category) => (
                       <option key={category} value={category}>
@@ -193,10 +193,10 @@ export default function NepalGKQuiz() {
                 <div>
                   <h2 className="text-sm mb-3">Score</h2>
                   <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
-                    <div className="bg-white dark:bg-gray-800 rounded-md p-2 flex justify-between items-center">
+                    <div className="bg-white rounded-md p-2 flex justify-between items-center">
                       <div className="flex items-center">
                         <span className="text-3xl font-bold">{score}</span>
-                        <span className="ml-2 text-gray-600 dark:text-gray-300">{t('points')}</span>
+                        <span className="ml-2 text-gray-600">{t('points')}</span>
                       </div>
                     </div>
                   </div>
@@ -230,7 +230,7 @@ export default function NepalGKQuiz() {
             {/* Right column - Quiz Content */}
             <div className="md:w-2/3 w-full">
               <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-4 md:p-6">
+                <div className="bg-white rounded-lg p-4 md:p-6">
                   {/* Mobile header */}
                   <div className="md:hidden mb-6">
                     <h1 className="text-2xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
@@ -242,7 +242,7 @@ export default function NepalGKQuiz() {
                       <select
                         value={selectedCategory}
                         onChange={(e) => handleCategoryChange(e.target.value)}
-                        className="w-full max-w-xs px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                        className="w-full max-w-xs px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
                       >
                         {categories.map((category) => (
                           <option key={category} value={category}>
@@ -256,7 +256,7 @@ export default function NepalGKQuiz() {
                     
                     {/* Mobile Score Display */}
                     <div className="flex justify-between items-center mb-4">
-                      <div className="bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-lg">
+                      <div className="bg-gray-100 px-3 py-1.5 rounded-lg">
                         <span className="font-bold">{t('score')}: {score}</span>
                       </div>
                       
@@ -275,7 +275,7 @@ export default function NepalGKQuiz() {
                   {/* Quiz Content */}
                   {(shuffledQuestions.length === 0 && isMounted) ? (
                     <div className="text-center py-8">
-                      <p className="text-lg text-gray-600 dark:text-gray-300">
+                      <p className="text-lg text-gray-600">
                         {safeT('noQuestionsInCategory', 'No questions available in this category.')}
                       </p>
                       <GameButton
@@ -327,7 +327,7 @@ export default function NepalGKQuiz() {
       </div>
 
       {/* Mobile Footer */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-2 z-10">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white  border-t border-gray-200 p-2 z-10">
         <div className="flex justify-between items-center">
           <GameButton
             onClick={restartGame}

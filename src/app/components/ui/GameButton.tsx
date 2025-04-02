@@ -37,8 +37,8 @@ const GameButton: React.FC<GameButtonProps> = ({
     secondary: 'bg-purple-600 hover:bg-purple-700 text-white border-purple-600',
     success: 'bg-green-500 hover:bg-green-600 text-white border-green-500',
     danger: 'bg-red-500 hover:bg-red-600 text-white border-red-500',
-    neutral: 'bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 border-gray-300 dark:border-gray-600',
-    grayNeutral: 'bg-blue-200 hover:bg-gray400 text-gray-800 border-1 focus:border-blue-600 hover:text-bold dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 border-gray-300 dark:border-gray-600',
+    neutral: 'bg-gray-200 hover:bg-gray-300 text-gray-800 border-gray-300',
+    grayNeutral: 'bg-blue-200 hover:bg-gray400 text-gray-800 border-1 focus:border-blue-600 hover:text-bold border-gray-300',
   };
 
   // Styles mapped by size

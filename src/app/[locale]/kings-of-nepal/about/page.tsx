@@ -115,8 +115,8 @@ export default function KingsOfNepalBlog() {
               <h1 className="inline text-4xl md:text-5xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-6">
                 {mainTranslations.kingTitle}
               </h1>
-              <div className="bg-white dark:bg-gray-800 mt-4 max-w-3xl mb-8">
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <div className="bg-white  mt-4 max-w-3xl mb-8">
+                <p className="text-lg text-gray-700 leading-relaxed">
                   {mainTranslations.kingSubHeading}
                 </p>
               </div>
@@ -139,22 +139,22 @@ export default function KingsOfNepalBlog() {
                   </div>
                   
                   {/* King Card - without stark border */}
-                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+                  <div className="bg-white  rounded-lg shadow-md overflow-hidden">
                     <div className="md:flex">
                       {/* Text Content - Left Side */}
                       <div className="p-6 md:w-1/2">
-                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                        <h2 className="text-2xl font-bold text-gray-900  mb-3">
                           {kingTranslations[kingId]?.title}
                         </h2>
                         
                         <div className="mb-4">
-                          <span className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm font-medium px-3 py-1 rounded-full">
+                          <span className="inline-block bg-blue-100  text-blue-800  text-sm font-medium px-3 py-1 rounded-full">
                             {kingTranslations[kingId]?.reignYears}
                           </span>
                         </div>
                         
-                        <div className="prose prose-blue max-w-none dark:prose-invert">
-                          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <div className="prose prose-blue max-w-none ">
+                          <p className="text-gray-700 leading-relaxed">
                             {kingTranslations[kingId]?.description}
                           </p>
                         </div>

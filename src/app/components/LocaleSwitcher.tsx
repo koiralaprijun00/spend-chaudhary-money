@@ -31,7 +31,7 @@ export default function LocaleSwitcher() {
     <button
     onClick={switchLocale}
     disabled={isPending}
-    className=" px-4 py-2 dark:bg-white border border-orange-400 dark:text-orange-70 text-orange-700 text-sm md:text-md font-medium rounded-lg shadow-sm hover:text-orange-500 transition-all duration-300"
+    className=" px-4 py-2 box-border border-b border-t border-l border-r hover:border-orange-700 border-orange-200 text-orange-400 hover:text-orange-700 text-xs font-medium rounded-md shadow-md hover:shadow-4xl transition-all duration-300"
   >
     <span>
       {currentLocale === 'en' ? 'नेपाली' : 'English'}

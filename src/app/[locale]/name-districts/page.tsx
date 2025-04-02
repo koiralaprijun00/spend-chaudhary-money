@@ -283,12 +283,12 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
           <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
             {/* Left column - Title and Info */}
             <div className="md:w-1/3 space-y-6">
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+              <div className="bg-white rounded-xl shadow-lg p-6">
                 <div className="mb-6">
                   <h1 className="text-3xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
                     {safeT('title', 'Nepal Districts Quiz')}
                   </h1>
-                  <p className="text-left text-gray-600 dark:text-gray-300">
+                  <p className="text-left text-gray-600">
                     {safeT('quizInstructions', 'You have 5 minutes to name all kings who ruled Nepal from 1743 to 2008.', { kingCount: 25 })}
                   </p>
                 </div>
@@ -297,14 +297,14 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                 <div className="mb-6">
                   <h2 className="text-sm mb-2">Progress</h2>
                   <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
-                    <div className="bg-white dark:bg-gray-800 rounded-md p-2 flex justify-between items-center">
+                    <div className="bg-white rounded-md p-2 flex justify-between items-center">
                       <div className="flex items-center">
                         <span className="text-xl font-bold">{correctGuesses.length}</span>
-                        <span className="ml-2 text-gray-600 dark:text-gray-300">/ {TOTAL_DISTRICTS}</span>
+                        <span className="ml-2 text-gray-600">/ {TOTAL_DISTRICTS}</span>
                       </div>
                       
-                      <div className="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">
-                        <span className="font-mono text-gray-800 dark:text-gray-200">
+                      <div className="bg-gray-100 px-2 py-0.5 rounded-full">
+                        <span className="font-mono text-gray-800 ">
                           {getCompletionPercentage()}%
                         </span>
                       </div>
@@ -316,7 +316,7 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                 <div className="mb-6">
                   <h2 className="text-sm mb-2">Time Remaining</h2>
                   <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
-                    <div className="bg-white dark:bg-gray-800 rounded-md p-2 flex justify-between items-center">
+                    <div className="bg-white rounded-md p-2 flex justify-between items-center">
                       <div className="flex items-center">
                         <span className="text-xl font-bold font-mono">{formatTime(timeLeft)}</span>
                       </div>
@@ -338,14 +338,14 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                   <div className="flex items-center gap-3">
                     <div className="flex-1">
                       <h2 className="text-sm mb-1">Current Streak</h2>
-                      <div className="bg-blue-100 dark:bg-blue-900/30 rounded-md p-2">
-                        <span className="text-lg font-bold text-blue-800 dark:text-blue-400">{streak}</span>
+                      <div className="bg-blue-100 rounded-md p-2">
+                        <span className="text-lg font-bold text-blue-800">{streak}</span>
                       </div>
                     </div>
                     <div className="flex-1">
                       <h2 className="text-sm mb-1">Best Streak</h2>
-                      <div className="bg-orange-100 dark:bg-orange-900/30 rounded-md p-2">
-                        <span className="text-lg font-bold text-orange-800 dark:text-orange-400">{bestStreak}</span>
+                      <div className="bg-orange-100 rounded-md p-2">
+                        <span className="text-lg font-bold text-orange-800 ">{bestStreak}</span>
                       </div>
                     </div>
                   </div>
@@ -367,7 +367,7 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
             {/* Right column - Quiz Content */}
             <div className="md:w-2/3">
               <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
+                <div className="bg-white rounded-lg p-6">
                   
                   {/* Active game */}
                   {gameStarted && !showResults && randomizedDistricts.length > 0 && (
@@ -397,8 +397,8 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                       
                       {/* District image */}
                       <div className="mb-6">
-                        <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 dark:border-gray-700">
-                          <div className="district-display bg-gray-100 dark:bg-gray-900 p-4 flex justify-center items-center">
+                        <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 ">
+                          <div className="district-display bg-gray-100 p-4 flex justify-center items-center">
                             <div className="relative w-full h-48 md:h-64">
                               <Image
                                 src={randomizedDistricts[currentDistrictIndex].imagePath}
@@ -428,7 +428,7 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                           value={currentGuess}
                           onChange={(e) => setCurrentGuess(e.target.value)}
                           placeholder={safeT('guessingPlaceholder', 'Type district name...')}
-                          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                          className="w-full px-3 py-2 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 "
                           disabled={correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id)}
                         />
                       </form>
@@ -437,8 +437,8 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                       {feedback && (
                         <div className={`mb-4 p-2 rounded-lg text-center ${
                           feedback === safeT('incorrect', 'Incorrect') 
-                            ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' 
-                            : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                            ? 'bg-red-100 text-red-700' 
+                            : 'bg-green-100 text-green-700 '
                         }`}>
                           {feedback}
                         </div>
@@ -454,8 +454,8 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                               correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id)
                                 ? safeTDistricts(randomizedDistricts[currentDistrictIndex].id) === option
                                   ? 'bg-green-500 text-white'
-                                  : 'bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-400'
-                                : 'bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'
+                                  : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                                : 'bg-white border border-gray-300 hover:bg-gray-50 '
                             }`}
                             disabled={correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id)}
                           >
@@ -465,7 +465,7 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                       </div>
                       
                       {/* Pagination */}
-                      <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 p-2">
+                      <div className="overflow-hidden rounded-lg border border-gray-200  p-2">
                         <div
                           ref={paginationRef}
                           className="flex items-center gap-1 overflow-x-auto whitespace-nowrap py-1"
@@ -480,7 +480,7 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                                   ? 'bg-green-500 text-white'
                                   : currentDistrictIndex === index
                                   ? 'bg-blue-500 text-white'
-                                  : 'bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600'
+                                  : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
                               }`}
                             >
                               {isNepali ? toNepaliNumerals(index + 1) : index + 1}
@@ -500,27 +500,27 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                         </h2>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
-                            <h3 className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                          <div className="bg-gray-50  rounded-lg p-4">
+                            <h3 className="text-sm text-gray-500  mb-1">
                               {safeT('finalScore', 'Final Score')}
                             </h3>
-                            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                            <div className="text-2xl font-bold text-blue-600 ">
                               {calculateScore()}
                             </div>
                           </div>
-                          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
-                            <h3 className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                          <div className="bg-gray-50 rounded-lg p-4">
+                            <h3 className="text-sm text-gray-500  mb-1">
                               {safeT('bestStreak', 'Best Streak')}
                             </h3>
-                            <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
+                            <div className="text-2xl font-bold text-orange-600">
                               {bestStreak}
                             </div>
                           </div>
-                          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
-                            <h3 className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                          <div className="bg-gray-50 rounded-lg p-4">
+                            <h3 className="text-sm text-gray-500 mb-1">
                               {safeT('correctDistricts', 'Correct Districts')}
                             </h3>
-                            <div className="text-2xl font-bold text-green-600 dark:text-green-400">
+                            <div className="text-2xl font-bold text-green-60">
                               {correctGuesses.length}/{TOTAL_DISTRICTS}
                             </div>
                           </div>
@@ -529,14 +529,14 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                       
                       {correctGuesses.length > 0 && (
                         <div className="mb-6">
-                          <h3 className="text-lg font-medium mb-3 text-green-700 dark:text-green-500">
+                          <h3 className="text-lg font-medium mb-3 text-green-700">
                             {safeT('correctGuesses', 'Correct Guesses')} ({correctGuesses.length})
                           </h3>
                           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
                             {correctGuesses.map(id => {
                               const district = randomizedDistricts.find(d => d.id === id);
                               return district ? (
-                                <div key={id} className="bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 flex items-center p-2 rounded-md">
+                                <div key={id} className="bg-green-50 text-green-700 flex items-center p-2 rounded-md">
                                   <span className="mr-2">✓</span>
                                   <span>{safeTDistricts(district.id)}</span>
                                 </div>
@@ -548,14 +548,14 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                       
                       {correctGuesses.length < TOTAL_DISTRICTS && (
                         <div className="mb-6">
-                          <h3 className="text-lg font-medium mb-3 text-red-700 dark:text-red-500">
+                          <h3 className="text-lg font-medium mb-3 text-red-700">
                             {safeT('incorrectGuesses', 'Missed Districts')} ({TOTAL_DISTRICTS - correctGuesses.length})
                           </h3>
                           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
                             {randomizedDistricts
                               .filter(district => !correctGuesses.includes(district.id))
                               .map(district => (
-                                <div key={district.id} className="bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 flex items-center p-2 rounded-md">
+                                <div key={district.id} className="bg-red-50 text-red-70 flex items-center p-2 rounded-md">
                                   <span className="mr-2">✗</span>
                                   <span>{safeTDistricts(district.id)}</span>
                                 </div>

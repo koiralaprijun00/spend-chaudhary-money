@@ -166,15 +166,15 @@ export default function KingsOfNepalQuiz() {
           <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
             {/* Left Column - Title and Instructions */}
             <div className="md:w-1/3 space-y-6">
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+              <div className="bg-white  rounded-xl shadow-lg p-6">
                 <div className="mb-6">
                   <h1 className="text-3xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
                     {safeT('kingQuizTitle', 'Write all Kings of Nepal Quiz')}
                   </h1>
-                  <p className="text-left text-gray-600 dark:text-gray-300">
+                  <p className="text-left text-gray-600">
                   {safeT('quizInstructions', `You have 5 minutes to name all ${sortedKings.length} kings who ruled Nepal from 1743 to 2008.`, { kingCount: sortedKings.length })}
                   </p>
-                  <p className="text-left text-gray-600 dark:text-gray-300 mt-2">
+                  <p className="text-left text-gray-600  mt-2">
                     {safeT('typeNamesInstruction', 'Type the names of the kings in the input field.')}
                   </p>
                 </div>
@@ -182,14 +182,14 @@ export default function KingsOfNepalQuiz() {
                 <div className="mb-6">
                   <h2 className="text-sm mb-2">Progress</h2>
                   <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
-                    <div className="bg-white dark:bg-gray-800 rounded-md p-2 flex justify-between items-center">
+                    <div className="bg-white  rounded-md p-2 flex justify-between items-center">
                       <div className="flex items-center">
                         <span className="text-xl font-bold">{correctAnswers.length}</span>
-                        <span className="ml-2 text-gray-600 dark:text-gray-300">/ {sortedKings.length}</span>
+                        <span className="ml-2 text-gray-600 ">/ {sortedKings.length}</span>
                       </div>
                       
-                      <div className="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">
-                        <span className="font-mono text-gray-800 dark:text-gray-200">
+                      <div className="bg-gray-100  px-2 py-0.5 rounded-full">
+                        <span className="font-mono text-gray-800 ">
                           {Math.round(percentComplete)}%
                         </span>
                       </div>
@@ -209,7 +209,7 @@ export default function KingsOfNepalQuiz() {
                 {gameStarted && !gameOver && (
                   <button
                     onClick={handleGiveUp}
-                    className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 font-medium py-2 px-4 rounded-md transition"
+                    className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800  font-medium py-2 px-4 rounded-md transition"
                   >
                     {safeT('giveUpButton', 'Give Up')}
                   </button>
@@ -248,14 +248,14 @@ export default function KingsOfNepalQuiz() {
             {/* Right Column - Game Content */}
             <div className="md:w-2/3">
               <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
+                <div className="bg-white rounded-lg p-6">
                   
                   {/* Active game */}
                   {gameStarted && !gameOver && (
                     <div>
                       <div className="mb-4">
                         <h2 className="text-xl font-bold mb-2">{t('KingsofNepalTitle')}</h2>
-                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                        <div className="w-full bg-gray-200 rounded-full h-2">
                           <div 
                             className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
                             style={{ width: `${percentComplete}%` }}
@@ -270,32 +270,32 @@ export default function KingsOfNepalQuiz() {
                           value={input}
                           onChange={handleInputChange}
                           placeholder={safeT('inputPlaceholder', 'Type a king\'s name...')}
-                          className="w-full p-3 text-lg border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                          className="w-full p-3 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
                           autoComplete="off"
                           autoCapitalize="off"
                           spellCheck="false"
                         />
                       </div>
                       
-                      <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
-                        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                          <thead className="bg-gray-50 dark:bg-gray-800">
+                      <div className="overflow-hidden rounded-lg border border-gray-200 ">
+                        <table className="min-w-full divide-y divide-gray-200 ">
+                          <thead className="bg-gray-50 ">
                             <tr>
-                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('numberSymbol', '#')}</th>
-                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('reignLabel', 'Reign')}</th>
-                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('kingNameLabel', 'King')}</th>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">{safeT('numberSymbol', '#')}</th>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">{safeT('reignLabel', 'Reign')}</th>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">{safeT('kingNameLabel', 'King')}</th>
                             </tr>
                           </thead>
-                          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                          <tbody className="bg-white  divide-y divide-gray-200">
                             {sortedKings.map((king, index) => (
-                              <tr key={king.id} className={correctAnswers.includes(king.id) ? "bg-green-50 dark:bg-green-900/20" : ""}>
-                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{index + 1}</td>
-                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{king.reignStart} - {king.reignEnd}</td>
-                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
+                              <tr key={king.id} className={correctAnswers.includes(king.id) ? "bg-green-50" : ""}>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 ">{index + 1}</td>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 ">{king.reignStart} - {king.reignEnd}</td>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 ">
                                   {correctAnswers.includes(king.id) ? (
                                     <span className="font-medium">{king.name}</span>
                                   ) : (
-                                    <span className="text-gray-400 dark:text-gray-600">{safeT('unguessedPlaceholder', '?????')}</span>
+                                    <span className="text-gray-400">{safeT('unguessedPlaceholder', '?????')}</span>
                                   )}
                                 </td>
                               </tr>
@@ -317,31 +317,31 @@ export default function KingsOfNepalQuiz() {
                               ? safeT('perfectScoreHeading', 'Perfect Score!')
                               : safeT('timesUpHeading', 'Game Over!')}
                         </h2>
-                        <p className="text-gray-600 dark:text-gray-300">
+                        <p className="text-gray-600">
                           You got {correctAnswers.length} out of {sortedKings.length} kings correct.
                         </p>
                       </div>
                       
-                      <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 mb-6">
-                        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                          <thead className="bg-gray-50 dark:bg-gray-800">
+                      <div className="overflow-hidden rounded-lg border border-gray-200 mb-6">
+                        <table className="min-w-full divide-y divide-gray-200">
+                          <thead className="bg-gray-50">
                             <tr>
-                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('numberSymbol', '#')}</th>
-                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('reignLabel', 'Reign')}</th>
-                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{safeT('kingNameLabel', 'King')}</th>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">{safeT('numberSymbol', '#')}</th>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">{safeT('reignLabel', 'Reign')}</th>
+                              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">{safeT('kingNameLabel', 'King')}</th>
                             </tr>
                           </thead>
-                          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                          <tbody className="bg-white divide-y divide-gray-20">
                             {sortedKings.map((king, index) => (
-                              <tr key={king.id} className={correctAnswers.includes(king.id) ? "bg-green-50 dark:bg-green-900/20" : "bg-red-50 dark:bg-red-900/20"}>
-                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{index + 1}</td>
-                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{king.reignStart} - {king.reignEnd}</td>
-                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200 font-medium">
+                              <tr key={king.id} className={correctAnswers.includes(king.id) ? "bg-green-50" : "bg-red-50"}>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 ">{index + 1}</td>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900 ">{king.reignStart} - {king.reignEnd}</td>
+                                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900  font-medium">
                                   {king.name}
                                   {correctAnswers.includes(king.id) ? (
-                                    <span className="ml-2 text-green-600 dark:text-green-400">✓</span>
+                                    <span className="ml-2 text-green-600 ">✓</span>
                                   ) : (
-                                    <span className="ml-2 text-red-600 dark:text-red-400">✗</span>
+                                    <span className="ml-2 text-red-600">✗</span>
                                   )}
                                 </td>
                               </tr>

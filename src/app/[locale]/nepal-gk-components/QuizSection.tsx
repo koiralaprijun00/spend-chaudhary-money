@@ -46,7 +46,7 @@ export default function QuizSection({
     return (
       <div className="text-left">
         <div className="relative mb-8">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2 pl-2">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 pl-2">
             {currentQuestion.question}
           </h2>
         </div>
@@ -56,7 +56,7 @@ export default function QuizSection({
             <button
               key={index}
               disabled={true}
-              className="relative overflow-hidden px-4 py-3 text-sm md:text-base font-semibold rounded-xl shadow-md bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 text-gray-800 dark:text-gray-200"
+              className="relative overflow-hidden px-4 py-3 text-sm md:text-base font-semibold rounded-xl shadow-md bg-white border border-gray-200 text-gray-800"
             >
               {option}
             </button>
@@ -71,7 +71,7 @@ export default function QuizSection({
       {/* Question with category badge on the right */}
       <div className="relative mb-8">
         <div className="flex justify-between items-start">
-          <h2 className="text-xl md:text-2xl font-lora text-gray-800 dark:text-gray-100 mb-2 pl-2 flex-1 pr-4">
+          <h2 className="text-xl md:text-2xl font-lora text-gray-800 mb-2 pl-2 flex-1 pr-4">
             {currentQuestion.question}
           </h2>
         </div>
@@ -90,10 +90,10 @@ export default function QuizSection({
                   ? 'bg-gradient-to-br from-green-600 to-green-500 text-white' // Correct answer
                   : option === selectedOption
                     ? 'bg-gradient-to-br from-red-600 to-red-500 text-white' // Wrong answer selected
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed' // Other options
+                    : 'bg-gray-200 text-gray-500 cursor-not-allowed' // Other options
                 : option === selectedOption
                   ? 'bg-gradient-to-r from-blue-600 to-indigo-500 text-white' // Selected but not submitted
-                  : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:border-blue-300 dark:hover:border-blue-500' // Unselected
+                  : 'bg-white border border-gray-200  text-gray-800  hover:border-blue-300' // Unselected
             }`}
           >
             {option}

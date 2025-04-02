@@ -58,7 +58,7 @@ const QuizSection: React.FC<QuizSectionProps> = ({
         <div className="clues-container">
           <h3 className="text-m mb-2">Clues:</h3>
           {/* Single clue container with fixed height and shuffle button */}
-          <div className="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg min-h-[80px] flex items-center justify-between">
+          <div className="p-3 bg-gray-100 rounded-lg min-h-[80px] flex items-center justify-between">
             <div>
               {/* Only show the current clue based on clueIndex */}
               {currentFestival.clues[clueIndex]}

@@ -15,7 +15,7 @@ const ProgressBar = ({ total, spent }: { total: number; spent: number }) => {
           }}
         />
       </div>
-      <p className="text-red-800 dark:text-red">{`Spent: NPR ${spent.toLocaleString()} / Total: NPR ${total.toLocaleString()} (${percentage}%)`}</p>
+      <p className="text-red-800">{`Spent: NPR ${spent.toLocaleString()} / Total: NPR ${total.toLocaleString()} (${percentage}%)`}</p>
     </div>
   )
 }

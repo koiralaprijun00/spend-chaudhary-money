@@ -83,7 +83,7 @@ export default function Home() {
           )}
         </div>
       </div>
-      <div className="md:block hidden p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg sticky top-5 h-screen overflow-y-auto">
+      <div className="md:block hidden p-6 bg-white rounded-lg shadow-lg sticky top-5 h-screen overflow-y-auto">
         <div className="flex flex-col h-full">
           <SocialShare summaryRef={purchasesRef} totalSpent={totalSpent} />
           <div className="flex flex-col h-full">
@@ -92,24 +92,24 @@ export default function Home() {
                 Receipt
               </h1>
               <p className="flex justify-between text-xl font-bold text-right">
-                <span className="block text-gray-600 dark:text-gray-300">Total Spent:</span> 
-                <span className="text-blue-600 dark:text-blue-400">NPR {totalSpent.toLocaleString()}</span>
+                <span className="block text-gray-600">Total Spent:</span> 
+                <span className="text-blue-600">NPR {totalSpent.toLocaleString()}</span>
               </p>
             </div>
             <div className="overflow-y-auto flex-grow max-h-screen">
               {Object.keys(purchases).length === 0
-                ? <p className="text-gray-500 dark:text-gray-400">No purchases yet!</p>
+                ? <p className="text-gray-500">No purchases yet!</p>
                 : initialProducts.filter(product => purchases[product.id]).map(product =>
-                    <div key={product.id} className="mb-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div key={product.id} className="mb-4 p-3 bg-gray-50 rounded-lg">
                       <div className="flex justify-between items-center">
-                        <div className="font-medium text-gray-800 dark:text-gray-200">
+                        <div className="font-medium text-gray-800">
                           {product.name}
                         </div>
-                        <div className="text-gray-500 dark:text-gray-400">
+                        <div className="text-gray-500">
                           x{purchases[product.id]}
                         </div>
                       </div>
-                      <div className="text-right mt-1 text-blue-600 dark:text-blue-400 font-bold">
+                      <div className="text-right mt-1 text-blue-600 font-bold">
                         NPR {(purchases[product.id] * product.price).toLocaleString()}
                       </div>
                     </div>
@@ -129,10 +129,10 @@ export default function Home() {
       {isReceiptModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-6">
           <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg w-full max-w-md">
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 relative">
+            <div className="bg-white rounded-lg p-6 relative">
               <button
                 onClick={() => setReceiptModalOpen(false)}
-                className="absolute top-4 right-5 text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 px-2 py-2 rounded-full focus:outline-none transition-colors"
+                className="absolute top-4 right-5 text-gray-500 hover:bg-gray-200 px-2 py-2 rounded-full focus:outline-none transition-colors"
               >
                 X
               </button>
@@ -141,23 +141,23 @@ export default function Home() {
                   Receipt
                 </h1>
                 <p className="flex justify-between text-xl font-bold text-right">
-                  <span className="block text-gray-600 dark:text-gray-300">Total Spent:</span> 
-                  <span className="text-blue-600 dark:text-blue-400">NPR {totalSpent.toLocaleString()}</span>
+                  <span className="block text-gray-60">Total Spent:</span> 
+                  <span className="text-blue-600">NPR {totalSpent.toLocaleString()}</span>
                 </p>
               </div>
               <div className="overflow-y-auto max-h-[60vh]">
                 {Object.keys(purchases).length === 0 ? (
-                  <p className="text-gray-500 dark:text-gray-400">No purchases yet!</p>
+                  <p className="text-gray-500">No purchases yet!</p>
                 ) : (
                   initialProducts
                     .filter((product) => purchases[product.id])
                     .map((product) => (
-                      <div key={product.id} className="mb-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                      <div key={product.id} className="mb-4 p-3 bg-gray-50 rounded-lg">
                         <div className="flex justify-between items-center">
-                          <div className="font-medium text-gray-800 dark:text-gray-200">{product.name}</div>
-                          <div className="text-gray-500 dark:text-gray-400">x{purchases[product.id]}</div>
+                          <div className="font-medium text-gray-800">{product.name}</div>
+                          <div className="text-gray-500">x{purchases[product.id]}</div>
                         </div>
-                        <div className="text-right mt-1 text-blue-600 dark:text-blue-400 font-bold">
+                        <div className="text-right mt-1 text-blue-600 font-bold">
                           NPR {(purchases[product.id] * product.price).toLocaleString()}
                         </div>
                       </div>

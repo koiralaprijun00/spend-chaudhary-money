@@ -63,7 +63,7 @@ const QuizSection: React.FC<QuizSectionProps> = ({
       <div>
         <h3 className="text-m mb-2">Clues:</h3>
         {/* Single clue container with fixed height and shuffle button */}
-        <div className="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg min-h-[80px] flex items-center justify-between">
+        <div className="p-3 bg-gray-100 rounded-lg min-h-[80px] flex items-center justify-between">
           <div>
             {/* Only show the current clue based on clueIndex */}
             {currentFestival.clues[clueIndex]}
@@ -109,8 +109,8 @@ const AnswerReveal: React.FC<AnswerRevealProps> = ({
   if (!isAnswered) return null;
   
   return (
-    <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-      <div className={`p-4 rounded-lg mb-4 ${isCorrect ? 'bg-green-100 dark:bg-green-900' : 'bg-red-100 dark:bg-red-900'}`}>
+    <div className="mt-6 pt-6 border-t border-gray-200 ">
+      <div className={`p-4 rounded-lg mb-4 ${isCorrect ? 'bg-green-100' : 'bg-red-100'}`}>
         <h3 className="text-xl font-bold mb-2">
           {isCorrect ? '✓ Correct!' : '✗ Not Quite!'}
         </h3>
@@ -121,7 +121,7 @@ const AnswerReveal: React.FC<AnswerRevealProps> = ({
       
       <div className="mb-4">
       <h3 className="text-xl font-semibold mb-2">
-  <span className="text-md font-normal text-gray-600 dark:text-gray-400 mr-1">Correct Answer:</span> 
+  <span className="text-md font-normal text-gray-600  mr-1">Correct Answer:</span> 
   {currentFestival.name}
 </h3>
         <p>{currentFestival.fact}</p>
@@ -152,16 +152,16 @@ const MobileHeader: React.FC<{
     <div className="md:hidden flex justify-between items-center mb-4">
       <div className="flex items-center">
         <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
-          <div className="bg-white dark:bg-gray-800 rounded-md px-2 py-1 flex items-center">
+          <div className="bg-white rounded-md px-2 py-1 flex items-center">
             <span className="text-xl font-bold">{score}</span>
-            <span className="ml-1 text-xs text-gray-600 dark:text-gray-300">{t('points')}</span>
+            <span className="ml-1 text-xs text-gray-600">{t('points')}</span>
           </div>
         </div>
       </div>
       
       {gameMode === 'timed' && (
-        <div className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full">
-          <span className={`font-mono ${timeLeft <= 10 ? 'text-red-500' : 'text-gray-800 dark:text-gray-200'}`}>
+        <div className="bg-gray-100 px-2 py-1 rounded-full">
+          <span className={`font-mono ${timeLeft <= 10 ? 'text-red-500' : 'text-gray-800 '}`}>
             {timeLeft}s
           </span>
         </div>
@@ -177,7 +177,7 @@ const MobileFooter: React.FC<{
   restartGame: () => void;
 }> = ({ gameMode, switchGameMode, restartGame }) => {
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-2 z-10">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 z-10">
       <div className="flex justify-between items-center">
         <div className="flex gap-1">
           <GameButton 
@@ -433,12 +433,12 @@ export default function Home() {
             
             {/* Left column - Title, Game Mode, Score - Hidden on mobile */}
             <div className="hidden md:block md:w-1/3 space-y-6">
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+              <div className="bg-white rounded-xl shadow-lg p-6">
                 <div className="mb-8">
                   <h1 className="text-3xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
                     Nepali Festival Quiz
                   </h1>
-                  <p className="text-left text-gray-600 dark:text-gray-300">
+                  <p className="text-left text-gray-600">
                     Test your knowledge of Nepali festivals!
                   </p>
                 </div>
@@ -472,15 +472,15 @@ export default function Home() {
                 <div>
                   <h2 className="text-sm mb-3">Score</h2>
                   <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
-                    <div className="bg-white dark:bg-gray-800 rounded-md p-2 flex justify-between items-center">
+                    <div className="bg-white rounded-md p-2 flex justify-between items-center">
                       <div className="flex items-center">
                         <span className="text-3xl font-bold">{score}</span>
-                        <span className="ml-2 text-gray-600 dark:text-gray-300">{t('points')}</span>
+                        <span className="ml-2 text-gray-600">{t('points')}</span>
                       </div>
                       
                       {gameMode === 'timed' && (
-                        <div className="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">
-                          <span className={`font-mono ${timeLeft <= 10 ? 'text-red-500' : 'text-gray-800 dark:text-gray-200'}`}>
+                        <div className="bg-gray-100 px-2 py-0.5 rounded-full">
+                          <span className={`font-mono ${timeLeft <= 10 ? 'text-red-500' : 'text-gray-800 '}`}>
                             {timeLeft}s
                           </span>
                         </div>
@@ -516,7 +516,7 @@ export default function Home() {
             {/* Right column - Quiz Content - Full width on mobile */}
             <div className="md:w-2/3 w-full">
               <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-4 md:p-6">
+                <div className="bg-white rounded-lg p-4 md:p-6">
                   <QuizSection
                     currentFestival={currentFestival}
                     clueIndex={clueIndex}

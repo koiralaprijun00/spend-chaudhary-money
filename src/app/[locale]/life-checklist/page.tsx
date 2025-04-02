@@ -116,12 +116,12 @@ export default function NepalChecklistPage() {
           <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
             {/* Left column - Title, Progress, Actions */}
             <div className="hidden md:block md:w-1/3 space-y-6 sticky top-8">
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+              <div className="bg-white rounded-xl shadow-lg p-6">
                 <div className="mb-8">
                   <h1 className="text-3xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
                     {safeT(mainT, 'nepalChecklist.navbarTitle', 'Nepal Life Checklist')}
                   </h1>
-                  <p className="text-left text-gray-600 dark:text-gray-300">
+                  <p className="text-left text-gray-600">
                     {safeT(mainT, 'nepalChecklist.subtitle', 'Track your journey in Nepal')}
                   </p>
                 </div>
@@ -130,14 +130,14 @@ export default function NepalChecklistPage() {
                 <div>
                   <h2 className="text-sm mb-3">Progress</h2>
                   <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
-                    <div className="bg-white dark:bg-gray-800 rounded-md p-2 flex justify-between items-center">
+                    <div className="bg-white rounded-md p-2 flex justify-between items-center">
                       <div className="flex items-center">
                         <span className="text-3xl font-bold">{stats.completedItems}</span>
-                        <span className="ml-2 text-gray-600 dark:text-gray-300">/ {stats.totalItems}</span>
+                        <span className="ml-2 text-gray-600">/ {stats.totalItems}</span>
                       </div>
                       
-                      <div className="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">
-                        <span className="font-mono text-gray-800 dark:text-gray-200">
+                      <div className="bg-gray-100 px-2 py-0.5 rounded-full">
+                        <span className="font-mono text-gray-800 ">
                           {stats.percentComplete}%
                         </span>
                       </div>
@@ -173,7 +173,7 @@ export default function NepalChecklistPage() {
             {/* Right column - Checklist Items */}
             <div className="md:w-2/3 w-full">
               <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-4 md:p-6 max-h-[calc(100vh-4rem)] overflow-y-auto">
+                <div className="bg-white rounded-lg p-4 md:p-6 max-h-[calc(100vh-4rem)] overflow-y-auto">
                   {/* Mobile header */}
                   <div className="md:hidden mb-6">
                     <h1 className="text-2xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
@@ -204,8 +204,8 @@ export default function NepalChecklistPage() {
                         onClick={() => handleToggleItem(item.id)}
                         className={`p-4 rounded-lg border-2 transition-all cursor-pointer hover:scale-105 ${
                           userProgress[item.id]
-                            ? 'bg-green-50 dark:bg-green-900/20 border-green-500'
-                            : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-300'
+                            ? 'bg-green-50  border-green-500'
+                            : 'bg-white  border-gray-200 hover:border-blue-300'
                         }`}
                       >
                         <div className="flex items-start space-x-4">
@@ -226,14 +226,14 @@ export default function NepalChecklistPage() {
                                 </svg>
                               </div>
                             ) : (
-                              <div className="w-6 h-6 border-2 border-gray-300 dark:border-gray-600 rounded-full"></div>
+                              <div className="w-6 h-6 border-2 border-gray-300 rounded-full"></div>
                             )}
                           </div>
                           <div>
-                            <h3 className="text-lg font-lora font-semibold mb-2 text-gray-900 dark:text-gray-100">
+                            <h3 className="text-lg font-lora font-semibold mb-2 text-gray-900">
                               {item.title}
                             </h3>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm">
+                            <p className="text-gray-600 text-sm">
                               {item.description}
                             </p>
                           </div>
@@ -260,7 +260,7 @@ export default function NepalChecklistPage() {
       </div>
 
       {/* Mobile Footer */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-2 z-10">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 z-10">
         <div className="flex justify-between items-center">
           <GameButton
             onClick={restartProgress}

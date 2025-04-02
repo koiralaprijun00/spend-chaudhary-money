@@ -100,17 +100,17 @@ export default function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center backdrop-blur-sm transition-all duration-300">
       <div
         ref={modalRef}
-        className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-md mx-4 overflow-hidden transform transition-all duration-300"
+        className="bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 overflow-hidden transform transition-all duration-300"
       >
         {submitted ? (
           <div className="p-6 text-center">
-            <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div className="w-16 h-16 bg-green-100  rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-green-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">Thank You!</h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <h3 className="text-xl font-bold text-gray-800 mb-2">Thank You!</h3>
+            <p className="text-gray-600 ">
               Your feedback has been submitted. We appreciate your input!
             </p>
           </div>
@@ -141,7 +141,7 @@ export default function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               )}
               
               <div className="mb-4">
-                <label htmlFor="feedback" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label htmlFor="feedback" className="block text-sm font-medium text-gray-700 mb-1">
                   Your Feedback
                 </label>
                 <textarea
@@ -149,14 +149,14 @@ export default function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   value={feedback}
                   onChange={(e) => setFeedback(e.target.value)}
                   placeholder="Tell us what you think about Piromomo..."
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   rows={4}
                   required
                 ></textarea>
               </div>
               
               <div className="mb-6">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700  mb-1">
                   Email (optional)
                 </label>
                 <input
@@ -165,7 +165,7 @@ export default function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
               </div>
               
@@ -173,7 +173,7 @@ export default function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 <button
                   type="button"
                   onClick={onClose}
-                  className="mr-2 px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                  className="mr-2 px-4 py-2 text-gray-700 hover:text-gray-900 "
                 >
                   Cancel
                 </button>
