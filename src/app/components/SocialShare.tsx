@@ -36,7 +36,7 @@ Can you do better? ğŸ˜ Play now and see how fast you can drain his fortune! ğŸ”
       {/* Twitter button */}
       <button
         onClick={shareOnTwitter}
-        className="flex items-center justify-center border-2 border-gray-400  hover:border-blue-600 text-blue-500 hover:text-blue-400 font-medium py-1.5 px-3 rounded-sm text-sm transition duration-300 ease-in-out"
+        className="flex items-center justify-center border border-gray-400  hover:border-gray-800 text-blue-500 hover:text-blue-400 font-medium py-1.5 px-3 rounded-sm text-sm transition duration-300 ease-in-out"
       >
         <FontAwesomeIcon icon={faTwitter} className="text-xs" />
       </button>
@@ -44,7 +44,7 @@ Can you do better? ğŸ˜ Play now and see how fast you can drain his fortune! ğŸ”
       {/* Facebook button */}
       <button
         onClick={shareOnFacebook}
-        className="flex items-center justify-center border-2 border-gray-400  hover:border-blue-600 text-blue-700 hover:text-blue-800 font-medium py-1.5 px-3 rounded-sm text-sm transition duration-300 ease-in-out"
+        className="flex items-center justify-center border border-gray-400  hover:border-gray-800 text-blue-700 hover:text-blue-800 font-medium py-1.5 px-3 rounded-sm text-sm transition duration-300 ease-in-out"
       >
         <FontAwesomeIcon icon={faFacebookF} className="text-xs" />
       </button>

@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import { FiCheck } from 'react-icons/fi';
+
 
 interface QuizSectionProps {
   currentQuestion: {
@@ -101,9 +103,7 @@ export default function QuizSection({
             {/* Show checkmark for correct answer when answered */}
             {isAnswered && option === currentQuestion.correctAnswer && (
               <div className="absolute top-2 right-2">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
+                <FiCheck className="w-5 h-5 text-white" />
               </div>
             )}
           </button>

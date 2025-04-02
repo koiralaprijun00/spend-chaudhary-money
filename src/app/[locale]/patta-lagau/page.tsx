@@ -8,6 +8,10 @@ import { Location, NEPAL_BOUNDS } from '../../data/geo-nepal/geo-data';
 import Link from 'next/link';
 import Image from 'next/image';
 import AdSenseGoogle from '../../components/AdSenseGoogle'; // Import AdSense component
+import { FiPlus } from 'react-icons/fi';
+import { BiRefresh } from 'react-icons/bi';
+import { BiMap } from 'react-icons/bi';
+import { IoWarningOutline } from 'react-icons/io5';
 
 // Dynamically import the Map component
 const Map = dynamic(() => import('../../components/GeoMap').then(mod => mod.default), { 
@@ -274,20 +278,7 @@ export default function GeoNepalGame() {
             href="/submit-location" 
             className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 text-white font-medium rounded-md shadow-md hover:shadow-lg transition-all duration-200"
           >
-            <svg 
-              className="w-5 h-5 mr-2" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth="2" 
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
+           <FiPlus className="w-5 h-5 mr-2" />
             Submit a Location
           </Link>
         </div>
@@ -309,9 +300,7 @@ export default function GeoNepalGame() {
         {error && (
           <div className="h-full w-full flex items-center justify-center">
             <div className="text-center bg-red-50 p-8 rounded-lg max-w-md shadow-xl border border-red-200">
-              <svg className="w-16 h-16 text-red-500 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
+            <IoWarningOutline className="w-16 h-16 text-red-500 mx-auto mb-6" />
               <h2 className="text-xl font-semibold text-red-700 mb-3">Something went wrong</h2>
               <p className="text-red-600 mb-6">{error}</p>
               <button
@@ -420,9 +409,7 @@ export default function GeoNepalGame() {
                         Total: {totalScore}
                       </div>
                       <div className="text-sm text-center mt-2 text-gray-700 font-medium flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                        </svg>
+                      <BiMap className="h-4 w-4 mr-1 text-blue-500" />
                         Distance: {distance.toFixed(1)} km
                       </div>
                     </div>
@@ -559,9 +546,7 @@ export default function GeoNepalGame() {
                         className="flex-1 py-3 px-2 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg hover:shadow-lg transition font-bold text-sm"
                       >
                         <span className="flex items-center justify-center">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                          </svg>
+                        <BiRefresh className="h-4 w-4 mr-1" />
                           Play Again
                         </span>
                       </button>
@@ -570,9 +555,7 @@ export default function GeoNepalGame() {
                         href="/submit-location" 
                         className="flex-1 flex items-center justify-center py-3 px-2 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg hover:shadow-lg transition font-bold text-sm"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                        </svg>
+                       <FiPlus className="h-4 w-4 mr-1" />
                         Add Your Location 
                       </Link>
                     </div>

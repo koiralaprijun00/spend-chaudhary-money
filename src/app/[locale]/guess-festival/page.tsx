@@ -4,6 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { festivalAssets } from '../../data/guess-festival/festival-assets';
 import AdSenseGoogle from '../../components/AdSenseGoogle';
 import GameButton from '../../components/ui/GameButton';
+import { FiRefreshCw } from 'react-icons/fi';
   
 // Define TypeScript interface for the festival assets
 type FestivalId = keyof typeof festivalAssets;
@@ -76,9 +77,7 @@ const QuizSection: React.FC<QuizSectionProps> = ({
               size="sm"
               className="ml-3 flex-shrink-0"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
-              </svg>
+<FiRefreshCw width="16" height="16" />
             </GameButton>
           )}
         </div>

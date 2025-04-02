@@ -7,6 +7,7 @@ import LocaleSwitcher from "./LocaleSwitcher"
 import { useTranslations } from 'next-intl';
 import { FaTwitter } from "react-icons/fa"
 import { FaInstagram } from "react-icons/fa"
+import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 
 const Navbar = () => {
     const t = useTranslations('Translations');
@@ -117,21 +118,19 @@ const Navbar = () => {
 
                         {/* Hamburger menu button - visible only on mobile */}
                         <button 
-                            ref={buttonRef}
-                            className="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-md p-1"
-                            onClick={toggleMenu}
-                            aria-expanded={isMenuOpen}
-                            aria-controls="mobile-menu"
-                            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                        >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                {isMenuOpen ? (
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                ) : (
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                                )}
-                            </svg>
-                        </button>
+    ref={buttonRef}
+    className="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-md p-1"
+    onClick={toggleMenu}
+    aria-expanded={isMenuOpen}
+    aria-controls="mobile-menu"
+    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+>
+    {isMenuOpen ? (
+        <RiCloseLine className="w-6 h-6" />
+    ) : (
+        <RiMenu3Line className="w-6 h-6" />
+    )}
+</button>
                     </div>
                 </div>
 

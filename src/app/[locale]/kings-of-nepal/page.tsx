@@ -1,12 +1,10 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import AdSenseGoogle from '../../components/AdSenseGoogle';
-
-// Remove GameButton import if you haven't set it up yet
-// import GameButton from '../../components/ui/GameButton';
+import { FiShare2 } from 'react-icons/fi';
 
 interface King {
   id: string;
@@ -228,9 +226,7 @@ export default function KingsOfNepalQuiz() {
                       onClick={handleShareScore}
                       className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition flex items-center justify-center"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
-                      </svg>
+                     <FiShare2 className="h-5 w-5 mr-2" />
                       {safeT('shareScoreButton', 'Share Score')}
                     </button>
                   </div>
