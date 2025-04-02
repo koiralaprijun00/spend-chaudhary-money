@@ -37,7 +37,6 @@ export default {
     '3xl': '1920px',
     '4xl': '2560px',
   },
-  darkMode: 'class', // Use 'class' for manual control
   plugins: [
     require('@tailwindcss/typography')
   ],
