@@ -4,23 +4,11 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Oi&family=Oswald:wght@200..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family');
 
 
-
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
+/* Critical CSS that should be inlined in the head */
 :root {
   font-family: 'DM Sans', Arial, sans-serif;
 }
 
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
-}
 body {
   font-family: 'DM Sans', Arial, sans-serif;
 }
@@ -28,17 +16,34 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Phudu', Arial, sans-serif;
 }
-p{
+
+p {
   font-family: 'DM Sans', Arial, sans-serif;
+}
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+/* These utility classes can be loaded asynchronously as they might not be needed for initial render */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width: 768px) {
   body {
-    padding: 5 10px; 
-    margin: 5px auto; 
+    padding: 5px 10px;
+    margin: 5px auto;
   }
 }
 
+/* Non-critical animations that can be loaded after the initial render */
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
