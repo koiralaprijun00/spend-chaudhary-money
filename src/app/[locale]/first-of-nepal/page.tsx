@@ -48,10 +48,10 @@ interface FirstItem {
 
 export default function FirstsOfNepal() {
     const [searchTerm, setSearchTerm] = useState('');
-    const [hoveredItem, setHoveredItem] = useState<{
-        name: string;
-        position: { x: number; y: number };
-    } | null>(null);
+    // const [hoveredItem, setHoveredItem] = useState<{
+    //     name: string;
+    //     position: { x: number; y: number };
+    // } | null>(null);
     const gridRef = useRef<HTMLDivElement>(null);
 
     // For UI translations
@@ -82,25 +82,25 @@ export default function FirstsOfNepal() {
         }
     );
 
-    const handleMouseEnter = (item: FirstItem, e: React.MouseEvent<HTMLDivElement>) => {
-        if (gridRef.current) {
-            const gridRect = gridRef.current.getBoundingClientRect();
-            const cardRect = e.currentTarget.getBoundingClientRect();
+    // const handleMouseEnter = (item: FirstItem, e: React.MouseEvent<HTMLDivElement>) => {
+    //     if (gridRef.current) {
+    //         const gridRect = gridRef.current.getBoundingClientRect();
+    //         const cardRect = e.currentTarget.getBoundingClientRect();
             
-            // Position the image to the right of the card, or left if there's not enough space
-            const spaceRight = window.innerWidth - cardRect.right;
-            const x = spaceRight > 300 
-                ? cardRect.right - gridRect.left + -100
-                : cardRect.left - gridRect.left - 265;
+    //         // Position the image to the right of the card, or left if there's not enough space
+    //         const spaceRight = window.innerWidth - cardRect.right;
+    //         const x = spaceRight > 300 
+    //             ? cardRect.right - gridRect.left + -100
+    //             : cardRect.left - gridRect.left - 265;
             
-            const y = cardRect.top - gridRect.top - 150;
+    //         const y = cardRect.top - gridRect.top - 150;
             
-            setHoveredItem({
-                name: item.name,
-                position: { x, y }
-            });
-        }
-    };
+    //         setHoveredItem({
+    //             name: item.name,
+    //             position: { x, y }
+    //         });
+    //     }
+    // };
 
     return (
         <div className="min-h-screen w-full">
@@ -192,8 +192,8 @@ export default function FirstsOfNepal() {
                                             </div>
                                             <motion.div 
                                                 className="w-6 h-6 flex items-center justify-center text-gray-500 hover:text-gray-700 cursor-pointer relative"
-                                                onMouseEnter={(e) => handleMouseEnter(item, e)}
-                                                onMouseLeave={() => setHoveredItem(null)}
+                                                // onMouseEnter={(e) => handleMouseEnter(item, e)}
+                                                // onMouseLeave={() => setHoveredItem(null)}
                                                 animate={{
                                                     scale: [1, 1.1, 1],
                                                 }}
@@ -236,13 +236,13 @@ export default function FirstsOfNepal() {
                                     </div>
                                 </motion.div>
                             ))}
-                            {hoveredItem && (
+                            {/* {hoveredItem && (
                                 <FloatingImage 
                                     imagePath={firstItems.find(item => item.name === hoveredItem.name)?.imagePath || ''}
                                     name={hoveredItem.name}
                                     position={hoveredItem.position}
                                 />
-                            )}
+                            )} */}
                         </div>
 
                         {/* No Results Message */}
