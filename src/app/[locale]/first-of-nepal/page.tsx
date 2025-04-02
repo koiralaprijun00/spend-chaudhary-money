@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
 import { Search, X } from 'lucide-react';
 import { RiCircleLine } from 'react-icons/ri';
 import Link from 'next/link';
@@ -18,13 +17,9 @@ const FloatingImage = ({
     name: string; 
     position: { x: number; y: number };
 }) => (
-    <motion.div
+    <div
         className="absolute z-50 shadow-lg pointer-events-none"
         style={{ left: position.x, top: position.y }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.8 }}
-        transition={{ duration: 0.2 }}
     >
         <img 
             src={imagePath}
@@ -34,7 +29,7 @@ const FloatingImage = ({
                 (e.target as HTMLImageElement).src = '/images/first-of-nepal/placeholder.jpg';
             }}
         />
-    </motion.div>
+    </div>
 );
 
 interface FirstItem {
@@ -78,7 +73,6 @@ export default function FirstsOfNepal() {
         }
     );
 
-
     return (
         <div className="min-h-screen w-full">
             {/* Main layout with sidebars */}
@@ -98,18 +92,14 @@ export default function FirstsOfNepal() {
                 <div className="flex-1 ">
                     <div className="container mx-auto px-4 py-16">
                         {/* Hero Header */}
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mb-16 text-center"
-                        >
+                        <div className="mb-16 text-center">
                             <h1 className="inline text-5xl md:text-7xl font-bold bg-gradient-to-r from-red-600 to-blue-700 bg-clip-text text-transparent uppercase tracking-tight">
                                 {mainT('firstofNepalTitle')}
                             </h1>
                             <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
                                 {mainT('firstofNepalSubtitle')}
                             </p>
-                        </motion.div>
+                        </div>
 
                         {/* Search Section */}
                         <div className="max-w-4xl mx-auto mb-16">
@@ -155,11 +145,8 @@ export default function FirstsOfNepal() {
                             ref={gridRef}
                         >
                             {filteredFirsts.map((item, index) => (
-                                <motion.div
+                                <div
                                     key={item.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.05 }}
                                     className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[300px] flex flex-col"
                                 >
                                     <div className="p-6 flex flex-col h-full">
@@ -167,19 +154,11 @@ export default function FirstsOfNepal() {
                                             <div className="inline-block text-red-800 rounded-full text-sm font-medium">
                                                 {item.year}
                                             </div>
-                                            <motion.div 
+                                            <div 
                                                 className="w-6 h-6 flex items-center justify-center text-gray-500 hover:text-gray-700 cursor-pointer relative"
-                                                animate={{
-                                                    scale: [1, 1.1, 1],
-                                                }}
-                                                transition={{
-                                                    duration: 1.5,
-                                                    repeat: Infinity,
-                                                    ease: "easeInOut"
-                                                }}
                                             >
                                                 <RiCircleLine size={20} />
-                                            </motion.div>
+                                            </div>
                                         </div>
                                         <div className="text-xl text-red-600 mb-4">
                                         {mainT('First')} {item.category}
@@ -209,17 +188,13 @@ export default function FirstsOfNepal() {
                                             </Link>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
 
                         {/* No Results Message */}
                         {filteredFirsts.length === 0 && (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                className="text-center py-16"
-                            >
+                            <div className="text-center py-16">
                                 <div className="inline-flex justify-center items-center w-16 h-16 bg-gray-100 rounded-full mb-4">
                                     <Search className="h-8 w-8 text-gray-400" />
                                 </div>
@@ -231,7 +206,7 @@ export default function FirstsOfNepal() {
                                 >
                                     {mainT('clearSearch')}
                                 </button>
-                            </motion.div>
+                            </div>
                         )}
                         
                     </div>
