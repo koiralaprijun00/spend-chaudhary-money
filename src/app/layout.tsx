@@ -1,5 +1,4 @@
 import "./globals.css";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import "mapbox-gl/dist/mapbox-gl.css"; // Keep this for build-time CSS inclusion
 import { Metadata } from "next";
 import { AuthProvider } from './[locale]/providers';
@@ -88,19 +87,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
 
-        {/* Script to load Mapbox CSS after page loads */}
-        <Script id="mapbox-css-defer" strategy="afterInteractive">
-          {`
-            // Defer non-critical CSS
-            const mapboxLink = document.querySelector('link[href*="mapbox-gl.css"]');
-            if (mapboxLink) {
-              mapboxLink.setAttribute('media', 'print');
-              window.addEventListener('load', () => {
-                mapboxLink.setAttribute('media', 'all');
-              });
-            }
-          `}
-        </Script>
+
       </head>
       <body className="antialiased">
         <AuthProvider>
