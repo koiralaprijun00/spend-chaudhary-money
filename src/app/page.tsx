@@ -1,154 +1,248 @@
+'use client'
 
-import Link from "next/link";
-import Image from "next/image";
-import Script from "next/script";
-import ReactCountryFlag from "react-country-flag"
+import { useState, useEffect, useMemo } from 'react';
 
-export default function HomePage() {
-  return (
-    <main className="min-h-screen">
-      {/* Animated Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-20 -left-20 w-40 h-40 bg-pink-200 dark:bg-pink-700 opacity-20 rounded-full animate-float"></div>
-        <div className="absolute top-1/3 right-10 w-32 h-32 bg-yellow-200 dark:bg-yellow-700 opacity-20 rounded-full animate-float-delay"></div>
-        <div className="absolute bottom-20 left-20 w-36 h-36 bg-purple-200 dark:bg-purple-700 opacity-20 rounded-full animate-float-slow"></div>
-        <div className="absolute -bottom-10 -right-10 w-44 h-44 bg-orange-200 dark:bg-orange-700 opacity-20 rounded-full animate-float-slower"></div>
-      </div>
-      
-      <div className="relative z-10 container mx-auto px-4 py-8 flex flex-col items-center">
-        {/* Header Section - Enhanced with animation */}
-        <div className="py-1 flex flex-col items-center">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-300 to-red-300 dark:from-orange-600 dark:to-red-600 rounded-full blur-lg opacity-60 scale-100 animate-pulse"></div>
-            <Image 
-              src="/images/momo-header.png" 
-              alt="Piromomo Logo" 
-              width={160} 
-              priority={true}
-              height={160} 
-              className="relative z-10 drop-shadow-xl hover:scale-105 transition-transform duration-300" 
-            />
-          </div>
-          <h1 className="mt-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-red-600 dark:from-orange-400 dark:to-red-400">
-            Piromomo!
-          </h1>
-          <p className="mt-3 text-center text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-300">
-            <span className="inline-block animate-bounce-light delay-100">🌶️</span> Spicy Momo Fixes Everything <span className="inline-block animate-bounce-light">🌶️</span>
-          </p>
-        </div>
+import Map from './components/Map';
+import AirQualityPanel from './components/AirQualityPanel';
+import AirQualityDetails from './components/AirQualityDetails';
+import HealthRecommendations from './components/HealthRecommendations';
+import HistoricalData from './components/HistoricalData';
+import AirQualityFilter from './components/AirQualityFilter';
 
-        {/* Fun Card Section - Improved layout for all screen sizes */}
-        <div className="w-full my-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
-          {/* Spend Binod Chaudhary's Money Card - Enhanced */}
-          <Link href="/spend" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
-            <div className="relative px-6 py-8 h-full bg-gradient-to-br from-purple-600 to-pink-500 dark:from-purple-700 dark:to-pink-600 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-              {/* Interactive money pattern with animation */}
-              <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-                <div className="absolute top-4 left-4 text-4xl group-hover:animate-float">💰</div>
-                <div className="absolute top-1/2 left-1/4 text-4xl group-hover:animate-float-delay">💸</div>
-                <div className="absolute bottom-8 left-6 text-4xl group-hover:animate-float-slow">💵</div>
-                <div className="absolute top-8 right-6 text-4xl group-hover:animate-float">💎</div>
-                <div className="absolute bottom-10 right-10 text-4xl group-hover:animate-float-delay">🪙</div>
-              </div>
-              
-              {/* Enhanced Badge */}
-              <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1 transform -rotate-2 hover:rotate-0 transition-transform">
-                <span className="text-yellow-500 animate-pulse">💰</span>
-                <span>BILLIONAIRE</span>
-              </div>
-              
-              {/* Main content */}
-              <div className="flex items-center relative z-10">
-                <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md mr-4 group-hover:shadow-lg transition-all duration-300">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 group-hover:from-yellow-300 group-hover:to-yellow-500 transition-colors duration-300 flex items-center justify-center">
-                    <span className="text-white text-2xl font-bold group-hover:scale-110 transition-transform duration-300">$</span>
-                  </div>
-                </div>
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">Spend Binod Chaudhary's Money</h2>
-                  <p className="mt-1 text-white text-opacity-90">How would you spend billions?</p>
-                </div>
-              </div>
-              
-              {/* Enlarged and enhanced Binod image with animation */}
-              <div className="absolute -bottom-4 -right-2 transform group-hover:translate-y-[-8px] transition-transform duration-300">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-white rounded-full blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
-                  <Image 
-                    src="/binod-transparent.png" 
-                    alt="Binod Chaudhary" 
-                    width={160} 
-                    height={160} 
-                    className="relative z-10" 
-                  />
-                </div>
-              </div>
-              
-              {/* Enhanced decorative elements */}
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-purple-400 opacity-20 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
-              <div className="absolute -bottom-12 left-1/4 w-24 h-24 bg-pink-300 opacity-20 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
-            </div>
-          </Link>
+// Define TypeScript interfaces
+interface City {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+  aqi: number;
+}
 
-          {/* Guess the Festival Card - Enhanced */}
-          <Link href="/guess-festival" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-orange-300 rounded-3xl">
-            <div className="relative px-6 py-8 h-full bg-gradient-to-br from-orange-500 to-yellow-400 dark:from-orange-600 dark:to-yellow-500 rounded-3xl shadow-xl transition-transform duration-300 overflow-hidden group">
-              {/* Enhanced Decorative Elements */}
-              <div className="absolute -top-8 -left-8 w-24 h-24 bg-yellow-300 dark:bg-yellow-400 rounded-full opacity-40 group-hover:scale-110 group-hover:opacity-50 transition-all duration-500"></div>
-              <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-orange-300 dark:bg-orange-500 rounded-full opacity-30 group-hover:scale-110 group-hover:opacity-40 transition-all duration-500"></div>
+interface ViewState {
+  longitude: number;
+  latitude: number;
+  zoom: number;
+}
 
-              
-              {/* Enhanced Badge */}
-              <div className="absolute top-3 left-3 bg-white dark:bg-yellow-100 text-orange-600 font-bold text-xs py-1 px-3 rounded-full shadow-md transform rotate-3 hover:rotate-0 transition-transform flex items-center gap-1">
-                <span className="text-sm animate-pulse">✨</span>
-                <span>QUIZ</span>
-              </div>
-              
-              {/* Content with improved spacing */}
-              <div className="flex flex-col items-center text-center relative z-10">
-                <h2 className="text-2xl sm:text-3xl font-bold text-white drop-shadow-lg">Guess the Festival</h2>
-                <p className="mt-2 text-white text-opacity-90 font-medium">Test your Nepali festival knowledge!</p>
-                
-                {/* Enhanced Image with Prominent Frame and animations */}
-                <div className="mt-6 relative">
-                  {/* Improved outer glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-orange-400 rounded-full blur-xl opacity-70 scale-125 animate-pulse group-hover:opacity-90 group-hover:scale-130 transition-all duration-500"></div>
-                  
-                  {/* Enhanced rotating ring animation */}
-                  <div className="absolute inset-0 rounded-full border-4 border-dashed border-white opacity-60 scale-110 animate-spin-slow group-hover:opacity-80 transition-opacity duration-300"></div>
-                  
-                  {/* ENLARGED image with enhanced border and hover effect */}
-                  <Image
-                    src="/festival-header.jpg"
-                    alt="Festival Celebration"
-                    width={180}
-                    height={180}
-                    className="rounded-full border-4 border-white shadow-lg relative z-10 object-cover group-hover:border-yellow-200 transition-colors duration-300"
-                  />
-                  
-                  {/* Enhanced inner highlight */}
-                  <div className="absolute inset-0 rounded-full border-8 border-white opacity-30 scale-105 animate-pulse group-hover:opacity-50 transition-opacity duration-300"></div>
-                </div>
-              </div>
-              
-              {/* Enhanced Pattern Overlay with interactivity */}
-              <div className="absolute inset-0 bg-repeat opacity-10 group-hover:opacity-15 transition-opacity duration-300" style={{ 
-                backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E\")" 
-              }}></div>
-            </div>
-          </Link>
-        </div>
+interface Pollutants {
+  pm25: number;
+  pm10: number;
+  o3: number;
+  no2: number;
+  so2: number;
+  co: number;
+}
 
-        {/* Content Separator with visual element */}
-        <div className="w-full flex justify-center my-8">
-          <div className="relative w-3/4 max-w-md h-1 bg-gradient-to-r from-transparent via-orange-300 dark:via-orange-500 to-transparent">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 rounded-full p-2 shadow-md">
-              <span className="text-2xl">🍜</span>
-            </div>
-          </div>
-        </div>
-      </div>
+interface Weather {
+  temperature: number;
+  humidity: number;
+  windSpeed: number;
+  windDirection: string;
+}
+
+interface AirQualityData {
+  location: string;
+  aqi: number;
+  status: string;
+  pollutants: Pollutants;
+  weather: Weather;
+  time: string;
+  isLoaded: boolean;
+}
+
+export default function Home() {
+  const [selectedCity, setSelectedCity] = useState<string | null>(null);
+  const [viewState, setViewState] = useState<ViewState>({
+    longitude: 85.3240,  // Default to Kathmandu
+    latitude: 27.7172,
+    zoom: 10
+  });
+  const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [filteredCities, setFilteredCities] = useState<City[]>([]);
   
-    </main>
+  const [airQualityData, setAirQualityData] = useState<AirQualityData>({
+    location: "Search Location...",
+    aqi: 0,
+    status: "No Data",
+    pollutants: {
+      pm25: 0,
+      pm10: 0,
+      o3: 0,
+      no2: 0,
+      so2: 0,
+      co: 0
+    },
+    weather: {
+      temperature: 0,
+      humidity: 0,
+      windSpeed: 0,
+      windDirection: ""
+    },
+    time: "No data available yet",
+    isLoaded: false
+  });
+  
+  const cities = useMemo<City[]>(() => [
+    { id: "kathmandu", name: "Kathmandu", lat: 27.7172, lng: 85.3240, aqi: 301 },
+    { id: "pokhara", name: "Pokhara", lat: 28.2096, lng: 83.9856, aqi: 125 },
+    { id: "lalitpur", name: "Lalitpur", lat: 27.6588, lng: 85.3247, aqi: 275 },
+    { id: "bhaktapur", name: "Bhaktapur", lat: 27.6710, lng: 85.4298, aqi: 186 },
+    { id: "biratnagar", name: "Biratnagar", lat: 26.4525, lng: 87.2700, aqi: 156 },
+    { id: "birgunj", name: "Birgunj", lat: 27.0128, lng: 84.8773, aqi: 198 },
+    { id: "dharan", name: "Dharan", lat: 26.8065, lng: 87.2846, aqi: 132 },
+    { id: "nepalgunj", name: "Nepalgunj", lat: 28.0500, lng: 81.6167, aqi: 145 }
+  ], []);
+  
+  // Update air quality data when city changes
+  // Update air quality data when city changes
+useEffect(() => {
+  if (selectedCity) {
+    const city = cities.find(c => c.id === selectedCity);
+    if (city) {
+      setViewState({
+        longitude: city.lng,
+        latitude: city.lat,
+        zoom: 11
+      });
+      
+      setAirQualityData(prev => ({
+        ...prev,
+        location: `${city.name}, Nepal`,
+        aqi: city.aqi,
+        status: getAqiStatus(city.aqi),
+        isLoaded: true  // Set isLoaded to true when city is selected
+      }));
+    }
+  }
+}, [selectedCity, cities]);
+  
+  // Apply filter to cities
+  useEffect(() => {
+    let filtered = [...cities];
+    
+    if (activeFilter !== 'all') {
+      switch(activeFilter) {
+        case 'good':
+          filtered = cities.filter(city => city.aqi <= 50);
+          break;
+        case 'moderate':
+          filtered = cities.filter(city => city.aqi > 50 && city.aqi <= 100);
+          break;
+        case 'sensitive':
+          filtered = cities.filter(city => city.aqi > 100 && city.aqi <= 150);
+          break;
+        case 'unhealthy':
+          filtered = cities.filter(city => city.aqi > 150 && city.aqi <= 200);
+          break;
+        case 'very-unhealthy':
+          filtered = cities.filter(city => city.aqi > 200 && city.aqi <= 300);
+          break;
+        case 'hazardous':
+          filtered = cities.filter(city => city.aqi > 300);
+          break;
+      }
+    }
+    
+    setFilteredCities(filtered);
+  }, [activeFilter, cities]);
+  
+  // Function to determine AQI status based on value
+  const getAqiStatus = (aqi: number): string => {
+    if (aqi <= 50) return "Good";
+    if (aqi <= 100) return "Moderate";
+    if (aqi <= 150) return "Unhealthy for Sensitive Groups";
+    if (aqi <= 200) return "Unhealthy";
+    if (aqi <= 300) return "Very Unhealthy";
+    return "Hazardous";
+  };
+
+  return (
+    <div className="min-h-screen overflow-hidden">
+     <div className="pt-8 px-6 max-w-7xl mx-auto">
+  <div className="text-left">
+    <h1 className="text-3xl font-bold tracking-tight">
+      <span className="text-red-600 mr-2">Nepal</span> 
+      <span className="text-blue-800 mr-2">Air</span> 
+      <span className="bg-gradient-to-r from-red-600 to-blue-800 bg-clip-text text-transparent">
+        Quality
+      </span>
+    </h1>
+    <p className="text-sm text-gray-600 mt-2">
+      Monitoring air pollution levels across cities in Nepal
+      <span className="bg-red-600 px-2 py-1 ml-2 inline-block text-white rounded-md">
+        For Citizens of Nepal.
+      </span>
+    </p>
+  </div>
+</div>
+
+
+    
+      <div className="flex items-center justify-center mt-8">
+        <main className="flex flex-col lg:flex-row w-full max-w-7xl mx-4 bg-white rounded-xl shadow-xl overflow-hidden animate-fadeIn">
+        <div className="w-full lg:w-2/5 p-6 overflow-y-auto max-h-[90vh] lg:max-h-[800px] sidebar-scroll">
+          
+          <h1 className="text-4xl font-bold text-gray-800 mb-6">Choose Your City</h1>
+          
+          <div className="mb-6">
+            <div className="relative">
+              <select 
+                className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-3 pr-8 rounded-lg shadow leading-tight focus:outline-none focus:ring focus:ring-blue-200 transition"
+                onChange={(e) => setSelectedCity(e.target.value)}
+                value={selectedCity || ''}
+              >
+                <option value="" disabled>City</option>
+                {filteredCities.map(city => (
+                  <option key={city.id} value={city.id}>
+                    {city.name} 
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          
+          <AirQualityPanel data={airQualityData} />
+
+          <AirQualityFilter onFilterChange={setActiveFilter} />
+          
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <AirQualityDetails data={airQualityData} />
+            <HealthRecommendations aqiStatus={airQualityData.status} />
+          </div>
+          
+          <HistoricalData cityName={selectedCity} />
+          
+          <div className="flex items-center justify-between mt-6">
+            <div className="text-xs text-gray-500">
+              {airQualityData.time}
+            </div>
+            <div className="flex space-x-2">
+              <button className="bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm py-1 px-3 rounded-md transition-colors duration-200 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+                Share
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div className="w-full lg:w-3/5 h-[500px] lg:h-[800px] relative">
+          <Map 
+            viewState={viewState} 
+            setViewState={setViewState}
+            airQualityData={airQualityData}
+            cities={cities} 
+          />
+        </div>
+        </main>
+      </div>
+    </div>
   );
 }
