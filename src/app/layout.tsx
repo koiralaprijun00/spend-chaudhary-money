@@ -36,8 +36,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://piromomo.com",
-  },
-  themeColor: "#ffffff",
+  }
 };
 
 export default function RootLayout({
