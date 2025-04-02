@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { AuthProvider } from './providers';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // RootLayout as an async server component with params as a Promise
 export default async function LocaleLayout({
@@ -79,6 +80,7 @@ export default async function LocaleLayout({
       <NextIntlClientProvider locale={resolvedLocale} messages={messages}>
         <NavBar />
         {children}
+        <SpeedInsights/>
       </NextIntlClientProvider>
     </AuthProvider>
   );
