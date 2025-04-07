@@ -1,0 +1,142 @@
+import { Festival } from "./festival";
+
+export const festivalsEn: Festival[] = [
+  {
+    id: "dashain",
+    name: "Dashain",
+    question: "Which Nepali festival is celebrated for 15 days and involves flying kites, receiving tika, and enjoying feasts?",
+    fact: "Dashain's 15 days make it Nepal's longest festival!",
+  },
+  {
+    id: "tihar",
+    name: "Tihar",
+    question: "Which festival is known as the festival of lights and honors crows, dogs, and cows?",
+    fact: "Tihar honors animals like crows, dogs, and cows!",
+  },
+  {
+    id: "chhath",
+    name: "Chhath",
+    question: "Which festival is dedicated to the Sun God and involves standing in the river at sunrise?",
+    fact: "Chhath Puja is mainly celebrated in the Terai region of Nepal.",
+  },
+  {
+    id: "maghe-sankranti",
+    name: "Maghe Sankranti",
+    question: "Which festival marks the end of the coldest month and is celebrated with til ko laddu, ghee, and yam?",
+    fact: "Maghe Sankranti is a New Year festival for the Tharu community.",
+  },
+  {
+    id: "holi",
+    name: "Holi",
+    question: "Which Nepali festival is known as the festival of colors and involves playing with water balloons and powder?",
+    fact: "Holi is known as the festival of colors and joy.",
+  },
+  {
+    id: "buddha-jayanti",
+    name: "Buddha Jayanti",
+    question: "Which festival celebrates the birth, enlightenment, and passing of Gautam Buddha?",
+    fact: "Buddha Jayanti celebrates the birth, enlightenment, and passing of Gautam Buddha.",
+  },
+  {
+    id: "indra-jatra",
+    name: "Indra Jatra",
+    question: "Which festival features the Living Goddess Kumari, masked dancers, and chariot processions in Kathmandu?",
+    fact: "Indra Jatra marks the end of the monsoon and honors Indra, the rain god.",
+  },
+  {
+    id: "gai-jatra",
+    name: "Gai Jatra",
+    question: "Which festival involves a parade, people in funny costumes, and remembering loved ones who have passed away?",
+    fact: "Gai Jatra was started by a Malla king to help his queen overcome grief.",
+  },
+  {
+    id: "teej",
+    name: "Teej",
+    question: "Which festival is celebrated by women wearing red, dancing, and fasting for marital happiness?",
+    fact: "Teej is a major festival for Hindu women, dedicated to Lord Shiva and Goddess Parvati.",
+  },
+  {
+    id: "janai-purnima",
+    name: "Janai Purnima",
+    question: "Which festival involves Hindu men changing their sacred thread (janai) and celebrating Rakshya Bandhan?",
+    fact: "Janai Purnima is celebrated by Hindus and Buddhists across Nepal.",
+  },
+  {
+    id: "yomari-purnima",
+    name: "Yomari Purnima",
+    question: "Which Newar festival celebrates the full moon with rice flour dumplings filled with sweet ingredients?",
+    fact: "Yomari Purnima is a Newar tradition marking the end of the rice harvest with sweet-filled dumplings!",
+  },
+  {
+    id: "rato-machhendranath-jatra",
+    name: "Rato Machhendranath Jatra",
+    question: "Which festival in Patan involves pulling a massive chariot to welcome the monsoon season?",
+    fact: "Rato Machhendranath Jatra is one of Nepal's longest chariot festivals, honoring the god of rain!",
+  },
+  {
+    id: "sindoor-jatra",
+    name: "Sindoor Jatra",
+    question: "Which festival in Bhaktapur uses orange powder and chariot processions to celebrate the Nepali New Year?",
+    fact: "Sindoor Jatra is a colorful celebration tied to the Nepali New Year in Bhaktapur!",
+  },
+  {
+    id: "tamu-lhosar",
+    name: "Tamu Lhosar",
+    question: "Which festival celebrates the New Year for the Gurung community with traditional dances and feasts?",
+    fact: "Tamu Lhosar is the Gurung community's vibrant New Year celebration in the Himalayas!",
+  },
+  {
+    id: "naga-panchami",
+    name: "Naga Panchami",
+    question: "Which Hindu festival honors snakes with offerings of milk and prayers for protection?",
+    fact: "Naga Panchami worships snakes as protectors during Nepal's rainy season!",
+  },
+  {
+    id: "tamang-lhosar",
+    name: "Tamang Lhosar",
+    question: "Which festival celebrates the New Year of the Tamang community with traditional dances and unique customs?",
+    fact: "Tamang Lhosar marks the beginning of the Tamang New Year!",
+  },
+  {
+    id: "maha-shivaratri",
+    name: "Maha Shivaratri",
+    question: "Which festival involves devotees staying awake all night to worship Lord Shiva?",
+    fact: "Maha Shivaratri celebrates the marriage of Lord Shiva and Goddess Parvati!",
+  },
+  {
+    id: "ghyu-chaku",
+    name: "Ghyu Chaku",
+    question: "Which winter festival is known for eating sweet treats and warming foods?",
+    fact: "Ghyu Chaku is a traditional winter celebration of warmth and togetherness!",
+  },
+  {
+    id: "swasthani-brata",
+    name: "Swasthani Brata",
+    question: "Which month-long festival involves women reading a sacred story and fasting?",
+    fact: "Swasthani Brata is an important Hindu women's spiritual practice!",
+  },
+  {
+    id: "bisket-jatra",
+    name: "Bisket Jatra",
+    question: "Which festival marks the Nepali New Year with a massive chariot pulling ritual in Bhaktapur?",
+    fact: "Bisket Jatra is one of the most vibrant New Year celebrations in Nepal!",
+  },
+  {
+    id: "saraswati-puja",
+    name: "Saraswati Puja",
+    question: "Which festival honors the goddess of knowledge and arts?",
+    fact: "Saraswati Puja celebrates wisdom and artistic expression!",
+  },
+  {
+    id: "udhauli-parva",
+    name: "Udhauli Parva",
+    question: "Which festival marks the migration of Kirat communities?",
+    fact: "Udhauli Parva reflects the agricultural traditions of Kirat people!",
+  },
+  {
+    id: "chhat-parva",
+    name: "Chhat Parva",
+    question: "Which festival involves elaborate sun worship near rivers and lakes?",
+    fact: "Chhat Parva is a unique solar worship festival!",
+  },
+];
