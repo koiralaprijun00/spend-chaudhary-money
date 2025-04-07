@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react"
 import ProductCard from "../../components/ProductCard"
 import SocialShare from "../../components/SocialShare"
-import { initialProducts, Product } from "../../data/product"
+import { initialProducts, Product } from "../../data/spend-binod-money/product"
 import GameButton from "../../components/ui/GameButton"
 import { useTranslations } from 'next-intl'
 import Link from "next/link"
