@@ -78,7 +78,12 @@ const AnswerReveal: React.FC<AnswerRevealProps> = ({
         <h3 className="text-xl font-bold mb-2">
           {isCorrect ? t("correct") : t("incorrect")}
         </h3>
-        <p className="font-semibold">{feedback}</p>
+      </div>
+
+      <div className="flex gap-3 mb-4">
+        <GameButton onClick={handleNextFestival} type="primary">
+          {t("nextFestival")}
+        </GameButton>
       </div>
 
       <div className="mb-4">
@@ -86,13 +91,7 @@ const AnswerReveal: React.FC<AnswerRevealProps> = ({
           <span className="text-md font-normal text-gray-600 mr-1">{t("correctAnswer")}:</span>
           {currentFestival.name}
         </h3>
-        <p>{currentFestival.fact}</p>
-      </div>
-
-      <div className="flex gap-3">
-        <GameButton onClick={handleNextFestival} type="primary">
-          {t("nextFestival")}
-        </GameButton>
+        <p className="text-md leading-8">{currentFestival.fact}</p>
       </div>
     </div>
   );
