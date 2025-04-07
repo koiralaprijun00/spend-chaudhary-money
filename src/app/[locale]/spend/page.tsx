@@ -1,45 +1,50 @@
-"use client"
+"use client";
 
-import React, { useState, useRef } from "react"
-import ProductCard from "../../components/ProductCard"
-import SocialShare from "../../components/SocialShare"
-import { initialProducts, Product } from "../../data/spend-binod-money/product"
-import GameButton from "../../components/ui/GameButton"
-import { useTranslations } from 'next-intl'
-import Link from "next/link"
+import React, { useState, useRef } from "react";
+import ProductCard from "../../components/ProductCard";
+import SocialShare from "../../components/SocialShare";
+import { getProductsByLocale } from "../../data/spend-binod-money/getProducts"; // Import utility
+import { Product } from "../../data/spend-binod-money/product"; // Import Product type
+import GameButton from "../../components/ui/GameButton";
+import { useTranslations, useLocale } from "next-intl"; // Import useLocale
+import Link from "next/link";
 
 interface Purchases {
-  [key: number]: number
+  [key: number]: number;
 }
 
 // Improved ProgressBar Component
 const ProgressBar = ({ total, spent }: { total: number; spent: number }) => {
-  const percentage = (spent / total * 100).toFixed(2)
-  const isWarning = parseFloat(percentage) > 75
+  const percentage = (spent / total * 100).toFixed(2);
+  const isWarning = parseFloat(percentage) > 75;
 
-  const t = useTranslations("Translations"); 
+  const t = useTranslations("Translations");
 
   return (
     <div className="mt-2">
       <div className="flex justify-between text-sm mb-1">
-        <span className="font-medium text-gray-700">{t('budgetProgress')}</span>
-        <span className={`font-medium ${isWarning ? 'text-red-600' : 'text-blue-600'}`}>
+        <span className="font-medium text-gray-700">{t("budgetProgress")}</span>
+        <span className={`font-medium ${isWarning ? "text-red-600" : "text-blue-600"}`}>
           {percentage}%
         </span>
       </div>
       <div className="h-3 w-full bg-gray-200 rounded-full overflow-hidden">
         <div
-          className={`h-full ${isWarning ? 'bg-red-600' : 'bg-blue-600'} transition-all duration-300 ease-in-out`}
+          className={`h-full ${isWarning ? "bg-red-600" : "bg-blue-600"} transition-all duration-300 ease-in-out`}
           style={{ width: `${percentage}%` }}
         />
       </div>
       <div className="flex justify-between mt-2 text-sm">
-        <span className="text-gray-600">{t('totalSpent')}: <span className="font-semibold">NPR {spent.toLocaleString()}</span></span>
-        <span className="text-gray-600">{t('totalAmount')} <span className="font-semibold">NPR {total.toLocaleString()}</span></span>
+        <span className="text-gray-600">
+          {t("totalSpent")}: <span className="font-semibold">NPR {spent.toLocaleString()}</span>
+        </span>
+        <span className="text-gray-600">
+          {t("totalAmount")}: <span className="font-semibold">NPR {total.toLocaleString()}</span>
+        </span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 // Improved Header Component
 interface HeaderProps {
@@ -49,13 +54,8 @@ interface HeaderProps {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Header: React.FC<HeaderProps> = ({
-  budget,
-  spent,
-  isModalOpen,
-  setModalOpen
-}) => {
-  const t = useTranslations("Translations"); 
+const Header: React.FC<HeaderProps> = ({ budget, spent, isModalOpen, setModalOpen }) => {
+  const t = useTranslations("Translations");
 
   return (
     <div className="w-full bg-white shadow-md rounded-b-lg pt-6 pb-4">
@@ -67,8 +67,8 @@ const Header: React.FC<HeaderProps> = ({
             </h1>
             <p className="text-gray-600 mt-1 max-w-2xl">{t("spendBinodDescription")}</p>
           </div>
-          <Link 
-            href="/about-binod" 
+          <Link
+            href="/about-binod"
             className="mt-2 underline md:mt-0 text-xs rounded-lg transition-colors text-gray-800 hover:text-blue-600"
           >
             {t("aboutBinod")}
@@ -79,68 +79,72 @@ const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 // Main Home Component
 export default function Home() {
-  const [isModalOpen, setModalOpen] = useState(false)
-  const [budget] = useState(237500000000)
-  const [spent, setSpent] = useState(0)
-  const [purchases, setPurchases] = useState<Purchases>({})
-  const [isReceiptModalOpen, setReceiptModalOpen] = useState(false)
-  
-  const t = useTranslations("Translations"); 
-  const purchasesRef = useRef<HTMLDivElement>(null)
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [budget] = useState(237500000000);
+  const [spent, setSpent] = useState(0);
+  const [purchases, setPurchases] = useState<Purchases>({});
+  const [isReceiptModalOpen, setReceiptModalOpen] = useState(false);
+
+  const t = useTranslations("Translations");
+  const locale = useLocale(); // Get current locale (en or np)
+  const purchasesRef = useRef<HTMLDivElement>(null);
+
+  // Load products based on the current locale
+  const products = getProductsByLocale(locale);
 
   const handleBuy = (product: Product) => {
     if (spent + product.price <= budget) {
-      setSpent(prevSpent => prevSpent + product.price)
-      setPurchases(prevPurchases => ({
+      setSpent((prevSpent) => prevSpent + product.price);
+      setPurchases((prevPurchases) => ({
         ...prevPurchases,
-        [product.id]: (prevPurchases[product.id] || 0) + 1
-      }))
+        [product.id]: (prevPurchases[product.id] || 0) + 1,
+      }));
     } else {
-      alert(t("notEnoughMoney"))
+      alert(t("notEnoughMoney"));
     }
-  }
+  };
 
   const handleSell = (product: Product) => {
     if (purchases[product.id] > 0) {
-      setSpent(prevSpent => prevSpent - product.price)
-      setPurchases(prevPurchases => ({
+      setSpent((prevSpent) => prevSpent - product.price);
+      setPurchases((prevPurchases) => ({
         ...prevPurchases,
-        [product.id]: Math.max(prevPurchases[product.id] - 1, 0)
-      }))
+        [product.id]: Math.max(prevPurchases[product.id] - 1, 0),
+      }));
     }
-  }
+  };
 
   const handleSetQuantity = (product: Product, newQuantity: number) => {
-    const currentQuantity = purchases[product.id] || 0
-    const difference = newQuantity - currentQuantity
-    const newSpent = spent + difference * product.price
+    const currentQuantity = purchases[product.id] || 0;
+    const difference = newQuantity - currentQuantity;
+    const newSpent = spent + difference * product.price;
 
     if (newSpent <= budget && newQuantity >= 0) {
-      setSpent(newSpent)
-      setPurchases(prevPurchases => ({
+      setSpent(newSpent);
+      setPurchases((prevPurchases) => ({
         ...prevPurchases,
-        [product.id]: newQuantity
-      }))
+        [product.id]: newQuantity,
+      }));
     } else {
-      alert(t("notEnoughMoney"))
+      alert(t("notEnoughMoney"));
     }
-  }
+  };
 
-  const totalSpent = spent
+  const totalSpent = spent;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr] h-screen px-1 md:px-16 gap-4 py-4">
       <div className="flex flex-col h-screen">
         <div className="sticky top-0 z-50 bg-white">
-          <Header 
-            budget={budget} 
-            spent={spent} 
-            setModalOpen={setModalOpen} 
+          <Header
+            budget={budget}
+            spent={spent}
+            setModalOpen={setModalOpen}
             isModalOpen={isModalOpen}
           />
         </div>
@@ -151,19 +155,19 @@ export default function Home() {
         <div
           className="grid gap-4 mt-4 pb-12 overflow-y-auto flex-grow"
           style={{
-            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))"
+            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
           }}
         >
-          {initialProducts.map(product =>
-            <ProductCard 
-              key={product.id} 
-              product={product} 
-              onBuy={handleBuy} 
-              onSell={handleSell} 
-              onSetQuantity={handleSetQuantity} 
-              quantity={purchases[product.id] || 0} 
+          {products.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              onBuy={handleBuy}
+              onSell={handleSell}
+              onSetQuantity={handleSetQuantity}
+              quantity={purchases[product.id] || 0}
             />
-          )}
+          ))}
         </div>
       </div>
       <div className="md:block hidden p-6 bg-white rounded-lg shadow-lg sticky top-5 h-screen overflow-y-auto">
@@ -175,28 +179,28 @@ export default function Home() {
                 {t("receipt")}
               </h1>
               <p className="flex justify-between text-xl font-bold text-right">
-                <span className="block text-gray-600">{t("totalSpent")}:</span> 
+                <span className="block text-gray-600">{t("totalSpent")}:</span>
                 <span className="text-blue-600">NPR {totalSpent.toLocaleString()}</span>
               </p>
             </div>
             <div className="overflow-y-auto flex-grow max-h-screen" ref={purchasesRef}>
-              {Object.keys(purchases).length === 0
-                ? <p className="text-gray-500">{t("noPurchases")}</p>
-                : initialProducts.filter(product => purchases[product.id]).map(product =>
+              {Object.keys(purchases).length === 0 ? (
+                <p className="text-gray-500">{t("noPurchases")}</p>
+              ) : (
+                products
+                  .filter((product) => purchases[product.id])
+                  .map((product) => (
                     <div key={product.id} className="mb-4 p-3 bg-gray-50 rounded-lg">
                       <div className="flex justify-between items-center">
-                        <div className="font-medium text-gray-800">
-                          {product.name}
-                        </div>
-                        <div className="text-gray-500">
-                          x{purchases[product.id]}
-                        </div>
+                        <div className="font-medium text-gray-800">{product.name}</div>
+                        <div className="text-gray-500">x{purchases[product.id]}</div>
                       </div>
                       <div className="text-right mt-1 text-blue-600 font-bold">
                         NPR {(purchases[product.id] * product.price).toLocaleString()}
                       </div>
                     </div>
-                  )}
+                  ))
+              )}
             </div>
           </div>
         </div>
@@ -225,7 +229,7 @@ export default function Home() {
                   {t("receipt")}
                 </h1>
                 <p className="flex justify-between text-xl font-bold text-right">
-                  <span className="block text-gray-60">{t("totalSpent")}:</span> 
+                  <span className="block text-gray-600">{t("totalSpent")}:</span>
                   <span className="text-blue-600">NPR {totalSpent.toLocaleString()}</span>
                 </p>
               </div>
@@ -233,7 +237,7 @@ export default function Home() {
                 {Object.keys(purchases).length === 0 ? (
                   <p className="text-gray-500">{t("noPurchases")}</p>
                 ) : (
-                  initialProducts
+                  products
                     .filter((product) => purchases[product.id])
                     .map((product) => (
                       <div key={product.id} className="mb-4 p-3 bg-gray-50 rounded-lg">
@@ -253,5 +257,5 @@ export default function Home() {
         </div>
       )}
     </div>
-  )
+  );
 }

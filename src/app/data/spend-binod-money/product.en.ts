@@ -1,13 +1,6 @@
-export interface Product {
-  id: number
-  name: string
-  price: number
-  description: string
-  image?: string
-  category: string
-}
+import { Product } from "./product";
 
-export const initialProducts: Product[] = [
+export const initialProductsEn: Product[] = [
   {
     id: 8,
     name: "A cup of Nepali tea",
