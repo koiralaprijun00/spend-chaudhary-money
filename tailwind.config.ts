@@ -13,7 +13,9 @@ export default {
         dmSans: ['DM Sans', 'sans-serif'],
         sourceSans3: ['Source Sans 3', 'sans-serif'],
         lora: ['Lora', 'serif'],
-        rozha: ['Rozha One', 'serif']
+        rozha: ['Rozha One', 'serif'],
+        inkqua: ['Inknut Antiqua', 'serif'],
+        capso:['Caprasimo','serif']
       },
       colors: {
         background: "var(--background)",

@@ -82,16 +82,16 @@ const Navbar = () => {
                     {/* Left: Logo and Brand Name */}
                     <Link href="/" className="flex items-center group">
                         <Image 
-                            src="/images/momo.png" 
+                            src="/jhol-momo.png" 
                             alt="" 
-                            width={40} 
-                            height={40} 
-                            className="mr-2 transform group-hover:scale-110 transition-transform duration-200" 
+                            width={50} 
+                            height={50} 
+                            className="mr-2 ml-2 transform group-hover:scale-110 transition-transform duration-200" 
                             priority
                         />
-                        <span className="text-gray-800 text-xl font-bold group-hover:text-orange-500 transition-colors duration-200">
+                        {/* <span className="text-gray-800 text-xl font-bold group-hover:text-orange-500 transition-colors duration-200">
                             {t('piromomo')}
-                        </span>
+                        </span> */}
                     </Link>
 
                     {/* Right: Locale Switcher, Twitter Link, and Hamburger (Hamburger only on mobile) */}

@@ -23,8 +23,8 @@ export default function HomePage() {
   const language = useLocale();
 
   // Define font classes for English and Nepali
-  const englishFontClass = "dmSans";
-  const nepaliFontClass = "rozha";
+  const englishFontClass = "font-capso text-3xl";
+  const nppaliFontClass = "font-rozha text-4xl";
 
 
   return (
@@ -32,21 +32,19 @@ export default function HomePage() {
       <div className="relative z-10 container mx-auto flex flex-col items-start justify-between px-4">
         {/* Header Section - Simplified animation for better performance */}
         <div className="py-4 w-full">
-          <div className="relative">
-            {/* Simplified gradient with reduced animation complexity */}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 rounded-lg blur-lg opacity-50"></div>
-          </div>
-          {/* Simplified title styling */}
-          <h1
-        className={`nepali-text-title relative inline text-3xl md:text-6xl font-extrabold text-left bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent ${language === 'ne' ? nepaliFontClass : englishFontClass}`}
-      >
-        {t('piromomo')}
-        <span className="absolute -bottom-2 left-0 w-16 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></span>
-      </h1>
+        <h1
+  className={`nepali-text-title relative inline font-extrabold text-left bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent ${
+    language === 'np' 
+      ? "font-rozha text-4xl md:text-7xl" 
+      : "font-capso text-3xl md:text-6xl"
+  }`}
+>
+  {t('piromomo')}
+</h1>
         </div>
 
         {/* Fun Card Section - Prioritize content and add loading strategy */}
-        <div className="w-full my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl">
+        <div className="w-full mb-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl">
           
           {/* Spend Binod Chaudhary's Money Card - First card optimized as LCP element */}
           <Link href="/spend" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
