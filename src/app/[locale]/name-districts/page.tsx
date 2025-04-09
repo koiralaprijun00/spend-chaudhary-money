@@ -19,6 +19,10 @@ const toNepaliNumerals = (num: number): string => {
 };
 
 const NepalDistrictQuiz: React.FC = () => {
+  
+  // Add this constant near the top of the file
+  const DEFAULT_DISTRICT_IMAGE = '/districts/district-placeholder.png'; // Update with your actual placeholder path
+
   // Safe translation function to prevent errors
 const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
   try {
@@ -184,7 +188,7 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
         .map(item => item.index);
       if (unansweredIndices.length > 0) {
         setCurrentDistrictIndex(unansweredIndices[0]);
-        setFeedback(safeT('remainingDistricts', '{count} districts remaining', { count: unansweredIndices.length }));
+        setFeedback(safeT('remainingDistricts'));
       }
     } else {
       setGameOver(true);
@@ -401,7 +405,7 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                           <div className="district-display bg-gray-100 p-4 flex justify-center items-center">
                             <div className="relative w-full h-48 md:h-64">
                               <Image
-                                src={randomizedDistricts[currentDistrictIndex].imagePath}
+                                 src={randomizedDistricts[currentDistrictIndex]?.imagePath || DEFAULT_DISTRICT_IMAGE}
                                 alt="District Shape"
                                 fill
                                 sizes="(max-width: 768px) 100vw, 40vw"
@@ -411,7 +415,7 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                               {correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id) && (
                                 <div className="absolute inset-0 flex items-center justify-center">
                                   <div className="bg-green-500 text-white px-3 py-1 rounded-lg text-lg font-bold opacity-90">
-                                    {safeTDistricts(randomizedDistricts[currentDistrictIndex].id)}
+                                    {safeTDistricts(randomizedDistricts[currentDistrictIndex].id || '')}
                                   </div>
                                 </div>
                               )}

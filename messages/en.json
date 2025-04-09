@@ -1,5 +1,7 @@
   {
   "Translations":{
+    "incorrectGuesses": "Missed Districts",
+    "remainingDistricts": "{count} districts remaining",
     "yourOptions": "Options",
     "budgetProgress": "Budget Progress",
     "budget": "Budget",

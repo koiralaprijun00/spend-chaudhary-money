@@ -1,5 +1,7 @@
 {
   "Translations": {
+    "incorrectGuesses": "छुटेका जिल्लाहरू",
+    "remainingDistricts": "{count} जिल्लाहरू बाँकी",
     "yourOptions": "विकल्पहरू",
     "budgetProgress": "बजेट प्रगति",
     "budget": "बजेट",

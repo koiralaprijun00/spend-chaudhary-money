@@ -22,11 +22,6 @@ export default function HomePage() {
   // Check current language (assuming 'ne' for Nepali and 'en' for English)
   const language = useLocale();
 
-  // Define font classes for English and Nepali
-  const englishFontClass = "font-capso text-3xl";
-  const nppaliFontClass = "font-rozha text-4xl";
-
-
   return (
     <main className="min-h-screen">
       <div className="relative z-10 container mx-auto flex flex-col items-start justify-between px-4">

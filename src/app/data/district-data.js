@@ -27,7 +27,7 @@ const baseDistrictData = [
   { id: 'udayapur', imagePath: '/districts/Udayapur.svg' },
   { id: 'taplejung', imagePath: '/districts/Taplejung.svg' },
   { id: 'panchthar', imagePath: '/districts/Panchthar.svg' },
-  { id: 'ilam', imagePath: '/districts/Ilam.svg' },
+  { id: 'ilam', imagePath: '/districts/illam.svg' },
   { id: 'jhapa', imagePath: '/districts/Jhapa.svg' },
   { id: 'morang', imagePath: '/districts/Morang.svg' },
   { id: 'sunsari', imagePath: '/districts/Sunsari.svg' },
@@ -54,14 +54,14 @@ const baseDistrictData = [
   { id: 'gulmi', imagePath: '/districts/Gulmi.svg' },
   { id: 'arghakhanchi', imagePath: '/districts/Arghakhanchi.svg' },
   { id: 'palpa', imagePath: '/districts/Palpa.svg' },
-  { id: 'nawalpur', imagePath: '/districts/Nawalpur.svg' },
+  { id: 'nawalparasi_east', imagePath: '/districts/East-Nawalparasi.svg' },
   { id: 'rupandehi', imagePath: '/districts/Rupandehi.svg' },
   { id: 'kapilvastu', imagePath: '/districts/Kapilvastu.svg' },
   { id: 'dang', imagePath: '/districts/Dang.svg' },
   { id: 'pyuthan', imagePath: '/districts/Pyuthan.svg' },
   { id: 'rolpa', imagePath: '/districts/Rolpa.svg' },
-  { id: 'rukum_east', imagePath: '/districts/Rukum_east.svg' },
-  { id: 'rukum_west', imagePath: '/districts/Rukum_west.svg' },
+  { id: 'rukum_east', imagePath: '/districts/East-Rukum.svg' },
+  { id: 'rukum_west', imagePath: '/districts/West-Rukum.svg' },
   { id: 'salyan', imagePath: '/districts/Salyan.svg' },
   { id: 'banke', imagePath: '/districts/Banke.svg' },
   { id: 'bardiya', imagePath: '/districts/Bardiya.svg' },
@@ -82,6 +82,8 @@ const baseDistrictData = [
   { id: 'dadeldhura', imagePath: '/districts/Dadeldhura.svg' },
   { id: 'baitadi', imagePath: '/districts/Baitadi.svg' },
   { id: 'darchula', imagePath: '/districts/Darchula.svg' },
+  { id: 'rasuwa', imagePath: '/districts/Rasuwa.svg' }, // Added
+  { id: 'nawalparasi_west', imagePath: '/districts/West-Nawalparasi.svg' }  // Added
 ];
 
 // Create the enhanced district data with translations
