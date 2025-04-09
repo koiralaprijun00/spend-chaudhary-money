@@ -90,7 +90,16 @@
       "titleshort":"General Knowledge",
       "shortdescription": "Test your General Knowledge about Nepal",
       "description": "Test your knowledge about Nepal with this quiz covering history, geography, culture, and more!",
-      "badge": "KNOWLEDGE"
+      "badge": "KNOWLEDGE",
+      "categories": "Categories",
+      "allCategories": "All Categories",
+      "score": "Score",
+      "restart": "Restart Quiz",
+      "shareScore": "Share Score",
+      "shareMessage": "I scored {score} points in the Nepal General Knowledge Quiz{category}! Can you beat me? Try it at: {url} #NepalGK",
+      "clipboardMessage": "Score copied to clipboard! Paste it to share.",
+      "noQuestionsInCategory": "No questions available in this category.",
+      "viewAllCategories": "View All Categories"
     },
     "nepalChecklist": {
       "navbarTitle": "Nepal Life Checklist",
