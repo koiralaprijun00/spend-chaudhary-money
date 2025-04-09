@@ -101,4 +101,484 @@ export const questionsEn: Question[] = [
   { id: "entertainment-8", question: "Which Nepali film is based on Shakespeare’s \"Macbeth\"?", options: ["Kagbeni", "Loot", "Chhadke", "Pashupati Prasad"], correctAnswer: "Kagbeni", fact: "“Kagbeni” (2008) is a Nepali adaptation of Shakespeare’s \"Macbeth,\" set in the Mustang region.", category: "Entertainment" },
   { id: "entertainment-9", question: "Which Nepali singer popularized modern pop music?", options: ["Narayan Gopal", "1974 AD", "Kutumba", "Prashant Tamang"], correctAnswer: "1974 AD", fact: "1974 AD, a Nepali rock band formed in 1994, popularized modern pop and rock music, blending Nepali and Western styles.", category: "Entertainment" },
   { id: "entertainment-10", question: "Which Nepali comedy show is the longest-running?", options: ["Meri Bassai", "Tito Satya", "Jire Khursani", "Harke Haldar"], correctAnswer: "Meri Bassai", fact: "“Meri Bassai,” starting in 2006, is Nepal’s longest-running comedy TV show, known for its rural humor and beloved characters.", category: "Entertainment" },
+    {
+      "id": "np-gk-101",
+      "question": "When did the 'Kot Massacre' take place in the history of Nepal?",
+      "options": ["B.S. 1903", "B.S. 1888", "B.S. 1910", "B.S. 1895"],
+      "correctAnswer": "B.S. 1903",
+      "fact": "The Kot Massacre, which occurred on the night of September 14, 1846 AD (B.S. 1903 Bhadra 32), was a bloody event in Nepal's history that paved the way for Jung Bahadur Rana to come to power and marked the beginning of the 104-year Rana regime.",
+      "category": "History"
+    },
+    {
+      "id": "np-gk-102",
+      "question": "In which architectural style is the Changu Narayan Temple, considered the oldest in Kathmandu Valley, built?",
+      "options": ["Pagoda Style", "Shikhara Style", "Stupa Style", "Mixed Style"],
+      "correctAnswer": "Pagoda Style",
+      "fact": "Changu Narayan Temple, believed to date back to the Licchavi period, is a prime example of Nepali pagoda architecture and is also listed as a UNESCO World Heritage Site. [cite: 1]",
+      "category": "Culture & Architecture"
+    },
+    {
+      "id": "np-gk-103",
+      "question": "Which mountain in Nepal is also known by the nickname 'Killer Mountain'?",
+      "options": ["Annapurna I", "Manaslu", "Dhaulagiri", "Mount Everest"],
+      "correctAnswer": "Manaslu",
+      "fact": "Mount Manaslu (8,163 m) is nicknamed the 'Killer Mountain' because it is considered technically difficult and dangerous to climb. [cite: 1]",
+      "category": "Geography"
+    },
+    {
+      "id": "np-gk-104",
+      "question": "Which poet is known as 'Aashu Kavi' (Impromptu Poet) in Nepali literature?",
+      "options": ["Shambhu Prasad Dhungel", "Laxmi Prasad Devkota", "Gopal Prasad Rimal", "Bhupi Sherchan"],
+      "correctAnswer": "Shambhu Prasad Dhungel",
+      "fact": "Shambhu Prasad Dhungel was famous as 'Aashu Kavi' due to his extraordinary ability to compose poems instantly. [cite: 1]",
+      "category": "Literature"
+    },
+    {
+      "id": "np-gk-105",
+      "question": "According to the current Constitution of Nepal (2015), how many constitutional bodies are there?",
+      "options": ["10", "13", "15", "11"],
+      "correctAnswer": "13",
+      "fact": "The Constitution of Nepal 2015 provides for 13 constitutional bodies, including the Commission for the Investigation of Abuse of Authority, Auditor General, and Public Service Commission.",
+      "category": "Politics & Constitution"
+    },
+    {
+      "id": "np-gk-106",
+      "question": "According to the National Census 2078 (2021 AD), which district has the highest population in Nepal?",
+      "options": ["Rupandehi", "Morang", "Kathmandu", "Sunsari"],
+      "correctAnswer": "Kathmandu",
+      "fact": "According to the preliminary results of the National Census 2078 (2021 AD), Kathmandu district is the most populous district in Nepal, with over 2 million inhabitants.",
+      "category": "Demography"
+    },
+    {
+      "id": "np-gk-107",
+      "question": "What was the first daily newspaper of Nepal?",
+      "options": ["Gorkhapatra", "Sudhasagar", "Aawaj", "Kantipur"],
+      "correctAnswer": "Aawaj",
+      "fact": "'Aawaj', published on Falgun 8, 2007 B.S. (February 20, 1951 AD), is considered the first daily newspaper of Nepal, although Gorkhapatra is the oldest newspaper (started as a weekly). [cite: 1]",
+      "category": "History & Media"
+    },
+    {
+      "id": "np-gk-108",
+      "question": "On the banks of which river is the famous Rani Mahal (Palpa) located?",
+      "options": ["Kaligandaki", "Trishuli", "Seti Gandaki", "Marsyangdi"],
+      "correctAnswer": "Kaligandaki",
+      "fact": "Rani Mahal in Palpa, often called the 'Taj Mahal of Nepal', was built by Khadga Shumsher in memory of his queen Tej Kumari on the banks of the Kaligandaki River. [cite: 1]",
+      "category": "History & Geography"
+    },
+    {
+      "id": "np-gk-109",
+      "question": "Which animal, also found in Nepal, is the symbol of the World Wildlife Fund (WWF)?",
+      "options": ["One-horned Rhinoceros", "Bengal Tiger", "Red Panda", "Snow Leopard"],
+      "correctAnswer": "Red Panda",
+      "fact": "The Red Panda, with its charming appearance, is the symbol of the World Wildlife Fund (WWF) and is found in the Himalayan forests of Nepal.",
+      "category": "Science & Nature"
+    },
+    {
+      "id": "np-gk-110",
+      "question": "According to which calendar is 'Sonam Lhosar', the main festival of the Tamang community, celebrated?",
+      "options": ["Bikram Samvat", "Nepal Samvat", "Lunar Calendar", "Gregorian Calendar"],
+      "correctAnswer": "Lunar Calendar",
+      "fact": "Sonam Lhosar is the New Year festival of the Tamang community, based on the traditional lunar calendar, and is celebrated on the day of Magh Shukla Pratipada. [cite: 1]",
+      "category": "Culture"
+    },
+    {
+      "id": "np-gk-111",
+      "question": "How many mountain peaks above 8,000 meters are located in Nepal?",
+      "options": ["7", "8", "9", "10"],
+      "correctAnswer": "8",
+      "fact": "Nepal is home to 8 of the world's 14 highest peaks above 8,000 meters, including Everest, Kanchenjunga, Lhotse, Makalu, Cho Oyu, Dhaulagiri, Manaslu, and Annapurna I. [cite: 1]",
+      "category": "Geography"
+    },
+    {
+      "id": "np-gk-112",
+      "question": "Who is the author of the famous novel 'Seto Dharti'?",
+      "options": ["Amar Neupane", "Buddhisagar", "Nayan Raj Pandey", "Diamond Shumsher Rana"],
+      "correctAnswer": "Amar Neupane",
+      "fact": "Amar Neupane won the Madan Puraskar in B.S. 2068 (2011 AD) for his novel 'Seto Dharti'. The novel tells the story of a widow's life in Nepali society. [cite: 1]",
+      "category": "Literature"
+    },
+    {
+      "id": "np-gk-113",
+      "question": "Which highway in Nepal was previously known by the nickname 'Death Highway'?",
+      "options": ["Prithvi Highway", "Siddhartha Highway", "Araniko Highway", "Tribhuvan Highway"],
+      "correctAnswer": "Tribhuvan Highway",
+      "fact": "Tribhuvan Highway (Rajpath) is the oldest highway in Nepal. Due to its winding and narrow path, it was considered risky and sometimes called the 'Death Highway' in the past.",
+      "category": "Geography & History"
+    },
+    {
+      "id": "np-gk-114",
+      "question": "Who was the first female minister of Nepal?",
+      "options": ["Shailaja Acharya", "Dwarika Devi Thakurani", "Bidya Devi Bhandari", "Onsari Gharti Magar"],
+      "correctAnswer": "Dwarika Devi Thakurani",
+      "fact": "Dwarika Devi Thakurani became the Assistant Minister for Health in the council of ministers led by B.P. Koirala in B.S. 2016 (1959 AD), making her the first female minister in Nepal's history. [cite: 1]",
+      "category": "History & Politics"
+    },
+    {
+      "id": "np-gk-115",
+      "question": "Who introduced the tradition of celebrating 'Ghode Jatra' in Kathmandu Valley?",
+      "options": ["Pratap Malla", "Gunkamdev", "Jaya Prakash Malla", "Prithvi Narayan Shah"],
+      "correctAnswer": "Jaya Prakash Malla",
+      "fact": "It is believed that the Malla king Jaya Prakash Malla started the tradition of celebrating Ghode Jatra (Festival of Horses) in Kathmandu Valley. The festival is celebrated at Tundikhel. [cite: 1]",
+      "category": "History & Culture"
+    },
+    {
+      "id": "np-gk-116",
+      "question": "Which is the smallest national park in Nepal by area?",
+      "options": ["Shivapuri Nagarjun", "Rara", "Khaptad", "Makalu Barun"],
+      "correctAnswer": "Rara",
+      "fact": "Rara National Park, with an area of 106 sq. km., is the smallest national park in Nepal, encompassing the area around Rara Lake. [cite: 1]",
+      "category": "Geography"
+    },
+    {
+      "id": "np-gk-117",
+      "question": "When was 'Nepal Samvat' recognized as a national era in the constitution of Nepal?",
+      "options": ["B.S. 2063", "B.S. 2065", "B.S. 2072", "B.S. 2055"],
+      "correctAnswer": "B.S. 2065",
+      "fact": "In B.S. 2065 (2008 AD), the government led by Pushpa Kamal Dahal 'Prachanda' decided to recognize Nepal Samvat as a national era. It was started by Shankhadhar Sakhwa. [cite: 1]",
+      "category": "History & Culture"
+    },
+    {
+      "id": "np-gk-118",
+      "question": "Who was the first female writer to receive the Madan Puraskar?",
+      "options": ["Jhamak Ghimire", "Parijat", "Toya Gurung", "Maya Thakuri"],
+      "correctAnswer": "Parijat",
+      "fact": "Parijat received the Madan Puraskar in B.S. 2022 (1965 AD) for her novel 'Shirishko Phool', becoming the first woman to receive this prestigious award. [cite: 1]",
+      "category": "Literature"
+    },
+    {
+      "id": "np-gk-119",
+      "question": "What exactly is 'Yarsagumba' (Ophiocordyceps sinensis) found in Nepal?",
+      "options": ["A combination of a fungus and a larva", "A type of herb", "A type of mushroom", "A Himalayan flower"],
+      "correctAnswer": "A combination of a fungus and a larva",
+      "fact": "Yarsagumba is a parasitic fungus that attacks the larva of a ghost moth, kills it, and then grows out of its head. It's a valuable medicinal entity found in high Himalayan regions.",
+      "category": "Science & Nature"
+    },
+    {
+      "id": "np-gk-120",
+      "question": "Which city in Nepal is famous for making Khukuris and Khundas?",
+      "options": ["Bhojpur", "Palpa", "Dhankuta", "Sankhuwasabha"],
+      "correctAnswer": "Bhojpur",
+      "fact": "Bhojpur district in Eastern Nepal is traditionally renowned for crafting high-quality Khukuris and other bladed weapons (Khundas). [cite: 1]",
+      "category": "Culture & Economy"
+    },
+    {
+      "id": "np-gk-121",
+      "question": "When was Nepal Airlines Corporation established?",
+      "options": ["B.S. 2010", "B.S. 2015", "B.S. 2020", "B.S. 2025"],
+      "correctAnswer": "B.S. 2015",
+      "fact": "Nepal Airlines Corporation (formerly Royal Nepal Airlines Corporation) was established on July 1, 1958 (B.S. 2015 Ashad 17). [cite: 1]",
+      "category": "History & Transportation"
+    },
+    {
+      "id": "np-gk-122",
+      "question": "Where does Nepal rank among SAARC countries in terms of area?",
+      "options": ["Fourth", "Fifth", "Sixth", "Seventh"],
+      "correctAnswer": "Fifth",
+      "fact": "In terms of area, Nepal ranks fifth among SAARC nations, after India, Pakistan, Afghanistan, and Bangladesh. [cite: 1]",
+      "category": "Geography & World"
+    },
+    {
+      "id": "np-gk-123",
+      "question": "Who is recognized as the first scientist of Nepal?",
+      "options": ["Gehendra Shumsher", "Mahabir Pun", "Dayaram Bhakta Mathema", "Amrit Campus"],
+      "correctAnswer": "Gehendra Shumsher",
+      "fact": "Gehendra Shumsher J.B.R. is considered the first scientist of Nepal. He invented various weapons and machinery in the late 19th century. [cite: 1]",
+      "category": "Science & History"
+    },
+    {
+      "id": "np-gk-124",
+      "question": "Who is honored as the 'Modern Poet' in the history of Nepali literature?",
+      "options": ["Gopal Prasad Rimal", "Bhupi Sherchan", "Mohan Koirala", "Laxmi Prasad Devkota"],
+      "correctAnswer": "Gopal Prasad Rimal",
+      "fact": "Gopal Prasad Rimal is regarded as a pioneer of modernism in Nepali literature and is honored with the title 'Modern Poet'. [cite: 1]",
+      "category": "Literature"
+    },
+    {
+      "id": "np-gk-125",
+      "question": "Which highway in Nepal connects Kathmandu to the Chinese border (Kodari)?",
+      "options": ["Prithvi Highway", "Araniko Highway", "Mahendra Highway", "Pushpalal Highway"],
+      "correctAnswer": "Araniko Highway",
+      "fact": "The Araniko Highway links Kathmandu to the Chinese border at Tatopani-Kodari. It is named after the famous Nepali artist Araniko. [cite: 1]",
+      "category": "Geography"
+    },
+    {
+      "id": "np-gk-126",
+      "question": "Who was the first Nepali Prime Minister to address the United Nations General Assembly?",
+      "options": ["B.P. Koirala", "Matrika Prasad Koirala", "Tanka Prasad Acharya", "Surya Bahadur Thapa"],
+      "correctAnswer": "B.P. Koirala",
+      "fact": "Bishweshwar Prasad Koirala addressed the 15th UN General Assembly in 1960, becoming the first Nepali Prime Minister to speak at the assembly.",
+      "category": "History & International Relations"
+    },
+    {
+      "id": "np-gk-127",
+      "question": "What is the major festival of the Sherpa community, celebrated according to the Buddhist calendar?",
+      "options": ["Dashain", "Lhosar", "Maghe Sankranti", "Holi"],
+      "correctAnswer": "Lhosar",
+      "fact": "Lhosar (Gyalpo Lhosar, Sonam Lhosar, etc.) is the New Year festival celebrated by Sherpa, Tamang, Gurung and other Himalayan communities, based on the Tibetan Buddhist lunar calendar. [cite: 1]",
+      "category": "Culture"
+    },
+    {
+      "id": "np-gk-128",
+      "question": "Which animal found in Nepal is often called the 'Ghost of the Mountains'?",
+      "options": ["Snow Leopard", "Musk Deer", "Wolf", "Bear"],
+      "correctAnswer": "Snow Leopard",
+      "fact": "The Snow Leopard is known as the 'Ghost of the Mountains' due to its elusive nature and excellent camouflage. It's a protected species found in Nepal's high Himalayas. [cite: 1]",
+      "category": "Science & Nature"
+    },
+    {
+      "id": "np-gk-129",
+      "question": "According to the Mahabharata, which place in Nepal is believed to be where the Pandavas spent part of their exile?",
+      "options": ["Swargadwari", "Halesi Mahadev", "Birat Kshetra", "Devghat"],
+      "correctAnswer": "Birat Kshetra",
+      "fact": "According to mythology, the Pandavas spent their year in incognito exile in the kingdom of King Birat, which is associated with Birat Kshetra (Biratnagar) in modern-day Morang district.",
+      "category": "Culture & History"
+    },
+    {
+      "id": "np-gk-130",
+      "question": "Which is the first university established in Nepal?",
+      "options": ["Kathmandu University", "Pokhara University", "Tribhuvan University", "Purbanchal University"],
+      "correctAnswer": "Tribhuvan University",
+      "fact": "Tribhuvan University (T.U.) was established in B.S. 2016 (1959 AD). It is the oldest and largest university in Nepal. [cite: 1]",
+      "category": "Education & History"
+    },
+      {
+        "id": "np-gk-221",
+        "question": "Which specific event in 1979 led to a referendum on Nepal's political system (Panchayat vs Multi-party)?",
+        "options": ["The Timburbote Incident", "The Piskar Massacre", "The Student Movement", "The Sukhani Martyrs Incident"],
+        "correctAnswer": "The Student Movement",
+        "fact": "The large-scale student movement of 1979, sparked by the execution of Zulfikar Ali Bhutto in Pakistan, pressured King Birendra to call a referendum in 1980 on the future of the Panchayat system.",
+        "category": "History & Politics"
+      },
+      {
+        "id": "np-gk-222",
+        "question": "What is the traditional Tharu festival celebrating the end of winter and the new year, marked by feasting and cultural performances?",
+        "options": ["Jitiya", "Maghi", "Phagua", "Sama Chakewa"],
+        "correctAnswer": "Maghi",
+        "fact": "Maghi, usually falling in January, is the most important festival for the Tharu community, marking their new year with special feasts (like pork and 'dhikri'), family gatherings, and cultural programs.",
+        "category": "Culture"
+      },
+      {
+        "id": "np-gk-223",
+        "question": "The 'Api Nampa Conservation Area' is located in which far-western district of Nepal?",
+        "options": ["Darchula", "Bajhang", "Baitadi", "Humla"],
+        "correctAnswer": "Darchula",
+        "fact": "Api Nampa Conservation Area, established in 2010, lies in the Darchula district of the Sudurpashchim Province, protecting fragile ecosystems and species like the snow leopard.",
+        "category": "Geography & Conservation"
+      },
+      {
+        "id": "np-gk-224",
+        "question": "Which Nepali scientist is known for his pioneering work in developing high-yield varieties of wheat, contributing to the Green Revolution in Nepal?",
+        "options": ["Dr. Durga Dutta Poudel", "Dr. Tirtha Bahadur Shrestha", "Dr. Harka Gurung", "Dr. Madan Kumar Rai"],
+        "correctAnswer": "Dr. Madan Kumar Rai",
+        "fact": "Dr. Madan Kumar Rai, an agricultural scientist, played a crucial role in developing and promoting improved wheat varieties in Nepal, significantly boosting production.",
+        "category": "Science & Agriculture"
+      },
+      {
+        "id": "np-gk-225",
+        "question": "The traditional Gurung cultural institution 'Rodi Ghar' primarily served as a:",
+        "options": ["Religious temple", "Community feasting house", "Communal dormitory and social club for youth", "Royal court building"],
+        "correctAnswer": "Communal dormitory and social club for youth",
+        "fact": "Rodi Ghar was a traditional Gurung institution where unmarried boys and girls would gather in the evenings for singing, dancing, socializing, and communal work, playing a key role in community bonding.",
+        "category": "Culture"
+      },
+      {
+        "id": "np-gk-226",
+        "question": "What is the name of the high mountain pass that connects the Manang and Mustang districts on the Annapurna Circuit?",
+        "options": ["Larkya La", "Thorong La", "Nangpa La", "Kang La"],
+        "correctAnswer": "Thorong La",
+        "fact": "Thorong La Pass, at an elevation of 5,416 meters, is the highest point on the popular Annapurna Circuit trek, offering stunning Himalayan views.",
+        "category": "Geography"
+      },
+      {
+        "id": "np-gk-227",
+        "question": "Who was the author of the early Nepali grammar book 'Aksharanka Shiksha'?",
+        "options": ["Bhanubhakta Acharya", "Motiram Bhatta", "Jaya Prithvi Bahadur Singh", "Hemraj Pandey"],
+        "correctAnswer": "Jaya Prithvi Bahadur Singh",
+        "fact": "Jaya Prithvi Bahadur Singh, a humanist king of Bajhang, authored 'Aksharanka Shiksha' (Education in Letters and Numbers), considered the first printed Nepali textbook, promoting education. [source: 948]",
+        "category": "Literature & Education"
+      },
+      {
+        "id": "np-gk-228",
+        "question": "Which international convention, relevant to Nepal's wetlands, focuses on the conservation and sustainable use of wetlands?",
+        "options": ["CITES", "Ramsar Convention", "Kyoto Protocol", "Bonn Convention"],
+        "correctAnswer": "Ramsar Convention",
+        "fact": "The Ramsar Convention on Wetlands, signed in Ramsar, Iran, in 1971, provides a framework for national action and international cooperation for wetland conservation. Nepal has several designated Ramsar sites like Koshi Tappu.",
+        "category": "Environment & International Relations"
+      },
+      {
+        "id": "np-gk-229",
+        "question": "The 'Jhankri' tradition in many Nepali communities involves individuals acting as:",
+        "options": ["Priests", "Shamans and healers", "Kings", "Warriors"],
+        "correctAnswer": "Shamans and healers",
+        "fact": "Jhankris are traditional shamans or healers in various ethnic groups of Nepal, believed to mediate between the physical and spiritual worlds, performing rituals for healing and divination.",
+        "category": "Culture & Religion"
+      },
+      {
+        "id": "np-gk-230",
+        "question": "Which lake in Nepal is famously associated with the legend of a submerged palace?",
+        "options": ["Rara Lake", "Fewa Lake", "Begnas Lake", "Nagdaha"],
+        "correctAnswer": "Nagdaha",
+        "fact": "Nagdaha, located near Kathmandu Valley, is steeped in legend, including tales of ancient serpent deities (Nagas) and a submerged palace belonging to a Naga king.",
+        "category": "Geography & Mythology"
+      },
+      {
+        "id": "np-gk-231",
+        "question": "The 'Battle of Kirtipur' during Nepal's unification campaign was primarily fought between Gorkhali forces and:",
+        "options": ["Limbu forces", "Newar forces of the Malla kingdoms", "British forces", "Tibetan forces"],
+        "correctAnswer": "Newar forces of the Malla kingdoms",
+        "fact": "The Battle of Kirtipur (fought multiple times, notably 1767 AD) was a crucial and brutal conflict where Prithvi Narayan Shah's Gorkhali army eventually defeated the defending Newar forces of Kirtipur, paving the way for the conquest of Kathmandu Valley.",
+        "category": "History"
+      },
+      {
+        "id": "np-gk-232",
+        "question": "What is the approximate percentage of Nepal's land area covered by protected areas (National Parks, Reserves etc.)?",
+        "options": ["Around 10%", "Around 15%", "Around 23%", "Around 30%"],
+        "correctAnswer": "Around 23%",
+        "fact": "Nepal has dedicated a significant portion of its landmass to conservation, with approximately 23.4% designated as protected areas, including national parks, wildlife reserves, and conservation areas.",
+        "category": "Geography & Conservation"
+      },
+      {
+        "id": "np-gk-233",
+        "question": "Which organization manages the Nepal Stock Exchange (NEPSE)?",
+        "options": ["Nepal Rastra Bank", "Securities Board of Nepal (SEBON)", "Ministry of Finance", "NEPSE Ltd. itself"],
+        "correctAnswer": "NEPSE Ltd. itself",
+        "fact": "The Nepal Stock Exchange Ltd. (NEPSE) operates as an independent entity responsible for facilitating securities trading, although it is regulated by the Securities Board of Nepal (SEBON).",
+        "category": "Economy"
+      },
+      {
+        "id": "np-gk-234",
+        "question": "The 'Bisket Jatra', celebrated primarily in Bhaktapur, marks the beginning of:",
+        "options": ["The Nepali New Year (Bikram Sambat)", "The harvest season", "The monsoon season", "The end of winter"],
+        "correctAnswer": "The Nepali New Year (Bikram Sambat)",
+        "fact": "Bisket Jatra is a vibrant nine-day festival celebrated in Bhaktapur, coinciding with the start of the Nepali New Year (Baishakh), featuring the erection of a ceremonial pole (lingo) and chariot processions.",
+        "category": "Culture"
+      },
+      {
+        "id": "np-gk-235",
+        "question": "Which Nepalese martial artist holds multiple Guinness World Records, including for breaking concrete blocks?",
+        "options": ["Deepak Bista", "Prakash Thapa Magar", "Kumar Karki", "Pawan Kumar Ghimire"],
+        "correctAnswer": "Pawan Kumar Ghimire",
+        "fact": "Pawan Kumar Ghimire, a Nepalese Taekwondo practitioner, holds several Guinness World Records related to breaking items like concrete blocks and coconuts with different parts of his body.",
+        "category": "Sports"
+      },
+      {
+        "id": "np-gk-236",
+        "question": "The historic 'Gorkhapatra' newspaper was initially published in which language besides Nepali?",
+        "options": ["English", "Newari (Nepal Bhasa)", "Hindi", "It was only in Nepali"],
+        "correctAnswer": "It was only in Nepali",
+        "fact": "Although it later introduced other languages/sections, Gorkhapatra, established in 1901 AD (1958 B.S.), started publication solely in the Nepali language, playing a key role in its standardization.",
+        "category": "History & Media"
+      },
+      {
+        "id": "np-gk-237",
+        "question": "Which treaty between Nepal and India allows citizens of both countries to travel and work freely in the other?",
+        "options": ["Sugauli Treaty (1816)", "1950 Treaty of Peace and Friendship", "Trade and Transit Treaty (1990s)", "Mahakali Treaty (1996)"],
+        "correctAnswer": "1950 Treaty of Peace and Friendship",
+        "fact": "The 1950 Indo-Nepal Treaty of Peace and Friendship established a close strategic relationship and allows for reciprocal movement and economic opportunities for citizens across the open border.",
+        "category": "International Relations"
+      },
+      {
+        "id": "np-gk-238",
+        "question": "What is 'Lokta Paper', a traditional Nepali product, made from?",
+        "options": ["Rice straw", "Bamboo pulp", "The bark of the Lokta bush (Daphne)", "Recycled materials"],
+        "correctAnswer": "The bark of the Lokta bush (Daphne)",
+        "fact": "Handmade Lokta paper is crafted from the fibrous inner bark of the Lokta bush (Daphne bholua or Daphne papyracea), found in the Himalayan foothills. It's known for its durability.",
+        "category": "Culture & Economy"
+      },
+      {
+        "id": "np-gk-239",
+        "question": "Which Nepali peak is technically considered the most difficult to climb among the 8,000-meter peaks within Nepal?",
+        "options": ["Annapurna I", "Kanchenjunga", "Lhotse", "Makalu"],
+        "correctAnswer": "Annapurna I",
+        "fact": "Annapurna I, despite being the 10th highest peak, has the highest fatality-to-summit ratio among the eight-thousanders, making it statistically the most dangerous due to avalanche risk and technical difficulty.",
+        "category": "Geography & Sports"
+      },
+      {
+        "id": "np-gk-240",
+        "question": "What is the name of the traditional Sherpa high-altitude tea mixed with butter and salt?",
+        "options": ["Chiura", "Suja (Butter Tea)", "Rakshi", "Tongba"],
+        "correctAnswer": "Suja (Butter Tea)",
+        "fact": "Suja, commonly known as butter tea, is a staple beverage in Himalayan regions, including among Sherpas. It's made by churning tea leaves with yak butter and salt, providing warmth and energy.",
+        "category": "Culture & Food"
+      },
+      {
+        "id": "np-gk-241",
+        "question": "Which constitutional body in Nepal is primarily responsible for conducting elections?",
+        "options": ["Supreme Court", "Election Commission, Nepal", "Parliament Secretariat", "Office of the Prime Minister"],
+        "correctAnswer": "Election Commission, Nepal",
+        "fact": "The Election Commission, Nepal (ECN) is the independent constitutional body responsible for conducting, supervising, directing, and controlling elections for federal, provincial, and local bodies.",
+        "category": "Politics & Constitution"
+      },
+      {
+        "id": "np-gk-242",
+        "question": "Who composed the music for Nepal's current national anthem, 'Sayau Thunga Phool Ka'?",
+        "options": ["Amber Gurung", "Narayan Gopal", "Nati Kaji", "Gopal Yonjan"],
+        "correctAnswer": "Amber Gurung",
+        "fact": "The music for the national anthem 'Sayau Thunga Phool Ka' (written by Pradeep Kumar Rai 'Byakul Maila') was composed by the renowned late musician Amber Gurung.",
+        "category": "Culture & Music"
+      },
+      {
+        "id": "np-gk-243",
+        "question": "Which district in Nepal is famous for producing high-quality apples?",
+        "options": ["Mustang", "Manang", "Jumla", "Humla"],
+        "correctAnswer": "Mustang",
+        "fact": "The Mustang district, particularly the Marpha village area, is renowned for its delicious apples and apple-based products like brandy (Marpha Brandy) and cider.",
+        "category": "Geography & Agriculture"
+      },
+      {
+        "id": "np-gk-244",
+        "question": "What is the name of the traditional Magar festival that involves communal hunting?",
+        "options": ["Bhume Puja", "Maghe Sankranti", "Chandi Nach", "Shikar Khelne (Sendra)"],
+        "correctAnswer": "Shikar Khelne (Sendra)",
+        "fact": "While varying by region, some Magar communities traditionally observe a communal hunting ritual known as Shikar Khelne or Sendra, often linked to seasonal celebrations or agricultural cycles.",
+        "category": "Culture"
+      },
+      {
+        "id": "np-gk-245",
+        "question": "Which hydropower project was Nepal's first, built during the Rana era?",
+        "options": ["Pharping Hydropower Station (Chandrajyoti)", "Sundarijal Hydropower Station", "Trishuli Hydropower Project", "Panauti Hydropower Station"],
+        "correctAnswer": "Pharping Hydropower Station (Chandrajyoti)",
+        "fact": "The Pharping Hydropower Station, commissioned in 1911 AD during Chandra Shumsher's rule and named 'Chandrajyoti', was Nepal's (and Asia's second) first hydropower project.",
+        "category": "History & Infrastructure"
+      },
+      {
+        "id": "np-gk-246",
+        "question": "Which famous trekking region in Nepal is known as the 'Last Forbidden Kingdom'?",
+        "options": ["Annapurna Region", "Everest Region", "Upper Mustang", "Langtang Valley"],
+        "correctAnswer": "Upper Mustang",
+        "fact": "Upper Mustang, formerly the Kingdom of Lo, was a restricted demilitarized area until 1992. Its relative isolation preserved a unique Tibetan-influenced culture, earning it the name 'Last Forbidden Kingdom'.",
+        "category": "Geography & Culture"
+      },
+      {
+        "id": "np-gk-247",
+        "question": "Which Nepali author won the prestigious Sajha Puraskar for the novel 'Palpasa Cafe'?",
+        "options": ["Narayan Wagle", "Buddhisagar", "Khagendra Sangroula", "Manjushree Thapa"],
+        "correctAnswer": "Narayan Wagle",
+        "fact": "'Palpasa Cafe', a novel exploring the impact of the Maoist conflict, written by journalist Narayan Wagle, won the Sajha Puraskar in 2005.",
+        "category": "Literature"
+      },
+      {
+        "id": "np-gk-248",
+        "question": "Nepal serves significantly in UN Peacekeeping Operations. Which country has historically received the largest deployment of Nepali peacekeepers?",
+        "options": ["Lebanon", "South Sudan", "Democratic Republic of Congo", "Haiti"],
+        "correctAnswer": "Democratic Republic of Congo",
+        "fact": "Nepal has been a major troop contributor to UN missions for decades. Historically, MONUSCO in the Democratic Republic of Congo has seen one of the largest and longest deployments of Nepali peacekeepers.",
+        "category": "International Relations"
+      },
+      {
+        "id": "np-gk-249",
+        "question": "What is the 'Chitwan Declaration' related to in Nepal's conservation history?",
+        "options": ["Tiger Conservation", "Rhino Conservation", "Wetland Protection", "Community Forestry"],
+        "correctAnswer": "Rhino Conservation",
+        "fact": "The Chitwan Declaration, adopted in 2013, outlined Nepal's commitment and strategy for achieving zero poaching of one-horned rhinoceros, a goal largely successful in subsequent years.",
+        "category": "Conservation & Environment"
+      },
+      {
+        "id": "np-gk-250",
+        "question": "The 'Singha Durbar', Nepal's main administrative complex, was originally built as a private residence for which Rana Prime Minister?",
+        "options": ["Jung Bahadur Rana", "Chandra Shumsher Rana", "Bir Shumsher Rana", "Juddha Shumsher Rana"],
+        "correctAnswer": "Chandra Shumsher Rana",
+        "fact": "Singha Durbar was constructed by Chandra Shumsher J.B. Rana in 1908 as his opulent private residence before later becoming the seat of government.",
+        "category": "History & Architecture"
+      }
 ];
