@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
@@ -19,6 +19,14 @@ const FeedbackButton = dynamic(() => import("../components/FeedbackButton"), {
 export default function HomePage() {
   const t = useTranslations("Translations"); 
 
+  // Check current language (assuming 'ne' for Nepali and 'en' for English)
+  const language = useLocale();
+
+  // Define font classes for English and Nepali
+  const englishFontClass = "dmSans";
+  const nepaliFontClass = "rozha";
+
+
   return (
     <main className="min-h-screen">
       <div className="relative z-10 container mx-auto flex flex-col items-start justify-between px-4">
@@ -29,13 +37,12 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 rounded-lg blur-lg opacity-50"></div>
           </div>
           {/* Simplified title styling */}
-          <h1 className="relative inline text-3xl md:text-6xl font-extrabold text-left bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-            {t('piromomo')}
-            <span className="absolute -bottom-2 left-0 w-16 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></span>
-          </h1>
-          <p className="mt-4 text-left text-sm sm:text-md font-medium text-gray-400">
-            <span>{t('tagline')}</span>
-          </p>
+          <h1
+        className={`nepali-text-title relative inline text-3xl md:text-6xl font-extrabold text-left bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent ${language === 'ne' ? nepaliFontClass : englishFontClass}`}
+      >
+        {t('piromomo')}
+        <span className="absolute -bottom-2 left-0 w-16 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></span>
+      </h1>
         </div>
 
         {/* Fun Card Section - Prioritize content and add loading strategy */}

@@ -75,7 +75,7 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="bg-white shadow-sm sticky top-0 z-50">
+        <nav className="bg-white shadow-sm sticky top-0 z-50 mt-4 ">
             <div className="container mx-auto md:px-0 px-4 py-2">
                 {/* Top Row: Logo, Brand Name, Locale Switcher, Twitter Link (all screens) */}
                 <div className="flex items-center justify-between">
