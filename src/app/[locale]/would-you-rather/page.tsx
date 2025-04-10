@@ -324,7 +324,7 @@ export default function WouldYouRatherPage() {
             <div className="flex justify-center mt-6">
               {selectedOption && !loading ? (
                 <div className="flex gap-4">
-                  <GameButton onClick={handleShareResult} type="neutral">
+                  <GameButton onClick={handleShareResult} type="neutral" className="flex items-center">
                     <FiShare2 className="mr-2" />
                     {t('wouldYouRather.share') || 'Share'}
                   </GameButton>
