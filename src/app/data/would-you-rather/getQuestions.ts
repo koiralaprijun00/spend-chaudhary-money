@@ -232,13 +232,6 @@ const englishQuestions: WouldYouRatherQuestion[] = [
     optionBVotes: 357
   },
   {
-    id: 'quirky-1',
-    optionA: 'have a friendly Yeti as your trekking guide',
-    optionB: 'have a talking Snow Leopard as your pet',
-    optionAVotes: 555,
-    optionBVotes: 445
-  },
-  {
     id: 'quirky-2',
     optionA: 'be able to instantly refill any dal bhat plate',
     optionB: 'be able to summon a perfect cup of chiya anytime, anywhere',
@@ -266,16 +259,10 @@ const englishQuestions: WouldYouRatherQuestion[] = [
     optionAVotes: 390,
     optionBVotes: 610
   },
-  {
-    id: 'quirky-6',
-    optionA: 'find out your neighbour is secretly a Naga serpent god/goddess',
-    optionB: 'find out your favourite momo shop is run by friendly Lakheys (demons)',
-    optionAVotes: 650,
-    optionBVotes: 350
-  },
+  
   {
     id: 'quirky-7',
-    optionA: 'have a tika mark that changes color based on your mood',
+    optionA: 'have a tika mark that changes color',
     optionB: 'have a dhaka topi that magically keeps you cool in summer and warm in winter',
     optionAVotes: 405,
     optionBVotes: 595
@@ -534,8 +521,8 @@ const englishQuestions: WouldYouRatherQuestion[] = [
   },
   {
     id: 'social-2',
-    optionA: 'always have to address everyone formally (using tapāī̃/hajur)',
-    optionB: 'always have to address everyone informally (using timi/tã)',
+    optionA: 'always have to address everyone formally (using tapai/hajur)',
+    optionB: 'always have to address everyone informally (using timi/ta)',
     optionAVotes: 625,
     optionBVotes: 375
   },
@@ -575,13 +562,6 @@ const englishQuestions: WouldYouRatherQuestion[] = [
     optionB: 'invent a device that translates animal sounds into understandable Nepali',
     optionAVotes: 478,
     optionBVotes: 522
-  },
-  {
-    id: 'hypothetical-8',
-    optionA: 'establish a successful Nepali tea brand globally',
-    optionB: 'establish a successful Nepali handicraft market online',
-    optionAVotes: 533,
-    optionBVotes: 467
   },
   {
     id: 'hypothetical-9',
@@ -832,13 +812,6 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
     optionBVotes: 357
   },
   {
-    id: 'quirky-1',
-    optionA: 'तपाईंको ट्रेकिङ गाइड एउटा मित्रवत यति (Yeti) हुने',
-    optionB: 'तपाईंको घरपालुवा जनावर बोल्ने हिउँ चितुवा हुने',
-    optionAVotes: 555,
-    optionBVotes: 445
-  },
-  {
     id: 'quirky-2',
     optionA: 'कुनै पनि दाल भातको थाल तुरुन्तै भर्न सक्ने क्षमता हुने',
     optionB: 'कुनै पनि बेला, जहाँसुकै एक कप उत्कृष्ट चिया उत्पन्न गर्न सक्ने क्षमता हुने',
@@ -867,16 +840,9 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
     optionBVotes: 610
   },
   {
-    id: 'quirky-6',
-    optionA: 'तपाईंको छिमेकी गोप्य रूपमा नाग देवता/देवी भएको पत्ता लगाउने',
-    optionB: 'तपाईंको मनपर्ने मोमो पसल मित्रवत लाखेहरूले चलाएको पत्ता लगाउने',
-    optionAVotes: 650,
-    optionBVotes: 350
-  },
-  {
     id: 'quirky-7',
-    optionA: 'तपाईंको मुड अनुसार रंग परिवर्तन हुने टीका लगाउने',
-    optionB: 'गर्मीमा चिसो र जाडोमा न्यानो राख्ने जादुई ढाका टोपी हुने',
+    optionA: 'रंग परिवर्तन हुने टीका लगाउने',
+    optionB: 'गर्मीमा चिसो र जाडोमा न्यानो राख्ने ढाका टोपी हुने',
     optionAVotes: 405,
     optionBVotes: 595
   },
@@ -904,23 +870,9 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
 
   // --- Food Continued ---
   {
-    id: 'food-6',
-    optionA: 'हरेक दिन गुन्द्रुक खाने',
-    optionB: 'हरेक दिन सिन्की खाने',
-    optionAVotes: 588,
-    optionBVotes: 412
-  },
-  {
-    id: 'food-7',
-    optionA: 'मोही मात्र पिउने',
-    optionB: 'ऐला मात्र पिउने',
-    optionAVotes: 720,
-    optionBVotes: 280
-  },
-  {
     id: 'food-8',
     optionA: 'गोलो र पर्फेक्ट सेल रोटी बनाउने कलामा निपुण हुने',
-    optionB: '२० विभिन्न प्रकारका अचार बनाउने कलामा निपुण हुने',
+    optionB: '५ विभिन्न प्रकारका अचार बनाउने कलामा निपुण हुने',
     optionAVotes: 450,
     optionBVotes: 550
   },
@@ -940,13 +892,6 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
   },
 
   // --- Travel Continued ---
-  {
-    id: 'travel-6',
-    optionA: 'तिब्बती पठारमा याक चढ्ने',
-    optionB: 'चितवन राष्ट्रिय निकुञ्जमा (सुरक्षित रूपमा!) गैंडा चढ्ने',
-    optionAVotes: 485,
-    optionBVotes: 515
-  },
   {
     id: 'travel-7',
     optionA: 'भक्तपुरको साँघुरो गल्लीहरूमा हराउने',
@@ -992,13 +937,6 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
     optionBVotes: 590
   },
   {
-    id: 'culture-8',
-    optionA: 'परम्परागत नेपाली मागी विवाह गर्ने',
-    optionB: 'परिवारको इच्छा विरुद्ध आधुनिक नेपाली प्रेम विवाह गर्ने',
-    optionAVotes: 630,
-    optionBVotes: 370
-  },
-  {
     id: 'culture-9',
     optionA: 'थाङ्का चित्रकलामा निपुण हुने',
     optionB: 'परम्परागत काष्ठकला (नेवारी शैली) मा निपुण हुने',
@@ -1015,22 +953,8 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
 
   // --- Daily Life Continued ---
   {
-    id: 'daily-6',
-    optionA: 'सधैं राम्रोसँग आइरन गरेको लुगा हुने तर फोन चार्ज गर्न बिजुली नहुने',
-    optionB: 'सधैं फुल चार्ज भएको फोन हुने तर सधैं खुम्चिएको लुगा हुने',
-    optionAVotes: 440,
-    optionBVotes: 560
-  },
-  {
-    id: 'daily-7',
-    optionA: 'यातायात प्रभावित पार्ने निरन्तर बन्दको सामना गर्ने',
-    optionB: 'ठूलो घुम्ती सडक निम्त्याउने निरन्तर सडक निर्माणको सामना गर्ने',
-    optionAVotes: 518,
-    optionBVotes: 482
-  },
-  {
     id: 'daily-8',
-    optionA: 'हरेक दिन, हरेक चीजको मूल्यमा मोलतोल गर्नुपर्ने (निश्चित मूल्य पसलमा पनि)',
+    optionA: 'हरेक दिन, हरेक चीजको मूल्यमा मोलतोल गर्नुपर्ने',
     optionB: 'कहिल्यै मोलतोल गर्न नसक्ने, सधैं पहिलो सोधेको मूल्य तिर्नुपर्ने',
     optionAVotes: 750,
     optionBVotes: 250
@@ -1051,13 +975,6 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
   },
 
   // --- Nature & Environment ---
-  {
-    id: 'nature-1',
-    optionA: 'हिमाली चराहरूसँग कुरा गर्न सक्ने हुने',
-    optionB: 'पहाडी हावाको कानेखुसी बुझ्न सक्ने हुने',
-    optionAVotes: 535,
-    optionBVotes: 465
-  },
   {
     id: 'nature-2',
     optionA: 'नेपालको नाङ्गो डाँडामा वृक्षारोपण गर्न मद्दत गर्ने',
@@ -1116,22 +1033,8 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
     optionAVotes: 670,
     optionBVotes: 330
   },
-  {
-    id: 'tech-5',
-    optionA: 'आफ्नो फोन चार्जर हराउने',
-    optionB: 'आफ्नो घरको साँचो हराउने',
-    optionAVotes: 505,
-    optionBVotes: 495
-  },
 
   // --- Social & Relationships ---
-  {
-    id: 'social-1',
-    optionA: '१००+ आफन्तका लागि ठूलो दशैं भोज आयोजना गर्ने',
-    optionB: 'एकै दिनमा आफन्तको घरमा १० विभिन्न दशैं भोजमा जाने',
-    optionAVotes: 455,
-    optionBVotes: 545
-  },
   {
     id: 'social-2',
     optionA: 'सधैं सबैलाई औपचारिक रूपमा सम्बोधन गर्नुपर्ने (तपाईं/हजुर प्रयोग गरेर)',
@@ -1145,13 +1048,6 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
     optionB: 'आफ्नो पूरै छिमेकको मुख्य गफ गर्ने स्रोत हुने',
     optionAVotes: 550,
     optionBVotes: 450
-  },
-  {
-    id: 'social-4',
-    optionA: 'आफ्नो करियरको बाटो आमाबुवाले रोजिदिने',
-    optionB: 'आफ्नो जीवनसाथी आमाबुवाले रोजिदिने',
-    optionAVotes: 400,
-    optionBVotes: 600
   },
   {
     id: 'social-5',
