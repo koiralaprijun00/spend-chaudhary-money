@@ -1,5 +1,28 @@
 {
   "Translations": {
+    "loading": "Loading...",
+    "wouldYouRather": {
+    "title": "के गर्नुहुन्छ? - नेपाल संस्करण",
+    "description": "दुई नेपाली परिस्थितिहरू छान्नुहोस् र अरूसँग आफ्नो छनौटको तुलना गर्नुहोस्!",
+    "navbarTitle": "के गर्नुहुन्छ?",
+    "categories": "श्रेणीहरू",
+    "allCategories": "सबै श्रेणीहरू",
+    "stats": "तपाईंको आँकडा",
+    "loading": "लोड हुँदैछ...",
+    "questionsAnswered": "उत्तर दिइएको",
+    "newQuestions": "नयाँ प्रश्नहरू",
+    "questionCounter": "प्रश्न {current}/{total}",
+    "questionPrefix": "के तपाईं...",
+    "choosePrompt": "अरूले कसरी भोट गरे हेर्न विकल्प छान्नुहोस्",
+    "resultMessage": "{percentage}% तपाईंसँग सहमत छन्!",
+    "share": "साझा गर्नुहोस्",
+    "next": "अर्को प्रश्न",
+    "refresh": "रिफ्रेस",
+    "submitYourOwn": "तपाईंसँग राम्रो \"के गर्नुहुन्छ?\" विचार छ?",
+    "submitDescription": "खेलमा समावेश गर्नको लागि आफ्नै प्रश्नहरू पेश गर्नुहोस्!",
+    "submitButton": "प्रश्न पेश गर्नुहोस्",
+    "shareText": "\"के गर्नुहुन्छ?\" मा, मैले \"{choice}\" रोजें र {percentage}% मानिसहरू मसँग सहमत भए! आफै प्रयास गर्नुहोस्!"
+  },
     "incorrectGuesses": "छुटेका जिल्लाहरू",
     "remainingDistricts": "{count} जिल्लाहरू बाँकी",
     "yourOptions": "विकल्पहरू",

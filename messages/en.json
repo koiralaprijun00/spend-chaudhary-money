@@ -1,5 +1,28 @@
   {
   "Translations":{
+    "loading": "Loading...",
+    "wouldYouRather": {
+    "title": "Would You Rather - Nepal Edition",
+    "description": "Choose between two uniquely Nepali scenarios and see how your choices compare with others!",
+    "navbarTitle": "Would You Rather",
+    "categories": "Categories",
+    "allCategories": "All Categories",
+    "stats": "Your Stats",
+    "loading": "Loading...",
+    "questionsAnswered": "Answered",
+    "newQuestions": "New Questions",
+    "questionCounter": "Question {current} of {total}",
+    "questionPrefix": "Would you rather...",
+    "choosePrompt": "Select an option to see how others voted",
+    "resultMessage": "{percentage}% of people agree with you!",
+    "share": "Share",
+    "next": "Next Question",
+    "refresh": "Refresh",
+    "submitYourOwn": "Have a great \"Would You Rather\" idea?",
+    "submitDescription": "Submit your own questions for possible inclusion in the game!",
+    "submitButton": "Submit a Question",
+    "shareText": "In \"Would You Rather\", I chose \"{choice}\" and {percentage}% of people agreed with me! Try it yourself!"
+  },
     "incorrectGuesses": "Missed Districts",
     "remainingDistricts": "{count} districts remaining",
     "yourOptions": "Options",
