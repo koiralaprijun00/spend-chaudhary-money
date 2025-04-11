@@ -209,18 +209,6 @@ export default function WouldYouRatherPage() {
   return (
     <div className="min-h-screen w-full py-8 px-4 md:px-6">
       <div className="max-w-3xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-3">
-            {t('wouldYouRather.title') || 'Would You Rather - Nepal Edition'}
-          </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            {t('wouldYouRather.description') || 'Choose between two uniquely Nepali scenarios and see how your choices compare with others!'}
-          </p>
-        </div>
-        
-       
-        
         {/* Main Game Card */}
         <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg mb-6">
           <div className="bg-white rounded-lg p-6">
@@ -234,10 +222,15 @@ export default function WouldYouRatherPage() {
               {t('wouldYouRather.newQuestions') || 'New Questions'}
             </button>
           </div>
-            <h2 className="text-2xl font-bold text-center mb-8">
+
+          <div className="text-left mb-4">
+            <h2 className="text-3xl font-bold">
               {t('wouldYouRather.questionPrefix') || 'Would you rather...'}
             </h2>
-            
+            <p className="text-gray-600 max-w-md text-sm">
+            {t('wouldYouRather.description') || 'Pick a Nepali scenario and see how your choice stacks up!'}
+          </p>
+          </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <button
                 onClick={() => handleOptionSelect('A')}
