@@ -8,6 +8,7 @@ import { Product } from "../../data/spend-binod-money/product"; // Import Produc
 import GameButton from "../../components/ui/GameButton";
 import { useTranslations, useLocale } from "next-intl"; // Import useLocale
 import Link from "next/link";
+import Image from "next/image";
 
 interface Purchases {
   [key: number]: number;
@@ -61,11 +62,21 @@ const Header: React.FC<HeaderProps> = ({ budget, spent, isModalOpen, setModalOpe
     <div className="w-full bg-white shadow-md rounded-b-lg pt-6 pb-4">
       <div className="px-6 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-start mb-4">
-          <div>
+          <div className="flex items-center">
+              <Image
+                src="/binod-header.jpg"
+                alt="Logo"
+                width={64}
+                height={64}
+                object-fit="cover"
+                className="w-16 h-16 rounded-md shadow-lg"
+              />
+              <div className="ml-4">
             <h1 className="text-3xl font-extrabold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
               {t("spendBinodTitle")}
             </h1>
             <p className="text-gray-600 mt-1 max-w-2xl">{t("spendBinodDescription")}</p>
+          </div>
           </div>
           <Link
             href="/about-binod"

@@ -8,15 +8,23 @@ import { useTranslations } from 'next-intl';
 import { FaTwitter } from "react-icons/fa"
 import { FaInstagram } from "react-icons/fa"
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
+import { BiChevronDown } from 'react-icons/bi';
 
 const Navbar = () => {
     const t = useTranslations('Translations');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement | null>(null);
     const buttonRef = useRef<HTMLButtonElement | null>(null);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+    const dropdownButtonRef = useRef<HTMLButtonElement | null>(null);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
     };
 
     // Close menu when clicking outside
@@ -36,11 +44,29 @@ const Navbar = () => {
         };
     }, [isMenuOpen]);
 
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        if (!isDropdownOpen) return;
+        
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) && 
+                dropdownButtonRef.current && !dropdownButtonRef.current.contains(event.target as Node)) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isDropdownOpen]);
+
     // Handle escape key to close menu
     useEffect(() => {
         const handleEscKey = (event: KeyboardEvent) => {
-            if (event.key === 'Escape' && isMenuOpen) {
-                setIsMenuOpen(false);
+            if (event.key === 'Escape') {
+                if (isMenuOpen) setIsMenuOpen(false);
+                if (isDropdownOpen) setIsDropdownOpen(false);
             }
         };
 
@@ -48,7 +74,7 @@ const Navbar = () => {
         return () => {
             document.removeEventListener('keydown', handleEscKey);
         };
-    }, [isMenuOpen]);
+    }, [isMenuOpen, isDropdownOpen]);
 
     // Focus management for mobile menu
     useEffect(() => {
@@ -63,7 +89,8 @@ const Navbar = () => {
     // Link classes for both desktop and mobile
     const linkClasses = "text-gray-600 hover:text-orange-500 hover:bg-orange-50 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200";
 
-    const navLinks = [
+    // Main nav links (first 8 items)
+    const mainNavLinks = [
         { href: "/spend", label: t('spendBinodTitle') },
         { href: "/guess-festival", label: t('games.guessFestival.title') },
         { href: "/kings-of-nepal", label: t('kingsOfNepal.title') },
@@ -73,6 +100,16 @@ const Navbar = () => {
         { href: "/patta-lagau", label: t('pattalagauTitle') || 'Patta Lagau'},
         { href: "/first-of-nepal", label: t('firstofNepalTitle') || 'Firsts of Nepal'}
     ];
+
+    // Dropdown links (extra games)
+    const dropdownLinks = [
+        { href: "/yo-ki-tyo", label: t('wouldYouRather.title') || 'Would You Rather' },
+        { href: "/date-converter", label: t('nepaliDateConverterTitle') || 'Date Converter' },
+        // Add more games as needed
+    ];
+
+    // All links for mobile menu
+    const allLinks = [...mainNavLinks, ...dropdownLinks];
 
     return (
         <nav className="bg-white shadow-sm sticky top-0 z-50 mt-4 ">
@@ -89,9 +126,6 @@ const Navbar = () => {
                             className="mr-2 ml-2 transform group-hover:scale-110 transition-transform duration-200" 
                             priority
                         />
-                        {/* <span className="text-gray-800 text-xl font-bold group-hover:text-orange-500 transition-colors duration-200">
-                            {t('piromomo')}
-                        </span> */}
                     </Link>
 
                     {/* Right: Locale Switcher, Twitter Link, and Hamburger (Hamburger only on mobile) */}
@@ -118,25 +152,26 @@ const Navbar = () => {
 
                         {/* Hamburger menu button - visible only on mobile */}
                         <button 
-    ref={buttonRef}
-    className="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-md p-1"
-    onClick={toggleMenu}
-    aria-expanded={isMenuOpen}
-    aria-controls="mobile-menu"
-    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
->
-    {isMenuOpen ? (
-        <RiCloseLine className="w-6 h-6" />
-    ) : (
-        <RiMenu3Line className="w-6 h-6" />
-    )}
-</button>
+                            ref={buttonRef}
+                            className="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-md p-1"
+                            onClick={toggleMenu}
+                            aria-expanded={isMenuOpen}
+                            aria-controls="mobile-menu"
+                            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                        >
+                            {isMenuOpen ? (
+                                <RiCloseLine className="w-6 h-6" />
+                            ) : (
+                                <RiMenu3Line className="w-6 h-6" />
+                            )}
+                        </button>
                     </div>
                 </div>
 
                 {/* Desktop Navigation Links */}
                 <div className="hidden md:flex items-center justify-start space-x-1 mt-3 xl:mt-2 xl:justify-start">
-                    {navLinks.map((link, index) => (
+                    {/* Main nav links */}
+                    {mainNavLinks.map((link, index) => (
                         <Link 
                             key={index} 
                             href={link.href} 
@@ -145,6 +180,41 @@ const Navbar = () => {
                             {link.label}
                         </Link>
                     ))}
+                    
+                    {/* Dropdown for additional games */}
+                    {dropdownLinks.length > 0 && (
+                        <div className="relative">
+                            <button
+                                ref={dropdownButtonRef}
+                                onClick={toggleDropdown}
+                                className={`${linkClasses} flex items-center`}
+                                aria-expanded={isDropdownOpen}
+                                aria-haspopup="true"
+                            >
+                                {t('moreGames') || 'More Games'} 
+                                <BiChevronDown className={`ml-1 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                            </button>
+                            
+                            {/* Dropdown menu */}
+                            {isDropdownOpen && (
+                                <div 
+                                    ref={dropdownRef}
+                                    className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10"
+                                >
+                                    {dropdownLinks.map((link, index) => (
+                                        <Link
+                                            key={index}
+                                            href={link.href}
+                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500"
+                                            onClick={() => setIsDropdownOpen(false)}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div>
 
                 {/* Mobile menu - visible only when hamburger is clicked */}
@@ -157,7 +227,8 @@ const Navbar = () => {
                 >
                     <div className="container mx-auto px-4 py-3">
                         <div className="flex flex-col space-y-1">
-                            {navLinks.map((link, index) => (
+                            {/* Show all links in mobile menu */}
+                            {allLinks.map((link, index) => (
                                 <Link 
                                     key={index}
                                     href={link.href} 
