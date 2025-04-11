@@ -1,7 +1,13 @@
   {
   "Translations":{
+    "submitting": "Submitting...",
     "loading": "Loading...",
     "wouldYouRather": {
+      "fullName": "Your Full Name",
+      "fullNamePlaceholder": "Enter your name here",
+      "yourQuestion": "Your Would You Rather Question",
+      "questionPlaceholder": "Would you rather...",
+      "thankYou" : "Thank you for your submission!",
     "title": "Would You Rather - Nepal Edition",
     "description": "Pick a Nepali scenario and see how your choice stacks up!",
     "navbarTitle": "Would You Rather",
@@ -19,7 +25,7 @@
     "next": "Next Question",
     "refresh": "Refresh",
     "submitYourOwn": "Have a great \"Would You Rather\" idea?",
-    "submitDescription": "Submit your own questions for possible inclusion in the game!",
+    "submitDescription": "Submit your own questions for possible inclusion in the game! Your name will be featured in the game.",
     "submitButton": "Submit a Question",
     "shareText": "In \"Would You Rather\", I chose \"{choice}\" and {percentage}% of people agreed with me! Try it yourself!"
   },

@@ -6,6 +6,7 @@ import { getQuestionsByLocale } from '../../data/would-you-rather/getQuestions';
 import GameButton from '../../components/ui/GameButton';
 import AdSenseGoogle from '../../components/AdSenseGoogle';
 import { FiShare2, FiRefreshCw, FiSend } from 'react-icons/fi';
+import { ImSpinner8 } from 'react-icons/im';
 import { useLocale } from 'next-intl';
 
 interface WouldYouRatherQuestion {
@@ -24,8 +25,10 @@ export default function WouldYouRatherPage() {
   
   const [questions, setQuestions] = useState<WouldYouRatherQuestion[]>([]);
   const [showInput, setShowInput] = useState(false);
-  const [question, setQuestion] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+const [question, setQuestion] = useState('');
+const [fullName, setFullName] = useState('');
+const [submitted, setSubmitted] = useState(false);
+const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<'A' | 'B' | null>(null);
   const [loading, setLoading] = useState(false);
@@ -205,12 +208,44 @@ export default function WouldYouRatherPage() {
     );
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (question.trim()) {
-      console.log('Submitted question:', question); // Replace with actual submission logic
+    if (!question.trim() || !fullName.trim()) return;
+    
+    try {
+      setIsSubmitting(true);
+      
+      const response = await fetch('/api/would-you-rather/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          question: question.trim(),
+          fullName: fullName.trim() 
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to submit question');
+      }
+      
+      // Show success message
       setSubmitted(true);
       setQuestion('');
+      setFullName('');
+      
+      // Reset form after a delay
+      setTimeout(() => {
+        setShowInput(false);
+        setSubmitted(false);
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Error submitting question:', error);
+      alert(t('wouldYouRather.errorSubmitting') || 'Error submitting question. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -358,37 +393,82 @@ export default function WouldYouRatherPage() {
         {t('wouldYouRather.submitDescription') || 'Submit your own questions for possible inclusion in the game!'}
       </p>
 
-      {showInput ? (
-        submitted ? (
-          <p className="text-green-700 font-medium">धन्यवाद! तपाईंको प्रश्न पठाइएको छ।</p>
-        ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row sm:items-center gap-2">
-           <input
-  type="text"
-  value={question}
-  onChange={(e) => setQuestion(e.target.value)}
-  placeholder="तपाईंको प्रश्न यहाँ लेख्नुहोस्..."
-  className="w-2/3 border border-yellow-300 rounded px-3 py-2 text-sm"
-/>
-            <button
-  type="submit"
-  className="inline-flex items-center px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded hover:bg-yellow-700 transition"
->
 
+      {showInput ? (
+  submitted ? (
+    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded-md flex items-center">
+      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+      </svg>
+      <p className="font-medium">{t('wouldYouRather.thankYou') || 'धन्यवाद! तपाईंको प्रश्न पठाइएको छ।'}</p>
+    </div>
+  ) : (
+    <form onSubmit={handleSubmit} className="space-y-3">
+      {/* Full Name Input */}
+      <div>
+        <label htmlFor="fullName" className="block text-sm font-medium text-yellow-800 mb-1">
+          {t('wouldYouRather.fullName') || 'Your Full Name'}
+        </label>
+        <input
+          type="text"
+          id="fullName"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          placeholder={t('wouldYouRather.fullNamePlaceholder') || 'Enter your name...'}
+          className="w-full border border-yellow-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          disabled={isSubmitting}
+        />
+      </div>
+      
+      {/* Question Input */}
+      <div>
+        <label htmlFor="questionInput" className="block text-sm font-medium text-yellow-800 mb-1">
+          {t('wouldYouRather.yourQuestion') || 'Your Would You Rather Question'}
+        </label>
+        <textarea
+          id="questionInput"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          placeholder={t('wouldYouRather.questionPlaceholder') || 'Would you rather...'}
+          className="w-full border border-yellow-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          disabled={isSubmitting}
+          rows={3}
+        />
+      </div>
+      
+      {/* Submit Button */}
+      <div className="flex justify-end">
+        <button
+          type="submit"
+          disabled={isSubmitting || !question.trim() || !fullName.trim()}
+          className={`inline-flex items-center px-4 py-2 bg-yellow-600 text-white text-sm font-medium rounded hover:bg-yellow-700 transition ${
+            isSubmitting || !question.trim() || !fullName.trim() ? 'opacity-70 cursor-not-allowed' : ''
+          }`}
+        >
+          {isSubmitting ? (
+            <>
+              <ImSpinner8 className="animate-spin mr-2 h-4 w-4" />
+              {t('submitting') || 'पठाउँदै...'}
+            </>
+          ) : (
+            <>
               <FiSend className="mr-2" />
               {t('wouldYouRather.submitButton') || 'प्रश्न पठाउनुहोस्'}
-            </button>
-          </form>
-        )
-      ) : (
-        <button
-          onClick={() => setShowInput(true)}
-          className="inline-flex items-center px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded hover:bg-yellow-700 transition"
-        >
-          <FiSend className="mr-2" />
-          {t('wouldYouRather.submitButton') || 'प्रश्न पठाउनुहोस्'}
+            </>
+          )}
         </button>
-      )}
+      </div>
+    </form>
+  )
+) : (
+  <button
+    onClick={() => setShowInput(true)}
+    className="inline-flex items-center px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded hover:bg-yellow-700 transition"
+  >
+    <FiSend className="mr-2" />
+    {t('wouldYouRather.submitButton') || 'प्रश्न पठाउनुहोस्'}
+  </button>
+)}
     </div>
         
         <div className="flex justify-center">
