@@ -51,9 +51,8 @@ const LogoQuizGame = () => {
   const locale = useLocale();
 
   // Maximum blur level (starting level) and minimum blur level
-  const MAX_BLUR_LEVEL = 6;
+  const MAX_BLUR_LEVEL = 4; // Maps to blur-lg (we have 4 levels: none, sm, md, lg)
   const MIN_BLUR_LEVEL = 0;
-  // We'll use gradual blur reduction based on attempt count instead of a fixed step
   // Maximum number of incorrect attempts before removing blur completely
   const MAX_ATTEMPTS = 5;
 
@@ -213,12 +212,9 @@ const LogoQuizGame = () => {
         [logoId]: currentAttempts
       }));
       
-      // Calculate new blur level based on number of attempts (gradually decreasing)
-      // For 5 attempts, we go from MAX_BLUR_LEVEL to 0 in equal steps
-      const blurStep = MAX_BLUR_LEVEL / MAX_ATTEMPTS;
-      let newBlurLevel = Math.max(MAX_BLUR_LEVEL - (currentAttempts * blurStep), 0);
-      // Round to nearest even number for compatibility with our blur classes (0, 2, 4, 6)
-      newBlurLevel = Math.floor(newBlurLevel / 2) * 2;
+      // Update blur level in state for reference (though we'll mostly use attemptCounts)
+      // This is mapped to our blur style levels (4=blur-lg, 3=blur-md, 2=blur-md, 1=blur-sm, 0=no blur)
+      const newBlurLevel = Math.max(MAX_BLUR_LEVEL - currentAttempts, 0);
       
       setBlurLevels(prev => ({
         ...prev,
@@ -353,26 +349,26 @@ const LogoQuizGame = () => {
     return logos.slice(startIndex, startIndex + logosPerPage);
   };
 
-  // Get blur style for a logo based on its blur level or attempt count
+  // Get blur style for a logo based on attempt count
   const getBlurStyle = (logoId: string) => {
     if (correctAnswers[logoId]) return 'blur-0'; // No blur when correct
     
     // Calculate blur based on attempts - this ensures a gradual progression
     const currentAttempts = attemptCounts[logoId] || 0;
     
-    // Get either the stored blur level or calculate it from attempts
-    // This ensures that if the user refreshes, we maintain the proper blur level
-    const blurLevel = blurLevels[logoId] !== undefined 
-      ? blurLevels[logoId]
-      : Math.max(MAX_BLUR_LEVEL - (currentAttempts * (MAX_BLUR_LEVEL / MAX_ATTEMPTS)), 0);
+    // If all attempts used, no blur
+    if (currentAttempts >= MAX_ATTEMPTS) return 'blur-0';
     
-    // Map blur levels to Tailwind blur classes
-    if (blurLevel <= 0) return 'blur-0';
-    if (blurLevel <= 1) return 'blur-sm';
-    if (blurLevel <= 3) return 'blur-sm';
-    if (blurLevel <= 4) return 'blur-md';
-    if (blurLevel <= 5) return 'blur-md';
-    return 'blur-lg';
+    // We have 5 attempts and 4 blur levels (4,3,2,1,0)
+    // Map attempts to blur level
+    switch (currentAttempts) {
+      case 0: return 'blur-lg'; // Starting blur (MAX_BLUR_LEVEL = 4)
+      case 1: return 'blur-md'; // After 1 wrong attempt
+      case 2: return 'blur-md'; // After 2 wrong attempts
+      case 3: return 'blur-sm'; // After 3 wrong attempts
+      case 4: return 'blur-sm'; // After 4 wrong attempts
+      default: return 'blur-0';  // After 5 wrong attempts
+    }
   };
 
   // Render results
