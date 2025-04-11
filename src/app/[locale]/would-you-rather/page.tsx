@@ -23,6 +23,9 @@ export default function WouldYouRatherPage() {
   const allQuestions = getQuestionsByLocale(locale);
   
   const [questions, setQuestions] = useState<WouldYouRatherQuestion[]>([]);
+  const [showInput, setShowInput] = useState(false);
+  const [question, setQuestion] = useState('');
+  const [submitted, setSubmitted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<'A' | 'B' | null>(null);
   const [loading, setLoading] = useState(false);
@@ -40,6 +43,7 @@ export default function WouldYouRatherPage() {
     setCurrentQuestionIndex(0);
     setSelectedOption(null);
   };
+
   
   useEffect(() => {
     if (questions.length > 0 && currentQuestionIndex < questions.length) {
@@ -201,6 +205,16 @@ export default function WouldYouRatherPage() {
     );
   }
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (question.trim()) {
+      console.log('Submitted question:', question); // Replace with actual submission logic
+      setSubmitted(true);
+      setQuestion('');
+    }
+  };
+
+
   const votes = getVoteCounts();
   const totalVotes = votes.optionA + votes.optionB;
   const percentageA = calculatePercentage(votes.optionA, totalVotes);
@@ -337,20 +351,45 @@ export default function WouldYouRatherPage() {
         </div>
         
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-          <h3 className="font-medium text-yellow-800 mb-2">
-            {t('wouldYouRather.submitYourOwn') || 'Have a great "Would You Rather" idea?'}
-          </h3>
-          <p className="text-sm text-yellow-700 mb-3">
-            {t('wouldYouRather.submitDescription') || 'Submit your own questions for possible inclusion in the game!'}
-          </p>
-          <a
-            href="mailto:submit@piromomo.com?subject=Would You Rather Submission"
-            className="inline-flex items-center px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded hover:bg-yellow-700 transition"
-          >
-            <FiSend className="mr-2" />
-            {t('wouldYouRather.submitButton') || 'Submit a Question'}
-          </a>
-        </div>
+      <h3 className="font-medium text-yellow-800 mb-2">
+        {t('wouldYouRather.submitYourOwn') || 'Have a great "Would You Rather" idea?'}
+      </h3>
+      <p className="text-sm text-yellow-700 mb-3">
+        {t('wouldYouRather.submitDescription') || 'Submit your own questions for possible inclusion in the game!'}
+      </p>
+
+      {showInput ? (
+        submitted ? (
+          <p className="text-green-700 font-medium">धन्यवाद! तपाईंको प्रश्न पठाइएको छ।</p>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row sm:items-center gap-2">
+           <input
+  type="text"
+  value={question}
+  onChange={(e) => setQuestion(e.target.value)}
+  placeholder="तपाईंको प्रश्न यहाँ लेख्नुहोस्..."
+  className="w-2/3 border border-yellow-300 rounded px-3 py-2 text-sm"
+/>
+            <button
+  type="submit"
+  className="inline-flex items-center px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded hover:bg-yellow-700 transition"
+>
+
+              <FiSend className="mr-2" />
+              {t('wouldYouRather.submitButton') || 'प्रश्न पठाउनुहोस्'}
+            </button>
+          </form>
+        )
+      ) : (
+        <button
+          onClick={() => setShowInput(true)}
+          className="inline-flex items-center px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded hover:bg-yellow-700 transition"
+        >
+          <FiSend className="mr-2" />
+          {t('wouldYouRather.submitButton') || 'प्रश्न पठाउनुहोस्'}
+        </button>
+      )}
+    </div>
         
         <div className="flex justify-center">
           <div className="w-[300px] h-[250px]">
