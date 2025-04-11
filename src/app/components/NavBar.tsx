@@ -104,6 +104,7 @@ const Navbar = () => {
     // Dropdown links (extra games)
     const dropdownLinks = [
         { href: "/yo-ki-tyo", label: t('wouldYouRather.title') || 'Would You Rather' },
+        { href: "/chineu-ta", label: t('logoQuiz.title')},
         { href: "/date-converter", label: t('nepaliDateConverterTitle') || 'Date Converter' },
         // Add more games as needed
     ];
