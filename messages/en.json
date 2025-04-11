@@ -1,7 +1,8 @@
   {
   "Translations":{
     "logoQuiz": {
-      "finishQuiz": "Finish Quiz",  
+    "proTip": "Pro Tip: Images become clearer with each incorrect guess, making them easier to identify as you try!",
+    "finishQuiz": "Finish Quiz",  
     "pageTitle": "Nepal Logo Quiz",
     "pageDescription": "Test your knowledge of popular Nepali and international brand logos. How many can you recognize?",
     "title": "Logo Quiz",
