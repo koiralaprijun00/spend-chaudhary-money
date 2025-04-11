@@ -379,7 +379,12 @@ const LogoQuizGame = () => {
     return (
       <div className="bg-white rounded-xl shadow-lg p-6 min-h-[90vh] max-w-6xl mx-auto overflow-hidden flex flex-col">
         <div className="text-center flex-grow overflow-y-auto">
-          <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
+          {/* Keep title consistent on results page */}
+          <h1 className="text-left text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
+            {t('logoQuiz.title')}
+          </h1>
+          
+          <h2 className="text-2xl font-bold mb-4 text-gray-800">
             {t('logoQuiz.finalScore') || 'Your Final Score'}
           </h2>
           <div className="text-5xl font-bold mb-2 text-blue-600">{score}/{logos.length}</div>
@@ -447,6 +452,16 @@ const LogoQuizGame = () => {
   // Render main game interface 
   return (
     <div className="bg-white rounded-xl p-6 min-h-[90vh] max-w-6xl mx-auto flex flex-col">
+      {/* Title and Subheading */}
+      <div className="text-left mb-6">
+        <h1 className="inline text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
+          {t('logoQuiz.title')}
+        </h1>
+        <p className="text-gray-600 mt-2">
+          {t('logoQuiz.subtitle') || "Test your brand knowledge! Guess the logos and beat the clock."}
+        </p>
+      </div>
+      
       {/* Game Info Banner */}
       <div className="bg-blue-50 p-3 rounded-lg mb-4 text-sm text-blue-700 inline-flex items-center">
       <HiInformationCircle className="inline h-5 w-5 mr-2" />
