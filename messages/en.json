@@ -1,5 +1,6 @@
   {
   "Translations":{
+    "moreGames" : "More Games",
     "submitting": "Submitting...",
     "loading": "Loading...",
     "wouldYouRather": {
@@ -8,7 +9,7 @@
       "yourQuestion": "Your Would You Rather Question",
       "questionPlaceholder": "Would you rather...",
       "thankYou" : "Thank you for your submission!",
-    "title": "Would You Rather - Nepal Edition",
+    "title": "Yo ki Tyo?",
     "description": "Pick a Nepali scenario and see how your choice stacks up!",
     "navbarTitle": "Would You Rather",
     "categories": "Categories",

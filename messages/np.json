@@ -1,5 +1,6 @@
 {
   "Translations": {
+    "moreGames": "थप खेलहरू",
     "submitting": "पेश गर्दै...",
     "loading": "Loading...",
     "wouldYouRather": {
@@ -8,7 +9,7 @@
       "yourQuestion": "तपाईंको वुल्ड यु राठर प्रश्न",
       "questionPlaceholder": "के तपाईं ... वा ... रोज्नुहुन्छ?",
       "thankYou" : "धन्यवाद! तपाईंको प्रश्न पठाइएको छ।",
-    "title": "के गर्नुहुन्छ? - नेपाल संस्करण",
+    "title": "यो कि त्यो",
     "description": "दुई नेपाली परिस्थितिहरू छान्नुहोस् र अरूसँग आफ्नो छनौटको तुलना गर्नुहोस्!",
     "navbarTitle": "के गर्नुहुन्छ?",
     "categories": "श्रेणीहरू",
@@ -18,13 +19,13 @@
     "questionsAnswered": "उत्तर दिइएको",
     "newQuestions": "नयाँ प्रश्नहरू",
     "questionCounter": "प्रश्न {current}/{total}",
-    "questionPrefix": "के तपाईं...",
+    "questionPrefix": "यो कि त्यो...",
     "choosePrompt": "अरूले कसरी भोट गरे हेर्न विकल्प छान्नुहोस्",
     "resultMessage": "{percentage}% तपाईंसँग सहमत छन्!",
     "share": "साझा गर्नुहोस्",
     "next": "अर्को प्रश्न",
     "refresh": "रिफ्रेस",
-    "submitYourOwn": "तपाईंसँग मज्जाको \"के गर्नुहुन्छ?\" आइडिया छ?",
+    "submitYourOwn": "तपाईंसँग मज्जाको \"यो कि त्यो\" आइडिया छ?",
   "submitDescription": "खेलमा हाल्न आफ्नै प्रश्नहरू पठाउनुहोस्! यो प्रश्नको क्रेडिट तपाईंलाई मिल्नेछ।",
   "submitButton": "प्रश्न पठाउनुहोस्",
     "shareText": "\"के गर्नुहुन्छ?\" मा, मैले \"{choice}\" रोजें र {percentage}% मानिसहरू मसँग सहमत भए! आफै प्रयास गर्नुहोस्!"
