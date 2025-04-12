@@ -184,7 +184,7 @@ const logoData = {
       {
         id: 'tata',
         name: 'टाटा',
-        imagePath: '/yo-chineu/tata.png',
+        imagePath: '/yo-chineu/tata.jpg',
         difficulty: 'easy',
         category: 'सवारी साधन',
         acceptableAnswers: ['टाटा', 'Tata', 'टाटा मोटर्स', 'TATA']
@@ -216,7 +216,7 @@ const logoData = {
       {
         id: 'ntc',
         name: 'नेपाल टेलिकम',
-        imagePath: '/yo-chineu/ntc.png',
+        imagePath: '/yo-chineu/ntc.jpg',
         difficulty: 'easy',
         category: 'दूरसञ्चार',
         acceptableAnswers: ['नेपाल टेलिकम', 'NTC', 'नेपाल दूरसञ्चार']
@@ -224,7 +224,7 @@ const logoData = {
       {
         id: 'himalayan_bank',
         name: 'हिमालयन बैंक',
-        imagePath: '/yo-chineu/himalayan-bank.png',
+        imagePath: '/yo-chineu/hbl.png',
         difficulty: 'medium',
         category: 'बैंकिङ',
         acceptableAnswers: ['हिमालयन बैंक', 'HBL', 'हिमालयन बैंक लिमिटेड', 'Himalayan Bank']
