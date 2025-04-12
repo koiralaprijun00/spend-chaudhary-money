@@ -168,7 +168,7 @@ const logoData = {
       {
         id: 'nabil_bank',
         name: 'नबिल बैंक',
-        imagePath: '/yo-chineu/nabil.png',
+        imagePath: '/yo-chineu/nabil-bank.png',
         difficulty: 'medium',
         category: 'बैंकिङ',
         acceptableAnswers: ['नबिल बैंक', 'नबिल', 'Nabil Bank', 'NABIL']
@@ -176,7 +176,7 @@ const logoData = {
       {
         id: 'buddha_air',
         name: 'बुद्ध एयर',
-        imagePath: '/yo-chineu/buddha_air.png',
+        imagePath: '/yo-chineu/buddha-air.png',
         difficulty: 'medium',
         category: 'हवाई सेवा',
         acceptableAnswers: ['बुद्ध एयर', 'Buddha Air', 'बुद्ध एयरलाइन्स']
@@ -192,7 +192,7 @@ const logoData = {
       {
         id: 'wai_wai',
         name: 'वाइ वाइ',
-        imagePath: '/yo-chineu/wai_wai.png',
+        imagePath: '/yo-chineu/wai-wai.png',
         difficulty: 'easy',
         category: 'खाद्य',
         acceptableAnswers: ['वाइ वाइ', 'Wai Wai', 'वाइवाइ', 'Wai-Wai']
@@ -208,7 +208,7 @@ const logoData = {
       {
         id: 'dish_home',
         name: 'डिश होम',
-        imagePath: '/yo-chineu/dish_home.png',
+        imagePath: '/yo-chineu/dish-home.png',
         difficulty: 'medium',
         category: 'केबल',
         acceptableAnswers: ['डिश होम', 'Dish Home', 'डिशहोम']
@@ -224,7 +224,7 @@ const logoData = {
       {
         id: 'himalayan_bank',
         name: 'हिमालयन बैंक',
-        imagePath: '/yo-chineu/himalayan_bank.png',
+        imagePath: '/yo-chineu/himalayan-bank.png',
         difficulty: 'medium',
         category: 'बैंकिङ',
         acceptableAnswers: ['हिमालयन बैंक', 'HBL', 'हिमालयन बैंक लिमिटेड', 'Himalayan Bank']
@@ -232,7 +232,7 @@ const logoData = {
       {
         id: 'yeti_airlines',
         name: 'यति एयरलाइन्स',
-        imagePath: '/yo-chineu/yeti_airlines.png',
+        imagePath: '/yo-chineu/yeti-air.png',
         difficulty: 'medium',
         category: 'हवाई सेवा',
         acceptableAnswers: ['यति एयरलाइन्स', 'Yeti Airlines', 'यति']
@@ -240,7 +240,7 @@ const logoData = {
       {
         id: 'kumari_bank',
         name: 'कुमारी बैंक',
-        imagePath: '/yo-chineu/kumari_bank.png',
+        imagePath: '/yo-chineu/kumari-bank.png',
         difficulty: 'hard',
         category: 'बैंकिङ',
         acceptableAnswers: ['कुमारी बैंक', 'कुमारी', 'Kumari Bank', 'कुमारी बैंक लिमिटेड']
@@ -248,7 +248,7 @@ const logoData = {
       {
         id: 'laxmi_bank',
         name: 'लक्ष्मी बैंक',
-        imagePath: '/yo-chineu/laxmi_bank.jpg',
+        imagePath: '/yo-chineu/laxmi-bank.jpg',
         difficulty: 'hard',
         category: 'बैंकिङ',
         acceptableAnswers: ['लक्ष्मी बैंक', 'लक्ष्मी', 'Laxmi Bank']
@@ -256,7 +256,7 @@ const logoData = {
       {
         id: 'nic_asia',
         name: 'एनआईसी एशिया बैंक',
-        imagePath: '/yo-chineu/nic_asia.png',
+        imagePath: '/yo-chineu/nic-asia.png',
         difficulty: 'hard',
         category: 'बैंकिङ',
         acceptableAnswers: ['एनआईसी एशिया', 'एनआईसी एशिया बैंक', 'NIC Asia', 'NIC']
@@ -264,7 +264,7 @@ const logoData = {
       {
         id: 'nepal_investment_bank',
         name: 'नेपाल इन्भेस्टमेन्ट बैंक',
-        imagePath: '/yo-chineu/nepal_investment_bank.png',
+        imagePath: '/yo-chineu/nimb-bank.png',
         difficulty: 'hard',
         category: 'बैंकिङ',
         acceptableAnswers: ['नेपाल इन्भेस्टमेन्ट बैंक', 'NIBL', 'नेपाल इन्भेस्टमेन्ट', 'Nepal Investment Bank']
@@ -272,18 +272,10 @@ const logoData = {
       {
         id: 'gorkha_brewery',
         name: 'गोरखा ब्रुअरी',
-        imagePath: '/yo-chineu/gorkha_brewery.png',
+        imagePath: '/yo-chineu/gorkha-brewery.png',
         difficulty: 'medium',
         category: 'पेय पदार्थ',
         acceptableAnswers: ['गोरखा ब्रुअरी', 'गोरखा', 'Gorkha Brewery', 'गोरखा बियर']
-      },
-      {
-        id: 'nepal_airlines',
-        name: 'नेपाल एयरलाइन्स',
-        imagePath: '/yo-chineu/nepal_airlines.png',
-        difficulty: 'easy',
-        category: 'हवाई सेवा',
-        acceptableAnswers: ['नेपाल एयरलाइन्स', 'NAC', 'नेपाल एयरलाइन्स कर्पोरेसन', 'Nepal Airlines', 'रोयल नेपाल एयरलाइन्स']
       },
       {
         id: 'esewa',
@@ -312,7 +304,7 @@ const logoData = {
       {
         id: 'siddhartha_bank',
         name: 'सिद्धार्थ बैंक',
-        imagePath: '/yo-chineu/siddhartha_bank.jpg',
+        imagePath: '/yo-chineu/siddhartha-bank.jpg',
         difficulty: 'hard',
         category: 'बैंकिङ',
         acceptableAnswers: ['सिद्धार्थ बैंक', 'सिद्धार्थ', 'Siddhartha Bank', 'सिद्धार्थ बैंक लिमिटेड']
