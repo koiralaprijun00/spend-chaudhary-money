@@ -666,7 +666,6 @@ interface GameState {
   timeLeft: number;
   currentPage: number;
   timerActive: boolean;
-  attemptCounts: Record<string, number>;
 }
 
 const LogoQuizGame = () => {
@@ -681,15 +680,12 @@ const LogoQuizGame = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [feedback, setFeedback] = useState<Record<string, string>>({});
-  const [attemptCounts, setAttemptCounts] = useState<Record<string, number>>({});
   
   // Adjust logos per page based on screen size
   const [logosPerPage, setLogosPerPage] = useState(6);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const t = useTranslations('Translations');
   const locale = useLocale();
-
-  const MAX_ATTEMPTS = 5;
 
   // Load saved progress from localStorage
   useEffect(() => {
@@ -702,9 +698,6 @@ const LogoQuizGame = () => {
       setTimeLeft(parsedState.timeLeft);
       setCurrentPage(parsedState.currentPage);
       setTimerActive(parsedState.timerActive);
-      if (parsedState.attemptCounts) {
-        setAttemptCounts(parsedState.attemptCounts);
-      }
     }
 
     // Adjust logos per page based on screen width
@@ -718,10 +711,7 @@ const LogoQuizGame = () => {
       }
     };
 
-    // Set initial value
     handleResize();
-
-    // Add resize listener
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -735,10 +725,9 @@ const LogoQuizGame = () => {
       timeLeft,
       currentPage,
       timerActive,
-      attemptCounts
     };
     localStorage.setItem('logoQuizState', JSON.stringify(gameState));
-  }, [answers, correctAnswers, score, timeLeft, currentPage, timerActive, attemptCounts]);
+  }, [answers, correctAnswers, score, timeLeft, currentPage, timerActive]);
 
   // Initialize game with logos
   useEffect(() => {
@@ -751,17 +740,14 @@ const LogoQuizGame = () => {
       
       const initialAnswers: Record<string, string> = {};
       const initialFeedback: Record<string, string> = {};
-      const initialAttemptCounts: Record<string, number> = {};
       
       shuffled.forEach(logo => {
         initialAnswers[logo.id] = answers[logo.id] || '';
         initialFeedback[logo.id] = '';
-        initialAttemptCounts[logo.id] = attemptCounts[logo.id] || 0;
       });
       
       setAnswers(prev => ({ ...prev, ...initialAnswers }));
       setFeedback(prev => ({ ...prev, ...initialFeedback }));
-      setAttemptCounts(prev => ({ ...prev, ...initialAttemptCounts }));
       
       const initialCorrectAnswers: Record<string, boolean> = {};
       shuffled.forEach(logo => {
@@ -775,7 +761,6 @@ const LogoQuizGame = () => {
   useEffect(() => {
     if (logos.length > 0) {
       setTotalPages(Math.ceil(logos.length / logosPerPage));
-      // Make sure current page is valid with new page count
       if (currentPage >= Math.ceil(logos.length / logosPerPage)) {
         setCurrentPage(Math.ceil(logos.length / logosPerPage) - 1);
       }
@@ -797,12 +782,10 @@ const LogoQuizGame = () => {
     };
   }, [timeLeft, timerActive]);
 
-  // Toggle timer pause/resume
   const toggleTimer = () => {
     setTimerActive(prev => !prev);
   };
 
-  // Handle timer completion
   const handleTimeUp = () => {
     setTimerActive(false);
     setShowResults(true);
@@ -813,7 +796,6 @@ const LogoQuizGame = () => {
     setScore(finalScore);
   };
 
-  // Handle input change for a specific logo
   const handleInputChange = (logoId: string, value: string) => {
     setAnswers(prev => ({
       ...prev,
@@ -825,13 +807,12 @@ const LogoQuizGame = () => {
     }));
   };
 
-  // Check answer for a specific logo
   const checkAnswer = (logoId: string) => {
     const logo = logos.find(l => l.id === logoId);
     if (!logo) return;
     
     const userAnswer = answers[logoId].trim();
-    if (!userAnswer) return; // Silently return if the answer is empty, no feedback
+    if (!userAnswer) return;
     
     const isCorrect = logo.acceptableAnswers?.some(
       answer => answer.toLowerCase() === userAnswer.toLowerCase()
@@ -849,24 +830,13 @@ const LogoQuizGame = () => {
         [logoId]: t('logoQuiz.correct') || 'Correct!'
       }));
     } else if (!isCorrect) {
-      // Increment attempt count
-      const currentAttempts = (attemptCounts[logoId] || 0) + 1;
-      setAttemptCounts(prev => ({
-        ...prev,
-        [logoId]: currentAttempts
-      }));
-      
-      // Determine feedback message
-      let feedbackMessage = t('logoQuiz.incorrect') || 'Incorrect. Try again!';
-      
       setFeedback(prev => ({
         ...prev,
-        [logoId]: feedbackMessage
+        [logoId]: t('logoQuiz.incorrect') || 'Incorrect. Try again!'
       }));
     }
   };
 
-  // Handle Enter key press
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>, logoId: string) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -874,7 +844,6 @@ const LogoQuizGame = () => {
     }
   };
 
-  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -888,7 +857,6 @@ const LogoQuizGame = () => {
     setTimerActive(false);
   };
 
-  // Reset the game
   const resetGame = () => {
     const logoData = getLogosByLocale(locale);
     const shuffled = [...logoData].sort(() => 0.5 - Math.random());
@@ -899,17 +867,14 @@ const LogoQuizGame = () => {
     
     const initialAnswers: Record<string, string> = {};
     const initialFeedback: Record<string, string> = {};
-    const initialAttemptCounts: Record<string, number> = {};
     
     shuffled.forEach(logo => {
       initialAnswers[logo.id] = '';
       initialFeedback[logo.id] = '';
-      initialAttemptCounts[logo.id] = 0; // Reset attempt counts
     });
     
     setAnswers(initialAnswers);
     setFeedback(initialFeedback);
-    setAttemptCounts(initialAttemptCounts);
     
     const initialCorrectAnswers: Record<string, boolean> = {};
     shuffled.forEach(logo => {
@@ -925,7 +890,6 @@ const LogoQuizGame = () => {
     localStorage.removeItem('logoQuizState');
   };
 
-  // Share score
   const handleShareScore = () => {
     const totalLogos = logos.length;
     const shareText = `I identified ${score} out of ${totalLogos} logos in the Nepal Logo Quiz in ${formatTimeForDisplay(300 - timeLeft)}! Can you beat my score?`;
@@ -943,39 +907,33 @@ const LogoQuizGame = () => {
     }
   };
 
-  // Focus on a specific logo
   const focusLogo = (logoId: string) => {
     setCurrentFocusedLogo(currentFocusedLogo === logoId ? null : logoId);
   };
 
-  // Format time for display (MM:SS)
   const formatTimeForDisplay = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
-  // Next page of logos
   const nextPage = () => {
     if (currentPage < totalPages - 1) {
       setCurrentPage(prev => prev + 1);
     }
   };
 
-  // Previous page of logos
   const prevPage = () => {
     if (currentPage > 0) {
       setCurrentPage(prev => prev - 1);
     }
   };
 
-  // Get current page logos
   const getCurrentPageLogos = () => {
     const startIndex = currentPage * logosPerPage;
     return logos.slice(startIndex, startIndex + logosPerPage);
   };
 
-  // Render results
   if (showResults) {
     const percentCorrect = Math.round((score / logos.length) * 100);
     const timeUsed = 300 - timeLeft;
@@ -983,7 +941,6 @@ const LogoQuizGame = () => {
     return (
       <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 min-h-[90vh] max-w-6xl mx-auto overflow-hidden flex flex-col">
         <div className="text-center flex-grow overflow-y-auto">
-          {/* Keep title consistent on results page */}
           <h1 className="text-left text-2xl sm:text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
             {t('logoQuiz.title')}
           </h1>
@@ -1053,10 +1010,8 @@ const LogoQuizGame = () => {
     );
   }
 
-  // Render main game interface 
   return (
     <div className="bg-white rounded-xl p-3 sm:p-6 min-h-[90vh] max-w-6xl mx-auto flex flex-col">
-      {/* Title and Subheading */}
       <div className="text-left mb-4 sm:mb-6">
         <h1 className="inline text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
           {t('logoQuiz.title')}
@@ -1066,13 +1021,6 @@ const LogoQuizGame = () => {
         </p>
       </div>
       
-      {/* Game Info Banner - Updated to remove blur reference */}
-      <div className="bg-blue-50 p-2 sm:p-3 rounded-lg mb-4 text-xs sm:text-sm text-blue-700 inline-flex items-start sm:items-center">
-        <HiInformationCircle className="inline h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2 mt-0.5 sm:mt-0 flex-shrink-0" />
-        <span className="inline">{t('logoQuiz.proTip') || "Challenge yourself! Identify as many logos as you can before time runs out."}</span>
-      </div>
-      
-      {/* Header Bar - Mobile optimized with stacking layout */}
       <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 sm:justify-between sm:items-center mb-4 shrink-0">
         <div className="flex justify-between items-center">
           <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 flex items-center">
@@ -1103,7 +1051,6 @@ const LogoQuizGame = () => {
       </div>
       
       <form onSubmit={handleSubmit} className="flex flex-col flex-grow">
-        {/* Logo Grid Container */}
         <div className="mb-2 flex-grow">
           <AnimatePresence mode="wait">
             <motion.div 
@@ -1125,19 +1072,17 @@ const LogoQuizGame = () => {
                         : 'border-gray-200 bg-white'
                   } ${currentFocusedLogo === logo.id ? 'ring-2 ring-blue-500' : ''}`}
                 >
-                  {/* Logo Image - No blur effect */}
                   <div 
                     className="h-24 sm:h-36 flex items-center justify-center mb-2 cursor-pointer flex-shrink-0"
                     onClick={() => focusLogo(logo.id)}
                   >
                     <img 
                       src={logo.imagePath} 
-                      alt="Logo" 
-                      className="max-h-full max-w-full object-contain transition duration-300" 
+                      alt="Mystery Logo" 
+                      className="max-h-full max-w-full object-contain transition duration-300"
                     />
                   </div>
                   
-                  {/* Answer Input */}
                   <div className="mt-auto">
                     <input
                       type="text"
@@ -1162,19 +1107,11 @@ const LogoQuizGame = () => {
                     )}
                   </div>
                   
-                  {/* Success Icon */}
                   {correctAnswers[logo.id] && (
                     <div className="absolute top-1 right-1 bg-green-500 text-white rounded-full p-1">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                    </div>
-                  )}
-                  
-                  {/* Attempt Counter (Only show for incorrect answers with attempts) */}
-                  {!correctAnswers[logo.id] && attemptCounts[logo.id] > 0 && (
-                    <div className="absolute top-1 right-1 bg-gray-100 text-gray-600 text-xs rounded-full px-2 py-1">
-                      {attemptCounts[logo.id]}/{MAX_ATTEMPTS}
                     </div>
                   )}
                 </div>
@@ -1183,7 +1120,6 @@ const LogoQuizGame = () => {
           </AnimatePresence>
         </div>
         
-        {/* Navigation and Submit Controls - Fixed to bottom on mobile */}
         <div className="flex justify-between items-center pt-3 sm:pt-4 mt-auto shrink-0 gap-2">
           <button
             type="button"
