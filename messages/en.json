@@ -66,6 +66,7 @@
     "submitButton": "Submit a Question",
     "shareText": "In \"Would You Rather\", I chose \"{choice}\" and {percentage}% of people agreed with me! Try it yourself!"
   },
+  "districtDescription": "Guess the district by its shape and test your knowledge of Nepal’s map!",
     "incorrectGuesses": "Missed Districts",
     "remainingDistricts": "{count} districts remaining",
     "yourOptions": "Options",

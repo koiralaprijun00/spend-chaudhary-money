@@ -293,7 +293,7 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                     {safeT('title', 'Nepal Districts Quiz')}
                   </h1>
                   <p className="text-left text-gray-600">
-                    {safeT('quizInstructions', 'You have 5 minutes to name all kings who ruled Nepal from 1743 to 2008.', { kingCount: 25 })}
+                    {safeT('districtDescription')}
                   </p>
                 </div>
                 
