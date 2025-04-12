@@ -24,8 +24,8 @@ interface GameState {
   timeLeft: number;
   currentPage: number;
   timerActive: boolean;
-  blurLevels: Record<string, number>; // Add blur level tracking
-  attemptCounts: Record<string, number>; // Track number of attempts per logo
+  blurLevels: Record<string, number>;
+  attemptCounts: Record<string, number>;
 }
 
 const LogoQuizGame = () => {
@@ -40,20 +40,17 @@ const LogoQuizGame = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [feedback, setFeedback] = useState<Record<string, string>>({});
-  // New state for tracking blur levels per logo
   const [blurLevels, setBlurLevels] = useState<Record<string, number>>({});
-  // New state for tracking attempts
   const [attemptCounts, setAttemptCounts] = useState<Record<string, number>>({});
   
-  const logosPerPage = 6;
+  // Adjust logos per page based on screen size
+  const [logosPerPage, setLogosPerPage] = useState(6);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const t = useTranslations('Translations');
   const locale = useLocale();
 
-  // Maximum blur level (starting level) and minimum blur level
-  const MAX_BLUR_LEVEL = 4; // Maps to blur-lg (we have 4 levels: none, sm, md, lg)
+  const MAX_BLUR_LEVEL = 4;
   const MIN_BLUR_LEVEL = 0;
-  // Maximum number of incorrect attempts before removing blur completely
   const MAX_ATTEMPTS = 5;
 
   // Load saved progress from localStorage
@@ -67,15 +64,31 @@ const LogoQuizGame = () => {
       setTimeLeft(parsedState.timeLeft);
       setCurrentPage(parsedState.currentPage);
       setTimerActive(parsedState.timerActive);
-      // Initialize blur levels from saved state if available
       if (parsedState.blurLevels) {
         setBlurLevels(parsedState.blurLevels);
       }
-      // Initialize attempt counts from saved state if available
       if (parsedState.attemptCounts) {
         setAttemptCounts(parsedState.attemptCounts);
       }
     }
+
+    // Adjust logos per page based on screen width
+    const handleResize = () => {
+      if (window.innerWidth < 640) { // Mobile
+        setLogosPerPage(3);
+      } else if (window.innerWidth < 1024) { // Tablet
+        setLogosPerPage(4);
+      } else { // Desktop
+        setLogosPerPage(6);
+      }
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Add resize listener
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Save progress to localStorage
@@ -110,19 +123,15 @@ const LogoQuizGame = () => {
       shuffled.forEach(logo => {
         initialAnswers[logo.id] = answers[logo.id] || '';
         initialFeedback[logo.id] = '';
-        // Initialize blur levels or use existing ones
         initialBlurLevels[logo.id] = blurLevels[logo.id] !== undefined 
           ? blurLevels[logo.id] 
           : MAX_BLUR_LEVEL;
-        // Initialize attempt counts or use existing ones
         initialAttemptCounts[logo.id] = attemptCounts[logo.id] || 0;
       });
       
       setAnswers(prev => ({ ...prev, ...initialAnswers }));
       setFeedback(prev => ({ ...prev, ...initialFeedback }));
-      // Set initial blur levels for all logos
       setBlurLevels(initialBlurLevels);
-      // Set initial attempt counts
       setAttemptCounts(prev => ({ ...prev, ...initialAttemptCounts }));
       
       const initialCorrectAnswers: Record<string, boolean> = {};
@@ -131,7 +140,18 @@ const LogoQuizGame = () => {
       });
       setCorrectAnswers(prev => ({ ...prev, ...initialCorrectAnswers }));
     }
-  }, [locale]);
+  }, [locale, logosPerPage]);
+
+  // Update total pages when logosPerPage changes
+  useEffect(() => {
+    if (logos.length > 0) {
+      setTotalPages(Math.ceil(logos.length / logosPerPage));
+      // Make sure current page is valid with new page count
+      if (currentPage >= Math.ceil(logos.length / logosPerPage)) {
+        setCurrentPage(Math.ceil(logos.length / logosPerPage) - 1);
+      }
+    }
+  }, [logosPerPage, logos.length]);
 
   // Timer effect
   useEffect(() => {
@@ -213,7 +233,6 @@ const LogoQuizGame = () => {
       }));
       
       // Update blur level in state for reference (though we'll mostly use attemptCounts)
-      // This is mapped to our blur style levels (4=blur-lg, 3=blur-md, 2=blur-md, 1=blur-sm, 0=no blur)
       const newBlurLevel = Math.max(MAX_BLUR_LEVEL - currentAttempts, 0);
       
       setBlurLevels(prev => ({
@@ -225,7 +244,7 @@ const LogoQuizGame = () => {
       let feedbackMessage = t('logoQuiz.incorrect') || 'Incorrect. Try again!';
       
       if (currentAttempts >= MAX_ATTEMPTS) {
-        feedbackMessage += ' Image is now fully revealed after 5 attempts.';
+        feedbackMessage += ' Image is now fully revealed.';
       } else {
         feedbackMessage += ' The image is now clearer!';
       }
@@ -377,41 +396,41 @@ const LogoQuizGame = () => {
     const timeUsed = 300 - timeLeft;
     
     return (
-      <div className="bg-white rounded-xl shadow-lg p-6 min-h-[90vh] max-w-6xl mx-auto overflow-hidden flex flex-col">
+      <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 min-h-[90vh] max-w-6xl mx-auto overflow-hidden flex flex-col">
         <div className="text-center flex-grow overflow-y-auto">
           {/* Keep title consistent on results page */}
-          <h1 className="text-left text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
+          <h1 className="text-left text-2xl sm:text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
             {t('logoQuiz.title')}
           </h1>
           
-          <h2 className="text-2xl font-bold mb-4 text-gray-800">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 text-gray-800">
             {t('logoQuiz.finalScore') || 'Your Final Score'}
           </h2>
-          <div className="text-5xl font-bold mb-2 text-blue-600">{score}/{logos.length}</div>
-          <p className="text-xl mb-2 text-gray-700">
+          <div className="text-4xl sm:text-5xl font-bold mb-2 text-blue-600">{score}/{logos.length}</div>
+          <p className="text-lg sm:text-xl mb-2 text-gray-700">
             {percentCorrect}% Accuracy
           </p>
           <p className="text-md mb-6 text-gray-500">
             Time Used: {formatTimeForDisplay(timeUsed)}
           </p>
           
-          <div className="flex justify-center gap-4 mb-8">
-            <GameButton onClick={resetGame} type="primary">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 mb-8">
+            <GameButton onClick={resetGame} type="primary" className="py-3 text-base">
               {t('logoQuiz.playAgain') || 'Play Again'}
             </GameButton>
-            <GameButton onClick={handleShareScore} type="success" className="flex items-center">
+            <GameButton onClick={handleShareScore} type="success" className="flex items-center justify-center py-3 text-base">
               <FiShare2 className="mr-2" />
               {t('logoQuiz.shareScore') || 'Share Score'}
             </GameButton>
           </div>
           
-          <div className="max-w-5xl mx-auto bg-gray-50 rounded-lg p-6">
-            <h3 className="font-bold mb-6 text-xl">Results Breakdown</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="max-w-5xl mx-auto bg-gray-50 rounded-lg p-4 sm:p-6">
+            <h3 className="font-bold mb-4 sm:mb-6 text-lg sm:text-xl">Results Breakdown</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
               {logos.map((logo) => (
                 <motion.div 
                   key={logo.id} 
-                  className={`p-4 rounded-lg border-2 ${
+                  className={`p-3 sm:p-4 rounded-lg border-2 ${
                     correctAnswers[logo.id] 
                       ? 'border-green-500 bg-green-50' 
                       : 'border-red-500 bg-red-50'
@@ -424,20 +443,20 @@ const LogoQuizGame = () => {
                     <img 
                       src={logo.imagePath} 
                       alt={logo.name} 
-                      className="w-10 h-10 object-contain mr-3"
+                      className="w-8 h-8 sm:w-10 sm:h-10 object-contain mr-2 sm:mr-3"
                     />
                     <div>
-                      <div className="font-medium">
+                      <div className="font-medium text-sm sm:text-base">
                         {logo.name}
                       </div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-xs sm:text-sm text-gray-600">
                         {correctAnswers[logo.id] 
                           ? <span className="text-green-600">✓ Correct</span> 
                           : <span className="text-red-600">✗ Incorrect</span>}
                       </div>
                     </div>
                   </div>
-                  <div className="text-sm">
+                  <div className="text-xs sm:text-sm">
                     <div><strong>Your answer:</strong> {answers[logo.id] || '(No answer)'}</div>
                   </div>
                 </motion.div>
@@ -451,58 +470,60 @@ const LogoQuizGame = () => {
 
   // Render main game interface 
   return (
-    <div className="bg-white rounded-xl p-6 min-h-[90vh] max-w-6xl mx-auto flex flex-col">
+    <div className="bg-white rounded-xl p-3 sm:p-6 min-h-[90vh] max-w-6xl mx-auto flex flex-col">
       {/* Title and Subheading */}
-      <div className="text-left mb-6">
-        <h1 className="inline text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
+      <div className="text-left mb-4 sm:mb-6">
+        <h1 className="inline text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
           {t('logoQuiz.title')}
         </h1>
-        <p className="text-gray-600 mt-2">
+        <p className="text-sm sm:text-base text-gray-600 mt-2">
           {t('logoQuiz.subtitle') || "Test your brand knowledge! Guess the logos and beat the clock."}
         </p>
       </div>
       
       {/* Game Info Banner */}
-      <div className="bg-blue-50 p-3 rounded-lg mb-4 text-sm text-blue-700 inline-flex items-center">
-      <HiInformationCircle className="inline h-5 w-5 mr-2" />
+      <div className="bg-blue-50 p-2 sm:p-3 rounded-lg mb-4 text-xs sm:text-sm text-blue-700 inline-flex items-start sm:items-center">
+        <HiInformationCircle className="inline h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2 mt-0.5 sm:mt-0 flex-shrink-0" />
         <span className="inline">{t('logoQuiz.proTip') || "Pro Tip: Images gradually become clearer with each incorrect guess and fully reveal after 5 attempts!"}</span>
       </div>
       
-      {/* Header Bar */}
-      <div className="flex justify-between items-center mb-4 shrink-0">
-        <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg px-4 py-2 flex items-center">
-          <span className="text-sm text-gray-600 mr-2">{t('logoQuiz.score') || 'Score'}:</span>
-          <span className="text-xl font-bold text-blue-700">{score}/{logos.length}</span>
+      {/* Header Bar - Mobile optimized with stacking layout */}
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 sm:justify-between sm:items-center mb-4 shrink-0">
+        <div className="flex justify-between items-center">
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 flex items-center">
+            <span className="text-xs sm:text-sm text-gray-600 mr-2">{t('logoQuiz.score') || 'Score'}:</span>
+            <span className="text-lg sm:text-xl font-bold text-blue-700">{score}/{logos.length}</span>
+          </div>
+          
+          <div className="text-sm text-gray-600 font-medium ml-4">
+            Page {currentPage + 1} of {totalPages}
+          </div>
         </div>
         
-        <div className="text-gray-600 font-medium">
-          Page {currentPage + 1} of {totalPages}
-        </div>
-        
-        <div className="flex items-center gap-2">
-          <div className={`rounded-lg px-4 py-2 flex items-center ${
+        <div className="flex items-center gap-2 self-end sm:self-auto">
+          <div className={`rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 flex items-center ${
             timeLeft < 60 ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-700'
           }`}>
-            <FiClock className={`mr-2 ${timeLeft < 60 && 'animate-pulse'}`} />
-            <span className="font-mono font-bold">{formatTimeForDisplay(timeLeft)}</span>
+            <FiClock className={`mr-1 sm:mr-2 ${timeLeft < 60 && 'animate-pulse'}`} />
+            <span className="font-mono font-bold text-sm sm:text-base">{formatTimeForDisplay(timeLeft)}</span>
           </div>
           <button
             onClick={toggleTimer}
-            className="bg-gray-100 p-2 rounded-lg hover:bg-gray-200"
+            className="bg-gray-100 p-1.5 sm:p-2 rounded-lg hover:bg-gray-200"
             title={timerActive ? 'Pause Timer' : 'Resume Timer'}
           >
-            {timerActive ? <FiPause /> : <FiPlay />}
+            {timerActive ? <FiPause className="h-5 w-5" /> : <FiPlay className="h-5 w-5" />}
           </button>
         </div>
       </div>
       
       <form onSubmit={handleSubmit} className="flex flex-col flex-grow">
         {/* Logo Grid Container */}
-        <div className="mb-2">
+        <div className="mb-2 flex-grow">
           <AnimatePresence mode="wait">
             <motion.div 
               key={currentPage}
-              className="grid grid-cols-2 md:grid-cols-3 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
@@ -521,7 +542,7 @@ const LogoQuizGame = () => {
                 >
                   {/* Logo Image with Progressive Blur */}
                   <div 
-                    className="h-24 md:h-36 flex items-center justify-center mb-2 cursor-pointer flex-shrink-0"
+                    className="h-24 sm:h-36 flex items-center justify-center mb-2 cursor-pointer flex-shrink-0"
                     onClick={() => focusLogo(logo.id)}
                   >
                     <img 
@@ -540,7 +561,7 @@ const LogoQuizGame = () => {
                       onBlur={() => checkAnswer(logo.id)}
                       onKeyPress={(e) => handleKeyPress(e, logo.id)}
                       placeholder={t('logoQuiz.enterLogoName') || "Enter logo name..."}
-                      className={`w-full p-2 text-sm border rounded-md ${
+                      className={`w-full p-2 text-base sm:text-sm border rounded-md ${
                         correctAnswers[logo.id] 
                           ? 'border-green-500 bg-green-50 text-green-700' 
                           : 'border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
@@ -577,23 +598,23 @@ const LogoQuizGame = () => {
           </AnimatePresence>
         </div>
         
-        {/* Navigation and Submit Controls */}
-        <div className="flex justify-between items-center pt-4 shrink-0">
+        {/* Navigation and Submit Controls - Fixed to bottom on mobile */}
+        <div className="flex justify-between items-center pt-3 sm:pt-4 mt-auto shrink-0 gap-2">
           <button
             type="button"
             onClick={prevPage}
             disabled={currentPage === 0}
-            className={`flex items-center px-4 py-2 rounded-lg ${
+            className={`flex items-center justify-center min-w-16 px-2 sm:px-4 py-3 sm:py-2 rounded-lg touch-manipulation ${
               currentPage === 0 
                 ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
-                : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                : 'bg-blue-100 text-blue-700 hover:bg-blue-200 active:bg-blue-300'
             }`}
           >
-            <FiChevronLeft className="mr-2" />
-            Previous
+            <FiChevronLeft className="sm:mr-1" />
+            <span className="hidden sm:inline">Prev</span>
           </button>
           
-          <GameButton type="primary" className="px-8">
+          <GameButton type="primary" className="px-4 sm:px-8 py-3 sm:py-2 text-base">
             Submit All
           </GameButton>
           
@@ -601,14 +622,14 @@ const LogoQuizGame = () => {
             type="button"
             onClick={nextPage}
             disabled={currentPage === totalPages - 1}
-            className={`flex items-center px-4 py-2 rounded-lg ${
+            className={`flex items-center justify-center min-w-16 px-2 sm:px-4 py-3 sm:py-2 rounded-lg touch-manipulation ${
               currentPage === totalPages - 1 
                 ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
-                : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                : 'bg-blue-100 text-blue-700 hover:bg-blue-200 active:bg-blue-300'
             }`}
           >
-            Next
-            <FiChevronRight className="ml-2" />
+            <span className="hidden sm:inline">Next</span>
+            <FiChevronRight className="sm:ml-1" />
           </button>
         </div>
       </form>
