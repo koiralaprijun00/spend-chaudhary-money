@@ -27,7 +27,7 @@ const baseDistrictData = [
   { id: 'udayapur', imagePath: '/districts/Udayapur.svg' },
   { id: 'taplejung', imagePath: '/districts/Taplejung.svg' },
   { id: 'panchthar', imagePath: '/districts/panchthar.svg' },
-  { id: 'illam', imagePath: '/districts/illam.svg' },
+  { id: 'illam', imagePath: '/districts/Illam.svg' },
   { id: 'jhapa', imagePath: '/districts/jhapa.svg' },
   { id: 'morang', imagePath: '/districts/morang.svg' },
   { id: 'sunsari', imagePath: '/districts/Sunsari.svg' },

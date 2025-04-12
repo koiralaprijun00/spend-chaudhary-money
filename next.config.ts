@@ -3,16 +3,8 @@ import createNextIntlPlugin from 'next-intl/plugin';
  
 const nextConfig: NextConfig = {
     images: {
-        domains: ['res.cloudinary.com', 'www.piromomo.com'],
-    },
-    async rewrites() {
-        return [
-            {
-                source: '/districts/:path*',
-                destination: 'https://www.piromomo.com/districts/:path*',
-            },
-        ];
-    },
+        domains: ['res.cloudinary.com'],
+      },
 };
  
 const withNextIntl = createNextIntlPlugin();
