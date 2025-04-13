@@ -94,10 +94,10 @@ const englishQuestions: WouldYouRatherQuestion[] = [
   },
   {
     id: 'culture-2',
-    optionA: 'have tea with a living Buddha',
-    optionB: 'have a conversation with Prithvi Narayan Shah',
-    optionAVotes: 583,
-    optionBVotes: 417
+    optionA: 'join a silent retreat with Buddhist monks for a week',
+    optionB: 'spend a day in Gorkha Palace learning from Prithvi Narayan Shah’s generals',
+    optionAVotes: 310,
+    optionBVotes: 690
   },
   {
     id: 'culture-3',
@@ -125,7 +125,7 @@ const englishQuestions: WouldYouRatherQuestion[] = [
   {
     id: 'daily-1',
     optionA: 'live without electricity for a month',
-    optionB: 'live without water for a day',
+    optionB: 'live without water for 5 days',
     optionAVotes: 699,
     optionBVotes: 301
   },
@@ -142,13 +142,6 @@ const englishQuestions: WouldYouRatherQuestion[] = [
     optionB: 'be caught in Kathmandu dust storm without a mask',
     optionAVotes: 843,
     optionBVotes: 157
-  },
-  {
-    id: 'daily-4',
-    optionA: 'never have to deal with load shedding again',
-    optionB: 'never have to deal with water shortages again',
-    optionAVotes: 347,
-    optionBVotes: 653
   },
   {
     id: 'daily-5',
@@ -674,10 +667,10 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
   },
   {
     id: 'culture-2',
-    optionA: 'जीवित बुद्धसँग चिया पिउने',
-    optionB: 'पृथ्वीनारायण शाहसँग कुराकानी गर्ने',
-    optionAVotes: 583,
-    optionBVotes: 417
+    optionA: 'एक हप्ता बौद्ध भिक्षुहरूसँग मौन साधनामा बस्ने',
+    optionB: 'गोरखा दरबारमा पृथ्वीनारायण शाहका सेनापतिबाट एक दिन सिक्ने',
+    optionAVotes: 310,
+    optionBVotes: 690
   },
   {
     id: 'culture-3',
@@ -705,7 +698,7 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
   {
     id: 'daily-1',
     optionA: 'एक महिनासम्म बिजुली बिना बाँच्ने',
-    optionB: 'एक दिन पानी बिना बाँच्ने',
+    optionB: 'पाँच दिन पानी बिना बाँच्ने',
     optionAVotes: 699,
     optionBVotes: 301
   },
@@ -722,13 +715,6 @@ const nepaliQuestions: WouldYouRatherQuestion[] = [
     optionB: 'मास्क बिना काठमाडौंको धुलोको आँधीमा फस्ने',
     optionAVotes: 843,
     optionBVotes: 157
-  },
-  {
-    id: 'daily-4',
-    optionA: 'कहिल्यै पनि लोडसेडिङको सामना नगर्ने',
-    optionB: 'कहिल्यै पनि पानीको अभावको सामना नगर्ने',
-    optionAVotes: 347,
-    optionBVotes: 653
   },
   {
     id: 'daily-5',
