@@ -123,7 +123,7 @@ export default function QuizSection({
       </AnimatePresence>
 
       {/* Options - with fixed dimensions and reserved space */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-24">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 md:mb-24">
         {currentQuestion.options.map((option, index) => {
           const isCorrect = option === currentQuestion.correctAnswer;
           const isSelected = option === selectedOption;

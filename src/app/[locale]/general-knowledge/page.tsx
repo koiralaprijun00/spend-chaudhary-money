@@ -216,7 +216,7 @@ export default function NepalGKQuiz() {
         </div>
 
         <div className="flex-1 px-4 py-8">
-          <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6 max-w-5xl mx-auto px-2">
             <div className="hidden md:block md:w-1/3 space-y-6">
               <div className="bg-white rounded-xl shadow-lg p-6">
                 <div className="mb-8">
@@ -265,9 +265,9 @@ export default function NepalGKQuiz() {
 
             <div className="md:w-2/3 w-full">
               <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
-                <div className="bg-white rounded-lg p-4 md:p-6">
+              <div className="bg-white rounded-lg p-3 md:p-6">
                   <div className="md:hidden mb-6">
-                    <h1 className="text-2xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
+                  <h1 className="text-xl md:text-2xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
                       {safeT("nepalGk.title", "Nepal GK Quiz")}
                     </h1>
 
@@ -281,7 +281,7 @@ export default function NepalGKQuiz() {
   />
 </div>
 
-                    <div className="flex justify-between items-center mb-4">
+<div className="flex flex-col xs:flex-row justify-between items-center gap-2 mb-4">
                       <div className="bg-gray-100 px-3 py-1.5 rounded-lg">
                         <span className="font-bold">
                           {safeT("nepalGk.score", "Score")}: {score}
@@ -367,7 +367,7 @@ export default function NepalGKQuiz() {
 
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 z-10">
         <div className="flex justify-between items-center">
-          <GameButton onClick={restartGame} type="neutral" size="sm" className="py-1 text-xs">
+        <GameButton onClick={restartGame} type="neutral" size="sm" className="py-1 px-2 text-xs">
             {safeT("nepalGk.restart", "Restart Quiz")}
           </GameButton>
 
