@@ -3,13 +3,26 @@
 import { useState, useEffect, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import QuizSection from "../nepal-gk-components/QuizSection";
-import AnswerReveal from "../nepal-gk-components/AnswerReveal";
-import { getQuestionsByLocale } from "../../data/general-knowledge/getQuestions"; // Import utility
+import { getQuestionsByLocale } from "../../data/general-knowledge/getQuestions";
 import AdSenseGoogle from "../../components/AdSenseGoogle";
 import GameButton from "../../components/ui/GameButton";
+import CustomDropdown from "../../components/ui/CustomDropdown";
+
+function createSafeT(t: ReturnType<typeof useTranslations>) {
+  return (key: string, defaultValue = "", params = {}) => {
+    try {
+      return t(key, params);
+    } catch (error) {
+      console.warn(`Translation key not found: ${key}`);
+      return defaultValue;
+    }
+  };
+}
+
 
 export default function NepalGKQuiz() {
   const t = useTranslations("Translations");
+  const safeT = useMemo(() => createSafeT(t), [t]);
   const locale = useLocale();
 
   // Load questions based on locale
@@ -26,19 +39,69 @@ export default function NepalGKQuiz() {
   // Add category filter state
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
-  // Get all available categories
+  // Get all available categories with normalized names
   const categories = useMemo(() => {
-    const allCategories = gkQuestions.map((q) => q.category);
-    return ["all", ...Array.from(new Set(allCategories))];
-  }, [gkQuestions]);
+    const normalizeCategory = (category: string): string => {
+      if (category.includes("&")) {
+        const parts = category.split("&").map(part => part.trim());
+        return parts.sort().join(" & ");
+      }
+      return category.trim();
+    };
+  
+    const categoryCountMap: Record<string, { originalNames: string[], count: number }> = {};
+  
+    gkQuestions.forEach((q) => {
+      const normalizedName = normalizeCategory(q.category);
+      if (!categoryCountMap[normalizedName]) {
+        categoryCountMap[normalizedName] = {
+          originalNames: [q.category],
+          count: 0
+        };
+      } else if (!categoryCountMap[normalizedName].originalNames.includes(q.category)) {
+        categoryCountMap[normalizedName].originalNames.push(q.category);
+      }
+      categoryCountMap[normalizedName].count++;
+    });
+  
+    const uniqueCategories = [{
+      id: "all",
+      name: safeT("nepalGk.allCategories", "All Categories"),
+      originalNames: ["all"]
+    }];
+  
+    Object.entries(categoryCountMap)
+      .sort((a, b) => b[1].count - a[1].count) // 🔥 sort by count (descending)
+      .forEach(([normalizedName, { originalNames, count }]) => {
+        uniqueCategories.push({
+          id: normalizedName,
+          name: `${normalizedName} (${count})`,
+          originalNames
+        });
+      });
+  
+    return uniqueCategories;
+  }, [gkQuestions, safeT]);
+  
 
   // Filter questions by selected category
   const filteredQuestions = useMemo(() => {
     if (selectedCategory === "all") {
       return gkQuestions;
     }
-    return gkQuestions.filter((q) => q.category === selectedCategory);
-  }, [selectedCategory, gkQuestions]);
+    
+    // Find the selected category in our normalized list
+    const selectedCategoryObj = categories.find(cat => cat.id === selectedCategory);
+    
+    if (!selectedCategoryObj) {
+      return [];
+    }
+    
+    // Filter questions that match any of the original category names
+    return gkQuestions.filter((q) => 
+      selectedCategoryObj.originalNames.includes(q.category)
+    );
+  }, [selectedCategory, gkQuestions, categories]);
 
   // Shuffle questions at the start
   const [shuffledQuestions, setShuffledQuestions] = useState<typeof gkQuestions>([]);
@@ -51,12 +114,18 @@ export default function NepalGKQuiz() {
 
   // When category changes, reset game state
   useEffect(() => {
+    setIsMounted(true);
+  
+    // Reset everything and shuffle only once when category changes
+    const shuffled = [...filteredQuestions].sort(() => Math.random() - 0.5);
+    setShuffledQuestions(shuffled);
     setCurrentQuestionIndex(0);
     setIsAnswered(false);
     setIsCorrect(false);
     setFeedback("");
     setScore(0);
-  }, [selectedCategory]);
+  }, [filteredQuestions]);
+  
 
   // Current question
   const currentQuestion = shuffledQuestions[currentQuestionIndex];
@@ -100,8 +169,10 @@ export default function NepalGKQuiz() {
   };
 
   // Handle category change
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
+  const handleCategoryChange = (category: string | number) => {
+      if (typeof category === "string") {
+          setSelectedCategory(category);
+      }
   };
 
   // Share score
@@ -131,22 +202,6 @@ export default function NepalGKQuiz() {
     }
   };
 
-  // Calculate available question count by category
-  const getQuestionCount = (category: string) => {
-    if (category === "all") return gkQuestions.length;
-    return gkQuestions.filter((q) => q.category === category).length;
-  };
-
-  // Safe translation function
-  const safeT = (key: string, defaultValue: string = "", params: any = {}) => {
-    try {
-      return t(key, params);
-    } catch (error) {
-      console.warn(`Translation key not found: ${key}`);
-      return defaultValue;
-    }
-  };
-
   return (
     <div className="min-h-screen w-full">
       <div className="flex justify-center">
@@ -173,22 +228,14 @@ export default function NepalGKQuiz() {
                   </p>
                 </div>
 
-                <div className="mb-6">
-                  <h2 className="text-sm mb-2">{safeT("nepalGk.categories", "Categories")}</h2>
-                  <select
-                    value={selectedCategory}
-                    onChange={(e) => handleCategoryChange(e.target.value)}
-                    className="w-full px-3 py-2 border-2 border-blue-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
-                  >
-                    {categories.map((category) => (
-                      <option key={category} value={category}>
-                        {category === "all"
-                          ? safeT("nepalGk.allCategories", "All Categories")
-                          : `${category} (${getQuestionCount(category)})`}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <div className="mb-4 flex justify-center">
+  <CustomDropdown
+    options={categories}
+    value={selectedCategory}
+    onChange={handleCategoryChange}
+    className="w-full max-w-xs"
+  />
+</div>
 
                 <div>
                   <h2 className="text-sm mb-3">{safeT("nepalGk.score", "Score")}</h2>
@@ -224,21 +271,15 @@ export default function NepalGKQuiz() {
                       {safeT("nepalGk.title", "Nepal GK Quiz")}
                     </h1>
 
-                    <div className="mb-4 flex justify-center">
-                      <select
-                        value={selectedCategory}
-                        onChange={(e) => handleCategoryChange(e.target.value)}
-                        className="w-full max-w-xs px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
-                      >
-                        {categories.map((category) => (
-                          <option key={category} value={category}>
-                            {category === "all"
-                              ? safeT("nepalGk.allCategories", "All Categories")
-                              : `${category} (${getQuestionCount(category)})`}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                    <div className="mb-6">
+  <h2 className="text-sm mb-2">{safeT("nepalGk.categories", "Categories")}</h2>
+  <CustomDropdown
+    options={categories}
+    value={selectedCategory}
+    onChange={handleCategoryChange}
+    className="w-full"
+  />
+</div>
 
                     <div className="flex justify-between items-center mb-4">
                       <div className="bg-gray-100 px-3 py-1.5 rounded-lg">
@@ -274,19 +315,37 @@ export default function NepalGKQuiz() {
                         currentQuestion={currentQuestion}
                         isAnswered={isAnswered}
                         handleGuess={handleGuess}
-                      />
-                      <AnswerReveal
-                        isAnswered={isAnswered}
-                        isCorrect={isCorrect}
-                        feedback={feedback}
-                        currentQuestion={currentQuestion}
                         handleNextQuestion={handleNextQuestion}
-                        restartGame={restartGame}
-                        handleShareScore={handleShareScore}
-                        score={score}
                         totalQuestions={shuffledQuestions.length}
                         currentIndex={currentQuestionIndex}
+                        isLastQuestion={currentQuestionIndex === shuffledQuestions.length - 1}
+                        feedback={feedback}
+                        isCorrect={isCorrect}
                       />
+                      
+                      {/* Show final screen only on the last question after it's answered */}
+                      {isAnswered && currentQuestionIndex === shuffledQuestions.length - 1 && (
+                        <div className="mt-8 text-center p-6 bg-blue-50 rounded-lg">
+                          <h3 className="text-xl font-bold text-blue-800 mb-4">
+                            🎉 {safeT("nepalGk.quizComplete", "Quiz Complete!")}
+                          </h3>
+                          <p className="mb-4">
+                            {safeT(
+                              "nepalGk.finalScoreMessage", 
+                              `Your final score is ${score} out of ${shuffledQuestions.length * 10}.`,
+                              { score, total: shuffledQuestions.length * 10 }
+                            )}
+                          </p>
+                          <div className="flex justify-center gap-4 mt-6">
+                            <GameButton onClick={handleShareScore} type="primary" size="sm">
+                              {safeT("nepalGk.shareScore", "Share Score")}
+                            </GameButton>
+                            <GameButton onClick={restartGame} type="success" size="sm">
+                              {safeT("nepalGk.playAgain", "Play Again")}
+                            </GameButton>
+                          </div>
+                        </div>
+                      )}
                     </>
                   ) : null}
                 </div>

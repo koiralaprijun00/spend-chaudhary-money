@@ -4,5 +4,4 @@ export interface Question {
     question: string; // The question text
     options: string[]; // Array of answer options
     correctAnswer: string; // The correct answer
-    fact: string; // A fact or explanation related to the question
   }
