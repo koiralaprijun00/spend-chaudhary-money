@@ -361,146 +361,217 @@ export const questionsNp: Question[] = [
 
 {
   id: "jatra-1",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "पाटनको रातो मछिन्द्रनाथ जात्रामा पूजा गरिने देवता को हुन्?",
   options: ["अवलोकितेश्वर", "मञ्जुश्री", "इन्द्र", "गणेश"],
   correctAnswer: "अवलोकितेश्वर"
 },
 {
   id: "jatra-2",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "नेपाली पात्रो अनुसार इन्द्र जात्रा प्रायः कुन महिनामा सुरु हुन्छ?",
   options: ["भदौ", "आश्विन", "साउन", "कार्तिक"],
   correctAnswer: "भदौ"
 },
 {
   id: "jatra-3",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "इन्द्र जात्रामा मास्क लगाएर प्रदर्शन गरिने नाच कुन हो?",
   options: ["लाखे नाच", "चर्य नृत्य", "भैरव नाच", "मारुनी"],
   correctAnswer: "लाखे नाच"
 },
 {
   id: "jatra-4",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "काठमाडौँ उपत्यकाको सबैभन्दा लामो सडक जात्रा कुन हो?",
   options: ["रातो मछिन्द्रनाथ जात्रा", "इन्द्र जात्रा", "सेतो मछिन्द्रनाथ जात्रा", "घोडे जात्रा"],
   correctAnswer: "रातो मछिन्द्रनाथ जात्रा"
 },
 {
   id: "jatra-5",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "इन्द्र जात्राको अवसरमा सार्वजनिक रूपमा देखिने जीवित देवी को हुन्?",
   options: ["कुमारी", "तलेजु", "त्रिपुरा सुन्दरी", "गुह्येश्वरी"],
   correctAnswer: "कुमारी"
 },
 {
   id: "jatra-6",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "सेतो मछिन्द्रनाथ जात्रा काठमाण्डौको कुन स्थानबाट सुरु हुन्छ?",
   options: ["जमल", "असन", "भोटाहिटी", "धोबीचौर"],
   correctAnswer: "जमल"
 },
 {
   id: "jatra-7",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "गाई जात्रामा नेवार परम्पराअनुसार गाईले केको प्रतीक गर्छ?",
   options: ["उर्बरता", "धन", "स्वर्गको बाटो", "बल"],
   correctAnswer: "स्वर्गको बाटो"
 },
 {
   id: "jatra-8",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "भैरवको मुखुण्डो सार्वजनिक रूपमा देखाइने जात्रा कुन हो?",
   options: ["इन्द्र जात्रा", "गाई जात्रा", "सेतो मछिन्द्रनाथ जात्रा", "पुलु किसी जात्रा"],
   correctAnswer: "इन्द्र जात्रा"
 },
 {
   id: "jatra-9",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "इन्द्र जात्रामा देखाइने सेतो हात्तीको प्रतिरूपलाई के भनिन्छ?",
   options: ["पुलु किसी", "ऐरावत", "यम", "लाखे"],
   correctAnswer: "पुलु किसी"
 },
 {
   id: "jatra-10",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "कुन जात्रामा नक्कल, व्यङ्ग्य, र स्त्री भेष धारण गरेर नाटक प्रस्तुत गरिन्छ?",
   options: ["गाई जात्रा", "इन्द्र जात्रा", "तलेजु जात्रा", "येँया जात्रा"],
   correctAnswer: "गाई जात्रा"
 },
 {
   id: "jatra-11",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "तलेजु भवानीको जात्रा कुन पर्वसँग जोडिएको छ?",
   options: ["दशैं", "इन्द्र जात्रा", "गाई जात्रा", "सेतो मछिन्द्रनाथ जात्रा"],
   correctAnswer: "इन्द्र जात्रा"
 },
 {
   id: "jatra-12",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "हुनमानढोका दरबारमा ठूला काठका खम्बा (योसिं) गाडिने जात्रा कुन हो?",
   options: ["इन्द्र जात्रा", "गाई जात्रा", "रातो मछिन्द्रनाथ जात्रा", "बिस्केट जात्रा"],
   correctAnswer: "इन्द्र जात्रा"
 },
 {
   id: "jatra-13",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "सेतो मछिन्द्रनाथलाई कुन देवताको शान्त रूप मानिन्छ?",
   options: ["लोकेश्वर", "वज्रयोगिनी", "गणेश", "शिव"],
   correctAnswer: "लोकेश्वर"
 },
 {
   id: "jatra-14",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "कुन जात्रामा जनताले खुल्ला रूपमा नेताहरूको व्यङ्ग्य गर्न पाउँछन्?",
   options: ["गाई जात्रा", "रातो मछिन्द्रनाथ जात्रा", "इन्द्र जात्रा", "योमारी पुणि"],
   correctAnswer: "गाई जात्रा"
 },
 {
   id: "jatra-15",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "भोटो जात्रा कहिले देखाइन्छ?",
   options: ["हरेक वर्ष", "हरेक ५ वर्षमा", "हरेक रथ तान्दा", "रथयात्राको अन्त्यमा"],
   correctAnswer: "रथयात्राको अन्त्यमा"
 },
 {
   id: "jatra-16",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "रातो मछिन्द्रनाथ जात्राको भोटो देखाउने परम्पराले के जनाउँछ?",
   options: ["राजाको शक्ति", "हराएको सम्पत्ति", "धर्मको विजय", "विवाह संस्कार"],
   correctAnswer: "हराएको सम्पत्ति"
 },
 {
   id: "jatra-17",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "इन्द्र जात्रा सुरु गर्ने राजा को मानिन्छ?",
   options: ["गुणकामदेव", "महेन्द्र मल्ल", "प्रताप मल्ल", "अम्शुवर्मा"],
   correctAnswer: "प्रताप मल्ल"
 },
 {
   id: "jatra-18",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "‘येँया’ भन्नाले के जनाउँछ जुन इन्द्र जात्रासँग सम्बन्धित हुन्छ?",
   options: ["प्रकाशको पर्व", "उपत्यकाको चाड", "काठमाडौँको चाड", "बाली संकलन पर्व"],
   correctAnswer: "काठमाडौँको चाड"
 },
 {
   id: "jatra-19",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "कुन जात्रामा नाचमार्फत राक्षसलाई समातेर छोड्ने प्रतीक हुन्छ?",
   options: ["इन्द्र जात्रा", "गाई जात्रा", "तलेजु जात्रा", "पुलु किसी जात्रा"],
   correctAnswer: "इन्द्र जात्रा"
 },
 {
   id: "jatra-20",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "काठमाडौँका जात्राहरूमा प्राय: प्रयोग हुने परम्परागत मदिरा के हो?",
   options: ["रक्सी", "तोङ्बा", "ऐला", "छ्याङ"],
   correctAnswer: "ऐला"
+},
+
+
+//hard jatra
+{
+  id: "jatra-hard-1",
+  category: "Jatra of Kathmandu Valley",
+  question: "रातो मछिन्द्रनाथको वर्षा अनुष्ठानसँग सम्बन्धित प्राचीन बौद्ध ग्रन्थ कुन हो?",
+  options: ["स्वयम्भू पुराण", "करुणामय सूत्र", "वज्रछेदिका", "महावस्तु"],
+  correctAnswer: "करुणामय सूत्र"
+},
+{
+  id: "jatra-hard-2",
+  category: "Jatra of Kathmandu Valley",
+  question: "येँया (इन्द्र जात्रा) मा परम्परागत ‘भुखा द्यः’ जात्रा कहाँबाट निस्कन्छ?",
+  options: ["ललितपुर", "भक्तपुर", "किलागल", "बसन्तपुर"],
+  correctAnswer: "किलागल"
+},
+{
+  id: "jatra-hard-3",
+  category: "Jatra of Kathmandu Valley",
+  question: "काठमाडौँको इन्द्र जात्रामा भैरवलाई के विशेष चढाइन्छ?",
+  options: ["भैंसी बलि", "पाइपबाट रक्सी", "योमरी", "तेलको दियो"],
+  correctAnswer: "पाइपबाट रक्सी"
+},
+{
+  id: "jatra-hard-4",
+  category: "Jatra of Kathmandu Valley",
+  question: "भोटो जात्रा कुन किंवदन्तीसँग सम्बन्धित छ?",
+  options: ["किसान र नागको कथा", "सुतार र देवताको कथा", "राजा र राक्षस", "व्यापारी र भिक्षुको कथा"],
+  correctAnswer: "किसान र नागको कथा"
+},
+{
+  id: "jatra-hard-5",
+  category: "Jatra of Kathmandu Valley",
+  question: "रातो मछिन्द्रनाथको रथयात्रा अन्ततः कहाँ पुगेर सम्पन्न हुन्छ?",
+  options: ["पुल्चोक", "जवाखेल", "गाबहाल", "लगनखेल"],
+  correctAnswer: "जवाखेल"
+},
+{
+  id: "jatra-hard-6",
+  category: "Jatra of Kathmandu Valley",
+  question: "सेतो मछिन्द्रनाथको मूर्ति कुन वडामा राखिन्छ जब जात्रा हुँदैन?",
+  options: ["वडा १७", "वडा २२", "वडा २७", "वडा २५"],
+  correctAnswer: "वडा २२"
+},
+{
+  id: "jatra-hard-7",
+  category: "Jatra of Kathmandu Valley",
+  question: "रातो मछिन्द्रनाथको रथ निर्माण गर्ने परम्परागत नेवार जात समूह कुन हो?",
+  options: ["शाक्य", "कर्माचार्य", "चित्रकार", "बराही"],
+  correctAnswer: "बराही"
+},
+{
+  id: "jatra-hard-8",
+  category: "Jatra of Kathmandu Valley",
+  question: "इन्द्र जात्रामा सार्वजनिक रूपमा कति वटा भैरव देखाइन्छ?",
+  options: ["तीन", "चार", "पाँच", "सात"],
+  correctAnswer: "चार"
+},
+{
+  id: "jatra-hard-9",
+  category: "Jatra of Kathmandu Valley",
+  question: "इन्द्र जात्रामा माजीपाट क्षेत्रसँग सम्बन्धित लाखे नाचको नाम के हो?",
+  options: ["पुलु किसी", "असन लाखे", "माजीपा लाखे", "भैरव लाखे"],
+  correctAnswer: "माजीपा लाखे"
+},
+{
+  id: "jatra-hard-10",
+  category: "Jatra of Kathmandu Valley",
+  question: "इन्द्र जात्राको अवसरमा वर्षमा एकपटक मात्र सार्वजनिक रूपमा खुला गरिने देवीको मन्दिर कुन हो?",
+  options: ["गुह्येश्वरी", "तलेजु भवानी", "वज्रयोगिनी", "संकटादेवी"],
+  correctAnswer: "तलेजु भवानी"
 }
-
-
 
 
 ];

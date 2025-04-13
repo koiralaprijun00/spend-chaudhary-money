@@ -348,144 +348,217 @@ export const questionsEn: Question[] = [
 //Jatras
 {
   id: "jatra-1",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "Which deity is honored during the Rato Machindranath Jatra of Patan?",
   options: ["Avalokiteshvara", "Manjushri", "Indra", "Ganesh"],
   correctAnswer: "Avalokiteshvara"
 },
 {
   id: "jatra-2",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "In which month of the Nepali calendar does Indra Jatra typically begin?",
   options: ["Bhadra", "Ashwin", "Shrawan", "Kartik"],
   correctAnswer: "Bhadra"
 },
 {
   id: "jatra-3",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "What is the name of the dance performed by masked deities during Indra Jatra?",
   options: ["Lakhey dance", "Charya Nritya", "Bhairab dance", "Maruni"],
   correctAnswer: "Lakhey dance"
 },
 {
   id: "jatra-4",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "Which jatra is considered the longest street festival in the Kathmandu Valley?",
   options: ["Rato Machindranath Jatra", "Indra Jatra", "Seto Machindranath Jatra", "Ghode Jatra"],
   correctAnswer: "Rato Machindranath Jatra"
 },
 {
   id: "jatra-5",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "What is the name of the living goddess who makes a public appearance during Indra Jatra?",
   options: ["Kumari", "Taleju", "Tripura Sundari", "Guhyeshwari"],
   correctAnswer: "Kumari"
 },
 {
   id: "jatra-6",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "Which jatra involves a chariot procession starting from Jamal in central Kathmandu?",
   options: ["Seto Machindranath Jatra", "Rato Machindranath Jatra", "Indra Jatra", "Gai Jatra"],
   correctAnswer: "Seto Machindranath Jatra"
 },
 {
   id: "jatra-7",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "During Gai Jatra, what does the cow symbolize in Newar tradition?",
   options: ["Fertility", "Wealth", "Path to heaven", "Strength"],
   correctAnswer: "Path to heaven"
 },
 {
   id: "jatra-8",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "The Bhairab masks are prominently displayed in which jatra?",
   options: ["Indra Jatra", "Gai Jatra", "Seto Machindranath Jatra", "Pulu Kisi Jatra"],
   correctAnswer: "Indra Jatra"
 },
 {
   id: "jatra-9",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "What is the large white figure representing Indra’s elephant called during Indra Jatra?",
   options: ["Pulu Kisi", "Airawat", "Yama", "Lakhey"],
   correctAnswer: "Pulu Kisi"
 },
 {
   id: "jatra-10",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "Which jatra is known for public satire, parody, and cross-dressing performances?",
   options: ["Gai Jatra", "Indra Jatra", "Taleju Jatra", "Yenya Jatra"],
   correctAnswer: "Gai Jatra"
 },
 {
   id: "jatra-11",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "Taleju Bhawani Jatra is celebrated during which festival?",
   options: ["Dashain", "Indra Jatra", "Gai Jatra", "Seto Machindranath Jatra"],
   correctAnswer: "Indra Jatra"
 },
 {
   id: "jatra-12",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "Which festival in Kathmandu features a wooden pole (Yosin) erected in Hanuman Dhoka?",
   options: ["Indra Jatra", "Gai Jatra", "Rato Machindranath Jatra", "Bisket Jatra"],
   correctAnswer: "Indra Jatra"
 },
 {
   id: "jatra-13",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "Seto Machindranath is considered the white aspect of which deity?",
   options: ["Lokeshvara", "Vajrayogini", "Ganesha", "Shiva"],
   correctAnswer: "Lokeshvara"
 },
 {
   id: "jatra-14",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "Which jatra traditionally allows citizens to mock politicians and elites?",
   options: ["Gai Jatra", "Rato Machindranath Jatra", "Indra Jatra", "Yomari Punhi"],
   correctAnswer: "Gai Jatra"
 },
 {
   id: "jatra-15",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "How often is the Bhoto (vest) shown during Rato Machindranath Jatra?",
   options: ["Every year", "Every 5 years", "During each chariot pulling", "At the end of the chariot procession"],
   correctAnswer: "At the end of the chariot procession"
 },
 {
   id: "jatra-16",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "What does the Bhoto Jatra symbolize in Rato Machindranath Jatra?",
   options: ["Royal authority", "Lost property", "Victory of good", "Marriage ritual"],
   correctAnswer: "Lost property"
 },
 {
   id: "jatra-17",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "Which ancient king is believed to have started the tradition of Indra Jatra?",
   options: ["Gunakamdev", "Mahendra Malla", "Pratap Malla", "Amshuvarma"],
   correctAnswer: "Pratap Malla"
 },
 {
   id: "jatra-18",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "What is the meaning of 'Yenya', often associated with Indra Jatra?",
   options: ["Festival of light", "Festival of the valley", "Festival of Kathmandu", "Celebration of harvest"],
   correctAnswer: "Festival of Kathmandu"
 },
 {
   id: "jatra-19",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "Which jatra features the symbolic capture and release of a demon through dance?",
   options: ["Indra Jatra", "Gai Jatra", "Taleju Jatra", "Pulu Kisi Jatra"],
   correctAnswer: "Indra Jatra"
 },
 {
   id: "jatra-20",
-  category: "Culture & Festivals",
+  category: "Jatra of Kathmandu Valley",
   question: "What is the traditional alcoholic beverage often served during Kathmandu's jatras?",
   options: ["Raksi", "Tongba", "Aila", "Chyang"],
   correctAnswer: "Aila"
+},
+
+//hard jatra
+{
+  id: "jatra-hard-1",
+  category: "Jatra of Kathmandu Valley",
+  question: "Which ancient Buddhist text describes the significance of Rato Machindranath in rainfall rituals?",
+  options: ["Swayambhu Purana", "Karunamaya Sutra", "Vajrachhedika", "Mahavastu"],
+  correctAnswer: "Karunamaya Sutra"
+},
+{
+  id: "jatra-hard-2",
+  category: "Jatra of Kathmandu Valley",
+  question: "Which locality hosts the traditional ‘Bhukha Dya:’ procession during Yenya (Indra Jatra)?",
+  options: ["Lalitpur", "Bhaktapur", "Kilagal", "Basantapur"],
+  correctAnswer: "Kilagal"
+},
+{
+  id: "jatra-hard-3",
+  category: "Jatra of Kathmandu Valley",
+  question: "What unique offering is made to Bhairab during Indra Jatra in Kathmandu?",
+  options: ["Buffalo sacrifice", "Rice beer through a pipe", "Yomari", "Sesame oil lamps"],
+  correctAnswer: "Rice beer through a pipe"
+},
+{
+  id: "jatra-hard-4",
+  category: "Jatra of Kathmandu Valley",
+  question: "The Bhoto Jatra is closely linked with which myth involving a lost vest?",
+  options: ["The farmer and the serpent god", "The carpenter and the deity", "The king and the demon", "The merchant and the monk"],
+  correctAnswer: "The farmer and the serpent god"
+},
+{
+  id: "jatra-hard-5",
+  category: "Jatra of Kathmandu Valley",
+  question: "Which location is considered the final destination of the Rato Machindranath chariot journey?",
+  options: ["Pulchowk", "Jawalakhel", "Gabahal", "Lagankhel"],
+  correctAnswer: "Jawalakhel"
+},
+{
+  id: "jatra-hard-6",
+  category: "Jatra of Kathmandu Valley",
+  question: "In which ward of Kathmandu is the Seto Machindranath deity housed when not in procession?",
+  options: ["Ward 17", "Ward 22", "Ward 27", "Ward 25"],
+  correctAnswer: "Ward 22"
+},
+{
+  id: "jatra-hard-7",
+  category: "Jatra of Kathmandu Valley",
+  question: "Which traditional Newar caste group constructs the Rato Machindranath chariot?",
+  options: ["Shakya", "Karmacharya", "Chitrakar", "Barahi"],
+  correctAnswer: "Barahi"
+},
+{
+  id: "jatra-hard-8",
+  category: "Jatra of Kathmandu Valley",
+  question: "How many Bhairabs are publicly displayed during Indra Jatra?",
+  options: ["Three", "Four", "Five", "Seven"],
+  correctAnswer: "Four"
+},
+{
+  id: "jatra-hard-9",
+  category: "Jatra of Kathmandu Valley",
+  question: "What is the name of the Lakhey associated with Majipat during Indra Jatra?",
+  options: ["Pulu Kisi", "Ashan Lakhey", "Majipa Lakhey", "Bhairab Lakhey"],
+  correctAnswer: "Majipa Lakhey"
+},
+{
+  id: "jatra-hard-10",
+  category: "Jatra of Kathmandu Valley",
+  question: "Which female deity’s temple remains open to the public only once a year during Indra Jatra?",
+  options: ["Guhyeshwari", "Taleju Bhawani", "Vajrayogini", "Sankata Devi"],
+  correctAnswer: "Taleju Bhawani"
 }
+
 
 
 
