@@ -57,6 +57,13 @@
              "description":"अन्तर्राष्ट्रिय लिगमा व्यावसायिक रूपमा खेल्ने पहिलो नेपाली फुटबलर।",
              "imagePath":"/images/first-of-nepal/baikuntha-manandhar.jpg"
           },
+          "padamSundarMalla": {
+  "category": "विद्युत इन्जिनियर",
+  "name": "पद्म सुन्दर मल्ल",
+  "year": "१९७९",
+  "description": "पद्म सुन्दर मल्ल नेपालका पहिलो विद्युत इन्जिनियर थिए। उनले विसं १९७० तिर विदेशमा इन्जिनियरिङ अध्ययन गरे र नेपालमा आधुनिक विद्युत प्रविधिको सुरुवात गर्ने अग्रणी भूमिका खेले।",
+  "imagePath": "/images/first-of-nepal/padam-sundar-malla.jpg"
+},
           "dwarikaDeviThakurani":{
              "category":"महिला मन्त्री",
              "name":"द्वारिका देवी ठकुरानी",
@@ -162,6 +169,13 @@
              "description":"नासाको कोषमा आधारित अन्तरिक्ष अनुसन्धान परियोजनामा योगदान गर्ने पहिलो नेपाली।",
              "imagePath":"/images/first-of-nepal/arjun-bhandari.jpg"
           },
+          "padamSundarMalla2": {
+  "category": "संयुक्त राज्य अमेरिका जाने व्यक्ति",
+  "name": "पद्म सुन्दर मल्ल",
+  "year": "१९७७",
+  "description": "पद्म सुन्दर मल्ल उच्च शिक्षाका लागि अमेरिका जाने पहिलो नेपाली नागरिक थिए।",
+  "imagePath": "/images/first-of-nepal/padam-sundar-malla.jpg"
+},
           "buddhiMayaSubedi":{
              "category":"महिला पाइलट",
              "name":"बुद्धि माया सुबेदी",
