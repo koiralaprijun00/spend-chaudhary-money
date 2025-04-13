@@ -92,6 +92,13 @@
           "description": "First female entrepreneur to establish a major tourism company in Nepal.",
           "imagePath": "/images/first-of-nepal/yankila-sherpa.jpg"
         },
+        "harishchandra": {
+  "category": "Film",
+  "name": "Harishchandra",
+  "year": "1951",
+  "description": "First Nepali-language movie, produced in India and released in 1951, marking the beginning of Nepali cinema.",
+  "imagePath": "/images/first-of-nepal/harishchandra.jpg"
+},
         "sirishGurung": {
           "category": "Olympic Swimmer",
           "name": "Sirish Gurung",

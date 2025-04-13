@@ -64,6 +64,13 @@
              "description":"नेपालको मन्त्रिपरिषदमा पहिलो महिला मन्त्री।",
              "imagePath":"/images/first-of-nepal/dwarika-devi-thakurani.jpg"
           },
+          "harishchandra": {
+  "category": "चलचित्र",
+  "name": "हरिश्चन्द्र",
+  "year": "१९५१",
+  "description": "पहिलो नेपाली भाषाको चलचित्र, भारतमा निर्माण भई १९५१ मा प्रदर्शन गरिएको। यसले नेपाली चलचित्र उद्योगको सुरुवात गर्‍यो।",
+  "imagePath": "/images/first-of-nepal/harishchandra.jpg"
+},
           "rakeshSharma":{
              "category":"वाणिज्यिक पाइलट",
              "name":"राकेश शर्मा",
