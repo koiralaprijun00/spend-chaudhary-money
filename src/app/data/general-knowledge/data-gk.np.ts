@@ -167,4 +167,340 @@ export const questionsNp: Question[] = [
 { id: "np-gk-218", category: "History", question: "कुन नेपाली राजा 'अभागी राजा' भनेर चिनिन्छन्?", options: ["रणबहादुर शाह", "राजेन्द्र विक्रम शाह", "जयप्रकाश मल्ल", "सुरेन्द्र विक्रम शाह"], correctAnswer: "जयप्रकाश मल्ल" },
 { id: "np-gk-219", category: "Demography", question: "२०७८ को जनगणना अनुसार नेपालको जनघनत्व प्रति वर्ग किलोमिटर कति हो?", options: ["१५१", "१८०", "१९८", "२१०"], correctAnswer: "१९८" },
 { id: "np-gk-220", category: "History & Culture", question: "नेपालका पहिलो 'राष्ट्रिय विभूति' को हुन्?", options: ["राजा जनक", "सिता", "अरनिको", "गौतम बुद्ध"], correctAnswer: "अरनिको" },
+
+
+{ id: "religion-1", category: "Religion & Mythology", question: "काठमाण्डौ उपत्यकाको संरक्षक देवी मानिने हिन्दू देवी को हुन्?", options: ["कुमारी", "तलेजु भवानी", "दुर्गा", "गुह्येश्वरी"], correctAnswer: "तलेजु भवानी" },
+{ id: "religion-2", category: "Religion & Mythology", question: "स्वयम्भुनाथ कुन प्राचीन तालबाट उत्पत्ति भएको विश्वास गरिन्छ?", options: ["रारा", "गोसाइँकुण्ड", "नागदह", "काठमाण्डौको नागदह"], correctAnswer: "काठमाण्डौको नागदह" },
+{ id: "religion-3", category: "Religion & Mythology", question: "नेपालबाट उत्पत्ति भएको भनिने तन्त्रिक बौद्ध ग्रन्थ कुन हो?", options: ["कालचक्र तन्त्र", "हेवज्र तन्त्र", "गुह्यसमाज तन्त्र", "वज्रयोगिनी तन्त्र"], correctAnswer: "हेवज्र तन्त्र" },
+{ id: "religion-4", category: "Religion & Mythology", question: "हरिबोधिनी एकादशीमा नेपालमा कुन विष्णुको अवतारको पूजा गरिन्छ?", options: ["राम", "कृष्ण", "वामन", "नारायण"], correctAnswer: "नारायण" },
+{ id: "religion-5", category: "Religion & Mythology", question: "जिउँदो देवी कुमारीलाई कुन देवीको अवतार मानिन्छ?", options: ["दुर्गा", "पार्वती", "तलेजु", "लक्ष्मी"], correctAnswer: "तलेजु" },
+{ id: "religion-6", category: "Religion & Mythology", question: "नेपालबाट तिब्बतमा वज्रयान बौद्ध धर्म फैलाउने गुरु को हुन्?", options: ["मिलारेपा", "पद्मसम्भव", "अतिश", "नारोपा"], correctAnswer: "पद्मसम्भव" },
+{ id: "religion-7", category: "Religion & Mythology", question: "नेपालमा हिन्दूहरूको लागि सबैभन्दा पवित्र नदी कुन हो?", options: ["गण्डकी", "बागमती", "कोशी", "कर्णाली"], correctAnswer: "बागमती" },
+{ id: "religion-8", category: "Religion & Mythology", question: "कथन अनुसार पशुपतिनाथ मन्दिरको निर्माण कसले गरेका थिए?", options: ["मानदेव", "प्रजापति सुपुष्प", "लिच्छवि राजा", "गुणकर्णदेव"], correctAnswer: "प्रजापति सुपुष्प" },
+{ id: "religion-9", category: "Religion & Mythology", question: "नेपालमा दशैंको बेला जनावर बलि दिइने देवी को हुन्?", options: ["सरस्वती", "काली", "दुर्गा", "तलेजु"], correctAnswer: "दुर्गा" },
+{ id: "religion-10", category: "Religion & Mythology", question: "नेवार बौद्ध धर्ममा दिव्य प्राणीको प्रतिनिधित्व गर्ने नृत्य कुन हो?", options: ["लाखे", "देवी प्याखं", "चर्य नृत्य", "भैरव नृत्य"], correctAnswer: "चर्य नृत्य" },
+{ id: "religion-11", category: "Religion & Mythology", question: "नेपालमा कुन हिमाल भगवान शिवसँग सम्बन्धित पवित्र मानिन्छ?", options: ["सगरमाथा", "माछापुच्छ्रे", "लाङटाङ लिरुङ", "कैलाश पर्वत"], correctAnswer: "कैलाश पर्वत" },
+{ id: "religion-12", category: "Religion & Mythology", question: "स्थानीय किंवदन्ती अनुसार पाटनको रक्षक देवता को हुन्?", options: ["मछिन्द्रनाथ", "भैरव", "मञ्जुश्री", "कुमारी"], correctAnswer: "मछिन्द्रनाथ" },
+{ id: "religion-13", category: "Religion & Mythology", question: "नेवार बौद्ध धर्ममा कुन बुद्धको पूजा गरिन्छ?", options: ["दीपंकर बुद्ध", "अमिताभ", "वैरोचन", "शाक्यमुनि बुद्ध"], correctAnswer: "दीपंकर बुद्ध" },
+{ id: "religion-14", category: "Religion & Mythology", question: "हिन्दू धर्मशास्त्र अनुसार 'शक्तिपीठ' भनेको के हो?", options: ["शिवका मन्दिरहरू", "सतीको शरीरका अंगहरू झरेका स्थानहरू", "विष्णुको निवास", "तीर्थ स्थलहरू"], correctAnswer: "सतीको शरीरका अंगहरू झरेका स्थानहरू" },
+{ id: "religion-15", category: "Religion & Mythology", question: "रातो मछिन्द्रनाथ जात्रामा पूजा गरिने देवता को हुन्?", options: ["अवलोकितेश्वर", "शिव", "ब्रह्मा", "इन्द्र"], correctAnswer: "अवलोकितेश्वर" },
+{ id: "religion-16", category: "Religion & Mythology", question: "काठमाण्डौ उपत्यका सुखाएर बसोबासयोग्य बनाउने ऋषि को हुन्?", options: ["गोरखनाथ", "भृगु", "मञ्जुश्री", "विश्वामित्र"], correctAnswer: "मञ्जुश्री" },
+{ id: "religion-17", category: "Religion & Mythology", question: "काठमाण्डौको आकाश भैरव मन्दिरमा भैरवको संगिनी देवी को हुन्?", options: ["काली", "त्रिपुरा सुन्दरी", "बराही", "भद्रकाली"], correctAnswer: "भद्रकाली" },
+{ id: "religion-18", category: "Religion & Mythology", question: "नेपालमा दुर्गा देवीलाई समर्पित नव दिनको चाडलाई के भनिन्छ?", options: ["तिहार", "माघे संक्रान्ति", "दशैं", "नवरात्रि"], correctAnswer: "नवरात्रि" },
+{ id: "religion-19", category: "Religion & Mythology", question: "काठमाण्डौ उपत्यकाको कलामा देखिने बौद्ध ज्ञानकी देवी को हुन्?", options: ["प्रज्ञापारमिता", "तारा", "वज्रयोगिनी", "भृकुटी"], correctAnswer: "प्रज्ञापारमिता" },
+{ id: "religion-20", category: "Religion & Mythology", question: "पनौतीमा मकर मेलाको बेला पूजा गरिने त्रिवेणी नदी कुन तीन पवित्र नदीहरूको संगम हो?", options: ["इन्द्रावती", "रोशी", "त्रिवेणी", "कर्मनासा"], correctAnswer: "त्रिवेणी" },
+{ id: "religion-21", category: "Religion & Mythology", question: "जनै पूर्णिमामा विशेष रूपमा पूजा गरिने ऋषि को हुन्?", options: ["वशिष्ठ", "भीष्म", "गौतम", "ऋषि",], correctAnswer: "ऋषि" },
+{ id: "religion-22", category: "Religion & Mythology", question: "गोसाइँकुण्ड कुण्ड कसको तपस्याबाट उत्पन्न भएको मानिन्छ?", options: ["शिव", "विष्णु", "हनुमान", "ब्रह्मा"], correctAnswer: "शिव" },
+{ id: "religion-23", category: "Religion & Mythology", question: "नेपालको पूर्वी पहाडी क्षेत्रको प्रसिद्ध शक्तिपीठ पाथीभरा देवी कुन जिल्लामा पर्छ?", options: ["भोजपुर", "इलाम", "संखुवासभा", "ताप्लेजुङ"], correctAnswer: "ताप्लेजुङ" },
+{ id: "religion-24", category: "Religion & Mythology", question: "बौद्ध धर्ममा पाँच बुद्धमध्ये 'अक्षोभ्य' कुन दिशाका प्रतीक हुन्?", options: ["पूर्व", "पश्चिम", "उत्तर", "दक्षिण"], correctAnswer: "पूर्व" },
+{ id: "religion-25", category: "Religion & Mythology", question: "नेपालको धार्मिक परम्परामा 'वज्रयान' बौद्ध धर्म विशेष गरी कुन जातिले अनुसरण गर्छन्?", options: ["ब्राह्मण", "नेवार", "थारू", "मगर"], correctAnswer: "नेवार" },
+{ id: "religion-26", category: "Religion & Mythology", question: "शिवको तेस्रो आँखाबाट उत्पन्न भएको आगोले कुन देवता जन्मिएका थिए?", options: ["अग्नि", "काल भैरव", "कार्तिकेय", "रूद्र"], correctAnswer: "काल भैरव" },
+{ id: "religion-27", category: "Religion & Mythology", question: "तुलसीको विवाह कसँग गरिन्छ भन्ने धार्मिक मान्यता छ?", options: ["शिवसँग", "विष्णुसँग", "गणेशसँग", "हनुमानसँग"], correctAnswer: "विष्णुसँग" },
+{ id: "religion-28", category: "Religion & Mythology", question: "बुद्ध धर्म अनुसार जन्म, ज्ञान र निर्वाण तीनै कुरा भएको पवित्र स्थान कुन हो?", options: ["बोधगया", "लुम्बिनी", "कुशीनगर", "सारनाथ"], correctAnswer: "लुम्बिनी" },
+{ id: "religion-29", category: "Religion & Mythology", question: "जनकपुरको जानकी मन्दिर कुन देवीलाई समर्पित छ?", options: ["पार्वती", "सीता", "लक्ष्मी", "सरस्वती"], correctAnswer: "सीता" },
+{ id: "religion-30", category: "Religion & Mythology", question: "नेपालमा लक्ष्मी पूजाको दिन कुन पर्व मनाइन्छ?", options: ["तिहार", "दशैं", "छठ", "नवरात्रि"], correctAnswer: "तिहार" },
+{ id: "religion-31", category: "Religion & Mythology", question: "नेपालको कुन नदीमा भगवान् विष्णुको प्रतीक शालिग्राम पाइन्छ?", options: ["बागमती", "गण्डकी", "कर्णाली", "राप्ती"], correctAnswer: "गण्डकी" },
+{ id: "religion-32", category: "Religion & Mythology", question: "बौद्ध धर्म अनुसार हिमाली क्षेत्रमा यात्रुहरूको रक्षक देवी को मानिन्छ?", options: ["तारा", "प्रज्ञापारमिता", "वज्रयोगिनी", "सरस्वती"], correctAnswer: "तारा" },
+{ id: "religion-33", category: "Religion & Mythology", question: "कथन अनुसार कुन ऋषिको श्रापले कालिगण्डकी खोँच बनेको हो?", options: ["परशुराम", "भृगु", "गौतम", "विश्वामित्र"], correctAnswer: "गौतम" },
+{ id: "religion-34", category: "Religion & Mythology", question: "दशैंमा जमरा राख्ने दिनलाई के भनिन्छ?", options: ["घटस्थापना", "फूलपाती", "महाअष्टमी", "टिका"], correctAnswer: "घटस्थापना" },
+{ id: "religion-35", category: "Religion & Mythology", question: "भक्तपुरको डोलेश्वर महादेव मन्दिरमा शिवको कुन रूपको पूजा गरिन्छ?", options: ["भैरव", "अर्धनारीश्वर", "केदारनाथको शिर", "नटराज"], correctAnswer: "केदारनाथको शिर" },
+{ id: "religion-36", category: "Religion & Mythology", question: "नेपालगञ्जको बागेश्वरी मन्दिरमा मुख्य रूपमा कुन देवीको पूजा गरिन्छ?", options: ["दुर्गा", "सरस्वती", "बागेश्वरी", "तलेजु"], correctAnswer: "बागेश्वरी" },
+{ id: "religion-37", category: "Religion & Mythology", question: "इन्द्र जात्रामा प्रतीकात्मक रूपमा कसलाई बोकिन्छ?", options: ["भैरव", "इन्द्र", "कुमारी", "गणेश"], correctAnswer: "कुमारी" },
+{ id: "religion-38", category: "Religion & Mythology", question: "नेपालका कुन बौद्ध भिक्षुले तिब्बती भाषामा धर्मग्रन्थ अनुवाद गरी महायान बौद्ध धर्म फैलाएका थिए?", options: ["अतिश दीपंकर", "शान्तरक्षित", "पद्मसम्भव", "आनन्द"], correctAnswer: "शान्तरक्षित" },
+{ id: "religion-39", category: "Religion & Mythology", question: "कुन असुरलाई तलेजु देवीले पराजित गरेपछि काठमाडौंमा उनको पूजा सुरु भएको मानिन्छ?", options: ["महिषासुर", "रक्तबीज", "बाणासुर", "किङ्कारासुर"], correctAnswer: "किङ्कारासुर" },
+{ id: "religion-40", category: "Religion & Mythology", question: "नेपालको कुन सहर हिन्दू र बौद्ध तीर्थयात्रीहरूका लागि आध्यात्मिक केन्द्र मानिन्छ?", options: ["भक्तपुर", "जनकपुर", "लुम्बिनी", "काठमाडौँ"], correctAnswer: "काठमाडौँ" },
+
+
+{
+  id: "philosophy-2",
+  category: "Philosophy",
+  question: "गौतम बुद्धले 'मध्यम मार्ग' को सिद्धान्त किन प्रतिपादन गरेका थिए?",
+  options: ["अत्यधिक भोग र कठोर तपस्या दुबैको अस्वीकार गर्न", "वेदको विरोध गर्न", "योग अभ्यासलाई बढावा दिन", "सांख्य दर्शनलाई अस्वीकार गर्न"],
+  correctAnswer: "अत्यधिक भोग र कठोर तपस्या दुबैको अस्वीकार गर्न"
+},
+{
+  id: "philosophy-3",
+  category: "Philosophy",
+  question: "‘अहिंसा परमो धर्मः’ भन्ने दर्शन विशेष गरी कसले प्रवर्द्धन गरेका थिए?",
+  options: ["गौतम बुद्ध", "चाणक्य", "महावीर स्वामी", "शंकराचार्य"],
+  correctAnswer: "महावीर स्वामी"
+},
+{
+  id: "philosophy-4",
+  category: "Philosophy",
+  question: "शंकराचार्यले प्रवर्द्धन गरेको 'अद्वैत वेदान्त' दर्शन अनुसार ब्रह्मा र आत्माको सम्बन्ध कस्तो हुन्छ?",
+  options: ["पूर्णतया भिन्न", "आंशिक रूपले भिन्न", "एकरूप", "द्वैत र अद्वैत दुवै"],
+  correctAnswer: "एकरूप"
+},
+{
+  id: "philosophy-5",
+  category: "Philosophy",
+  question: "नेपालमा बौद्ध दर्शनको वज्रयान परम्परा विशेष गरी कुन समुदायमा प्रचलित छ?",
+  options: ["ब्राह्मण", "थारू", "नेवार", "गुरुङ"],
+  correctAnswer: "नेवार"
+},
+{
+  id: "philosophy-6",
+  category: "Philosophy",
+  question: "चार्वाक दर्शनको प्रमुख मान्यता के हो?",
+  options: ["कर्म सिद्धान्त", "भौतिकवाद", "आत्मा अमर हुन्छ", "पुनर्जन्म"],  
+  correctAnswer: "भौतिकवाद"
+},
+{
+  id: "philosophy-7",
+  category: "Philosophy",
+  question: "कुन दर्शनमा 'नेति नेति' (यो होइन, त्यो होइन) भन्ने पद्धति प्रयोग गरिन्छ?",
+  options: ["योग दर्शन", "न्याय दर्शन", "वेदान्त दर्शन", "चार्वाक दर्शन"],
+  correctAnswer: "वेदान्त दर्शन"
+},
+{
+  id: "philosophy-8",
+  category: "Philosophy",
+  question: "बौद्ध दर्शन अनुसार दुःखको अन्त्य कसरी सम्भव छ?",
+  options: ["ध्यानमार्फत", "चार आर्य सत्य बुझेर", "वेद पढेर", "तपस्याबाट"],
+  correctAnswer: "चार आर्य सत्य बुझेर"
+},
+{
+  id: "philosophy-9",
+  category: "Philosophy",
+  question: "न्याय दर्शन मुख्य रूपमा कुन विषयमा केन्द्रित छ?",
+  options: ["योग अभ्यास", "तर्क र प्रमाण", "भक्ति", "ध्यान"],
+  correctAnswer: "तर्क र प्रमाण"
+},
+{
+  id: "philosophy-10",
+  category: "Philosophy",
+  question: "‘सांख्य दर्शन’ का प्रवर्तक को मानिन्छन्?",
+  options: ["पतञ्जली", "कणाद", "कपिल", "व्यास"],
+  correctAnswer: "कपिल"
+},
+{
+  id: "philosophy-11",
+  category: "Philosophy",
+  question: "पतञ्जलीको योग दर्शन अनुसार आठ अंगमध्ये 'प्रत्याहार' को अर्थ के हो?",
+  options: ["इन्द्रिय नियन्त्रण", "ध्यान", "समाधि", "प्राणायाम"],
+  correctAnswer: "इन्द्रिय नियन्त्रण"
+},
+
+
+//sports
+{
+  id: "sports-11",
+  category: "Sports",
+  question: "दक्षिण एशियाली खेलकुदमा तेक्वान्दोमा चार स्वर्ण पदक जित्ने नेपाली खेलाडी को हुन्?",
+  options: ["अस्मिता खड्का", "दीपक बिष्ट", "निशा रावल", "गौरिका सिंह"],
+  correctAnswer: "दीपक बिष्ट"
+},
+{
+  id: "sports-12",
+  category: "Sports",
+  question: "नेपालले पहिलोपटक दक्षिण एशियाली खेलकुद कहिले आयोजना गरेको थियो?",
+  options: ["१९८४", "१९८९", "१९९९", "२००४"],
+  correctAnswer: "१९८४"
+},
+{
+  id: "sports-13",
+  category: "Sports",
+  question: "अन्तर्राष्ट्रिय क्लब लिग खेल्ने पहिलो नेपाली फुटबल खेलाडी को हुन्?",
+  options: ["अञ्जन बिष्ट", "किरण चेम्जोङ", "रोहित चन्द", "बिमल घर्ती मगर"],
+  correctAnswer: "रोहित चन्द"
+},
+{
+  id: "sports-14",
+  category: "Sports",
+  question: "महिलातर्फ १०० मिटर फ्रिस्टाइल पौडीमा राष्ट्रिय कीर्तिमान बनाउने खेलाडी को हुन्?",
+  options: ["सोफिया शाह", "गौरिका सिंह", "निकीता चन्दक", "श्रृष्टि श्रेष्ठ"],
+  correctAnswer: "गौरिका सिंह"
+},
+{
+  id: "sports-15",
+  category: "Sports",
+  question: "नेपालको राष्ट्रिय फुटबल स्टेडियम कुन हो?",
+  options: ["दशरथ रंगशाला", "पोखरा रंगशाला", "इटहरी स्टेडियम", "एएनएफए कम्प्लेक्स"],
+  correctAnswer: "दशरथ रंगशाला"
+},
+{
+  id: "sports-16",
+  category: "Sports",
+  question: "नेपालको पहिलो एकदिवसीय अन्तर्राष्ट्रिय (ODI) क्रिकेट खेलमा कप्तान को थिए?",
+  options: ["पारस खड्का", "सन्दीप लामिछाने", "ज्ञानेन्द्र मल्ल", "शरद भेषवाकर"],
+  correctAnswer: "पारस खड्का"
+},
+{
+  id: "sports-17",
+  category: "Sports",
+  question: "नेपालमा श्रीकृष्ण श्रेष्ठ कुन खेलको प्रसिद्ध प्रशिक्षक हुन्?",
+  options: ["मुक्केबाजी", "जुडो", "एथलेटिक्स", "टेबल टेनिस"],
+  correctAnswer: "जुडो"
+},
+{
+  id: "sports-18",
+  category: "Sports",
+  question: "ओलम्पिक खेलकुदमा सहभागी हुने सबैभन्दा कान्छी नेपाली खेलाडी को हुन्?",
+  options: ["गौरिका सिंह", "सन्तोषी श्रेष्ठ", "कमल बहादुर अधिकारी", "तिलक राम थारु"],
+  correctAnswer: "गौरिका सिंह"
+},
+{
+  id: "sports-19",
+  category: "Sports",
+  question: "आईपिएल (IPL) मा छनोट हुने पहिलो नेपाली क्रिकेट खेलाडी को हुन्?",
+  options: ["सन्दीप लामिछाने", "करण केसी", "दिपेन्द्र सिंह ऐरी", "सोमपाल कामी"],
+  correctAnswer: "सन्दीप लामिछाने"
+},
+{
+  id: "sports-20",
+  category: "Sports",
+  question: "‘बाघ र बाख्रा’ को खेल भनेर चिनिने परम्परागत नेपाली खेल कुन हो?",
+  options: ["डन्डी बियो", "बाघ चाल", "गट्टी खेल", "चुङ्गी"],
+  correctAnswer: "बाघ चाल"
+},
+
+
+
+//jatra
+
+{
+  id: "jatra-1",
+  category: "Culture & Festivals",
+  question: "पाटनको रातो मछिन्द्रनाथ जात्रामा पूजा गरिने देवता को हुन्?",
+  options: ["अवलोकितेश्वर", "मञ्जुश्री", "इन्द्र", "गणेश"],
+  correctAnswer: "अवलोकितेश्वर"
+},
+{
+  id: "jatra-2",
+  category: "Culture & Festivals",
+  question: "नेपाली पात्रो अनुसार इन्द्र जात्रा प्रायः कुन महिनामा सुरु हुन्छ?",
+  options: ["भदौ", "आश्विन", "साउन", "कार्तिक"],
+  correctAnswer: "भदौ"
+},
+{
+  id: "jatra-3",
+  category: "Culture & Festivals",
+  question: "इन्द्र जात्रामा मास्क लगाएर प्रदर्शन गरिने नाच कुन हो?",
+  options: ["लाखे नाच", "चर्य नृत्य", "भैरव नाच", "मारुनी"],
+  correctAnswer: "लाखे नाच"
+},
+{
+  id: "jatra-4",
+  category: "Culture & Festivals",
+  question: "काठमाडौँ उपत्यकाको सबैभन्दा लामो सडक जात्रा कुन हो?",
+  options: ["रातो मछिन्द्रनाथ जात्रा", "इन्द्र जात्रा", "सेतो मछिन्द्रनाथ जात्रा", "घोडे जात्रा"],
+  correctAnswer: "रातो मछिन्द्रनाथ जात्रा"
+},
+{
+  id: "jatra-5",
+  category: "Culture & Festivals",
+  question: "इन्द्र जात्राको अवसरमा सार्वजनिक रूपमा देखिने जीवित देवी को हुन्?",
+  options: ["कुमारी", "तलेजु", "त्रिपुरा सुन्दरी", "गुह्येश्वरी"],
+  correctAnswer: "कुमारी"
+},
+{
+  id: "jatra-6",
+  category: "Culture & Festivals",
+  question: "सेतो मछिन्द्रनाथ जात्रा काठमाण्डौको कुन स्थानबाट सुरु हुन्छ?",
+  options: ["जमल", "असन", "भोटाहिटी", "धोबीचौर"],
+  correctAnswer: "जमल"
+},
+{
+  id: "jatra-7",
+  category: "Culture & Festivals",
+  question: "गाई जात्रामा नेवार परम्पराअनुसार गाईले केको प्रतीक गर्छ?",
+  options: ["उर्बरता", "धन", "स्वर्गको बाटो", "बल"],
+  correctAnswer: "स्वर्गको बाटो"
+},
+{
+  id: "jatra-8",
+  category: "Culture & Festivals",
+  question: "भैरवको मुखुण्डो सार्वजनिक रूपमा देखाइने जात्रा कुन हो?",
+  options: ["इन्द्र जात्रा", "गाई जात्रा", "सेतो मछिन्द्रनाथ जात्रा", "पुलु किसी जात्रा"],
+  correctAnswer: "इन्द्र जात्रा"
+},
+{
+  id: "jatra-9",
+  category: "Culture & Festivals",
+  question: "इन्द्र जात्रामा देखाइने सेतो हात्तीको प्रतिरूपलाई के भनिन्छ?",
+  options: ["पुलु किसी", "ऐरावत", "यम", "लाखे"],
+  correctAnswer: "पुलु किसी"
+},
+{
+  id: "jatra-10",
+  category: "Culture & Festivals",
+  question: "कुन जात्रामा नक्कल, व्यङ्ग्य, र स्त्री भेष धारण गरेर नाटक प्रस्तुत गरिन्छ?",
+  options: ["गाई जात्रा", "इन्द्र जात्रा", "तलेजु जात्रा", "येँया जात्रा"],
+  correctAnswer: "गाई जात्रा"
+},
+{
+  id: "jatra-11",
+  category: "Culture & Festivals",
+  question: "तलेजु भवानीको जात्रा कुन पर्वसँग जोडिएको छ?",
+  options: ["दशैं", "इन्द्र जात्रा", "गाई जात्रा", "सेतो मछिन्द्रनाथ जात्रा"],
+  correctAnswer: "इन्द्र जात्रा"
+},
+{
+  id: "jatra-12",
+  category: "Culture & Festivals",
+  question: "हुनमानढोका दरबारमा ठूला काठका खम्बा (योसिं) गाडिने जात्रा कुन हो?",
+  options: ["इन्द्र जात्रा", "गाई जात्रा", "रातो मछिन्द्रनाथ जात्रा", "बिस्केट जात्रा"],
+  correctAnswer: "इन्द्र जात्रा"
+},
+{
+  id: "jatra-13",
+  category: "Culture & Festivals",
+  question: "सेतो मछिन्द्रनाथलाई कुन देवताको शान्त रूप मानिन्छ?",
+  options: ["लोकेश्वर", "वज्रयोगिनी", "गणेश", "शिव"],
+  correctAnswer: "लोकेश्वर"
+},
+{
+  id: "jatra-14",
+  category: "Culture & Festivals",
+  question: "कुन जात्रामा जनताले खुल्ला रूपमा नेताहरूको व्यङ्ग्य गर्न पाउँछन्?",
+  options: ["गाई जात्रा", "रातो मछिन्द्रनाथ जात्रा", "इन्द्र जात्रा", "योमारी पुणि"],
+  correctAnswer: "गाई जात्रा"
+},
+{
+  id: "jatra-15",
+  category: "Culture & Festivals",
+  question: "भोटो जात्रा कहिले देखाइन्छ?",
+  options: ["हरेक वर्ष", "हरेक ५ वर्षमा", "हरेक रथ तान्दा", "रथयात्राको अन्त्यमा"],
+  correctAnswer: "रथयात्राको अन्त्यमा"
+},
+{
+  id: "jatra-16",
+  category: "Culture & Festivals",
+  question: "रातो मछिन्द्रनाथ जात्राको भोटो देखाउने परम्पराले के जनाउँछ?",
+  options: ["राजाको शक्ति", "हराएको सम्पत्ति", "धर्मको विजय", "विवाह संस्कार"],
+  correctAnswer: "हराएको सम्पत्ति"
+},
+{
+  id: "jatra-17",
+  category: "Culture & Festivals",
+  question: "इन्द्र जात्रा सुरु गर्ने राजा को मानिन्छ?",
+  options: ["गुणकामदेव", "महेन्द्र मल्ल", "प्रताप मल्ल", "अम्शुवर्मा"],
+  correctAnswer: "प्रताप मल्ल"
+},
+{
+  id: "jatra-18",
+  category: "Culture & Festivals",
+  question: "‘येँया’ भन्नाले के जनाउँछ जुन इन्द्र जात्रासँग सम्बन्धित हुन्छ?",
+  options: ["प्रकाशको पर्व", "उपत्यकाको चाड", "काठमाडौँको चाड", "बाली संकलन पर्व"],
+  correctAnswer: "काठमाडौँको चाड"
+},
+{
+  id: "jatra-19",
+  category: "Culture & Festivals",
+  question: "कुन जात्रामा नाचमार्फत राक्षसलाई समातेर छोड्ने प्रतीक हुन्छ?",
+  options: ["इन्द्र जात्रा", "गाई जात्रा", "तलेजु जात्रा", "पुलु किसी जात्रा"],
+  correctAnswer: "इन्द्र जात्रा"
+},
+{
+  id: "jatra-20",
+  category: "Culture & Festivals",
+  question: "काठमाडौँका जात्राहरूमा प्राय: प्रयोग हुने परम्परागत मदिरा के हो?",
+  options: ["रक्सी", "तोङ्बा", "ऐला", "छ्याङ"],
+  correctAnswer: "ऐला"
+}
+
+
+
+
 ];

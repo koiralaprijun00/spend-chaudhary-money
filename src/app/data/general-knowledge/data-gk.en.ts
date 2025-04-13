@@ -157,5 +157,337 @@ export const questionsEn: Question[] = [
   { id: "np-gk-247", category: "Literature", question: "Which Nepali author won the prestigious Sajha Puraskar for the novel 'Palpasa Cafe'?", options: ["Narayan Wagle", "Buddhisagar", "Khagendra Sangroula", "Manjushree Thapa"], correctAnswer: "Narayan Wagle" },
   { id: "np-gk-248", category: "International Relations", question: "Nepal serves significantly in UN Peacekeeping Operations. Which country has historically received the largest deployment of Nepali peacekeepers?", options: ["Lebanon", "South Sudan", "Democratic Republic of Congo", "Haiti"], correctAnswer: "Democratic Republic of Congo" },
   { id: "np-gk-249", category: "Conservation & Environment", question: "What is the 'Chitwan Declaration' related to in Nepal's conservation history?", options: ["Tiger Conservation", "Rhino Conservation", "Wetland Protection", "Community Forestry"], correctAnswer: "Rhino Conservation" },
-  { id: "np-gk-250", category: "History & Architecture", question: "The 'Singha Durbar', Nepal's main administrative complex, was originally built as a private residence for which Rana Prime Minister?", options: ["Jung Bahadur Rana", "Chandra Shumsher Rana", "Bir Shumsher Rana", "Juddha Shumsher Rana"], correctAnswer: "Chandra Shumsher Rana" }
+  { id: "np-gk-250", category: "History & Architecture", question: "The 'Singha Durbar', Nepal's main administrative complex, was originally built as a private residence for which Rana Prime Minister?", options: ["Jung Bahadur Rana", "Chandra Shumsher Rana", "Bir Shumsher Rana", "Juddha Shumsher Rana"], correctAnswer: "Chandra Shumsher Rana" },
+
+  { id: "religion-1", category: "Religion & Mythology", question: "Which Hindu goddess is considered the protector deity of Kathmandu Valley?", options: ["Kumari", "Taleju Bhawani", "Durga", "Guhyeshwari"], correctAnswer: "Taleju Bhawani" },
+{ id: "religion-2", category: "Religion & Mythology", question: "Swayambhunath is believed to have emerged from which ancient lake?", options: ["Rara", "Gosainkunda", "Nagdaha", "Nagdaha of Kathmandu"], correctAnswer: "Nagdaha of Kathmandu" },
+{ id: "religion-3", category: "Religion & Mythology", question: "What is the name of the tantric Buddhist text believed to have originated in Nepal?", options: ["Kalachakra Tantra", "Hevajra Tantra", "Guhyasamāja Tantra", "Vajrayogini Tantra"], correctAnswer: "Hevajra Tantra" },
+{ id: "religion-4", category: "Religion & Mythology", question: "Which incarnation of Lord Vishnu is worshipped during Haribodhini Ekadashi in Nepal?", options: ["Rama", "Krishna", "Vamana", "Narayana"], correctAnswer: "Narayana" },
+{ id: "religion-5", category: "Religion & Mythology", question: "The living goddess Kumari is believed to be the incarnation of which deity?", options: ["Durga", "Parvati", "Taleju", "Laxmi"], correctAnswer: "Taleju" },
+{ id: "religion-6", category: "Religion & Mythology", question: "Which Buddhist master is credited with spreading Vajrayana Buddhism to Tibet from Nepal?", options: ["Milarepa", "Padmasambhava", "Atisha", "Naropa"], correctAnswer: "Padmasambhava" },
+{ id: "religion-7", category: "Religion & Mythology", question: "Which is the most sacred river for Hindus in Nepal?", options: ["Gandaki", "Bagmati", "Koshi", "Karnali"], correctAnswer: "Bagmati" },
+{ id: "religion-8", category: "Religion & Mythology", question: "Who built the original Pashupatinath temple according to legend?", options: ["Mandev", "Prajapati Supushpa", "Lichhavi Kings", "Gunakamdev"], correctAnswer: "Prajapati Supushpa" },
+{ id: "religion-9", category: "Religion & Mythology", question: "Which goddess is worshipped with animal sacrifices during Dashain in Nepal?", options: ["Saraswati", "Kali", "Durga", "Taleju"], correctAnswer: "Durga" },
+{ id: "religion-10", category: "Religion & Mythology", question: "In Newar Buddhism, what is the ritual dance that represents divine beings?", options: ["Lakhey", "Devi Pyakhan", "Charya Nritya", "Bhairab Dance"], correctAnswer: "Charya Nritya" },
+{ id: "religion-11", category: "Religion & Mythology", question: "Which mountain is considered sacred and associated with Lord Shiva in Nepal?", options: ["Mount Everest", "Machhapuchhre", "Langtang Lirung", "Mount Kailash"], correctAnswer: "Mount Kailash" },
+{ id: "religion-12", category: "Religion & Mythology", question: "Who is the guardian deity of Patan according to local mythology?", options: ["Machhendranath", "Bhairab", "Manjushri", "Kumari"], correctAnswer: "Machhendranath" },
+{ id: "religion-13", category: "Religion & Mythology", question: "Which form of Lord Buddha is worshipped in Newar Buddhism?", options: ["Dipankara Buddha", "Amitabha", "Vairocana", "Shakyamuni Buddha"], correctAnswer: "Dipankara Buddha" },
+{ id: "religion-14", category: "Religion & Mythology", question: "What does the term 'Shaktipeeth' refer to in Hindu mythology?", options: ["Temples of Shiva", "Places where Sati's body parts fell", "Abodes of Vishnu", "Holy pilgrimage centers"], correctAnswer: "Places where Sati's body parts fell" },
+{ id: "religion-15", category: "Religion & Mythology", question: "Which deity is honored in the Rato Machhendranath Jatra?", options: ["Avalokiteshvara", "Shiva", "Brahma", "Indra"], correctAnswer: "Avalokiteshvara" },
+{ id: "religion-16", category: "Religion & Mythology", question: "Who is the mythical sage that is said to have drained the Kathmandu Valley?", options: ["Gorakhnath", "Bhrigu", "Manjushri", "Vishwamitra"], correctAnswer: "Manjushri" },
+{ id: "religion-17", category: "Religion & Mythology", question: "Which goddess is the consort of Bhairab in Kathmandu's Akash Bhairab temple?", options: ["Kali", "Tripura Sundari", "Barahi", "Bhadra Kali"], correctAnswer: "Bhadra Kali" },
+{ id: "religion-18", category: "Religion & Mythology", question: "What is the name of the nine-day festival dedicated to goddess Durga in Nepal?", options: ["Tihar", "Maghe Sankranti", "Dashain", "Navaratri"], correctAnswer: "Navaratri" },
+{ id: "religion-19", category: "Religion & Mythology", question: "Who is the Buddhist goddess of wisdom often seen in Kathmandu Valley art?", options: ["Prajnaparamita", "Tara", "Vajrayogini", "Bhrikuti"], correctAnswer: "Prajnaparamita" },
+{ id: "religion-20", category: "Religion & Mythology", question: "Which river is formed by the union of six holy rivers and worshipped during Makar Mela in Panauti?", options: ["Indrawati", "Roshi", "Triveni", "Karmanasa"], correctAnswer: "Triveni" },
+{ id: "religion-21", category: "Religion & Mythology", question: "Which sage is especially worshipped during Janai Purnima?", options: ["Vashistha", "Bhishma", "Gautam", "Rishi"], correctAnswer: "Rishi" },
+{ id: "religion-22", category: "Religion & Mythology", question: "Gosainkunda is believed to have been formed from the penance of which deity?", options: ["Shiva", "Vishnu", "Hanuman", "Brahma"], correctAnswer: "Shiva" },
+{ id: "religion-23", category: "Religion & Mythology", question: "The famous Pathibhara Devi shrine in eastern Nepal lies in which district?", options: ["Bhojpur", "Ilam", "Sankhuwasabha", "Taplejung"], correctAnswer: "Taplejung" },
+{ id: "religion-24", category: "Religion & Mythology", question: "In Buddhism, the Buddha Akshobhya represents which direction?", options: ["East", "West", "North", "South"], correctAnswer: "East" },
+{ id: "religion-25", category: "Religion & Mythology", question: "In Nepal, which ethnic group predominantly practices Vajrayana Buddhism?", options: ["Brahmin", "Newar", "Tharu", "Magar"], correctAnswer: "Newar" },
+{ id: "religion-26", category: "Religion & Mythology", question: "Which deity is believed to have been born from the fire of Shiva’s third eye?", options: ["Agni", "Kala Bhairav", "Kartikeya", "Rudra"], correctAnswer: "Kala Bhairav" },
+{ id: "religion-27", category: "Religion & Mythology", question: "According to Hindu belief, Tulsi is married to which god?", options: ["Shiva", "Vishnu", "Ganesh", "Hanuman"], correctAnswer: "Vishnu" },
+{ id: "religion-28", category: "Religion & Mythology", question: "Which holy place is believed to be where Buddha was born, attained enlightenment, and achieved nirvana?", options: ["Bodh Gaya", "Lumbini", "Kushinagar", "Sarnath"], correctAnswer: "Lumbini" },
+{ id: "religion-29", category: "Religion & Mythology", question: "Janaki Temple in Janakpur is dedicated to which goddess?", options: ["Parvati", "Sita", "Lakshmi", "Saraswati"], correctAnswer: "Sita" },
+{ id: "religion-30", category: "Religion & Mythology", question: "On which festival is Goddess Lakshmi worshipped in Nepal?", options: ["Tihar", "Dashain", "Chhath", "Navaratri"], correctAnswer: "Tihar" },
+{ id: "religion-31", category: "Religion & Mythology", question: "Which river in Nepal contains sacred Shaligram stones, representing Lord Vishnu?", options: ["Bagmati", "Gandaki", "Karnali", "Rapti"], correctAnswer: "Gandaki" },
+{ id: "religion-32", category: "Religion & Mythology", question: "Which Buddhist goddess is believed to protect travelers and is popular in the Himalayas?", options: ["Tara", "Prajnaparamita", "Vajrayogini", "Saraswati"], correctAnswer: "Tara" },
+{ id: "religion-33", category: "Religion & Mythology", question: "According to mythology, which sage’s curse led to the formation of the Kaligandaki gorge?", options: ["Parashurama", "Bhrigu", "Gautam", "Vishwamitra"], correctAnswer: "Gautam" },
+{ id: "religion-34", category: "Religion & Mythology", question: "In Dashain, which day is known for the ritual of Jamara planting?", options: ["Ghatasthapana", "Phulpati", "Maha Ashtami", "Tika"], correctAnswer: "Ghatasthapana" },
+{ id: "religion-35", category: "Religion & Mythology", question: "Which form of Shiva is worshipped at the Doleshwar Mahadev temple in Bhaktapur?", options: ["Bhairav", "Ardhanarishwara", "Head of Kedarnath", "Nataraja"], correctAnswer: "Head of Kedarnath" },
+{ id: "religion-36", category: "Religion & Mythology", question: "Which goddess is the principal deity of the Bageshwori Temple in Nepalgunj?", options: ["Durga", "Saraswati", "Bageshwori", "Taleju"], correctAnswer: "Bageshwori" },
+{ id: "religion-37", category: "Religion & Mythology", question: "Which deity is symbolically carried in the Indra Jatra festival?", options: ["Bhairab", "Indra", "Kumari", "Ganesh"], correctAnswer: "Kumari" },
+{ id: "religion-38", category: "Religion & Mythology", question: "Which Buddhist monk from Nepal translated scriptures into Tibetan and spread Mahayana Buddhism?", options: ["Atisha Dipankar", "Shantarakshita", "Padmasambhava", "Ananda"], correctAnswer: "Shantarakshita" },
+{ id: "religion-39", category: "Religion & Mythology", question: "Which demon is believed to have been defeated by Goddess Taleju, leading to her worship in Kathmandu?", options: ["Mahishasura", "Raktabija", "Banasura", "Kinkarasura"], correctAnswer: "Kinkarasura" },
+{ id: "religion-40", category: "Religion & Mythology", question: "Which city is considered the spiritual center for both Hindu and Buddhist pilgrims in Nepal?", options: ["Bhaktapur", "Janakpur", "Lumbini", "Kathmandu"], correctAnswer: "Kathmandu" },
+
+
+{
+  id: "philosophy-2",
+  category: "Philosophy",
+  question: "Why did Gautama Buddha propose the concept of the 'Middle Way'?",
+  options: ["To reject both extreme indulgence and severe austerity", "To oppose the Vedas", "To promote yoga practice", "To reject Samkhya philosophy"],
+  correctAnswer: "To reject both extreme indulgence and severe austerity"
+},
+{
+  id: "philosophy-3",
+  category: "Philosophy",
+  question: "Who is mainly known for promoting the philosophy of ‘Ahimsa Paramo Dharma’ (non-violence is the highest virtue)?",
+  options: ["Gautama Buddha", "Chanakya", "Mahavira", "Shankaracharya"],
+  correctAnswer: "Mahavira"
+},
+{
+  id: "philosophy-4",
+  category: "Philosophy",
+  question: "According to Shankaracharya’s Advaita Vedanta philosophy, what is the relationship between Brahman and Atman?",
+  options: ["Completely distinct", "Partially different", "Identical", "Both dual and non-dual"],
+  correctAnswer: "Identical"
+},
+{
+  id: "philosophy-5",
+  category: "Philosophy",
+  question: "In Nepal, the Vajrayana tradition of Buddhist philosophy is mainly practiced by which community?",
+  options: ["Brahmin", "Tharu", "Newar", "Gurung"],
+  correctAnswer: "Newar"
+},
+{
+  id: "philosophy-6",
+  category: "Philosophy",
+  question: "What is the central belief of the Charvaka philosophy?",
+  options: ["Law of karma", "Materialism", "The soul is immortal", "Rebirth"],
+  correctAnswer: "Materialism"
+},
+{
+  id: "philosophy-7",
+  category: "Philosophy",
+  question: "Which philosophy uses the method of 'Neti Neti' (Not this, not that)?",
+  options: ["Yoga Philosophy", "Nyaya Philosophy", "Vedanta Philosophy", "Charvaka Philosophy"],
+  correctAnswer: "Vedanta Philosophy"
+},
+{
+  id: "philosophy-8",
+  category: "Philosophy",
+  question: "According to Buddhist philosophy, how can suffering be ended?",
+  options: ["Through meditation", "By understanding the Four Noble Truths", "By studying the Vedas", "Through austerity"],
+  correctAnswer: "By understanding the Four Noble Truths"
+},
+{
+  id: "philosophy-9",
+  category: "Philosophy",
+  question: "What is the main focus of Nyaya philosophy?",
+  options: ["Yoga practice", "Logic and reasoning", "Devotion", "Meditation"],
+  correctAnswer: "Logic and reasoning"
+},
+{
+  id: "philosophy-10",
+  category: "Philosophy",
+  question: "Who is considered the founder of Samkhya philosophy?",
+  options: ["Patanjali", "Kanada", "Kapila", "Vyasa"],
+  correctAnswer: "Kapila"
+},
+{
+  id: "philosophy-11",
+  category: "Philosophy",
+  question: "In Patanjali's Yoga Sutra, what does 'Pratyahara' mean?",
+  options: ["Sense withdrawal", "Meditation", "Absorption", "Breathing control"],
+  correctAnswer: "Sense withdrawal"
+},
+
+
+//Sports
+{
+  id: "sports-11",
+  category: "Sports",
+  question: "Which Nepali athlete won four gold medals in Taekwondo at the South Asian Games?",
+  options: ["Ashmita Khadka", "Deepak Bista", "Nisha Rawal", "Gaurika Singh"],
+  correctAnswer: "Deepak Bista"
+},
+{
+  id: "sports-12",
+  category: "Sports",
+  question: "In which year did Nepal host the South Asian Games for the first time?",
+  options: ["1984", "1989", "1999", "2004"],
+  correctAnswer: "1984"
+},
+{
+  id: "sports-13",
+  category: "Sports",
+  question: "Who is the first Nepali footballer to play in an international club league?",
+  options: ["Anjan Bista", "Kiran Chemjong", "Rohit Chand", "Bimal Gharti Magar"],
+  correctAnswer: "Rohit Chand"
+},
+{
+  id: "sports-14",
+  category: "Sports",
+  question: "Which Nepali swimmer holds the national record in women’s 100m freestyle?",
+  options: ["Sofia Shah", "Gaurika Singh", "Nikita Chandak", "Shristi Shrestha"],
+  correctAnswer: "Gaurika Singh"
+},
+{
+  id: "sports-15",
+  category: "Sports",
+  question: "Which stadium is the national football stadium of Nepal?",
+  options: ["Dasharath Stadium", "Pokhara Stadium", "Itahari Stadium", "ANFA Complex"],
+  correctAnswer: "Dasharath Stadium"
+},
+{
+  id: "sports-16",
+  category: "Sports",
+  question: "Who captained Nepal’s national cricket team in its first-ever ODI match?",
+  options: ["Paras Khadka", "Sandeep Lamichhane", "Gyanendra Malla", "Sharad Vesawkar"],
+  correctAnswer: "Paras Khadka"
+},
+{
+  id: "sports-17",
+  category: "Sports",
+  question: "In which sport is Shree Krishna Shrestha a well-known coach in Nepal?",
+  options: ["Boxing", "Judo", "Athletics", "Table Tennis"],
+  correctAnswer: "Judo"
+},
+{
+  id: "sports-18",
+  category: "Sports",
+  question: "Who is the youngest Nepali athlete to participate in the Olympic Games?",
+  options: ["Gaurika Singh", "Santoshi Shrestha", "Kamal Bahadur Adhikari", "Tilak Ram Tharu"],
+  correctAnswer: "Gaurika Singh"
+},
+{
+  id: "sports-19",
+  category: "Sports",
+  question: "Which Nepali cricket player became the first to be selected for the IPL?",
+  options: ["Sandeep Lamichhane", "Karan KC", "Dipendra Singh Airee", "Sompal Kami"],
+  correctAnswer: "Sandeep Lamichhane"
+},
+{
+  id: "sports-20",
+  category: "Sports",
+  question: "Which traditional Nepali sport is also known as the 'game of tigers and goats'?",
+  options: ["Dandi Biyo", "Bagh Chal", "Gatti Khel", "Chungi"],
+  correctAnswer: "Bagh Chal"
+},
+
+//Jatras
+{
+  id: "jatra-1",
+  category: "Culture & Festivals",
+  question: "Which deity is honored during the Rato Machindranath Jatra of Patan?",
+  options: ["Avalokiteshvara", "Manjushri", "Indra", "Ganesh"],
+  correctAnswer: "Avalokiteshvara"
+},
+{
+  id: "jatra-2",
+  category: "Culture & Festivals",
+  question: "In which month of the Nepali calendar does Indra Jatra typically begin?",
+  options: ["Bhadra", "Ashwin", "Shrawan", "Kartik"],
+  correctAnswer: "Bhadra"
+},
+{
+  id: "jatra-3",
+  category: "Culture & Festivals",
+  question: "What is the name of the dance performed by masked deities during Indra Jatra?",
+  options: ["Lakhey dance", "Charya Nritya", "Bhairab dance", "Maruni"],
+  correctAnswer: "Lakhey dance"
+},
+{
+  id: "jatra-4",
+  category: "Culture & Festivals",
+  question: "Which jatra is considered the longest street festival in the Kathmandu Valley?",
+  options: ["Rato Machindranath Jatra", "Indra Jatra", "Seto Machindranath Jatra", "Ghode Jatra"],
+  correctAnswer: "Rato Machindranath Jatra"
+},
+{
+  id: "jatra-5",
+  category: "Culture & Festivals",
+  question: "What is the name of the living goddess who makes a public appearance during Indra Jatra?",
+  options: ["Kumari", "Taleju", "Tripura Sundari", "Guhyeshwari"],
+  correctAnswer: "Kumari"
+},
+{
+  id: "jatra-6",
+  category: "Culture & Festivals",
+  question: "Which jatra involves a chariot procession starting from Jamal in central Kathmandu?",
+  options: ["Seto Machindranath Jatra", "Rato Machindranath Jatra", "Indra Jatra", "Gai Jatra"],
+  correctAnswer: "Seto Machindranath Jatra"
+},
+{
+  id: "jatra-7",
+  category: "Culture & Festivals",
+  question: "During Gai Jatra, what does the cow symbolize in Newar tradition?",
+  options: ["Fertility", "Wealth", "Path to heaven", "Strength"],
+  correctAnswer: "Path to heaven"
+},
+{
+  id: "jatra-8",
+  category: "Culture & Festivals",
+  question: "The Bhairab masks are prominently displayed in which jatra?",
+  options: ["Indra Jatra", "Gai Jatra", "Seto Machindranath Jatra", "Pulu Kisi Jatra"],
+  correctAnswer: "Indra Jatra"
+},
+{
+  id: "jatra-9",
+  category: "Culture & Festivals",
+  question: "What is the large white figure representing Indra’s elephant called during Indra Jatra?",
+  options: ["Pulu Kisi", "Airawat", "Yama", "Lakhey"],
+  correctAnswer: "Pulu Kisi"
+},
+{
+  id: "jatra-10",
+  category: "Culture & Festivals",
+  question: "Which jatra is known for public satire, parody, and cross-dressing performances?",
+  options: ["Gai Jatra", "Indra Jatra", "Taleju Jatra", "Yenya Jatra"],
+  correctAnswer: "Gai Jatra"
+},
+{
+  id: "jatra-11",
+  category: "Culture & Festivals",
+  question: "Taleju Bhawani Jatra is celebrated during which festival?",
+  options: ["Dashain", "Indra Jatra", "Gai Jatra", "Seto Machindranath Jatra"],
+  correctAnswer: "Indra Jatra"
+},
+{
+  id: "jatra-12",
+  category: "Culture & Festivals",
+  question: "Which festival in Kathmandu features a wooden pole (Yosin) erected in Hanuman Dhoka?",
+  options: ["Indra Jatra", "Gai Jatra", "Rato Machindranath Jatra", "Bisket Jatra"],
+  correctAnswer: "Indra Jatra"
+},
+{
+  id: "jatra-13",
+  category: "Culture & Festivals",
+  question: "Seto Machindranath is considered the white aspect of which deity?",
+  options: ["Lokeshvara", "Vajrayogini", "Ganesha", "Shiva"],
+  correctAnswer: "Lokeshvara"
+},
+{
+  id: "jatra-14",
+  category: "Culture & Festivals",
+  question: "Which jatra traditionally allows citizens to mock politicians and elites?",
+  options: ["Gai Jatra", "Rato Machindranath Jatra", "Indra Jatra", "Yomari Punhi"],
+  correctAnswer: "Gai Jatra"
+},
+{
+  id: "jatra-15",
+  category: "Culture & Festivals",
+  question: "How often is the Bhoto (vest) shown during Rato Machindranath Jatra?",
+  options: ["Every year", "Every 5 years", "During each chariot pulling", "At the end of the chariot procession"],
+  correctAnswer: "At the end of the chariot procession"
+},
+{
+  id: "jatra-16",
+  category: "Culture & Festivals",
+  question: "What does the Bhoto Jatra symbolize in Rato Machindranath Jatra?",
+  options: ["Royal authority", "Lost property", "Victory of good", "Marriage ritual"],
+  correctAnswer: "Lost property"
+},
+{
+  id: "jatra-17",
+  category: "Culture & Festivals",
+  question: "Which ancient king is believed to have started the tradition of Indra Jatra?",
+  options: ["Gunakamdev", "Mahendra Malla", "Pratap Malla", "Amshuvarma"],
+  correctAnswer: "Pratap Malla"
+},
+{
+  id: "jatra-18",
+  category: "Culture & Festivals",
+  question: "What is the meaning of 'Yenya', often associated with Indra Jatra?",
+  options: ["Festival of light", "Festival of the valley", "Festival of Kathmandu", "Celebration of harvest"],
+  correctAnswer: "Festival of Kathmandu"
+},
+{
+  id: "jatra-19",
+  category: "Culture & Festivals",
+  question: "Which jatra features the symbolic capture and release of a demon through dance?",
+  options: ["Indra Jatra", "Gai Jatra", "Taleju Jatra", "Pulu Kisi Jatra"],
+  correctAnswer: "Indra Jatra"
+},
+{
+  id: "jatra-20",
+  category: "Culture & Festivals",
+  question: "What is the traditional alcoholic beverage often served during Kathmandu's jatras?",
+  options: ["Raksi", "Tongba", "Aila", "Chyang"],
+  correctAnswer: "Aila"
+}
+
+
+
+
 ];
