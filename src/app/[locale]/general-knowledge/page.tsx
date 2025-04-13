@@ -7,6 +7,7 @@ import { getQuestionsByLocale } from "../../data/general-knowledge/getQuestions"
 import AdSenseGoogle from "../../components/AdSenseGoogle";
 import GameButton from "../../components/ui/GameButton";
 import CustomDropdown from "../../components/ui/CustomDropdown";
+import ContainedConfetti from "../../lib/confetti";
 
 function createSafeT(t: ReturnType<typeof useTranslations>) {
   return (key: string, defaultValue = "", params = {}) => {
@@ -35,6 +36,7 @@ export default function NepalGKQuiz() {
   const [feedback, setFeedback] = useState<string>("");
   const [score, setScore] = useState<number>(0);
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [showConfetti, setShowConfetti] = useState<boolean>(false);
 
   // Add category filter state
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -146,7 +148,11 @@ export default function NepalGKQuiz() {
     }
 
     setIsAnswered(true);
-  };
+  // Check if this is the last question and trigger confetti
+  if (currentQuestionIndex === shuffledQuestions.length - 1) {
+    setShowConfetti(true);
+  }
+};
 
   // Move to next question
   const handleNextQuestion = () => {
@@ -166,6 +172,7 @@ export default function NepalGKQuiz() {
     setIsCorrect(false);
     setFeedback("");
     setScore(0);
+    setShowConfetti(false); // Reset confetti state
   };
 
   // Handle category change
@@ -265,7 +272,7 @@ export default function NepalGKQuiz() {
 
             <div className="md:w-2/3 w-full">
               <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
-              <div className="bg-white rounded-lg p-3 md:p-6">
+              <div className={`rounded-lg p-3 md:p-6 ${isAnswered && currentQuestionIndex === shuffledQuestions.length - 1 ? 'bg-gray-50' : 'bg-white'}`}>
                   <div className="md:hidden mb-6">
                   <h1 className="text-xl md:text-2xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
                       {safeT("nepalGk.title", "Nepal GK Quiz")}
@@ -297,55 +304,111 @@ export default function NepalGKQuiz() {
                   </div>
 
                   {(shuffledQuestions.length === 0 && isMounted) ? (
-                    <div className="text-center py-8">
-                      <p className="text-lg text-gray-600">
-                        {safeT("nepalGk.noQuestionsInCategory", "No questions available in this category.")}
-                      </p>
-                      <GameButton
-                        onClick={() => setSelectedCategory("all")}
-                        type="primary"
-                        className="mt-4"
-                      >
-                        {safeT("nepalGk.viewAllCategories", "View All Categories")}
-                      </GameButton>
-                    </div>
-                  ) : currentQuestion ? (
-                    <>
-                      <QuizSection
-                        currentQuestion={currentQuestion}
-                        isAnswered={isAnswered}
-                        handleGuess={handleGuess}
-                        handleNextQuestion={handleNextQuestion}
-                        totalQuestions={shuffledQuestions.length}
-                        currentIndex={currentQuestionIndex}
-                        isLastQuestion={currentQuestionIndex === shuffledQuestions.length - 1}
-                        feedback={feedback}
-                        isCorrect={isCorrect}
-                      />
+  <div className="text-center py-8">
+    <p className="text-lg text-gray-600">
+      {safeT("nepalGk.noQuestionsInCategory", "No questions available in this category.")}
+    </p>
+    <GameButton
+      onClick={() => setSelectedCategory("all")}
+      type="primary"
+      className="mt-4"
+    >
+      {safeT("nepalGk.viewAllCategories", "View All Categories")}
+    </GameButton>
+  </div>
+) : currentQuestion ? (
+  <>
+    {/* Only show QuizSection if it's not the last question that's been answered */}
+    {!(isAnswered && currentQuestionIndex === shuffledQuestions.length - 1) && (
+      <QuizSection
+        currentQuestion={currentQuestion}
+        isAnswered={isAnswered}
+        handleGuess={handleGuess}
+        handleNextQuestion={handleNextQuestion}
+        totalQuestions={shuffledQuestions.length}
+        currentIndex={currentQuestionIndex}
+        isLastQuestion={currentQuestionIndex === shuffledQuestions.length - 1}
+        feedback={feedback}
+        isCorrect={isCorrect}
+      />
+    )}
                       
-                      {/* Show final screen only on the last question after it's answered */}
-                      {isAnswered && currentQuestionIndex === shuffledQuestions.length - 1 && (
-                        <div className="mt-8 text-center p-6 bg-blue-50 rounded-lg">
-                          <h3 className="text-xl font-bold text-blue-800 mb-4">
-                            🎉 {safeT("nepalGk.quizComplete", "Quiz Complete!")}
-                          </h3>
-                          <p className="mb-4">
-                            {safeT(
-                              "nepalGk.finalScoreMessage", 
-                              `Your final score is ${score} out of ${shuffledQuestions.length * 10}.`,
-                              { score, total: shuffledQuestions.length * 10 }
-                            )}
-                          </p>
-                          <div className="flex justify-center gap-4 mt-6">
-                            <GameButton onClick={handleShareScore} type="primary" size="sm">
-                              {safeT("nepalGk.shareScore", "Share Score")}
-                            </GameButton>
-                            <GameButton onClick={restartGame} type="success" size="sm">
-                              {safeT("nepalGk.playAgain", "Play Again")}
-                            </GameButton>
-                          </div>
-                        </div>
-                      )}
+      {/* Show final screen only on the last question after it's answered */}
+      {isAnswered && currentQuestionIndex === shuffledQuestions.length - 1 && (
+  <div className=" text-center p-8 relative overflow-hidden">
+    {/* Contained confetti inside this div */}
+    <ContainedConfetti duration={6000} />
+
+    
+    {/* Trophy icon */}
+    <div className="inline-flex items-center justify-center w-24 h-24 mb-6 bg-yellow-100 text-yellow-500 rounded-full shadow-md">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+      </svg>
+    </div>
+    
+    <h3 className="text-2xl md:text-3xl font-bold text-blue-800 mb-4">
+      🎉 {safeT("nepalGk.quizComplete", "Quiz Complete!")}
+    </h3>
+    
+    {/* Score display with animation */}
+    <div className="mb-6 py-4 px-8 bg-white rounded-lg shadow-inner inline-block">
+  <div className="flex items-center justify-center">
+    <div className="text-4xl font-bold text-blue-600">{score}</div>
+    <div className="ml-2 text-2xl text-gray-500">{safeT("points", "points")}</div>
+  </div>
+</div>
+    
+    {/* Performance feedback based on score */}
+    <p className="mb-6 text-lg text-gray-700">
+      {score === shuffledQuestions.length * 10 
+        ? safeT("nepalGk.perfectScore", "Perfect score! You're a Nepal expert!") 
+        : score >= shuffledQuestions.length * 7 
+        ? safeT("nepalGk.greatScore", "Great job! You know Nepal well!") 
+        : score >= shuffledQuestions.length * 5 
+        ? safeT("nepalGk.goodScore", "Good effort! Keep learning about Nepal!") 
+        : safeT("nepalGk.tryAgain", "Keep exploring Nepal's rich knowledge!")}
+    </p>
+    
+    {/* Action buttons with improved design */}
+    <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+      <GameButton 
+        onClick={handleShareScore} 
+        type="primary" 
+        size="lg"
+        className="px-6 py-3 flex items-center justify-center"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+        </svg>
+        {safeT("nepalGk.shareScore", "Share Score")}
+      </GameButton>
+      
+      <GameButton 
+        onClick={restartGame} 
+        type="success" 
+        size="lg"
+        className="px-6 py-3 flex items-center justify-center"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+        </svg>
+        {safeT("nepalGk.playAgain", "Play Again")}
+      </GameButton>
+    </div>
+    
+    {/* Additional CSS for confetti */}
+    <style jsx>{`
+      .confetti-piece {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        opacity: 0.6;
+        border-radius: 2px;
+      }
+    `}</style>
+  </div>
+)}
                     </>
                   ) : null}
                 </div>
