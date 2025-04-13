@@ -25,7 +25,7 @@ const logoData = {
         imagePath: '/yo-chineu/buddha-air.png',
         difficulty: 'medium',
         category: 'airline',
-        acceptableAnswers: ['Buddha Air', 'Buddha Airlines']
+        acceptableAnswers: ['Buddha','Buddha Air', 'Buddha Airlines']
       },
       {
         id: 'tata',
@@ -81,7 +81,7 @@ const logoData = {
         imagePath: '/yo-chineu/yeti-air.png',
         difficulty: 'medium',
         category: 'airline',
-        acceptableAnswers: ['Yeti Airlines', 'Yeti']
+        acceptableAnswers: ['Yeti Airlines', 'Yeti', 'Yeti Air']
       },
       {
         id: 'kumari_bank',
@@ -113,7 +113,7 @@ const logoData = {
         imagePath: '/yo-chineu/nimb-bank.png',
         difficulty: 'hard',
         category: 'banking',
-        acceptableAnswers: ['Nepal Investment Bank', 'NIBL', 'Nepal Investment']
+        acceptableAnswers: ['Nepal Investment Bank', 'NIBL', 'Nepal Investment', 'Investment Bank']
       },
       {
         id: 'gorkha_brewery',
