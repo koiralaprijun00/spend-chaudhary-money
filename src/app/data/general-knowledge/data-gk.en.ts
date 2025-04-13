@@ -557,10 +557,149 @@ export const questionsEn: Question[] = [
   question: "Which female deity’s temple remains open to the public only once a year during Indra Jatra?",
   options: ["Guhyeshwari", "Taleju Bhawani", "Vajrayogini", "Sankata Devi"],
   correctAnswer: "Taleju Bhawani"
+},
+
+
+//hard questions
+
+{ 
+  id: "hard-geo-1", 
+  category: "Geography", 
+  question: "Which Nepali peak is technically considered the most difficult to climb among the 8,000-meter peaks within Nepal?", 
+  options: ["Annapurna I", "Kanchenjunga", "Lhotse", "Makalu"], 
+  correctAnswer: "Annapurna I" 
+},
+{ 
+  id: "hard-history-1", 
+  category: "History", 
+  question: "When did the 'Kot Massacre' take place in the history of Nepal?", 
+  options: ["B.S. 1903", "B.S. 1888", "B.S. 1910", "B.S. 1895"], 
+  correctAnswer: "B.S. 1903" 
+},
+{ 
+  id: "hard-literature-1", 
+  category: "Literature", 
+  question: "Who was the author of the early Nepali grammar book 'Aksharanka Shiksha'?", 
+  options: ["Bhanubhakta Acharya", "Motiram Bhatta", "Jaya Prithvi Bahadur Singh", "Hemraj Pandey"], 
+  correctAnswer: "Jaya Prithvi Bahadur Singh" 
+},
+{ 
+  id: "hard-religion-1", 
+  category: "Religion & Mythology", 
+  question: "Which demon is believed to have been defeated by Goddess Taleju, leading to her worship in Kathmandu?", 
+  options: ["Mahishasura", "Raktabija", "Banasura", "Kinkarasura"], 
+  correctAnswer: "Kinkarasura" 
+},
+{ 
+  id: "hard-culture-1", 
+  category: "Culture", 
+  question: "What is the name of the traditional Magar festival that involves communal hunting?", 
+  options: ["Bhume Puja", "Maghe Sankranti", "Chandi Nach", "Shikar Khelne (Sendra)"], 
+  correctAnswer: "Shikar Khelne (Sendra)" 
+},
+{ 
+  id: "hard-science-1", 
+  category: "Science", 
+  question: "Which Nepali scientist is recognized as the first scientist of Nepal?", 
+  options: ["Gehendra Shumsher", "Mahabir Pun", "Dayaram Bhakta Mathema", "Sanduk Ruit"], 
+  correctAnswer: "Gehendra Shumsher" 
+},
+{ 
+  id: "hard-economy-1", 
+  category: "Economy", 
+  question: "Which hydropower project was Nepal's first, built during the Rana era?", 
+  options: ["Pharping Hydropower Station (Chandrajyoti)", "Sundarijal Hydropower Station", "Trishuli Hydropower Project", "Panauti Hydropower Station"], 
+  correctAnswer: "Pharping Hydropower Station (Chandrajyoti)" 
+},
+{ 
+  id: "hard-jatra-1", 
+  category: "Jatra of Kathmandu Valley", 
+  question: "Which ancient Buddhist text describes the significance of Rato Machindranath in rainfall rituals?", 
+  options: ["Swayambhu Purana", "Karunamaya Sutra", "Vajrachhedika", "Mahavastu"], 
+  correctAnswer: "Karunamaya Sutra" 
+},
+{ 
+  id: "hard-politics-1", 
+  category: "Politics", 
+  question: "Which specific event in 1979 led to a referendum on Nepal's political system (Panchayat vs Multi-party)?", 
+  options: ["The Timburbote Incident", "The Piskar Massacre", "The Student Movement", "The Sukhani Martyrs Incident"], 
+  correctAnswer: "The Student Movement" 
+},
+{ 
+  id: "hard-environment-1", 
+  category: "Conservation & Environment", 
+  question: "What is the approximate percentage of Nepal's land area covered by protected areas (National Parks, Reserves etc.)?", 
+  options: ["Around 10%", "Around 15%", "Around 23%", "Around 30%"], 
+  correctAnswer: "Around 23%" 
+},
+{ 
+  id: "hard-media-1", 
+  category: "Media", 
+  question: "The historic 'Gorkhapatra' newspaper was initially published in which language besides Nepali?", 
+  options: ["English", "Newari (Nepal Bhasa)", "Hindi", "It was only in Nepali"], 
+  correctAnswer: "It was only in Nepali" 
+},
+{ 
+  id: "hard-international-1", 
+  category: "International Relations", 
+  question: "Nepal serves significantly in UN Peacekeeping Operations. Which country has historically received the largest deployment of Nepali peacekeepers?", 
+  options: ["Lebanon", "South Sudan", "Democratic Republic of Congo", "Haiti"], 
+  correctAnswer: "Democratic Republic of Congo" 
+},
+{ 
+  id: "hard-architecture-1", 
+  category: "History & Architecture", 
+  question: "The 'Singha Durbar', Nepal's main administrative complex, was originally built as a private residence for which Rana Prime Minister?", 
+  options: ["Jung Bahadur Rana", "Chandra Shumsher Rana", "Bir Shumsher Rana", "Juddha Shumsher Rana"], 
+  correctAnswer: "Chandra Shumsher Rana" 
+},
+{ 
+  id: "hard-mythology-1", 
+  category: "Mythology", 
+  question: "According to the Mahabharata, which place in Nepal is believed to be where the Pandavas spent part of their exile?", 
+  options: ["Swargadwari", "Halesi Mahadev", "Birat Kshetra", "Devghat"], 
+  correctAnswer: "Birat Kshetra" 
+},
+{ 
+  id: "hard-traditional-products-1", 
+  category: "Culture", 
+  question: "What is 'Lokta Paper', a traditional Nepali product, made from?", 
+  options: ["Rice straw", "Bamboo pulp", "The bark of the Lokta bush (Daphne)", "Recycled materials"], 
+  correctAnswer: "The bark of the Lokta bush (Daphne)" 
+},
+{ 
+  id: "hard-sports-1", 
+  category: "Sports", 
+  question: "Which Nepalese martial artist holds multiple Guinness World Records, including for breaking concrete blocks?", 
+  options: ["Deepak Bista", "Prakash Thapa Magar", "Kumar Karki", "Pawan Kumar Ghimire"], 
+  correctAnswer: "Pawan Kumar Ghimire" 
+},
+{ 
+  id: "hard-food-1", 
+  category: "Food", 
+  question: "What is the name of the traditional Sherpa high-altitude tea mixed with butter and salt?", 
+  options: ["Chiura", "Suja (Butter Tea)", "Rakshi", "Tongba"], 
+  correctAnswer: "Suja (Butter Tea)" 
+},
+{ 
+  id: "hard-music-1", 
+  category: "Music", 
+  question: "Who composed the music for Nepal's current national anthem, 'Sayau Thunga Phool Ka'?", 
+  options: ["Amber Gurung", "Narayan Gopal", "Nati Kaji", "Gopal Yonjan"], 
+  correctAnswer: "Amber Gurung" 
+},
+{ 
+  id: "hard-philosophy-1", 
+  category: "Philosophy", 
+  question: "In Patanjali's Yoga Sutra, what does 'Pratyahara' mean?", 
+  options: ["Sense withdrawal", "Meditation", "Absorption", "Breathing control"], 
+  correctAnswer: "Sense withdrawal" 
+},
+{ 
+  id: "hard-agriculture-1", 
+  category: "Agriculture", 
+  question: "Which district in Nepal is famous for producing high-quality apples?", 
+  options: ["Mustang", "Manang", "Jumla", "Humla"], 
+  correctAnswer: "Mustang" 
 }
-
-
-
-
-
 ];
