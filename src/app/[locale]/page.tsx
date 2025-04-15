@@ -293,13 +293,13 @@ export default function HomePage() {
             </div>
           </Link>
 
-          {/* Nepali Date Converter Link */}
-          <Link href="/date-converter" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-teal-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-teal-500 to-blue-400 rounded-3xl shadow-lg overflow-hidden">
+         {/* Yo Ki Tyo (Would You Rather) Link */}
+         <Link href="/yo-ki-tyo" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-purple-500 to-pink-400 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
-              <div className="absolute top-3 right-3 bg-white text-teal-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
-                <span className="text-yellow-500">📅</span>
-                <span>{t('nepaliDateConverterBadge')}</span>
+              <div className="absolute top-3 right-3 bg-white text-purple-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
+                <span className="text-yellow-500">🤔</span>
+                <span>{t('wouldYouRather.badge') || 'Would You Rather'}</span>
               </div>
               
               {/* Main content */}
@@ -307,8 +307,8 @@ export default function HomePage() {
                 <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white shadow-md mr-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden">
                     <Image
-                      src="/date-converter.png" 
-                      alt="Nepali Date Converter"
+                      src="/yo-ki-tyo.png" 
+                      alt="Yo Ki Tyo - Would You Rather"
                       width={64}
                       height={64}
                       loading="lazy"
@@ -317,12 +317,13 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">{t('nepaliDateConverterTitle')}</h2>
-                  <p className="mt-1 text-white text-opacity-90">{t('nepaliDateConverterDescription')}</p>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">{t('wouldYouRather.title') || 'यो कि त्यो?'}</h2>
+                  <p className="mt-1 text-white text-opacity-90">{t('wouldYouRather.shortDescription') || 'Nepali would you rather scenarios with real-time voting!'}</p>
                 </div>
               </div>
             </div>
           </Link>
+
         </div>
 
         {/* Content Separator with visual element */}

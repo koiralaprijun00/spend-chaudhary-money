@@ -40,6 +40,8 @@
     "submitting": "Submitting...",
     "loading": "Loading...",
     "wouldYouRather": {
+      "badge": "Would You Rather",
+      "shortDescription": "Choose between challenging Nepali scenarios!",
       "fullName": "Your Full Name",
       "fullNamePlaceholder": "Enter your name here",
       "yourQuestion": "Your Would You Rather Question",

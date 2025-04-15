@@ -40,6 +40,8 @@
     "submitting": "पेश गर्दै...",
     "loading": "Loading...",
     "wouldYouRather": {
+      "badge": "के छान्नुहुन्छ?",
+      "shortDescription": "नेपाली परिस्थितिमा के छान्नुहुन्छ?",
       "fullName": "तपाईंको पूरा नाम",
       "fullNamePlaceholder": "यहाँ आफ्नो नाम लेख्नुहोस्",
       "yourQuestion": "तपाईंको वुल्ड यु राठर प्रश्न",
