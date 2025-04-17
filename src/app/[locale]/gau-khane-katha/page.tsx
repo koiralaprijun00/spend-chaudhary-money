@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { riddlesData, RiddlesData } from '../../data/gau-khane-katha/gaukhanedata';
+import { RiddlesData } from '../../data/gau-khane-katha/gau-khane-katha-type';
+import { riddlesData } from '../../data/gau-khane-katha/gau-khane-katha-data';
 import { ImSpinner8 } from 'react-icons/im';
 import { FiSend } from 'react-icons/fi';
 import { HiOutlineClock } from 'react-icons/hi';
@@ -21,6 +22,7 @@ export default function RiddlesGamePage() {
   const [userAnswer, setUserAnswer] = useState<string>('');
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [attempts, setAttempts] = useState<number>(0);
   const [score, setScore] = useState<number>(0);
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [answeredRiddles, setAnsweredRiddles] = useState<string[]>([]);
@@ -33,6 +35,7 @@ export default function RiddlesGamePage() {
   const [shuffledIndices, setShuffledIndices] = useState<number[]>([]);
 
   const riddles: RiddlesData = riddlesData;
+  const maxAttempts = 3;
 
   //update the useEffect that initializes the shuffled indices
 useEffect(() => {
@@ -84,39 +87,50 @@ const shuffleArray = (array: number[]): number[] => {
 
   const currentRiddle = riddles[locale]?.[currentRiddleIndex];
 
-  const checkAnswer = () => {
-    if (!currentRiddle) return;
-  
-    const primaryAnswer = currentRiddle.answer.toLowerCase();
-    const userAnswerLower = userAnswer.toLowerCase().trim();
-    
-    // Only for Nepali locale, also check the English answer
-    let isCorrect = userAnswerLower === primaryAnswer;
-    
-    // For Nepali locale only, also accept the English answer as correct
-    if (!isCorrect && locale === 'np' && currentRiddle.answerEn) {
-      isCorrect = userAnswerLower === currentRiddle.answerEn.toLowerCase();
-    }
-    
-    if (isCorrect) {
-      setIsCorrect(true);
-      setScore((prevScore) => prevScore + 1);
-      setAnsweredRiddles((prev) => 
-        prev.includes(currentRiddle.id) ? prev : [...prev, currentRiddle.id]
-      );
-    } else {
-      setIsCorrect(false);
-    }
-    
-    setShowAnswer(true);
-  };
+// 2. Update the checkAnswer function to handle multiple attempts
+const checkAnswer = () => {
+  if (!currentRiddle) return;
 
-  // Modify your nextRiddle function to ensure it works with a large dataset:
+  const primaryAnswer = currentRiddle.answer.toLowerCase();
+  const userAnswerLower = userAnswer.toLowerCase().trim();
+  
+  // Only for Nepali locale, also check the English answer
+  let isCorrect = userAnswerLower === primaryAnswer;
+  
+  // For Nepali locale only, also accept the English answer as correct
+  if (!isCorrect && locale === 'np' && currentRiddle.answerEn) {
+    isCorrect = userAnswerLower === currentRiddle.answerEn.toLowerCase();
+  }
+  
+  if (isCorrect) {
+    setIsCorrect(true);
+    setScore((prevScore) => prevScore + 1);
+    setAnsweredRiddles((prev) => 
+      prev.includes(currentRiddle.id) ? prev : [...prev, currentRiddle.id]
+    );
+    setShowAnswer(true);
+  } else {
+    setIsCorrect(false);
+    // Increment attempt counter
+    const newAttempts = attempts + 1;
+    setAttempts(newAttempts);
+    
+    // Only show the answer after 3 attempts
+    if (newAttempts >= maxAttempts) {
+      setShowAnswer(true);
+    } else {
+      // Clear the input field for the next attempt
+      setUserAnswer('');
+    }
+  }
+};
+
 // Replace your nextRiddle function with this improved version
 const nextRiddle = () => {
   setShowAnswer(false);
   setIsCorrect(false);
   setUserAnswer('');
+  setAttempts(0);
   
   // Safety check
   if (!shuffledIndices || shuffledIndices.length === 0) {
@@ -169,6 +183,7 @@ const restartGame = () => {
   setScore(0);
   setGameOver(false);
   setAnsweredRiddles([]);
+  setAttempts(0);
 };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -224,16 +239,17 @@ const restartGame = () => {
               </button>
             </div>
 
-            
-              <div className="w-1/4 mb-2 p-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 rounded-lg border border-gray-100">
-                <div className="flex items-center gap-2 text-gray-600">
-                  <TargetIcon className="w-4 h-4 text-indigo-500" />
-                  <span className="text-sm font-medium">{t('score')}:</span>
-                  <span className="text-sm font-bold text-indigo-600">
-                    {score} / {riddles[locale]?.length || 0}
-                  </span>
-                </div>
-              </div>
+            <div className="w-1/5 mb-2 p-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 rounded-lg border border-gray-100">
+  <div className="flex items-center  text-gray-600">
+    <TargetIcon className="w-4 h-4 text-indigo-500" />
+    <div>
+    <span className="text-sm ml-1 mr-1 font-medium">{t('score')}:</span>
+    <span className="text-sm font-bold text-indigo-600">
+      {score} {t('points')}
+    </span>
+    </div>
+  </div>
+</div>
 
 
             {!gameOver ? (
@@ -246,6 +262,25 @@ const restartGame = () => {
 
                 {!showAnswer ? (
                   <form onSubmit={(e) => { e.preventDefault(); checkAnswer(); }} className="space-y-5 mt-6">
+
+{!showAnswer && (
+  <div className="flex items-center justify-between mb-2">
+    <div className="flex items-center text-sm text-gray-600">
+      <span className="font-medium">{t('attempt') || 'Attempt'}:</span>
+      <span className="ml-2 font-bold text-indigo-600">
+        {attempts + 1}/{maxAttempts}
+      </span>
+    </div>
+    {attempts > 0 && attempts < maxAttempts && (
+      <div className="text-xs text-orange-500">
+        {attempts === maxAttempts - 1 
+          ? (t('incorrectLastAttempt') || 'Incorrect. Last attempt!') 
+          : (t('incorrectTryAgain') || 'Incorrect. Try again!')}
+      </div>
+    )}
+  </div>
+)}
+
                     <div>
                       <label htmlFor="answer" className="block text-sm font-medium text-gray-700 mb-1">
                         {t('answerLabel')}
@@ -279,33 +314,47 @@ const restartGame = () => {
                   </form>
                 ) : (
                   <div className="space-y-5 mt-6">
-                    <div
-                      className={`p-4 rounded-lg border ${
-                        isCorrect ? 'bg-green-50 border-green-300 text-green-800' : 'bg-red-50 border-red-300 text-red-800'
-                      } flex items-start gap-3`}
-                      role="alert"
-                    >
-                      {isCorrect ? (
-                        <CheckCircleIcon className="h-6 w-6 text-green-500 flex-shrink-0" aria-hidden="true" />
-                      ) : (
-                        <XCircleIcon className="h-6 w-6 text-red-500 flex-shrink-0" aria-hidden="true" />
-                      )}
-                     <div className="flex-grow">
-  <h3 className="font-bold text-lg mb-2 flex items-center">
-    {isCorrect ? 
-      <span className="flex items-center gap-2 text-green-600 dark:text-green-400">
-        <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-        {t('correctAnswer')}
-      </span> : 
-      <span className="text-red-600 dark:text-red-400">{t('incorrectAnswer')}</span>
-    }
-  </h3>
-  <div className="text-sm mt-1 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-    <span className="font-semibold">{t('answerReveal')}:</span> 
-    <span className="ml-2 font-mono text-indigo-600 dark:text-indigo-400">{currentRiddle.answer}</span>
+                <div
+    className={`p-4 rounded-lg border ${
+      isCorrect ? 'bg-green-50 border-green-300 text-green-800' : 'bg-red-50 border-red-300 text-red-800'
+    } flex items-start gap-3`}
+    role="alert"
+  >
+    {isCorrect ? (
+      <CheckCircleIcon className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+    ) : (
+      <XCircleIcon className="h-6 w-6 text-red-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+    )}
+    <div className="flex-grow">
+      <h3 className="font-bold text-lg mb-2 flex items-center">
+        {isCorrect ? 
+          <span className="flex items-center gap-2 text-green-600 dark:text-green-400">
+            <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            {t('correctAnswer')}
+          </span> : 
+          <span className="text-red-600 dark:text-red-400">{t('incorrectAnswer')}</span>
+        }
+      </h3>
+      
+      <div className="text-sm mt-1 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+        {locale === 'np' && currentRiddle.answerEn ? (
+          <div className="flex items-baseline">
+            <span className="font-semibold text-gray-700">{t('answerReveal')}:</span> 
+            <span className="ml-2 font-mono text-indigo-600 dark:text-indigo-400">
+              {currentRiddle.answer}, <span className="text-blue-600">{currentRiddle.answerEn}</span>
+            </span>
+          </div>
+        ) : (
+          <div className="flex items-baseline">
+            <span className="font-semibold text-gray-700">{t('answerReveal')}:</span> 
+            <span className="ml-2 font-mono text-indigo-600 dark:text-indigo-400">
+              {currentRiddle.answer}
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
   </div>
-</div>
-                    </div>
 
                     <button
                       onClick={nextRiddle}
