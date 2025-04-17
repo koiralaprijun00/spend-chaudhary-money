@@ -43,7 +43,7 @@ export default function HomePage() {
           
           {/* Spend Binod Chaudhary's Money Card - First card optimized as LCP element */}
           <Link href="/spend" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-purple-600 to-pink-500 rounded-3xl shadow-lg overflow-hidden">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-purple-700 to-pink-700 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-purple-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
                 <span className="text-yellow-500">💰</span>
@@ -74,7 +74,7 @@ export default function HomePage() {
 
           {/* Guess the Festival Card */}
           <Link href="/guess-festival" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-orange-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-red-500 to-amber-400 rounded-3xl shadow-lg overflow-hidden">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-red-700 to-amber-600 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-orange-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
                 <span>✨</span>
@@ -105,7 +105,7 @@ export default function HomePage() {
 
           {/* Kings of Nepal Card */}
           <Link href="/kings-of-nepal" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-teal-600 to-blue-500 rounded-3xl shadow-lg overflow-hidden">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-teal-700 to-blue-500 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-blue-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
                 <span className="text-yellow-500">👑</span>
@@ -136,7 +136,7 @@ export default function HomePage() {
          
           {/* Name District */}
           <Link href="/name-districts" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-cyan-500 to-emerald-500 rounded-3xl shadow-lg overflow-hidden">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-cyan-700 to-emerald-500 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-blue-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
                 <span>🗺️</span>
@@ -165,13 +165,13 @@ export default function HomePage() {
             </div>
           </Link>
 
-          {/* Life Checklist */}
-          <Link href="/life-checklist" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-green-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-lime-500 to-cyan-400 rounded-3xl shadow-lg overflow-hidden">
+          {/* Gau Khane Katha */}
+          <Link href="/gau-khane-katha" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-green-300 rounded-3xl">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-lime-700 to-cyan-500 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-green-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
-                <span>✅</span>
-                <span>{t('bucket')}</span>
+              <span>🔍</span>
+                <span>{t('RiddlesGame.badgeTitle')}</span>
               </div>
               
               {/* Main content */}
@@ -179,8 +179,8 @@ export default function HomePage() {
                 <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white shadow-md mr-4">
                   <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
                     <Image
-                      src="/life-checklist.png" 
-                      alt="Life Checklist"
+                      src="/gau-khane-katha.png" 
+                      alt="Gau Khane Katha"
                       width={64}
                       height={64}
                       loading="lazy"
@@ -189,8 +189,8 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">{t('nepalChecklist.navbarTitle')}</h2>
-                  <p className="mt-1 text-white text-opacity-90">{t('nepalChecklist.description')}</p>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">{t('RiddlesGame.title')}</h2>
+                  <p className="mt-1 text-white text-opacity-90">{t('RiddlesGame.subtitle')}</p>
                 </div>
               </div>
             </div>
@@ -198,7 +198,7 @@ export default function HomePage() {
 
           {/* Nepal GK Quiz Card */}
           <Link href="/general-knowledge" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-indigo-500 to-lime-400 rounded-3xl shadow-lg overflow-hidden">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-indigo-700 to-lime-600 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-blue-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
                 <span className="text-yellow-500">🧠</span>
@@ -229,7 +229,7 @@ export default function HomePage() {
 
           {/* PattaLagau Geographic Game Card */}
           <Link href="/patta-lagau" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-emerald-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-green-600 to-sky-500 rounded-3xl shadow-lg overflow-hidden">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-green-700 to-sky-500 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-emerald-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
                 <span>🏔️</span>
@@ -264,7 +264,7 @@ export default function HomePage() {
 
           {/* Firsts of Nepal */}
           <Link href="/first-of-nepal" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-orange-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-amber-500 to-violet-500 rounded-3xl shadow-lg overflow-hidden">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-amber-700 to-violet-500 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-orange-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
                 <span>✨</span>
@@ -295,7 +295,7 @@ export default function HomePage() {
 
          {/* Yo Ki Tyo (Would You Rather) Link */}
          <Link href="/yo-ki-tyo" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
-            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-purple-500 to-pink-400 rounded-3xl shadow-lg overflow-hidden">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-purple-700 to-pink-500 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-purple-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
                 <span className="text-yellow-500">🤔</span>
