@@ -2,7 +2,8 @@
   "Translations":{
     "RiddlesGame": {
     "title": "Gau Khane Katha",
-    "subtitle": "Test Your Wit!",
+    "subtitle": "Put Your Brainpower to the Test with These Riddles!",
+    "badgeTitle": "Riddles",
     "score": "Score",
     "points": "Pts",
     "riddleCount": "Riddle",

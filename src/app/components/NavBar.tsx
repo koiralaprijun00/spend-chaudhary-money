@@ -95,7 +95,7 @@ const Navbar = () => {
         { href: "/guess-festival", label: t('games.guessFestival.title') },
         { href: "/kings-of-nepal", label: t('kingsOfNepal.title') },
         { href: "/name-districts", label: t('nameDistrictTitle') },
-        { href: "/life-checklist", label: t('nepalChecklist.navbarTitle') },
+        { href: "/yo-ki-tyo", label: t('wouldYouRather.title') || 'Would You Rather' },
         { href: "/general-knowledge", label: t('nepalGk.titleshort') || 'Nepal GK Quiz' },
         { href: "/patta-lagau", label: t('pattalagauTitle') || 'Patta Lagau'},
         { href: "/first-of-nepal", label: t('firstofNepalTitle') || 'Firsts of Nepal'}
@@ -103,9 +103,10 @@ const Navbar = () => {
 
     // Dropdown links (extra games)
     const dropdownLinks = [
-        { href: "/yo-ki-tyo", label: t('wouldYouRather.title') || 'Would You Rather' },
         { href: "/chineu-ta", label: t('logoQuiz.title')},
+        { href: "/gau-khane-katha", label: t('RiddlesGame.title')},
         { href: "/date-converter", label: t('nepaliDateConverterTitle') || 'Date Converter' },
+        { href: "/life-checklist", label: t('nepalChecklist.navbarTitle') }
         // Add more games as needed
     ];
 

@@ -2,14 +2,15 @@
   "Translations": {
       "RiddlesGame": {
         "title": "गाउँ खाने कथा",
-        "subtitle": "तिमीको दिमाग चलाऊ, हर्षको मजा ल्या!",
+        "subtitle": "गाउँखाने कथाको रहस्यमय संसारमा डुब्नुहोस्, बुझ्नुहोस्, हाँस्नुहोस्, र सिक्नुहोस्!",
         "score": "अंक",
         "riddleCount": "प्रश्नहरूको संख्या",
+        "badgeTitle": "पहेली",
         "answerLabel": "उत्तर:",
         "answerPlaceholder": "यहाँ उत्तर लेख",
         "points": "",
         "nextQuestionButton": "नयाँ प्रश्न",
-        "answerTip": "Tip: You can answer in Nepali or English. Ex: \"Firefly\" or \"जूनकिरी\"",
+        "answerTip": "टिप: तपाईं नेपाली वा अंग्रेजीमा उत्तर दिन सक्नुहुन्छ। उदाहरण: \"Firefly\" or \"जूनकिरी\"",
         "submitButton": "पेश गर",
         "correctAnswer": "सही उत्तर!",
         "attempt": "प्रयास",
