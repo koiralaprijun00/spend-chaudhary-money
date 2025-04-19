@@ -187,16 +187,18 @@ export default function RiddlesGamePage() {
     <div className="min-h-screen bg-white py-6 sm:py-12">
       <div className="container mx-auto px-3 sm:px-6 lg:px-8 max-w-4xl">
         <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg mb-6">
-          <div className="bg-white rounded-lg p-4 sm:p-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div>
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
+              <div className="box-border px-4 py-8 text-white">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
                   {t('title')}
-                </h1>
-                <p className="text-base sm:text-lg text-gray-700">
+              </h1>
+              <p className="text-base sm:text-lg">
                   {t('subtitle')}
-                </p>
+              </p>
               </div>
+
+
+          <div className="bg-white rounded-b-lg  p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row justify-end items-end sm:items-center gap-4">
               <button
                 onClick={nextRiddle}
                 className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg px-3 py-2 text-sm flex items-center transition"
@@ -206,23 +208,9 @@ export default function RiddlesGamePage() {
               </button>
             </div>
 
-            <div className=" w-1/3 sm:w-1/3 md:w-1/5 mt-1 sm:my-4 p-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 rounded-lg border border-gray-100">
-              <div className="flex items-center text-gray-600">
-                <TargetIcon className="w-4 h-4 text-indigo-500" />
-                <div>
-                  <span className="text-sm ml-1 mr-1 font-medium">
-                    {t('score')}:
-                  </span>
-                  <span className="text-sm font-bold text-indigo-600">
-                    {score} {t('points')}
-                  </span>
-                </div>
-              </div>
-            </div>
-
             {!gameOver ? (
               <div>
-                <div className="my-4 sm:my-8 p-8 bg-white rounded-2xl shadow-lg border-2 border-indigo-100">
+                <div className="mt-2 p-8 rounded-2xl shadow-lg border-2 border-indigo-100">
                   <div className="text-xl sm:text-2xl md:text-3xl font-medium text-gray-900 text-center leading-relaxed relative">
                     {currentRiddle.question}
                   </div>
@@ -236,26 +224,40 @@ export default function RiddlesGamePage() {
                     }}
                     className="space-y-4 sm:space-y-5"
                   >
+                    <div className="flex flex-row justify-between items-center mt-1 mb-2 p-3 rounded-lg">
+  <div className="flex items-center text-gray-600">
+    <TargetIcon className="w-4 h-4 text-indigo-500" />
+    <div>
+      <span className="text-sm ml-1 mr-1 font-medium">
+        {t('score')}:
+      </span>
+      <span className="text-sm font-bold text-indigo-600">
+        {score} {t('points')}
+      </span>
+    </div>
+  </div>
+
                     {!showAnswer && (
-                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
-                        <div className="flex items-center text-sm text-gray-600">
-                          <span className="font-medium">
-                            {t('attempt') || 'Attempt'}:
-                          </span>
-                          <span className="ml-2 font-bold text-indigo-600">
-                            {attempts + 1}/{maxAttempts}
-                          </span>
-                        </div>
-                        {attempts > 0 && attempts < maxAttempts && (
-                          <div className="text-xs text-orange-500">
-                            {attempts === maxAttempts - 1
-                              ? t('incorrectLastAttempt') ||
-                                'Incorrect. Last attempt!'
-                              : t('incorrectTryAgain') || 'Incorrect. Try again!'}
-                          </div>
-                        )}
-                      </div>
-                    )}
+    <div className="flex items-center">
+      <div className="flex items-center text-sm text-gray-600">
+        <span className="font-medium">
+          {t('attempt') || 'Attempt'}:
+        </span>
+        <span className="ml-2 font-bold text-indigo-600">
+          {attempts + 1}/{maxAttempts}
+        </span>
+      </div>
+      {attempts > 0 && attempts < maxAttempts && (
+        <div className="ml-3 text-xs text-orange-500">
+          {attempts === maxAttempts - 1
+            ? t('incorrectLastAttempt') ||
+              'Incorrect. Last attempt!'
+            : t('incorrectTryAgain') || 'Incorrect. Try again!'}
+        </div>
+      )}
+    </div>
+  )}
+</div>
 
                     <div>
                       <label
@@ -275,7 +277,7 @@ export default function RiddlesGamePage() {
                         required
                       />
                       {locale === 'np' && (
-  <div className="mt-2 sm:mt-1 p-4 sm:p-0 bg-blue-50 sm:bg-transparent rounded-md sm:rounded-none border-l-4 sm:border-l-0 border-blue-200 sm:text-right text-xs text-gray-600 sm:text-gray-500 sm:italic">
+  <div className="mt-2 sm:mt-1 p-4 sm:p-0 bg-blue-50 sm:bg-transparent rounded-md sm:rounded-none border-l-4 sm:border-l-0 border-blue-200 sm:text-right text-sm text-gray-600 sm:text-gray-500 sm:italic">
     <span className="inline-flex items-center flex-wrap">
       {t('answerTip')}
     </span>
