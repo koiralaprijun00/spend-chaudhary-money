@@ -260,8 +260,19 @@ const [isSubmitting, setIsSubmitting] = useState(false);
       <div className="max-w-3xl mx-auto">
         {/* Main Game Card */}
         <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg mb-6">
+
+        <div className="box-border px-4 py-8 text-white">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
+              {t('wouldYouRather.questionPrefix') || 'Would you rather...'}
+              </h1>
+              <p className="text-base sm:text-lg">
+              {t('wouldYouRather.description') || 'Pick a Nepali scenario and see how your choice stacks up!'}
+              </p>
+              </div>
+
+
           <div className="bg-white rounded-lg p-6">
-          <div className="flex justify-end items-center">
+          <div className="flex justify-end items-center mb-4">
             {/* Refresh Button */}
             <button
               onClick={shuffleQuestions}
@@ -272,16 +283,8 @@ const [isSubmitting, setIsSubmitting] = useState(false);
             </button>
           </div>
 
-          <div className="text-left mb-4">
-            <h2 className="text-3xl font-bold">
-              {t('wouldYouRather.questionPrefix') || 'Would you rather...'}
-            </h2>
-            <p className="text-gray-600 max-w-md text-sm">
-            {t('wouldYouRather.description') || 'Pick a Nepali scenario and see how your choice stacks up!'}
-          </p>
-          </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <button
+            <button
                 onClick={() => handleOptionSelect('A')}
                 disabled={selectedOption !== null || loading}
                 className={`p-6 rounded-xl text-lg font-medium transition transform hover:scale-105 focus:outline-none ${
@@ -291,7 +294,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
                     ? 'bg-blue-100 border-2 border-blue-600 text-blue-900'
                     : selectedOption === 'B'
                     ? 'bg-gray-100 border border-gray-300 text-gray-500'
-                    : 'bg-white border-2 border-blue-200 text-gray-800 hover:border-blue-600 hover:bg-blue-50'
+                    : 'bg-blue-100 border-2 border-blue-200 text-gray-800 hover:bg-blue-200 hover:border-blue-600'
                 }`}
               >
                 <div className="mb-3 text-3xl">🇦</div>
@@ -323,7 +326,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
                     ? 'bg-red-100 border-2 border-red-600 text-red-900'
                     : selectedOption === 'A'
                     ? 'bg-gray-100 border border-gray-300 text-gray-500'
-                    : 'bg-white border-2 border-red-200 text-gray-800 hover:border-red-600 hover:bg-red-50'
+                    : 'bg-red-100 border-2 border-red-200 text-gray-800 hover:bg-red-200 hover:border-red-600'
                 }`}
               >
                 <div className="mb-3 text-3xl">🇧</div>
