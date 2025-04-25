@@ -45,61 +45,84 @@ export default function AdSenseGoogle({
 
   // Initialize the ad
   useEffect(() => {
-    if (adInitialized || typeof window === 'undefined' || !adRef.current) return;
+    if (typeof window === 'undefined' || !adRef.current) return;
 
+    // Force reinitialize even if previously initialized
     const initAd = () => {
       try {
         // Clear any existing content
-        adRef.current!.innerHTML = '';
+        if (adRef.current) {
+          adRef.current.innerHTML = '';
         
-        // Create ad element
-        const adElement = document.createElement('ins');
-        adElement.className = 'adsbygoogle';
-        adElement.style.display = 'block';
-        adElement.style.width = adWidth;
-        adElement.style.height = adHeight;
-        
-        // Set attributes without data-nscript
-        adElement.setAttribute('data-ad-client', 'ca-pub-4708248697764153');
-        adElement.setAttribute('data-ad-slot', adSlot);
-        
-        if (adFormat === 'auto') {
-          adElement.setAttribute('data-ad-format', 'auto');
-          adElement.setAttribute('data-full-width-responsive', 'true');
-        } else {
-          adElement.setAttribute('data-full-width-responsive', 'false');
-        }
-        
-        // Append to container
-        adRef.current!.appendChild(adElement);
-        
-        // Initialize ad
-        if (window.adsbygoogle) {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-          setAdInitialized(true);
+          // Create ad element
+          const adElement = document.createElement('ins');
+          adElement.className = 'adsbygoogle';
+          adElement.style.display = 'block';
+          adElement.style.width = adWidth;
+          adElement.style.height = adHeight;
+          
+          // Set attributes without data-nscript
+          adElement.setAttribute('data-ad-client', 'ca-pub-4708248697764153');
+          adElement.setAttribute('data-ad-slot', adSlot);
+          
+          if (adFormat === 'auto') {
+            adElement.setAttribute('data-ad-format', 'auto');
+            adElement.setAttribute('data-full-width-responsive', 'true');
+          } else {
+            adElement.setAttribute('data-full-width-responsive', 'false');
+          }
+          
+          // Append to container
+          adRef.current.appendChild(adElement);
+          
+          // Ensure adsbygoogle is defined and push the ad
+          if (window.adsbygoogle) {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+            setAdInitialized(true);
+          } else {
+            // Create a retry mechanism for slower loading environments
+            const retryTimer = setTimeout(() => {
+              if (window.adsbygoogle) {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+                setAdInitialized(true);
+              }
+            }, 1000);
+            
+            return () => clearTimeout(retryTimer);
+          }
         }
       } catch (error) {
         console.error('AdSense initialization error:', error);
       }
     };
 
-    // Use IntersectionObserver for better performance
+    // Use a lower threshold for better detection
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !adInitialized) {
+        if (entries[0].isIntersecting) {
           initAd();
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01 } // Lower threshold to trigger on minimal visibility
     );
 
     if (adRef.current) {
       observer.observe(adRef.current);
     }
 
-    return () => observer.disconnect();
-  }, [adSlot, adWidth, adHeight, adFormat, adInitialized]);
+    // Fallback initialization after a delay (to ensure ads load even if visibility detection fails)
+    const fallbackTimer = setTimeout(() => {
+      if (!adInitialized && adRef.current) {
+        initAd();
+      }
+    }, 2000);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimer);
+    };
+  }, [adSlot, adWidth, adHeight, adFormat]);
 
   return (
     <div

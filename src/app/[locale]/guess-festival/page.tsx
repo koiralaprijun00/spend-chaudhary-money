@@ -332,15 +332,16 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full">
       <div className="flex justify-center">
-        <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] ml-4">
-          <div className="w-[160px] h-[600px]">
-            <AdSenseGoogle
-              adSlot="6865219846"
-              adFormat="vertical"
-              style={{ width: "160px", height: "400px" }}
-            />
-          </div>
-        </div>
+       
+       
+      <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] ml-4">
+  <AdSenseGoogle
+    adSlot="6865219846"
+    adFormat="vertical"
+    style={{ width: "160px", height: "600px" }}
+    className="w-full h-full"
+  />
+</div>
 
         <div className="flex-1 px-4 py-8 pb-16 md:pb-8">
           <div className="md:hidden mb-6">
@@ -441,15 +442,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] mr-4">
-          <div className="w-[160px] h-[600px]">
-            <AdSenseGoogle
-              adSlot="9978468343"
-              adFormat="vertical"
-              style={{ width: "160px", height: "400px" }}
-            />
-          </div>
-        </div>
+
+<div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] mr-4">
+  <AdSenseGoogle
+    adSlot="9978468343"
+    adFormat="vertical"
+    style={{ width: "160px", height: "600px" }}
+    className="w-full h-full"
+  />
+</div>
       </div>
 
       <MobileFooter gameMode={gameMode} switchGameMode={switchGameMode} restartGame={restartGame} />
