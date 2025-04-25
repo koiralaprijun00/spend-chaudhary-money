@@ -6,6 +6,9 @@ import { getFestivalsByLocale } from "../../data/guess-festival/getFestivals"; /
 import { Festival } from "../../data/guess-festival/festival"; // Import Festival type
 import AdSenseGoogle from "../../components/AdSenseGoogle";
 import GameButton from "../../components/ui/GameButton";
+import QuizSection from './components/QuizSection';
+import AnswerReveal from './components/AnswerReveal';
+import MobileFooter from './components/MobileFooter';
 
 // QuizSection Component
 interface QuizSectionProps {
@@ -330,9 +333,9 @@ export default function Home() {
   const currentFestival = getCurrentFestival();
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="flex-1 flex flex-col md:flex-row">
-        {/* Left AdSense Sidebar */}
+    <div className="min-h-screen w-full">
+      <div className="flex justify-center">
+        {/* Left sidebar ad - hidden on mobile */}
         <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] ml-4">
           <div className="w-[160px] h-[600px]">
             <AdSenseGoogle
@@ -343,65 +346,116 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Main Content */}
-        <div className="flex-1 max-w-4xl mx-auto px-4 py-8">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <MobileHeader score={score} gameMode={gameMode} timeLeft={timeLeft} t={t} />
-            
-            {/* Game Mode Selection (Desktop) */}
-            <div className="hidden md:flex justify-between items-center mb-6">
-              <div className="flex gap-2">
-                <GameButton
-                  type={gameMode === "standard" ? "grayNeutral" : "neutral"}
-                  onClick={() => switchGameMode("standard")}
-                >
-                  {t("games.guessFestival.Standard")}
-                </GameButton>
-                <GameButton
-                  type={gameMode === "timed" ? "danger" : "neutral"}
-                  onClick={() => switchGameMode("timed")}
-                >
-                  {t("games.guessFestival.Timed")}
-                </GameButton>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
-                  <div className="bg-white rounded-md px-3 py-1 flex items-center">
-                    <span className="text-xl font-bold">{score}</span>
-                    <span className="ml-1 text-sm text-gray-600">{t("points")}</span>
+        {/* Main content */}
+        <div className="flex-1 px-4 py-8">
+          <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
+            {/* Left column - Title and Instructions */}
+            <div className="hidden md:block md:w-1/3 space-y-6">
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                {/* Original left column content */}
+                <div className="mb-8">
+                  <h1 className="text-3xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
+                    {t("games.guessFestival.title")}
+                  </h1>
+                  <p className="text-left text-gray-600">
+                    {t("games.guessFestival.description")}
+                  </p>
+                </div>
+
+                {/* Game mode selection */}
+                <div className="mb-6">
+                  <h2 className="text-sm mb-2">{t("games.guessFestival.mode")}:</h2>
+                  <div className="flex gap-2">
+                    <GameButton
+                      type={gameMode === "standard" ? "grayNeutral" : "neutral"}
+                      onClick={() => switchGameMode("standard")}
+                      size="sm"
+                      fullWidth
+                      className="py-1 text-sm rounded-md"
+                    >
+                      {t("games.guessFestival.Standard")}
+                    </GameButton>
+                    <GameButton
+                      type={gameMode === "timed" ? "danger" : "neutral"}
+                      onClick={() => switchGameMode("timed")}
+                      size="sm"
+                      fullWidth
+                      className="py-1 text-sm rounded-md"
+                    >
+                      {t("games.guessFestival.Timed")}
+                    </GameButton>
                   </div>
                 </div>
-                {gameMode === "timed" && (
-                  <div className="bg-gray-100 px-3 py-1 rounded-full">
-                    <span className={`font-mono ${timeLeft <= 10 ? "text-red-500" : "text-gray-800"}`}>
-                      {timeLeft}s
-                    </span>
+
+                {/* Score display */}
+                <div>
+                  <h2 className="text-sm mb-3">{t("score")}</h2>
+                  <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
+                    <div className="bg-white rounded-md p-2 flex justify-between items-center">
+                      <div className="flex items-center">
+                        <span className="text-3xl font-bold">{score}</span>
+                        <span className="ml-2 text-gray-600">{t("points")}</span>
+                      </div>
+                      
+                      {gameMode === "timed" && (
+                        <div className="bg-gray-100 px-2 py-0.5 rounded-full">
+                          <span className={`font-mono ${timeLeft <= 10 ? "text-red-500" : "text-gray-800"}`}>
+                            {timeLeft}s
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
+                </div>
+
+                {/* Restart and Share buttons */}
+                <GameButton onClick={restartGame} type="neutral" size="sm" className="mt-6 mr-2">
+                  {t("games.guessFestival.restart")}
+                </GameButton>
+
+                {isAnswered && (
+                  <GameButton onClick={handleShareScore} type="success" size="sm" className="mt-3">
+                    {t("shareScore")}
+                  </GameButton>
                 )}
               </div>
             </div>
 
-            <QuizSection
-              currentFestival={getCurrentFestival()}
-              isAnswered={isAnswered}
-              options={options}
-              handleGuess={handleGuess}
-            />
+            {/* Right column - Game Content */}
+            <div className="md:w-2/3 w-full">
+              <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
+                <div className="bg-white rounded-lg p-4 md:p-6">
+                  {/* Mobile header */}
+                  <div className="md:hidden mb-6">
+                    <h1 className="text-2xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
+                      {t("games.guessFestival.title")}
+                    </h1>
+                  </div>
 
-            <AnswerReveal
-              isAnswered={isAnswered}
-              isCorrect={isCorrect}
-              feedback={feedback}
-              currentFestival={getCurrentFestival()}
-              handleNextFestival={handleNextFestival}
-              restartGame={restartGame}
-              handleShareScore={handleShareScore}
-              score={score}
-            />
+                  {/* QuizSection and AnswerReveal components */}
+                  <QuizSection
+                    currentFestival={getCurrentFestival()}
+                    isAnswered={isAnswered}
+                    options={options}
+                    handleGuess={handleGuess}
+                  />
+                  <AnswerReveal
+                    isAnswered={isAnswered}
+                    isCorrect={isCorrect}
+                    feedback={feedback}
+                    currentFestival={getCurrentFestival()}
+                    handleNextFestival={handleNextFestival}
+                    restartGame={restartGame}
+                    handleShareScore={handleShareScore}
+                    score={score}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Right AdSense Sidebar */}
+        {/* Right sidebar ad - hidden on mobile */}
         <div className="hidden lg:block w-[160px] sticky top-24 self-start h-[600px] mr-4">
           <div className="w-[160px] h-[600px]">
             <AdSenseGoogle 
@@ -413,6 +467,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Mobile Footer */}
       <MobileFooter
         gameMode={gameMode}
         switchGameMode={switchGameMode}
