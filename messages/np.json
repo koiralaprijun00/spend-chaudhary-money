@@ -359,6 +359,47 @@
       "title": "नेपालका राजाहरू",
       "description": "नेपाल शासन गरेका सबै राजाहरूको नाम भन्नुहोस्",
       "badge": "इतिहास"
+    },
+    "dateConverter": {
+      "title": "नेपाली मिति रूपान्तरण",
+      "description": "नेपाली र अंग्रेजी मितिमा सहज रूपमा रूपान्तरण गर्नुहोस्",
+      "toNepali": "अंग्रेजी देखि नेपाली",
+      "toEnglish": "नेपाली देखि अंग्रेजी",
+      "year": "वर्ष",
+      "month": "महिना",
+      "day": "दिन",
+      "convert": "रूपान्तरण गर्नुहोस्",
+      "converting": "रूपान्तरण गर्दै...",
+      "convertedDate": "रूपान्तरण गरिएको मिति",
+      "dateRangeError": "कृपया {startDate} र {endDate} को बीचको मिति छान्नुहोस्",
+      "englishDateRange": "१९४३/०१/०१ र २०३३/१२/३०",
+      "nepaliDateRange": "२०००/०१/०१ र २०९०/१२/३०",
+      "months": {
+        "january": "जनवरी",
+        "february": "फेब्रुअरी",
+        "march": "मार्च",
+        "april": "अप्रिल",
+        "may": "मे",
+        "june": "जुन",
+        "july": "जुलाई",
+        "august": "अगस्ट",
+        "september": "सेप्टेम्बर",
+        "october": "अक्टोबर",
+        "november": "नोभेम्बर",
+        "december": "डिसेम्बर",
+        "baisakh": "बैशाख",
+        "jestha": "जेठ",
+        "ashadh": "असार",
+        "shrawan": "साउन",
+        "bhadra": "भदौ",
+        "ashwin": "असोज",
+        "kartik": "कार्तिक",
+        "mangsir": "मंसिर",
+        "poush": "पुष",
+        "magh": "माघ",
+        "falgun": "फागुन",
+        "chaitra": "चैत"
+      }
     }
 }
 }

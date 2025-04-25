@@ -5,6 +5,7 @@ import NepaliDate from 'nepali-date-converter';
 import AdSenseGoogle from '../../components/AdSenseGoogle';
 import { motion } from 'framer-motion';
 import CustomDropdown from '../../components/ui/CustomDropdown';
+import { useTranslations } from 'next-intl';
 
 // Define interfaces
 interface DateState {
@@ -19,6 +20,8 @@ interface DropdownOption {
 }
 
 export default function DateConverterPage() {
+  const t = useTranslations('Translations.dateConverter');
+
   const [englishDate, setEnglishDate] = useState<DateState>({
     year: new Date().getFullYear().toString(),
     month: (new Date().getMonth() + 1).toString().padStart(2, '0'),
@@ -50,18 +53,18 @@ export default function DateConverterPage() {
   const englishMonthOptions: DropdownOption[] = Array.from({ length: 12 }, (_, i) => {
     const monthNum = (i + 1).toString().padStart(2, '0');
     const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
+      t('months.january'),
+      t('months.february'),
+      t('months.march'),
+      t('months.april'),
+      t('months.may'),
+      t('months.june'),
+      t('months.july'),
+      t('months.august'),
+      t('months.september'),
+      t('months.october'),
+      t('months.november'),
+      t('months.december'),
     ];
     return {
       id: monthNum,
@@ -72,18 +75,18 @@ export default function DateConverterPage() {
   const nepaliMonthOptions: DropdownOption[] = Array.from({ length: 12 }, (_, i) => {
     const monthNum = (i + 1).toString().padStart(2, '0');
     const nepaliMonthNames = [
-      'Baisakh',
-      'Jestha',
-      'Ashadh',
-      'Shrawan',
-      'Bhadra',
-      'Ashwin',
-      'Kartik',
-      'Mangsir',
-      'Poush',
-      'Magh',
-      'Falgun',
-      'Chaitra',
+      t('months.baisakh'),
+      t('months.jestha'),
+      t('months.ashadh'),
+      t('months.shrawan'),
+      t('months.bhadra'),
+      t('months.ashwin'),
+      t('months.kartik'),
+      t('months.mangsir'),
+      t('months.poush'),
+      t('months.magh'),
+      t('months.falgun'),
+      t('months.chaitra'),
     ];
     return {
       id: monthNum,
@@ -116,9 +119,7 @@ export default function DateConverterPage() {
       }, 800);
     } catch (error) {
       setIsAnimating(false);
-      alert(
-        'Please select a date between 1943/01/01 and 2033/12/30 (2000/01/01 - 2090/12/30 BS)',
-      );
+      alert(t('dateRangeError', { startDate: t('englishDateRange'), endDate: t('nepaliDateRange') }));
     }
   };
 
@@ -139,9 +140,7 @@ export default function DateConverterPage() {
       }, 800);
     } catch (error) {
       setIsAnimating(false);
-      alert(
-        'Please select a date between 2000/01/01 and 2090/12/30 BS (1943/01/01 - 2033/12/30 AD)',
-      );
+      alert(t('dateRangeError', { startDate: t('nepaliDateRange'), endDate: t('englishDateRange') }));
     }
   };
 
@@ -319,10 +318,10 @@ export default function DateConverterPage() {
           <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg mb-6">
             <div className="mx-4 my-8 text-white">
               <h1 className="text-3xl md:text-4xl font-bold">
-                Nepali Date Converter
+                {t('title')}
               </h1>
               <p className="mt-3 max-w-2xl text-white/90">
-                Effortlessly convert between Nepali (Bikram Sambat) and English (Gregorian) calendars.
+                {t('description')}
               </p>
             </div>
 
@@ -337,7 +336,7 @@ export default function DateConverterPage() {
                         : 'text-gray-600 hover:bg-gray-200'
                     }`}
                   >
-                    English to Nepali
+                    {t('toNepali')}
                   </button>
                   <button
                     onClick={() => setActiveTab('toEnglish')}
@@ -347,7 +346,7 @@ export default function DateConverterPage() {
                         : 'text-gray-600 hover:bg-gray-200'
                     }`}
                   >
-                    Nepali to English
+                    {t('toEnglish')}
                   </button>
                 </div>
               </div>
@@ -363,7 +362,7 @@ export default function DateConverterPage() {
                       : 'bg-red-50 border-red-200'
                   }`}
                 >
-                  <h3 className="text-base">Converted Date:</h3>
+                  <h3 className="text-base">{t('convertedDate')}:</h3>
                   <p className="text-3xl font-bold">
                     {convertedDate}
                   </p>
@@ -381,7 +380,7 @@ export default function DateConverterPage() {
                       <div className="grid grid-cols-3 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-blue-800 mb-2">
-                            Year
+                            {t('year')}
                           </label>
                           <CustomDropdown
                             options={englishYearOptions}
@@ -394,7 +393,7 @@ export default function DateConverterPage() {
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-blue-800 mb-2">
-                            Month
+                            {t('month')}
                           </label>
                           <CustomDropdown
                             options={englishMonthOptions}
@@ -407,7 +406,7 @@ export default function DateConverterPage() {
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-blue-800 mb-2">
-                            Day
+                            {t('day')}
                           </label>
                           <CustomDropdown
                             options={dayOptions}
@@ -451,10 +450,10 @@ export default function DateConverterPage() {
                                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                               ></path>
                             </svg>
-                            Converting...
+                            {t('converting')}
                           </div>
                         ) : (
-                          'Convert to Nepali'
+                          t('convert')
                         )}
                       </button>
                     </div>
@@ -467,7 +466,7 @@ export default function DateConverterPage() {
                       <div className="grid grid-cols-3 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-red-800 mb-2">
-                            Year
+                            {t('year')}
                           </label>
                           <CustomDropdown
                             options={nepaliYearOptions}
@@ -480,7 +479,7 @@ export default function DateConverterPage() {
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-red-800 mb-2">
-                            Month
+                            {t('month')}
                           </label>
                           <CustomDropdown
                             options={nepaliMonthOptions}
@@ -493,7 +492,7 @@ export default function DateConverterPage() {
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-red-800 mb-2">
-                            Day
+                            {t('day')}
                           </label>
                           <CustomDropdown
                             options={dayOptions}
@@ -537,10 +536,10 @@ export default function DateConverterPage() {
                                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                               ></path>
                             </svg>
-                            Converting...
+                            {t('converting')}
                           </div>
                         ) : (
-                          'Convert to English'
+                          t('convert')
                         )}
                       </button>
                     </div>

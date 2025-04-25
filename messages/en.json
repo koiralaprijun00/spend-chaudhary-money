@@ -1,4 +1,4 @@
-  {
+{
   "Translations":{
     "RiddlesGame": {
     "title": "Gau Khane Katha",
@@ -108,7 +108,7 @@
     "submitButton": "Submit a Question",
     "shareText": "In \"Would You Rather\", I chose \"{choice}\" and {percentage}% of people agreed with me! Try it yourself!"
   },
-  "districtDescription": "Guess the district by its shape and test your knowledge of Nepal’s map!",
+  "districtDescription": "Guess the district by its shape and test your knowledge of Nepal's map!",
     "incorrectGuesses": "Missed Districts",
     "remainingDistricts": "{count} districts remaining",
     "yourOptions": "Options",
@@ -359,6 +359,47 @@
         "title": "Kings of Nepal",
         "description": "Name all the kings who ruled Nepal",
         "badge": "HISTORY"
+      },
+    "dateConverter": {
+      "title": "Nepali Date Converter",
+      "description": "Convert between Nepali and English dates seamlessly",
+      "toNepali": "English to Nepali",
+      "toEnglish": "Nepali to English",
+      "year": "Year",
+      "month": "Month",
+      "day": "Day",
+      "convert": "Convert",
+      "converting": "Converting...",
+      "convertedDate": "Converted Date",
+      "dateRangeError": "Please select a date between {startDate} and {endDate}",
+      "englishDateRange": "1943/01/01 and 2033/12/30",
+      "nepaliDateRange": "2000/01/01 and 2090/12/30",
+      "months": {
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December",
+        "baisakh": "Baisakh",
+        "jestha": "Jestha",
+        "ashadh": "Ashadh",
+        "shrawan": "Shrawan",
+        "bhadra": "Bhadra",
+        "ashwin": "Ashwin",
+        "kartik": "Kartik",
+        "mangsir": "Mangsir",
+        "poush": "Poush",
+        "magh": "Magh",
+        "falgun": "Falgun",
+        "chaitra": "Chaitra"
       }
+    }
   }
 }
