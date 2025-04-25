@@ -45,110 +45,73 @@ export default function AdSenseGoogle({
 
   // Initialize the ad
   useEffect(() => {
-    // Don't rerun if already initialized
-    if (adInitialized) return;
-    
-    // Check if we're in the browser
-    if (typeof window === 'undefined') return;
-    
-    // Ensure the container exists
-    if (!adRef.current) return;
-    
-    // Check if window.adsbygoogle is available (will be defined by the script in layout.tsx)
+    if (adInitialized || typeof window === 'undefined' || !adRef.current) return;
+
     const initAd = () => {
       try {
         // Clear any existing content
-        if (adRef.current) {
-          adRef.current.innerHTML = '';
-          
-          // Create ad element with explicit sizing
-          const adElement = document.createElement('ins');
-          adElement.className = 'adsbygoogle';
-          adElement.style.display = 'block';
-          adElement.style.width = adWidth;
-          adElement.style.height = adHeight;
-          
-          // Set attributes
-          adElement.setAttribute('data-ad-client', 'ca-pub-4708248697764153');
-          adElement.setAttribute('data-ad-slot', adSlot);
-          
-          // Only set responsive if using auto format
-          if (adFormat === 'auto') {
-            adElement.setAttribute('data-ad-format', 'auto');
-            adElement.setAttribute('data-full-width-responsive', 'true');
-          } else {
-            // Fixed size ad
-            adElement.setAttribute('data-full-width-responsive', 'false');
-          }
-          
-          // Append to container
-          adRef.current.appendChild(adElement);
-          
-          // Initialize ad - use a delay to ensure DOM is settled
-          setTimeout(() => {
-            try {
-              if (window.adsbygoogle) {
-                (window.adsbygoogle = window.adsbygoogle || []).push({});
-                setAdInitialized(true);
-              } else {
-                console.warn('AdSense not loaded yet, will retry');
-                // Retry after a short delay
-                setTimeout(initAd, 1000);
-              }
-            } catch (e) {
-              console.error('AdSense push error:', e);
-            }
-          }, 100);
+        adRef.current!.innerHTML = '';
+        
+        // Create ad element
+        const adElement = document.createElement('ins');
+        adElement.className = 'adsbygoogle';
+        adElement.style.display = 'block';
+        adElement.style.width = adWidth;
+        adElement.style.height = adHeight;
+        
+        // Set attributes without data-nscript
+        adElement.setAttribute('data-ad-client', 'ca-pub-4708248697764153');
+        adElement.setAttribute('data-ad-slot', adSlot);
+        
+        if (adFormat === 'auto') {
+          adElement.setAttribute('data-ad-format', 'auto');
+          adElement.setAttribute('data-full-width-responsive', 'true');
+        } else {
+          adElement.setAttribute('data-full-width-responsive', 'false');
+        }
+        
+        // Append to container
+        adRef.current!.appendChild(adElement);
+        
+        // Initialize ad
+        if (window.adsbygoogle) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+          setAdInitialized(true);
         }
       } catch (error) {
         console.error('AdSense initialization error:', error);
       }
     };
 
-    // Use IntersectionObserver to initialize ads when they become visible
-    // This improves performance and ad viewability
-    try {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting && !adInitialized) {
-            // Wait a bit to ensure the element is properly visible
-            setTimeout(initAd, 300);
-            // Stop observing once we've initialized
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.1 } // Initialize when at least 10% is visible
-      );
+    // Use IntersectionObserver for better performance
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !adInitialized) {
+          initAd();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-      if (adRef.current) {
-        observer.observe(adRef.current);
-      }
-
-      return () => {
-        observer.disconnect();
-      };
-    } catch (error) {
-      // Fallback if IntersectionObserver is not available
-      console.warn('IntersectionObserver not available, falling back to immediate init');
-      setTimeout(initAd, 300);
+    if (adRef.current) {
+      observer.observe(adRef.current);
     }
-  }, [adSlot, adWidth, adHeight, adFormat, adInitialized]);
 
-  // Create container style with explicit dimensions
-  const containerStyle: React.CSSProperties = {
-    display: 'block',
-    width: adWidth,
-    height: adHeight,
-    overflow: 'hidden',
-    ...style,
-  };
+    return () => observer.disconnect();
+  }, [adSlot, adWidth, adHeight, adFormat, adInitialized]);
 
   return (
     <div
       ref={adRef}
       className={`adsense-container ${className}`}
-      style={containerStyle}
-      data-ad-status={adInitialized ? "filled" : "waiting"}
+      style={{
+        display: 'block',
+        width: adWidth,
+        height: adHeight,
+        overflow: 'hidden',
+        ...style,
+      }}
     />
   );
 }
