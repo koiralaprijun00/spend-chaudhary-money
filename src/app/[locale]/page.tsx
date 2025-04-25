@@ -5,13 +5,9 @@ import Image from "next/image";
 import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
+import AdSense from "../components/AdSenseGoogle";
 
 // Dynamically import non-critical components
-const AdSense = dynamic(() => import("../components/AdSenseGoogle"), {
-  ssr: false,
-  loading: () => <div style={{ width: "100%", height: "250px" }}></div>
-});
-
 const FeedbackButton = dynamic(() => import("../components/FeedbackButton"), {
   ssr: false
 });
@@ -334,13 +330,11 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Lazy load AdSense */}
+          {/* AdSense */}
           <div className="w-full mx-auto flex justify-center items-center mt-12">
-            <Suspense fallback={<div style={{ width: "100%", height: "250px" }}></div>}>
-              <div style={{ width: "100%", height: "250px" }}>
-                <AdSense adSlot="5025391116" />
-              </div>
-            </Suspense>
+            <div style={{ width: "100%", height: "250px" }}>
+              <AdSense adSlot="5025391116" />
+            </div>
           </div>
         </div>
       </div>
