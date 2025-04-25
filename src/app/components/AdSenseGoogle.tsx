@@ -16,7 +16,7 @@ export default function AdSenseGoogle({
   className = '',
 }: AdSenseProps) {
   const adRef = useRef<HTMLDivElement>(null);
-  const [isClientSide, setIsClientSide] = useState(false);
+  const [adInitialized, setAdInitialized] = useState(false);
 
   // Set up standard ad sizes based on format
   let adWidth = '100%';
@@ -43,39 +43,19 @@ export default function AdSenseGoogle({
   if (style.width) adWidth = typeof style.width === 'string' ? style.width : `${style.width}px`;
   if (style.height) adHeight = typeof style.height === 'string' ? style.height : `${style.height}px`;
 
-  // This effect runs once on client-side render to indicate we're in the browser
+  // Initialize the ad
   useEffect(() => {
-    setIsClientSide(true);
-  }, []);
-
-  // Initialize the ad when on client side
-  useEffect(() => {
-    // Only run this on the client side
-    if (!isClientSide || !adRef.current) return;
-
-    // Ensure the AdSense script is loaded
-    const loadAdSenseScript = () => {
-      // Check if script is already added
-      if (document.querySelector('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]')) {
-        initializeAd();
-        return;
-      }
-
-      // Add the script if not present
-      const script = document.createElement('script');
-      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-      script.async = true;
-      script.crossOrigin = 'anonymous';
-      script.dataset.adClient = 'ca-pub-4708248697764153';
-      
-      script.onload = initializeAd;
-      script.onerror = () => console.error('AdSense script failed to load');
-      
-      document.head.appendChild(script);
-    };
-
-    // Initialize the ad
-    const initializeAd = () => {
+    // Don't rerun if already initialized
+    if (adInitialized) return;
+    
+    // Check if we're in the browser
+    if (typeof window === 'undefined') return;
+    
+    // Ensure the container exists
+    if (!adRef.current) return;
+    
+    // Check if window.adsbygoogle is available (will be defined by the script in layout.tsx)
+    const initAd = () => {
       try {
         // Clear any existing content
         if (adRef.current) {
@@ -104,10 +84,17 @@ export default function AdSenseGoogle({
           // Append to container
           adRef.current.appendChild(adElement);
           
-          // Initialize with a slight delay to ensure DOM is ready
+          // Initialize ad - use a delay to ensure DOM is settled
           setTimeout(() => {
             try {
-              (window.adsbygoogle = window.adsbygoogle || []).push({});
+              if (window.adsbygoogle) {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+                setAdInitialized(true);
+              } else {
+                console.warn('AdSense not loaded yet, will retry');
+                // Retry after a short delay
+                setTimeout(initAd, 1000);
+              }
             } catch (e) {
               console.error('AdSense push error:', e);
             }
@@ -118,10 +105,34 @@ export default function AdSenseGoogle({
       }
     };
 
-    // Start the loading process with a small delay to ensure component is properly mounted
-    const timer = setTimeout(loadAdSenseScript, 50);
-    return () => clearTimeout(timer);
-  }, [isClientSide, adSlot, adWidth, adHeight, adFormat]);
+    // Use IntersectionObserver to initialize ads when they become visible
+    // This improves performance and ad viewability
+    try {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && !adInitialized) {
+            // Wait a bit to ensure the element is properly visible
+            setTimeout(initAd, 300);
+            // Stop observing once we've initialized
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.1 } // Initialize when at least 10% is visible
+      );
+
+      if (adRef.current) {
+        observer.observe(adRef.current);
+      }
+
+      return () => {
+        observer.disconnect();
+      };
+    } catch (error) {
+      // Fallback if IntersectionObserver is not available
+      console.warn('IntersectionObserver not available, falling back to immediate init');
+      setTimeout(initAd, 300);
+    }
+  }, [adSlot, adWidth, adHeight, adFormat, adInitialized]);
 
   // Create container style with explicit dimensions
   const containerStyle: React.CSSProperties = {
@@ -137,7 +148,7 @@ export default function AdSenseGoogle({
       ref={adRef}
       className={`adsense-container ${className}`}
       style={containerStyle}
-      data-ad-status="not-loaded"
+      data-ad-status={adInitialized ? "filled" : "waiting"}
     />
   );
 }
