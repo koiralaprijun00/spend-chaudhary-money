@@ -16,7 +16,7 @@ export default function AdSenseGoogle({
   className = '',
 }: AdSenseProps) {
   const adRef = useRef<HTMLDivElement>(null);
-  const [isReady, setIsReady] = useState(false);
+  const [isClientSide, setIsClientSide] = useState(false);
 
   // Set up standard ad sizes based on format
   let adWidth = '100%';
@@ -43,80 +43,85 @@ export default function AdSenseGoogle({
   if (style.width) adWidth = typeof style.width === 'string' ? style.width : `${style.width}px`;
   if (style.height) adHeight = typeof style.height === 'string' ? style.height : `${style.height}px`;
 
-  // Wait for component to mount and be visible
+  // This effect runs once on client-side render to indicate we're in the browser
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    // First check if container is ready
-    const checkContainer = () => {
-      if (!adRef.current) return false;
-      
-      // Get computed style to check visibility
-      const style = window.getComputedStyle(adRef.current);
-      const isVisible = style.display !== 'none' && style.visibility !== 'hidden';
-      
-      // Check if element has width
-      const width = adRef.current.offsetWidth;
-      
-      return isVisible && width > 0;
-    };
-
-    if (checkContainer()) {
-      setIsReady(true);
-    } else {
-      // If not ready, check again after a short delay
-      const timer = setTimeout(() => {
-        if (checkContainer()) {
-          setIsReady(true);
-        }
-      }, 500);
-      return () => clearTimeout(timer);
-    }
+    setIsClientSide(true);
   }, []);
 
-  // Once container is ready, initialize the ad
+  // Initialize the ad when on client side
   useEffect(() => {
-    if (!isReady || !adRef.current) return;
+    // Only run this on the client side
+    if (!isClientSide || !adRef.current) return;
 
-    try {
-      // Clear any existing content
-      adRef.current.innerHTML = '';
-
-      // Create ad element with explicit sizing
-      const adElement = document.createElement('ins');
-      adElement.className = 'adsbygoogle';
-      adElement.style.display = 'block';
-      adElement.style.width = adWidth;
-      adElement.style.height = adHeight;
-      
-      // Set attributes
-      adElement.setAttribute('data-ad-client', 'ca-pub-4708248697764153');
-      adElement.setAttribute('data-ad-slot', adSlot);
-      
-      // Only set responsive if using auto format
-      if (adFormat === 'auto') {
-        adElement.setAttribute('data-ad-format', 'auto');
-        adElement.setAttribute('data-full-width-responsive', 'true');
-      } else {
-        // Fixed size ad
-        adElement.setAttribute('data-full-width-responsive', 'false');
+    // Ensure the AdSense script is loaded
+    const loadAdSenseScript = () => {
+      // Check if script is already added
+      if (document.querySelector('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]')) {
+        initializeAd();
+        return;
       }
+
+      // Add the script if not present
+      const script = document.createElement('script');
+      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+      script.async = true;
+      script.crossOrigin = 'anonymous';
+      script.dataset.adClient = 'ca-pub-4708248697764153';
       
-      // Append to container
-      adRef.current.appendChild(adElement);
+      script.onload = initializeAd;
+      script.onerror = () => console.error('AdSense script failed to load');
       
-      // Push to AdSense with a delay to ensure rendering is complete
-      const timer = setTimeout(() => {
-        if (window.adsbygoogle) {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
+      document.head.appendChild(script);
+    };
+
+    // Initialize the ad
+    const initializeAd = () => {
+      try {
+        // Clear any existing content
+        if (adRef.current) {
+          adRef.current.innerHTML = '';
+          
+          // Create ad element with explicit sizing
+          const adElement = document.createElement('ins');
+          adElement.className = 'adsbygoogle';
+          adElement.style.display = 'block';
+          adElement.style.width = adWidth;
+          adElement.style.height = adHeight;
+          
+          // Set attributes
+          adElement.setAttribute('data-ad-client', 'ca-pub-4708248697764153');
+          adElement.setAttribute('data-ad-slot', adSlot);
+          
+          // Only set responsive if using auto format
+          if (adFormat === 'auto') {
+            adElement.setAttribute('data-ad-format', 'auto');
+            adElement.setAttribute('data-full-width-responsive', 'true');
+          } else {
+            // Fixed size ad
+            adElement.setAttribute('data-full-width-responsive', 'false');
+          }
+          
+          // Append to container
+          adRef.current.appendChild(adElement);
+          
+          // Initialize with a slight delay to ensure DOM is ready
+          setTimeout(() => {
+            try {
+              (window.adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (e) {
+              console.error('AdSense push error:', e);
+            }
+          }, 100);
         }
-      }, 100);
-      
-      return () => clearTimeout(timer);
-    } catch (error) {
-      console.error('AdSense error:', error);
-    }
-  }, [isReady, adSlot, adWidth, adHeight, adFormat]);
+      } catch (error) {
+        console.error('AdSense initialization error:', error);
+      }
+    };
+
+    // Start the loading process with a small delay to ensure component is properly mounted
+    const timer = setTimeout(loadAdSenseScript, 50);
+    return () => clearTimeout(timer);
+  }, [isClientSide, adSlot, adWidth, adHeight, adFormat]);
 
   // Create container style with explicit dimensions
   const containerStyle: React.CSSProperties = {
@@ -132,6 +137,7 @@ export default function AdSenseGoogle({
       ref={adRef}
       className={`adsense-container ${className}`}
       style={containerStyle}
+      data-ad-status="not-loaded"
     />
   );
 }
