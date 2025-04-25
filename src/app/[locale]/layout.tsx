@@ -4,6 +4,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { AuthProvider } from './providers';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Script from "next/script"; // Import Script component
 
 // RootLayout as an async server component with params as a Promise
 export default async function LocaleLayout({
@@ -62,7 +63,6 @@ export default async function LocaleLayout({
       const enkingsofnepalMessages = (await import('../../../messages/kings-of-nepal-en.json')).default;
       const ennameDistrictMessages = (await import('../../../messages/name-district-en.json')).default;
 
-
       messages = {
         ...messages,
         ...enFirstOfNepalMessages,
@@ -78,6 +78,14 @@ export default async function LocaleLayout({
   return (
     <AuthProvider>
       <NextIntlClientProvider locale={resolvedLocale} messages={messages}>
+        {/* AdSense Script - Add this */}
+        <Script
+          id="adsbygoogle-init"
+          strategy="afterInteractive"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4708248697764153"
+          crossOrigin="anonymous"
+        />
         <NavBar />
         {children}
         <SpeedInsights/>
