@@ -9,12 +9,12 @@ import Script from 'next/script';
 export const metadata: Metadata = {
   title: "Piromomo: The Fun Side of Nepal You Didn't Know You Needed!",
   description:
-    "Discover quirky Nepali games—spend Binod Chaudhary's billions or test your festival knowledge at Piromomo.com!",
+    "Interactive Nepali games like guess the king, gau khane katha, and other quizzes for connecting with Nepali culture and friends abroad.",
   metadataBase: new URL("https://piromomo.com"),
   openGraph: {
     title: "Piromomo: The Fun Side of Nepal You Didn't Know You Needed!",
     description:
-      "Discover quirky Nepali games—spend Binod Chaudhary's billions or test your festival knowledge at Piromomo.com!",
+      "Interactive Nepali games like guess the king, gau khane katha, and other quizzes for connecting with Nepali culture and friends abroad.",
     url: "https://piromomo.com",
     siteName: "Piromomo",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Piromomo: The Fun Side of Nepal You Didn't Know You Needed!",
     description:
-      "Spend a billionaire's fortune or guess Nepali festivals—play now at Piromomo.com!",
+      "Interactive Nepali games like guess the king, gau khane katha, and other quizzes for connecting with Nepali culture and friends abroad.",
     images: ["https://piromomo.com/momo.png"],
   },
   alternates: {
