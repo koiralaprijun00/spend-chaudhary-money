@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import LocaleSwitcher from "./LocaleSwitcher"
+import NavBarShareButton from "./NavShareButton" // Import the share button component
 import { useTranslations } from 'next-intl';
 import { FaTwitter } from "react-icons/fa"
 import { FaInstagram } from "react-icons/fa"
@@ -151,6 +152,9 @@ const Navbar = () => {
                         >
                             <FaInstagram className="text-xl" />
                         </Link>
+                        
+                        {/* Share Button Component */}
+                        <NavBarShareButton />
 
                         {/* Hamburger menu button - visible only on mobile */}
                         <button 
