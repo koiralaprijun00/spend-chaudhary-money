@@ -6,6 +6,8 @@ import { RiCircleLine } from 'react-icons/ri';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import AdSenseGoogle from '../../components/AdSenseGoogle'; // Import AdSense component
+import FirstOfNepalQuiz from '../../components/FirstOfNepalQuiz';
+import { useParams } from 'next/navigation';
 
 // Add this new component for the floating image
 const FloatingImage = ({ 
@@ -44,12 +46,57 @@ interface FirstItem {
 export default function FirstsOfNepal() {
     const [searchTerm, setSearchTerm] = useState('');
     const gridRef = useRef<HTMLDivElement>(null);
+    const params = useParams();
 
     // For UI translations
     const mainT = useTranslations('Translations');
     // For First of Nepal data
     const t = useTranslations('firstsOfNepal');
     
+    // Quiz questions
+    const quizQuestions = [
+        {
+            question: "Who was the first Prime Minister of Nepal?",
+            options: [
+                "Bhimsen Thapa",
+                "Jung Bahadur Rana",
+                "Bishweshwar Prasad Koirala",
+                "Girija Prasad Koirala"
+            ],
+            correctAnswer: 0
+        },
+        {
+            question: "What was the first national park established in Nepal?",
+            options: [
+                "Chitwan National Park",
+                "Sagarmatha National Park",
+                "Langtang National Park",
+                "Bardiya National Park"
+            ],
+            correctAnswer: 0
+        },
+        {
+            question: "Who was the first Nepali to climb Mount Everest?",
+            options: [
+                "Tenzing Norgay",
+                "Ang Rita Sherpa",
+                "Babu Chiri Sherpa",
+                "Apa Sherpa"
+            ],
+            correctAnswer: 0
+        },
+        {
+            question: "When was the first democratic election held in Nepal?",
+            options: [
+                "1959",
+                "1991",
+                "2008",
+                "2017"
+            ],
+            correctAnswer: 0
+        }
+    ];
+
     // Get items from translations
     const itemKeys = Object.keys(t.raw('items'));
     
@@ -223,6 +270,9 @@ export default function FirstsOfNepal() {
                     </div>
                 </div>
             </div>
+            
+            {/* Add Quiz Component */}
+            <FirstOfNepalQuiz locale={typeof params.locale === 'string' ? params.locale : 'en'} />
         </div>
     );
 }

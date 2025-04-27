@@ -1,5 +1,15 @@
 {
     "firstsOfNepal": {
+      "takeQuiz": "Take Quiz",
+      "quizTitle": "First of Nepal Quiz",
+      "nextQuestion": "Next Question",
+      "quizComplete": "Quiz Complete!",
+      "perfectScore": "Perfect! You know your Nepali history well!",
+      "goodScore": "Good job! You know quite a bit about Nepal's history.",
+      "keepLearning": "Keep learning! You'll get better with practice.",
+      "tryAgain": "Try Again",
+      "questionProgress": "Question {current} of {total}",
+      "submitAnswer": "Submit Answer",
       "items": {
         "bhimsenThapa": {
           "category": "Prime Minister",
@@ -285,7 +295,7 @@
           "category": "Female Football Captain",
           "name": "Rama Singh",
           "year": "1983",
-          "description": "First female captain to lead Nepal’s women’s football Bagmati team, Singh began her journey in 1983. At the 1986 Asian Cup, she captained Nepal in its international debut.",
+          "description": "First female captain to lead Nepal's women's football Bagmati team, Singh began her journey in 1983. At the 1986 Asian Cup, she captained Nepal in its international debut.",
           "imagePath": "/images/first-of-nepal/suman-b-tamang.jpg"
         },
         "puspaBhandari": {
@@ -397,7 +407,7 @@
           "category": "Female Cricketer",
           "name": "Rubina Chhetri",
           "year": "2011",
-          "description": "First Nepali woman to captain the national women’s cricket team in an international match.",
+          "description": "First Nepali woman to captain the national women's cricket team in an international match.",
           "imagePath": "/images/first-of-nepal/rubina-chhetri.jpg"
         },
         "kiranBhattarai": {
@@ -565,12 +575,12 @@
           "category": "International Flight",
           "name": "Royal Nepal Airlines",
           "year": "1958",
-          "description": "The first international flight by Nepal’s national carrier, connecting Kathmandu to Patna, India.",
+          "description": "The first international flight by Nepal's national carrier, connecting Kathmandu to Patna, India.",
           "imagePath": "/images/first-of-nepal/royal-nepal-airlines.jpg"
         },
         "divyaUpadesh": {
           "category": "Printed Book",
-          "name": "Prithvi Narayan Shah’s Divya Upadesh",
+          "name": "Prithvi Narayan Shah's Divya Upadesh",
           "year": "1867",
           "description": "The first book printed in Nepali, a collection of teachings by the founder of modern Nepal.",
           "imagePath": "/images/first-of-nepal/divya-upadesh.jpg"

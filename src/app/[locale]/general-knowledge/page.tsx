@@ -111,16 +111,13 @@ export default function NepalGKQuiz() {
   // Initialize with unshuffled questions, then shuffle on client
   useEffect(() => {
     setIsMounted(true);
-    setShuffledQuestions([...filteredQuestions].sort(() => Math.random() - 0.5));
+    setShuffledQuestions([...filteredQuestions]);
   }, [filteredQuestions]);
 
   // When category changes, reset game state
   useEffect(() => {
     setIsMounted(true);
-  
-    // Reset everything and shuffle only once when category changes
-    const shuffled = [...filteredQuestions].sort(() => Math.random() - 0.5);
-    setShuffledQuestions(shuffled);
+    setShuffledQuestions([...filteredQuestions]);
     setCurrentQuestionIndex(0);
     setIsAnswered(false);
     setIsCorrect(false);
@@ -166,7 +163,7 @@ export default function NepalGKQuiz() {
 
   // Restart the game
   const restartGame = () => {
-    setShuffledQuestions([...filteredQuestions].sort(() => Math.random() - 0.5));
+    setShuffledQuestions([...filteredQuestions]);
     setCurrentQuestionIndex(0);
     setIsAnswered(false);
     setIsCorrect(false);
