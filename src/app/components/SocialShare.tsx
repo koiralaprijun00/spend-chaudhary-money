@@ -16,9 +16,11 @@ interface ShareButtonProps {
   buttonType?: 'primary' | 'neutral' | 'success'; // Button styling
   iconOnly?: boolean;         // Whether to show only the icon (no text)
   onShareComplete?: () => void; // Callback after sharing
+  summaryRef?: React.RefObject<HTMLDivElement | null>; // Reference to the summary section
+  totalSpent?: number;        // Total amount spent
 }
 
-export default function ShareButton({
+export default function SocialShare({
   url,
   title,
   text,
@@ -28,7 +30,9 @@ export default function ShareButton({
   className = '',
   buttonType = 'primary',
   iconOnly = false,
-  onShareComplete
+  onShareComplete,
+  summaryRef,
+  totalSpent
 }: ShareButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showCopiedMessage, setShowCopiedMessage] = useState(false);

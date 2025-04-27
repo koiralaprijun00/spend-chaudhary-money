@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import ProductCard from "../../components/ProductCard";
-import SocialShare from "../../components/SocialShare";
+import SocialShare from "@/app/components/SocialShare";
 import { getProductsByLocale } from "../../data/spend-binod-money/getProducts"; // Import utility
 import { Product } from "../../data/spend-binod-money/product"; // Import Product type
 import GameButton from "../../components/ui/GameButton";
@@ -183,7 +183,14 @@ export default function Home() {
       </div>
       <div className="md:block hidden p-6 bg-white rounded-lg shadow-lg sticky top-5 h-screen overflow-y-auto">
         <div className="flex flex-col h-full">
-          <SocialShare summaryRef={purchasesRef} totalSpent={totalSpent} />
+          <SocialShare 
+            summaryRef={purchasesRef} 
+            totalSpent={totalSpent}
+            text={`I've spent ${totalSpent} on Piro Momo! Check out my spending summary.`}
+            hashtags={['piromomo', 'nepal']}
+            buttonType="primary"
+            className="mb-4"
+          />
           <div className="flex flex-col h-full">
             <div className="py-6 mb-4 border-b-2 border-gray-600 border-dashed">
               <h1 className="text-3xl mb-4 font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
