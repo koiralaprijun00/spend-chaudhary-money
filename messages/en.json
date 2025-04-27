@@ -1,5 +1,12 @@
 {
   "Translations":{
+    "twitter": "Twitter",
+    "shareDefaultText": "I discovered something cool on Piromomo!",
+    "copied": "Copied!",
+    "copyLink": "Copy Link",
+    "facebook": "Facebook",
+    "whatsapp": "WhatsApp",
+    "linkedin": "LinkedIn",
     "sharePrefix": "I just played",
     "scoreOutOf": "and scored {score} out of {maxScore}",
 "scoreOnly": "and scored {score} points",
@@ -253,7 +260,6 @@
     "nextClue": "Next Clue",
     "submitGuess": "Submit Guess",
     "nextFestival": "Next Festival",
-    "score": "Score",
     "timer": "TIMER",
     "enterDistrict": "Enter District",
     "giveUp": "Give Up",
@@ -414,6 +420,14 @@
         "falgun": "Falgun",
         "chaitra": "Chaitra"
       }
-    }
+    },
+    "shareYourResults": "Share Your Results",
+    "score": "Score",
+    "achievements": "Achievements",
+    "share": "Share",
+    "shareOn": "Share on",
+    "linkCopied": "Link copied to clipboard!",
+    "shareTitle": "Share Piromomo",
+    "shareDescription": "Share this amazing Nepali game platform with your friends!"
   }
 }
