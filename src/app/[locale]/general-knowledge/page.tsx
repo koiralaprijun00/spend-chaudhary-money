@@ -108,13 +108,7 @@ export default function NepalGKQuiz() {
   // Shuffle questions at the start
   const [shuffledQuestions, setShuffledQuestions] = useState<typeof gkQuestions>([]);
 
-  // Initialize with unshuffled questions, then shuffle on client
-  useEffect(() => {
-    setIsMounted(true);
-    setShuffledQuestions([...filteredQuestions]);
-  }, [filteredQuestions]);
-
-  // When category changes, reset game state
+  // Initialize and handle category changes
   useEffect(() => {
     setIsMounted(true);
     setShuffledQuestions([...filteredQuestions]);
@@ -123,8 +117,8 @@ export default function NepalGKQuiz() {
     setIsCorrect(false);
     setFeedback("");
     setScore(0);
-  }, [filteredQuestions]);
-  
+    setShowConfetti(false);
+  }, [selectedCategory]); // Only depend on selectedCategory changes
 
   // Current question
   const currentQuestion = shuffledQuestions[currentQuestionIndex];
