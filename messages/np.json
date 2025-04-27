@@ -171,11 +171,12 @@
      "noMatches": "हामीले \"{searchTerm}\" का लागि कुनै मिलान फेला पार्न सकेनौं।",
     "clearSearch": "खोज मेटाउनुहोस्",
     "pattalagauTitle": "पत्ता लागाउ",
-      "geographyBadge": "भूगोल",
-      "switchLanguage": "नेपाली",
-      "pattalagau": {
-        "description": "यस स्थान-खोज्ने खेलमा आफ्नो नेपालको भूगोल ज्ञान परीक्षण गर्नुहोस्!"
-      },
+    "geographyBadge": "भूगोल",
+    "switchLanguage": "नेपाली",
+    "pattalagauDescription": "यस स्थान-खोज्ने खेलमा आफ्नो नेपालको भूगोल ज्ञान परीक्षण गर्नुहोस्!",
+    "pattalagau": {
+      "description": "यस स्थान-खोज्ने खेलमा आफ्नो नेपालको भूगोल ज्ञान परीक्षण गर्नुहोस्!"
+    },
     "more": "थप",
     "allCategories" : "सबै श्रेणीहरू",
     "finalScoreMessage": "तपाईंको अन्तिम  {score} अंक छन्!",

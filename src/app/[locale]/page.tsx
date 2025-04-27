@@ -32,13 +32,13 @@ export default function HomePage() {
 >
   {t('piromomo')}
 </h1>
-        </div>
+</div>
 
         {/* Fun Card Section - Prioritize content and add loading strategy */}
         <div className="w-full mb-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl">
           
           {/* Spend Binod Chaudhary's Money Card - First card optimized as LCP element */}
-          <Link href="/spend" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
+          <Link href="/spend" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl" aria-label={`${t('spendBinodTitle')} - ${t('spendBinodDescription')}`}>
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-purple-700 to-pink-700 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-purple-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
@@ -69,7 +69,7 @@ export default function HomePage() {
           </Link>
 
           {/* Guess the Festival Card */}
-          <Link href="/guess-festival" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-orange-300 rounded-3xl">
+          <Link href="/guess-festival" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-orange-300 rounded-3xl" aria-label={`${t('games.guessFestival.title')} - ${t('games.guessFestival.description')}`}>
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-red-700 to-amber-600 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-orange-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
@@ -100,7 +100,7 @@ export default function HomePage() {
           </Link>
 
           {/* Kings of Nepal Card */}
-          <Link href="/kings-of-nepal" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
+          <Link href="/kings-of-nepal" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl" aria-label={`${t('kingsOfNepal.title')} - ${t('kingsOfNepal.description')}`}>
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-teal-700 to-blue-500 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-blue-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
@@ -131,7 +131,7 @@ export default function HomePage() {
           </Link>
          
           {/* Name District */}
-          <Link href="/name-districts" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
+          <Link href="/name-districts" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl" aria-label={`${t('nameDistrictTitle')} - ${t('nameDistrictDescription')}`}>
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-cyan-700 to-emerald-500 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-blue-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
@@ -162,7 +162,7 @@ export default function HomePage() {
           </Link>
 
           {/* Gau Khane Katha */}
-          <Link href="/gau-khane-katha" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-green-300 rounded-3xl">
+          <Link href="/gau-khane-katha" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-green-300 rounded-3xl" aria-label={`${t('RiddlesGame.title')} - ${t('RiddlesGame.subtitle')}`}>
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-lime-700 to-cyan-500 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-green-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
@@ -193,7 +193,7 @@ export default function HomePage() {
           </Link>
 
           {/* Nepal GK Quiz Card */}
-          <Link href="/general-knowledge" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
+          <Link href="/general-knowledge" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl" aria-label={`${t('nepalGk.titleshort') || 'Nepal General Knowledge Quiz'} - ${t('nepalGk.shortdescription') || 'Test your knowledge about Nepal with this quiz!'}`}>
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-indigo-700 to-lime-600 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-blue-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
@@ -224,7 +224,7 @@ export default function HomePage() {
           </Link>
 
           {/* PattaLagau Geographic Game Card */}
-          <Link href="/patta-lagau" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-emerald-300 rounded-3xl">
+          <Link href="/patta-lagau" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-emerald-300 rounded-3xl" aria-label={`${t('pattalagauTitle') || 'Patta Lagau'} - ${t('pattalagauDescription') || "Test your knowledge of Nepal's geography"}`}>
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-green-700 to-sky-500 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-emerald-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">

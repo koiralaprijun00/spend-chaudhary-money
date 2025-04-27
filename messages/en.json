@@ -175,9 +175,10 @@
     "pattalagauTitle": "Patta Lagau",
     "geographyBadge": "Geography",
     "switchLanguage": "English",
-  "pattalagau": {
-    "description": "Test your Nepal geography knowledge in this location-finding game!"
-  },
+    "pattalagauDescription": "Test your Nepal geography knowledge in this location-finding game!",
+    "pattalagau": {
+      "description": "Test your Nepal geography knowledge in this location-finding game!"
+    },
     "more": "More",
     "allCategories": "All Categories",
     "finalScoreMessage": "You scored {score} points!",

@@ -426,8 +426,8 @@ export default function GeoNepalGame() {
                             href={`https://en.wikipedia.org/wiki/${encodeURIComponent(currentLocation.name)}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-3 py-2 rounded-lg flex items-center justify-center transition-colors hover:bg-gray-100 text-sm"
-                            title="Wikipedia"
+                            className="text-blue-600 hover:text-blue-800 font-medium"
+                            aria-label={`Read more about ${currentLocation.name} on Wikipedia (opens in new tab)`}
                           >
                             <Image 
                               src="/wiki-icon.png" 
@@ -442,8 +442,8 @@ export default function GeoNepalGame() {
                             href={`https://www.google.com/maps/search/${encodeURIComponent(currentLocation.name)}+nepal/@${currentLocation.lat},${currentLocation.lng},12z`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-3 py-2 rounded-lg flex items-center justify-center transition-colors hover:bg-gray-100 text-sm"
-                            title="Google Maps"
+                            className="text-blue-600 hover:text-blue-800 font-medium"
+                            aria-label={`View ${currentLocation.name} on Google Maps (opens in new tab)`}
                           >
                             <Image 
                               src="/google-maps-icon.png" 

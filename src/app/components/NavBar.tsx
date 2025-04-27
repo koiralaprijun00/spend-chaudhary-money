@@ -119,10 +119,10 @@ const Navbar = () => {
                 {/* Top Row: Logo, Brand Name, Locale Switcher, Twitter Link (all screens) */}
                 <div className="flex items-center justify-between">
                     {/* Left: Logo and Brand Name */}
-                    <Link href="/" className="flex items-center group">
+                    <Link href="/" className="flex items-center group" aria-label="Piromomo Home">
                         <Image 
                             src="/jhol-momo.png" 
-                            alt="" 
+                            alt="Piromomo Logo" 
                             width={50} 
                             height={50} 
                             className="mr-2 ml-2 transform group-hover:scale-110 transition-transform duration-200" 
