@@ -1,5 +1,11 @@
 {
   "Translations":{
+    "sharePrefix": "I just played",
+    "scoreOutOf": "and scored {score} out of {maxScore}",
+"scoreOnly": "and scored {score} points",
+"achievementSingle": "I earned: {achievement}",
+"achievementMultiple": "I earned: {achievements}",
+"shareCallToAction": "Can you beat my score? Try it on Piromomo!",
     "firstsOfNepal": {
       "takeQuiz": "Take the Quiz"
     },
