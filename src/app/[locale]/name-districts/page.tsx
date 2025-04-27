@@ -132,11 +132,13 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
     if (!currentGuess.trim()) return;
 
     const currentDistrict = randomizedDistricts[currentDistrictIndex];
+    if (!currentDistrict) return;
+
     const guess = currentGuess.trim().toLowerCase();
     const isCorrect =
       currentDistrict.id.toLowerCase() === guess ||
       safeTDistricts(currentDistrict.id).toLowerCase() === guess ||
-      (isNepali ? currentDistrict.translations.ne.toLowerCase() : currentDistrict.translations.en.toLowerCase()) === guess;
+      (isNepali ? currentDistrict.translations?.ne?.toLowerCase() : currentDistrict.translations?.en?.toLowerCase()) === guess;
 
     if (isCorrect) {
       handleCorrectAnswer(currentDistrict);
