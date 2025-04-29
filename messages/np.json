@@ -2,10 +2,10 @@
   "Translations": {
     "twitter": "ट्विटर",
     "facebook": "फेसबुक",
-    "whatsapp": "ह्वाट्सएप",
-    "shareDefaultText": "मैले पिरोमोमोमा केही रमाइलो कुरा पत्ता लगाएँ!",
+    "whatsapp": "व्हाट्सएप",
+    "shareDefaultText": "मैले पिरोमोमोमा केही रमाइलो चीज भेटें!",
     "linkedin": "लिंक्डइन",
-    "copied": "प्रतिलिपि गरियो!",
+    "copied": "कपी गरियो!",
     "firstsOfNepal": {
       "takeQuiz": "प्रश्नोत्तरी खेल्नुहोस्"
     },
@@ -415,17 +415,20 @@
         "chaitra": "चैत"
       }
     },
-    "sharePrefix": "मैले भर्खरै खेलेँ",
-    "scoreOutOf": "र {maxScore} मध्ये {score} अंक प्राप्त गरें",
+    "sharePrefix": "मैले भर्खरै खेलें",
+    "scoreOutOf": "र {maxScore} मध्ये {score} स्कोर गरें",
     "scoreOnly": "र {score} अंक प्राप्त गरें",
     "achievementSingle": "मैले प्राप्त गरें: {achievement}",
     "achievementMultiple": "मैले प्राप्त गरें: {achievements}",
-    "shareCallToAction": "के तपाईं मेरो स्कोर जित्न सक्नुहुन्छ? पिरोमोमोमा प्रयास गर्नुहोस्!",
+    "shareCallToAction": "तपाईं मेरो स्कोर भन्दा बढी गर्न सक्नुहुन्छ? पिरोमोमोमा प्रयास गर्नुहोस्!",
     "shareYourResults": "आफ्नो नतिजा साझा गर्नुहोस्",
     "shareOn": "यसमा साझा गर्नुहोस्",
     "copyLink": "लिंक कपी गर्नुहोस्",
     "linkCopied": "लिंक क्लिपबोर्डमा कपी गरियो!",
     "shareTitle": "पिरोमोमो साझा गर्नुहोस्",
-    "shareDescription": "यो अद्भुत नेपाली खेल प्लेटफर्म आफ्ना साथीहरूसँग साझा गर्नुहोस्!"
+    "shareDescription": "यो अद्भुत नेपाली खेल प्लेटफर्म आफ्ना साथीहरूसँग साझा गर्नुहोस्!",
+    "nepalihawa": {
+      "title": "नेपाली हावा"
+    }
   }
 }
