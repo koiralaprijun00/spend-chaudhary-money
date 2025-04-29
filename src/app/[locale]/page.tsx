@@ -319,23 +319,6 @@ export default function HomePage() {
               </div>
             </div>
           </Link>
-
-        </div>
-
-        {/* Content Separator with visual element */}
-        <div className="w-full flex flex-col items-center justify-center my-8">
-          <div className="relative w-3/4 max-w-md h-1 bg-gradient-to-r from-transparent via-orange-300 to-transparent">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white rounded-full p-2 shadow-md">
-              <span className="text-2xl">🍜</span>
-            </div>
-          </div>
-
-          {/* AdSense */}
-          <div className="w-full mx-auto flex justify-center items-center mt-12">
-            <div style={{ width: "100%", height: "250px" }}>
-              <AdSense adSlot="5025391116" />
-            </div>
-          </div>
         </div>
       </div>
       
