@@ -258,7 +258,7 @@ const LogoQuizGame = () => {
   };
 
   // Handle Enter key press
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>, logoId: string) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, logoId: string) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       checkAnswer(logoId);
@@ -597,20 +597,19 @@ const LogoQuizGame = () => {
                           
                           {/* Answer Input */}
                           <div className="mt-auto">
-                            <input
-                              type="text"
-                              value={answers[logo.id]}
-                              onChange={(e) => handleInputChange(logo.id, e.target.value)}
-                              onBlur={() => checkAnswer(logo.id)}
-                              onKeyPress={(e) => handleKeyPress(e, logo.id)}
-                              placeholder={t('logoQuiz.enterLogoName') || "Enter logo name..."}
-                              className={`w-full p-2 text-base sm:text-sm border rounded-md ${
-                                correctAnswers[logo.id] 
-                                  ? 'border-green-500 bg-green-50 text-green-700' 
-                                  : 'border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
-                              }`}
-                              disabled={correctAnswers[logo.id]}
-                            />
+                          <input
+  type="text"
+  value={answers[logo.id]}
+  onChange={(e) => handleInputChange(logo.id, e.target.value)}
+  onKeyDown={(e) => handleKeyDown(e, logo.id)}
+  placeholder={t('logoQuiz.enterLogoName') || "Enter logo name..."}
+  className={`w-full p-2 text-base sm:text-sm border rounded-md ${
+    correctAnswers[logo.id] 
+      ? 'border-green-500 bg-green-50 text-green-700' 
+      : 'border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+  }`}
+  disabled={correctAnswers[logo.id]}
+/>
                             {feedback[logo.id] && (
                               <div className={`text-xs mt-1 ${
                                 correctAnswers[logo.id] ? 'text-green-600' : 'text-red-600'

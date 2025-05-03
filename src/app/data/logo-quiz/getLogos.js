@@ -243,7 +243,7 @@ const logoData = {
         imagePath: '/yo-chineu/kumari-bank.png',
         difficulty: 'hard',
         category: 'बैंकिङ',
-        acceptableAnswers: ['कुमारी बैंक', 'कुमारी', 'Kumari Bank', 'कुमारी बैंक लिमिटेड']
+        acceptableAnswers: ['कुमारी बैंक', 'कुमारी', 'Kumari Bank', 'kumari', 'kumari bank', 'कुमारी बैंक लिमिटेड']
       },
       {
         id: 'laxmi_bank',

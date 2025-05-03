@@ -60,7 +60,7 @@
     "submitting": "Submitting..."
   },
     "logoQuiz": {
-    "proTip": "Pro Tip: Images gradually become clearer with each incorrect guess and fully reveal after 5 attempts!",
+    "proTip": "Pro Tip: Images gradually become clearer with each incorrect guess and fully reveal after 3 attempts!",
     "finishQuiz": "Finish Quiz",  
     "pageTitle": "Nepal Logo Quiz",
     "pageDescription": "Test your knowledge of popular Nepali and international brand logos. How many can you recognize?",
