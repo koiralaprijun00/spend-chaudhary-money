@@ -186,7 +186,7 @@ export default function QuizSection({
                     role="status"
                     aria-live="polite"
                   >
-                    {isCorrect ? feedback : "Incorrect. Try again!"}
+                    {isCorrect ? feedback : safeT('nepalGk.incorrectFeedback', 'Incorrect. Try again!')}
                   </div>
                 )}
               </div>

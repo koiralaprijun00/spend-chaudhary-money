@@ -221,6 +221,7 @@
       "greatScore": "Great job! You know Nepal well!",
       "goodScore": "Good effort! Keep learning about Nepal!",
       "tryAgain": "Keep exploring Nepal's rich knowledge!",
+      "incorrectFeedback": "Incorrect. Try again!",
     "quizComplete": "Quiz Complete!",
     "finalScoreMessage": "Your final score is {score} out of {total}.",
     "playAgain": "Play Again",
