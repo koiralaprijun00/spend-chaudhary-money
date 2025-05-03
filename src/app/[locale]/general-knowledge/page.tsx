@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import QuizSection from "../nepal-gk-components/QuizSection";
 import { getQuestionsByLocale } from "../../data/general-knowledge/getQuestions";
@@ -8,6 +8,14 @@ import AdSenseGoogle from "../../components/AdSenseGoogle";
 import GameButton from "../../components/ui/GameButton";
 import CustomDropdown from "../../components/ui/CustomDropdown";
 import ContainedConfetti from "../../lib/confetti";
+
+export interface Question {
+  id: string;
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  category?: string;
+}
 
 function createSafeT(t: ReturnType<typeof useTranslations>) {
   return (key: string, defaultValue = "", params = {}) => {
@@ -35,16 +43,22 @@ export default function NepalGKQuiz() {
   const locale = useLocale();
 
   // Load questions based on locale
-  const gkQuestions = getQuestionsByLocale(locale);
+  const gkQuestions = getQuestionsByLocale(locale) as Question[];
 
   // Game state
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
-  const [isAnswered, setIsAnswered] = useState<boolean>(false);
-  const [isCorrect, setIsCorrect] = useState<boolean>(false);
-  const [feedback, setFeedback] = useState<string>("");
+  const [feedbackState, setFeedbackState] = useState<{
+    isAnswered: boolean;
+    isCorrect: boolean;
+    feedback: string;
+  }>({
+    isAnswered: false,
+    isCorrect: false,
+    feedback: "",
+  });
   const [score, setScore] = useState<number>(0);
-  const [isMounted, setIsMounted] = useState<boolean>(false);
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   // Add category filter state
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -62,14 +76,14 @@ export default function NepalGKQuiz() {
     const categoryCountMap: Record<string, { originalNames: string[], count: number }> = {};
   
     gkQuestions.forEach((q) => {
-      const normalizedName = normalizeCategory(q.category);
+      const normalizedName = normalizeCategory(q.category || '');
       if (!categoryCountMap[normalizedName]) {
         categoryCountMap[normalizedName] = {
-          originalNames: [q.category],
+          originalNames: [q.category || ''],
           count: 0
         };
-      } else if (!categoryCountMap[normalizedName].originalNames.includes(q.category)) {
-        categoryCountMap[normalizedName].originalNames.push(q.category);
+      } else if (!categoryCountMap[normalizedName].originalNames.includes(q.category || '')) {
+        categoryCountMap[normalizedName].originalNames.push(q.category || '');
       }
       categoryCountMap[normalizedName].count++;
     });
@@ -109,80 +123,98 @@ export default function NepalGKQuiz() {
     
     // Filter questions that match any of the original category names
     return gkQuestions.filter((q) => 
-      selectedCategoryObj.originalNames.includes(q.category)
+      selectedCategoryObj.originalNames.includes(q.category || '')
     );
   }, [selectedCategory, gkQuestions, categories]);
 
-  // Shuffle questions at the start
-  const [shuffledQuestions, setShuffledQuestions] = useState<typeof gkQuestions>([]);
+  // Memoize shuffled questions
+  const shuffledQuestions = useMemo(() => {
+    return shuffleArray(filteredQuestions);
+  }, [filteredQuestions]);
 
   // Initialize and handle category changes
   useEffect(() => {
-    setIsMounted(true);
-    setShuffledQuestions(shuffleArray(filteredQuestions));
     setCurrentQuestionIndex(0);
-    setIsAnswered(false);
-    setIsCorrect(false);
-    setFeedback("");
+    setFeedbackState({
+      isAnswered: false,
+      isCorrect: false,
+      feedback: "",
+    });
     setScore(0);
     setShowConfetti(false);
-  }, [selectedCategory]); // Only depend on selectedCategory changes
+  }, [selectedCategory]);
 
   // Current question
   const currentQuestion = shuffledQuestions[currentQuestionIndex];
 
   // Handle user's guess
-  const handleGuess = (selectedOption: string) => {
-    if (isAnswered) return;
-
+  const handleGuess = useCallback((selectedOption: string) => {
+    if (feedbackState.isAnswered || isProcessing) return;
+    
+    setIsProcessing(true);
     const isGuessCorrect = selectedOption === currentQuestion.correctAnswer;
 
     if (isGuessCorrect) {
       setScore((prevScore) => prevScore + 10);
-      setFeedback(`+10 ${t("points") || "points"}`);
-      setIsCorrect(true);
+      setFeedbackState({
+        isAnswered: true,
+        isCorrect: true,
+        feedback: `+10 ${t("points") || "points"}`,
+      });
     } else {
-      setFeedback(t("incorrect") || "Incorrect");
-      setIsCorrect(false);
+      setFeedbackState({
+        isAnswered: true,
+        isCorrect: false,
+        feedback: t("incorrect") || "Incorrect",
+      });
     }
 
-    setIsAnswered(true);
-  // Check if this is the last question and trigger confetti
-  if (currentQuestionIndex === shuffledQuestions.length - 1) {
-    setShowConfetti(true);
-  }
-};
+    // Check if this is the last question and trigger confetti
+    if (currentQuestionIndex === shuffledQuestions.length - 1) {
+      setShowConfetti(true);
+    }
+
+    // Prevent spam clicks
+    setTimeout(() => setIsProcessing(false), 300);
+  }, [currentQuestion, currentQuestionIndex, feedbackState.isAnswered, isProcessing, shuffledQuestions.length, t]);
 
   // Move to next question
-  const handleNextQuestion = () => {
+  const handleNextQuestion = useCallback(() => {
     if (currentQuestionIndex < shuffledQuestions.length - 1) {
-      setCurrentQuestionIndex((prev) => prev + 1);
-      setIsAnswered(false);
-      setIsCorrect(false);
-      setFeedback("");
+      setFeedbackState({
+        isAnswered: false,
+        isCorrect: false,
+        feedback: "",
+      });
+      
+      // Use a small delay before changing the question
+      setTimeout(() => {
+        setCurrentQuestionIndex((prev) => prev + 1);
+      }, 50);
     }
-  };
+  }, [currentQuestionIndex, shuffledQuestions.length]);
 
   // Restart the game
-  const restartGame = () => {
-    setShuffledQuestions([...filteredQuestions]);
+  const restartGame = useCallback(() => {
     setCurrentQuestionIndex(0);
-    setIsAnswered(false);
-    setIsCorrect(false);
-    setFeedback("");
+    setFeedbackState({
+      isAnswered: false,
+      isCorrect: false,
+      feedback: "",
+    });
     setScore(0);
-    setShowConfetti(false); // Reset confetti state
-  };
+    setShowConfetti(false);
+  }, []);
 
   // Handle category change
-  const handleCategoryChange = (category: string | number) => {
-      if (typeof category === "string") {
-          setSelectedCategory(category);
-      }
-  };
+  const handleCategoryChange = useCallback((category: string | number) => {
+    if (typeof category === "string") {
+      setSelectedCategory(category);
+    }
+  }, []);
 
   // Share score
-  const handleShareScore = async () => {
+  const handleShareScore = useCallback(async () => {
     const categoryText = selectedCategory === "all" ? "" : ` (${selectedCategory} category)`;
     const shareMessage = t("nepalGk.shareMessage", {
       score,
@@ -206,7 +238,7 @@ export default function NepalGKQuiz() {
       await navigator.clipboard.writeText(shareMessage);
       alert(t("nepalGk.clipboardMessage"));
     }
-  };
+  }, [score, selectedCategory, t]);
 
   return (
     <div className="min-h-screen w-full">
@@ -271,7 +303,7 @@ export default function NepalGKQuiz() {
 
             <div className="md:w-2/3 w-full">
               <div className="bg-gradient-to-br from-blue-600 to-red-500 p-1 rounded-xl shadow-lg">
-              <div className={`rounded-lg p-3 md:p-6 ${isAnswered && currentQuestionIndex === shuffledQuestions.length - 1 ? 'bg-gray-50' : 'bg-white'}`}>
+              <div className={`rounded-lg p-3 md:p-6 ${feedbackState.isAnswered && currentQuestionIndex === shuffledQuestions.length - 1 ? 'bg-gray-50' : 'bg-white'}`}>
                   <div className="md:hidden mb-6">
                   <h1 className="text-xl md:text-2xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-2">
                       {safeT("nepalGk.title", "Nepal GK Quiz")}
@@ -302,7 +334,7 @@ export default function NepalGKQuiz() {
                     </div>
                   </div>
 
-                  {(shuffledQuestions.length === 0 && isMounted) ? (
+                  {(shuffledQuestions.length === 0) ? (
   <div className="text-center py-8">
     <p className="text-lg text-gray-600">
       {safeT("nepalGk.noQuestionsInCategory", "No questions available in this category.")}
@@ -318,22 +350,22 @@ export default function NepalGKQuiz() {
 ) : currentQuestion ? (
   <>
     {/* Only show QuizSection if it's not the last question that's been answered */}
-    {!(isAnswered && currentQuestionIndex === shuffledQuestions.length - 1) && (
+    {!(feedbackState.isAnswered && currentQuestionIndex === shuffledQuestions.length - 1) && (
       <QuizSection
         currentQuestion={currentQuestion}
-        isAnswered={isAnswered}
+        isAnswered={feedbackState.isAnswered}
         handleGuess={handleGuess}
         handleNextQuestion={handleNextQuestion}
         totalQuestions={shuffledQuestions.length}
         currentIndex={currentQuestionIndex}
         isLastQuestion={currentQuestionIndex === shuffledQuestions.length - 1}
-        feedback={feedback}
-        isCorrect={isCorrect}
+        feedback={feedbackState.feedback}
+        isCorrect={feedbackState.isCorrect}
       />
     )}
                       
       {/* Show final screen only on the last question after it's answered */}
-      {isAnswered && currentQuestionIndex === shuffledQuestions.length - 1 && (
+      {feedbackState.isAnswered && currentQuestionIndex === shuffledQuestions.length - 1 && (
   <div className=" text-center p-8 relative overflow-hidden">
     {/* Contained confetti inside this div */}
     <ContainedConfetti duration={6000} />
