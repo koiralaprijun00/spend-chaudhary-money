@@ -52,7 +52,7 @@ const LogoQuizGame = () => {
 
   const MAX_BLUR_LEVEL = 4;
   const MIN_BLUR_LEVEL = 0;
-  const MAX_ATTEMPTS = 5;
+  const MAX_ATTEMPTS = 3;
 
   // Load saved progress from localStorage
   useEffect(() => {
@@ -244,10 +244,10 @@ const LogoQuizGame = () => {
       // Determine feedback message
       let feedbackMessage = t('logoQuiz.incorrect') || 'Incorrect. Try again!';
       
-      if (currentAttempts >= MAX_ATTEMPTS) {
-        feedbackMessage += ' Image is now fully revealed.';
-      } else {
-        feedbackMessage += ' The image is now clearer!';
+      if (currentAttempts === 1) {
+        feedbackMessage += ' ' + (t('logoQuiz.imageGettingClearer') || 'Image is getting clearer.');
+      } else if (currentAttempts === 2) {
+        feedbackMessage += ' ' + (t('logoQuiz.imageClearNow') || 'Image is clear now.');
       }
       
       setFeedback(prev => ({
@@ -373,21 +373,18 @@ const LogoQuizGame = () => {
   const getBlurStyle = (logoId: string) => {
     if (correctAnswers[logoId]) return 'blur-0'; // No blur when correct
     
-    // Calculate blur based on attempts - this ensures a gradual progression
+    // Calculate blur based on attempts
     const currentAttempts = attemptCounts[logoId] || 0;
     
     // If all attempts used, no blur
     if (currentAttempts >= MAX_ATTEMPTS) return 'blur-0';
     
-    // We have 5 attempts and 4 blur levels (4,3,2,1,0)
-    // Map attempts to blur level
+    // New blur progression:
     switch (currentAttempts) {
-      case 0: return 'blur-lg'; // Starting blur (MAX_BLUR_LEVEL = 4)
-      case 1: return 'blur-md'; // After 1 wrong attempt
-      case 2: return 'blur-md'; // After 2 wrong attempts
-      case 3: return 'blur-sm'; // After 3 wrong attempts
-      case 4: return 'blur-sm'; // After 4 wrong attempts
-      default: return 'blur-0';  // After 5 wrong attempts
+      case 0: return 'blur-md'; // Initial state - medium blur
+      case 1: return 'blur-sm'; // After 1 wrong attempt - slight blur
+      case 2: return 'blur-0';  // After 2 wrong attempts - clear
+      default: return 'blur-0'; // After 3 wrong attempts - clear
     }
   };
 
@@ -616,7 +613,7 @@ const LogoQuizGame = () => {
                             />
                             {feedback[logo.id] && (
                               <div className={`text-xs mt-1 ${
-                                feedback[logo.id].includes('Correct') ? 'text-green-600' : 'text-red-600'
+                                correctAnswers[logo.id] ? 'text-green-600' : 'text-red-600'
                               }`}>
                                 {feedback[logo.id]}
                               </div>
