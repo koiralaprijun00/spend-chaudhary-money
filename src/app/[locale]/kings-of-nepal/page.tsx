@@ -196,7 +196,7 @@ export default function KingsOfNepalQuiz() {
                 </div>
 
                 <div className="mb-6">
-                  <h2 className="text-sm mb-2">Progress</h2>
+                  <h2 className="text-sm mb-2">{t('progress')}</h2>
                   <div className="bg-gradient-to-r from-blue-600 to-red-500 p-0.5 rounded-lg">
                     <div className="bg-white rounded-md p-2 flex justify-between items-center">
                       <div className="flex items-center">
