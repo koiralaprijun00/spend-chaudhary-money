@@ -223,16 +223,14 @@ export default function HomePage() {
             </div>
           </Link>
 
-          {/* PattaLagau Geographic Game Card */}
+          {/*
           <Link href="/patta-lagau" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-emerald-300 rounded-3xl">
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-green-700 to-sky-500 rounded-3xl shadow-lg overflow-hidden">
-              {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-emerald-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
                 <span>🏔️</span>
                 <span>{t('geographyBadge') || 'Geography'}</span>
               </div>
               
-              {/* Main content */}
               <div className="flex items-center relative z-10">
                 <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white shadow-md mr-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden">
@@ -252,6 +250,42 @@ export default function HomePage() {
                   </h2>
                   <p className="mt-1 text-white text-opacity-90">
                     {t('pattalagau.description') || 'Test your Nepal geography knowledge in this location-finding game!'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Link>
+          */}
+
+          {/* Logo Chineu ta? Game Card */}
+          <Link href="/logo-quiz" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-purple-700 to-pink-500 rounded-3xl shadow-lg overflow-hidden">
+              {/* Badge */}
+              <div className="absolute top-3 right-3 bg-white text-purple-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
+                <span>🎨</span>
+                <span>{t('logoQuiz.badge') || 'Logo Quiz'}</span>
+              </div>
+              
+              {/* Main content */}
+              <div className="flex items-center relative z-10">
+                <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white shadow-md mr-4">
+                  <div className="w-16 h-16 rounded-full overflow-hidden">
+                    <Image
+                      src="/logo-chineu.png" 
+                      alt="Logo Quiz"
+                      width={64}
+                      height={64}
+                      loading="lazy"
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">
+                    {t('logoQuiz.title') || 'Logo Chineu ta?'}
+                  </h2>
+                  <p className="mt-1 text-white text-opacity-90">
+                    {t('logoQuiz.subtitle') || 'Test your brand recognition skills'}
                   </p>
                 </div>
               </div>

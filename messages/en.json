@@ -93,7 +93,10 @@
     "howToPlay3": "Use hints if you get stuck",
     "howToPlay4": "Try to get as many correct answers as possible",
     "gameModes": "Game Modes",
-    "navbarTitle": "Logo Quiz"
+    "navbarTitle": "Logo Quiz",
+    "badge": "Logo Quiz",
+    "title": "Logo Chineu ta?",
+    "subtitle": "Test your brand recognition skills"
   },
     "moreGames" : "More Games",
     "submitting": "Submitting...",

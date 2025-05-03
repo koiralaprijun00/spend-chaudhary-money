@@ -98,7 +98,7 @@ const Navbar = () => {
         { href: "/name-districts", label: t('nameDistrictTitle') },
         { href: "/yo-ki-tyo", label: t('wouldYouRather.title') || 'Would You Rather' },
         { href: "/general-knowledge", label: t('nepalGk.titleshort') || 'Nepal GK Quiz' },
-        { href: "/patta-lagau", label: t('pattalagauTitle') || 'Patta Lagau'},
+        { href: "/chineu-ta", label: t('logoQuiz.title')},
         { href: "/first-of-nepal", label: t('firstofNepalTitle') || 'Firsts of Nepal'}
     ];
 
@@ -106,9 +106,11 @@ const Navbar = () => {
     const dropdownLinks = [
         { href: "/chineu-ta", label: t('logoQuiz.title')},
         { href: "/gau-khane-katha", label: t('RiddlesGame.title')},
+        
         { href: "/date-converter", label: t('nepaliDateConverterTitle') || 'Date Converter' },
         { href: "/life-checklist", label: t('nepalChecklist.navbarTitle') },
-        { href: "https://www.nepalihawa.com", label: t('nepalihawa.title'), target: "_blank", rel: "noopener noreferrer" }
+        { href: "https://www.nepalihawa.com", label: t('nepalihawa.title'), target: "_blank", rel: "noopener noreferrer" },
+        { href: "/patta-lagau", label: t('pattalagauTitle') || 'Patta Lagau'}
         // Add more games as needed
     ];
 
