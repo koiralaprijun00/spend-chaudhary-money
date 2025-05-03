@@ -20,6 +20,14 @@ function createSafeT(t: ReturnType<typeof useTranslations>) {
   };
 }
 
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
 
 export default function NepalGKQuiz() {
   const t = useTranslations("Translations");
@@ -111,7 +119,7 @@ export default function NepalGKQuiz() {
   // Initialize and handle category changes
   useEffect(() => {
     setIsMounted(true);
-    setShuffledQuestions([...filteredQuestions]);
+    setShuffledQuestions(shuffleArray(filteredQuestions));
     setCurrentQuestionIndex(0);
     setIsAnswered(false);
     setIsCorrect(false);

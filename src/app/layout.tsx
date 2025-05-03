@@ -45,9 +45,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" translate="no">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        
+        {/* Prevent translation */}
+        <meta name="google" content="notranslate" />
         
         {/* Performance optimizations: Preload LCP image */}
         <link
