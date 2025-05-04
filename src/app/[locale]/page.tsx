@@ -258,7 +258,7 @@ export default function HomePage() {
           */}
 
           {/* Logo Chineu ta? Game Card */}
-          <Link href="/logo-quiz" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
+          <Link href="/chineu-ta" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-purple-700 to-pink-500 rounded-3xl shadow-lg overflow-hidden">
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white text-purple-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
