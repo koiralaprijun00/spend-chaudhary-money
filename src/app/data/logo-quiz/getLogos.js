@@ -154,6 +154,14 @@ const logoData = {
         difficulty: 'hard',
         category: 'banking',
         acceptableAnswers: ['Siddhartha Bank', 'Siddhartha', 'Siddhartha Bank Limited']
+      },
+      {
+        id: 'khukuri_rum',
+        name: 'Khukuri Rum',
+        imagePath: '/yo-chineu/khukuri-rum.png',
+        difficulty: 'medium',
+        category: 'beverage',
+        acceptableAnswers: ['Khukuri Rum', 'Khukuri', 'Khukuri Nepal']
       }
     ],
     np: [
@@ -308,6 +316,14 @@ const logoData = {
         difficulty: 'hard',
         category: 'बैंकिङ',
         acceptableAnswers: ['सिद्धार्थ बैंक', 'सिद्धार्थ', 'Siddhartha Bank', 'सिद्धार्थ बैंक लिमिटेड']
+      },
+      {
+        id: 'khukuri_rum',
+        name: 'खुकुरी रम',
+        imagePath: '/yo-chineu/khukuri-rum.png',
+        difficulty: 'medium',
+        category: 'पेय पदार्थ',
+        acceptableAnswers: ['खुकुरी रम', 'खुकुरी', 'Khukuri Rum', 'खुकुरी नेपाल']
       }
     ]
   };

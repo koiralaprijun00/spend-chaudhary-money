@@ -401,30 +401,31 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                         </button>
                       </div>
                       
-                      {/* District image */}
-                      <div className="mb-6">
-                        <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 ">
-                          <div className="district-display bg-gray-100 p-4 flex justify-center items-center">
-                            <div className="relative w-full h-48 md:h-64">
-                              <Image
-                                 src={randomizedDistricts[currentDistrictIndex]?.imagePath || DEFAULT_DISTRICT_IMAGE}
-                                alt="District Shape"
-                                fill
-                                sizes="(max-width: 768px) 100vw, 40vw"
-                                className="object-contain"
-                                priority
-                              />
-                              {correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id) && (
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="bg-green-500 text-white px-3 py-1 rounded-lg text-lg font-bold opacity-90">
-                                    {safeTDistricts(randomizedDistricts[currentDistrictIndex].id || '')}
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      {/* District image - MOBILE OPTIMIZED */}
+<div className="mb-4">
+  <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
+    <div className="district-display bg-gray-100 p-2 flex justify-center items-center">
+    <div className="relative w-full aspect-[4/3] sm:aspect-[3/2]">
+  <Image
+    src={randomizedDistricts[currentDistrictIndex]?.imagePath || DEFAULT_DISTRICT_IMAGE}
+    alt="District Shape"
+    fill
+    sizes="(max-width: 640px) 95vw, (max-width: 768px) 80vw, 40vw"
+    className="object-contain p-2"
+    priority
+  />
+
+        {correctGuesses.includes(randomizedDistricts[currentDistrictIndex].id) && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="bg-green-500 text-white px-3 py-1 rounded-lg text-sm sm:text-lg font-bold opacity-90">
+              {safeTDistricts(randomizedDistricts[currentDistrictIndex].id || '')}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</div>
                       
                       {/* Input form */}
                       <form onSubmit={handleGuess} className="mb-4">
