@@ -51,6 +51,7 @@ export default function RootLayout({
         
         {/* Prevent translation */}
         <meta name="google" content="notranslate" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         
         {/* Performance optimizations: Preload LCP image */}
         <link

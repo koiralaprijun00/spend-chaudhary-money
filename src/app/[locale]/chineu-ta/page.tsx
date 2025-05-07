@@ -259,9 +259,20 @@ const LogoQuizGame = () => {
 
   // Handle Enter key press
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, logoId: string) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' || e.key === 'ArrowRight') {
       e.preventDefault();
+      
+      // First check the answer
       checkAnswer(logoId);
+      
+      // Then re-focus on the same input using a more reliable selector
+      setTimeout(() => {
+        const inputElement = document.querySelector(`input[data-logo-id="${logoId}"]`) as HTMLInputElement;
+        if (inputElement && typeof inputElement.focus === 'function') {
+          // Prevent scrolling when focusing
+          inputElement.focus({preventScroll: true});
+        }
+      }, 50); // Longer timeout for mobile browsers
     }
   };
 
@@ -599,9 +610,13 @@ const LogoQuizGame = () => {
                           <div className="mt-auto">
                           <input
   type="text"
+  autoComplete="off"
+  inputMode="text"
   value={answers[logo.id]}
   onChange={(e) => handleInputChange(logo.id, e.target.value)}
   onKeyDown={(e) => handleKeyDown(e, logo.id)}
+  // Add a data attribute for more reliable selection
+  data-logo-id={logo.id}
   placeholder={t('logoQuiz.enterLogoName') || "Enter logo name..."}
   className={`w-full p-2 text-base sm:text-sm border rounded-md ${
     correctAnswers[logo.id] 
