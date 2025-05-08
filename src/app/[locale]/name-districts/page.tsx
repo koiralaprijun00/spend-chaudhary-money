@@ -62,6 +62,8 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
   const [streak, setStreak] = useState(0);
   const [bestStreak, setBestStreak] = useState(0);
   const [options, setOptions] = useState<string[]>([]);
+  const [incorrectOption, setIncorrectOption] = useState<string | null>(null);
+  const [isInputIncorrect, setIsInputIncorrect] = useState(false);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -145,6 +147,8 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
     } else {
       setFeedback(safeT('incorrect', 'Incorrect'));
       setStreak(0);
+      setIsInputIncorrect(true);
+      setTimeout(() => setIsInputIncorrect(false), 1000);
     }
   };
 
@@ -157,6 +161,8 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
     } else {
       setFeedback(safeT('incorrect', 'Incorrect'));
       setStreak(0);
+      setIncorrectOption(selectedOption);
+      setTimeout(() => setIncorrectOption(null), 1000);
     }
   };
 
@@ -390,7 +396,9 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                         type="text"
                         value={currentGuess}
                         onChange={(e) => setCurrentGuess(e.target.value)}
-                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
+                          isInputIncorrect ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                        }`}
                         placeholder={safeT('guessingPlaceholder', 'Type district name...')}
                         ref={inputRef}
                       />
@@ -405,7 +413,11 @@ const safeT = (key: string, defaultValue: string = '', params: any = {}) => {
                         <button
                           key={index}
                           onClick={() => handleMultipleChoiceSelection(option)}
-                          className="w-full py-2 px-3 bg-blue-50 hover:bg-blue-100 text-blue-800 font-bold rounded-lg text-sm text-center transition"
+                          className={`w-full py-2 px-3 font-bold rounded-lg text-sm text-center transition-colors duration-200 ${
+                            incorrectOption === option
+                              ? 'bg-red-100 text-red-800 border-2 border-red-500'
+                              : 'bg-blue-50 hover:bg-blue-100 text-blue-800'
+                          }`}
                         >
                           {option}
                         </button>
