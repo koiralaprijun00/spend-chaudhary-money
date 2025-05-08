@@ -104,9 +104,7 @@ const Navbar = () => {
 
     // Dropdown links (extra games)
     const dropdownLinks = [
-        { href: "/chineu-ta", label: t('logoQuiz.title')},
         { href: "/gau-khane-katha", label: t('RiddlesGame.title')},
-        
         { href: "/date-converter", label: t('nepaliDateConverterTitle') || 'Date Converter' },
         { href: "/life-checklist", label: t('nepalChecklist.navbarTitle') },
         { href: "https://www.nepalihawa.com", label: t('nepalihawa.title'), target: "_blank", rel: "noopener noreferrer" },
