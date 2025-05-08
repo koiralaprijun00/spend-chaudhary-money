@@ -437,6 +437,11 @@
     "shareTitle": "Share Piromomo",
     "shareDescription": "Share this amazing Nepali game platform with your friends!",
     "progress": "Progress",
-    "selectFromOptions": "Choose from options:"
+    "selectFromOptions": "Choose from options:",
+    "quizResults": "Quiz Results",
+    "resultsDescription": "Here's how you did",
+    "missed": "Missed",
+    "completionRate": "Completion Rate",
+    "districtsGallery": "Districts Gallery"
   }
 }
