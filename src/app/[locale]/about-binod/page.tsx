@@ -8,9 +8,9 @@ export default function BlogPage() {
   return (
     <>
     <Head>
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">How Rich is Binod Chaudhary? Nepal’s First Billionaire</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">How Rich is Binod Chaudhary? Nepal's First Billionaire</h1>
         <p className="description text-sm md:text-base text-gray-700 leading-relaxed">
-          Learn about Binod Chaudhary, Nepal’s only billionaire, his net worth, business success, and philanthropic contributions."
+          Learn about Binod Chaudhary, Nepal's only billionaire, his net worth, business success, and philanthropic contributions."
        </p>
       </Head>
 
@@ -25,11 +25,11 @@ export default function BlogPage() {
     <div className="flex justify-start mb-8">
   <Link
     href="/spend"
-    aria-label="Go back to spending page"
+    aria-label="Go back to Spend Binod's Money game"
     className="group flex items-center text-gray-400 font-bold hover:text-gray-800 transition duration-200 hover:scale-105"
   >
-    <TbArrowBigLeftLinesFilled className="mr-2 transition-colors duration-200 group-hover:text-gray-800" size={28} />
-    Go Back 
+    <TbArrowBigLeftLinesFilled className="mr-2 transition-colors duration-200 group-hover:text-gray-800" size={28} aria-hidden="true" />
+    <span>Return to Spend Binod's Money Game</span>
   </Link>
 </div><h1 className="text-3xl md:text-4xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500 mb-4">
   How Rich is Binod Chaudhary? Nepal's First Billionaire
@@ -38,14 +38,14 @@ export default function BlogPage() {
 
             <section className="mb-8 px-4 md:px-8">
   <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 mb-6 pb-3 border-b-2">
-    Binod Chaudhary’s Net Worth in 2024
+    Binod Chaudhary's Net Worth in 2024
   </h2>
               <div>
                 <p className="text-gray-700">
                   According to Forbes' Billionaire List 2024, Binod Chaudhary has an estimated net worth of{' '}
                   <span className="font-semibold">$1.8 billion</span> (approximately{' '}
                   <span className="font-semibold">Rs. 240 billion</span>), ranking{' '}
-                  <span className="font-semibold">1,764th</span> among the world’s richest individuals{' '}
+                  <span className="font-semibold">1,764th</span> among the world's richest individuals{' '}
                   <span className="italic">(MyRepublica)</span>.
                 </p>
                 <p className="text-gray-700 mt-4">
@@ -60,7 +60,7 @@ export default function BlogPage() {
             </section>
 
             <section className="text-gray-800 font-medium mt-6 bg-gray-200 px-12 py-4 my-8 rounded-md">
-              Want to spend Binod Chaudhary’s money? Try the{" "}
+              Want to spend Binod Chaudhary's money? Try the{" "}
             <Link href="/spend" className="text-blue-600 underline hover:text-blue-800 transition duration-200">
              Spend Binod's Money Game
             </Link>
@@ -74,10 +74,10 @@ export default function BlogPage() {
                 <li>
                   <span className="font-bold">Wai Wai Noodles – The Game Changer</span>
                   <p className="ml-6 mt-1">
-                    Binod Chaudhary’s biggest success story is Wai Wai noodles, Nepal’s
+                    Binod Chaudhary's biggest success story is Wai Wai noodles, Nepal's
                     most famous instant noodle brand. The brand expanded globally, making
                     it a household name in countries like India, Thailand, and the United
-                    States. Wai Wai’s massive popularity significantly contributed to his
+                    States. Wai Wai's massive popularity significantly contributed to his
                     billionaire status.
                   </p>
                 </li>
@@ -94,7 +94,7 @@ export default function BlogPage() {
                     </li>
                     <li>
                       <span className="font-medium">Banking & Finance:</span> Significant
-                      investments in Nepal’s Nabil Bank and other financial institutions.
+                      investments in Nepal's Nabil Bank and other financial institutions.
                     </li>
                     <li>
                       <span className="font-medium">Real Estate & Construction:</span>{' '}
@@ -110,7 +110,7 @@ export default function BlogPage() {
                 <li>
                   <span className="font-bold">Expanding Beyond Nepal</span>
                   <p className="ml-6 mt-1">
-                    Chaudhary’s international business expansion played a crucial role in
+                    Chaudhary's international business expansion played a crucial role in
                     his growing wealth. His ability to invest strategically in global
                     markets helped CG Corp establish itself as a leading business group.
                   </p>
@@ -139,13 +139,13 @@ export default function BlogPage() {
               </ul>
             </section>
 
-            {/* New Section: How Long Would It Take to Spend Binod Chaudhary’s Money? */}
+            {/* New Section: How Long Would It Take to Spend Binod Chaudhary's Money? */}
             <section className="mb-8 px-6 md:px-12 py-8 rounded-xl shadow-md bg-gradient-to-r from-blue-200 to-red-200">
               <h2 className="text-3xl font-semibold text-gray-700 border-b pb-2">
-                How Long Would It Take to Spend Binod Chaudhary’s Money?
+                How Long Would It Take to Spend Binod Chaudhary's Money?
               </h2>
               <p className="text-gray-600 mb-4">
-                To put Binod Chaudhary’s wealth into perspective, let’s break it down:
+                To put Binod Chaudhary's wealth into perspective, let's break it down:
               </p>
               <ul className="list-disc list-inside ml-6 space-y-2 text-gray-600">
                 <li>
@@ -159,22 +159,22 @@ export default function BlogPage() {
                 </li>
               </ul>
               <p className="text-gray-600 mt-4">
-                <span className="font-bold">Your Money vs Binod Chaudhary’s Money:</span> If someone earning Rs. 1 million (10 lakh) per year saved every rupee without spending anything, it would take them 240,000 years to match Binod Chaudhary’s net worth.
+                <span className="font-bold">Your Money vs Binod Chaudhary's Money:</span> If someone earning Rs. 1 million (10 lakh) per year saved every rupee without spending anything, it would take them 240,000 years to match Binod Chaudhary's net worth.
               </p>
               <p className="text-gray-600">
-                Even if you won Rs. 10 million (1 crore) in a lottery every month, it would still take 2,000 years to reach $1.8 billion. That’s an unimaginably long time!
+                Even if you won Rs. 10 million (1 crore) in a lottery every month, it would still take 2,000 years to reach $1.8 billion. That's an unimaginably long time!
               </p>
             </section>
 
             <section className="mb-8">
               <p className="text-gray-600 mb-4">
-                Binod Chaudhary’s journey from a small family business in Nepal to becoming
+                Binod Chaudhary's journey from a small family business in Nepal to becoming
                 a global billionaire is an inspiration. His ability to innovate, expand,
-                and invest in diverse industries has made him Nepal’s richest and most
+                and invest in diverse industries has made him Nepal's richest and most
                 influential businessman.
               </p>
               <p className="text-gray-600">
-                As Nepal’s only billionaire, his success is a testament to Nepalese
+                As Nepal's only billionaire, his success is a testament to Nepalese
                 entrepreneurship on the global stage.
               </p>
             </section>
