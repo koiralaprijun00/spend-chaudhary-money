@@ -1,7 +1,6 @@
 import "./globals.css";
 import "mapbox-gl/dist/mapbox-gl.css"; // Keep this for build-time CSS inclusion
 import { Metadata } from "next";
-import { AuthProvider } from './[locale]/providers';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from 'next/script';
@@ -93,11 +92,10 @@ export default function RootLayout({
 
       </head>
       <body className="antialiased">
-        <AuthProvider>
+
           {children}
           <SpeedInsights />
           <Analytics />
-        </AuthProvider>
         
         {/* Google Analytics with afterInteractive strategy */}
         <Script

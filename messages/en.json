@@ -13,6 +13,7 @@
     "achievementSingle": "I earned: {achievement}",
     "achievementMultiple": "I earned: {achievements}",
     "shareCallToAction": "Can you beat my score? Try it on Piromomo!",
+    "switchLanguage": "Switch language",
     "nepalihawa": {
       "title": "Nepali Hawa"
     },
@@ -194,12 +195,6 @@
   "firstCategory": "First {category}",
   "noMatches": "We couldn't find any matches for \"{searchTerm}\".",
   "clearSearch": "Clear search",
-    "pattalagauTitle": "Patta Lagau",
-    "geographyBadge": "Geography",
-    "switchLanguage": "English",
-  "pattalagau": {
-    "description": "Test your Nepal geography knowledge in this location-finding game!"
-  },
     "more": "More",
     "allCategories": "All Categories",
     "finalScoreMessage": "You scored {score} points!",
