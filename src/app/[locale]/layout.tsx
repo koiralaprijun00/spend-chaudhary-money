@@ -2,7 +2,6 @@ import "../globals.css";
 import NavBar from "../components/NavBar";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { NextIntlClientProvider } from 'next-intl';
-import { AuthProvider } from './providers';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from "next/script"; // Import Script component
 
@@ -76,7 +75,6 @@ export default async function LocaleLayout({
   }
 
   return (
-    <AuthProvider>
       <NextIntlClientProvider locale={resolvedLocale} messages={messages}>
         {/* AdSense Script - Updated to use a more compatible approach */}
         <Script
@@ -102,6 +100,5 @@ export default async function LocaleLayout({
         {children}
         <SpeedInsights/>
       </NextIntlClientProvider>
-    </AuthProvider>
   );
 }

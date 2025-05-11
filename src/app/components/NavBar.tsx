@@ -107,8 +107,7 @@ const Navbar = () => {
         { href: "/gau-khane-katha", label: t('RiddlesGame.title')},
         { href: "/date-converter", label: t('nepaliDateConverterTitle') || 'Date Converter' },
         { href: "/life-checklist", label: t('nepalChecklist.navbarTitle') },
-        { href: "https://www.nepalihawa.com", label: t('nepalihawa.title'), target: "_blank", rel: "noopener noreferrer" },
-        { href: "/patta-lagau", label: t('pattalagauTitle') || 'Patta Lagau'}
+        { href: "https://www.nepalihawa.com", label: t('nepalihawa.title'), target: "_blank", rel: "noopener noreferrer" }
         // Add more games as needed
     ];
 

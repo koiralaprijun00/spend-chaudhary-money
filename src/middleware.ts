@@ -11,13 +11,6 @@ const intlMiddleware = createMiddleware({
 export default async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   
-  // If trying to access /login directly (without locale)
-  if (pathname === '/login') {
-    // Redirect to the localized login page
-    const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
-    return NextResponse.redirect(new URL(`/${locale}/login`, request.url));
-  }
-  
   // Skip middleware for all API routes
   if (pathname.startsWith('/api/')) {
     return NextResponse.next();
@@ -31,8 +24,6 @@ export default async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // Match all paths that need locale
-    '/((?!api|_next|.*\\..*).*)',
-    // Match login path specifically
-    '/login'
+    '/((?!api|_next|.*\\..*).*)'
   ]
 };
