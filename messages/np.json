@@ -1,5 +1,13 @@
 {
   "Translations": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "signInToAccount": "Sign in to your account",
+    "signInWithGoogle": "Sign in with Google",
+    "unauthorized": "Unauthorized Access",
+    "signingIn": "Signing you in...",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
     "twitter": "ट्विटर",
     "share": "शेयर गर्नुहोस्",
     "facebook": "फेसबुक",
