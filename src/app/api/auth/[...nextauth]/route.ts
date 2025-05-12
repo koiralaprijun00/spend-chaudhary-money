@@ -4,15 +4,30 @@ import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { db } from '@/app/lib/firebase';
 import type { Session } from 'next-auth';
-import type { User } from 'next-auth';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/app/lib/firebase';
+
+// Ensure environment variables are available and throw early errors if not
+if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
+  console.error('Missing Google OAuth credentials in environment variables');
+}
+
+if (!process.env.NEXTAUTH_SECRET) {
+  console.error('Missing NEXTAUTH_SECRET environment variable');
+}
 
 export const authOptions: AuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      authorization: {
+        params: {
+          prompt: "select_account",
+          access_type: "offline",
+          response_type: "code"
+        }
+      }
     }),
     CredentialsProvider({
       name: 'Credentials',
@@ -37,10 +52,12 @@ export const authOptions: AuthOptions = {
               id: userCredential.user.uid,
               email: userCredential.user.email,
               name: userCredential.user.displayName,
+              image: userCredential.user.photoURL,
             };
           }
           return null;
         } catch (error) {
+          console.error('Firebase auth error:', error);
           throw new Error('Invalid email or password');
         }
       }
@@ -49,8 +66,21 @@ export const authOptions: AuthOptions = {
   adapter: FirestoreAdapter(db as any),
   session: {
     strategy: 'jwt' as const,
+    maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   debug: process.env.NODE_ENV === 'development',
+  secret: process.env.NEXTAUTH_SECRET,
+  cookies: {
+    sessionToken: {
+      name: `next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production'
+      }
+    }
+  },
   callbacks: {
     async session({ session, token }: { session: Session; token: any }) {
       if (session.user) {
@@ -58,22 +88,41 @@ export const authOptions: AuthOptions = {
       }
       return session;
     },
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
     async redirect({ url, baseUrl }) {
+      // Log URL information for debugging
+      console.log('Redirect callback:', { url, baseUrl });
+      
       // Handle relative URLs
       if (url.startsWith('/')) {
-        return `${baseUrl}${url}`;
+        const redirectUrl = `${baseUrl}${url}`;
+        console.log('Redirecting to relative URL:', redirectUrl);
+        return redirectUrl;
       }
       // Handle absolute URLs that are on the same domain
       else if (new URL(url).origin === baseUrl) {
+        console.log('Redirecting to same-origin URL:', url);
         return url;
       }
       // Default to baseUrl for external URLs
+      console.log('Redirecting to base URL:', baseUrl);
       return baseUrl;
     },
     async signIn({ user, account, profile }) {
-      if (account?.provider === 'google') {
-        return true;
-      }
+      // Log sign-in attempt for debugging
+      console.log('Sign in callback:', { 
+        user: { 
+          id: user.id, 
+          email: user.email 
+        }, 
+        provider: account?.provider 
+      });
+      
       return true;
     },
   },
@@ -81,6 +130,17 @@ export const authOptions: AuthOptions = {
     signIn: '/auth/signin',
     error: '/auth/error',
   },
+  logger: {
+    error(code, metadata) {
+      console.error('NextAuth error:', code, metadata);
+    },
+    warn(code) {
+      console.warn('NextAuth warning:', code);
+    },
+    debug(code, metadata) {
+      console.log('NextAuth debug:', code, metadata);
+    }
+  }
 };
 
 const handler = NextAuth(authOptions);
