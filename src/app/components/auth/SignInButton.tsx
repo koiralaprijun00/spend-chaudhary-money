@@ -3,12 +3,13 @@
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
-import  GameButton  from '../ui/GameButton'; // Use your own Button component
+import GameButton from '../ui/GameButton';
 
 export function SignInButton() {
   const { data: session, status } = useSession();
   const t = useTranslations('Translations');
   const pathname = usePathname();
+  const router = useRouter();
   
   // Get locale from pathname
   const locale = pathname.startsWith('/np') ? 'np' : 'en';
@@ -30,9 +31,7 @@ export function SignInButton() {
   
   return (
     <GameButton 
-      onClick={() => signIn('google', { 
-        callbackUrl: pathname // Return to current page after login
-      })}
+      onClick={() => router.push(`/${locale}/auth/signin`)}
     >
       {t('signIn')}
     </GameButton>

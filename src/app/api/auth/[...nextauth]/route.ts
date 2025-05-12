@@ -1,41 +1,71 @@
-import NextAuth from 'next-auth';
+import NextAuth, { AuthOptions } from 'next-auth';
 import { FirestoreAdapter } from '@next-auth/firebase-adapter';
 import GoogleProvider from 'next-auth/providers/google';
+import CredentialsProvider from 'next-auth/providers/credentials';
 import { db } from '@/app/lib/firebase';
 import type { Session } from 'next-auth';
 import type { User } from 'next-auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/app/lib/firebase';
 
-export const authOptions = {
+export const authOptions: AuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
-    // Add other providers as needed
+    CredentialsProvider({
+      name: 'Credentials',
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error('Please enter an email and password');
+        }
+
+        try {
+          const userCredential = await signInWithEmailAndPassword(
+            auth,
+            credentials.email,
+            credentials.password
+          );
+
+          if (userCredential.user) {
+            return {
+              id: userCredential.user.uid,
+              email: userCredential.user.email,
+              name: userCredential.user.displayName,
+            };
+          }
+          return null;
+        } catch (error) {
+          throw new Error('Invalid email or password');
+        }
+      }
+    }),
   ],
   adapter: FirestoreAdapter(db as any),
+  session: {
+    strategy: 'jwt' as const,
+  },
   callbacks: {
-    async session({ session, user }: { session: Session; user: User }) {
-      // Add user ID to the session
+    async session({ session, token }: { session: Session; token: any }) {
       if (session.user) {
-        session.user.id = user.id;
+        session.user.id = token.sub;
       }
       return session;
     },
     async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
-      // Preserve locale in redirects
-      // If the URL starts with baseUrl, it's an internal redirect
       if (url.startsWith(baseUrl)) return url;
-      
-      // Check if URL is an absolute URL to an external site 
       if (url.startsWith("http://") || url.startsWith("https://")) return url;
-      
-      // Relative URL - preserves locale paths
       return baseUrl + url;
     },
   },
   pages: {
-    signIn: '/auth/signin', // Custom sign-in page that will be locale-aware
+    signIn: '/auth/signin',
+    error: '/auth/error',
   },
 };
 
