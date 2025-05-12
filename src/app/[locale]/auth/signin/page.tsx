@@ -341,12 +341,22 @@ export default function SignInPage() {
             onClick={async () => {
               try {
                 setIsLoading(true);
+                setErrors({ ...errors, general: '' });
+                // Always redirect Google sign-in to the homepage for the current locale
+                const locale = window.location.pathname.split('/')[1] || 'en';
+                const homepage = `/${locale}`;
+                // Do NOT use callbackUrl from query params for Google sign-in
+                console.log('=== Google Sign-in Debug Info ===');
+                console.log('Current URL:', window.location.href);
+                console.log('Locale:', locale);
+                console.log('Homepage (callbackUrl):', homepage);
                 const result = await signIn('google', { 
-                  callbackUrl: callbackUrl || '/',
+                  callbackUrl: homepage,
                   redirect: false
                 });
-                
+                console.log('Sign-in Result:', result);
                 if (result?.error) {
+                  console.error('Sign-in Error:', result.error);
                   setErrors({
                     ...errors,
                     general: t('googleSignInError', { 
@@ -354,9 +364,11 @@ export default function SignInPage() {
                     })
                   });
                 } else if (result?.url) {
+                  console.log('Redirecting to:', result.url);
                   router.push(result.url);
                 }
               } catch (error) {
+                console.error('Unexpected Error:', error);
                 setErrors({
                   ...errors,
                   general: t('googleSignInError', { 

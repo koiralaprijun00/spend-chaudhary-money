@@ -1,5 +1,7 @@
 {
   "Translations":{
+     "loginSuccess": "Successfully logged in!",
+    "logoutSuccess": "Successfully logged out",
      "passwordRequired": "Password is required",
     "passwordReqLength": "At least 8 characters",
 "passwordReqUppercase": "At least 1 uppercase letter",

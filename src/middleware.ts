@@ -12,36 +12,29 @@ const intlMiddleware = createMiddleware({
 export default async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   
-  // Skip middleware for NextAuth.js API routes
-  // Important: Always let NextAuth handle its own routes
-  if (pathname.startsWith('/api/auth')) {
-    return NextResponse.next();
-  }
-  
-  // Also bypass internationalization for NextAuth callback routes
-  if (pathname === '/auth/signin' || 
-      pathname === '/auth/error' || 
-      pathname === '/auth/callback' ||
-      pathname === '/auth/verify-request') {
-    return NextResponse.next();
-  }
-  
-  // Skip middleware for static files and non-auth API routes
-  if (pathname.startsWith('/_next/') ||
-      (pathname.startsWith('/api/') && !pathname.startsWith('/api/auth/')) ||
-      pathname.includes('.')) {
+  // 1. Bypass all NextAuth API and auth routes (including subpaths)
+  if (
+    pathname.startsWith('/api/auth') ||
+    pathname.startsWith('/auth')
+  ) {
     return NextResponse.next();
   }
 
-  // Check if the path is for a protected route
-  const isProtectedRoute = pathname.includes('/dashboard') || 
-                           pathname.includes('/profile');
-  
-  // Protected routes need authentication
+  // 2. Bypass static files and Next.js internals
+  if (
+    pathname.startsWith('/_next/') ||
+    pathname.includes('.') ||
+    pathname === '/favicon.ico'
+  ) {
+    return NextResponse.next();
+  }
+
+  // 3. Protect certain routes (e.g., dashboard, profile)
+  const isProtectedRoute = pathname.includes('/dashboard') || pathname.includes('/profile');
   if (isProtectedRoute) {
-    const token = await getToken({ 
+    const token = await getToken({
       req: request,
-      secret: process.env.NEXTAUTH_SECRET
+      secret: process.env.NEXTAUTH_SECRET,
     });
     
     if (!token) {
@@ -55,16 +48,13 @@ export default async function middleware(request: NextRequest) {
     }
   }
 
-  // Apply internationalization for all other routes
+  // 4. Apply i18n for all other routes
   return intlMiddleware(request);
 }
 
-// Update the matcher configuration to handle auth routes correctly
+// Matcher: Exclude all NextAuth and static routes, include everything else
 export const config = {
   matcher: [
-    // Match all paths except specific ones
-    '/((?!api|_next|.*\\..*).*)',
-    // We want to explicitly match auth routes
-    '/auth/:path*'
+    '/((?!api/auth|auth|_next/static|_next/image|favicon.ico|.*\\..*).*)',
   ],
 };

@@ -1,5 +1,7 @@
 {
   "Translations": {
+      "loginSuccess": "सफलतापूर्वक लगइन भयो!",
+    "logoutSuccess": "सफलतापूर्वक लगआउट भयो",
      "passwordRequired": "पासवर्ड आवश्यक छ",
     "passwordReqLength": "कम्तिमा ८ वर्ण",
     "passwordReqUppercase": "कम्तिमा १ वरिष्ठ अक्षर",
