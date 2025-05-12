@@ -50,6 +50,7 @@ export const authOptions: AuthOptions = {
   session: {
     strategy: 'jwt' as const,
   },
+  debug: process.env.NODE_ENV === 'development',
   callbacks: {
     async session({ session, token }: { session: Session; token: any }) {
       if (session.user) {
@@ -57,10 +58,23 @@ export const authOptions: AuthOptions = {
       }
       return session;
     },
-    async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
-      if (url.startsWith(baseUrl)) return url;
-      if (url.startsWith("http://") || url.startsWith("https://")) return url;
-      return baseUrl + url;
+    async redirect({ url, baseUrl }) {
+      // Handle relative URLs
+      if (url.startsWith('/')) {
+        return `${baseUrl}${url}`;
+      }
+      // Handle absolute URLs that are on the same domain
+      else if (new URL(url).origin === baseUrl) {
+        return url;
+      }
+      // Default to baseUrl for external URLs
+      return baseUrl;
+    },
+    async signIn({ user, account, profile }) {
+      if (account?.provider === 'google') {
+        return true;
+      }
+      return true;
     },
   },
   pages: {
