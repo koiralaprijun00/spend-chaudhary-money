@@ -12,11 +12,8 @@ const intlMiddleware = createMiddleware({
 export default async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   
-  // 1. Bypass all NextAuth API and auth routes (including subpaths)
-  if (
-    pathname.startsWith('/api/auth') ||
-    pathname.startsWith('/auth')
-  ) {
+  // 1. Bypass NextAuth API routes only
+  if (pathname.startsWith('/api/auth')) {
     return NextResponse.next();
   }
 
@@ -29,7 +26,23 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // 3. Protect certain routes (e.g., dashboard, profile)
+  // 3. Handle auth routes with internationalization
+  if (pathname.startsWith('/auth')) {
+    // Extract locale from the current path (defaults to 'en')
+    const locale = pathname.match(/^\/(en|np)\//) ? pathname.split('/')[1] : 'en';
+    
+    // If accessing /auth directly, redirect to localized version
+    if (pathname === '/auth') {
+      return NextResponse.redirect(new URL(`/${locale}/auth/signin`, request.url));
+    }
+    
+    // If accessing /auth/register or /auth/signin without locale, redirect to localized version
+    if (pathname === '/auth/register' || pathname === '/auth/signin') {
+      return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
+    }
+  }
+
+  // 4. Protect certain routes (e.g., dashboard, profile)
   const isProtectedRoute = pathname.includes('/dashboard') || pathname.includes('/profile');
   if (isProtectedRoute) {
     const token = await getToken({
@@ -48,13 +61,13 @@ export default async function middleware(request: NextRequest) {
     }
   }
 
-  // 4. Apply i18n for all other routes
+  // 5. Apply i18n for all other routes
   return intlMiddleware(request);
 }
 
-// Matcher: Exclude all NextAuth and static routes, include everything else
+// Matcher: Include all routes except NextAuth API and static files
 export const config = {
   matcher: [
-    '/((?!api/auth|auth|_next/static|_next/image|favicon.ico|.*\\..*).*)',
+    '/((?!api/auth|_next/static|_next/image|favicon.ico|.*\\..*).*)',
   ],
 };

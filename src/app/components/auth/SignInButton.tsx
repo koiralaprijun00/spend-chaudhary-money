@@ -45,19 +45,17 @@ export function SignInButton() {
   
   // Handle status changes to show appropriate alerts
   useEffect(() => {
-    // Only show alert when status changes and not on initial load
-    if (prevStatus && prevStatus !== status) {
-      if (status === 'authenticated') {
-        setAlert({
-          type: 'success',
-          message: t('loginSuccess') || 'Successfully logged in!'
-        });
-      } else if (prevStatus === 'authenticated' && status === 'unauthenticated') {
-        setAlert({
-          type: 'info',
-          message: t('logoutSuccess') || 'Successfully logged out'
-        });
-      }
+    // Only show alert when status changes from unauthenticated to authenticated
+    if (prevStatus === 'unauthenticated' && status === 'authenticated') {
+      setAlert({
+        type: 'success',
+        message: t('loginSuccess') || 'Successfully logged in!'
+      });
+    } else if (prevStatus === 'authenticated' && status === 'unauthenticated') {
+      setAlert({
+        type: 'info',
+        message: t('logoutSuccess') || 'Successfully logged out'
+      });
     }
     
     setPrevStatus(status);
@@ -75,6 +73,12 @@ export function SignInButton() {
       callbackUrl: `/${locale}` // Ensure redirect respects locale
     });
   };
+  
+  if (status === 'loading') {
+    return (
+      <div className="w-24 h-9 bg-gray-100 animate-pulse rounded-md"></div>
+    );
+  }
   
   if (status === 'authenticated') {
     return (
