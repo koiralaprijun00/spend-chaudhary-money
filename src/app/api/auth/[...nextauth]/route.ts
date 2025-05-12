@@ -1,8 +1,7 @@
 import NextAuth, { AuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/app/lib/firebase';
+import { signInWithEmail } from '@/app/lib/firebase-auth';
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -20,58 +19,60 @@ export const authOptions: AuthOptions = {
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Please enter an email and password');
         }
+        
         try {
-          const userCredential = await signInWithEmailAndPassword(
-            auth,
+          const result = await signInWithEmail(
             credentials.email,
             credentials.password
           );
-          if (userCredential.user) {
+          
+          if (result.success && result.user) {
             return {
-              id: userCredential.user.uid,
-              email: userCredential.user.email,
-              name: userCredential.user.displayName,
-              image: userCredential.user.photoURL,
+              id: result.user.uid,
+              email: result.user.email,
+              name: result.user.displayName,
+              image: result.user.photoURL,
             };
           }
-          return null;
-        } catch (error) {
-          throw new Error('Invalid email or password');
+          
+          // If we get here, authentication failed
+          throw new Error(result.error || 'Invalid email or password');
+        } catch (error: any) {
+          throw new Error(error.message || 'Authentication failed');
         }
       },
     }),
   ],
+  pages: {
+    signIn: '/auth/signin',
+    error: '/auth/error',
+  },
   session: {
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async session({ session, token }) {
-      if (session.user) {
-        session.user.id = token.sub ?? '';
-      }
-      return session;
-    },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
       }
       return token;
     },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.sub || '';
+      }
+      return session;
+    },
     async redirect({ url, baseUrl }) {
-      // Allow absolute URLs on the same origin
-      if (url.startsWith(baseUrl)) return url;
-      // Allow relative URLs
-      if (url.startsWith('/')) return `${baseUrl}${url}`;
-      // Fallback
+      // Handle relative and absolute URLs
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      // Allow redirects to your own domain
+      if (new URL(url).origin === baseUrl) return url;
       return baseUrl;
     },
   },
-  pages: {
-    signIn: '/en/auth/signin', // Change to your default locale
-    error: '/en/auth/error',   // Change to your default locale
-  },
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);
