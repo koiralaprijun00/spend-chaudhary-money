@@ -5,7 +5,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from "next/script"; // Import Script component
 import { AuthProvider } from '../components/providers/AuthProvider';
-import AuthStatus from '../components/AuthStatus';
 
 // RootLayout as an async server component with params as a Promise
 export default async function LocaleLayout({
@@ -79,7 +78,6 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider locale={resolvedLocale} messages={messages}>
       <AuthProvider>
-        <AuthStatus />
         {/* AdSense Script - Updated to use a more compatible approach */}
         <Script
           id="adsbygoogle-init"
