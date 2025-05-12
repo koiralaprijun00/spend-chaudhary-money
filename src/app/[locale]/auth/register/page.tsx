@@ -8,14 +8,17 @@ import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { FiEye, FiEyeOff, FiAlertCircle, FiCheckCircle, FiLock } from 'react-icons/fi';
 import Image from 'next/image';
+import { registerWithEmailAndPassword } from '@/app/lib/firebase-auth';
 
 interface FormData {
+  fullName: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
 interface FormErrors {
+  fullName: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -23,6 +26,7 @@ interface FormErrors {
 }
 
 interface FormTouched {
+  fullName: boolean;
   email: boolean;
   password: boolean;
   confirmPassword: boolean;
@@ -44,24 +48,30 @@ export default function RegisterPage() {
   const router = useRouter();
 
   const [formData, setFormData] = useState<FormData>({
+    fullName: '',
     email: '',
     password: '',
     confirmPassword: ''
   });
+  
   const [errors, setErrors] = useState<FormErrors>({
+    fullName: '',
     email: '',
     password: '',
     confirmPassword: '',
     general: ''
   });
+  
   const [passwordStrength, setPasswordStrength] = useState<PasswordStrength>({
     score: 0,
     message: ''
   });
+  
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formTouched, setFormTouched] = useState<FormTouched>({
+    fullName: false,
     email: false,
     password: false,
     confirmPassword: false
@@ -110,7 +120,7 @@ export default function RegisterPage() {
       setPasswordStrength({ score: 0, message: '' });
       setCurrentRequirements(passwordRequirements);
     }
-  }, [formData.password]);
+  }, [formData.password, t]);
 
   // Handle form input changes
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -150,6 +160,16 @@ export default function RegisterPage() {
     let newErrors = { ...errors };
 
     switch (name) {
+      case 'fullName':
+        if (!formData.fullName.trim()) {
+          newErrors.fullName = t('fullNameRequired', { fallback: 'Full name is required' });
+        } else if (formData.fullName.length < 2) {
+          newErrors.fullName = t('fullNameTooShort', { fallback: 'Full name must be at least 2 characters' });
+        } else {
+          newErrors.fullName = '';
+        }
+        break;
+        
       case 'email':
         if (!formData.email) {
           newErrors.email = t('emailRequired', { fallback: 'Email is required' });
@@ -204,17 +224,19 @@ export default function RegisterPage() {
   const validateForm = () => {
     // Mark all fields as touched
     setFormTouched({
+      fullName: true,
       email: true,
       password: true,
       confirmPassword: true
     });
 
     // Validate each field
+    const isFullNameValid = validateField('fullName');
     const isEmailValid = validateField('email');
     const isPasswordValid = validateField('password');
     const isConfirmPasswordValid = validateField('confirmPassword');
 
-    return isEmailValid && isPasswordValid && isConfirmPasswordValid;
+    return isFullNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid;
   };
 
   // Handle form submission
@@ -235,22 +257,34 @@ export default function RegisterPage() {
     setIsLoading(true);
 
     try {
-      // Here you would typically make an API call to your backend to register the user
-      // For demonstration, let's simulate a network request
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Register the user with Firebase
+      const result = await registerWithEmailAndPassword(
+        formData.email,
+        formData.password,
+        formData.fullName
+      );
 
-      // Check for duplicate email (simulated)
-      if (formData.email === 'test@example.com') {
-        throw new Error(t('emailAlreadyExists', { fallback: 'This email is already registered' }));
+      if (result.success) {
+        // Use NextAuth to sign in the user after registration
+        const signInResult = await signIn('credentials', {
+          email: formData.email,
+          password: formData.password,
+          redirect: false
+        });
+
+        if (signInResult?.error) {
+          throw new Error(signInResult.error);
+        }
+
+        // Redirect to dashboard or homepage after successful registration
+        router.push('/');
+      } else {
+        throw new Error(result.error || 'Registration failed');
       }
-
-      // Simulate successful registration
-      router.push('/auth/signin');
-    } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : t('registrationError', { fallback: 'Registration failed. Please try again.' });
+    } catch (error: any) {
       setErrors({
         ...errors,
-        general: errorMessage
+        general: error.message || t('registrationError', { fallback: 'Registration failed. Please try again.' })
       });
     } finally {
       setIsLoading(false);
@@ -309,7 +343,7 @@ export default function RegisterPage() {
                 }
               }}
               disabled={isLoading}
-              className="mb-6 inline-flex items-center justify-center py-3 px-16 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-700 hover:bg-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors disabled:opacity-50"
+              className="mb-6 inline-flex items-center justify-center py-3 px-16 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-700 hover:bg-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors disabled:opacity-50 w-full"
             >
               {isLoading ? (
                 <>
@@ -335,6 +369,41 @@ export default function RegisterPage() {
             )}
 
             <form onSubmit={handleRegister} className="space-y-6">
+              <div>
+                <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">
+                  {t('fullName', { fallback: 'Full Name' })}
+                </label>
+                <div className="relative">
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={`block w-full rounded-lg px-4 py-3 border focus:ring-2 focus:ring-opacity-50 focus:outline-none transition-colors ${
+                      formTouched.fullName && errors.fullName
+                        ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+                        : formTouched.fullName && !errors.fullName && formData.fullName
+                          ? 'border-green-300 focus:border-green-500 focus:ring-green-200'
+                          : 'border-gray-300 focus:border-blue-500 focus:ring-blue-200'
+                    }`}
+                    placeholder={t('fullNamePlaceholder', { fallback: 'Your full name' })}
+                  />
+                  {formTouched.fullName && formData.fullName && (
+                    <div className="absolute right-3 top-3">
+                      {errors.fullName
+                        ? <FiAlertCircle className="text-red-500" />
+                        : <FiCheckCircle className="text-green-500" />
+                      }
+                    </div>
+                  )}
+                </div>
+                {formTouched.fullName && errors.fullName && (
+                  <p className="mt-2 text-sm text-red-600">{errors.fullName}</p>
+                )}
+              </div>
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   {t('email', { fallback: 'Email' })}
@@ -477,7 +546,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex justify-center py-3 px-12 rounded-lg shadow-sm text-white bg-gradient-to-r from-blue-600 to-red-500 hover:from-blue-700 hover:to-red-600 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 transition-all duration-200"
+                className="flex justify-center w-full py-3 px-12 rounded-lg shadow-sm text-white bg-gradient-to-r from-blue-600 to-red-500 hover:from-blue-700 hover:to-red-600 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 transition-all duration-200"
               >
                 {isLoading ? (
                   <>

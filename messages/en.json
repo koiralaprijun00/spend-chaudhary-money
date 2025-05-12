@@ -22,6 +22,10 @@
 "emailPlaceholder": "your.email@example.com",
 "passwordPlaceholder": "••••••••",
 "confirmPasswordPlaceholder": "••••••••",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Enter your full name",
+    "fullNameRequired": "Full name is required",
+    "fullNameTooShort": "Full name must be at least 2 characters",
     "createAccount": "Create Account",
     "confirmPassword": "Confirm Password",
     "passwordsDoNotMatch": "Passwords do not match",
@@ -96,8 +100,6 @@
     "submitRiddleDescription": "Submit your own riddles for possible inclusion in the game!",
     "submitYourOwn": "Have a great riddle idea?",
     "submitDescription": "Submit your own riddles for possible inclusion in the game!",
-    "fullName": "Your Full Name",
-    "fullNamePlaceholder": "Enter your name...",
     "yourRiddle": "Your Riddle",
     "riddlePlaceholder": "Enter your riddle...",
     "submitRiddleButton": "Submit Riddle",
@@ -484,6 +486,14 @@
     "districtsGallery": "Districts Gallery",
     "invalidCredentials": "Invalid email or password",
     "secureSignIn": "Secure sign in",
-    "rememberMe": "Remember me"
+    "rememberMe": "Remember me",
+    "resetPassword": "Reset Password",
+    "resetEmailSent": "Reset Email Sent",
+    "resetEmailInstructions": "We've sent a password reset link to your email address. Please check your inbox and follow the instructions to reset your password.",
+    "forgotPasswordInstructions": "Enter your email address and we'll send you a link to reset your password.",
+    "resetPasswordError": "Failed to send password reset email. Please try again.",
+    "sendingLink": "Sending Reset Link...",
+    "sendResetLink": "Send Reset Link",
+    "backToSignIn": "Back to Sign In"
   }
 }

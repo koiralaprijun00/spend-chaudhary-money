@@ -6,8 +6,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
-import { FiEye, FiEyeOff, FiAlertCircle, FiCheckCircle, FiLock } from 'react-icons/fi';
-import Image from 'next/image';
+import { FiEye, FiEyeOff, FiAlertCircle, FiCheckCircle } from 'react-icons/fi';
 
 interface FormData {
   email: string;
@@ -35,11 +34,13 @@ export default function SignInPage() {
     email: '',
     password: ''
   });
+  
   const [errors, setErrors] = useState<FormErrors>({
     email: '',
     password: '',
     general: ''
   });
+  
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formTouched, setFormTouched] = useState<FormTouched>({
@@ -50,6 +51,39 @@ export default function SignInPage() {
 
   // Email validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Check for error in URL params (e.g., from failed NextAuth callback)
+  useEffect(() => {
+    const errorParam = searchParams.get('error');
+    if (errorParam) {
+      let errorMessage;
+      
+      switch (errorParam) {
+        case 'CredentialsSignin':
+          errorMessage = t('invalidCredentials', { fallback: 'Invalid email or password. Please try again.' });
+          break;
+        case 'OAuthAccountNotLinked':
+          errorMessage = t('accountNotLinked', { fallback: 'To confirm your identity, sign in with the same account you used originally.' });
+          break;
+        case 'EmailSignin':
+          errorMessage = t('emailSignInError', { fallback: 'Failed to send login email. Please try again.' });
+          break;
+        case 'OAuthSignin':
+        case 'OAuthCallback':
+        case 'OAuthCreateAccount':
+        case 'Callback':
+          errorMessage = t('authError', { fallback: 'There was a problem with the authentication service. Please try again.' });
+          break;
+        default:
+          errorMessage = t('loginError', { fallback: 'An error occurred during login. Please try again.' });
+      }
+      
+      setErrors(prev => ({
+        ...prev,
+        general: errorMessage
+      }));
+    }
+  }, [searchParams, t]);
 
   // Handle form input changes
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -184,7 +218,7 @@ export default function SignInPage() {
           });
         }
       } else {
-        // Successful login
+        // Successful login - redirect to the callback URL or homepage
         router.push(callbackUrl);
       }
     } catch (error) {
@@ -201,13 +235,11 @@ export default function SignInPage() {
 
   // Function to handle "forgot password" flow
   const handleForgotPassword = () => {
-    // Here you would navigate to the forgot password page
-    // This is a placeholder - implement according to your app's structure
     router.push('/auth/forgot-password');
   };
 
   return (
-    <div className=" flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg w-full space-y-8 relative">
         <div className="bg-white shadow-xl rounded-2xl overflow-hidden">
           {/* Header with gradient */}
@@ -219,61 +251,60 @@ export default function SignInPage() {
           
           {/* Form Body */}
           <div className="px-6 py-8">
-          <button
-                type="button"
-                onClick={async () => {
-                  try {
-                    setIsLoading(true);
-                    setErrors({ ...errors, general: '' });
-                    // Always redirect Google sign-in to the homepage for the current locale
-                    const locale = window.location.pathname.split('/')[1] || 'en';
-                    const homepage = `/${locale}`;
-                    
-                    const result = await signIn('google', { 
-                      callbackUrl: homepage,
-                      redirect: false
-                    });
-                    
-                    if (result?.error) {
-                      setErrors({
-                        ...errors,
-                        general: t('googleSignInError', { 
-                          fallback: 'Failed to sign in with Google. Please try again.' 
-                        })
-                      });
-                    } else if (result?.url) {
-                      router.push(result.url);
-                    }
-                  } catch (error) {
+            <button
+              type="button"
+              onClick={async () => {
+                try {
+                  setIsLoading(true);
+                  setErrors({ ...errors, general: '' });
+                  // Always redirect Google sign-in to the homepage for the current locale
+                  const locale = window.location.pathname.split('/')[1] || 'en';
+                  const homepage = `/${locale}`;
+                  
+                  const result = await signIn('google', { 
+                    callbackUrl: homepage,
+                    redirect: false
+                  });
+                  
+                  if (result?.error) {
                     setErrors({
                       ...errors,
                       general: t('googleSignInError', { 
-                        fallback: 'An error occurred during Google sign in. Please try again.' 
+                        fallback: 'Failed to sign in with Google. Please try again.' 
                       })
                     });
-                  } finally {
-                    setIsLoading(false);
+                  } else if (result?.url) {
+                    router.push(result.url);
                   }
-                }}
-                disabled={isLoading}
-                className="mb-6 inline-flex items-center justify-center py-3 px-16 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-700 hover:bg-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors disabled:opacity-50"
-              >
-                {isLoading ? (
-                  <>
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    {t('signingIn', { fallback: 'Signing in...' })}
-                  </>
-                ) : (
-                  <>
-                    <FcGoogle className="w-5 h-5 mr-2" />
-                    {t('signInWithGoogle', { fallback: 'Sign in with Google' })}
-                  </>
-                )}
+                } catch (error) {
+                  setErrors({
+                    ...errors,
+                    general: t('googleSignInError', { 
+                      fallback: 'An error occurred during Google sign in. Please try again.' 
+                    })
+                  });
+                } finally {
+                  setIsLoading(false);
+                }
+              }}
+              disabled={isLoading}
+              className="mb-6 inline-flex items-center justify-center py-3 px-16 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-700 hover:bg-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors disabled:opacity-50 w-full"
+            >
+              {isLoading ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  {t('signingIn', { fallback: 'Signing in...' })}
+                </>
+              ) : (
+                <>
+                  <FcGoogle className="w-5 h-5 mr-2" />
+                  {t('signInWithGoogle', { fallback: 'Sign in with Google' })}
+                </>
+              )}
             </button>
-
 
             {errors.general && (
               <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded-md flex items-start">
@@ -376,7 +407,7 @@ export default function SignInPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex justify-center py-3 px-12 rounded-lg shadow-sm text-white bg-gradient-to-r from-blue-600 to-red-500 hover:from-blue-700 hover:to-red-600 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 transition-all duration-200"
+                className="flex justify-center w-full py-3 px-12 rounded-lg shadow-sm text-white bg-gradient-to-r from-blue-600 to-red-500 hover:from-blue-700 hover:to-red-600 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 transition-all duration-200"
               >
                 {isLoading ? (
                   <>
@@ -387,7 +418,7 @@ export default function SignInPage() {
                     {t('signingIn', { fallback: 'Signing in...' })}
                   </>
                 ) : (
-                  t('signInOnly', { fallback: 'Sign In / Sign Up' })
+                  t('signInOnly', { fallback: 'Sign In' })
                 )}
               </button>
             </form>
