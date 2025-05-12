@@ -16,6 +16,13 @@ if (!process.env.NEXTAUTH_SECRET) {
   console.error('Missing NEXTAUTH_SECRET environment variable');
 }
 
+// Get base URL for callbacks
+const getBaseUrl = () => {
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  if (process.env.NEXTAUTH_URL) return process.env.NEXTAUTH_URL;
+  return 'http://localhost:3000'; // Default for local development
+};
+
 export const authOptions: AuthOptions = {
   providers: [
     GoogleProvider({
@@ -95,36 +102,17 @@ export const authOptions: AuthOptions = {
       return token;
     },
     async redirect({ url, baseUrl }) {
-      // Log URL information for debugging
-      console.log('Redirect callback:', { url, baseUrl });
-      
-      // Handle relative URLs
+      // Safely handle redirect URLs
       if (url.startsWith('/')) {
-        const redirectUrl = `${baseUrl}${url}`;
-        console.log('Redirecting to relative URL:', redirectUrl);
-        return redirectUrl;
-      }
-      // Handle absolute URLs that are on the same domain
-      else if (new URL(url).origin === baseUrl) {
-        console.log('Redirecting to same-origin URL:', url);
+        // For relative URLs, build a full URL from the base URL
+        return `${baseUrl}${url}`;
+      } else if (new URL(url).origin === baseUrl) {
+        // Allow redirects to the same domain
         return url;
       }
-      // Default to baseUrl for external URLs
-      console.log('Redirecting to base URL:', baseUrl);
+      // Default fallback to baseUrl
       return baseUrl;
-    },
-    async signIn({ user, account, profile }) {
-      // Log sign-in attempt for debugging
-      console.log('Sign in callback:', { 
-        user: { 
-          id: user.id, 
-          email: user.email 
-        }, 
-        provider: account?.provider 
-      });
-      
-      return true;
-    },
+    }
   },
   pages: {
     signIn: '/auth/signin',

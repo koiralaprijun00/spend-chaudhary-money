@@ -6,14 +6,23 @@ import { getToken } from 'next-auth/jwt';
 const intlMiddleware = createMiddleware({
   locales: ['en', 'np'],
   defaultLocale: 'en',
+  localePrefix: 'always', // Explicitly mark this as always applying locale prefix
 });
 
 export default async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   
-  // Important: Special handling for NextAuth.js routes
-  // These routes should NOT have locale prefixes, so we skip intlMiddleware for them
+  // Skip middleware for NextAuth.js API routes
+  // Important: Always let NextAuth handle its own routes
   if (pathname.startsWith('/api/auth')) {
+    return NextResponse.next();
+  }
+  
+  // Also bypass internationalization for NextAuth callback routes
+  if (pathname === '/auth/signin' || 
+      pathname === '/auth/error' || 
+      pathname === '/auth/callback' ||
+      pathname === '/auth/verify-request') {
     return NextResponse.next();
   }
   
@@ -25,14 +34,14 @@ export default async function middleware(request: NextRequest) {
   }
 
   // Check if the path is for a protected route
-  const isProtectedRoute = pathname.startsWith('/dashboard') || 
-                           pathname.startsWith('/profile');
+  const isProtectedRoute = pathname.includes('/dashboard') || 
+                           pathname.includes('/profile');
   
   // Protected routes need authentication
   if (isProtectedRoute) {
     const token = await getToken({ 
       req: request,
-      secret: process.env.NEXTAUTH_SECRET // Add the secret for JWT validation
+      secret: process.env.NEXTAUTH_SECRET
     });
     
     if (!token) {
@@ -50,12 +59,12 @@ export default async function middleware(request: NextRequest) {
   return intlMiddleware(request);
 }
 
-// Update the matcher configuration to explicitly handle auth routes
+// Update the matcher configuration to handle auth routes correctly
 export const config = {
   matcher: [
     // Match all paths except specific ones
-    // Important: We need to explicitly include /api/auth routes so middleware runs for them
-    '/((?!_next|.*\\..*).)*',
-    '/api/auth/:path*' 
+    '/((?!api|_next|.*\\..*).*)',
+    // We want to explicitly match auth routes
+    '/auth/:path*'
   ],
 };
