@@ -91,68 +91,26 @@ export function SignInButton() {
           />
         )}
         
-        <div className="flex items-center gap-2 profile-dropdown-container">
-          <div className="hidden md:flex items-center">
-            <span className="text-sm text-gray-600 mr-2">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => router.push(`/${locale}/dashboard`)}
+            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+          >
+            {session.user?.image ? (
+              <Image 
+                src={session.user.image} 
+                alt={session.user.name || 'User avatar'} 
+                width={24} 
+                height={24} 
+                className="rounded-full"
+              />
+            ) : (
+              <UserCircle2 className="w-6 h-6 text-gray-500" />
+            )}
+            <span className="hidden md:inline text-sm text-gray-600">
               {session.user?.name?.split(' ')[0]}
             </span>
-          </div>
-          
-          <div className="relative">
-            <button 
-              className="flex items-center justify-center w-9 h-9 rounded-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-orange-500 border-2 border-orange-100 hover:border-orange-300 transition-colors"
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              aria-expanded={dropdownOpen}
-              aria-haspopup="true"
-            >
-              {session.user?.image ? (
-                <Image 
-                  src={session.user.image} 
-                  alt={session.user.name || 'User avatar'} 
-                  width={36} 
-                  height={36} 
-                  className="rounded-full"
-                />
-              ) : (
-                <UserCircle2 className="w-6 h-6 text-gray-500" />
-              )}
-            </button>
-            
-            {/* Dropdown menu */}
-            {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 z-20 border border-gray-200">
-                <div className="px-4 py-3 border-b border-gray-100">
-                  <p className="text-sm font-medium text-gray-800">
-                    {session.user?.name}
-                  </p>
-                  <p className="text-xs text-gray-500 truncate">
-                    {session.user?.email}
-                  </p>
-                </div>
-                
-                <div className="py-1">
-                  <button
-                    onClick={() => {
-                      setDropdownOpen(false);
-                      router.push(`/${locale}/dashboard`);
-                    }}
-                    className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    <Settings className="w-4 h-4 mr-2 text-gray-500" />
-                    {t('dashboard') || 'Dashboard'}
-                  </button>
-                  
-                  <button
-                    onClick={handleSignOut}
-                    className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50"
-                  >
-                    <LogOut className="w-4 h-4 mr-2" />
-                    {t('signOut')}
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
+          </button>
         </div>
       </>
     );
@@ -180,7 +138,7 @@ export function SignInButton() {
         />
       )}
       
-      <GameButton onClick={handleSignIn}>
+      <GameButton type="text"  onClick={handleSignIn}>
         {t('signIn')}
       </GameButton>
     </>
