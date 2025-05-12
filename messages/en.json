@@ -3,6 +3,7 @@
     "signInOnly": "Sign In",
      "loginSuccess": "Successfully logged in!",
     "logoutSuccess": "Successfully logged out",
+    "signingUp": "Signing up...",
      "passwordRequired": "Password is required",
     "passwordReqLength": "At least 8 characters",
 "passwordReqUppercase": "At least 1 uppercase letter",
