@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { FiAlertCircle, FiCheckCircle, FiMail } from 'react-icons/fi';
-import { resetPassword } from '@/app/lib/firebase-auth';
 
 export default function ForgotPasswordPage() {
   const t = useTranslations('Translations');
@@ -69,12 +68,18 @@ export default function ForgotPasswordPage() {
     setIsLoading(true);
     
     try {
-      const result = await resetPassword(email);
+      const response = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
       
-      if (result.success) {
+      const data = await response.json();
+      
+      if (response.ok) {
         setIsSuccess(true);
       } else {
-        setGeneralError(result.error || t('resetPasswordError', { 
+        setGeneralError(data.error || t('resetPasswordError', { 
           fallback: 'Failed to send password reset email. Please try again.'
         }));
       }
