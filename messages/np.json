@@ -1,5 +1,6 @@
 {
   "Translations": {
+    "signInOnly": "साइन इन गर्नुहोस्",
       "loginSuccess": "सफलतापूर्वक लगइन भयो!",
     "logoutSuccess": "सफलतापूर्वक लगआउट भयो",
     "signOut": "साइन आउट गर्नुहोस्",

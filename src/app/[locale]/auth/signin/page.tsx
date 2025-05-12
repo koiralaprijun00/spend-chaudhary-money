@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { FiEye, FiEyeOff, FiAlertCircle, FiCheckCircle, FiLock } from 'react-icons/fi';
+import Image from 'next/image';
 
 interface FormData {
   email: string;
@@ -206,216 +207,214 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-center mb-6">
-          {t('signInToAccount', { fallback: 'Sign in to your account' })}
-        </h1>
-        
-        {errors.general && (
-          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md flex items-center">
-            <FiAlertCircle className="mr-2 flex-shrink-0" />
-            <span>{errors.general}</span>
+    <div className=" flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-lg w-full space-y-8 relative">
+        <div className="bg-white shadow-xl rounded-2xl overflow-hidden">
+          {/* Header with gradient */}
+          <div className="bg-gradient-to-r from-blue-600 to-red-500 px-6 py-8 text-white">
+            <h2 className="text-2xl font-bold">
+              {t('signInToAccount', { fallback: 'Sign in to your account' })}
+            </h2>
           </div>
-        )}
-
-        <form onSubmit={handleEmailSignIn} className="space-y-4">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              {t('email', { fallback: 'Email' })}
-            </label>
-            <div className="mt-1 relative">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={`block w-full rounded-md px-3 py-2 focus:outline-none focus:ring-1 ${
-                  formTouched.email && errors.email 
-                    ? 'border-red-300 focus:border-red-500 focus:ring-red-500' 
-                    : formTouched.email && !errors.email && formData.email
-                      ? 'border-green-300 focus:border-green-500 focus:ring-green-500'
-                      : 'border-gray-300 focus:border-orange-500 focus:ring-orange-500'
-                }`}
-                placeholder={t('emailPlaceholder', { fallback: 'your.email@example.com' })}
-              />
-              {formTouched.email && formData.email && (
-                errors.email 
-                  ? <FiAlertCircle className="absolute right-3 top-3 text-red-500" />
-                  : <FiCheckCircle className="absolute right-3 top-3 text-green-500" />
-              )}
-            </div>
-            {formTouched.email && errors.email && (
-              <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-            )}
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                {t('password', { fallback: 'Password' })}
-              </label>
-              <button
-                type="button"
-                onClick={handleForgotPassword}
-                className="text-sm font-medium text-orange-600 hover:text-orange-500 transition-colors duration-200"
-              >
-                {t('forgotPassword', { fallback: 'Forgot password?' })}
-              </button>
-            </div>
-            <div className="relative">
-              <input
-                id="password"
-                name="password"
-                type={showPassword ? 'text' : 'password'}
-                value={formData.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={`block w-full rounded-md px-3 py-2 focus:outline-none focus:ring-1 pr-10 ${
-                  formTouched.password && errors.password 
-                    ? 'border-red-300 focus:border-red-500 focus:ring-red-500' 
-                    : formTouched.password && !errors.password && formData.password
-                      ? 'border-green-300 focus:border-green-500 focus:ring-green-500'
-                      : 'border-gray-300 focus:border-orange-500 focus:ring-orange-500'
-                }`}
-                placeholder={t('passwordPlaceholder', { fallback: '••••••••' })}
-              />
-              <button
-                type="button"
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <FiEyeOff /> : <FiEye />}
-              </button>
-            </div>
-            {formTouched.password && errors.password && (
-              <p className="mt-1 text-sm text-red-600">{errors.password}</p>
-            )}
-          </div>
-
-          <div className="flex items-center">
-            <input
-              id="remember-me"
-              name="remember-me"
-              type="checkbox"
-              className="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
-            />
-            <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
-              {t('rememberMe', { fallback: 'Remember me' })}
-            </label>
-          </div>
-
+          
+          {/* Form Body */}
+          <div className="px-6 py-8">
           <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 transition-colors duration-200"
-          >
-            {isLoading ? (
-              <>
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                {t('signingIn', { fallback: 'Signing in...' })}
-              </>
-            ) : (
-              t('signIn', { fallback: 'Sign In' })
-            )}
-          </button>
-        </form>
+                type="button"
+                onClick={async () => {
+                  try {
+                    setIsLoading(true);
+                    setErrors({ ...errors, general: '' });
+                    // Always redirect Google sign-in to the homepage for the current locale
+                    const locale = window.location.pathname.split('/')[1] || 'en';
+                    const homepage = `/${locale}`;
+                    
+                    const result = await signIn('google', { 
+                      callbackUrl: homepage,
+                      redirect: false
+                    });
+                    
+                    if (result?.error) {
+                      setErrors({
+                        ...errors,
+                        general: t('googleSignInError', { 
+                          fallback: 'Failed to sign in with Google. Please try again.' 
+                        })
+                      });
+                    } else if (result?.url) {
+                      router.push(result.url);
+                    }
+                  } catch (error) {
+                    setErrors({
+                      ...errors,
+                      general: t('googleSignInError', { 
+                        fallback: 'An error occurred during Google sign in. Please try again.' 
+                      })
+                    });
+                  } finally {
+                    setIsLoading(false);
+                  }
+                }}
+                disabled={isLoading}
+                className="mb-6 inline-flex items-center justify-center py-3 px-16 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-700 hover:bg-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors disabled:opacity-50"
+              >
+                {isLoading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    {t('signingIn', { fallback: 'Signing in...' })}
+                  </>
+                ) : (
+                  <>
+                    <FcGoogle className="w-5 h-5 mr-2" />
+                    {t('signInWithGoogle', { fallback: 'Sign in with Google' })}
+                  </>
+                )}
+            </button>
 
-        <div className="mt-6">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
+
+            {errors.general && (
+              <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded-md flex items-start">
+                <FiAlertCircle className="mr-3 mt-0.5 flex-shrink-0" />
+                <span>{errors.general}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleEmailSignIn} className="space-y-6">
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  {t('email', { fallback: 'Email' })}
+                </label>
+                <div className="relative">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={`block w-full rounded-lg px-4 py-3 border focus:ring-2 focus:ring-opacity-50 focus:outline-none transition-colors ${
+                      formTouched.email && errors.email 
+                        ? 'border-red-300 focus:border-red-500 focus:ring-red-200' 
+                        : formTouched.email && !errors.email && formData.email
+                          ? 'border-green-300 focus:border-green-500 focus:ring-green-200'
+                          : 'border-gray-300 focus:border-blue-500 focus:ring-blue-200'
+                    }`}
+                    placeholder={t('emailPlaceholder', { fallback: 'your.email@example.com' })}
+                  />
+                  {formTouched.email && formData.email && (
+                    <div className="absolute right-3 top-3">
+                      {errors.email 
+                        ? <FiAlertCircle className="text-red-500" />
+                        : <FiCheckCircle className="text-green-500" />
+                      }
+                    </div>
+                  )}
+                </div>
+                {formTouched.email && errors.email && (
+                  <p className="mt-2 text-sm text-red-600">{errors.email}</p>
+                )}
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                    {t('password', { fallback: 'Password' })}
+                  </label>
+                  <button
+                    type="button"
+                    onClick={handleForgotPassword}
+                    className="text-sm font-medium text-blue-600 hover:text-blue-500 transition-colors"
+                  >
+                    {t('forgotPassword', { fallback: 'Forgot password?' })}
+                  </button>
+                </div>
+                <div className="relative">
+                  <input
+                    id="password"
+                    name="password"
+                    type={showPassword ? 'text' : 'password'}
+                    value={formData.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={`block w-full rounded-lg px-4 py-3 border focus:ring-2 focus:ring-opacity-50 focus:outline-none transition-colors ${
+                      formTouched.password && errors.password 
+                        ? 'border-red-300 focus:border-red-500 focus:ring-red-200' 
+                        : formTouched.password && !errors.password && formData.password
+                          ? 'border-green-300 focus:border-green-500 focus:ring-green-200'
+                          : 'border-gray-300 focus:border-blue-500 focus:ring-blue-200'
+                    }`}
+                    placeholder={t('passwordPlaceholder', { fallback: '••••••••' })}
+                  />
+                  <button
+                    type="button"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <FiEyeOff /> : <FiEye />}
+                  </button>
+                </div>
+                {formTouched.password && errors.password && (
+                  <p className="mt-2 text-sm text-red-600">{errors.password}</p>
+                )}
+              </div>
+
+              <div className="flex items-center">
+                <input
+                  id="remember-me"
+                  name="remember-me"
+                  type="checkbox"
+                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                />
+                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+                  {t('rememberMe', { fallback: 'Remember me' })}
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="flex justify-center py-3 px-12 rounded-lg shadow-sm text-white bg-gradient-to-r from-blue-600 to-red-500 hover:from-blue-700 hover:to-red-600 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 transition-all duration-200"
+              >
+                {isLoading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    {t('signingIn', { fallback: 'Signing in...' })}
+                  </>
+                ) : (
+                  t('signInOnly', { fallback: 'Sign In / Sign Up' })
+                )}
+              </button>
+            </form>
+
+            <div className="mt-6">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-300"></div>
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-2 bg-white text-gray-500">{t('or', { fallback: 'or' })}</span>
+                </div>
+              </div>
             </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">{t('or', { fallback: 'or' })}</span>
+
+            <div className="mt-6 text-center">
+              <p className="text-sm text-gray-600">
+                {t('noAccount', { fallback: "Don't have an account?" })}{' '}
+                <Link
+                  href="/auth/register"
+                  className="font-medium text-blue-600 hover:text-blue-500 transition-colors"
+                >
+                  {t('signUp', { fallback: 'Sign Up' })}
+                </Link>
+              </p>
             </div>
           </div>
-
-          <button
-            type="button"
-            onClick={async () => {
-              try {
-                setIsLoading(true);
-                setErrors({ ...errors, general: '' });
-                // Always redirect Google sign-in to the homepage for the current locale
-                const locale = window.location.pathname.split('/')[1] || 'en';
-                const homepage = `/${locale}`;
-                // Do NOT use callbackUrl from query params for Google sign-in
-                console.log('=== Google Sign-in Debug Info ===');
-                console.log('Current URL:', window.location.href);
-                console.log('Locale:', locale);
-                console.log('Homepage (callbackUrl):', homepage);
-                const result = await signIn('google', { 
-                  callbackUrl: homepage,
-                  redirect: false
-                });
-                console.log('Sign-in Result:', result);
-                if (result?.error) {
-                  console.error('Sign-in Error:', result.error);
-                  setErrors({
-                    ...errors,
-                    general: t('googleSignInError', { 
-                      fallback: 'Failed to sign in with Google. Please try again.' 
-                    })
-                  });
-                } else if (result?.url) {
-                  console.log('Redirecting to:', result.url);
-                  router.push(result.url);
-                }
-              } catch (error) {
-                console.error('Unexpected Error:', error);
-                setErrors({
-                  ...errors,
-                  general: t('googleSignInError', { 
-                    fallback: 'An error occurred during Google sign in. Please try again.' 
-                  })
-                });
-              } finally {
-                setIsLoading(false);
-              }
-            }}
-            disabled={isLoading}
-            className="mt-6 w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors duration-200 disabled:opacity-50"
-          >
-            {isLoading ? (
-              <>
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                {t('signingIn', { fallback: 'Signing in...' })}
-              </>
-            ) : (
-              <>
-                <FcGoogle className="w-5 h-5 mr-2" />
-                {t('signInWithGoogle', { fallback: 'Sign in with Google' })}
-              </>
-            )}
-          </button>
-        </div>
-
-        <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
-            {t('noAccount', { fallback: "Don't have an account?" })}{' '}
-            <Link
-              href="/auth/register"
-              className="font-medium text-orange-600 hover:text-orange-500 transition-colors duration-200"
-            >
-              {t('signUp', { fallback: 'Sign Up' })}
-            </Link>
-          </p>
-        </div>
-
-        <div className="mt-6 text-center">
-          <p className="text-xs text-gray-500 flex items-center justify-center">
-            <FiLock className="w-3 h-3 mr-1" />
-            {t('secureSignIn', { fallback: 'Secure sign in' })}
-          </p>
         </div>
       </div>
     </div>

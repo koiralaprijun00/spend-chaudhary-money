@@ -1,5 +1,6 @@
 {
   "Translations":{
+    "signInOnly": "Sign In",
      "loginSuccess": "Successfully logged in!",
     "logoutSuccess": "Successfully logged out",
      "passwordRequired": "Password is required",
