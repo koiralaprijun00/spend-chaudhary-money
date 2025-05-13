@@ -2,8 +2,12 @@
 import { 
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword,
+    signOut,
     updateProfile,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    sendEmailVerification,
+    User,
+    reload
   } from 'firebase/auth';
   import { auth } from './firebase';
   
@@ -25,25 +29,19 @@ import {
         });
       }
       
+      // Send verification email
+      await sendEmailVerification(userCredential.user);
+      
       return {
         success: true,
-        user: userCredential.user
+        user: userCredential.user,
+        verified: false
       };
     } catch (error: any) {
-      // Handle specific Firebase Auth errors
-      let message = 'Registration failed. Please try again.';
-      
-      if (error.code === 'auth/email-already-in-use') {
-        message = 'This email is already registered. Please use a different email.';
-      } else if (error.code === 'auth/weak-password') {
-        message = 'Password is too weak. Please choose a stronger password.';
-      } else if (error.code === 'auth/invalid-email') {
-        message = 'The email address is invalid.';
-      }
-      
+      console.error('Registration error:', error);
       return {
         success: false,
-        error: message
+        error: error.message || 'Failed to register user'
       };
     }
   };
@@ -54,9 +52,14 @@ import {
   export const signInWithEmail = async (email: string, password: string) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      
+      // Reload user to get latest verification status
+      await reload(userCredential.user);
+      
       return {
         success: true,
-        user: userCredential.user
+        user: userCredential.user,
+        verified: userCredential.user.emailVerified
       };
     } catch (error: any) {
       // Handle specific Firebase Auth errors
@@ -100,6 +103,32 @@ import {
       return {
         success: false,
         error: message
+      };
+    }
+  };
+
+  export const checkEmailVerification = async (user: User) => {
+    try {
+      // Reload user to get latest verification status
+      await reload(user);
+      return user.emailVerified;
+    } catch (error) {
+      console.error('Error checking email verification:', error);
+      return false;
+    }
+  };
+
+  export const resendVerificationEmail = async (user: User) => {
+    try {
+      await sendEmailVerification(user);
+      return {
+        success: true
+      };
+    } catch (error: any) {
+      console.error('Error sending verification email:', error);
+      return {
+        success: false,
+        error: error.message || 'Failed to send verification email'
       };
     }
   };

@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { FiEye, FiEyeOff, FiAlertCircle, FiCheckCircle } from 'react-icons/fi';
+import { signInWithEmail, resendVerificationEmail } from '@/app/lib/firebase-auth';
 
 interface FormData {
   email: string;
@@ -48,6 +49,9 @@ export default function SignInPage() {
     password: false
   });
   const [loginAttempts, setLoginAttempts] = useState(0);
+  const [showVerificationMessage, setShowVerificationMessage] = useState(false);
+  const [unverifiedUser, setUnverifiedUser] = useState<User | null>(null);
+  const [resendLoading, setResendLoading] = useState(false);
 
   // Email validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -178,13 +182,13 @@ export default function SignInPage() {
   const handleEmailSignIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    // Reset general error
+    // Reset errors
     setErrors({
       ...errors,
       general: ''
     });
     
-    // Validate all fields before submission
+    // Validate form
     if (!validateForm()) {
       return;
     }
@@ -192,41 +196,37 @@ export default function SignInPage() {
     setIsLoading(true);
     
     try {
-      const result = await signIn('credentials', {
-        email: formData.email,
-        password: formData.password,
-        redirect: false,
-      });
-
-      if (result?.error) {
-        setLoginAttempts(prevAttempts => prevAttempts + 1);
-        
-        // Show appropriate error message based on the error or number of attempts
-        if (loginAttempts >= 2) {
-          setErrors({
-            ...errors,
-            general: t('tooManyAttempts', { 
-              fallback: 'Too many failed attempts. Try again later or reset your password.'
-            })
+      const result = await signInWithEmail(formData.email, formData.password);
+      
+      if (result.success) {
+        if (result.verified) {
+          // User is verified, proceed with sign in
+          const signInResult = await signIn('credentials', {
+            email: formData.email,
+            password: formData.password,
+            redirect: false
           });
+          
+          if (signInResult?.error) {
+            throw new Error(signInResult.error);
+          }
+          
+          router.push('/');
         } else {
-          setErrors({
-            ...errors,
-            general: t('invalidCredentials', { 
-              fallback: 'Invalid email or password. Please try again.'
-            })
-          });
+          // User is not verified
+          setUnverifiedUser(result.user);
+          setShowVerificationMessage(true);
         }
       } else {
-        // Successful login - redirect to the callback URL or homepage
-        router.push(callbackUrl);
+        setErrors({
+          ...errors,
+          general: result.error || t('signInError', { fallback: 'Failed to sign in. Please try again.' })
+        });
       }
-    } catch (error) {
+    } catch (error: any) {
       setErrors({
         ...errors,
-        general: t('signInError', { 
-          fallback: 'An error occurred during sign in. Please try again.' 
-        })
+        general: error.message || t('signInError', { fallback: 'Failed to sign in. Please try again.' })
       });
     } finally {
       setIsLoading(false);
@@ -237,6 +237,84 @@ export default function SignInPage() {
   const handleForgotPassword = () => {
     router.push('/auth/forgot-password');
   };
+
+  const handleResendVerification = async () => {
+    if (!unverifiedUser) return;
+    
+    setResendLoading(true);
+    try {
+      const result = await resendVerificationEmail(unverifiedUser);
+      if (result.success) {
+        setErrors({
+          ...errors,
+          general: t('verificationEmailResent', { 
+            fallback: 'Verification email has been resent. Please check your inbox.'
+          })
+        });
+      } else {
+        setErrors({
+          ...errors,
+          general: result.error || t('resendVerificationError', {
+            fallback: 'Failed to resend verification email. Please try again.'
+          })
+        });
+      }
+    } catch (error: any) {
+      setErrors({
+        ...errors,
+        general: error.message || t('resendVerificationError', {
+          fallback: 'Failed to resend verification email. Please try again.'
+        })
+      });
+    } finally {
+      setResendLoading(false);
+    }
+  };
+
+  // If showing verification message
+  if (showVerificationMessage) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-md w-full space-y-8">
+          <div className="text-center">
+            <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+              {t('emailNotVerified', { fallback: 'Email Not Verified' })}
+            </h2>
+            <p className="mt-2 text-sm text-gray-600">
+              {t('verificationRequired', { 
+                fallback: 'Please verify your email address before signing in.'
+              })}
+            </p>
+            <div className="mt-4 space-y-4">
+              <button
+                onClick={handleResendVerification}
+                disabled={resendLoading}
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+              >
+                {resendLoading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    {t('sending', { fallback: 'Sending...' })}
+                  </>
+                ) : (
+                  t('resendVerificationEmail', { fallback: 'Resend Verification Email' })
+                )}
+              </button>
+              <button
+                onClick={() => setShowVerificationMessage(false)}
+                className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              >
+                {t('backToSignIn', { fallback: 'Back to Sign In' })}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

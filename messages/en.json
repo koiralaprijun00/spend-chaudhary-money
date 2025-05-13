@@ -494,6 +494,14 @@
     "resetPasswordError": "Failed to send password reset email. Please try again.",
     "sendingLink": "Sending Reset Link...",
     "sendResetLink": "Send Reset Link",
-    "backToSignIn": "Back to Sign In"
+    "backToSignIn": "Back to Sign In",
+    "verificationEmailSent": "Verification Email Sent",
+    "verificationEmailInstructions": "Please check your email and click the verification link to complete your registration.",
+    "emailNotVerified": "Email Not Verified",
+    "verificationRequired": "Please verify your email address before signing in.",
+    "verificationEmailResent": "Verification email has been resent. Please check your inbox.",
+    "resendVerificationEmail": "Resend Verification Email",
+    "resendVerificationError": "Failed to resend verification email. Please try again.",
+    "sending": "Sending..."
   }
 }

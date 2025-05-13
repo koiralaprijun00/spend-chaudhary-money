@@ -22,6 +22,7 @@
     "emailPlaceholder": "तपाईंको.इमेल@उदाहरण.com",
     "passwordPlaceholder": "••••••••",
     "confirmPasswordPlaceholder": "••••••••",
+    "confirmPassword": "पासवर्ड पुष्टि गर्नुहोस्",
     "fullName": "पूरा नाम",
     "fullNamePlaceholder": "आफ्नो पूरा नाम लेख्नुहोस्",
     "createAccount": "खाता सिर्जना गर्नुहोस्",
@@ -466,6 +467,14 @@
     "invalidCredentials": "अमान्य इमेल वा पासवर्ड",
     "signingIn": "साइन इन गर्दै...",
     "secureSignIn": "सुरक्षित साइन इन",
-    "rememberMe": "मलाई सम्झनुहोस्"
+    "rememberMe": "मलाई सम्झनुहोस्",
+    "verificationEmailSent": "पुष्टिकरण इमेल पठाइयो",
+    "verificationEmailInstructions": "कृपया आफ्नो इमेल जाँच गर्नुहोस् र दर्ता पूरा गर्न पुष्टिकरण लिङ्कमा क्लिक गर्नुहोस्।",
+    "emailNotVerified": "इमेल पुष्टि भएको छैन",
+    "verificationRequired": "साइन इन गर्नु अघि कृपया आफ्नो इमेल ठेगाना पुष्टि गर्नुहोस्।",
+    "verificationEmailResent": "पुष्टिकरण इमेल पुनः पठाइयो। कृपया आफ्नो इनबक्स जाँच गर्नुहोस्।",
+    "resendVerificationEmail": "पुष्टिकरण इमेल पुनः पठाउनुहोस्",
+    "resendVerificationError": "पुष्टिकरण इमेल पुनः पठाउन सकिएन। कृपया पुनः प्रयास गर्नुहोस्।",
+    "sending": "पठाइरहेको..."
   }
 }

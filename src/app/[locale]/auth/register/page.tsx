@@ -70,6 +70,7 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [verificationSent, setVerificationSent] = useState(false);
   const [formTouched, setFormTouched] = useState<FormTouched>({
     fullName: false,
     email: false,
@@ -249,7 +250,7 @@ export default function RegisterPage() {
       general: ''
     });
 
-    // Validate all fields before submission
+    // Validate form
     if (!validateForm()) {
       return;
     }
@@ -257,7 +258,6 @@ export default function RegisterPage() {
     setIsLoading(true);
 
     try {
-      // Register the user with Firebase
       const result = await registerWithEmailAndPassword(
         formData.email,
         formData.password,
@@ -265,21 +265,15 @@ export default function RegisterPage() {
       );
 
       if (result.success) {
-        // Use NextAuth to sign in the user after registration
-        const signInResult = await signIn('credentials', {
-          email: formData.email,
-          password: formData.password,
-          redirect: false
-        });
-
-        if (signInResult?.error) {
-          throw new Error(signInResult.error);
-        }
-
-        // Redirect to dashboard or homepage after successful registration
-        router.push('/');
+        // Show verification message instead of signing in
+        setVerificationSent(true);
+        // Optionally redirect to verification page
+        // router.push('/auth/verify-email');
       } else {
-        throw new Error(result.error || 'Registration failed');
+        setErrors({
+          ...errors,
+          general: result.error || t('registrationError', { fallback: 'Registration failed. Please try again.' })
+        });
       }
     } catch (error: any) {
       setErrors({
@@ -300,6 +294,34 @@ export default function RegisterPage() {
       default: return 'text-gray-400';
     }
   };
+
+  // If verification email was sent, show success message
+  if (verificationSent) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-md w-full space-y-8">
+          <div className="text-center">
+            <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+              {t('verificationEmailSent', { fallback: 'Verification Email Sent' })}
+            </h2>
+            <p className="mt-2 text-sm text-gray-600">
+              {t('verificationEmailInstructions', { 
+                fallback: 'Please check your email and click the verification link to complete your registration.'
+              })}
+            </p>
+            <div className="mt-4">
+              <Link 
+                href="/auth/signin" 
+                className="font-medium text-blue-600 hover:text-blue-500"
+              >
+                {t('backToSignIn', { fallback: 'Back to Sign In' })}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
