@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { FiEye, FiEyeOff, FiAlertCircle, FiCheckCircle } from 'react-icons/fi';
 import { signInWithEmail, resendVerificationEmail } from '@/app/lib/firebase-auth';
+import { User } from 'firebase/auth';
 
 interface FormData {
   email: string;
@@ -214,7 +215,7 @@ export default function SignInPage() {
           router.push('/');
         } else {
           // User is not verified
-          setUnverifiedUser(result.user);
+          setUnverifiedUser(result.user || null);
           setShowVerificationMessage(true);
         }
       } else {
