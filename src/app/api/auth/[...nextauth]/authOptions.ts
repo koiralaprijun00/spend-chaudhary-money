@@ -1,7 +1,28 @@
-import { AuthOptions } from 'next-auth';
+import { AuthOptions, DefaultSession } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { signInWithEmail } from '@/app/lib/firebase-auth';
+import { User } from 'next-auth';
+
+// Extend the built-in session types
+declare module 'next-auth' {
+  interface Session {
+    user: {
+      id: string;
+      emailVerified: boolean;
+    } & DefaultSession['user']
+  }
+  
+  interface User {
+    emailVerified: boolean;
+  }
+}
+
+declare module 'next-auth/jwt' {
+  interface JWT {
+    emailVerified: boolean;
+  }
+}
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -26,19 +47,29 @@ export const authOptions: AuthOptions = {
             credentials.password
           );
           
-          if (result.success && result.user) {
-            return {
-              id: result.user.uid,
-              email: result.user.email,
-              name: result.user.displayName,
-              image: result.user.photoURL,
-            };
+          if (!result.success) {
+            throw new Error(result.error || 'Authentication failed');
+          }
+
+          if (!result.user) {
+            throw new Error('User not found after successful authentication');
+          }
+
+          // Check if the user's email is verified
+          if (!result.user.emailVerified) {
+            throw new Error('Please verify your email before signing in');
           }
           
-          // If we get here, authentication failed
-          throw new Error(result.error || 'Invalid email or password');
+          return {
+            id: result.user.uid,
+            email: result.user.email,
+            name: result.user.displayName,
+            image: result.user.photoURL,
+            emailVerified: Boolean(result.user.emailVerified),
+          };
         } catch (error: any) {
-          throw new Error(error.message || 'Authentication failed');
+          console.error('Authentication error:', error);
+          throw new Error(error.message || 'Authentication failed. Please try again later.');
         }
       },
     }),
@@ -55,12 +86,14 @@ export const authOptions: AuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.emailVerified = Boolean(user.emailVerified);
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.sub || '';
+        session.user.emailVerified = Boolean(token.emailVerified);
       }
       return session;
     },
