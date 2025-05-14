@@ -53,3 +53,4 @@ Thumbs.db
 # Other
 .lock-wscript
 *.local
+.env.local
