@@ -10,7 +10,6 @@ import { FaTwitter } from "react-icons/fa"
 import { FaInstagram } from "react-icons/fa"
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import { BiChevronDown } from 'react-icons/bi';
-import { SignInButton } from './auth/SignInButton';
 
 const Navbar = () => {
     const t = useTranslations('Translations');
@@ -157,8 +156,6 @@ const Navbar = () => {
                         
                         {/* Share Button Component */}
                         <NavBarShareButton />
-
-                        <SignInButton />
 
                         {/* Hamburger menu button - visible only on mobile */}
                         <button 
