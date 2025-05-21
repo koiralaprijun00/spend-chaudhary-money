@@ -105,6 +105,7 @@ const Navbar = () => {
 
     // Dropdown links (extra games)
     const dropdownLinks = [
+        { href: "/mandir-chineu", label: t('games.guessTemple.title') },
         { href: "/gau-khane-katha", label: t('RiddlesGame.title')},
         { href: "/date-converter", label: t('nepaliDateConverterTitle') || 'Date Converter' },
         { href: "/life-checklist", label: t('nepalChecklist.navbarTitle') },

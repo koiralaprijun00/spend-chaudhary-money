@@ -415,6 +415,9 @@
         "Standard": "सामान्य मोड",
         "Timed": "समय मोड",
         "restart": "खेल पुनःसुरु गर्नुहोस्"
+      },
+      "guessTemple": {
+        "title": "मन्दिर चिन्नुभो?"
       }
     },
     "kingsOfNepal": {

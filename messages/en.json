@@ -433,16 +433,19 @@
       "noCorrectGuessesYet": "No correct guesses yet",
       "allCorrect": "Congratulations! You've identified all districts!",
     "games": {
-    "guessFestival": {
-      "title": "Guess the Festival",
-      "description": "Test your knowledge of Nepali festivals!",
-      "instructions": "Read the clues and guess which Nepali festival is being described.",
-      "mode": "Guess Mode",
-      "Standard": "Standard",
-      "Timed": "Timed",
-      "restart": "Restart Game"
-    }
-  },
+      "guessTemple": {
+        "title": "Guess the Temple"
+      },
+      "guessFestival": {
+        "title": "Guess the Festival",
+        "description": "Test your knowledge of Nepali festivals!",
+        "instructions": "Read the clues and guess which Nepali festival is being described.",
+        "mode": "Guess Mode",
+        "Standard": "Standard",
+        "Timed": "Timed",
+        "restart": "Restart Game"
+      }
+    },
     "kingsOfNepal": {
         "title": "Kings of Nepal",
         "description": "Name all the kings who ruled Nepal",
