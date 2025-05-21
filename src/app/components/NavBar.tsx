@@ -10,6 +10,7 @@ import { FaTwitter } from "react-icons/fa"
 import { FaInstagram } from "react-icons/fa"
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import { BiChevronDown } from 'react-icons/bi';
+import { SignInButton } from './auth/SignInButton';
 
 const Navbar = () => {
     const t = useTranslations('Translations');
@@ -104,6 +105,7 @@ const Navbar = () => {
 
     // Dropdown links (extra games)
     const dropdownLinks = [
+        { href: "/mandir-chineu", label: t('games.guessTemple.title') },
         { href: "/gau-khane-katha", label: t('RiddlesGame.title')},
         { href: "/date-converter", label: t('nepaliDateConverterTitle') || 'Date Converter' },
         { href: "/life-checklist", label: t('nepalChecklist.navbarTitle') },
@@ -155,6 +157,8 @@ const Navbar = () => {
                         
                         {/* Share Button Component */}
                         <NavBarShareButton />
+
+                        <SignInButton />
 
                         {/* Hamburger menu button - visible only on mobile */}
                         <button 

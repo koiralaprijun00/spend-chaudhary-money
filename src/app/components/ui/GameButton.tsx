@@ -3,7 +3,7 @@ import React from 'react';
 
 interface GameButtonProps {
   onClick?: () => void;
-  type?: 'primary' | 'secondary' | 'success' | 'danger' | 'neutral' | 'grayNeutral';
+  type?: 'primary' | 'secondary' | 'success' | 'danger' | 'neutral' | 'grayNeutral' | 'text';
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
   disabled?: boolean;
@@ -15,7 +15,7 @@ interface GameButtonProps {
  * GameButton - A reusable button component for games
  *
  * @param onClick - Function to call when button is clicked
- * @param type - Button style variant (primary, secondary, success, danger, neutral)
+ * @param type - Button style variant (primary, secondary, success, danger, neutral, text)
  * @param size - Button size (sm, md, lg)
  * @param fullWidth - Whether the button should take full width of its container
  * @param disabled - Whether the button is disabled
@@ -39,6 +39,7 @@ const GameButton: React.FC<GameButtonProps> = ({
     danger: 'bg-red-500 hover:bg-red-600 text-white border-red-500',
     neutral: 'bg-gray-200 hover:bg-gray-300 text-gray-800 border-gray-300',
     grayNeutral: 'bg-blue-200 hover:bg-gray400 text-gray-800 border-1 focus:border-blue-600 hover:text-bold border-gray-300',
+    text: 'bg-transparent hover:bg-transparent text-gray-500 hover:text-gray-700 hover:text-blue-600 border-transparent hover:underline text-sm',
   };
 
   // Styles mapped by size

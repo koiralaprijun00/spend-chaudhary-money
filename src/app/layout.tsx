@@ -1,5 +1,5 @@
 import "./globals.css";
-import "mapbox-gl/dist/mapbox-gl.css"; // Keep this for build-time CSS inclusion
+import "mapbox-gl/dist/mapbox-gl.css";
 import { Metadata } from "next";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -47,12 +47,8 @@ export default function RootLayout({
     <html lang="en" translate="no">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        
-        {/* Prevent translation */}
         <meta name="google" content="notranslate" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
-        {/* Performance optimizations: Preload LCP image */}
         <link
           rel="preload"
           href="/spend-money.png"
@@ -60,18 +56,12 @@ export default function RootLayout({
           type="image/png"
           fetchPriority="high"
         />
-        
-        {/* Preconnect to critical origins */}
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.mapbox.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
-        
-        {/* DNS prefetch for third-party domains */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        
-        {/* AdSense script with lazyOnload strategy */}
         <Script
           id="adsbygoogle-init"
           async
@@ -79,25 +69,17 @@ export default function RootLayout({
           strategy="lazyOnload"
           crossOrigin="anonymous"
         />
-        
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        {/* Mapbox CSS - Using standard loading without client-side event handlers */}
         <link
           href="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css"
           rel="stylesheet"
         />
-
-
       </head>
       <body className="antialiased">
-
-          {children}
-          <SpeedInsights />
-          <Analytics />
-        
-        {/* Google Analytics with afterInteractive strategy */}
+        {children}
+        <SpeedInsights />
+        <Analytics />
         <Script
           id="gtag-script"
           strategy="afterInteractive"
@@ -106,4 +88,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}   
+} 
