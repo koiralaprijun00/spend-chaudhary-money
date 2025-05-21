@@ -192,6 +192,38 @@ export default function HomePage() {
             </div>
           </Link>
 
+          {/* <Link href="/guess-temple" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl">
+            <div className="relative px-6 py-12 h-full bg-gradient-to-br from-orange-700 to-purple-500 rounded-3xl shadow-lg overflow-hidden">
+              <div className="absolute top-3 right-3 bg-white text-purple-600 font-bold text-xs py-1 px-3 rounded-full shadow-md flex items-center gap-1">
+                <span>🏛️</span>
+                <span>{t('guessTemple.badge', 'Temple Quiz')}</span>
+              </div>
+              
+              <div className="flex items-center relative z-10">
+                <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full bg-white shadow-md mr-4">
+                  <div className="w-16 h-16 rounded-full overflow-hidden">
+                    <Image
+                      src="/guess-temple.png" 
+                      alt="Guess the Temple"
+                      width={64}
+                      height={64}
+                      loading="lazy"
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">
+                    {t('guessTemple.title', 'Guess the Temple')}
+                  </h2>
+                  <p className="mt-1 text-white text-opacity-90">
+                    {t('guessTemple.description', 'Test your knowledge of Nepali temples!')}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Link> */}
+
           {/* Nepal GK Quiz Card */}
           <Link href="/general-knowledge" className="block transform transition-all duration-300 hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl">
             <div className="relative px-6 py-12 h-full bg-gradient-to-br from-indigo-700 to-lime-600 rounded-3xl shadow-lg overflow-hidden">
