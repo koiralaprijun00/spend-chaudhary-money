@@ -5,6 +5,7 @@ export async function GET() {
     { loc: "https://piromomo.com/", lastmod: "2025-03-15", priority: "1.0" },
     { loc: "https://piromomo.com/spend", lastmod: "2025-03-15", priority: "0.9" },
     { loc: "https://piromomo.com/guess-festival", lastmod: "2025-03-15", priority: "0.9" },
+    { loc: "https://piromomo.com/guess-temple", lastmod: "2025-03-15", priority: "0.9" },
     { loc: "https://piromomo.com/kings-of-nepal", lastmod: "2025-03-15", priority: "0.9" },
     { loc: "https://piromomo.com/kings-of-nepal/about", lastmod: "2025-03-15", priority: "0.8" },
     { loc: "https://piromomo.com/name-districts", lastmod: "2025-03-15", priority: "0.9" },
