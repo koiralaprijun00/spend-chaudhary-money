@@ -76,29 +76,29 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={resolvedLocale} messages={messages}>
-      {/* AdSense Script - Updated to use a more compatible approach */}
-      <Script
-        id="adsbygoogle-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            (adsbygoogle = window.adsbygoogle || []).push({
-              google_ad_client: "ca-pub-4708248697764153",
-              enable_page_level_ads: true
-            });
-          `
-        }}
-      />
-      <Script
-        id="adsbygoogle-js"
-        strategy="afterInteractive"
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-        crossOrigin="anonymous"
-      />
-      <NavBar />
-      {children}
-      <SpeedInsights/>
+        {/* AdSense Script - Updated to use a more compatible approach */}
+        <Script
+          id="adsbygoogle-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-4708248697764153",
+                enable_page_level_ads: true
+              });
+            `
+          }}
+        />
+        <Script
+          id="adsbygoogle-js"
+          strategy="afterInteractive"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          crossOrigin="anonymous"
+        />
+        <NavBar />
+        {children}
+        <SpeedInsights/>
     </NextIntlClientProvider>
   );
 }
